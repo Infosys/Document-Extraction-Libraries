@@ -1,0 +1,16 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+autopep8 = "==1.5.1"
+pytest = "==6.1.2"
+pytest-cov = "==2.12.1"
+
+[packages]
+opencv-python = "==4.1.0.25"
+numpy = "==1.18.1"
+
+[requires]
+python_version = "3.6"
