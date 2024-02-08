@@ -69,13 +69,16 @@ class AzureReadOcrDataServiceProvider(DataServiceProviderInterface):
                     return lines_structure
 
             for ocr_file in self._ocr_file_data_list:
+                infy_ocr_generator_metadata = ocr_file.get(
+                    'infy_ocr_generator_metadata', {})
                 for page_obj in ocr_file["readResults"]:
-                    page_no = page_obj["page"]
+                    page_no = int(infy_ocr_generator_metadata.get(
+                        'doc_page_num', page_obj["page"]))
                     bbox_unit = page_obj["unit"]
                     if len(pages) > 0 and page_no not in pages:
                         continue
                     for line_obj in page_obj['lines']:
-                        word_structure = self.get_word_dict_from(
+                        word_structure = self.__get_word_dict_from(
                             line_obj, [
                                 page_no], scaling_factors=scaling_factors,
                             bbox_unit=bbox_unit)
@@ -83,6 +86,10 @@ class AzureReadOcrDataServiceProvider(DataServiceProviderInterface):
                         # The coordinates of the bounding box
                         (l, t, r, b) = self.__get_formatted_bbox(
                             line_obj["boundingBox"], bbox_unit)
+                        confidence_pct = -1
+                        if "appearance" in line_obj:
+                            confidence_pct = float(
+                                line_obj["appearance"].get("style", {}).get("confidence", 0))*100
                         lines_structure.append(
                             Response.data_dict(
                                 f"line_{page_no}_{l}_{t}_{r}_{b}",
@@ -90,15 +97,22 @@ class AzureReadOcrDataServiceProvider(DataServiceProviderInterface):
                                 line_text,
                                 [l, t, r-l, b-t],
                                 f'{scaling_factors[0]}_{scaling_factors[1]}',
-                                word_structure=word_structure
+                                word_structure=word_structure,
+                                conf=confidence_pct
+
                             ))
             return lines_structure
         except Exception as e:
             raise Exception(e)
 
-    def get_word_dict_from(self, line_obj=None, pages: list = None,
-                           word_dict_list: list = None, scaling_factors=None,
-                           bbox_unit='pixel') -> list:
+    def get_word_dict_from(self, pages: list = None,
+                           word_dict_list: list = None, scaling_factors: list = None) -> list:
+        return self.__get_word_dict_from(
+            pages=pages, word_dict_list=word_dict_list, scaling_factors=scaling_factors)
+
+    def __get_word_dict_from(self, line_obj=None, pages: list = None,
+                             word_dict_list: list = None, scaling_factors=None,
+                             bbox_unit='pixel') -> list:
         """Returns list of word dictionary containing text and bbox values.
 
         Args:
@@ -130,8 +144,11 @@ class AzureReadOcrDataServiceProvider(DataServiceProviderInterface):
                 return word_structure
 
         for ocr_file in self._ocr_file_data_list:
+            infy_ocr_generator_metadata = ocr_file.get(
+                'infy_ocr_generator_metadata', {})
             for page_obj in ocr_file["readResults"]:
-                page_no = page_obj["page"]
+                page_no = int(infy_ocr_generator_metadata.get(
+                    'doc_page_num', page_obj["page"]))
                 bbox_unit = page_obj["unit"]
                 if len(pages) > 0 and page_no not in pages:
                     continue
@@ -148,18 +165,19 @@ class AzureReadOcrDataServiceProvider(DataServiceProviderInterface):
         """
         page_bbox_dict_list = []
 
-        def _page_bbox(file_data):
+        def _page_bbox(file_data, infy_ocr_generator_metadata):
             point = self.__get_unit_point(file_data["unit"])
             w = (file_data["width"])*point
             h = (file_data["height"])*point
-            infy_ocr_generator_metadata = file_data.get(
-                'infy_ocr_generator_metadata', {})
-            page = infy_ocr_generator_metadata.get(
-                'doc_page_num', file_data["page"])
+            page = int(infy_ocr_generator_metadata.get(
+                'doc_page_num', file_data["page"]))
             bbox_dict = {"bbox": [0, 0, w, h], "page": page}
             return bbox_dict
         for ocr_file in self._ocr_file_data_list:
-            page_bbox_dict_list += [_page_bbox(file_data)
+            # infy_ocr_generator_metadata is available at same readResults hierarchy level
+            infy_ocr_generator_metadata = ocr_file.get(
+                'infy_ocr_generator_metadata', {})
+            page_bbox_dict_list += [_page_bbox(file_data, infy_ocr_generator_metadata)
                                     for file_data in ocr_file["readResults"]]
         return page_bbox_dict_list
 
@@ -177,7 +195,7 @@ class AzureReadOcrDataServiceProvider(DataServiceProviderInterface):
                     word_obj["text"],
                     [l, t, r-l, b-t],
                     f'{scaling_factors[0]}_{scaling_factors[1]}',
-                    conf=word_obj["confidence"]
+                    conf=float(word_obj.get("confidence", 0))*100
                 ))
         return word_structure
 

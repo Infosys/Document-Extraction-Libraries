@@ -24,21 +24,26 @@ METADATA = dict(
     # packages=['checkbox_extractor_pkg'],
     packages=find_packages(where='src'),
     install_requires=[
-        'opencv-python ==4.1.0.25',
-        'numpy==1.18.1'
+        'opencv-python ==4.8.1.78',
+        'numpy <=1.23.0',
+        'imageio ==2.9.0'
     ],
     extra_requires=[
         # The below libraries are required for the libraries own providers - tesseract and native pdf
-        'infy_common_utils==0.0.4',
-        'infy_ocr_parser==0.0.10'
+        'infy_ocr_parser==0.0.16'
     ],
     include_package_data=True,
     classifiers=[
+        "Programming Language :: Python",
+        "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.6",
-        "License :: Infosys Proprietary",
+        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3 :: Only",
+        "License :: Apache License Version 2.0",
         "Operating System :: OS Independent",
     ],
-    python_requires='==3.6.*',
+    python_requires='>=3.6.2',
 )
 
 if __name__ == '__main__':

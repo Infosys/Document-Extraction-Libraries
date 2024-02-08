@@ -4,18 +4,20 @@
 # http://www.apache.org/licenses/                                                                                #
 # ===============================================================================================================#
 
+import os
 import enum
 import copy
 import logging
 import traceback
+from imageio import imsave
+import cv2
 from infy_ocr_parser.internal import ocr_helper
 from infy_ocr_parser.internal.response import Response
-from infy_ocr_parser.internal.ocr_const import RegLabel
+from infy_ocr_parser.internal.ocr_const import RegLabel, PlotBbox
 from infy_ocr_parser.internal.ocr_validator import OcrValidator
 from infy_ocr_parser.internal.file_util import FileUtil
 from infy_ocr_parser.internal.common_util import CommonUtil
 from infy_ocr_parser.interface.data_service_provider_interface import DataServiceProviderInterface
-from infy_ocr_parser.providers.tesseract_ocr_data_service_provider import TesseractOcrDataServiceProvider
 
 
 class OcrType(enum.Enum):
@@ -55,7 +57,8 @@ REG_DEF_DICT = {
     "anchorTextMatch": {
         "method": "",
         "similarityScore": 1,
-        "maxWordSpace": '1.5t'
+        "maxWordSpace": '1.5t',
+        "occurrenceNums": []
     },
     "anchorPoint1": {
         "left": None,
@@ -86,6 +89,14 @@ REG_BBOX_DICT = {"bbox": [], "page": 1}
 SCALING_FACTOR = {
     'hor': 1,
     'ver': 1
+}
+
+PLOT_DATA = {
+    'token_type_value': 1,
+    'images': [{
+        'image_page_num': 1,
+        'image_file_path': ''
+    }]
 }
 
 
@@ -159,7 +170,7 @@ class OcrParser:
 
         Args:
             token_type_value (int):  1(WORD), 2(LINE), 3(PHRASE)
-            within_bbox (list, optional): Return Json data within this region.
+            within_bbox(x,y,w,h) (list, optional): Return Json data within this region.
                 Default is empty list.
             ocr_word_list (list, optional): When token_type_value is 3(PHRASE)
                 then ocr_word_list formed as pharse and returns Json data of it.
@@ -174,12 +185,20 @@ class OcrParser:
         Returns:
             list: List of token dict
         """
+        def _sort_token_page(tokens):
+            for i in range(len(tokens)):
+                for j in range(len(tokens)):
+                    if tokens[i]['page'] < tokens[j]['page']:
+                        tokens[i], tokens[j] = tokens[j], tokens[i]
+            return tokens
         scaling_factor = OcrValidator.validate_and_convert_scaling_factor(
             scaling_factor)
         tokens = copy.deepcopy(self._ocr_helper_obj.get_tokens_from_ocr(
             token_type_value=token_type_value,
             within_bbox=within_bbox, ocr_word_list=ocr_word_list, pages=pages,
             scaling_factors_key=scaling_factor, max_word_space=max_word_space))
+        # Sorting based on page no.
+        tokens = _sort_token_page(tokens)
         return Response.update_get_tokens_bbox_response(tokens)
 
     def save_tokens_as_json(self, out_file, token_type_value: int, pages=[], scaling_factor=SCALING_FACTOR) -> dict:
@@ -245,7 +264,6 @@ class OcrParser:
                     error_text = f"Invalid keys found in {parameter_name}: {invalid_keys}. "
                     return error_text
                 return ''
-
             validation_error = ''
             # Validate incoming region_definition dictionary
             if isinstance(region_definition, list):
@@ -368,22 +386,37 @@ class OcrParser:
 
             scaling_factors_key = OcrValidator.validate_and_convert_scaling_factor(
                 scaling_factor)
-            return Response.update_get_bbox_for_response(response_regions, 'scalingFactor', rd_scaling_factor, scaling_factors_key)
+            occurance_response_regions = {}
+            if len(region_definition[0]['anchorTextMatch']['occurrenceNums']) == 0:
+                occurance_response_regions = response_regions
+            else:
+                reg_len = len(response_regions['regions'])
+                new_region = []
+                for i in region_definition[0]['anchorTextMatch']['occurrenceNums']:
+                    if i > reg_len or i <= 0:
+                        raise Exception(
+                            f"Occurance number should be between 1 and {reg_len}")
+                    new_region.append(response_regions['regions'][i-1])
+                occurance_response_regions = dict(
+                    {"regions": new_region, 'error': response_regions['error'], 'warnings': response_regions['warnings']})
+
+            return Response.update_get_bbox_for_response(occurance_response_regions, 'scalingFactor', rd_scaling_factor, scaling_factors_key)
         except Exception as e:
             return Response.response(error=e.args[0])
 
-    def calculate_scaling_factor(self, image_width=0, image_height=0) -> dict:
+    def calculate_scaling_factor(self, image_width: int = 0, image_height: int = 0, page: int = 0) -> dict:
         """Calculate and Return the Scaling Factor of given image
 
         Args:
             image_width (int, optional): Value of image width. Default is 0.
             image_height (int, optional): Value of image height. Default is 0.
+            page (int, optional): Page of Pages. Defaul is 0.
 
         Returns:
             dict: Dict of calculated scaling factor and warnings(if any).
         """
         sf_ver, sf_hor, warn_msg = CommonUtil.calc_scaling_factor(
-            image_width, image_height, self._ocr_helper_obj.get_page_bbox_dict())
+            image_width, image_height, self._ocr_helper_obj.get_page_bbox_dict(), page=int(page))
         # return {"scalingFactor": scaling_factor, "warnings": [warn_msg]}
         return {'scalingFactor': {'ver': sf_ver, 'hor': sf_hor}, 'warnings': [warn_msg]}
 
@@ -454,3 +487,59 @@ class OcrParser:
         except Exception as e:
             error = traceback.format_exc()
             return Response.token_response(error=e.args[0])
+
+    def plot(self, plot_data: PLOT_DATA) -> list:
+        '''plotting the bbox and saving the image'''
+        response_list = []
+        token_type_value = plot_data['token_type_value']
+        images_data_list = plot_data['images']
+        page_list = [x['image_page_num'] for x in images_data_list]
+        tokens_list = self.get_tokens_from_ocr(
+            token_type_value=token_type_value, pages=page_list)
+        for image_data in images_data_list:
+            image_file_path = image_data['image_file_path']
+            if not os.path.exists(image_file_path):
+                raise FileNotFoundError(f'{image_file_path} does not exist')
+            page_level_tokens_list = [x for x in tokens_list if
+                                      x['page'] == image_data['image_page_num']
+                                      and x['text'].strip() != '']
+            # draw and save image bbox
+            bbox_img_path = self.__draw_bbox(
+                image_file_path, page_level_tokens_list)
+            response_list.append({
+                "image_page_num": image_data['image_page_num'],
+                "image_file_path": image_file_path,
+                "output_image_file_path": bbox_img_path
+            })
+        return response_list
+
+    def __draw_bbox(self, image_file_path: str, tokens: list):
+        img_path = image_file_path
+        alpha = 0.4  # Transparency factor.
+        file_extension = os.path.splitext(img_path)[-1]
+        bbox_img_file_path = f'{os.path.dirname(img_path)}/{os.path.basename(img_path)}_bbox{file_extension}'
+        font = cv2.FONT_HERSHEY_SIMPLEX
+        # token bbox image drawn
+        image_bbox = cv2.imread(img_path)
+        transparent = image_bbox.copy()
+        token_bbox_list = [x['bbox'] for x in tokens]
+
+        if token_bbox_list:
+            for idx, bbox in enumerate(token_bbox_list):
+                # text,bbox=bbox_text
+                _color_dict = copy.deepcopy(PlotBbox.COLOR_DICT)
+                _idx = idx % len(PlotBbox.COLOR_NAMES)
+                color_name = PlotBbox.COLOR_NAMES[_idx]
+                _color_code = _color_dict[color_name]
+                _org_color_code = copy.deepcopy(_color_code)
+                _color_code.append(50)
+                start, end = (bbox[0], bbox[1]), (bbox[2] +
+                                                  bbox[0], bbox[3]+bbox[1])
+                cv2.rectangle(img=transparent, pt1=start, pt2=end,
+                              color=tuple(_org_color_code), thickness=-1)
+                cv2.putText(img=image_bbox, text=f"{start},{end}", org=(int(
+                    (start[0]+end[0])/2), start[1]-5), fontFace=font, fontScale=0.5, color=(255, 0, 0))
+                image_new = cv2.addWeighted(
+                    transparent, alpha, image_bbox, 1 - alpha, 0)
+        imsave(bbox_img_file_path, image_new)
+        return bbox_img_file_path

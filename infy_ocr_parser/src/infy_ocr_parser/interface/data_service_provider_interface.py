@@ -64,13 +64,11 @@ class DataServiceProviderInterface(metaclass=abc.ABCMeta):
         raise NotImplementedError
 
     @abc.abstractmethod
-    def get_word_dict_from(self, line_obj=None, pages: list = None,
+    def get_word_dict_from(self, pages: list = None,
                            word_dict_list: list = None, scaling_factors: list = None) -> list:
         """Returns list of word dictionary containing text and bbox values.
 
         Args:
-            line_obj ([any], optional): Existing line object to get words of it.
-                - Defaults to None.
             pages (list, optional): Page to filter from given `doc_list`. Defaults to None.
             word_dict_list (list, optional): Existing word dictonary to filter certain page(s).
                 - Defaults to None.

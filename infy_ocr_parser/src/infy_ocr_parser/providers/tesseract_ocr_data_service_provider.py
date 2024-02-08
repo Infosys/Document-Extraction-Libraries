@@ -82,7 +82,7 @@ class TesseractOcrDataServiceProvider(DataServiceProviderInterface):
                 ocr_header = soup.findAll("span", {"class": "ocr_header"})
                 ocr_lines += ocr_header
                 for line in ocr_lines:
-                    word_structure = self.get_word_dict_from(
+                    word_structure = self.__get_word_dict_from(
                         line, [page_no], scaling_factors=scaling_factors)
                     line_text = line.text.replace("\n", " ").strip()
                     title = line['title']
@@ -102,8 +102,13 @@ class TesseractOcrDataServiceProvider(DataServiceProviderInterface):
         except Exception as e:
             raise Exception(e)
 
-    def get_word_dict_from(self, line_obj=None, pages: list = None,
+    def get_word_dict_from(self, pages: list = None,
                            word_dict_list: list = None, scaling_factors: list = None) -> list:
+        return self.__get_word_dict_from(
+            pages=pages, word_dict_list=word_dict_list, scaling_factors=scaling_factors)
+
+    def __get_word_dict_from(self, line_obj=None, pages: list = None,
+                             word_dict_list: list = None, scaling_factors: list = None) -> list:
         """Returns list of word dictionary containing text and bbox values.
 
         Args:

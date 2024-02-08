@@ -69,12 +69,15 @@ class AzureOcrDataServiceProvider(DataServiceProviderInterface):
                     return lines_structure
 
             for i, ocr_file_data in enumerate(self._ocr_file_data_list):
-                page_no = i+1
+                infy_ocr_generator_metadata = ocr_file_data.get(
+                    'infy_ocr_generator_metadata', {})
+                page_no = int(infy_ocr_generator_metadata.get(
+                    'doc_page_num', i+1))
                 if len(pages) > 0 and page_no not in pages:
                     continue
                 for region_obj in ocr_file_data["regions"]:
                     for line_obj in region_obj["lines"]:
-                        word_structure = self.get_word_dict_from(
+                        word_structure = self.__get_word_dict_from(
                             line_obj, [page_no], scaling_factors=scaling_factors)
                         line_text = " ".join([word_obj["text"]
                                               for word_obj in line_obj["words"]])
@@ -94,8 +97,13 @@ class AzureOcrDataServiceProvider(DataServiceProviderInterface):
         except Exception as e:
             raise Exception(e)
 
-    def get_word_dict_from(self, line_obj=None, pages: list = None,
-                           word_dict_list: list = None, scaling_factors=None) -> list:
+    def get_word_dict_from(self, pages: list = None,
+                           word_dict_list: list = None, scaling_factors: list = None) -> list:
+        return self.__get_word_dict_from(
+            pages=pages, word_dict_list=word_dict_list, scaling_factors=scaling_factors)
+
+    def __get_word_dict_from(self, line_obj=None, pages: list = None,
+                             word_dict_list: list = None, scaling_factors=None) -> list:
         """"Returns list of word dictionary containing text and bbox values.
 
         Args:
@@ -126,7 +134,10 @@ class AzureOcrDataServiceProvider(DataServiceProviderInterface):
                 return word_structure
 
         for i, ocr_file_data in enumerate(self._ocr_file_data_list):
-            page_no = i+1
+            infy_ocr_generator_metadata = ocr_file_data.get(
+                'infy_ocr_generator_metadata', {})
+            page_no = int(infy_ocr_generator_metadata.get(
+                'doc_page_num', i+1))
             if len(pages) > 0 and page_no not in pages:
                 continue
             for region_obj in ocr_file_data["regions"]:
@@ -152,7 +163,7 @@ class AzureOcrDataServiceProvider(DataServiceProviderInterface):
                           int(ocr_file.get(
                               "height", infy_ocr_generator_metadata.get('height', 0)))
                           ],
-                 "page": infy_ocr_generator_metadata.get('doc_page_num', i+1)}
+                 "page": int(infy_ocr_generator_metadata.get('doc_page_num', i+1))}
             )
         return page_bbox_dict_list
 

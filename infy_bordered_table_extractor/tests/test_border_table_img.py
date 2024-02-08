@@ -39,6 +39,8 @@ def test_bordered_table_extractor_bbox_RGBLineDetect():
     """test method"""
     table_object, img_filepath = __create_new_instance()
     save_folder_path = os.path.abspath('./data/output')
+    if not os.path.exists(save_folder_path):
+        os.makedirs(save_folder_path)
     result = table_object.extract_all_fields(
         img_filepath, within_bbox=[73, 2001, 4009, 937], config_param_dict={
             'output': {'path': save_folder_path,

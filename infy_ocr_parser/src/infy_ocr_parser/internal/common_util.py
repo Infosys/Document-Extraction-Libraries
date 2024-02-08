@@ -75,10 +75,13 @@ class CommonUtil:
 
     @classmethod
     def calc_scaling_factor(cls, image_width, image_height,
-                            page_bbox_dict_list, scale_to_page=False):
+                            page_bbox_dict_list, scale_to_page=False, page=0):
 
         warnings = ''
         scale_hor, scale_ver = 1.0, 1.0
+        if page > 0:
+            page_bbox_dict_list = [
+                page_obj for page_obj in page_bbox_dict_list if page_obj['page'] == page]
         if not page_bbox_dict_list:
             pass
         elif scale_to_page:

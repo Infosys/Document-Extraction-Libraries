@@ -26,6 +26,8 @@ def __create_new_instance():
     )
     logger = logging.getLogger()
     temp_folderpath = os.path.abspath('./data/temp')
+    if not os.path.exists(temp_folderpath):
+        os.makedirs(temp_folderpath)
     hocr_file = './data/sample_1.png.hocr'
     ocr_parser_object = ocr_parser.OcrParser(
         [hocr_file], TesseractOcrDataServiceProvider())

@@ -5,12 +5,16 @@ verify_ssl = true
 
 [dev-packages]
 autopep8 = "==1.5.1"
-pytest = "==6.1.2"
+pytest = "==6.2.5"
 pytest-cov = "==2.12.1"
+#copy the .whl file available at \docs\notebook\lib\
+infy_ocr_parser = {path = "./lib/infy_ocr_parser-0.0.16-py3-none-any.whl"}
+
 
 [packages]
-opencv-python = "==4.1.0.25"
-numpy = "==1.18.1"
+opencv-python = "==4.5.5.64"
+numpy = "<=1.23.0"
+imageio = "==2.9.0"
 
 [requires]
-python_version = "3.6"
+python_version = "3"

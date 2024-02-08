@@ -19,7 +19,7 @@ def test_azure_ocr_generator():
             'computer_vision': {
                 'subscription_key': '<Enter your subscription key>',
                 'api_ocr': {
-                    'url': 'https://southeastasia.api.cognitive.microsoft.com/vision/v3.1/ocr',
+                    'url': '<Enter the branch URL>',
                 }
             }
         }

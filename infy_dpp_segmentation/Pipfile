@@ -1,0 +1,42 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = false
+name = "pypi"
+
+[packages]
+fsspec = "==2023.9.1"
+s3fs = "==2023.9.1"
+
+#[extra-segment-generator]
+requests = "==2.31.0"
+jsonpath-ng = "==1.6.0"
+torch = {version = "==1.9.0", sys_platform = "!= 'win32'"}
+torchvision = {version = "==0.10.0", sys_platform = "!= 'win32'"}
+Pillow = {version = "==9.5.0", sys_platform = "!= 'win32'"}
+cython = {version = "*", sys_platform = "!= 'win32'"}
+
+#[extra-segment-parser]
+scipy = "==1.10.1"
+
+[dev-packages]
+pytest = "==6.2.5"
+pytest-cov = "==2.12.1"
+autopep8 = "==1.5.1"
+
+# The below libraries are required for the libraries to work
+#[extra-all]
+infy_dpp_sdk = {path = "./lib/infy_dpp_sdk-0.0.5-py3-none-any.whl"}
+
+#[extra-segment-generator]
+infy_common_utils = {path = "./lib/infy_common_utils-0.0.9-py3-none-any.whl"}
+infy_ocr_generator = {path = "./lib/infy_ocr_generator-0.0.12-py3-none-any.whl", extras=["tesseract"]}
+infy_ocr_parser = {path = "./lib/infy_ocr_parser-0.0.16-py3-none-any.whl"}
+
+#[extra-detectron]
+# manually install below library
+# https://dl.fbaipublicfiles.com/detectron2/wheels/cpu/torch1.9/index.html
+# detectron2-0.5+cpu-cp38-cp38-linux_x86_64.whl
+
+
+[requires]
+python_version = "3"

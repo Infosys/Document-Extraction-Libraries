@@ -23,27 +23,31 @@ METADATA = dict(
                  'infy_bordered_table_extractor/interface': 'src/infy_bordered_table_extractor/interface'},
     packages=find_packages(where='src'),
     install_requires=[
-        'opencv-python ==4.1.0.25',
-        'numpy==1.18.1',
+        'opencv-python ==4.5.5.64',
+        'numpy>=1.13.3,<=1.23.0',
         'bs4==0.0.1',
-        'lxml==4.6.2',
-        'pandas==1.0.0',
+        'lxml==4.6.5',
+        'pandas>=1.1.5,<=1.4.3',
         'imageio==2.9.0',
-        "Jinja2==2.11.2",
-        "importlib-metadata==1.5.0",
+        "Jinja2==3.0.3",
         "openpyxl==3.0.5",
-        'scikit-learn==0.24.2'
+        'scikit-learn>=0.24.2,<=1.1.1'
     ],
     extra_requires=[
         'pytesseract==0.3.2',
     ],
     include_package_data=True,
     classifiers=[
+        "Programming Language :: Python",
+        "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.6",
-        "License :: Infosys Proprietary",
+        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3 :: Only",
+        "License :: Apache License Version 2.0",
         "Operating System :: OS Independent",
     ],
-    python_requires='>=3.6',
+    python_requires='>=3.6.2',
 )
 
 if __name__ == '__main__':

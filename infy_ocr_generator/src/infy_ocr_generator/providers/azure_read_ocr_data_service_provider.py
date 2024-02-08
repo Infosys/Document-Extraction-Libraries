@@ -37,7 +37,13 @@ CONFIG_PARAMS_DICT = {
 
 
 class AzureReadOcrDataServiceProvider(DataServiceProviderInterface):
-    """Implementation of DataServiceProvider for AZURE-Read API"""
+    """Implementation of DataServiceProvider for AZURE-Read API
+
+    Environment variables:
+    OCR_GEN_HTTP_PROXY_URL (Optional): To set http proxy url
+    OCR_GEN_HTTP_PROXY_AUTH (Optional): To set http proxy authentication.
+        Format is `user:password` encoded as base64
+    """
 
     def __init__(self, config_params_dict: CONFIG_PARAMS_DICT,
                  output_dir: str = None,
@@ -105,7 +111,7 @@ class AzureReadOcrDataServiceProvider(DataServiceProviderInterface):
                 headers = {'Ocp-Apim-Subscription-Key': sub_key,
                            'Content-Type': 'application/octet-stream'}
                 self.set_api_log(api_url)
-                http = urllib3.PoolManager()
+                http = self.__get_http_handle()
                 api_url = f'{api_url}?{urlencode(api_query_param)}'
                 response = http.request(
                     "post", api_url,
@@ -172,7 +178,7 @@ class AzureReadOcrDataServiceProvider(DataServiceProviderInterface):
                 api_url = sub_req_res['submit_api']['response']['operation_location']
 
                 self.set_api_log(api_url)
-                http = urllib3.PoolManager()
+                http = self.__get_http_handle()
                 response = http.request(
                     "get",
                     api_url,
@@ -267,3 +273,20 @@ class AzureReadOcrDataServiceProvider(DataServiceProviderInterface):
                 full_trace_error = traceback.format_exc()
                 self.logger.error(full_trace_error)
         return ocr_list
+
+    def __get_http_handle(self):
+        http_proxy_url = os.environ.get("OCR_GEN_HTTP_PROXY_URL")
+        http_proxy_auth = os.environ.get("OCR_GEN_HTTP_PROXY_AUTH")
+        http = None
+        if http_proxy_url:
+            if http_proxy_auth:
+                auth_header = {
+                    'proxy-authorization': f'Basic {http_proxy_auth}'}
+                http = urllib3.ProxyManager(
+                    http_proxy_url, cert_reqs='CERT_NONE', proxy_headers=auth_header)
+            else:
+                http = urllib3.ProxyManager(
+                    http_proxy_url, cert_reqs='CERT_NONE')
+        else:
+            http = urllib3.PoolManager()
+        return http

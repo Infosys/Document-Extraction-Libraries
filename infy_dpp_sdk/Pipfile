@@ -1,0 +1,16 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+pytest = "==6.2.5"
+pytest-cov = "==2.12.1"
+autopep8 = "==1.5.1"
+
+
+[packages]
+pydantic="==1.10.7"
+
+[requires]
+python_version = "3"

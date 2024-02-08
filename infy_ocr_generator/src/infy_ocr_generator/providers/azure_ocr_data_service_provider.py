@@ -37,7 +37,14 @@ CONFIG_PARAMS_DICT = {
 
 
 class AzureOcrDataServiceProvider(DataServiceProviderInterface):
-    """Implementation of DataServiceProvider for AZURE-OCR API"""
+    """
+    Implementation of DataServiceProvider for AZURE-OCR API
+
+    Environment variables:
+    OCR_GEN_HTTP_PROXY_URL (Optional): To set http proxy url
+    OCR_GEN_HTTP_PROXY_AUTH (Optional): To set http proxy authentication.
+        Format is `user:password` encoded as base64
+    """
 
     def __init__(self, config_params_dict: CONFIG_PARAMS_DICT,
                  output_dir: str = None,
@@ -136,7 +143,7 @@ class AzureOcrDataServiceProvider(DataServiceProviderInterface):
                 headers = {'Ocp-Apim-Subscription-Key': sub_key,
                            'Content-Type': 'application/octet-stream'}
                 self.set_api_log(api_url)
-                http = urllib3.PoolManager()
+                http = self.__get_http_handle()
                 api_url = f'{api_url}?{urlencode(api_query_param)}'
                 response = http.request(
                     "post", api_url,
@@ -174,3 +181,20 @@ class AzureOcrDataServiceProvider(DataServiceProviderInterface):
         self.logger.info(
             f"Total time taken for #{len(doc_data_list)} docs is {round((time.time() - start_time)/60,2)} mins")
         return ocr_list
+
+    def __get_http_handle(self):
+        http_proxy_url = os.environ.get("OCR_GEN_HTTP_PROXY_URL")
+        http_proxy_auth = os.environ.get("OCR_GEN_HTTP_PROXY_AUTH")
+        http = None
+        if http_proxy_url:
+            if http_proxy_auth:
+                auth_header = {
+                    'proxy-authorization': f'Basic {http_proxy_auth}'}
+                http = urllib3.ProxyManager(
+                    http_proxy_url, cert_reqs='CERT_NONE', proxy_headers=auth_header)
+            else:
+                http = urllib3.ProxyManager(
+                    http_proxy_url, cert_reqs='CERT_NONE')
+        else:
+            http = urllib3.PoolManager()
+        return http

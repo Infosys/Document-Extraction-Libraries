@@ -82,14 +82,32 @@ class OcrHelper:
 
                         if is_sub_reg_inside_interest_reg:
                             # Divide interest region by subracting region.
-                            within_text = [t['text'] for t in self.get_tokens_from_ocr(
-                                3, within_bbox=[al, at, aw, abs(st-at)])]
+                            my_tokens = self.get_tokens_from_ocr(
+                                3, within_bbox=[al, at, aw, abs(st-at)], pages=[attr_reg_obj[ResProp.PAGE]])
+                            within_text = [t['text'] for t in my_tokens]
+                            wconf_list = [float(i['conf'])
+                                          for t in my_tokens for i in t['words'] if 'conf' in i]
+                            conf_avg = -1
+                            if len(wconf_list) > 0:
+                                conf_avg = round(
+                                    sum(wconf_list)/len(wconf_list), 2)
+
                             new_attr_reg_obj_1 = Response.res_reg_bbox(within_text,
-                                                                       [al, at, aw, abs(st-at)], attr_reg_obj[ResProp.PAGE], scaling_factors_key)
-                            within_text = [t['text'] for t in self.get_tokens_from_ocr(
-                                3, within_bbox=[al, s_bottom, aw, abs(a_bottom-s_bottom)])]
+                                                                       [al, at, aw, abs(st-at)], conf_avg, attr_reg_obj[ResProp.PAGE], scaling_factors_key)
+
+                            my_tokens = self.get_tokens_from_ocr(
+                                3, within_bbox=[al, s_bottom, aw, abs(a_bottom-s_bottom)],
+                                pages=[attr_reg_obj[ResProp.PAGE]])
+                            within_text = [t['text'] for t in my_tokens]
+                            wconf_list = [float(i['conf'])
+                                          for t in my_tokens for i in t['words'] if 'conf' in i]
+                            conf_avg = -1
+                            if len(wconf_list) > 0:
+                                conf_avg = round(
+                                    sum(wconf_list)/len(wconf_list), 2)
+
                             new_attr_reg_obj_2 = Response.res_reg_bbox(within_text, [al, s_bottom, aw, abs(
-                                a_bottom-s_bottom)], attr_reg_obj[ResProp.PAGE], scaling_factors_key)
+                                a_bottom-s_bottom)], conf_avg, attr_reg_obj[ResProp.PAGE], scaling_factors_key)
                             attr_regions_obj[ResProp.REG_BBOX].append(
                                 new_attr_reg_obj_1)
                             attr_regions_obj[ResProp.REG_BBOX].append(
@@ -113,7 +131,7 @@ class OcrHelper:
         '''
         if(ocr_word_dict != [] and within_bbox != []):
             raise Exception(
-                "Either provide ocr_word_dict or within_bbox, not both")
+                "Either provide ocr_word_dict or within_bbox(x,y,w,h), not both")
         if len(ocr_word_dict) == 0:
             # If the caller not given ocr_word_list to filter then use existing document phrase_dict_list if any
             if len(phrase_dict_list) > 0 and len(within_bbox) == 0:
@@ -197,6 +215,7 @@ class OcrHelper:
         return phrases_dict_list
 
     def get_tokens_from_ocr(self, token_type_value, within_bbox=[], ocr_word_list=[], pages=[], scaling_factors_key='1.0_1.0', max_word_space=None):
+        '''within_bbox(x,y,w,h)'''
         scaling_factor_ver, scaling_factor_hor = [
             float(i) for i in scaling_factors_key.split('_')]
         if (token_type_value == TokenType.LINE.value):
@@ -206,7 +225,10 @@ class OcrHelper:
                 line_dict_list = CommonUtil.scaling_bbox_for(
                     copy.deepcopy(self._line_token_dict.get('1.0_1.0')), scaling_factor_ver, scaling_factor_hor)
                 self._line_token_dict[scaling_factors_key] = line_dict_list
-            return self._ocr_handler_obj.get_line_dict_from(pages=pages, line_dict_list=line_dict_list, scaling_factors=[scaling_factor_ver, scaling_factor_hor])
+            if within_bbox and len(within_bbox) > 0:
+                return self._filter_lines_from_region(to_bbox=within_bbox, pages=pages, line_dict_list=line_dict_list)
+            else:
+                return self._ocr_handler_obj.get_line_dict_from(pages=pages, line_dict_list=line_dict_list, scaling_factors=[scaling_factor_ver, scaling_factor_hor])
         elif (token_type_value == TokenType.WORD.value):
             word_dict_list = self._word_token_dict.get(scaling_factors_key, [])
             if scaling_factor_ver != 1.0 and scaling_factor_hor != 1.0 and len(word_dict_list) == 0:
@@ -261,20 +283,29 @@ class OcrHelper:
                     x2, y2 = self._get_point_for(anchor_txt, a_point_2, copy.copy(
                         labeled_anc_bbox), page_num, is_empty_a_txt=is_a_text_empty)
                     res_bbox = CommonUtil.get_rect_point_for(x1, y1, x2, y2)
-                within_text = [t['text'] for t in self.get_tokens_from_ocr(
-                    3, within_bbox=res_bbox, scaling_factors_key=scaling_factors_key, max_word_space=max_word_space)]
+
+                my_tokens = self.get_tokens_from_ocr(
+                    3, within_bbox=res_bbox, scaling_factors_key=scaling_factors_key,
+                    max_word_space=max_word_space, pages=[page_num])
+                within_text = [t['text'] for t in my_tokens]
+                wconf_list = [float(i['conf'])
+                              for t in my_tokens for i in t['words'] if 'conf' in i]
+                conf_avg = -1
+                if len(wconf_list) > 0:
+                    conf_avg = round(sum(wconf_list)/len(wconf_list), 2)
+
                 res_reg_bbox = [Response.res_reg_bbox(
-                    within_text, res_bbox, page_num, scaling_factors_key)]
-                actual_text = [t['text'] for t in self.get_tokens_from_ocr(
-                    3, within_bbox=anchor_txt_bbox, scaling_factors_key=scaling_factors_key, max_word_space=max_word_space)]
+                    within_text, res_bbox, conf_avg, page_num, scaling_factors_key)]
                 res_regions.append(Response.response_regions(
-                    [Response.res_at_bbox(anchor_txt, actual_text, token_type, anchor_txt_bbox, scaling_factors_key)], res_reg_bbox))
+                    [Response.res_at_bbox(anchor_txt, within_text, token_type, anchor_txt_bbox, scaling_factors_key)], res_reg_bbox))
         except Exception as e:
             res_regions, error = [], e.args[0]
         return Response.response(res_regions, error, warnings)
 
-    def derive_2_anc_bbox_from(self, anchor_txt_1, anchor_txt_2, anchor_point_1, anchor_point_2,
-                               anchorTextMatch_1, anchorTextMatch_2, lookup_pages, scaling_factors_key, warnings, max_word_space_1, max_word_space_2):
+    def derive_2_anc_bbox_from(
+            self, anchor_txt_1, anchor_txt_2, anchor_point_1, anchor_point_2,
+            anchorTextMatch_1, anchorTextMatch_2, lookup_pages, scaling_factors_key,
+            warnings, max_word_space_1, max_word_space_2):
         res_regions, error = [], None
         try:
             # Get anchor text bbox
@@ -461,6 +492,17 @@ class OcrHelper:
                 word_structure.append(word_obj)
         return word_structure
 
+    def _filter_lines_from_region(self, to_bbox=[], pages=[], line_dict_list=[]):
+        line = []
+        for i, line_obj in enumerate(line_dict_list):
+            if len(pages) > 0 and line_obj["page"] not in pages:
+                continue
+            l, t, w, h = line_obj[OcrConstants.BBOX]
+            pl, pt, pw, ph = to_bbox
+            if l >= pl and t >= pt and l+w <= pl+pw and t+h <= pt+ph:
+                line.append(line_obj)
+        return line
+
     def _get_region_bbox_list_from(self, regions_obj_list):
         reg_list = []
         for reg_bb_list in regions_obj_list[ResProp.REGIONS]:
@@ -580,13 +622,16 @@ class OcrHelper:
             token_type_1 = anchor_txt_bbox_1_obj.get('token_type', 'phrase')
             anchor_txt_bbox_1 = anchor_txt_bbox_1_obj[ResProp.BBOX]
             for anchor_txt_bbox_2_obj in anchor_txt_bbox_2_lst:
+                page_num = anchor_txt_bbox_2_obj[ResProp.PAGE]
                 token_type_2 = anchor_txt_bbox_2_obj.get(
                     'token_type', 'phrase')
                 anchor_txt_bbox_2 = anchor_txt_bbox_2_obj[ResProp.BBOX]
                 actual_text_1 = [t['text'] for t in self.get_tokens_from_ocr(
-                    3, within_bbox=anchor_txt_bbox_1, scaling_factors_key=scaling_factors_key, max_word_space=max_word_space)]
+                    3, within_bbox=anchor_txt_bbox_1, scaling_factors_key=scaling_factors_key,
+                    max_word_space=max_word_space, pages=[page_num])]
                 actual_text_2 = [t['text'] for t in self.get_tokens_from_ocr(
-                    3, within_bbox=anchor_txt_bbox_2, scaling_factors_key=scaling_factors_key, max_word_space=max_word_space)]
+                    3, within_bbox=anchor_txt_bbox_2, scaling_factors_key=scaling_factors_key,
+                    max_word_space=max_word_space, pages=[page_num])]
                 anc_txt_bbox = [Response.res_at_bbox(anchor_txt_1, actual_text_1, token_type_1, anchor_txt_bbox_1, scaling_factors_key),
                                 Response.res_at_bbox(anchor_txt_2, actual_text_2, token_type_2, anchor_txt_bbox_2, scaling_factors_key)]
                 if anchor_txt_bbox_1_obj[ResProp.PAGE] == anchor_txt_bbox_2_obj[ResProp.PAGE] and anchor_txt_bbox_1[1] < anchor_txt_bbox_2[1]:
@@ -600,11 +645,19 @@ class OcrHelper:
                     x2, y2 = self._get_point_for(
                         anchor_txt_2, anchor_point_2, labeled_ach_2_bbox, page_num)
                     anchor_txt_bbox_2_lst.remove(anchor_txt_bbox_2_obj)
-                    within_text = [t['text'] for t in self.get_tokens_from_ocr(
+
+                    my_tokens = self.get_tokens_from_ocr(
                         3, within_bbox=CommonUtil.get_rect_point_for(x1, y1, x2, y2),
-                        scaling_factors_key=scaling_factors_key, max_word_space=max_word_space)]
+                        scaling_factors_key=scaling_factors_key, max_word_space=max_word_space, pages=[page_num])
+                    within_text = [t['text'] for t in my_tokens]
+                    wconf_list = [float(i['conf'])
+                                  for t in my_tokens for i in t['words'] if 'conf' in i]
+                    conf_avg = -1
+                    if len(wconf_list) > 0:
+                        conf_avg = round(sum(wconf_list)/len(wconf_list), 2)
+
                     res_reg_bbox = [Response.res_reg_bbox(within_text, CommonUtil.get_rect_point_for(
-                        x1, y1, x2, y2), page_num, scaling_factors_key)]
+                        x1, y1, x2, y2), conf_avg, page_num, scaling_factors_key)]
                     res_regions.append(Response.response_regions(
                         anc_txt_bbox, res_reg_bbox))
                     break
@@ -618,13 +671,32 @@ class OcrHelper:
         return res_regions
 
     def _adjust_bbox_to_combine_mul_page(self, anchor_txt_bbox_1_obj, anchor_txt_bbox_2_obj, scaling_factors_key, max_word_space):
-        within_text_1 = [t['text'] for t in self.get_tokens_from_ocr(
-            3, within_bbox=anchor_txt_bbox_1_obj[ResProp.BBOX], scaling_factors_key=scaling_factors_key, max_word_space=max_word_space)]
-        within_text_2 = [t['text'] for t in self.get_tokens_from_ocr(
+
+        my_tokens_1 = self.get_tokens_from_ocr(
+            3, within_bbox=anchor_txt_bbox_1_obj[ResProp.BBOX],
+            scaling_factors_key=scaling_factors_key, max_word_space=max_word_space,
+            pages=[anchor_txt_bbox_1_obj[ResProp.PAGE]])
+        within_text_1 = [t['text'] for t in my_tokens_1]
+        wconf_list_1 = [float(i['conf'])
+                        for t in my_tokens_1 for i in t['words'] if 'conf' in i]
+
+        conf_avg_1 = -1
+        if len(wconf_list_1) > 0:
+            conf_avg_1 = round(sum(wconf_list_1)/len(wconf_list_1), 2)
+
+        my_tokens_2 = self.get_tokens_from_ocr(
             3, within_bbox=anchor_txt_bbox_2_obj[ResProp.BBOX],
-            scaling_factors_key=scaling_factors_key, max_word_space=max_word_space)]
-        res_reg_bbox = [Response.res_reg_bbox(within_text_1, anchor_txt_bbox_1_obj[ResProp.BBOX], anchor_txt_bbox_1_obj[ResProp.PAGE], scaling_factors_key),
-                        Response.res_reg_bbox(within_text_2, anchor_txt_bbox_2_obj[ResProp.BBOX], anchor_txt_bbox_2_obj[ResProp.PAGE], scaling_factors_key)]
+            scaling_factors_key=scaling_factors_key, max_word_space=max_word_space,
+            pages=[anchor_txt_bbox_2_obj[ResProp.PAGE]])
+        within_text_2 = [t['text'] for t in my_tokens_2]
+        wconf_list_2 = [float(i['conf'])
+                        for t in my_tokens_2 for i in t['words'] if 'conf' in i]
+        conf_avg_2 = -1
+        if len(wconf_list_2) > 0:
+            conf_avg_2 = round(sum(wconf_list_2)/len(wconf_list_2), 2)
+
+        res_reg_bbox = [Response.res_reg_bbox(within_text_1, anchor_txt_bbox_1_obj[ResProp.BBOX], conf_avg_1, anchor_txt_bbox_1_obj[ResProp.PAGE], scaling_factors_key),
+                        Response.res_reg_bbox(within_text_2, anchor_txt_bbox_2_obj[ResProp.BBOX], conf_avg_2, anchor_txt_bbox_2_obj[ResProp.PAGE], scaling_factors_key)]
         res_reg_bbox.sort(key=lambda x: (x[ResProp.PAGE]))
         start_page = res_reg_bbox[0][ResProp.PAGE]
         l1, t1, w1, h1 = res_reg_bbox[0][ResProp.BBOX]
@@ -638,10 +710,19 @@ class OcrHelper:
                                          ph2 if l2 == w2 and t2 == h2 else t2+h2]
         for page in range(start_page+1, end_page):
             reg_bbox = self._get_page_bbox_for(page)
-            within_text = [t['text'] for t in self.get_tokens_from_ocr(
-                3, within_bbox=reg_bbox, scaling_factors_key=scaling_factors_key, max_word_space=max_word_space)]
+            my_tokens = self.get_tokens_from_ocr(
+                3, within_bbox=reg_bbox, scaling_factors_key=scaling_factors_key,
+                max_word_space=max_word_space, pages=[page])
+            within_text = [t['text'] for t in my_tokens]
+
+            wconf_list = [float(i['conf'])
+                          for t in my_tokens for i in t['words'] if 'conf' in i]
+            conf_avg = -1
+            if len(wconf_list) > 0:
+                conf_avg = round(sum(wconf_list)/len(wconf_list), 2)
+
             res_reg_bbox.append(Response.res_reg_bbox(
-                within_text, reg_bbox, page, scaling_factors_key))
+                within_text, reg_bbox, conf_avg, page, scaling_factors_key))
 
         return res_reg_bbox
 
@@ -859,11 +940,20 @@ class OcrHelper:
 
             # For Example, anc_text- [["foo1", "poo1"],["foo2", "poo2"]]
             else:
+                bbox_list = []
                 for i in list(itertools.product(*anc_text)):
                     reg_list, error = self._get_region_containing_text(
                         i, anchorTextMatch, lookup_pages, scaling_factors_key, max_word_space)
-                    if(reg_list != []):
+                    if(reg_list != [] and mat_txt_reg_list == []):
                         mat_txt_reg_list += reg_list
+                    elif(reg_list != [] and mat_txt_reg_list != []):
+                        for mat_list in mat_txt_reg_list:
+                            if str(mat_list['bbox'])+str(mat_list['page']) not in bbox_list:
+                                bbox_list.append(
+                                    str(mat_list['bbox'])+str(mat_list['page']))
+                        if str(reg_list[0]['bbox'])+str(reg_list[0]['page']) not in bbox_list:
+                            mat_txt_reg_list += reg_list
+
                 if mat_txt_reg_list == []:
                     raise Exception("No region found with the given keys")
         except Exception as e:

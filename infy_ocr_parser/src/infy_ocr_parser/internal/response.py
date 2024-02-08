@@ -66,11 +66,12 @@ class Response:
         }
 
     @staticmethod
-    def res_reg_bbox(text, bbox, page, scaling_factor):
+    def res_reg_bbox(text, bbox, text_conf,  page, scaling_factor):
         return{
             "text": text,
             "bbox": bbox,
             "page": page,
+            "confidencePct": text_conf,
             "scalingFactor": [float(i) for i in scaling_factor.split('_')]
         }
 

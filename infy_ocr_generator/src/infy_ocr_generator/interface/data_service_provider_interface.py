@@ -41,6 +41,14 @@ DOC_DATA = {
     'pages': ''
 }
 
+RESCALE_DATA = {
+    'doc_page_num': '',
+    'doc_page_width': 0,
+    'doc_page_height': 0,
+    'doc_file_path': '',
+    'doc_file_extension': 'jpg'
+}
+
 
 class DataServiceProviderInterface(metaclass=abc.ABCMeta):
     """Interface class"""
