@@ -1,9 +1,7 @@
 # ===============================================================================================================#
-#
-# Copyright 2021 Infosys Ltd.
-# Use of this source code is governed by Apache License Version 2.0 that can be found in the LICENSE file or at
-# http://www.apache.org/licenses/
-#
+# Copyright 2022 Infosys Ltd.                                                                                   #
+# Use of this source code is governed by Apache License Version 2.0 that can be found in the LICENSE file or at  #
+# http://www.apache.org/licenses/                                                                                #
 # ===============================================================================================================#
 
 import os
@@ -34,7 +32,7 @@ class DemoHelper():
     def draw_bboxes_on_image(cls, image, bboxes_list, border_color=Constants.COLOR_BLUE, 
                              border_thickness=4, write_coordinates=False, write_thickness=3):
         if len(image.shape) == 2:
-            image = ExtractorHelper.convert_grayscale_to_rgb(image)
+            image = cls.convert_grayscale_to_rgb(image)
         
         # Draw boxes on image
         for rt_bbox in bboxes_list:

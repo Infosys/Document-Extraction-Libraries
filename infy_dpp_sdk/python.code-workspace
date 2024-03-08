@@ -40,7 +40,8 @@
 				"request": "launch",
 				"program": "${file}",
 				"console": "integratedTerminal",
-				"cwd": "${workspaceFolder}/src"
+				"cwd": "${workspaceFolder}/src",
+				"justMyCode": false
 			},
 			{
 				"name": "Python: Build Wheel File",
@@ -48,7 +49,8 @@
 				"request": "launch",
 				"program": "setup.py",
 				"console": "integratedTerminal",
-				"cwd": "${workspaceFolder}"
+				"cwd": "${workspaceFolder}",
+				"justMyCode": false
 			}
 		],
 		"compounds": []

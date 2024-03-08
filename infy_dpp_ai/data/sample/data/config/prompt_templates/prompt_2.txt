@@ -1,0 +1,4 @@
+Use the following pieces of context to answer the question at the end. If you don't know the answer or even doubtful a bit, just say that you don't know, don't try to make up an answer.Just give the shortest and most appropriate relavant answer to the question and the chunks IDs from which the answer is generated.It can be single or multiple chunks.The output should be in a proper json format as below: start with key as "answer" and its value, then key as "sources" which contains its value as a list having key as "chunk_id" and its value.This output json format should be strictly followed even when answer is not found and mandatorily contain all keys("answer","sources","chunk_id") at all times in the output..
+{context}
+Question: {question}
+Helpful Answer:

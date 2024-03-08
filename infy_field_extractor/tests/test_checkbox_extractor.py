@@ -1,7 +1,7 @@
 # ===============================================================================================================#
-# Copyright 2021 Infosys Ltd.
-# Use of this source code is governed by Apache License Version 2.0 that can be found in the LICENSE file or at
-# http://www.apache.org/licenses/
+# Copyright 2021 Infosys Ltd.                                                                                   #
+# Use of this source code is governed by Apache License Version 2.0 that can be found in the LICENSE file or at  #
+# http://www.apache.org/licenses/                                                                                #
 # ===============================================================================================================#
 
 import os
@@ -26,14 +26,12 @@ def __create_new_instance():
     )
     logger = logging.getLogger()
     temp_folderpath = os.path.abspath('./data/temp')
-    if not os.path.exists(temp_folderpath):
-        os.makedirs(temp_folderpath)
     hocr_file = './data/sample_1.png.hocr'
     ocr_parser_object = ocr_parser.OcrParser(
         [hocr_file], TesseractOcrDataServiceProvider())
     provider = OcrDataServiceProvider(ocr_parser_object)
     checkbox_obj = checkbox_extractor.CheckboxExtractor(
-        provider, provider, temp_folderpath, logger=logger)
+        provider, provider, temp_folderpath, logger=logger, debug_mode_check=True)
     return checkbox_obj
 
 

@@ -1,8 +1,8 @@
 
 # ===============================================================================================================#
-# Copyright 2021 Infosys Ltd.
-# Use of this source code is governed by Apache License Version 2.0 that can be found in the LICENSE file or at
-# http://www.apache.org/licenses/                                                  #
+# Copyright 2021 Infosys Ltd.                                                                                   #
+# Use of this source code is governed by Apache License Version 2.0 that can be found in the LICENSE file or at  #
+# http://www.apache.org/licenses/                                                                                #
 # ===============================================================================================================#
 
 
@@ -14,3 +14,5 @@ class Constants():
     BB_H = 3
     TESSERACT_MIN_DPI = 300
     RECT_EDGES = 4
+    COLOR_BLUE = (255, 0, 0)
+    COLOR_RED = (0, 0, 255)

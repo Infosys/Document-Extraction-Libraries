@@ -1,16 +1,18 @@
 # ===============================================================================================================#
-# Copyright 2021 Infosys Ltd.
-# Use of this source code is governed by Apache License Version 2.0 that can be found in the LICENSE file or at
-# http://www.apache.org/licenses/                                            #
+# Copyright 2021 Infosys Ltd.                                                                                   #
+# Use of this source code is governed by Apache License Version 2.0 that can be found in the LICENSE file or at  #
+# http://www.apache.org/licenses/                                                                                #
 # ===============================================================================================================#
 
 
 from os import path
 import warnings
 import copy
+import numpy as np
 import cv2
 from PIL import Image
 from infy_field_extractor.internal.constants import Constants
+from infy_field_extractor.internal.common_utils import CommonUtils
 
 
 class ExtractorHelper():
@@ -18,7 +20,7 @@ class ExtractorHelper():
     @staticmethod
     def extract_with_text_coordinates(
             image, bboxes_text, get_text_provider, file_data_list, additional_info,
-            fieldboxes, logger, temp_folderpath, field="checkbox"):
+            fieldboxes, logger, temp_folderpath, field="checkbox", debug_mode_check=False):
         """
         Method to help extract fields using image, imagepath, bounding boxes coordinates of the text and
         bounding boxes coordinates of the field
@@ -27,6 +29,14 @@ class ExtractorHelper():
         # filter fieldboxes from bboxes_text
         bboxes_text = ExtractorHelper.filter_fieldboxes_from_ocr_words(
             fieldboxes, bboxes_text)
+
+        if debug_mode_check:
+            img_copy = image.copy()
+            bboxes_list = [x['bbox'] for x in bboxes_text]
+            img_copy = ExtractorHelper.draw_bboxes_on_image(
+                img_copy, bboxes_list, Constants.COLOR_BLUE, thickness=4)
+            ExtractorHelper.save_image(
+                img_copy, f'{temp_folderpath}/text_bboxes.jpg')
 
         # getting phrases
         # bboxes_text = ocr_parser_object.get_tokens_from_ocr(
@@ -63,6 +73,14 @@ class ExtractorHelper():
             temp_list = []
             flag = False
             count = 0
+
+        if debug_mode_check:
+            img_copy = image.copy()
+            bboxes_list = bboxes_line_list
+            img_copy = ExtractorHelper.draw_bboxes_on_image(
+                img_copy, bboxes_list, Constants.COLOR_BLUE, thickness=4)
+            ExtractorHelper.save_image(
+                img_copy, f'{temp_folderpath}/text_bboxes_pass2.jpg')
 
         # getting the final result
         # for each line divided calls the __get_status_for_each_line method
@@ -127,6 +145,8 @@ class ExtractorHelper():
         # the variable adds dictionary with key as the text used for radiobutton and value as its bbox
         done_fields_dList = []
         for f in fieldboxes_line:
+            if len(texts_line) == 0:
+                break
             # declare closest variable to consider the key for the fielbox which is closest to it
             closest = texts_line[0]
             # if key are to the right of fields, the closest text to the right
@@ -292,7 +312,7 @@ class ExtractorHelper():
             logger.warning(warning)
 
     @staticmethod
-    def read_image(image_path, logger, temp_folderpath, coordinates=[]):
+    def read_image(image_path, logger, temp_folderpath, coordinates=[], image_to_bw=False):
         if(path.exists(image_path) is False):
             logger.error("property imagepath not found")
             raise Exception("property imagepath not found")
@@ -300,6 +320,8 @@ class ExtractorHelper():
         image = cv2.imread(image_path)
         try:
             img = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+            if image_to_bw:
+                img = cv2.threshold(img, 127, 255, cv2.THRESH_BINARY)[1]
         except Exception:
             img = image
         if(coordinates != []):
@@ -314,6 +336,10 @@ class ExtractorHelper():
             # cv2.imwrite(path.join(imagepath), image)
         else:
             image = img
+            # Save a copy of original image
+            temp_imagepath = temp_folderpath + "//" + img_name + '_full.jpg'
+            PILimage = Image.fromarray(image)
+            PILimage.save(temp_imagepath, dpi=(300, 300))
             imagepath = image_path
         return (image, imagepath, img_name)
 
@@ -555,3 +581,69 @@ class ExtractorHelper():
                 if config_dict_temp.get(key) is None:
                     config_dict_temp[key] = from_dict[key]
         return config_dict_temp
+
+    @staticmethod
+    def save_image(image, image_save_path):
+        CommonUtils.archive_file(image_save_path)
+        cv2.imwrite(image_save_path, image)
+
+    @staticmethod
+    def convert_grayscale_to_rgb(img_obj):
+        stacked_img = np.stack((img_obj,)*3, axis=-1)
+        return stacked_img
+
+    @staticmethod
+    def draw_bboxes_on_image(image, bboxes_list, color=Constants.COLOR_BLUE, thickness=4, write_coordinates=False):
+        if len(image.shape) == 2:
+            image = ExtractorHelper.convert_grayscale_to_rgb(image)
+
+        # Draw boxes on image
+        for rt_bbox in bboxes_list:
+            (l, t, w, h) = tuple([(i) for i in rt_bbox])
+            image = cv2.rectangle(
+                image, (l, t), (l + w, t + h), color=color, thickness=thickness)
+            if write_coordinates:
+                cv2.putText(image, f"[{l},{t},{w},{h}]",
+                            (l-thickness, t-thickness), cv2.FONT_HERSHEY_PLAIN, 1, color)
+        return image
+
+    @staticmethod
+    def order_the_text(multiline_sorting_left_to_right, bboxes_text):
+        if not multiline_sorting_left_to_right:
+            stk = []
+            orderedList = []
+            # sort by Y-axis (vertically)
+            bboxes_text = sorted(bboxes_text, key=lambda i: i['bbox'][1])
+            for idx in range(len(bboxes_text)):
+                if(idx == 0):
+                    mainY1 = bboxes_text[idx]['bbox'][1]
+                    mainY2 = bboxes_text[idx]['bbox'][1] + \
+                        bboxes_text[idx]['bbox'][3]
+                    main_Ycenter = mainY2 - (bboxes_text[idx]['bbox'][3] / 2)
+                    stk.append(bboxes_text[idx])
+                    if (len(bboxes_text) == 1):
+                        orderedList = stk
+                    continue
+                y1 = bboxes_text[idx]['bbox'][1]
+                y2 = bboxes_text[idx]['bbox'][1] + bboxes_text[idx]['bbox'][3]
+                Ycenter = y2 - (bboxes_text[idx]['bbox'][3] / 2)
+                if y1 > mainY1 and y1 < main_Ycenter:
+                    stk.append(bboxes_text[idx])
+                else:
+                    # sort based on X axis (left to right)
+                    stk = sorted(stk, key=lambda i: i['bbox'][0], reverse=True)
+                    while(stk != []):
+                        orderedList.append(stk.pop())
+
+                    mainY1, mainY2, main_Ycenter = y1, y2, Ycenter
+                    stk.append(bboxes_text[idx])
+
+                if (idx == (len(bboxes_text)-1)):
+                    # sort based on X axis (left to right)
+                    stk = sorted(stk, key=lambda i: i['bbox'][0], reverse=True)
+                    while(stk != []):
+                        orderedList.append(stk.pop())
+        else:
+            orderedList = bboxes_text
+            orderedList.sort(key=lambda x: (x.get("bbox")[Constants.BB_X]))
+        return orderedList

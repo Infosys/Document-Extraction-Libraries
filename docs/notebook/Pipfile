@@ -2,18 +2,17 @@
 name = "pypi"
 url = "https://pypi.org/simple"
 verify_ssl = true
+
 # [dev-packages]
+pytest = "==6.2.5"
+pytest-cov = "==4.1.0"
+autopep8 = "==2.0.4"
 
 # [packages]
 jupyterlab = "==3.0.16"
-import-ipynb = "==0.1.3"
-ipywidgets= "==7.6.3"
-
-# Internal libraries in alphabetical order 
-infy_bordered_table_extractor={path = "./lib/infy_bordered_table_extractor-0.0.7-py3-none-any.whl"}
-infy_field_extractor = {path = "./lib/infy_field_extractor-0.0.8-py3-none-any.whl"}
-infy_ocr_generator = {path = "./lib/infy_ocr_generator-0.0.12-py3-none-any.whl"}
-infy_ocr_parser = {path = "./lib/infy_ocr_parser-0.0.16-py3-none-any.whl"}
+ipywidgets= ">=7.6.3,<=8.0.2"
+matplotlib-venn = "==0.11.10"
+piexif = "==1.1.3"
 
 [requires]
 python_version = "3"

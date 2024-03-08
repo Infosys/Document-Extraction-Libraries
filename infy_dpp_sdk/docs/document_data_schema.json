@@ -1,5 +1,6 @@
 {
   "title": "DocumentData",
+  "description": "Document Data class",
   "type": "object",
   "properties": {
     "document_id": {

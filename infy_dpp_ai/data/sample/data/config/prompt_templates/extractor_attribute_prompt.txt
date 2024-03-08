@@ -1,0 +1,7 @@
+Use the following pieces of context to RAG. If you don't know the answer or even doubtful a bit, just say that \"I don't know\", don't try to make up an answer. Just give the shortest and most appropriate relevant answer in the given output format and the chunks IDs from which the answer is generated.
+Context: {context}
+Question: {question}
+Take time to prepare output format as given below
+Output: only json object string containing answer, score and sources fields. For answer field, assign above generated answer as value. For score field, assign value from above Context. For sources, generate list of object containing key-values for chunk_id, page_no, sequence_no, bbox, doc_name. Also, Replace any field value containing \"None\" to null as a value
+
+Helpful Answer:

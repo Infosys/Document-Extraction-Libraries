@@ -7,14 +7,18 @@ verify_ssl = true
 autopep8 = "==1.5.1"
 pytest = "==6.2.5"
 pytest-cov = "==2.12.1"
-#copy the .whl file available at \docs\notebook\lib\
-infy_ocr_parser = {path = "./lib/infy_ocr_parser-0.0.16-py3-none-any.whl"}
 
+# Internal libraries in alphabetical order
+infy_ocr_generator = {path = "./lib/infy_ocr_generator-0.0.12-py3-none-any.whl", extras=["tesseract"]}
+
+# The below libraries are required for the libraries own providers - tesseract and native pdf
+infy_ocr_parser = {path = "./lib/infy_ocr_parser-0.0.16-py3-none-any.whl"}
+infy_common_utils = {path = "./lib/infy_common_utils-0.0.9-py3-none-any.whl"}
 
 [packages]
 opencv-python = "==4.5.5.64"
-numpy = "<=1.23.0"
-imageio = "==2.9.0"
+numpy = "<2.0.0"
+urllib3="==1.26.7"
 
 [requires]
 python_version = "3"

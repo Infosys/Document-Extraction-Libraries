@@ -1,7 +1,7 @@
 # ===============================================================================================================#
-# Copyright 2021 Infosys Ltd.
-# Use of this source code is governed by Apache License Version 2.0 that can be found in the LICENSE file or at
-# http://www.apache.org/licenses/                                                   #
+# Copyright 2021 Infosys Ltd.                                                                                   #
+# Use of this source code is governed by Apache License Version 2.0 that can be found in the LICENSE file or at  #
+# http://www.apache.org/licenses/                                                                                #
 # ===============================================================================================================#
 
 """
@@ -120,7 +120,7 @@ class RadioButtonExtractor():
             image_path (str): Path to the image
             config_params_dict (CONFIG_PARAMS_DICT, optional): Additional info for min and
                 max radiobutton radius to text height ratio, position of state w.r.t key,
-                within_bbox, eliminate_list, scaling_factor and page number.
+                within_bbox(x,y,w,h), eliminate_list, scaling_factor and page number.
                 Defaults to CONFIG_PARAMS_DICT.
             file_data_list (FILE_DATA_LIST, optional): List of all file datas. Each file data
                 has the path to supporting document and page numbers, if applicable. Defaults to None.
@@ -223,7 +223,7 @@ class RadioButtonExtractor():
                 Defaults to [RADIOBUTTON_FIELD_DATA_DICT].
             config_params_dict (CONFIG_PARAMS_DICT, optional): Additional info for min and
                 max radiobutton radius to text height ratio, position of state w.r.t key,
-                within_bbox, eliminate_list, scaling_factor and page number
+                within_bbox(x,y,w,h), eliminate_list, scaling_factor and page number
                 Defaults to CONFIG_PARAMS_DICT.
             file_data_list (FILE_DATA_LIST, optional): List of all file datas.
                 Each file data has the path to supporting document and page numbers, if applicable.

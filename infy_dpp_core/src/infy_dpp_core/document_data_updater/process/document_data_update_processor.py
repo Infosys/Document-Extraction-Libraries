@@ -1,5 +1,5 @@
 # ===============================================================================================================#
-# Copyright 2023 Infosys Ltd.                                                                                    #
+# Copyright 2023 Infosys Ltd.                                                                                   #
 # Use of this source code is governed by Apache License Version 2.0 that can be found in the LICENSE file or at  #
 # http://www.apache.org/licenses/                                                                                #
 # ===============================================================================================================#
@@ -10,21 +10,20 @@ import infy_dpp_sdk
 from infy_dpp_sdk.data import *
 from jsonpath_ng import parse
 
-from infy_dpp_core.common.logger_factory import LoggerFactory
 from infy_dpp_core.document_data_updater.common.common_util import CommonUtil
 from infy_dpp_core.document_data_updater.rules.rule_data_base_class import \
     RuleDataBaseClass
-
+    
 
 class DocumentDataUpdateProcessor(infy_dpp_sdk.interface.IProcessor):
     def __init__(self) -> None:
-        self.__logger = LoggerFactory().get_logger()
+        self.__logger = self.get_logger()
 
     def do_execute(self, document_data: DocumentData, context_data: dict, config_data: dict) -> ProcessorResponseData:
         org_document_data_json = {'document_data': document_data.dict(), 'context_data': context_data,
-                                  'message_data': []}
+                                    'message_data': []}
         updated_json = self.__update_json(
-            org_document_data_json, config_data.get('DocumentDataUpdater', {}).get('config_data', []))
+            org_document_data_json, config_data.get('DocumentDataUpdater',{}).get('config_data', []))
         new_document_data = infy_dpp_sdk.data.DocumentData(
             **updated_json.get('document_data', {}))
         response_data = infy_dpp_sdk.data.ProcessorResponseData(

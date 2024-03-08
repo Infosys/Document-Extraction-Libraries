@@ -1,23 +1,18 @@
 [[source]]
+name = "pypi"
 url = "https://pypi.org/simple"
 verify_ssl = true
-name = "pypi"
-
-[packages]
-fsspec = "==2023.9.1"
-s3fs = "==2023.9.1"
-
-#[extra-document-data-updater]
-jsonpath-ng = "==1.6.0"
 
 [dev-packages]
 pytest = "==6.2.5"
 pytest-cov = "==2.12.1"
 autopep8 = "==1.5.1"
+infy_dpp_sdk = {path = "./lib/infy_dpp_sdk-0.0.8-py3-none-any.whl"}
+infy_fs_utils = {path = "./lib/infy_fs_utils-0.0.2-py3-none-any.whl"}
 
-# The below libraries are required for the libraries to work
-#[extra-all]
-infy_dpp_sdk = {path = "./lib/infy_dpp_sdk-0.0.5-py3-none-any.whl"}
+[packages]
+jsonpath-ng = "==1.6.0"         #[groups=document-data-updater]
+
 
 [requires]
 python_version = "3"

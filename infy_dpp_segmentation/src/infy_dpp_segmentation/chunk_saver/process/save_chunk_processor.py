@@ -1,24 +1,21 @@
 # ===============================================================================================================#
-# Copyright 2023 Infosys Ltd.                                                                                    #
+# Copyright 2023 Infosys Ltd.                                                                                   #
 # Use of this source code is governed by Apache License Version 2.0 that can be found in the LICENSE file or at  #
 # http://www.apache.org/licenses/                                                                                #
 # ===============================================================================================================#
-
 import json
 import os
-from infy_dpp_segmentation.common.app_config_manager import AppConfigManager
-from infy_dpp_segmentation.common.file_system_manager import FileSystemManager
 from infy_dpp_segmentation.common.file_util import FileUtil
-from infy_dpp_segmentation.common.logger_factory import LoggerFactory
 from infy_dpp_segmentation.chunk_saver.process.save_chunk_data_parser import SaveChunkDataParser
 import infy_dpp_sdk
-
+import infy_fs_utils
 
 class SaveChunkProcessor:
     def __init__(self) -> None:
-        self.__logger = LoggerFactory().get_logger()
-        self.__app_config = AppConfigManager().get_app_config()
-        self.__file_sys_handler = FileSystemManager().get_file_system_handler()
+        # self.__logger = LoggerFactory().get_logger()
+        self.__logger = infy_fs_utils.manager.FileSystemLoggingManager().get_fs_logging_handler(infy_dpp_sdk.common.Constants.FSLH_DPP).get_logger()
+        self.__app_config = infy_dpp_sdk.common.AppConfigManager().get_app_config()
+        self.__file_sys_handler = infy_fs_utils.manager.FileSystemManager().get_fs_handler(infy_dpp_sdk.common.Constants.FSH_DPP)
 
     def get_files(self, work_files_path_list):
         server_files_list, local_file_path_list = [], []
@@ -53,12 +50,12 @@ class SaveChunkProcessor:
             org_document_data = org_document_data_json['document_data']
             org_context_data = org_document_data_json['context_data']
             document_data = infy_dpp_sdk.data.DocumentData(document_id=org_document_data['document_id'],
-                                                           metadata=org_document_data['metadata'],
-                                                           page_data=org_document_data['page_data'],
-                                                           business_attribute_data=org_document_data[
-                'business_attribute_data'],
-                text_data=org_document_data['text_data'],
-                raw_data=org_document_data['raw_data'])
+                                                          metadata=org_document_data['metadata'],
+                                                          page_data=org_document_data['page_data'],
+                                                          business_attribute_data=org_document_data[
+                                                              'business_attribute_data'],
+                                                          text_data=org_document_data['text_data'],
+                                                          raw_data=org_document_data['raw_data'])
             processor_response = segment_generator_obj.do_execute(
                 document_data=document_data, context_data=org_context_data, config_data=config_file)
             processor_data_json = json.loads(

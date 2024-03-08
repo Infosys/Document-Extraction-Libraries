@@ -1,9 +1,8 @@
 # ===============================================================================================================#
-# Copyright 2023 Infosys Ltd.                                                                                    #
+# Copyright 2023 Infosys Ltd.                                                                                   #
 # Use of this source code is governed by Apache License Version 2.0 that can be found in the LICENSE file or at  #
 # http://www.apache.org/licenses/                                                                                #
 # ===============================================================================================================#
-
 """This python file is for native pdfs."""
 import os
 
@@ -13,9 +12,8 @@ from infy_ocr_generator.providers.apache_pdfbox_data_service_provider \
 
 from infy_dpp_segmentation.common.file_util import FileUtil
 from infy_dpp_segmentation.segment_generator.service.image_generator_service import ImageGeneratorService
-from infy_dpp_segmentation.common.logger_factory import LoggerFactory
-from infy_dpp_segmentation.common.app_config_manager import AppConfigManager
-from infy_dpp_segmentation.common.file_system_manager import FileSystemManager
+import infy_fs_utils
+import infy_dpp_sdk
 
 ENCODING_LIST = ['utf-8', 'ascii', 'ansi']
 
@@ -24,25 +22,21 @@ class PdfBoxBasedSegmentGenerator:
     '''for native pdfs'''
 
     def __init__(self, text_provider_dict) -> None:
-        self.__logger = LoggerFactory().get_logger()
-        self.__app_config = AppConfigManager().get_app_config()
-        self.__file_sys_handler = FileSystemManager().get_file_system_handler()
+        self.__logger = infy_fs_utils.manager.FileSystemLoggingManager().get_fs_logging_handler(infy_dpp_sdk.common.Constants.FSLH_DPP).get_logger()
+        self.__app_config = infy_dpp_sdk.common.AppConfigManager().get_app_config()
+        self.__file_sys_handler = infy_fs_utils.manager.FileSystemManager(
+                                    ).get_fs_handler(infy_dpp_sdk.common.Constants.FSH_DPP)
 
         self.__converter_path = text_provider_dict.get(
             'properties').get('format_converter_home', '')
-        # if self.__converter_path == '':
-        #     raise Exception(
-        #         'Format converter path is not configured in the config file')
+        if self.__converter_path == '':
+            raise Exception(
+                'Format converter path is not configured in the config file')
         self._org_pdf_file_path = None
 
     def get_segment_data(self, from_files_full_path, out_file_full_path):
         '''getting segment data from pdf file'''
         self._org_pdf_file_path = from_files_full_path
-        self.__doc_extension = os.path.splitext(
-            self._org_pdf_file_path)[1].lower()
-        if self.__doc_extension == '.pdf':
-            raise NotImplementedError(
-                'PDF file processing is not supported in this version')
         # pdf to image
         config_data_dict = {
             "format_converter": {

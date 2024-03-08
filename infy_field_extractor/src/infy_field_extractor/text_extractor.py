@@ -1,8 +1,9 @@
-#
-# Copyright 2021 Infosys Ltd.
-# Use of this source code is governed by Apache License Version 2.0 that can be found in the LICENSE file or at
-# http://www.apache.org/licenses/
-#
+# ===============================================================================================================#
+# Copyright 2021 Infosys Ltd.                                                                                   #
+# Use of this source code is governed by Apache License Version 2.0 that can be found in the LICENSE file or at  #
+# http://www.apache.org/licenses/                                                                                #
+# ===============================================================================================================#
+
 """
 TextExtractor
 ~~~
@@ -37,7 +38,8 @@ CONFIG_PARAMS_DICT = {
         'hor': 1,
         'ver': 1
     },
-    "within_bbox": []
+    "within_bbox": [],
+    "multiline_sorting_left_to_right": True
 }
 
 TEXT_EXTRACT_ALL_FIELD_OUTPUT = {
@@ -111,7 +113,7 @@ class TextExtractor():
             image_path (str): Path to the image
             config_params_dict (CONFIG_PARAMS_DICT, optional): Additional info for min and max
                 radiobutton radius to text height ratio, position of state w.r.t key,
-                within_bbox, eliminate_list, scaling_factor and page number.
+                within_bbox(x,y,w,h), eliminate_list, scaling_factor and page number.
                 Defaults to CONFIG_PARAMS_DICT.
             file_data_list (FILE_DATA_LIST, optional): List of all file datas. Each file data
                 has the path to supporting document and page numbers, if applicable. Defaults to None.
@@ -196,7 +198,7 @@ class TextExtractor():
                 and either field_value_pos w.r.t key or field_value_bbox.
                 Defaults to [TEXT_FIELD_DATA_DICT].
             config_params_dict (dict, optional): Additional info for position of value w.r.t key and
-                within_bbox, eliminate_list, within_bbox, eliminate_list, scaling_factor and page number.
+                within_bbox(x,y,w,h), eliminate_list, within_bbox(x,y,w,h), eliminate_list, scaling_factor and page number.
                 Defaults to CONFIG_PARAMS_DICT.
             file_data_list (list, optional): List of all file datas. Each file data has the path to
                 supporting document and page numbers, if applicable. Defaults to None.
@@ -246,7 +248,7 @@ class TextExtractor():
         if(field_value_bbox_count == len(text_field_data_list) and within_bbox == []):
             return self.__extract_from_field_value_bboxes(
                 img, file_data_list, text_field_data_list,
-                eliminate_list, additional_info)
+                eliminate_list, additional_info, config_params_dict)
         elif(field_value_bbox_count == 0 and field_key_count == len(text_field_data_list)):
             return self.__extract_from_keys(
                 img, file_data_list, text_field_data_list, within_bbox,
@@ -608,7 +610,7 @@ class TextExtractor():
 
     def __extract_from_field_value_bboxes(
             self, img, file_data_list, text_field_data_list,
-            eliminate_list, additional_info):
+            eliminate_list, additional_info, config_params_dict):
 
         result, output = [], {}
 
@@ -626,7 +628,8 @@ class TextExtractor():
             elif len(bboxes_text) != 1:
                 bboxes_text = [
                     x for x in bboxes_text if x not in eliminate_list]
-                bboxes_text.sort(key=lambda x: (x.get("bbox")[Constants.BB_X]))
+                bboxes_text = ExtractorHelper.order_the_text(
+                    config_params_dict["multiline_sorting_left_to_right"], bboxes_text)
                 bboxes_line_list = self.__get_each_line_lists(
                     bboxes_text, res['field_value_bbox'][0]+res['field_value_bbox'][2])
                 bboxes_line_list.sort(key=lambda x: (x[Constants.BB_Y]))
@@ -640,8 +643,25 @@ class TextExtractor():
                             text += bbox_text["text"] + " "
                     text = text.strip() + "\n"
                 res["field_value"] = text.strip()
+
+                if 'id' in words_done[0]:
+                    conf_list = [float(w['conf']) for w in words_done]
+                    conf_avg = -1
+                    if len(conf_list) > 0:
+                        conf_avg = round(sum(conf_list)/len(conf_list), 2)
+
+                    res["field_value_confidence_pct"] = conf_avg
+                else:
+                    res["field_value_confidence_pct"] = 100
             else:
                 res["field_value"] = bboxes_text[0]['text'].strip()
+                if 'id' in bboxes_text[0]:
+                    res["field_value_confidence_pct"] = float(bboxes_text[0].get(
+                        'conf'))
+
+                else:
+                    res["field_value_confidence_pct"] = 100
+
             result.append(res)
         output['fields'], output['error'] = result, None
         return output
@@ -655,7 +675,6 @@ class TextExtractor():
         additional_info['word_bbox_list'] = bboxes_text
         phrases_dictList = self.get_text_provider.get_tokens(
             3, img, [], file_data_list, additional_info, self.temp_folderpath)
-
         if(within_bbox != []):
             region_phrases = []
             for phrase in phrases_dictList:
@@ -702,10 +721,23 @@ class TextExtractor():
                 for phrase in phrases_dictList:
                     if(phrase.get("bbox") == closest_phrase):
                         value = phrase.get("text")
+
+                        if 'words' in phrase:
+                            words_list = phrase.get("words")
+                            conf_list = [float(w['conf']) for w in words_list]
+                            conf_avg = -1
+                            if len(conf_list) > 0:
+                                conf_avg = round(
+                                    sum(conf_list)/len(conf_list), 2)
+                        else:
+                            conf_avg = 100
+
                         break
                 res["field_value"] = value
+                res["field_value_confidence_pct"] = conf_avg
             else:
                 res["field_value"] = None
+                res["field_value_confidence_pct"] = -1
             res["error"] = error
             result.append(res)
         output['fields'], output['error'] = result, None

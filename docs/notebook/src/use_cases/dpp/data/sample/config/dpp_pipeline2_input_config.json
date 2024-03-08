@@ -1,0 +1,270 @@
+{
+    "name": "pipeline2",
+    "description": "Sample Pdf extraction",
+    "processor_list": [
+        {
+            "enabled": true,
+            "processor_name": "request_creator",
+            "processor_namespace": "infy_dpp_core.request_creator",
+            "processor_class_name": "RequestCreator",
+            "processor_input_config_name_list": [
+                "RequestCreator"
+            ]
+        },
+        {
+            "enabled": true,
+            "processor_name": "metadata_extractor",
+            "processor_namespace": "infy_dpp_core.metadata_extractor",
+            "processor_class_name": "MetadataExtractor",
+            "processor_input_config_name_list": []
+        },
+        {
+            "enabled": true,
+            "processor_name": "document_data_saver",
+            "processor_namespace": "infy_dpp_core.document_data_saver",
+            "processor_class_name": "DocumentDataSaver",
+            "processor_input_config_name_list": [
+                "DocumentDataSaver"
+            ]
+        },
+        {
+            "enabled": true,
+            "processor_name": "segment_generator",
+            "processor_namespace": "infy_dpp_segmentation.segment_generator",
+            "processor_class_name": "SegmentGenerator",
+            "processor_input_config_name_list": [
+                "SegmentGenerator"
+            ]
+        },
+        {
+            "enabled": true,
+            "processor_name": "segment_parser",
+            "processor_namespace": "infy_dpp_segmentation.segment_parser",
+            "processor_class_name": "SegmentDataParser",
+            "processor_input_config_name_list": [
+                "SegmentDataParser"
+            ]
+        },
+        {
+            "enabled": true,
+            "processor_name": "chunk_generator",
+            "processor_namespace": "infy_dpp_segmentation.chunk_generator",
+            "processor_class_name": "ChunkDataParser",
+            "processor_input_config_name_list": [
+                "ChunkDataParser"
+            ]
+        },
+        {
+            "enabled": true,
+            "processor_name": "chunk_saver",
+            "processor_namespace": "infy_dpp_segmentation.chunk_saver",
+            "processor_class_name": "SaveChunkDataParser",
+            "processor_input_config_name_list": [
+                "SaveChunkDataParser"
+            ]
+        },
+        {
+            "enabled": false,
+            "processor_name": "document_data_updater",
+            "processor_namespace": "infy_dpp_core.document_data_updater",
+            "processor_class_name": "DocumentDataUpdateProcessor",
+            "processor_input_config_name_list": [
+                "DocumentDataUpdater"
+            ]
+        },
+        {
+            "enabled": true,
+            "processor_name": "request_closer",
+            "processor_namespace": "infy_dpp_core.request_closer",
+            "processor_class_name": "RequestCloser",
+            "processor_input_config_name_list": [
+                "RequestCloser"
+            ]
+        },
+        {
+            "enabled": true,
+            "processor_name": "document_data_saver",
+            "processor_namespace": "infy_dpp_core.document_data_saver",
+            "processor_class_name": "DocumentDataSaver",
+            "processor_input_config_name_list": [
+                "DocumentDataSaver"
+            ]
+        }
+    ],
+    "processor_input_config": {
+        "RequestCreator": {
+            "from_data_file": {
+                "enabled": true,
+                "read_path": "/data/input/",
+                "batch_size": 20,
+                "filter": {
+                    "include": [
+                        "pdf",
+                        "json"
+                    ],
+                    "exclude": [
+                        "_"
+                    ]
+                },
+                "work_root_path": "/data/work/",
+                "to_request_file": {
+                    "save_path": "/data/work/request/indexer/start"
+                }
+            },
+            "from_request_file": {
+                "enabled": false,
+                "read_path": "/data/work/request/indexer/complete",
+                "save_path": "/data/work/request/inference/start"
+            }
+        },
+        "RequestCloser": {
+            "work_root_path": "/data/work/",
+            "data_file": {
+                "output_root_path": "/data/output/"
+            },
+            "output_root_path": "/data/output/",
+            "from_request_file": {
+                "read_path": "/data/work/request/indexer/start",
+                "save_path": "/data/work/request/indexer/complete"
+            }
+        },
+        "DocumentDataSaver": {
+            "work_root_path": "/data/work/"
+        },
+        "DocumentDataUpdater": {
+            "config_data": [
+                {
+                    "enabled": true,
+                    "json_path": "$.context_data.reader.output[*].source_metadata[*]",
+                    "json_key": "bbox",
+                    "replace_key_enabled": false,
+                    "replace_with_key": "",
+                    "replace_with_value": "",
+                    "replace_value_enabled": false,
+                    "replace_value_with_rule_name": "rule_cus_001_transform_bbox_value"
+                }
+            ]
+        },
+        "SegmentGenerator": {
+            "textProviders": [
+                {
+                    "provider_name": "tesseract_ocr_provider",
+                    "properties": {
+                        "tesseract_path": "C:/Program Files/Tesseract-OCR/tesseract.exe",
+                        "format_converter_home": "C:/MyProgramFiles/InfyFormatConverter/"
+                    }
+                },
+                {
+                    "provider_name": "azure_read_ocr_provider",
+                    "properties": {
+                        "subscription_key": "",
+                        "url": "",
+                        "format_converter_home": "C:/MyProgramFiles/InfyFormatConverter/"
+                    }
+                },
+                {
+                    "provider_name": "pdf_box_text_provider",
+                    "properties": {
+                        "format_converter_home": "C:/MyProgramFiles/InfyFormatConverter/"
+                    }
+                },
+                {
+                    "provider_name": "json_provider",
+                    "properties": {
+                        "template1_file_path": "/data/config/templates/email_template.txt",
+                        "format_converter_home": "C:/MyProgramFiles/InfyFormatConverter/"
+                    }
+                }
+            ],
+            "modelProviders": [
+                {
+                    "provider_name": "detectron",
+                    "properties": {
+                        "model_path": "/model_files/model_final.pth",
+                        "config_file_path": "/model_files/config.text",
+                        "model_threshold": 0.8
+                    }
+                }
+            ],
+            "techniques": [
+                {
+                    "enabled": false,
+                    "name": "technique1",
+                    "input_file_type": "image",
+                    "text_provider_name": "tesseract_ocr_provider",
+                    "model_provider_name": "detectron"
+                },
+                {
+                    "enabled": false,
+                    "name": "technique2",
+                    "input_file_type": "image",
+                    "text_provider_name": "azure_read_ocr_provider",
+                    "model_provider_name": "detectron"
+                },
+                {
+                    "enabled": true,
+                    "name": "technique3",
+                    "input_file_type": "pdf",
+                    "text_provider_name": "pdf_box_text_provider",
+                    "model_provider_name": null
+                },
+                {
+                    "enabled": false,
+                    "name": "technique4",
+                    "input_file_type": "pdf",
+                    "text_provider_name": "pdf_box_text_provider",
+                    "model_provider_name": "detectron"
+                },
+                {
+                    "enabled": false,
+                    "name": "technique5",
+                    "input_file_type": "json",
+                    "text_provider_name": "json_provider",
+                    "model_provider_name": null
+                }
+            ],
+            "prefer_larger_segments": false,
+            "merge": {
+                "enabled": false,
+                "vertical_adjacent_segments_max_gap_in_pixel": 80,
+                "horizontal_adjacent_segments_max_gap_in_pixel": 10
+            },
+            "plot_bbox_segments": false
+        },
+        "SegmentDataParser": {
+            "layout": {
+                "single-column": {
+                    "enabled": true
+                },
+                "multi-column": {
+                    "enabled": false
+                }
+            },
+            "pattern": {
+                "sequence-order": {
+                    "enabled": true
+                },
+                "left-right": {
+                    "enabled": false
+                },
+                "zig-zag": {
+                    "enabled": false
+                }
+            }
+        },
+        "ChunkDataParser": {
+            "chunking_method": "page",
+            "merge_title_paragraph": false,
+            "page_num": [
+                "1:10"
+            ],
+            "exclude": [
+                "table",
+                "figure"
+            ]
+        },
+        "SaveChunkDataParser": {
+            "chunked_files_root_path": "/data/vectordb/chunked"
+        }
+    }
+}

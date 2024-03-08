@@ -1,14 +1,13 @@
 # ===============================================================================================================#
-# Copyright 2023 Infosys Ltd.                                                                                    #
+# Copyright 2023 Infosys Ltd.                                                                                   #
 # Use of this source code is governed by Apache License Version 2.0 that can be found in the LICENSE file or at  #
 # http://www.apache.org/licenses/                                                                                #
 # ===============================================================================================================#
-
 from PIL import Image
 
 import numpy
-
-from infy_dpp_segmentation.common.logger_factory import LoggerFactory
+import infy_dpp_sdk
+import infy_fs_utils
 try:
     import torch
     from detectron2.engine import DefaultPredictor
@@ -23,7 +22,7 @@ class DetectronService:
     '''detectron service class'''
 
     def __init__(self, model_config_dict: dict) -> None:
-        self.__logger = LoggerFactory().get_logger()
+        self.__logger = infy_fs_utils.manager.FileSystemLoggingManager().get_fs_logging_handler(infy_dpp_sdk.common.Constants.FSLH_DPP).get_logger()
         try:
             cfg = get_cfg()
             cfg.MODEL.DEVICE = "cuda" if torch.cuda.is_available() else "cpu"

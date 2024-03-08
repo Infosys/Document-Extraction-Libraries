@@ -1,7 +1,7 @@
 # ===============================================================================================================#
-# Copyright 2021 Infosys Ltd.
-# Use of this source code is governed by Apache License Version 2.0 that can be found in the LICENSE file or at
-# http://www.apache.org/licenses/                                                   #
+# Copyright 2021 Infosys Ltd.                                                                                   #
+# Use of this source code is governed by Apache License Version 2.0 that can be found in the LICENSE file or at  #
+# http://www.apache.org/licenses/                                                                                #
 # ===============================================================================================================#
 
 """
@@ -20,6 +20,7 @@ import logging
 import sys
 import numpy as np
 import cv2
+from infy_field_extractor.internal.common_utils import CommonUtils
 from infy_field_extractor.internal.extractor_helper import ExtractorHelper
 from infy_field_extractor.internal.constants import Constants
 from infy_field_extractor.interface.data_service_provider_interface import DataServiceProviderInterface, FILE_DATA_LIST
@@ -30,7 +31,8 @@ CHECKBOX_FIELD_DATA_LIST = [
         "field_key": [""],
         "field_key_match": {"method": "normal", "similarityScore": 1},
         "field_state_pos": "left",
-        "field_state_bbox": []
+        "field_state_bbox": [],
+        "field_state_bbox_square_only":True
     }
 ]
 
@@ -44,7 +46,8 @@ CONFIG_PARAMS_DICT = {
         'hor': 1,
         'ver': 1
     },
-    "within_bbox": []
+    "within_bbox": [],
+    "image_to_bw": False
 }
 
 CHECKBOX_EXTRACT_ALL_FIELD_OUTPUT = {
@@ -117,9 +120,9 @@ class CheckboxExtractor():
             image_path (str): Path to the image
             config_params_dict (CONFIG_PARAMS_DICT, optional): Additional info for min and
                 max checkbox height to text height ratio, position of state w.r.t key,
-                within_bbox, eliminate_list, scaling_factor and page number.
+                within_bbox(x,y,w,h), eliminate_list, scaling_factor and page number.
                 Defaults to CONFIG_PARAMS_DICT.
-            file_data_list (FILE_DATA_LIST, optional): List of all file datas. Each file data 
+            file_data_list (FILE_DATA_LIST, optional): List of all file datas. Each file data
                 has the path to supporting document and page numbers, if applicable. Defaults to None.
 
         Raises:
@@ -150,15 +153,20 @@ class CheckboxExtractor():
             raise AttributeError(
                 "Currently field_state_pos is not used")
 
+        # Create request specific temp folder
+        img_name = os.path.splitext(os.path.split(image_path)[1])[0]
+        self.temp_folderpath = CommonUtils.make_dir_with_timestamp(
+            self.temp_folderpath, img_name)
+
         # read the image from image_path
-        crop_image, crop_imagepath, _ = ExtractorHelper.read_image(
+        crop_image, _, _ = ExtractorHelper.read_image(
             image_path, self.logger, self.temp_folderpath, within_bbox)
-        image, image_path, _ = ExtractorHelper.read_image(
+        full_image, full_image_path, _ = ExtractorHelper.read_image(
             image_path, self.logger, self.temp_folderpath)
         output = {}
 
         bboxes_text, checkboxes, all_error = self.__common(
-            crop_image, image_path, file_data_list, within_bbox, config_params_dict, scaling_factor)
+            crop_image, full_image_path, file_data_list, within_bbox, config_params_dict, scaling_factor)
         bboxes_text = [x for x in bboxes_text if x not in eliminate_list]
 
         if(all_error != []):
@@ -170,15 +178,15 @@ class CheckboxExtractor():
             additional_info = {"scaling_factor": scaling_factor,
                                'pages': [config_params_dict["page"]]}
             result, done_fields_dList = ExtractorHelper.extract_with_text_coordinates(
-                image, bboxes_text, self.get_text_provider, file_data_list, additional_info,
-                checkboxes, self.logger, self.temp_folderpath)
+                full_image, bboxes_text, self.get_text_provider, file_data_list, additional_info,
+                checkboxes, self.logger, self.temp_folderpath, debug_mode_check=self.debug_mode_check)
             output["fields"] = result
             output["fieldsList"] = done_fields_dList
             output["error"] = None
 
         if(self.debug_mode_check is False):
-            if(within_bbox != [] and crop_imagepath != image_path):
-                os.remove(crop_imagepath)
+            CommonUtils.delete_dir_recursively(self.temp_folderpath)
+
         return output
 
     def extract_custom_fields(self, image_path: str,
@@ -192,15 +200,15 @@ class CheckboxExtractor():
             checkbox_field_data_list (CHECKBOX_FIELD_DATA_LIST): Info for field_key and its match method,
                 or either field_state_pos w.r.t key or field_state_bbox.
                 Defaults to [CHECKBOX_FIELD_DATA_DICT].
-            config_params_dict (CONFIG_PARAMS_DICT, optional): Additional info for min and max 
+            config_params_dict (CONFIG_PARAMS_DICT, optional): Additional info for min and max
                 checkbox height to text height ratio, position of state w.r.t key,
-                within_bbox, eliminate_list, scaling_factor and page number..
+                within_bbox(x,y,w,h), eliminate_list, scaling_factor and page number..
                 Defaults to CONFIG_PARAMS_DICT.
-            file_data_list (FILE_DATA_LIST, optional): List of all file datas. Each file data 
+            file_data_list (FILE_DATA_LIST, optional): List of all file datas. Each file data
                 has the path to supporting document and page numbers, if applicable. Defaults to None.
 
         Raises:
-            AttributeError: Both field_state_pos and field_state_bbox in text_field_data_list 
+            AttributeError: Both field_state_pos and field_state_bbox in text_field_data_list
                 should not be given together.
 
         Returns:
@@ -228,9 +236,11 @@ class CheckboxExtractor():
 
         # read image
         image, image_path, _ = ExtractorHelper.read_image(
-            image_path, self.logger, self.temp_folderpath)
+            image_path, self.logger, self.temp_folderpath,
+            image_to_bw=config_params_dict["image_to_bw"])
         crop_image, crop_imagepath, _ = ExtractorHelper.read_image(
-            image_path, self.logger, self.temp_folderpath, within_bbox)
+            image_path, self.logger, self.temp_folderpath, within_bbox,
+            image_to_bw=config_params_dict["image_to_bw"])
 
         field_state_bbox_count, field_key_count = 0, 0
         for field_data in checkbox_field_data_list:
@@ -265,7 +275,7 @@ class CheckboxExtractor():
                 bbox, additional_info["scaling_factor"])
             res = {}
             checkboxes, error = self.__get_checkboxes(
-                image, bbox[Constants.BB_H]//2, bbox[Constants.BB_H])
+                image, bbox[Constants.BB_H]//2, bbox[Constants.BB_H], field_data["field_state_bbox_square_only"])
             if(error is None):
                 checkbox = []
                 for c in checkboxes:
@@ -289,7 +299,7 @@ class CheckboxExtractor():
 
         return output
 
-    def __get_checkboxes(self, image, MIN_CHECKBOX_WIDTH, MAX_CHECKBOX_WIDTH):
+    def __get_checkboxes(self, image, MIN_CHECKBOX_WIDTH, MAX_CHECKBOX_WIDTH, find_square_only=True):
         checkboxes = []
         error = None
         gray = image.copy()
@@ -305,9 +315,21 @@ class CheckboxExtractor():
             epsilon = threshold*cv2.arcLength(cnt, True)
             approx = cv2.approxPolyDP(cnt, epsilon, True)
             _, _, w, h = cv2.boundingRect(cnt)
-            if (len(approx) == Constants.RECT_EDGES and MIN_CHECKBOX_WIDTH <= w <= MAX_CHECKBOX_WIDTH and (h-(h//SQUARE_SCALE)) <= w <= (h+(h//SQUARE_SCALE))):
+            if (len(approx) == Constants.RECT_EDGES and MIN_CHECKBOX_WIDTH <= w <= MAX_CHECKBOX_WIDTH) and ((h-(h//SQUARE_SCALE)) <= w <= (h+(h//SQUARE_SCALE))):
                 xs, ys, ws, hs = cv2.boundingRect(cnt)
                 checkboxes.append([xs, ys, ws, hs])
+
+            if not find_square_only:
+                # find rectangle
+                threshold = 0.02
+                epsilon = threshold*cv2.arcLength(cnt, True)
+                approx = cv2.approxPolyDP(cnt, epsilon, True)
+                _, _, w, h = cv2.boundingRect(cnt)
+                # horizontal(w >= h) and vertical(h >= w) rectangle
+                is_rectangle = ((w+(w//2) >= w >= h) or ((h+h//2) > h >= w))
+                if (len(approx) == Constants.RECT_EDGES and is_rectangle):
+                    xs, ys, ws, hs = cv2.boundingRect(cnt)
+                    checkboxes.append([xs, ys, ws, hs])
         if(checkboxes == []):
             self.logger.info("No checkboxes found")
             error = "No checkboxes found"
@@ -406,12 +428,20 @@ class CheckboxExtractor():
         additional_info = {"scaling_factor": scaling_factor,
                            'pages': [config_params_dict["page"]]}
         bboxes_text = self.get_text_provider.get_tokens(
-            1, crop_image, within_bbox, file_data_list, additional_info, self.temp_folderpath)
+            1, None, within_bbox, file_data_list, additional_info, self.temp_folderpath)
         if len(bboxes_text) == 0:
             all_error.append("No words found in the region")
 
         # filter empty lines
         bboxes_text = [x for x in bboxes_text if x.get('text') != '']
+
+        if(self.debug_mode_check):
+            img_copy = crop_image.copy()
+            bboxes_list = [x['bbox'] for x in bboxes_text]
+            img_copy = ExtractorHelper.draw_bboxes_on_image(
+                img_copy, bboxes_list, Constants.COLOR_BLUE, thickness=4)
+            ExtractorHelper.save_image(
+                img_copy, f'{self.temp_folderpath}/text_bboxes.jpg')
 
         # get checkboxes
         height = sum([bbox.get("bbox")[Constants.BB_H]
@@ -423,6 +453,15 @@ class CheckboxExtractor():
                 min_checkbox_text_scale, height*max_checkbox_text_scale
         checkboxes, error = self.__get_checkboxes(
             crop_image, MIN_CHECKBOX_WIDTH, MAX_CHECKBOX_WIDTH)
+
+        if(self.debug_mode_check):
+            img_copy = crop_image.copy()
+            bboxes_list = checkboxes
+            img_copy = ExtractorHelper.draw_bboxes_on_image(
+                img_copy, bboxes_list, Constants.COLOR_RED, thickness=4)
+            ExtractorHelper.save_image(
+                img_copy, f'{self.temp_folderpath}/field_bboxes_pass1.jpg')
+
         if(error is not None):
             all_error.append(error)
         if(within_bbox != []):
@@ -432,5 +471,13 @@ class CheckboxExtractor():
 
         # filter extra checkboxes
         checkboxes = self.__filter_extra_checkboxes(checkboxes)
+
+        if(self.debug_mode_check):
+            img_copy = crop_image.copy()
+            bboxes_list = checkboxes
+            img_copy = ExtractorHelper.draw_bboxes_on_image(
+                img_copy, bboxes_list, Constants.COLOR_RED, thickness=4)
+            ExtractorHelper.save_image(
+                img_copy, f'{self.temp_folderpath}/field_bboxes_pass2.jpg')
 
         return bboxes_text, checkboxes, all_error

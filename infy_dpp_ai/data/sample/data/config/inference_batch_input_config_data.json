@@ -1,0 +1,206 @@
+{
+    "name": "inference_batch_pipeline",
+    "description": "inference pipeline configuration",
+    "processor_list": [
+        {
+            "enabled": true,
+            "processor_name": "retriever",
+            "processor_namespace": "infy_dpp_ai.retriever.process.query_retriever_processor",
+            "processor_class_name": "QueryRetriever",
+            "processor_input_config_name_list": [
+                "QueryRetriever"
+            ]
+        },
+        {
+            "enabled": true,
+            "processor_name": "reader",
+            "processor_namespace": "infy_dpp_ai.reader.process.reader_processor",
+            "processor_class_name": "Reader",
+            "processor_input_config_name_list": [
+                "Reader"
+            ]
+        }
+    ],
+    "processor_input_config": {
+        "QueryRetriever": {
+            "embedding": {
+                "openai-text-davinci-003": {
+                    "enabled": true,
+                    "configuration": {
+                        "api_type": "azure",
+                        "api_version": "2022-12-01",
+                        "api_url": "",
+                        "api_key": "",
+                        "chunk_size": 1000,
+                        "tiktoken_cache_dir": "C:/DPP/infy_libraries_client/CONTAINER/ML/tiktoken_encoding"
+                    }
+                },
+                "sentence_transformer": {
+                    "enabled": true,
+                    "configuration": {
+                        "api_url": "",
+                        "model_name": "all-MiniLM-L6-v2"
+                    }
+                }
+            },
+            "storage": {
+                "faiss": {
+                    "enabled": true,
+                    "configuration": {
+                        "chunked_files_root_path": "/vectordb/chunked",
+                        "encoded_files_root_path": "/vectordb/encoded",
+                        "db_name": "documents"
+                    }
+                },
+                "elasticsearch": {
+                    "enabled": false,
+                    "configuration": {
+                        "es_url": "",
+                        "user": "elastic",
+                        "password": "",
+                        "index": "test_index"
+                    }
+                }
+            },
+            "queries": [
+                {
+                    "attribute_key": "women_emp_pct",
+                    "question": "What is the percentage of women employees?",
+                    "top_k": 2,
+                    "pre_filter_fetch_k": 10,
+                    "filter_metadata": {}
+                },
+                {
+                    "attribute_key": "financial_year",
+                    "question": "What is the financial year of this report?",
+                    "top_k": 2,
+                    "pre_filter_fetch_k": 10,
+                    "filter_metadata": {}
+                },
+                {
+                    "attribute_key": "revenue_amt",
+                    "question": "What is the Revenue amount of this year?",
+                    "top_k": 2,
+                    "pre_filter_fetch_k": 10,
+                    "filter_metadata": {}
+                },
+                {
+                    "attribute_key": "business_rank",
+                    "question": "What is the rank of infosys?",
+                    "top_k": 2,
+                    "pre_filter_fetch_k": 10,
+                    "filter_metadata": {}
+                }
+            ]
+        },
+        "Reader": {
+            "storage": {
+                "faiss": {
+                    "enabled": true,
+                    "configuration": {
+                        "chunked_files_root_path": "/vectordb/chunked",
+                        "encoded_files_root_path": "/vectordb/encoded",
+                        "db_name": "documents"
+                    }
+                },
+                "elasticsearch": {
+                    "enabled": false,
+                    "configuration": {
+                        "es_url": "",
+                        "user": "elastic",
+                        "password": "",
+                        "index": "test_index"
+                    }
+                }
+            },
+            "llm": {
+                "openai-text-davinci-003": {
+                    "enabled": false,
+                    "configuration": {
+                        "api_type": "azure",
+                        "api_version": "2022-12-01",
+                        "api_url": "",
+                        "api_key": "",
+                        "max_tokens": 1000,
+                        "model_name": "text-davinci-003",
+                        "deployment_name": "text-davinci-003",
+                        "temperature": 0.7,
+                        "tiktoken_cache_dir": "C:/DPP/infy_libraries_client/CONTAINER/ML/tiktoken_encoding"
+                    },
+                    "cache": {
+                        "enabled": true,
+                        "cache_root_path": "/data/cache/infy_model_service"
+                    }
+                },
+                "llama2-7b": {
+                    "enabled": false,
+                    "configuration": {
+                        "inference_url": "",
+                        "max_new_tokens": 4096,
+                        "tiktoken_cache_dir": "C:/DPP/infy_libraries_client/CONTAINER/ML/tiktoken_encoding",
+                        "temperature": 1
+                    }
+                },
+                "bloom-7b1": {
+                    "enabled": true,
+                    "configuration": {
+                        "inference_url": "",
+                        "max_new_tokens": 4096,
+                        "tiktoken_cache_dir": "C:/DPP/infy_libraries_client/CONTAINER/ML/tiktoken_encoding",
+                        "temperature": 1
+                    }
+                }
+            },
+            "named_context_templates": {
+                "context_default": "{chunk_text}",
+                "context_1": "[chunk_id={chunk_id},page_no={page_no},sequence_no={sequence_no},bbox={bbox},doc_name={doc_name}]\n{chunk_text}\n",
+                "context_2": "[chunk_id={chunk_id},page_no={page_no},sequence_no={sequence_no}]\n{chunk_text}\n"
+            },
+            "named_prompt_templates": {
+                "prompt_template_1": {
+                    "content": [
+                        "Use the following pieces of context to answer the question at the end.",
+                        "If you don't know the answer or even doubtful a bit, just say that you don't know,",
+                        " don't try to make up an answer.Just give the shortest and most appropriate relavant answer to the question.",
+                        "{context}",
+                        "Question: {question}",
+                        "Helpful Answer:"
+                    ],
+                    "context_template": "context_default"
+                },
+                "extractor_attribute_prompt": {
+                    "content": [],
+                    "file_path": "/data/config/prompt_templates/extractor_attribute_prompt.txt",
+                    "context_template": "context_1"
+                },
+                "extractor_attribute_prompt_2": {
+                    "content": [],
+                    "file_path": "/data/config/prompt_templates/extractor_attribute_prompt_2.txt",
+                    "context_template": "context_2"
+                }
+            },
+            "inputs": [
+                {
+                    "attribute_key": "women_emp_pct",
+                    "prompt_template": "extractor_attribute_prompt_2",
+                    "model_type": "QnA"
+                },
+                {
+                    "attribute_key": "financial_year",
+                    "prompt_template": "extractor_attribute_prompt_2",
+                    "model_type": "QnA"
+                },
+                {
+                    "attribute_key": "revenue_amt",
+                    "prompt_template": "extractor_attribute_prompt_2",
+                    "model_type": "QnA"
+                },
+                {
+                    "attribute_key": "business_rank",
+                    "prompt_template": "extractor_attribute_prompt_2",
+                    "model_type": "QnA"
+                }
+            ]
+        }
+    }
+}

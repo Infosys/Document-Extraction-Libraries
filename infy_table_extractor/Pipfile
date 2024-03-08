@@ -1,0 +1,26 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+autopep8 = "==1.5.1"
+pytest = "==6.2.5"
+pytest-cov = "==2.12.1"
+# The below libraries are required for the libraries own providers - native pdf
+infy_common_utils = {path = "./lib/infy_common_utils-0.0.9-py3-none-any.whl"}
+
+[packages]
+opencv-python = "==4.5.5.64"
+numpy = "<2.0.0"
+pytesseract = "==0.3.2"
+bs4 = "==0.0.1"
+lxml =">=4.6.5,<5.0.0"
+pandas = ">=1.1.5,<2.0.0"
+openpyxl = "==3.0.5"
+imageio = "==2.9.0"
+Jinja2 = "==3.0.3"
+scikit-learn = ">=0.24.2,<2.0.0"
+
+[requires]
+python_version = "3"

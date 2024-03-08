@@ -6,7 +6,7 @@
 ![](https://img.shields.io/github/stars/Infosys/Document-Extraction-Libraries)
 ![](https://img.shields.io/github/last-commit/Infosys/Document-Extraction-Libraries)
 
-# Document Extraction Libraries 2.0.0
+# Document Extraction Libraries 3.1.0
 
 Document Extraction Libraries are a suite of python libraries that provide APIs to **extract attributes from documents** (e.g. scanned PDFs, images etc.) in a simple and predictable manner. 
 
@@ -30,7 +30,7 @@ Library	| Description |
 infy_ocr_generator| Provides APIs to generate OCR files from image files by specifying an OCR tool.
 infy_ocr_parser| Provides APIs to parse OCR files and detect regions of interest (bounding boxes) given a search criteria. 
 infy_field_extractor|Provides APIs for extracting free text and selection fields (checkboxes and radio buttons) from image files using regions of interest (bounding boxes) as input. 
-infy_bordered_table_extractor|Provides APIs to extract rows and columns from an image of a bordered table.
+infy_table_extractor|Provides APIs to extract rows and columns from an image of a table.
 infy_dpp_sdk|The sdk for document processor platform (DPP) containing the interfaces for processors and orchestrators.
 infy_dpp_core|A collection of processors for core  tasks like request creation, meta-data extraction etc.
 infy_dpp_segmentation|A collection of processors for task like document segmentation, chunk creation etc.
@@ -48,7 +48,7 @@ Step |Library | Input | Output
 1 | infy_ocr_generator | `image file` | `OCR file` 
 2 | infy_ocr_parser | `OCR file`, `region definition` | `region of interest [x,y,w,h]`
 3 | infy_field_extractor | `OCR file`, `region of interest [x,y,w,h]` | `text`, `checkbox state(T/F)`, `radio button state(T/F)` 
-4 | infy_bordered_table_extractor | `image file` | `table data with rows and cols` 
+4 | infy_table_extractor | `image file` | `table data with rows and cols` 
 5  | infy_dpp_sdk |  |
 6  | infy_dpp_core | `config_data,document_data, context_data` | `document_data, context_data`
 7  | infy_dpp_segmentation | `config_data,document_data, context_data` | `document_data, context_data`

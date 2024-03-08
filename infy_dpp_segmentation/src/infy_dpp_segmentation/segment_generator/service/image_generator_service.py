@@ -1,40 +1,39 @@
 # ===============================================================================================================#
-# Copyright 2023 Infosys Ltd.                                                                                    #
+# Copyright 2023 Infosys Ltd.                                                                                   #
 # Use of this source code is governed by Apache License Version 2.0 that can be found in the LICENSE file or at  #
 # http://www.apache.org/licenses/                                                                                #
 # ===============================================================================================================#
 
-
 import os
 import copy
 from PIL import Image
-# import infy_common_utils.format_converter as format_converter
-# from infy_common_utils.format_converter import ConvertAction, FormatConverter
-from infy_dpp_segmentation.common.logger_factory import LoggerFactory
+import infy_common_utils.format_converter as format_converter
+from infy_common_utils.format_converter import ConvertAction, FormatConverter
 from infy_dpp_segmentation.common.singleton import Singleton
 from infy_dpp_segmentation.common.file_util import FileUtil
-
+import infy_fs_utils
+import infy_dpp_sdk
 
 class ImageGeneratorService(metaclass=Singleton):
 
     def __init__(self):
-        self.__logger = LoggerFactory().get_logger()
-    # Commented by Rashmi to remove format converter import
-    # def convert_pdf_to_image(self, pdf_file_path, config_param_dict):
-    #     self.__logger.info(f"[PDF2IMG]: Convert File - {pdf_file_path}")
-    #     config_param_dict_cp = copy.deepcopy(
-    #         config_param_dict.get("format_converter"))
-    #     work_doc_file = self.__manage_converter_config(
-    #         pdf_file_path, config_param_dict_cp)
-    #     format_converter.format_converter_jar_home = config_param_dict.get(
-    #         "format_converter_home")
-    #     # PDF_TO_IMAGE
-    #     img_files, error = FormatConverter.execute(
-    #         pdf_file_path, convert_action=ConvertAction.PDF_TO_IMAGE, config_param_dict=config_param_dict_cp)
-    #     if not img_files:
-    #         img_files = []
-    #     # FileUtil.delete_file(work_doc_file)
-    #     return img_files, error
+        self.__logger = infy_fs_utils.manager.FileSystemLoggingManager().get_fs_logging_handler(infy_dpp_sdk.common.Constants.FSLH_DPP).get_logger()
+
+    def convert_pdf_to_image(self, pdf_file_path, config_param_dict):
+        self.__logger.info(f"[PDF2IMG]: Convert File - {pdf_file_path}")
+        config_param_dict_cp = copy.deepcopy(
+            config_param_dict.get("format_converter"))
+        work_doc_file = self.__manage_converter_config(
+            pdf_file_path, config_param_dict_cp)
+        format_converter.format_converter_jar_home = config_param_dict.get(
+            "format_converter_home")
+        # PDF_TO_IMAGE
+        img_files, error = FormatConverter.execute(
+            pdf_file_path, convert_action=ConvertAction.PDF_TO_IMAGE, config_param_dict=config_param_dict_cp)
+        if not img_files:
+            img_files = []
+        # FileUtil.delete_file(work_doc_file)
+        return img_files, error
 
     def convert_img_to_jpg(self, filepath, config_param_dict):
         self.__logger.info(f"[IMG2JPG]: Convert File - {filepath}")

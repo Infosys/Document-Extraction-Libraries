@@ -1,9 +1,8 @@
 # ===============================================================================================================#
-# Copyright 2023 Infosys Ltd.                                                                                    #
+# Copyright 2023 Infosys Ltd.                                                                                   #
 # Use of this source code is governed by Apache License Version 2.0 that can be found in the LICENSE file or at  #
 # http://www.apache.org/licenses/                                                                                #
 # ===============================================================================================================#
-
 import infy_dpp_sdk
 from infy_dpp_sdk.data import *
 
@@ -14,9 +13,10 @@ PROCESSEOR_CONTEXT_DATA_NAME = "segment_data_parser"
 
 class SegmentDataParser(infy_dpp_sdk.interface.IProcessor):
     def __init__(self):
-        self._processor_response_data = ProcessorResponseData()
+        pass
 
     def do_execute(self, document_data: DocumentData, context_data: dict, config_data: dict) -> ProcessorResponseData:
+        processor_response_data = ProcessorResponseData()
         context_data = context_data if context_data else {}
         segment_processor_config = config_data['SegmentDataParser']
         processor_data = {
@@ -44,7 +44,7 @@ class SegmentDataParser(infy_dpp_sdk.interface.IProcessor):
             'parsed_segment_data': updated_segment_data_list}
 
         # Populate response data
-        self._processor_response_data.document_data = document_data
-        self._processor_response_data.context_data = context_data
+        processor_response_data.document_data = document_data
+        processor_response_data.context_data = context_data
 
-        return self._processor_response_data
+        return processor_response_data

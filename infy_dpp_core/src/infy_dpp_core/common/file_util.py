@@ -1,5 +1,5 @@
 # ===============================================================================================================#
-# Copyright 2023 Infosys Ltd.                                                                                    #
+# Copyright 2020 Infosys Ltd.                                                                                   #
 # Use of this source code is governed by Apache License Version 2.0 that can be found in the LICENSE file or at  #
 # http://www.apache.org/licenses/                                                                                #
 # ===============================================================================================================#
@@ -71,6 +71,10 @@ class FileUtil:
     @staticmethod
     def delete_file(file):
         os.remove(file)
+
+    @staticmethod
+    def delete_empty_dir(dir):
+        os.rmdir(dir)
 
     @staticmethod
     def create_dirs_if_absent(dir_name):
@@ -284,6 +288,7 @@ class FileUtil:
                 "fileName": str(file_name),
                 "fileExtension": str(file_ext),
                 "fileNameWithoutExt": str(file_name_no_ext)}
+
     @classmethod
     def write_output(cls, data_dict, root_path=""):
         """
@@ -295,15 +300,16 @@ class FileUtil:
 
         try:
             # This path should not be changed as it's required for K8S ContainerOp to work
-            output_file_list=[]
+            output_file_list = []
             for key in data_dict.keys():
                 output_file_path = f'{root_path}/{key}.txt'
                 cls.__write_to_text_file(output_file_path, data_dict[key])
                 print('Output written to', output_file_path)
                 output_file_list.append(output_file_path)
-            return output_file_list    
+            return output_file_list
         except Exception as ex:
             print('Error occurred in write_output()', ex)
+
     @classmethod
     def __write_to_text_file(cls, output_file_path, data):
         try:
@@ -315,7 +321,7 @@ class FileUtil:
             raise ValueError(message, ex)
 
     @classmethod
-    def empty_dir(cls,folder):
+    def empty_dir(cls, folder):
         for filename in os.listdir(folder):
             file_path = os.path.join(folder, filename)
             try:
@@ -324,35 +330,39 @@ class FileUtil:
                 elif os.path.isdir(file_path):
                     shutil.rmtree(file_path)
             except Exception as e:
-                print('Failed to delete %s. Reason: %s' % (file_path, e)) 
+                print('Failed to delete %s. Reason: %s' % (file_path, e))
 
     @classmethod
     def safe_file_path(cls, file_path):
-        return file_path.replace("\\","/").replace("//","/")
-    
+        return file_path.replace("\\", "/").replace("//", "/")
+
     @classmethod
     def get_file_path_str_hash_value(cls, file_path: str) -> str:
         # Assumes the default UTF-8
         hash_object = hashlib.md5(str(PurePath(file_path)).encode())
         return hash_object.hexdigest()
-    
+
     @classmethod
     def generate_file_lock(cls, file_path, queue_path, fs_handler):
         is_locked = False
         processed_files_unique_value = FileUtil.get_file_path_str_hash_value(
             file_path)
         fs_handler.create_folders(queue_path)
-        processed_files_list = [os.path.basename(f) for f in fs_handler.list_files1(queue_path) ]
+        # processed_files_list = [os.path.basename(f) for f in fs_handler.list_files1(queue_path) ]
+        processed_files_list = [os.path.basename(
+            f) for f in fs_handler.list_files(queue_path)]
         if processed_files_unique_value not in processed_files_list:
-            fs_handler.write_file(f"{queue_path}/{processed_files_unique_value}", data=file_path)
+            fs_handler.write_file(
+                f"{queue_path}/{processed_files_unique_value}", data=file_path)
             is_locked = True
         return is_locked
-    
+
     @classmethod
     def unlock_file(cls, file_path, queue_path, fs_handler):
         try:
             processed_files_unique_value = FileUtil.get_file_path_str_hash_value(
                 file_path)
-            fs_handler.delete_file(f"{queue_path}/{processed_files_unique_value}")
+            fs_handler.delete_file(
+                f"{queue_path}/{processed_files_unique_value}")
         except:
             pass

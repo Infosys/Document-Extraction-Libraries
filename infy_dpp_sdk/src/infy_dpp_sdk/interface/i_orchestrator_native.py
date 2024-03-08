@@ -1,5 +1,5 @@
 # ===============================================================================================================#
-# Copyright 2023 Infosys Ltd.                                                                                    #
+# Copyright 2023 Infosys Ltd.                                                                                   #
 # Use of this source code is governed by Apache License Version 2.0 that can be found in the LICENSE file or at  #
 # http://www.apache.org/licenses/                                                                                #
 # ===============================================================================================================#
@@ -7,15 +7,14 @@
 from abc import ABC, abstractmethod
 from typing import List
 
-from ..data.processor_response_data import ProcessorResponseData
-from ..data.document_data import DocumentData
+from ..data import ProcessorResponseData, DocumentData
 
 
 class IOrchestratorNative(ABC):
-    """Orchestrator Interface"""
+    """Orchestrator Interface for native execution"""
     @abstractmethod
     def run_batch(self, document_data_list: List[DocumentData] = None, context_data_list: List[dict] = None) -> List[ProcessorResponseData]:
-        """Run the orchestrator pipeline"""
+        """Run the pipeline"""
         raise NotImplementedError("run not implemented")
 
     @abstractmethod

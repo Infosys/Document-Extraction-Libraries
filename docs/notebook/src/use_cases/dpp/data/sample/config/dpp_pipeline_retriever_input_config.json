@@ -1,0 +1,154 @@
+{
+    "name": "pipeline2",
+    "description": "Sample 4-processor-pipeline configuration for integration testing",
+    "variables": {
+        "DPP_SYS_PIPELINE_REQ_FILE_PATH": "<value will be auto updated>",
+        "DPP_SYS_PIPELINE_INPUT_CONFIG_PATH": "<value will be auto updated>",
+        "DPP_STORAGE_ROOT_URI": "file://D:/STORAGE",
+        "DPP_STORAGE_SERVER_URL": "",
+        "DPP_STORAGE_ACCESS_KEY": "",
+        "DPP_STORAGE_SECRET_KEY": ""
+    },
+    "processor_list": [
+        {
+            "enabled": true,
+            "processor_name": "request_creator",
+            "processor_namespace": "infy_dpp_core.request_creator",
+            "processor_class_name": "RequestCreator",
+            "processor_input_config_name_list": [
+                "RequestCreator"
+            ]
+        },
+        {
+            "enabled": false,
+            "processor_name": "document_data_updater",
+            "processor_namespace": "infy_dpp_core.document_data_updater",
+            "processor_class_name": "DocumentDataUpdateProcessor",
+            "processor_input_config_name_list": [
+                "DocumentDataUpdater"
+            ]
+        },
+        {
+            "enabled": true,
+            "processor_name": "retriever",
+            "processor_namespace": "infy_dpp_ai.retriever.process.query_retriever_processor",
+            "processor_class_name": "QueryRetriever",
+            "processor_input_config_name_list": [
+                "QueryRetriever"
+            ]
+        },
+        {
+            "enabled": true,
+            "processor_name": "request_closer",
+            "processor_namespace": "infy_dpp_core.request_closer",
+            "processor_class_name": "RequestCloser",
+            "processor_input_config_name_list": [
+                "RequestCloser"
+            ]
+        },
+        {
+            "enabled": true,
+            "processor_name": "document_data_saver",
+            "processor_namespace": "infy_dpp_core.document_data_saver",
+            "processor_class_name": "DocumentDataSaver",
+            "processor_input_config_name_list": [
+                "DocumentDataSaver"
+            ]
+        }
+    ],
+    "processor_input_config": {
+        "RequestCreator": {
+            "from_data_file": {
+                "enabled": false,
+                "read_path": "/data/input/",
+                "batch_size": 20,
+                "filter": {
+                    "include": [
+                        "pdf",
+                        "json"
+                    ],
+                    "exclude": [
+                        "_"
+                    ]
+                },
+                "work_root_path": "/data/work/",
+                "to_request_file": {
+                    "save_path": "/data/work/request/indexer/start"
+                }
+            },
+            "from_request_file": {
+                "enabled": true,
+                "read_path": "/data/work/request/indexer/complete",
+                "save_path": "/data/work/request/inference/start"
+            }
+        },
+        "RequestCloser": {
+            "work_root_path": "/data/work/",
+            "data_file": {
+                "output_root_path": ""
+            },
+            "output_root_path": "/data/output/",
+            "from_request_file": {
+                "read_path": "/data/work/request/inference/start",
+                "save_path": "/data/work/request/inference/complete"
+            }
+        },
+        "DocumentDataSaver": {
+            "work_root_path": "/data/work/"
+        },
+        "DocumentDataUpdater": {
+            "config_data": [
+                {
+                    "enabled": true,
+                    "json_path": "$.context_data.reader.output[*].model_output.sources[*]",
+                    "json_key": "bbox",
+                    "replace_key_enabled": false,
+                    "replace_with_key": "",
+                    "replace_with_value": "",
+                    "replace_value_enabled": false,
+                    "replace_value_with_rule_name": "rule_cus_001_transform_bbox_value"
+                }
+            ]
+        },
+        "QueryRetriever": {
+            "embedding": {
+                "openai-text-davinci-003": {
+                    "enabled": false,
+                    "configuration": {
+                        "api_type": "azure",
+                        "api_version": "2022-12-01",
+                        "api_url": "",
+                        "api_key": "",
+                        "chunk_size": 1000
+                    }
+                },
+                "sentence_transformer": {
+                    "enabled": true,
+                    "configuration": {
+                        "api_url": "",
+                        "model_name": "all-MiniLM-L6-v2"
+                    }
+                }
+            },
+            "storage": {
+                "faiss": {
+                    "enabled": true,
+                    "configuration": {
+                        "chunked_files_root_path": "/data/vectordb/chunked",
+                        "encoded_files_root_path": "/data/vectordb/encoded",
+                        "db_name": "documents"
+                    }
+                }
+            },
+            "queries": [
+                {
+                    "attribute_key": "query1",
+                    "question": "What is the percentage of women employees?",
+                    "top_k": 5,
+                    "pre_filter_fetch_k": 10,
+                    "filter_metadata": {}
+                }
+            ]
+        }
+    }
+}

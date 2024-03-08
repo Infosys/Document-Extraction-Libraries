@@ -1,33 +1,30 @@
 # ===============================================================================================================#
-# Copyright 2023 Infosys Ltd.                                                                                    #
+# Copyright 2023 Infosys Ltd.                                                                                   #
 # Use of this source code is governed by Apache License Version 2.0 that can be found in the LICENSE file or at  #
 # http://www.apache.org/licenses/                                                                                #
 # ===============================================================================================================#
-
 import os
 import re
 import json
+import cv2
+import numpy as np
 from jsonpath_ng import parse
 import infy_dpp_sdk
 from infy_dpp_sdk.data import *
-from infy_dpp_segmentation.common.app_config_manager import AppConfigManager
 from infy_dpp_segmentation.common.file_util import FileUtil
-from infy_dpp_segmentation.common.logger_factory import LoggerFactory
 
 from infy_dpp_segmentation.segment_generator.process.pdf_box_based_segment_generator import PdfBoxBasedSegmentGenerator
 from infy_dpp_segmentation.segment_generator.process.ocr_based_segment_generator import OcrBasedSegmentGenerator
-from infy_dpp_segmentation.common.file_system_manager import FileSystemManager
+from infy_dpp_segmentation.segment_generator.process.segment_data_merger_v import SegmentDataMerger
 
 PROCESSEOR_CONTEXT_DATA_NAME = "segment_generator"
 
 
 class SegmentGenerator(infy_dpp_sdk.interface.IProcessor):
     def __init__(self):
-        self.__file_sys_handler = FileSystemManager().get_file_system_handler()
-        self.__app_config = AppConfigManager().get_app_config()
-        self._processor_response_data = ProcessorResponseData()
-        self.__logger = LoggerFactory().get_logger()
-        # self.__converter_path = os.environ["FORMAT_CONVERTER_HOME"]
+        self.__file_sys_handler = self.get_fs_handler()
+        self.__app_config = infy_dpp_sdk.common.AppConfigManager().get_app_config()
+        self.__logger = self.get_logger()
 
     def do_execute(self, document_data: DocumentData, context_data: dict, config_data: dict) -> ProcessorResponseData:
         def __get_temp_file_path(work_file_path):
@@ -40,6 +37,7 @@ class SegmentGenerator(infy_dpp_sdk.interface.IProcessor):
 
         segment_data_list = []
         model_provider_dict = {}
+        self._processor_response_data = ProcessorResponseData()
         segment_gen_config_data = config_data.get('SegmentGenerator', {})
         # from_files_full_path = document_data.metadata.standard_data.filepath.value
         org_files_full_path = context_data['request_creator']['work_file_path']
@@ -71,7 +69,9 @@ class SegmentGenerator(infy_dpp_sdk.interface.IProcessor):
                             extraction_technique = 'native_pdf'
                     elif input_file_type == 'image' and extension in ['.jpg', '.jpeg', '.png']:
                         # ,'.tif','.tiff'
-                        extraction_technique = 'ocr_based'
+                        extraction_technique = 'ocr_based'  
+                    elif input_file_type == 'txt' and extension == '.txt':
+                        extraction_technique = 'text'
                     else:
                         continue
                 else:
@@ -89,8 +89,6 @@ class SegmentGenerator(infy_dpp_sdk.interface.IProcessor):
                                      "segments": segments_list}
                 segment_data_list.append(segment_data_dict)
             if extraction_technique == 'ocr_based':
-                # ocr_based_seg_gene_obj = OcrBasedSegmentGenerator(
-                #     config_data.get('SegmentGenerator', {}))
                 ocr_based_seg_gene_obj = OcrBasedSegmentGenerator(
                     text_provider_dict, model_provider_dict)
                 segments_list = ocr_based_seg_gene_obj.get_segment_data(
@@ -114,23 +112,30 @@ class SegmentGenerator(infy_dpp_sdk.interface.IProcessor):
                 segment_data_dict = {"technique": extraction_technique,
                                      "segments": segments_list}
                 segment_data_list.append(segment_data_dict)
-            # TODO: Rashmi: to be uncommented for multi technique pdfs
-            # detectron_segment_data_dict = {
-            #     "technique": "detectron",
-            #     "segments": detectron_segment_data_list
-            # }
-            # pdfbox_segment_data_dict = {
-            #     "technique": "detectron",
-            #     "segments": pdfbox_segment_data_list
-            # }
-            # segment_data_list = [
-            #     detectron_segment_data_dict, pdfbox_segment_data_dict]
-
-        # if len(segment_data_list)==2:
+            if extraction_technique == 'text':
+                segments_list = self.get_segment_data_from_text(
+                    from_files_full_path)
+                segment_data_dict = {"technique": extraction_technique,
+                                     "segments": segments_list}
+                segment_data_list.append(segment_data_dict)
+            
         combined_segments_list = []
         for segment_data in segment_data_list:
             combined_segments_list.append(segment_data["segments"])
-        merged_segments_list = self.merge_segment_data(combined_segments_list)
+
+        prefer_larger_segments = segment_gen_config_data.get(
+            'prefer_larger_segments')
+        merge_requirements = segment_gen_config_data.get('merge')
+        segment_data_merger_obj = SegmentDataMerger(
+            combined_segments_list, prefer_larger_segments)
+        merged_segments_list = segment_data_merger_obj.segment_data_merge(
+            merge_requirements)
+
+        # plot bbox
+        if segment_gen_config_data.get('plot_bbox_segments'):
+            self.__plot_segments(merged_segments_list,
+                                 out_file_full_path, "merged")
+
         segment_data_dict = {"technique": "merged",
                              "segments": merged_segments_list}
         segment_data_list.append(segment_data_dict)
@@ -187,155 +192,58 @@ class SegmentGenerator(infy_dpp_sdk.interface.IProcessor):
         print("...AFTER REPLACING...", template_file_data)
         return template_file_data
 
-    def merge_segment_data(self, segments_list_of_list: list) -> list:
-        try:
-            if len(segments_list_of_list) == 1:
-                return segments_list_of_list[0]
-            segment_data_list = []
-            i = 0
-            j = 0
-            list_one_length = len(segments_list_of_list[0])
-            list_two_length = len(segments_list_of_list[1])
-            count_one = 0
-            count_two = 0
-            counter = 0
-            while (True):
-                segment_data_one = segments_list_of_list[0][i]
-                page_detail_one = segment_data_one['page']
-                bbox_one = segment_data_one['content_bbox']
-                content_one = segment_data_one['content']
-
-                segment_data_two = segments_list_of_list[1][j]
-                page_detail_two = segment_data_two['page']
-                bbox_two = segment_data_two['content_bbox']
-                content_two = segment_data_two['content']
-
-                sd_last_element = len(segment_data_list) - 1
-
-                if (count_one == 0 and count_two == 0):
-                    if (page_detail_one == page_detail_two):
-                        if (bbox_one[1] <= bbox_two[1] and count_one == 0):
-                            if (i == (list_one_length - 1)):
-                                count_one = count_one + 1
-                            if (j == (list_two_length - 1)):
-                                count_two = count_two + 1
-
-                            if len(segment_data_list):
-                                last_element_data = segment_data_list[sd_last_element]
-                                last_element_bbox = last_element_data['content_bbox'][3]
-
-                                if (last_element_data['page'] < page_detail_one):
-                                    segment_data_list.append(segment_data_one)
-                                    if (i == list_one_length - 1):
-                                        count_one = count_one + 1
-                                elif (last_element_bbox < bbox_one[1] and content_one != ""):
-                                    if segment_data_one not in segment_data_list:
-                                        segment_data_list.append(
-                                            segment_data_one)
-                                        if (i == list_one_length - 1):
-                                            count_one = count_one + 1
-                            else:
-                                if (content_one != ""):
-                                    segment_data_list.append(segment_data_one)
-
-                            if (i < (list_one_length - 1)):
-                                i = i + 1
-                            elif (j < (list_two_length - 1)):
-                                j = j + 1
-
-                        else:
-                            if (i == (list_one_length - 1)):
-                                count_one = count_one + 1
-                            if (j == (list_two_length - 1)):
-                                count_two = count_two + 1
-
-                            if len(segment_data_list):
-                                last_element_data = segment_data_list[sd_last_element]
-                                last_element_bbox = last_element_data['content_bbox'][3]
-
-                                if (last_element_data['page'] < page_detail_two):
-                                    segment_data_list.append(segment_data_two)
-                                    if (j == (list_two_length - 1)):
-                                        count_two = count_two + 1
-                                elif (last_element_bbox < bbox_two[1] and content_two != ""):
-                                    if segment_data_two not in segment_data_list:
-                                        segment_data_list.append(
-                                            segment_data_two)
-                                        if (j == (list_two_length - 1)):
-                                            count_two = count_two + 1
-                            else:
-                                if (content_two != ""):
-                                    segment_data_list.append(segment_data_two)
-
-                            if (j < (list_two_length - 1)):
-                                j = j + 1
-                            elif (i < (list_one_length - 1)):
-                                i = i + 1
-
-                    elif (page_detail_one < page_detail_two):
-                        if len(segment_data_list):
-                            if (content_one != ""):
-                                if segment_data_one not in segment_data_list:
-                                    segment_data_list.append(segment_data_one)
-                        else:
-                            if (content_one != ""):
-                                segment_data_list.append(segment_data_one)
-
-                        if (i < (list_one_length - 1)):
-                            i = i + 1
-                        elif (j < (list_two_length - 1)):
-                            j = j + 1
-
-                    else:
-                        if len(segment_data_list):
-                            if (content_two != ""):
-                                if segment_data_two not in segment_data_list:
-                                    segment_data_list.append(segment_data_two)
-                        else:
-                            if (content_two != ""):
-                                segment_data_list.append(segment_data_two)
-
-                        if (j < (list_two_length - 1)):
-                            j = j + 1
-                        elif (i < (list_one_length - 1)):
-                            i = i + 1
-                elif (count_one != 0):
-                    if len(segment_data_list):
-                        last_element_data = segment_data_list[sd_last_element]
-                        last_element_bbox = last_element_data['content_bbox'][3]
-
-                        if (last_element_data['page'] < page_detail_two):
-                            segment_data_list.append(segment_data_two)
-                        elif (last_element_bbox < bbox_two[1] and content_two != ""):
-                            if segment_data_two not in segment_data_list:
-                                segment_data_list.append(segment_data_two)
-                    else:
-                        if (content_two != ""):
-                            segment_data_list.append(segment_data_two)
-
-                    if (j < (list_two_length - 1)):
-                        j = j + 1
-                elif (count_two != 0):
-                    if len(segment_data_list):
-                        last_element_data = segment_data_list[sd_last_element]
-                        last_element_bbox = last_element_data['content_bbox'][3]
-
-                        if (last_element_data['page'] < page_detail_one):
-                            segment_data_list.append(segment_data_one)
-                        elif (last_element_bbox < bbox_one[1] and content_one != ""):
-                            if segment_data_one not in segment_data_list:
-                                segment_data_list.append(segment_data_one)
-                    else:
-                        if (content_one != ""):
-                            segment_data_list.append(segment_data_one)
-
-                    if (i < (list_one_length - 1)):
-                        i = i + 1
-                if (i == (list_one_length - 1) and j == (list_two_length - 1)):
-                    counter = counter + 1
-                    if counter > 1:
-                        break
-        except Exception as ex:
-            self.__logger.debug(
-                f'....Exception in merge_segment_data : {ex}....')
+    def get_segment_data_from_text(self, text_file_path):
+        '''getting segment data from text file'''
+        segment_data_list = []
+        with open(text_file_path, 'r',encoding='utf-8') as file:
+            text = file.read()
+            paragraphs = text.split('\n')  
+            for i, paragraph in enumerate(paragraphs):
+                if paragraph.strip() != '':  
+                    segment_data = {}
+                    segment_data["content_type"] = "paragraph"
+                    segment_data["content"] = paragraph
+                    segment_data["bbox_format"] = "X1,Y1,X2,Y2"
+                    segment_data["content_bbox"] = []
+                    segment_data["confidence_pct"] = -1
+                    segment_data["page"] = 1
+                    segment_data["sequence"] = -1  
+                    segment_data_list.append(segment_data)
         return segment_data_list
+
+    def __plot_segments(self, segment_data_list, out_file_full_path, extraction_technique):
+        def __insert_list(segment_data_list: list, page_number: int):
+            page_list = []
+            for item in segment_data_list:
+                if (item['page'] == page_number):
+                    page_list.append(item)
+            return page_list
+
+        def __draw_bbox(image_file_path: str, tokens: list):
+            img_path = image_file_path
+            file_extension = os.path.splitext(img_path)[-1]
+            FileUtil.create_dirs_if_absent(
+                f'{os.path.dirname(img_path)}/segment_data')
+            bbox_img_file_path = f'{os.path.dirname(img_path)}/segment_data/{os.path.basename(img_path)}_{extraction_technique}_bbox{file_extension}'
+
+            image_bbox = cv2.imread(img_path)
+            token_bbox_list = [x['content_bbox'] for x in tokens]
+
+            if token_bbox_list:
+                for idx, bbox in enumerate(token_bbox_list):
+                    start, end = (bbox[0], bbox[1]), (bbox[2], bbox[3])
+                    cv2.rectangle(image_bbox, start, end, (0, 0, 255), 2)
+                    cv2.putText(image_bbox, f"{start},{end}", (
+                        start[0], start[1]-10), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (0, 0, 255), 2)
+
+            cv2.imwrite(bbox_img_file_path, image_bbox)
+            return bbox_img_file_path
+
+        page_segment_list = []
+        img_file_path_list = [os.path.join(out_file_full_path, file) for file in os.listdir(
+            out_file_full_path) if file.endswith('.jpg')]
+        for page_number in range(1, len(img_file_path_list)+1):
+            group_list = __insert_list(segment_data_list, page_number)
+            page_segment_list.append(group_list)
+        for index, image_path in enumerate(img_file_path_list):
+            __draw_bbox(image_path, page_segment_list[index])

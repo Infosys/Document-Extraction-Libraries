@@ -1,0 +1,19 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+pytest = "==6.2.5"
+pytest-cov = "==2.12.1"
+autopep8 = "==1.5.1"
+infy_gen_ai_sdk={path="./lib/infy_gen_ai_sdk-0.0.2-py3-none-any.whl"}
+infy_dpp_sdk = {path = "./lib/infy_dpp_sdk-0.0.8-py3-none-any.whl"}
+infy_fs_utils = {path = "./lib/infy_fs_utils-0.0.2-py3-none-any.whl"}
+
+
+[packages]
+requests = "==2.31.0"
+
+[requires]
+python_version = "3"

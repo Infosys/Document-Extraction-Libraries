@@ -1,5 +1,5 @@
 # ===============================================================================================================#
-# Copyright 2023 Infosys Ltd.                                                                                    #
+# Copyright 2023 Infosys Ltd.                                                                                   #
 # Use of this source code is governed by Apache License Version 2.0 that can be found in the LICENSE file or at  #
 # http://www.apache.org/licenses/                                                                                #
 # ===============================================================================================================#
@@ -25,7 +25,8 @@ class PythonEnvUtil:
     @staticmethod
     def get_env_python_version():
         '''Get python version from current environment'''
-        _python_version_patch = sys.version.split(' ')[0]  # E.g. XX.YY.ZZ
+        _python_version_patch = sys.version.split(
+            ' ', maxsplit=1)[0]  # E.g. XX.YY.ZZ
         _python_version_minor = ".".join(
             _python_version_patch.split('.')[:2])  # E.g XX.YY
         return _python_version_minor, _python_version_patch
@@ -37,28 +38,12 @@ class PipfileUtil:
     def get_pip_file_path():
         '''Get pipfile path from CLI or return default'''
         return './Pipfile'
-        script_file_path = os.path.abspath(sys.argv[0])
-        script_dir_path = os.path.dirname(
-            script_file_path) if os.path.exists(script_file_path) else '.'
-        _python_version_minor, _ = PythonEnvUtil.get_env_python_version()
-        # _pipfile_path = './Pipfile'
-        _pipfile_path = f"{script_dir_path}/Pipfile_v{_python_version_minor.replace('.','')}"
-        KEY_PIPFILE_PATH = "--pipfilepath"
-        if KEY_PIPFILE_PATH in sys.argv:
-            value_index = sys.argv.index(KEY_PIPFILE_PATH)+1
-            if value_index < len(sys.argv):
-                _pipfile_path = sys.argv[value_index]
-                print('Found pipfile path in CLI args =>', _pipfile_path)
-                # Remove the args after reading to prevent setup() error
-                sys.argv.pop(value_index-1)
-                sys.argv.pop(value_index-1)
-        return _pipfile_path
 
     @staticmethod
     def extract_python_version(pipfile_path):
         '''Get python version from Pipfile'''
         KEY_PYTHON_VERSION = "python_version"
-        with open(pipfile_path) as read_pipfile:
+        with open(pipfile_path, encoding="utf-8") as read_pipfile:
             value_list = list(line for line in (l.strip()
                                                 for l in read_pipfile) if line.startswith(KEY_PYTHON_VERSION))
         _python_version_minor = value_list[0].split(
@@ -68,32 +53,104 @@ class PipfileUtil:
     @staticmethod
     def extract_pkg_versions(pipfile_path):
         '''Get dependencies from Pipfile'''
-        with open(pipfile_path) as read_pipfile:
+        IDENTIFIER_GROUPS = "#[groups="
+        with open(pipfile_path, encoding="utf-8") as read_pipfile:
             nonempty_line_list = list(line for line in (l.strip()
                                                         for l in read_pipfile) if line)
         line_list = []
         copy = False
         for line in nonempty_line_list:
-            if line.strip() == "[packages]":
+            line = line.strip()
+            if line == "[packages]":
                 copy = True
                 continue
-            elif line.strip() == "[requires]":
+            elif line.startswith("["):
                 copy = False
                 continue
             elif copy:
-                if not line.startswith("#"):
+                if not line.startswith("#") and not IDENTIFIER_GROUPS in line:
                     line_list.append(line.rstrip())
 
         res = [x for x in line_list if '.whl' not in x]
         res = [x for x in res if 'docwblibs' not in x]
 
-        pkg_line_list = [x.replace('=', '', 1).replace('"', '') if 'win32' not in x
-                         else x.replace(" ", "").replace('{version=', '')
-                         .replace('}', '').replace("=", "", 1)
-                         .replace(',sys_platform=', ' ;sys_platform')
-                         .replace('"', '')
-                         for x in res]
+        pkg_line_list = [PipfileUtil.convert_to_pip_format(x) for x in res]
         return pkg_line_list
+
+    @staticmethod
+    def convert_to_pip_format(pipfile_format):
+        '''Convert package name from Pipfile format to pip format'''
+        new_format = pipfile_format
+        if 'win32' not in new_format:
+            new_format = new_format.replace(
+                '=', '', 1).replace('"', '').replace(' ', '')
+        else:
+            new_format = new_format.replace(" ", "")
+            new_format = new_format.replace('{version=', '')
+            new_format = new_format.replace('}', '')
+            new_format = new_format.replace("=", "", 1)
+            new_format = new_format.replace(',sys_platform=', ';sys_platform')
+            new_format = new_format.replace('"', '')
+            new_format = new_format.replace(' ', '')
+            new_format = new_format.replace("*", "")
+        return new_format
+
+    @staticmethod
+    def extract_package_dir(root_dir_path):
+        """Returns nested wheel file package dir to local dir pair as dict"""
+
+        # Get all subfolders recursively
+        my_list = [x[0] for x in os.walk(root_dir_path)]
+        # Get relative path
+        my_list = [os.path.relpath(x, root_dir_path) for x in my_list]
+        # Remove any folder not inside src folder
+        my_list = [x for x in my_list if x.startswith('src\\')]
+        # Replace \ with /
+        my_list = [x.replace('\\', '/') for x in my_list]
+        # Remove autogenerated folders (ending with __)
+        my_list = [x for x in my_list if not x.endswith('__')]
+
+        # _ = [print(x) for x in my_list]
+
+        my_dict = {x[len('src/'):]: x for x in my_list}
+        return my_dict
+
+    @staticmethod
+    def extract_extras_versions(pipfile_path):
+        '''Get extras dependencies from Pipfile which are installed only on demand'''
+        IDENTIFIER_GROUPS = "#[groups="
+        GROUP_ALL = "all"
+        with open(pipfile_path, encoding="utf-8") as read_pipfile:
+            nonempty_line_list = list(line for line in (l.strip()
+                                                        for l in read_pipfile) if line)
+        line_list = []
+        extras_name = None
+        for line in nonempty_line_list:
+            line = line.strip()
+            # E.g. #[groups=native,cloud]
+            if IDENTIFIER_GROUPS in line:
+                temp = line.split(IDENTIFIER_GROUPS)
+                package_name, group_names = temp[0].strip(
+                ), temp[1].strip().split(',')
+                for group_name in group_names:
+                    group_name = group_name.strip().replace(
+                        ']', '').replace('[', '')
+                    line_list.append([group_name, package_name])
+                line_list.append([GROUP_ALL, package_name])
+
+        res = [x for x in line_list if '.whl' not in x[1]]
+        res = [x for x in res if 'docwblibs' not in x[1]]
+
+        extras_name_list = list(dict.fromkeys([x[0] for x in res]))
+        extras_dict = {}
+        for extras_name in extras_name_list:
+            res1 = [x[1] for x in res if x[0] == extras_name]
+            extras_dict[extras_name] = [
+                PipfileUtil.convert_to_pip_format(x) for x in res1]
+        extra_all_list = []
+        for v in extras_dict.values():
+            extra_all_list += v
+        return extras_dict
 
 
 if __name__ == '__main__':
@@ -106,35 +163,34 @@ if __name__ == '__main__':
 
     METADATA = dict(
         name="infy_dpp_sdk",
-        version="0.0.5",
+        version="0.0.8",
         license="Apache License Version 2.0",
         author="Infosys Limited",
         author_email="",
-        description="Infosys document extraction SDK",
+        description="Infosys document processor platform SDK",
         long_description="",
         long_description_content_type="text/markdown",
         url="",
-        package_dir={'infy_dpp_sdk': 'src/infy_dpp_sdk',
-                     'infy_dpp_sdk/interface': 'src/infy_dpp_sdk/interface',
-                     'infy_dpp_sdk/data': 'src/infy_dpp_sdk/data',
-                     'infy_dpp_sdk/common': 'src/infy_dpp_sdk/common',
-                     'infy_dpp_sdk/cli_controller': 'src/infy_dpp_sdk/cli_controller',
-                     'infy_dpp_sdk/orchestrator/common': 'src/infy_dpp_sdk/orchestrator/common',
-                     'infy_dpp_sdk/orchestrator/controller': 'src/infy_dpp_sdk/orchestrator/controller'},
+        package_dir=PipfileUtil.extract_package_dir('.'),
         packages=find_packages(where='src'),
+        package_data={
+            # If any package contains *.ini files, include them:
+            '': ['*.ini'],
+        },
         install_requires=PipfileUtil().extract_pkg_versions(pip_file_path),
+        extras_require=PipfileUtil().extract_extras_versions(pip_file_path),
         include_package_data=True,
         classifiers=[
             "Programming Language :: Python",
             "Programming Language :: Python :: 3",
-            "Programming Language :: Python :: 3.6",
             "Programming Language :: Python :: 3.8",
+            "Programming Language :: Python :: 3.9",
             "Programming Language :: Python :: 3.10",
             "Programming Language :: Python :: 3 :: Only",
             "License :: Apache License Version 2.0",
             "Operating System :: OS Independent",
         ],
-        python_requires='>=3.6.2',
+        python_requires='>=3.8.0',
 
     )
     print('*******************************')

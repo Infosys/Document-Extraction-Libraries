@@ -1,11 +1,12 @@
 # ===============================================================================================================#
-# Copyright 2023 Infosys Ltd.                                                                                    #
+# Copyright 2023 Infosys Ltd.                                                                                   #
 # Use of this source code is governed by Apache License Version 2.0 that can be found in the LICENSE file or at  #
 # http://www.apache.org/licenses/                                                                                #
 # ===============================================================================================================#
 
 import os
 import time
+
 
 from infy_ocr_parser import ocr_parser
 from infy_ocr_parser.providers.tesseract_ocr_data_service_provider \
@@ -25,28 +26,28 @@ from infy_ocr_generator.providers.apache_pdfbox_data_service_provider \
 from infy_dpp_segmentation.segment_generator.service.image_generator_service import ImageGeneratorService
 from infy_dpp_segmentation.segment_generator.service.segment_generator_service import SegmentGeneratorService
 from infy_dpp_segmentation.common.app_constant import OcrType
-from infy_dpp_segmentation.common.file_system_manager import FileSystemManager
-from infy_dpp_segmentation.common.app_config_manager import AppConfigManager
-from infy_dpp_segmentation.common.logger_factory import LoggerFactory
-
+import infy_dpp_sdk
+import infy_fs_utils
 
 class OcrBasedSegmentGenerator:
     """Ocr based segment generator class
     """
 
     def __init__(self, text_provider_dict: dict, model_provider_dict: dict) -> None:
-        self.__logger = LoggerFactory().get_logger()
-        self.__app_config = AppConfigManager().get_app_config()
-        self.__file_sys_handler = FileSystemManager().get_file_system_handler()
+        # self.__logger = LoggerFactory().get_logger()
+        self.__logger = infy_fs_utils.manager.FileSystemLoggingManager().get_fs_logging_handler(infy_dpp_sdk.common.Constants.FSLH_DPP).get_logger()
+        self.__app_config = infy_dpp_sdk.common.AppConfigManager().get_app_config()
+        self.__file_sys_handler = infy_fs_utils.manager.FileSystemManager(
+                                    ).get_fs_handler(infy_dpp_sdk.common.Constants.FSH_DPP)
 
         # self.__config_data = config_data.get('ocr_based', {})
         self.__model_provider_dict = model_provider_dict
         self.__text_provider_dict = text_provider_dict
         self.__converter_path = self.__text_provider_dict.get(
             'properties').get('format_converter_home', '')
-        # if self.__converter_path == '':
-        #     raise Exception(
-        #         'Format converter path is not configured in the config file')
+        if self.__converter_path == '':
+            raise Exception(
+                'Format converter path is not configured in the config file')
         self.__pytesseract_path = self.__text_provider_dict.get(
             'properties').get('tesseract_path', '')
         self._org_file_path = None
@@ -55,10 +56,7 @@ class OcrBasedSegmentGenerator:
         """getting segment data"""
         self._org_file_path = from_files_full_path
         self.__doc_extension = os.path.splitext(
-            self._org_file_path)[1].lower()
-        if self.__doc_extension == '.pdf':
-            raise NotImplementedError(
-                'PDF file processing is not supported in this version')
+                self._org_file_path)[1].lower()
         # pdf to image
         config_data_dict = {
             "format_converter": {
@@ -69,21 +67,19 @@ class OcrBasedSegmentGenerator:
             },
             "format_converter_home": self.__converter_path
         }
-
+        
         image_generator_service_obj = ImageGeneratorService()
         if self.__doc_extension == '.pdf':
             self.__logger.info('...PDF to JPG conversion started...')
             # images_path_list, _ = image_generator_service_obj.convert_pdf_to_image(
             #     os.path.abspath(self._org_file_path), config_data_dict)
-        elif self.__doc_extension in ['.jpg', '.png', '.jpeg']:
-            self.__logger.info('...IMG to JPG conversion started...')
+        elif self.__doc_extension in  ['.jpg','.png','.jpeg']:
+            self.__logger.info('...IMG to JPG conversion started...')    
             images_path_list, _ = image_generator_service_obj.convert_img_to_jpg(
                 os.path.abspath(self._org_file_path), config_data_dict)
         else:
-            self.__logger.error(
-                f'{self.__doc_extension} is not supported in OCR Segment generation')
-            raise Exception(
-                f'{self.__doc_extension} is not supported in OCR Segment generation')
+            self.__logger.error(f'{self.__doc_extension} is not supported in OCR Segment generation')
+            raise Exception(f'{self.__doc_extension} is not supported in OCR Segment generation')    
         # ocr generator
         self.__logger.info('...OCR generation started...')
         ocr_files_path_list = self.generate_ocr(
@@ -95,7 +91,7 @@ class OcrBasedSegmentGenerator:
                 self.__model_provider_dict.get('properties'))
             segment_data_list = sg_ser_obj.get_segment_data(images_path_list)
         else:
-            segment_data_list = []
+            segment_data_list = []    
         # ocr parser  = object
         self.__logger.info('...OCR parsing started...')
         combined_segment_data_list = self.get_content_from_bbox(
@@ -234,33 +230,33 @@ class OcrBasedSegmentGenerator:
                             segment_data["bbox_format"] = "X1,Y1,X2,Y2"
                             content_bbox = segment_data.get('content_bbox')
                             within_bbox = [content_bbox[0], content_bbox[1],
-                                           content_bbox[2]-content_bbox[0],
-                                           content_bbox[3]-content_bbox[1]]
+                                        content_bbox[2]-content_bbox[0],
+                                        content_bbox[3]-content_bbox[1]]
                             phrases_dict_list = ocr_obj.get_tokens_from_ocr(
                                 token_type_value=token_type_value, within_bbox=within_bbox,
                                 pages=[int(page_no)], scaling_factor={'hor': 1, 'ver': 1})
-                            # TODO:line separtaer will be added.
+                        # TODO:line separtaer will be added.
                             segment_data['content'] = ' '.join([phrase_dict.get('text')
                                                                 for phrase_dict in phrases_dict_list])
                             if segment_data['content'].strip() != '':
                                 updated_segment_data_list.append(segment_data)
             else:
                 lines_dict_list = ocr_obj.get_tokens_from_ocr(
-                    token_type_value=token_type_value)
+                                token_type_value=token_type_value)
                 for token in lines_dict_list:
                     if token["text"].strip() != '':
-                        segment_data = {}
-                        segment_data["content_type"] = "line"
-                        segment_data["content"] = token["text"]
-                        segment_data["bbox_format"] = "X1,Y1,X2,Y2"
-                        segment_data["content_bbox"] = [token["bbox"][0], token["bbox"][1],
-                                                        token["bbox"][0] +
-                                                        token["bbox"][2],
-                                                        token["bbox"][1]+token["bbox"][3]]
-                        segment_data["confidence_pct"] = -1
-                        segment_data["page"] = int(page_no)
-                        segment_data["sequence"] = -1
-                        updated_segment_data_list.append(segment_data)
+                            segment_data = {}
+                            segment_data["content_type"] = "line"
+                            segment_data["content"] = token["text"]
+                            segment_data["bbox_format"] = "X1,Y1,X2,Y2"
+                            segment_data["content_bbox"] = [token["bbox"][0],token["bbox"][1],
+                                                            token["bbox"][0]+token["bbox"][2],
+                                                            token["bbox"][1]+token["bbox"][3]]
+                            segment_data["confidence_pct"] = -1
+                            segment_data["page"] = int(page_no)
+                            segment_data["sequence"] = -1
+                            updated_segment_data_list.append(segment_data)
+
         return updated_segment_data_list
 
     def __init_data_service_provider_objects(self, provider_settings, out_file_full_path):

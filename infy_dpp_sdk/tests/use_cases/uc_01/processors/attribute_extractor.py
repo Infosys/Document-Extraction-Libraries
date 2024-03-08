@@ -1,5 +1,5 @@
 # ===============================================================================================================#
-# Copyright 2023 Infosys Ltd.                                                                                    #
+# Copyright 2023 Infosys Ltd.                                                                                   #
 # Use of this source code is governed by Apache License Version 2.0 that can be found in the LICENSE file or at  #
 # http://www.apache.org/licenses/                                                                                #
 # ===============================================================================================================#
@@ -29,6 +29,8 @@ class AttributeExtractorV1(infy_dpp_sdk.interface.IProcessor):
 
     def do_execute(self, document_data: infy_dpp_sdk.data.DocumentData,
                    context_data: dict, config_data: dict) -> infy_dpp_sdk.data.ProcessorResponseData:
+        logger = self.get_logger()
+        logger.debug("Entering")
         config_data = config_data.get("AttributeExtractor")
 
         processor_response_data = infy_dpp_sdk.data.ProcessorResponseData()
@@ -65,4 +67,5 @@ class AttributeExtractorV1(infy_dpp_sdk.interface.IProcessor):
         processor_response_data.document_data = document_data
         processor_response_data.context_data = context_data
 
+        logger.debug("Exiting")
         return processor_response_data

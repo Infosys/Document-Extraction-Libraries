@@ -1,5 +1,5 @@
 # ===============================================================================================================#
-# Copyright 2023 Infosys Ltd.                                                                                    #
+# Copyright 2022 Infosys Ltd.                                                                                   #
 # Use of this source code is governed by Apache License Version 2.0 that can be found in the LICENSE file or at  #
 # http://www.apache.org/licenses/                                                                                #
 # ===============================================================================================================#
@@ -8,6 +8,8 @@ import mimetypes
 import os
 import pathlib
 from datetime import datetime
+import infy_fs_utils
+from ..common import Constants
 
 from pydantic import BaseModel, ValidationError, validator
 
@@ -36,6 +38,9 @@ class StandardData(BaseModel):
         filepath_val = values['filepath'].value
         if not v:
             try:
+                # fs_handler: infy_fs_utils.interface.IFileSystemHandler = infy_fs_utils.manager.FileSystemManager().get_fs_handler(
+                #     Constants.FSH_DPP)
+                # file_info = fs_handler.get_info(filepath_val)
                 return ValueData(value=(os.path.basename(filepath_val)))
             except:
                 return v
@@ -59,8 +64,11 @@ class StandardData(BaseModel):
         filepath_val = values['filepath'].value
         if not v:
             try:
-                return ValueData(value=(datetime.fromtimestamp(pathlib.Path(
-                    filepath_val).stat().st_ctime).strftime('%Y-%m-%d %H:%M:%S')))
+                fs_handler: infy_fs_utils.interface.IFileSystemHandler = infy_fs_utils.manager.FileSystemManager().get_fs_handler(
+                    Constants.FSH_DPP)
+                file_info = fs_handler.get_info(filepath_val)
+
+                return ValueData(value=(datetime.fromtimestamp(file_info['created']).strftime('%Y-%m-%d %H:%M:%S')))
             except:
                 return v
         else:
@@ -71,8 +79,10 @@ class StandardData(BaseModel):
         filepath_val = values['filepath'].value
         if not v:
             try:
-                return ValueData(value=(datetime.fromtimestamp(pathlib.Path(
-                    filepath_val).stat().st_mtime).strftime('%Y-%m-%d %H:%M:%S')))
+                fs_handler: infy_fs_utils.interface.IFileSystemHandler = infy_fs_utils.manager.FileSystemManager().get_fs_handler(
+                    Constants.FSH_DPP)
+                file_info = fs_handler.get_info(filepath_val)
+                return ValueData(value=(datetime.fromtimestamp(file_info['mtime']).strftime('%Y-%m-%d %H:%M:%S')))
             except:
                 return v
         else:
@@ -91,7 +101,12 @@ class StandardData(BaseModel):
 
     @ classmethod
     def __get_file_size_in_human_readable(cls, file_path: str) -> str:
-        size_in_bytes = os.path.getsize(file_path)
+        fs_handler: infy_fs_utils.interface.IFileSystemHandler = infy_fs_utils.manager.FileSystemManager().get_fs_handler(
+            Constants.FSH_DPP)
+        file_info = fs_handler.get_info(file_path)
+
+        # size_in_bytes = os.path.getsize(file_path)
+        size_in_bytes = file_info['size']
         if size_in_bytes == 0:
             return "0"
         size_name = ("B", "KB", "MB", "GB")

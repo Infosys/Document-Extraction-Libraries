@@ -1,7 +1,7 @@
 # ===============================================================================================================#
-# Copyright 2021 Infosys Ltd.
-# Use of this source code is governed by Apache License Version 2.0 that can be found in the LICENSE file or at
-# http://www.apache.org/licenses/                                                  #
+# Copyright 2021 Infosys Ltd.                                                                                   #
+# Use of this source code is governed by Apache License Version 2.0 that can be found in the LICENSE file or at  #
+# http://www.apache.org/licenses/                                                                                #
 # ===============================================================================================================#
 
 
@@ -17,8 +17,6 @@ from infy_field_extractor.providers.ocr_data_service_provider import OcrDataServ
 
 def __create_new_instance():
     temp_folderpath = os.path.abspath('./data/temp/')
-    if not os.path.exists(temp_folderpath):
-        os.makedirs(temp_folderpath)
     hocr_file = './data/sample_1.png.hocr'
     ocr_parser_object = ocr_parser.OcrParser(
         [hocr_file], TesseractOcrDataServiceProvider())

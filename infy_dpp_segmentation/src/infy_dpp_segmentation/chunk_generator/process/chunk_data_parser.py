@@ -1,5 +1,5 @@
 # ===============================================================================================================#
-# Copyright 2023 Infosys Ltd.                                                                                    #
+# Copyright 2023 Infosys Ltd.                                                                                   #
 # Use of this source code is governed by Apache License Version 2.0 that can be found in the LICENSE file or at  #
 # http://www.apache.org/licenses/                                                                                #
 # ===============================================================================================================#
@@ -14,10 +14,11 @@ PROCESSEOR_CONTEXT_DATA_NAME = "chunk_data_parser"
 
 class ChunkDataParser(infy_dpp_sdk.interface.IProcessor):
     def __init__(self):
-        self._processor_response_data = ProcessorResponseData()
+        pass
 
     def do_execute(self, document_data: DocumentData, context_data: dict, config_data: dict) -> ProcessorResponseData:
         chunking_data_obj = ChunkingData()
+        processor_response_data = ProcessorResponseData()
         context_data = context_data if context_data else {}
         processor_config_data = config_data['ChunkDataParser']
         processor_data = {
@@ -37,8 +38,10 @@ class ChunkDataParser(infy_dpp_sdk.interface.IProcessor):
         chunking_method = processor_config_data['chunking_method']
         exclude_types_list = processor_config_data.get('exclude', [])
         doc_name = document_data.metadata.standard_data.filename.value
+        document_id=document_data.document_id
         # updating doc name in segment data
-        _ = [i.update({'doc_name': doc_name})
+        _ = [i.update({'doc_name': doc_name,
+                       'document_id':document_id})
              for i in cleaned_segment_data_list]
         merged_title_paragraph = processor_config_data.get(
             'merge_title_paragraph', False)
@@ -56,10 +59,10 @@ class ChunkDataParser(infy_dpp_sdk.interface.IProcessor):
                                                       "meta_data": meta_data_dict}
 
         # Populate response data
-        self._processor_response_data.document_data = document_data
-        self._processor_response_data.context_data = context_data
+        processor_response_data.document_data = document_data
+        processor_response_data.context_data = context_data
 
-        return self._processor_response_data
+        return processor_response_data
 
     def lookp_up_page(self, total_pages, page_list):
         pages = []

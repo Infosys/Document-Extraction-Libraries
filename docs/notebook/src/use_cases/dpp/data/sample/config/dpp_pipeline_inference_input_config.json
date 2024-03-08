@@ -1,0 +1,302 @@
+{
+    "name": "pipeline2",
+    "description": "Sample 4-processor-pipeline configuration for integration testing",
+    "variables": {
+        "DPP_SYS_PIPELINE_REQ_FILE_PATH": "<value will be auto updated>",
+        "DPP_SYS_PIPELINE_INPUT_CONFIG_PATH": "<value will be auto updated>",
+        "DPP_STORAGE_ROOT_URI": "file://D:/STORAGE",
+        "DPP_STORAGE_SERVER_URL": "",
+        "DPP_STORAGE_ACCESS_KEY": "",
+        "DPP_STORAGE_SECRET_KEY": ""
+    },
+    "processor_list": [
+        {
+            "enabled": true,
+            "processor_name": "request_creator",
+            "processor_namespace": "infy_dpp_core.request_creator",
+            "processor_class_name": "RequestCreator",
+            "processor_input_config_name_list": [
+                "RequestCreator"
+            ]
+        },
+        {
+            "enabled": true,
+            "processor_name": "document_data_saver",
+            "processor_namespace": "infy_dpp_core.document_data_saver",
+            "processor_class_name": "DocumentDataSaver",
+            "processor_input_config_name_list": [
+                "DocumentDataSaver"
+            ]
+        },
+        {
+            "enabled": true,
+            "processor_name": "retriever",
+            "processor_namespace": "infy_dpp_ai.retriever.process.query_retriever_processor",
+            "processor_class_name": "QueryRetriever",
+            "processor_input_config_name_list": [
+                "QueryRetriever"
+            ]
+        },
+        {
+            "enabled": true,
+            "processor_name": "document_data_saver",
+            "processor_namespace": "infy_dpp_core.document_data_saver",
+            "processor_class_name": "DocumentDataSaver",
+            "processor_input_config_name_list": [
+                "DocumentDataSaver"
+            ]
+        },
+        {
+            "enabled": true,
+            "processor_name": "reader",
+            "processor_namespace": "infy_dpp_ai.reader.process.reader_processor",
+            "processor_class_name": "Reader",
+            "processor_input_config_name_list": [
+                "Reader"
+            ]
+        },
+        {
+            "enabled": true,
+            "processor_name": "document_data_saver",
+            "processor_namespace": "infy_dpp_core.document_data_saver",
+            "processor_class_name": "DocumentDataSaver",
+            "processor_input_config_name_list": [
+                "DocumentDataSaver"
+            ]
+        },
+        {
+            "enabled": true,
+            "processor_name": "request_closer",
+            "processor_namespace": "infy_dpp_core.request_closer",
+            "processor_class_name": "RequestCloser",
+            "processor_input_config_name_list": [
+                "RequestCloser"
+            ]
+        },
+        {
+            "enabled": true,
+            "processor_name": "document_data_saver",
+            "processor_namespace": "infy_dpp_core.document_data_saver",
+            "processor_class_name": "DocumentDataSaver",
+            "processor_input_config_name_list": [
+                "DocumentDataSaver"
+            ]
+        }
+    ],
+    "processor_input_config": {
+        "RequestCreator": {
+            "from_data_file": {
+                "enabled": false,
+                "read_path": "/data/input/",
+                "batch_size": 20,
+                "filter": {
+                    "include": [
+                        "pdf",
+                        "json"
+                    ],
+                    "exclude": [
+                        "_"
+                    ]
+                },
+                "work_root_path": "/data/work/",
+                "to_request_file": {
+                    "save_path": "/data/work/request/indexer/start"
+                }
+            },
+            "from_request_file": {
+                "enabled": true,
+                "read_path": "/data/work/request/indexer/complete",
+                "save_path": "/data/work/request/inference/start"
+            }
+        },
+        "RequestCloser": {
+            "work_root_path": "/data/work/",
+            "data_file": {
+                "output_root_path": ""
+            },
+            "output_root_path": "/data/output/",
+            "from_request_file": {
+                "read_path": "/data/work/request/inference/start",
+                "save_path": "/data/work/request/inference/complete"
+            }
+        },
+        "DocumentDataSaver": {
+            "work_root_path": "/data/work/"
+        },
+        "DocumentDataUpdater": {
+            "config_data": [
+                {
+                    "enabled": true,
+                    "json_path": "$.context_data.reader.output[*].model_output.sources[*]",
+                    "json_key": "bbox",
+                    "replace_key_enabled": false,
+                    "replace_with_key": "",
+                    "replace_with_value": "",
+                    "replace_value_enabled": false,
+                    "replace_value_with_rule_name": "rule_cus_001_transform_bbox_value"
+                }
+            ]
+        },
+        "QueryRetriever": {
+            "embedding": {
+                "openai-text-davinci-003": {
+                    "enabled": false,
+                    "configuration": {
+                        "api_type": "azure",
+                        "api_version": "2022-12-01",
+                        "api_url": "",
+                        "api_key": "",
+                        "chunk_size": 1000
+                    }
+                },
+                "sentence_transformer": {
+                    "enabled": true,
+                    "configuration": {
+                        "api_url": "",
+                        "model_name": "all-MiniLM-L6-v2"
+                    }
+                }
+            },
+            "storage": {
+                "faiss": {
+                    "enabled": true,
+                    "configuration": {
+                        "chunked_files_root_path": "/data/vectordb/chunked",
+                        "encoded_files_root_path": "/data/vectordb/encoded",
+                        "db_name": "documents"
+                    }
+                }
+            },
+            "queries": [
+                {
+                    "attribute_key": "women_emp_pct",
+                    "question": "What is the percentage of women employees?",
+                    "top_k": 1,
+                    "pre_filter_fetch_k": 10,
+                    "filter_metadata": {}
+                },
+                {
+                    "attribute_key": "financial_year",
+                    "question": "What is the financial year of this report?",
+                    "top_k": 1,
+                    "pre_filter_fetch_k": 10,
+                    "filter_metadata": {}
+                },
+                {
+                    "attribute_key": "revenue_amt",
+                    "question": "What is the Revenue amount of this year?",
+                    "top_k": 1,
+                    "pre_filter_fetch_k": 10,
+                    "filter_metadata": {}
+                },
+                {
+                    "attribute_key": "business_rank",
+                    "question": "What is the rank of infosys?",
+                    "top_k": 1,
+                    "pre_filter_fetch_k": 10,
+                    "filter_metadata": {}
+                }
+            ]
+        },
+        "Reader": {
+            "storage": {
+                "faiss": {
+                    "enabled": true,
+                    "configuration": {
+                        "chunked_files_root_path": "/data/vectordb/chunked",
+                        "encoded_files_root_path": "/data/vectordb/encoded",
+                        "db_name": "documents"
+                    }
+                }
+            },
+            "llm": {
+                "openai-text-davinci-003": {
+                    "enabled": false,
+                    "configuration": {
+                        "api_type": "azure",
+                        "api_version": "2022-12-01",
+                        "api_url": "",
+                        "api_key": "",
+                        "max_tokens": 1000,
+                        "model_name": "text-davinci-003",
+                        "deployment_name": "text-davinci-003",
+                        "temperature": 0.7,
+                        "tiktoken_cache_dir": "C:/DPP/infy_libraries_client/CONTAINER/ML/tiktoken_encoding"
+                    },
+                    "cache": {
+                        "enabled": true,
+                        "cache_root_path": "/data/cache/infy_model_service"
+                    }
+                },
+                "llama2-7b": {
+                    "enabled": true,
+                    "configuration": {
+                        "inference_url": "",
+                        "max_new_tokens": 4096,
+                        "tiktoken_cache_dir": "C:/DPP/infy_libraries_client/CONTAINER/ML/tiktoken_encoding",
+                        "temperature": 1
+                    }
+                },
+                "bloom-7b1": {
+                    "enabled": false,
+                    "configuration": {
+                        "inference_url": "",
+                        "max_new_tokens": 4096,
+                        "tiktoken_cache_dir": "C:/DPP/infy_libraries_client/CONTAINER/ML/tiktoken_encoding",
+                        "temperature": 1
+                    }
+                }
+            },
+            "named_context_templates": {
+                "context_default": "{chunk_text}",
+                "context_1": "[chunk_id={chunk_id},page_no={page_no},sequence_no={sequence_no},bbox={bbox},doc_name={doc_name}]\n{chunk_text}\n",
+                "context_2": "[chunk_id={chunk_id},page_no={page_no},sequence_no={sequence_no}]\n{chunk_text}\n"
+            },
+            "named_prompt_templates": {
+                "prompt_template_1": {
+                    "content": [
+                        "Use the following pieces of context to answer the question at the end.",
+                        "If you don't know the answer or even doubtful a bit, just say that you don't know,",
+                        " don't try to make up an answer.Just give the shortest and most appropriate relavant answer to the question.",
+                        "{context}",
+                        "Question: {question}",
+                        "Helpful Answer:"
+                    ],
+                    "context_template": "context_default"
+                },
+                "extractor_attribute_prompt": {
+                    "content": [],
+                    "file_path": "/data/config/prompt_templates/extractor_attribute_prompt.txt",
+                    "context_template": "context_1"
+                },
+                "extractor_attribute_prompt_2": {
+                    "content": [],
+                    "file_path": "/data/config/prompt_templates/extractor_attribute_prompt_2.txt",
+                    "context_template": "context_2"
+                }
+            },
+            "inputs": [
+                {
+                    "attribute_key": "women_emp_pct",
+                    "prompt_template": "extractor_attribute_prompt_2",
+                    "model_type": "QnA"
+                },
+                {
+                    "attribute_key": "financial_year",
+                    "prompt_template": "extractor_attribute_prompt_2",
+                    "model_type": "QnA"
+                },
+                {
+                    "attribute_key": "revenue_amt",
+                    "prompt_template": "extractor_attribute_prompt_2",
+                    "model_type": "QnA"
+                },
+                {
+                    "attribute_key": "business_rank",
+                    "prompt_template": "extractor_attribute_prompt_2",
+                    "model_type": "QnA"
+                }
+            ]
+        }
+    }
+}

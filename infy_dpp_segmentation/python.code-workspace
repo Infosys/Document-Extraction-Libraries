@@ -13,18 +13,20 @@
 			"dist": true,
 			"build": true,
 			"*.egg-info": true,
-			".pytest_cache": true
+			".pytest_cache": true,
+			"htmlcov": true,
+			".coverage": true,
 		},
 		"editor.formatOnSave": true,
 		"pylint.args": [
-			// "--rcfile",
-			// "../libraries.pylintrc"
+			"--rcfile",
+			"../libraries.pylintrc"
 		],
-		// "python.testing.pytestArgs": [
-		// 	"-s",
-		// 	"-v",
-		// 	"tests",
-		// ],
+		"python.testing.pytestArgs": [
+			"-s",
+			"-v",
+			"tests",
+		],
 		"python.testing.unittestEnabled": false,
 		"python.testing.pytestEnabled": true,
 		"python.testing.autoTestDiscoverOnSaveEnabled": true,
@@ -38,7 +40,17 @@
 				"request": "launch",
 				"program": "${file}",
 				"console": "integratedTerminal",
-				"cwd": "${workspaceFolder}/src"
+				"cwd": "${workspaceFolder}/src",
+				"justMyCode": false
+			},
+			{
+				"name": "Python: Build Wheel File",
+				"type": "python",
+				"request": "launch",
+				"program": "setup.py",
+				"console": "integratedTerminal",
+				"cwd": "${workspaceFolder}",
+				"justMyCode": false
 			}
 		],
 		"compounds": []

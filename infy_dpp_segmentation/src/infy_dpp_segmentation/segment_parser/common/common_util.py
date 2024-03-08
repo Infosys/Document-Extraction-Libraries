@@ -1,13 +1,11 @@
 # ===============================================================================================================#
-# Copyright 2023 Infosys Ltd.                                                                                    #
+# Copyright 2023 Infosys Ltd.                                                                                   #
 # Use of this source code is governed by Apache License Version 2.0 that can be found in the LICENSE file or at  #
 # http://www.apache.org/licenses/                                                                                #
 # ===============================================================================================================#
 
-
 import uuid
 from importlib import import_module
-
 
 class CommonUtil:
 
@@ -25,8 +23,7 @@ class CommonUtil:
             rule_mudule = import_module(
                 f"infy_dpp_segmentation.segment_parser.rules.{rc_entity_name}.{rc_module_name}")
         else:
-            rule_mudule = import_module(
-                f"infy_dpp_segmentation.segment_parser.rules.{rc_module_name}")
+            rule_mudule = import_module(f"infy_dpp_segmentation.segment_parser.rules.{rc_module_name}")
         rule_class = getattr(rule_mudule, rc_name)
 
         return rule_class

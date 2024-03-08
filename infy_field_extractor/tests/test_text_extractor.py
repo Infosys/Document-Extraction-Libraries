@@ -1,7 +1,7 @@
 # ===============================================================================================================#
-# Copyright 2021 Infosys Ltd.
-# Use of this source code is governed by Apache License Version 2.0 that can be found in the LICENSE file or at
-# http://www.apache.org/licenses/                                                   #
+# Copyright 2021 Infosys Ltd.                                                                                   #
+# Use of this source code is governed by Apache License Version 2.0 that can be found in the LICENSE file or at  #
+# http://www.apache.org/licenses/                                                                                #
 # ===============================================================================================================#
 
 
@@ -17,8 +17,6 @@ from infy_field_extractor.providers.ocr_data_service_provider import OcrDataServ
 
 def __create_new_instance():
     temp_folderpath = os.path.abspath('./data/temp/')
-    if not os.path.exists(temp_folderpath):
-        os.makedirs(temp_folderpath)
     hocr_file_1 = './data/sample_1.png.hocr'
     ocr_parser_object = ocr_parser.OcrParser(
         [hocr_file_1], TesseractOcrDataServiceProvider())
@@ -56,8 +54,13 @@ def test_extract_from_keys():
 
     assert result['fields'] == [
         {'field_key': ['FULL NAME:'],
-         'field_value': 'JOHN DOE', 'error': None},
-        {'field_key': ['GRADE:$'], 'field_value': 'VIII', 'error': None}]
+         'field_value': 'JOHN DOE',
+         'field_value_confidence_pct': 95.5,
+         'error': None},
+        {'field_key': ['GRADE:$'],
+         'field_value': 'VIII',
+         'field_value_confidence_pct': 55.0,
+         'error': None}]
 
 
 def test_extract_from_field_value_bboxes():
@@ -76,9 +79,10 @@ def test_extract_from_field_value_bboxes():
         img_file_path, field_data_list)
 
     assert result['fields'] == [
-        {'field_key': ['FULL NAME'], 'field_value_bbox': [
-            890, 530, 1249, 169], 'field_value': 'JOHN DOE'},
-        {'field_key': ['GRADE'], 'field_value_bbox': [715, 800, 737, 169], 'field_value': 'VIII'}]
+        {'field_key': ['FULL NAME'], 'field_value_bbox': [890, 530, 1249, 169],
+         'field_value': 'JOHN DOE', 'field_value_confidence_pct': 95.5},
+        {'field_key': ['GRADE'], 'field_value_bbox': [715, 800, 737, 169],
+         'field_value': 'VIII', 'field_value_confidence_pct': 55.0}]
 
 
 def test_text_extractor_exception_imagepath():

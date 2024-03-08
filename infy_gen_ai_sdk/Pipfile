@@ -1,0 +1,22 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+pytest = "==6.2.5"
+pytest-cov = "==2.12.1"
+autopep8 = "==1.5.1"
+infy_fs_utils = {path = "./lib/infy_fs_utils-0.0.2-py3-none-any.whl"}
+
+[packages]
+langchain = "==0.0.299"
+openai = "==0.27.8"
+tiktoken = "==0.4.0"
+faiss-cpu = "==1.7.4"
+# Required specifically for python 3.8
+typing-inspect = "==0.8.0"
+typing_extensions = "==4.5.0"
+
+[requires]
+python_version = "3"

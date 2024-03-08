@@ -1,9 +1,8 @@
 # ===============================================================================================================#
-# Copyright 2023 Infosys Ltd.                                                                                    #
+# Copyright 2023 Infosys Ltd.                                                                                   #
 # Use of this source code is governed by Apache License Version 2.0 that can be found in the LICENSE file or at  #
 # http://www.apache.org/licenses/                                                                                #
 # ===============================================================================================================#
-
 
 '''Module for generating wheel file based on python version and Pipfile'''
 import sys
@@ -26,7 +25,8 @@ class PythonEnvUtil:
     @staticmethod
     def get_env_python_version():
         '''Get python version from current environment'''
-        _python_version_patch = sys.version.split(' ')[0]  # E.g. XX.YY.ZZ
+        _python_version_patch = sys.version.split(
+            ' ', maxsplit=1)[0]  # E.g. XX.YY.ZZ
         _python_version_minor = ".".join(
             _python_version_patch.split('.')[:2])  # E.g XX.YY
         return _python_version_minor, _python_version_patch
@@ -43,7 +43,7 @@ class PipfileUtil:
     def extract_python_version(pipfile_path):
         '''Get python version from Pipfile'''
         KEY_PYTHON_VERSION = "python_version"
-        with open(pipfile_path) as read_pipfile:
+        with open(pipfile_path, encoding="utf-8") as read_pipfile:
             value_list = list(line for line in (l.strip()
                                                 for l in read_pipfile) if line.startswith(KEY_PYTHON_VERSION))
         _python_version_minor = value_list[0].split(
@@ -53,32 +53,47 @@ class PipfileUtil:
     @staticmethod
     def extract_pkg_versions(pipfile_path):
         '''Get dependencies from Pipfile'''
-        with open(pipfile_path) as read_pipfile:
+        IDENTIFIER_GROUPS = "#[groups="
+        with open(pipfile_path, encoding="utf-8") as read_pipfile:
             nonempty_line_list = list(line for line in (l.strip()
                                                         for l in read_pipfile) if line)
         line_list = []
         copy = False
         for line in nonempty_line_list:
-            if line.strip() == "[packages]":
+            line = line.strip()
+            if line == "[packages]":
                 copy = True
                 continue
-            elif line.startswith("[") or line.startswith("#[extra"):
+            elif line.startswith("["):
                 copy = False
                 continue
             elif copy:
-                if not line.startswith("#"):
+                if not line.startswith("#") and not IDENTIFIER_GROUPS in line:
                     line_list.append(line.rstrip())
 
         res = [x for x in line_list if '.whl' not in x]
         res = [x for x in res if 'docwblibs' not in x]
 
-        pkg_line_list = [x.replace('=', '', 1).replace('"', '') if 'win32' not in x
-                         else x.replace(" ", "").replace('{version=', '')
-                         .replace('}', '').replace("=", "", 1)
-                         .replace(',sys_platform=', ' ;sys_platform')
-                         .replace('"', '')
-                         for x in res]
+        pkg_line_list = [PipfileUtil.convert_to_pip_format(x) for x in res]
         return pkg_line_list
+
+    @staticmethod
+    def convert_to_pip_format(pipfile_format):
+        '''Convert package name from Pipfile format to pip format'''
+        new_format = pipfile_format
+        if 'win32' not in new_format:
+            new_format = new_format.replace(
+                '=', '', 1).replace('"', '').replace(' ', '')
+        else:
+            new_format = new_format.replace(" ", "")
+            new_format = new_format.replace('{version=', '')
+            new_format = new_format.replace('}', '')
+            new_format = new_format.replace("=", "", 1)
+            new_format = new_format.replace(',sys_platform=', ';sys_platform')
+            new_format = new_format.replace('"', '')
+            new_format = new_format.replace(' ', '')
+            new_format = new_format.replace("*", "")
+        return new_format
 
     @staticmethod
     def extract_package_dir(root_dir_path):
@@ -103,26 +118,27 @@ class PipfileUtil:
     @staticmethod
     def extract_extras_versions(pipfile_path):
         '''Get extras dependencies from Pipfile which are installed only on demand'''
-        with open(pipfile_path) as read_pipfile:
+        IDENTIFIER_GROUPS = "#[groups="
+        GROUP_ALL = "all"
+        with open(pipfile_path, encoding="utf-8") as read_pipfile:
             nonempty_line_list = list(line for line in (l.strip()
                                                         for l in read_pipfile) if line)
         line_list = []
-        copy = False
         extras_name = None
         for line in nonempty_line_list:
-            # E.g. #[extra-tesseract]
-            if line.strip().startswith("#[extra-"):
-                copy = True
-                # extras_name = line.strip().split("-")[1].replace("]", "")
-                extras_name = line.strip().replace(
-                    '#[extra-', '').replace(']', '')
+            line = line.strip()
+            if line.startswith("#"):
                 continue
-            elif line.strip().startswith("["):
-                copy = False
-                continue
-            elif copy:
-                if not line.startswith("#"):
-                    line_list.append([extras_name, line.rstrip()])
+            # E.g. #[groups=native,cloud]
+            if IDENTIFIER_GROUPS in line:
+                temp = line.split(IDENTIFIER_GROUPS)
+                package_name, group_names = temp[0].strip(
+                ), temp[1].strip().split(',')
+                for group_name in group_names:
+                    group_name = group_name.strip().replace(
+                        ']', '').replace('[', '')
+                    line_list.append([group_name, package_name])
+                line_list.append([GROUP_ALL, package_name])
 
         res = [x for x in line_list if '.whl' not in x[1]]
         res = [x for x in res if 'docwblibs' not in x[1]]
@@ -131,16 +147,11 @@ class PipfileUtil:
         extras_dict = {}
         for extras_name in extras_name_list:
             res1 = [x[1] for x in res if x[0] == extras_name]
-            extras_dict[extras_name] = [x.replace('=', '', 1).replace('"', '').replace(' ', '') if 'win32' not in x
-                                        else x.replace(" ", "").replace('{version=', '')
-                                        .replace('}', '').replace("=", "", 1)
-                                        .replace(',sys_platform=', ';sys_platform')
-                                        .replace('"', '').replace(' ', '').replace("*", "")
-                                        for x in res1]
+            extras_dict[extras_name] = [
+                PipfileUtil.convert_to_pip_format(x) for x in res1]
         extra_all_list = []
         for v in extras_dict.values():
             extra_all_list += v
-        extras_dict['all'] = extra_all_list
         return extras_dict
 
 
@@ -154,7 +165,7 @@ if __name__ == '__main__':
 
     METADATA = dict(
         name="infy_dpp_segmentation",
-        version="0.0.1",
+        version="0.0.2",
         license="Apache License Version 2.0",
         author="Infosys Limited",
         author_email="",
@@ -174,8 +185,8 @@ if __name__ == '__main__':
         classifiers=[
             "Programming Language :: Python",
             "Programming Language :: Python :: 3",
-            "Programming Language :: Python :: 3.6",
             "Programming Language :: Python :: 3.8",
+            "Programming Language :: Python :: 3.9",
             "Programming Language :: Python :: 3.10",
             "Programming Language :: Python :: 3 :: Only",
             "License :: Apache License Version 2.0",
