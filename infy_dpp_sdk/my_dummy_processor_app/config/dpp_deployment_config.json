@@ -1,0 +1,109 @@
+{
+    "variables": {
+        "VAR_PROCESSOR_HOME_DIR": "C:/temp",
+        "VAR_CLI_CONTROLLER_DIR": "C:/TFS/ManaExpertServices/Solutions/DocWorkbench/components/python/libraries/infy_dpp_sdk/my_dummy_processor_app/src",
+        "VAR_VENV_SCRIPT_DIR": "${ENV:USERPROFILE}/.virtualenvs/my_dummy_processor_app-U_Pp8dd3/Scripts"
+    },
+    "processors": {
+        "document_downloader": {
+            "enabled": true,
+            "processor_home_dir": "${VAR_PROCESSOR_HOME_DIR}",
+            "cli_controller_dir": "${VAR_CLI_CONTROLLER_DIR}",
+            "cli_controller_file": "app_dpp_container.py",
+            "http_controller_base_url": "http://127.0.0.1:8901",
+            "http_controller_path": "/api/v1/dpp/execute",
+            "config_file_namespace": "document_downloader",
+            "venv_script_dir": "${VAR_VENV_SCRIPT_DIR}",
+            "venv_activate_cmd": "activate",
+            "args": {
+                "request_file_path": "${SYS_CONTROLLER_REQ_FILE_PATH}"
+            },
+            "env": {
+                "DPP_STORAGE_ROOT_URI": "${DPP_STORAGE_ROOT_URI}",
+                "DPP_STORAGE_SERVER_URL": "${DPP_STORAGE_SERVER_URL}",
+                "DPP_STORAGE_ACCESS_KEY": "${DPP_STORAGE_ACCESS_KEY}",
+                "DPP_STORAGE_SECRET_KEY": "${DPP_STORAGE_SECRET_KEY}"
+            },
+            "output": {
+                "variables": {
+                    "SYS_CONTROLLER_RES_FILE_PATH": "response_file_path"
+                }
+            }
+        },
+        "content_extractor": {
+            "enabled": true,
+            "processor_home_dir": "${VAR_PROCESSOR_HOME_DIR}",
+            "cli_controller_dir": "${VAR_CLI_CONTROLLER_DIR}",
+            "cli_controller_file": "app_dpp_container.py",
+            "http_controller_base_url": "http://127.0.0.1:8901",
+            "http_controller_path": "/api/v1/dpp/execute",
+            "config_file_namespace": "content_extractor",
+            "venv_script_dir": "${VAR_VENV_SCRIPT_DIR}",
+            "venv_activate_cmd": "activate",
+            "args": {
+                "request_file_path": "${SYS_CONTROLLER_REQ_FILE_PATH}"
+            },
+            "env": {
+                "DPP_STORAGE_ROOT_URI": "${DPP_STORAGE_ROOT_URI}",
+                "DPP_STORAGE_SERVER_URL": "${DPP_STORAGE_SERVER_URL}",
+                "DPP_STORAGE_ACCESS_KEY": "${DPP_STORAGE_ACCESS_KEY}",
+                "DPP_STORAGE_SECRET_KEY": "${DPP_STORAGE_SECRET_KEY}"
+            },
+            "output": {
+                "variables": {
+                    "SYS_CONTROLLER_RES_FILE_PATH": "response_file_path"
+                }
+            }
+        },
+        "attribute_extractor": {
+            "enabled": true,
+            "processor_home_dir": "${VAR_PROCESSOR_HOME_DIR}",
+            "cli_controller_dir": "${VAR_CLI_CONTROLLER_DIR}",
+            "cli_controller_file": "app_dpp_container.py",
+            "http_controller_base_url": "http://127.0.0.1:8901",
+            "http_controller_path": "/api/v1/dpp/execute",
+            "config_file_namespace": "attribute_extractor",
+            "venv_script_dir": "${VAR_VENV_SCRIPT_DIR}",
+            "venv_activate_cmd": "activate",
+            "args": {
+                "request_file_path": "${SYS_CONTROLLER_REQ_FILE_PATH}"
+            },
+            "env": {
+                "DPP_STORAGE_ROOT_URI": "${DPP_STORAGE_ROOT_URI}",
+                "DPP_STORAGE_SERVER_URL": "${DPP_STORAGE_SERVER_URL}",
+                "DPP_STORAGE_ACCESS_KEY": "${DPP_STORAGE_ACCESS_KEY}",
+                "DPP_STORAGE_SECRET_KEY": "${DPP_STORAGE_SECRET_KEY}"
+            },
+            "output": {
+                "variables": {
+                    "SYS_CONTROLLER_RES_FILE_PATH": "response_file_path"
+                }
+            }
+        },
+        "document_uploader": {
+            "enabled": true,
+            "processor_home_dir": "${VAR_PROCESSOR_HOME_DIR}",
+            "cli_controller_dir": "${VAR_CLI_CONTROLLER_DIR}",
+            "cli_controller_file": "app_dpp_container.py",
+            "http_controller_base_url": "http://127.0.0.1:8901",
+            "http_controller_path": "/api/v1/dpp/execute",
+            "config_file_namespace": "document_uploader",
+            "venv_script_dir": "${VAR_VENV_SCRIPT_DIR}",
+            "venv_activate_cmd": "activate",
+            "args": {
+                "request_file_path": "${SYS_CONTROLLER_REQ_FILE_PATH}"
+            },
+            "env": {
+                "DPP_STORAGE_ROOT_URI": "${DPP_STORAGE_ROOT_URI}",
+                "DPP_STORAGE_SERVER_URL": "${DPP_STORAGE_SERVER_URL}",
+                "DPP_STORAGE_ACCESS_KEY": "${DPP_STORAGE_ACCESS_KEY}",
+                "DPP_STORAGE_SECRET_KEY": "${DPP_STORAGE_SECRET_KEY}"
+            },
+            "output": {
+                "variables": {
+                    "SYS_CONTROLLER_RES_FILE_PATH": "response_file_path"
+                }
+            }
+        }
+    }
+}

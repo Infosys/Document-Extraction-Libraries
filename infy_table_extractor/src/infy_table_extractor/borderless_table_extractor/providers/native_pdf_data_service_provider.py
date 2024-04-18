@@ -1,5 +1,5 @@
 # ===============================================================================================================#
-# Copyright 2020 Infosys Ltd.                                                                                   #
+# Copyright 2020 Infosys Ltd.                                                                                    #
 # Use of this source code is governed by Apache License Version 2.0 that can be found in the LICENSE file or at  #
 # http://www.apache.org/licenses/                                                                                #
 # ===============================================================================================================#
@@ -11,14 +11,13 @@ import infy_common_utils.format_converter as format_converter
 from infy_table_extractor.borderless_table_extractor.interface.data_service_provider_interface import \
     DataServiceProviderInterface
 
-format_converter.format_converter_jar_home = os.environ['FORMAT_CONVERTER_HOME']
-
 
 class NativePdfDataServiceProvider(DataServiceProviderInterface):
     """Data Service Provider to extract from NativePdf document."""
 
     def __init__(self, logger=None, log_level=None):
         super(NativePdfDataServiceProvider, self).__init__(logger, log_level)
+        format_converter.format_converter_jar_home = os.environ['FORMAT_CONVERTER_HOME']
         self.logger.info("Initialized successfully")
 
     def get_enhanced_tokens(self, token_data_list: list,

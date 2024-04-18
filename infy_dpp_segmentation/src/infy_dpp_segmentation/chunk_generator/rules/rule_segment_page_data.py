@@ -28,12 +28,14 @@ class RuleSegmentPageData(RuleSegmentBaseClass):
                     content = f'\n{segment_data["content"]}'
                     page_data_dict[page_no] += content
                 else:
-                    page_bbox = [min(x['content_bbox'][0] for x in segment_data_list if x['page'] == page_no),
-                                 min(x['content_bbox'][1]
-                                     for x in segment_data_list if x['page'] == page_no),
-                                 max(x['content_bbox'][2]
-                                     for x in segment_data_list if x['page'] == page_no),
-                                 max(x['content_bbox'][3] for x in segment_data_list if x['page'] == page_no)]
+                    page_bbox = None
+                    if any('content_bbox' in x and x['content_bbox'] for x in segment_data_list if x['page'] == page_no):
+                        page_bbox = [min(x['content_bbox'][0] for x in segment_data_list if x['page'] == page_no),
+                                     min(x['content_bbox'][1]
+                                         for x in segment_data_list if x['page'] == page_no),
+                                     max(x['content_bbox'][2]
+                                         for x in segment_data_list if x['page'] == page_no),
+                                     max(x['content_bbox'][3] for x in segment_data_list if x['page'] == page_no)]
                     content = f'{segment_data["content"]}'
                     page_data_dict[page_no] = content
                     meta_data_dict[f'{page_no}.txt_metadata'] = {

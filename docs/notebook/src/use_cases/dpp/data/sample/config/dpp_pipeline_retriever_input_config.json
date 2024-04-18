@@ -2,12 +2,13 @@
     "name": "pipeline2",
     "description": "Sample 4-processor-pipeline configuration for integration testing",
     "variables": {
-        "DPP_SYS_PIPELINE_REQ_FILE_PATH": "<value will be auto updated>",
-        "DPP_SYS_PIPELINE_INPUT_CONFIG_PATH": "<value will be auto updated>",
         "DPP_STORAGE_ROOT_URI": "file://D:/STORAGE",
         "DPP_STORAGE_SERVER_URL": "",
         "DPP_STORAGE_ACCESS_KEY": "",
-        "DPP_STORAGE_SECRET_KEY": ""
+        "DPP_STORAGE_SECRET_KEY": "",
+        "OPENAI_KEY": "${ENV:OPENAI_KEY}",
+        "OPENAI_SERVER_URL": "${ENV:OPENAI_SERVER_URL}",
+        "MODEL_HOME": "C:/MyProgramFiles/AI/models"
     },
     "processor_list": [
         {
@@ -44,15 +45,6 @@
             "processor_class_name": "RequestCloser",
             "processor_input_config_name_list": [
                 "RequestCloser"
-            ]
-        },
-        {
-            "enabled": true,
-            "processor_name": "document_data_saver",
-            "processor_namespace": "infy_dpp_core.document_data_saver",
-            "processor_class_name": "DocumentDataSaver",
-            "processor_input_config_name_list": [
-                "DocumentDataSaver"
             ]
         }
     ],
@@ -93,9 +85,6 @@
                 "save_path": "/data/work/request/inference/complete"
             }
         },
-        "DocumentDataSaver": {
-            "work_root_path": "/data/work/"
-        },
         "DocumentDataUpdater": {
             "config_data": [
                 {
@@ -112,21 +101,24 @@
         },
         "QueryRetriever": {
             "embedding": {
-                "openai-text-davinci-003": {
+                "openai": {
                     "enabled": false,
                     "configuration": {
                         "api_type": "azure",
                         "api_version": "2022-12-01",
-                        "api_url": "",
-                        "api_key": "",
-                        "chunk_size": 1000
+                        "api_url": "${OPENAI_SERVER_URL}",
+                        "api_key": "${OPENAI_KEY}",
+                        "model_name": "text-embedding-ada-002",
+                        "deployment_name": "text-embedding-ada-002",
+                        "chunk_size": 1000,
+                        "tiktoken_cache_dir": "${MODEL_HOME}/tiktoken_encoding"
                     }
                 },
                 "sentence_transformer": {
                     "enabled": true,
                     "configuration": {
-                        "api_url": "",
-                        "model_name": "all-MiniLM-L6-v2"
+                        "model_name": "all-MiniLM-L6-v2",
+                        "model_home_path": "${MODEL_HOME}"
                     }
                 }
             },

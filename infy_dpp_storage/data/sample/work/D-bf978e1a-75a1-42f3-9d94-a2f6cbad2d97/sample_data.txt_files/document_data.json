@@ -1,0 +1,436 @@
+{
+    "document_data": {
+        "document_id": "c22e9aa1-bd76-4cb2-9e5a-2217c0eecf69",
+        "metadata": {
+            "standard_data": {
+                "filepath": {
+                    "value": "/data/input/books_data1.txt"
+                },
+                "filename": {
+                    "value": "books_data1.txt"
+                },
+                "size": {
+                    "value": "3.46 KB"
+                },
+                "created_dtm": {
+                    "value": "2024-02-22 09:03:19"
+                },
+                "modified_dtm": {
+                    "value": "2024-02-22 09:03:19"
+                },
+                "mime_type": {
+                    "value": "text/plain"
+                },
+                "width": null,
+                "height": null
+            },
+            "extracted_data": null
+        },
+        "page_data": null,
+        "business_attribute_data": null,
+        "text_data": null,
+        "raw_data": {
+            "table_data": [],
+            "key_value_data": [],
+            "heading_data": [],
+            "page_header_data": [],
+            "page_footer_data": [],
+            "segment_data": [
+                {
+                    "content_type": "paragraph",
+                    "content": "Harry Potter and the Philosophers Stone is a classic english fantasy novel written by J.K. Rowling and published in 1997.The story revolves around a young wizard, Harry Potter, and his adventures at the Hogwarts School of Witchcraft and Wizardry. It introduces readers to a world full of magical creatures, exciting adventures, and enjoyable characters. Readers are drawn in from the first page to the last, as they quickly become attached to the characters and are desperately awaiting the next installment of the series. This book is considered to be one of the best fantasy novels of all time and will surely keep any reader captivated until the very end.",
+                    "content_bbox": [],
+                    "bbox_format": "X1,Y1,X2,Y2",
+                    "confidence_pct": -1,
+                    "page": 1,
+                    "sequence": 1
+                },
+                {
+                    "content_type": "paragraph",
+                    "content": "The thing is I love the most about these books is that it doesn't matter how old you are when you start reading them. I grew up with these books, and I probably read Harry Potter and the Philosopher's Stone either as a preteen or an early teenager. I read this book again for the first time since then last year. At around twice the age I was when I first read the book, I loved it just as much!",
+                    "content_bbox": [],
+                    "bbox_format": "X1,Y1,X2,Y2",
+                    "confidence_pct": -1,
+                    "page": 1,
+                    "sequence": 2
+                },
+                {
+                    "content_type": "paragraph",
+                    "content": "Whilst I would say the intended genre is probably fantasy, at the same time it doesn't feel pigeonholed there. There is so much to this series that there's something in it for everybody! This very first book is comparatively lighthearted to the rest of the series. It's a wonderful introduction to a vast and detailed magical world, providing fantasy readers with escapism and a life they would have loved to have lived as a child; to be quantified as special and sent off to a magical school of witchcraft and wizardry.",
+                    "content_bbox": [],
+                    "bbox_format": "X1,Y1,X2,Y2",
+                    "confidence_pct": -1,
+                    "page": 1,
+                    "sequence": 3
+                },
+                {
+                    "content_type": "paragraph",
+                    "content": "Harry Potter and the Philosopher's Stone is only a few hundred pages long. It's an easy book to pick up and read because of the length, but also the way in which it's written. The narrative style is very easily digestible. Personally, I think you could easily pick up and put down the book as you wish. It's really easy to follow what's going on and it's honestly a pleasure to read. I read this book within a matter of days just by doing some bedtime reading. You don't have to be an avid reader to get through this book very quickly!",
+                    "content_bbox": [],
+                    "bbox_format": "X1,Y1,X2,Y2",
+                    "confidence_pct": -1,
+                    "page": 1,
+                    "sequence": 4
+                },
+                {
+                    "content_type": "paragraph",
+                    "content": "I like the pacing of Harry Potter and the Philosopher's Stone. Being the first book in the series, there is a lot to take in. We have a lot of the setting of the scene, character and world building thrown into the mix. I find it just right so that even a younger audience could follow what is going on, but equally it's not slow for more mature readers either. As well as all this, there's a lot of magical excitement to keep our attention. From a plethora of spells to learn to the wonder of the everyday, such as chocolate frogs (which really do behave like frogs!); there is always something going on and keeping the action flowing in a fun way!",
+                    "content_bbox": [],
+                    "bbox_format": "X1,Y1,X2,Y2",
+                    "confidence_pct": -1,
+                    "page": 1,
+                    "sequence": 5
+                },
+                {
+                    "content_type": "paragraph",
+                    "content": "In my opinion, this book is the perfect introduction to the now famous series. It's fun and exciting whilst also setting the scene for a much wider story. The story unfolds in ways that I didn't take initially expect when I first started the books. But, I really enjoy that! If you haven't read these yet then I honestly recommend you do. They are absolutely fantastic and they really are for absolutely anyone!. This epic journey out of the Muggle world and into the school and world of witchcraft and wizardry bags 4.7 out of 5 stars. Harry Potter and the Philosopher's Stone is a must-read for anyone within the age-group of 8 to 600 years (for those who have used the stone :p) who want to be mesmerized by an enigmatic world.",
+                    "content_bbox": [],
+                    "bbox_format": "X1,Y1,X2,Y2",
+                    "confidence_pct": -1,
+                    "page": 1,
+                    "sequence": 6
+                }
+            ],
+            "other_data": []
+        }
+    },
+    "context_data": {
+        "request_creator": {
+            "work_file_path": "/data/work/D-c22e9aa1-bd76-4cb2-9e5a-2217c0eecf69/books_data1.txt",
+            "group_request_file": "G-27f9ef06-d37a-496a-97fa-9827dd7f04c2_group_request.json"
+        },
+        "segment_generator": {
+            "segment_data": [
+                {
+                    "technique": "text",
+                    "segments": [
+                        {
+                            "content_type": "paragraph",
+                            "content": "Harry Potter and the Philosophers Stone is a classic english fantasy novel written by J.K. Rowling and published in 1997.The story revolves around a young wizard, Harry Potter, and his adventures at the Hogwarts School of Witchcraft and Wizardry. It introduces readers to a world full of magical creatures, exciting adventures, and enjoyable characters. Readers are drawn in from the first page to the last, as they quickly become attached to the characters and are desperately awaiting the next installment of the series. This book is considered to be one of the best fantasy novels of all time and will surely keep any reader captivated until the very end. ",
+                            "bbox_format": "X1,Y1,X2,Y2",
+                            "content_bbox": [],
+                            "confidence_pct": -1,
+                            "page": 1,
+                            "sequence": -1
+                        },
+                        {
+                            "content_type": "paragraph",
+                            "content": "The thing is I love the most about these books is that it doesn\u2019t matter how old you are when you start reading them. I grew up with these books, and I probably read Harry Potter and the Philosopher\u2019s Stone either as a preteen or an early teenager. I read this book again for the first time since then last year. At around twice the age I was when I first read the book, I loved it just as much!",
+                            "bbox_format": "X1,Y1,X2,Y2",
+                            "content_bbox": [],
+                            "confidence_pct": -1,
+                            "page": 1,
+                            "sequence": -1
+                        },
+                        {
+                            "content_type": "paragraph",
+                            "content": "Whilst I would say the intended genre is probably fantasy, at the same time it doesn\u2019t feel pigeonholed there. There is so much to this series that there\u2019s something in it for everybody! This very first book is comparatively lighthearted to the rest of the series. It\u2019s a wonderful introduction to a vast and detailed magical world, providing fantasy readers with escapism and a life they would have loved to have lived as a child; to be quantified as special and sent off to a magical school of witchcraft and wizardry.",
+                            "bbox_format": "X1,Y1,X2,Y2",
+                            "content_bbox": [],
+                            "confidence_pct": -1,
+                            "page": 1,
+                            "sequence": -1
+                        },
+                        {
+                            "content_type": "paragraph",
+                            "content": "Harry Potter and the Philosopher\u2018s Stone is only a few hundred pages long. It\u2019s an easy book to pick up and read because of the length, but also the way in which it\u2019s written. The narrative style is very easily digestible. Personally, I think you could easily pick up and put down the book as you wish. It\u2019s really easy to follow what\u2019s going on and it\u2019s honestly a pleasure to read. I read this book within a matter of days just by doing some bedtime reading. You don\u2019t have to be an avid reader to get through this book very quickly!",
+                            "bbox_format": "X1,Y1,X2,Y2",
+                            "content_bbox": [],
+                            "confidence_pct": -1,
+                            "page": 1,
+                            "sequence": -1
+                        },
+                        {
+                            "content_type": "paragraph",
+                            "content": "I like the pacing of Harry Potter and the Philosopher\u2018s Stone. Being the first book in the series, there is a lot to take in. We have a lot of the setting of the scene, character and world building thrown into the mix. I find it just right so that even a younger audience could follow what is going on, but equally it\u2019s not slow for more mature readers either. As well as all this, there\u2019s a lot of magical excitement to keep our attention. From a plethora of spells to learn to the wonder of the everyday\u2026 such as chocolate frogs (which really do behave like frogs!); there is always something going on and keeping the action flowing in a fun way!",
+                            "bbox_format": "X1,Y1,X2,Y2",
+                            "content_bbox": [],
+                            "confidence_pct": -1,
+                            "page": 1,
+                            "sequence": -1
+                        },
+                        {
+                            "content_type": "paragraph",
+                            "content": "In my opinion, this book is the perfect introduction to the now famous series. It\u2019s fun and exciting whilst also setting the scene for a much wider story. The story unfolds in ways that I didn\u2019t take initially expect when I first started the books. But, I really enjoy that! If you haven\u2019t read these yet then I honestly recommend you do. They are absolutely fantastic and they really are for absolutely anyone!. This epic journey out of the Muggle world and into the school and world of witchcraft and wizardry bags 4.7 out of 5 stars. Harry Potter and the Philosopher\u2019s Stone is a must-read for anyone within the age-group of 8 to 600 years (for those who have used the stone :p) who want to be mesmerized by an enigmatic world.",
+                            "bbox_format": "X1,Y1,X2,Y2",
+                            "content_bbox": [],
+                            "confidence_pct": -1,
+                            "page": 1,
+                            "sequence": -1
+                        }
+                    ]
+                },
+                {
+                    "technique": "merged",
+                    "segments": [
+                        {
+                            "content_type": "paragraph",
+                            "content": "Harry Potter and the Philosophers Stone is a classic english fantasy novel written by J.K. Rowling and published in 1997.The story revolves around a young wizard, Harry Potter, and his adventures at the Hogwarts School of Witchcraft and Wizardry. It introduces readers to a world full of magical creatures, exciting adventures, and enjoyable characters. Readers are drawn in from the first page to the last, as they quickly become attached to the characters and are desperately awaiting the next installment of the series. This book is considered to be one of the best fantasy novels of all time and will surely keep any reader captivated until the very end. ",
+                            "bbox_format": "X1,Y1,X2,Y2",
+                            "content_bbox": [],
+                            "confidence_pct": -1,
+                            "page": 1,
+                            "sequence": -1
+                        },
+                        {
+                            "content_type": "paragraph",
+                            "content": "The thing is I love the most about these books is that it doesn\u2019t matter how old you are when you start reading them. I grew up with these books, and I probably read Harry Potter and the Philosopher\u2019s Stone either as a preteen or an early teenager. I read this book again for the first time since then last year. At around twice the age I was when I first read the book, I loved it just as much!",
+                            "bbox_format": "X1,Y1,X2,Y2",
+                            "content_bbox": [],
+                            "confidence_pct": -1,
+                            "page": 1,
+                            "sequence": -1
+                        },
+                        {
+                            "content_type": "paragraph",
+                            "content": "Whilst I would say the intended genre is probably fantasy, at the same time it doesn\u2019t feel pigeonholed there. There is so much to this series that there\u2019s something in it for everybody! This very first book is comparatively lighthearted to the rest of the series. It\u2019s a wonderful introduction to a vast and detailed magical world, providing fantasy readers with escapism and a life they would have loved to have lived as a child; to be quantified as special and sent off to a magical school of witchcraft and wizardry.",
+                            "bbox_format": "X1,Y1,X2,Y2",
+                            "content_bbox": [],
+                            "confidence_pct": -1,
+                            "page": 1,
+                            "sequence": -1
+                        },
+                        {
+                            "content_type": "paragraph",
+                            "content": "Harry Potter and the Philosopher\u2018s Stone is only a few hundred pages long. It\u2019s an easy book to pick up and read because of the length, but also the way in which it\u2019s written. The narrative style is very easily digestible. Personally, I think you could easily pick up and put down the book as you wish. It\u2019s really easy to follow what\u2019s going on and it\u2019s honestly a pleasure to read. I read this book within a matter of days just by doing some bedtime reading. You don\u2019t have to be an avid reader to get through this book very quickly!",
+                            "bbox_format": "X1,Y1,X2,Y2",
+                            "content_bbox": [],
+                            "confidence_pct": -1,
+                            "page": 1,
+                            "sequence": -1
+                        },
+                        {
+                            "content_type": "paragraph",
+                            "content": "I like the pacing of Harry Potter and the Philosopher\u2018s Stone. Being the first book in the series, there is a lot to take in. We have a lot of the setting of the scene, character and world building thrown into the mix. I find it just right so that even a younger audience could follow what is going on, but equally it\u2019s not slow for more mature readers either. As well as all this, there\u2019s a lot of magical excitement to keep our attention. From a plethora of spells to learn to the wonder of the everyday\u2026 such as chocolate frogs (which really do behave like frogs!); there is always something going on and keeping the action flowing in a fun way!",
+                            "bbox_format": "X1,Y1,X2,Y2",
+                            "content_bbox": [],
+                            "confidence_pct": -1,
+                            "page": 1,
+                            "sequence": -1
+                        },
+                        {
+                            "content_type": "paragraph",
+                            "content": "In my opinion, this book is the perfect introduction to the now famous series. It\u2019s fun and exciting whilst also setting the scene for a much wider story. The story unfolds in ways that I didn\u2019t take initially expect when I first started the books. But, I really enjoy that! If you haven\u2019t read these yet then I honestly recommend you do. They are absolutely fantastic and they really are for absolutely anyone!. This epic journey out of the Muggle world and into the school and world of witchcraft and wizardry bags 4.7 out of 5 stars. Harry Potter and the Philosopher\u2019s Stone is a must-read for anyone within the age-group of 8 to 600 years (for those who have used the stone :p) who want to be mesmerized by an enigmatic world.",
+                            "bbox_format": "X1,Y1,X2,Y2",
+                            "content_bbox": [],
+                            "confidence_pct": -1,
+                            "page": 1,
+                            "sequence": -1
+                        }
+                    ]
+                }
+            ]
+        },
+        "segment_data_parser": {
+            "parsed_segment_data": [
+                {
+                    "content_type": "paragraph",
+                    "content": "Harry Potter and the Philosophers Stone is a classic english fantasy novel written by J.K. Rowling and published in 1997.The story revolves around a young wizard, Harry Potter, and his adventures at the Hogwarts School of Witchcraft and Wizardry. It introduces readers to a world full of magical creatures, exciting adventures, and enjoyable characters. Readers are drawn in from the first page to the last, as they quickly become attached to the characters and are desperately awaiting the next installment of the series. This book is considered to be one of the best fantasy novels of all time and will surely keep any reader captivated until the very end. ",
+                    "content_bbox": [],
+                    "bbox_format": "X1,Y1,X2,Y2",
+                    "confidence_pct": -1,
+                    "page": 1,
+                    "sequence": 1
+                },
+                {
+                    "content_type": "paragraph",
+                    "content": "The thing is I love the most about these books is that it doesn\u2019t matter how old you are when you start reading them. I grew up with these books, and I probably read Harry Potter and the Philosopher\u2019s Stone either as a preteen or an early teenager. I read this book again for the first time since then last year. At around twice the age I was when I first read the book, I loved it just as much!",
+                    "content_bbox": [],
+                    "bbox_format": "X1,Y1,X2,Y2",
+                    "confidence_pct": -1,
+                    "page": 1,
+                    "sequence": 2
+                },
+                {
+                    "content_type": "paragraph",
+                    "content": "Whilst I would say the intended genre is probably fantasy, at the same time it doesn\u2019t feel pigeonholed there. There is so much to this series that there\u2019s something in it for everybody! This very first book is comparatively lighthearted to the rest of the series. It\u2019s a wonderful introduction to a vast and detailed magical world, providing fantasy readers with escapism and a life they would have loved to have lived as a child; to be quantified as special and sent off to a magical school of witchcraft and wizardry.",
+                    "content_bbox": [],
+                    "bbox_format": "X1,Y1,X2,Y2",
+                    "confidence_pct": -1,
+                    "page": 1,
+                    "sequence": 3
+                },
+                {
+                    "content_type": "paragraph",
+                    "content": "Harry Potter and the Philosopher\u2018s Stone is only a few hundred pages long. It\u2019s an easy book to pick up and read because of the length, but also the way in which it\u2019s written. The narrative style is very easily digestible. Personally, I think you could easily pick up and put down the book as you wish. It\u2019s really easy to follow what\u2019s going on and it\u2019s honestly a pleasure to read. I read this book within a matter of days just by doing some bedtime reading. You don\u2019t have to be an avid reader to get through this book very quickly!",
+                    "content_bbox": [],
+                    "bbox_format": "X1,Y1,X2,Y2",
+                    "confidence_pct": -1,
+                    "page": 1,
+                    "sequence": 4
+                },
+                {
+                    "content_type": "paragraph",
+                    "content": "I like the pacing of Harry Potter and the Philosopher\u2018s Stone. Being the first book in the series, there is a lot to take in. We have a lot of the setting of the scene, character and world building thrown into the mix. I find it just right so that even a younger audience could follow what is going on, but equally it\u2019s not slow for more mature readers either. As well as all this, there\u2019s a lot of magical excitement to keep our attention. From a plethora of spells to learn to the wonder of the everyday\u2026 such as chocolate frogs (which really do behave like frogs!); there is always something going on and keeping the action flowing in a fun way!",
+                    "content_bbox": [],
+                    "bbox_format": "X1,Y1,X2,Y2",
+                    "confidence_pct": -1,
+                    "page": 1,
+                    "sequence": 5
+                },
+                {
+                    "content_type": "paragraph",
+                    "content": "In my opinion, this book is the perfect introduction to the now famous series. It\u2019s fun and exciting whilst also setting the scene for a much wider story. The story unfolds in ways that I didn\u2019t take initially expect when I first started the books. But, I really enjoy that! If you haven\u2019t read these yet then I honestly recommend you do. They are absolutely fantastic and they really are for absolutely anyone!. This epic journey out of the Muggle world and into the school and world of witchcraft and wizardry bags 4.7 out of 5 stars. Harry Potter and the Philosopher\u2019s Stone is a must-read for anyone within the age-group of 8 to 600 years (for those who have used the stone :p) who want to be mesmerized by an enigmatic world.",
+                    "content_bbox": [],
+                    "bbox_format": "X1,Y1,X2,Y2",
+                    "confidence_pct": -1,
+                    "page": 1,
+                    "sequence": 6
+                }
+            ]
+        },
+        "chunk_data_parser": {
+            "cleaned_segment_data": [
+                {
+                    "content_type": "paragraph",
+                    "content": "Harry Potter and the Philosophers Stone is a classic english fantasy novel written by J.K. Rowling and published in 1997.The story revolves around a young wizard, Harry Potter, and his adventures at the Hogwarts School of Witchcraft and Wizardry. It introduces readers to a world full of magical creatures, exciting adventures, and enjoyable characters. Readers are drawn in from the first page to the last, as they quickly become attached to the characters and are desperately awaiting the next installment of the series. This book is considered to be one of the best fantasy novels of all time and will surely keep any reader captivated until the very end.",
+                    "content_bbox": [],
+                    "bbox_format": "X1,Y1,X2,Y2",
+                    "confidence_pct": -1,
+                    "page": 1,
+                    "sequence": 1,
+                    "doc_name": "books_data1.txt",
+                    "document_id": "c22e9aa1-bd76-4cb2-9e5a-2217c0eecf69"
+                },
+                {
+                    "content_type": "paragraph",
+                    "content": "The thing is I love the most about these books is that it doesn't matter how old you are when you start reading them. I grew up with these books, and I probably read Harry Potter and the Philosopher's Stone either as a preteen or an early teenager. I read this book again for the first time since then last year. At around twice the age I was when I first read the book, I loved it just as much!",
+                    "content_bbox": [],
+                    "bbox_format": "X1,Y1,X2,Y2",
+                    "confidence_pct": -1,
+                    "page": 1,
+                    "sequence": 2,
+                    "doc_name": "books_data1.txt",
+                    "document_id": "c22e9aa1-bd76-4cb2-9e5a-2217c0eecf69"
+                },
+                {
+                    "content_type": "paragraph",
+                    "content": "Whilst I would say the intended genre is probably fantasy, at the same time it doesn't feel pigeonholed there. There is so much to this series that there's something in it for everybody! This very first book is comparatively lighthearted to the rest of the series. It's a wonderful introduction to a vast and detailed magical world, providing fantasy readers with escapism and a life they would have loved to have lived as a child; to be quantified as special and sent off to a magical school of witchcraft and wizardry.",
+                    "content_bbox": [],
+                    "bbox_format": "X1,Y1,X2,Y2",
+                    "confidence_pct": -1,
+                    "page": 1,
+                    "sequence": 3,
+                    "doc_name": "books_data1.txt",
+                    "document_id": "c22e9aa1-bd76-4cb2-9e5a-2217c0eecf69"
+                },
+                {
+                    "content_type": "paragraph",
+                    "content": "Harry Potter and the Philosopher's Stone is only a few hundred pages long. It's an easy book to pick up and read because of the length, but also the way in which it's written. The narrative style is very easily digestible. Personally, I think you could easily pick up and put down the book as you wish. It's really easy to follow what's going on and it's honestly a pleasure to read. I read this book within a matter of days just by doing some bedtime reading. You don't have to be an avid reader to get through this book very quickly!",
+                    "content_bbox": [],
+                    "bbox_format": "X1,Y1,X2,Y2",
+                    "confidence_pct": -1,
+                    "page": 1,
+                    "sequence": 4,
+                    "doc_name": "books_data1.txt",
+                    "document_id": "c22e9aa1-bd76-4cb2-9e5a-2217c0eecf69"
+                },
+                {
+                    "content_type": "paragraph",
+                    "content": "I like the pacing of Harry Potter and the Philosopher's Stone. Being the first book in the series, there is a lot to take in. We have a lot of the setting of the scene, character and world building thrown into the mix. I find it just right so that even a younger audience could follow what is going on, but equally it's not slow for more mature readers either. As well as all this, there's a lot of magical excitement to keep our attention. From a plethora of spells to learn to the wonder of the everyday, such as chocolate frogs (which really do behave like frogs!); there is always something going on and keeping the action flowing in a fun way!",
+                    "content_bbox": [],
+                    "bbox_format": "X1,Y1,X2,Y2",
+                    "confidence_pct": -1,
+                    "page": 1,
+                    "sequence": 5,
+                    "doc_name": "books_data1.txt",
+                    "document_id": "c22e9aa1-bd76-4cb2-9e5a-2217c0eecf69"
+                },
+                {
+                    "content_type": "paragraph",
+                    "content": "In my opinion, this book is the perfect introduction to the now famous series. It's fun and exciting whilst also setting the scene for a much wider story. The story unfolds in ways that I didn't take initially expect when I first started the books. But, I really enjoy that! If you haven't read these yet then I honestly recommend you do. They are absolutely fantastic and they really are for absolutely anyone!. This epic journey out of the Muggle world and into the school and world of witchcraft and wizardry bags 4.7 out of 5 stars. Harry Potter and the Philosopher's Stone is a must-read for anyone within the age-group of 8 to 600 years (for those who have used the stone :p) who want to be mesmerized by an enigmatic world.",
+                    "content_bbox": [],
+                    "bbox_format": "X1,Y1,X2,Y2",
+                    "confidence_pct": -1,
+                    "page": 1,
+                    "sequence": 6,
+                    "doc_name": "books_data1.txt",
+                    "document_id": "c22e9aa1-bd76-4cb2-9e5a-2217c0eecf69"
+                }
+            ],
+            "page_segment_data": {
+                "1": "Harry Potter and the Philosophers Stone is a classic english fantasy novel written by J.K. Rowling and published in 1997.The story revolves around a young wizard, Harry Potter, and his adventures at the Hogwarts School of Witchcraft and Wizardry. It introduces readers to a world full of magical creatures, exciting adventures, and enjoyable characters. Readers are drawn in from the first page to the last, as they quickly become attached to the characters and are desperately awaiting the next installment of the series. This book is considered to be one of the best fantasy novels of all time and will surely keep any reader captivated until the very end.\nThe thing is I love the most about these books is that it doesn't matter how old you are when you start reading them. I grew up with these books, and I probably read Harry Potter and the Philosopher's Stone either as a preteen or an early teenager. I read this book again for the first time since then last year. At around twice the age I was when I first read the book, I loved it just as much!\nWhilst I would say the intended genre is probably fantasy, at the same time it doesn't feel pigeonholed there. There is so much to this series that there's something in it for everybody! This very first book is comparatively lighthearted to the rest of the series. It's a wonderful introduction to a vast and detailed magical world, providing fantasy readers with escapism and a life they would have loved to have lived as a child; to be quantified as special and sent off to a magical school of witchcraft and wizardry.\nHarry Potter and the Philosopher's Stone is only a few hundred pages long. It's an easy book to pick up and read because of the length, but also the way in which it's written. The narrative style is very easily digestible. Personally, I think you could easily pick up and put down the book as you wish. It's really easy to follow what's going on and it's honestly a pleasure to read. I read this book within a matter of days just by doing some bedtime reading. You don't have to be an avid reader to get through this book very quickly!\nI like the pacing of Harry Potter and the Philosopher's Stone. Being the first book in the series, there is a lot to take in. We have a lot of the setting of the scene, character and world building thrown into the mix. I find it just right so that even a younger audience could follow what is going on, but equally it's not slow for more mature readers either. As well as all this, there's a lot of magical excitement to keep our attention. From a plethora of spells to learn to the wonder of the everyday, such as chocolate frogs (which really do behave like frogs!); there is always something going on and keeping the action flowing in a fun way!\nIn my opinion, this book is the perfect introduction to the now famous series. It's fun and exciting whilst also setting the scene for a much wider story. The story unfolds in ways that I didn't take initially expect when I first started the books. But, I really enjoy that! If you haven't read these yet then I honestly recommend you do. They are absolutely fantastic and they really are for absolutely anyone!. This epic journey out of the Muggle world and into the school and world of witchcraft and wizardry bags 4.7 out of 5 stars. Harry Potter and the Philosopher's Stone is a must-read for anyone within the age-group of 8 to 600 years (for those who have used the stone :p) who want to be mesmerized by an enigmatic world."
+            },
+            "meta_data": {
+                "1.txt_metadata": {
+                    "chunk_id": "d4014",
+                    "page_no": 1,
+                    "sequence_no": 1,
+                    "bbox_format": "X1,Y1,X2,Y2",
+                    "bbox": null,
+                    "doc_name": "books_data1.txt",
+                    "document_id": "c22e9aa1-bd76-4cb2-9e5a-2217c0eecf69"
+                }
+            }
+        },
+        "save_chunk_data": {
+            "chunked_data_list": [
+                "/data/vectordb/chunked/c22e9aa1-bd76-4cb2-9e5a-2217c0eecf69/chunks/1.txt"
+            ],
+            "chunked_file_meta_data_list": [
+                "/data/vectordb/chunked/c22e9aa1-bd76-4cb2-9e5a-2217c0eecf69/chunks/1.txt_metadata.json"
+            ]
+        },
+        "data_encoder": {
+            "encoded_path_list": [
+                "/data/vectordb/encoded/sentence_transformer/c22e9aa1-bd76-4cb2-9e5a-2217c0eecf69"
+            ]
+        },
+        "request_closer": {
+            "output_folder_path": "/data/output/D-c22e9aa1-bd76-4cb2-9e5a-2217c0eecf69",
+            "work_folder_path": "/data/work/D-c22e9aa1-bd76-4cb2-9e5a-2217c0eecf69"
+        },
+        "query_retriever": {
+            "queries": [
+                {
+                    "attribute_key": "value_extraction",
+                    "question": "What is the name, author, genre, published, rating and language of the book?",
+                    "top_k": 1,
+                    "top_k_matches": [
+                        {
+                            "file_path": "/data/vectordb/encoded/sentence_transformer/c22e9aa1-bd76-4cb2-9e5a-2217c0eecf69",
+                            "score": 1.3629151582717896,
+                            "content": "Harry Potter and the Philosophers Stone is a classic english fantasy novel written by J.K. Rowling and published in 1997.The story revolves around a young wizard, Harry Potter, and his adventures at the Hogwarts School of Witchcraft and Wizardry. It introduces readers to a world full of magical creatures, exciting adventures, and enjoyable characters. Readers are drawn in from the first page to the last, as they quickly become attached to the characters and are desperately awaiting the next installment of the series. This book is considered to be one of the best fantasy novels of all time and will surely keep any reader captivated until the very end.\nThe thing is I love the most about these books is that it doesn't matter how old you are when you start reading them. I grew up with these books, and I probably read Harry Potter and the Philosopher's Stone either as a preteen or an early teenager. I read this book again for the first time since then last year. At around twice the age I was when I first read the book, I loved it just as much!\nWhilst I would say the intended genre is probably fantasy, at the same time it doesn't feel pigeonholed there. There is so much to this series that there's something in it for everybody! This very first book is comparatively lighthearted to the rest of the series. It's a wonderful introduction to a vast and detailed magical world, providing fantasy readers with escapism and a life they would have loved to have lived as a child; to be quantified as special and sent off to a magical school of witchcraft and wizardry.\nHarry Potter and the Philosopher's Stone is only a few hundred pages long. It's an easy book to pick up and read because of the length, but also the way in which it's written. The narrative style is very easily digestible. Personally, I think you could easily pick up and put down the book as you wish. It's really easy to follow what's going on and it's honestly a pleasure to read. I read this book within a matter of days just by doing some bedtime reading. You don't have to be an avid reader to get through this book very quickly!\nI like the pacing of Harry Potter and the Philosopher's Stone. Being the first book in the series, there is a lot to take in. We have a lot of the setting of the scene, character and world building thrown into the mix. I find it just right so that even a younger audience could follow what is going on, but equally it's not slow for more mature readers either. As well as all this, there's a lot of magical excitement to keep our attention. From a plethora of spells to learn to the wonder of the everyday, such as chocolate frogs (which really do behave like frogs!); there is always something going on and keeping the action flowing in a fun way!\nIn my opinion, this book is the perfect introduction to the now famous series. It's fun and exciting whilst also setting the scene for a much wider story. The story unfolds in ways that I didn't take initially expect when I first started the books. But, I really enjoy that! If you haven't read these yet then I honestly recommend you do. They are absolutely fantastic and they really are for absolutely anyone!. This epic journey out of the Muggle world and into the school and world of witchcraft and wizardry bags 4.7 out of 5 stars. Harry Potter and the Philosopher's Stone is a must-read for anyone within the age-group of 8 to 600 years (for those who have used the stone :p) who want to be mesmerized by an enigmatic world.",
+                            "meta_data": {
+                                "source": "/data/vectordb/chunked/c22e9aa1-bd76-4cb2-9e5a-2217c0eecf69/chunks/1.txt",
+                                "chunk_id": "d4014",
+                                "page_no": 1,
+                                "sequence_no": 1,
+                                "bbox_format": "X1,Y1,X2,Y2",
+                                "bbox": null,
+                                "doc_name": "books_data1.txt",
+                                "document_id": "c22e9aa1-bd76-4cb2-9e5a-2217c0eecf69"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        "reader": {
+            "output": [
+                {
+                    "attribute_key": "value_extraction",
+                    "model_input": {
+                        "prompt_template": "Use the following pieces of context to answer the question asked. If you don't know the answer or even doubtful a bit, just say that you don't know, don't try to make up an answer.The output should be in a json format like this \"{\"key1\":\"value1\",\"key2\":\"value2\",...}\", where the key is particular characteristic asked to be extracted in the question and <value> is the value to that key taken from the below context. All the keys should be in lowercase.\n\n{context}\n\nQuestion: {question}\nHelpful Answer:",
+                        "template_var_to_value_dict": {
+                            "context": "Harry Potter and the Philosophers Stone is a classic english fantasy novel written by J.K. Rowling and published in 1997.The story revolves around a young wizard, Harry Potter, and his adventures at the Hogwarts School of Witchcraft and Wizardry. It introduces readers to a world full of magical creatures, exciting adventures, and enjoyable characters. Readers are drawn in from the first page to the last, as they quickly become attached to the characters and are desperately awaiting the next installment of the series. This book is considered to be one of the best fantasy novels of all time and will surely keep any reader captivated until the very end.\nThe thing is I love the most about these books is that it doesn't matter how old you are when you start reading them. I grew up with these books, and I probably read Harry Potter and the Philosopher's Stone either as a preteen or an early teenager. I read this book again for the first time since then last year. At around twice the age I was when I first read the book, I loved it just as much!\nWhilst I would say the intended genre is probably fantasy, at the same time it doesn't feel pigeonholed there. There is so much to this series that there's something in it for everybody! This very first book is comparatively lighthearted to the rest of the series. It's a wonderful introduction to a vast and detailed magical world, providing fantasy readers with escapism and a life they would have loved to have lived as a child; to be quantified as special and sent off to a magical school of witchcraft and wizardry.\nHarry Potter and the Philosopher's Stone is only a few hundred pages long. It's an easy book to pick up and read because of the length, but also the way in which it's written. The narrative style is very easily digestible. Personally, I think you could easily pick up and put down the book as you wish. It's really easy to follow what's going on and it's honestly a pleasure to read. I read this book within a matter of days just by doing some bedtime reading. You don't have to be an avid reader to get through this book very quickly!\nI like the pacing of Harry Potter and the Philosopher's Stone. Being the first book in the series, there is a lot to take in. We have a lot of the setting of the scene, character and world building thrown into the mix. I find it just right so that even a younger audience could follow what is going on, but equally it's not slow for more mature readers either. As well as all this, there's a lot of magical excitement to keep our attention. From a plethora of spells to learn to the wonder of the everyday, such as chocolate frogs (which really do behave like frogs!); there is always something going on and keeping the action flowing in a fun way!\nIn my opinion, this book is the perfect introduction to the now famous series. It's fun and exciting whilst also setting the scene for a much wider story. The story unfolds in ways that I didn't take initially expect when I first started the books. But, I really enjoy that! If you haven't read these yet then I honestly recommend you do. They are absolutely fantastic and they really are for absolutely anyone!. This epic journey out of the Muggle world and into the school and world of witchcraft and wizardry bags 4.7 out of 5 stars. Harry Potter and the Philosopher's Stone is a must-read for anyone within the age-group of 8 to 600 years (for those who have used the stone :p) who want to be mesmerized by an enigmatic world.",
+                            "question": "What is the name, author, genre, published, rating and language of the book?"
+                        }
+                    },
+                    "model_output": {
+                        "name": "Harry Potter and the Philosopher's Stone",
+                        "author": "J.K. Rowling",
+                        "genre": "Fantasy",
+                        "published": "1997",
+                        "rating": "4.7/5",
+                        "language": "English"
+                    },
+                    "retriver_confidence_pct": -1,
+                    "source_metadata": [],
+                    "used_cache": false
+                }
+            ]
+        }
+    },
+    "message_data": null
+}

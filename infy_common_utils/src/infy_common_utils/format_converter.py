@@ -1,5 +1,5 @@
 # ===============================================================================================================#
-# Copyright 2020 Infosys Ltd.                                                                                   #
+# Copyright 2020 Infosys Ltd.                                                                                    #
 # Use of this source code is governed by Apache License Version 2.0 that can be found in the LICENSE file or at  #
 # http://www.apache.org/licenses/                                                                                #
 # ===============================================================================================================#
@@ -23,6 +23,7 @@ CONFIG_PARAM_DICT = {
     "bboxes": [[]],
     "water_mark": None,
     "plotbbox": None,
+    "saveresource": None,
     "page_dimension": {
         "width": 0,
         "height": 0
@@ -45,6 +46,7 @@ class ConvertAction(enum.Enum):
     PDF_TO_IMAGE = "PdfToImg"
     PDF_TO_MULTIPDF = "PdfToMultiPdf"
     PDF_TO_TEXT_BBOX = "PdfToTextBbox"
+    PDF_TO_IMAGE_BBOX = "PdfToImageBbox"
     ROTATE_PDF_PAGE = "RotatePdfPage"
     IMG_TO_PDF = "ImgToPdf"
     PLOT_BBOX = "PlotBbox"
@@ -80,6 +82,9 @@ class FormatConverter:
             run_command += ["--watermarktext", config_param_dict["water_mark"]]
         if config_param_dict["dpi"]:
             run_command += ["--dpi", str(config_param_dict["dpi"])]
+        if config_param_dict["saveresource"]:
+            run_command += ["--saveresource",
+                            str(config_param_dict["saveresource"])]
         if config_param_dict["plotbbox"]:
             run_command += ["--plotbbox", str(config_param_dict["plotbbox"])]
         if config_param_dict["angles"]:

@@ -1,5 +1,5 @@
 # ===============================================================================================================#
-# Copyright 2023 Infosys Ltd.                                                                                   #
+# Copyright 2023 Infosys Ltd.                                                                                    #
 # Use of this source code is governed by Apache License Version 2.0 that can be found in the LICENSE file or at  #
 # http://www.apache.org/licenses/                                                                                #
 # ===============================================================================================================#
@@ -21,7 +21,8 @@ class StEmbeddingProvider(IEmbeddingProvider):
     def __init__(self, config_data: StEmbeddingProviderConfigData) -> None:
         service_config_data = {
             'base_url': config_data.api_url,
-            'model': config_data.model_name
+            'model': config_data.model_name,
+            'model_home_path': config_data.model_home_path
         }
         self.__embeddings = SentenceTransformerEmbeddings(
             **service_config_data)

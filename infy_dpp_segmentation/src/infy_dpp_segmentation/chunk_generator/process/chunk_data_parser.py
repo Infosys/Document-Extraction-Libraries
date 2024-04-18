@@ -1,5 +1,5 @@
 # ===============================================================================================================#
-# Copyright 2023 Infosys Ltd.                                                                                   #
+# Copyright 2024 Infosys Ltd.                                                                                   #
 # Use of this source code is governed by Apache License Version 2.0 that can be found in the LICENSE file or at  #
 # http://www.apache.org/licenses/                                                                                #
 # ===============================================================================================================#
@@ -27,8 +27,7 @@ class ChunkDataParser(infy_dpp_sdk.interface.IProcessor):
         segment_data_list = raw_data_dict.get('segment_data')
         page_pattern_list = processor_config_data.get('page_num', [])
         # total_pages = len(set([i['page'] for i in segment_data_list]))
-        # TODO: remove hardcoding
-        total_pages = 100
+        total_pages = 100000
         extracted_page_list = set([i['page'] for i in segment_data_list])
         pages_list = self.lookp_up_page(total_pages, page_pattern_list)
         pages_list = list(set(pages_list).intersection(
@@ -36,19 +35,24 @@ class ChunkDataParser(infy_dpp_sdk.interface.IProcessor):
         cleaned_segment_data_list = chunking_data_obj.clean_data(
             segment_data_list)
         chunking_method = processor_config_data['chunking_method']
+        replace_dict = processor_config_data.get('replace', [])
+        cleaned_segment_data_list = chunking_data_obj.replace_data(
+            cleaned_segment_data_list, replace_dict)
+        document_data.raw_data.segment_data = cleaned_segment_data_list
+        cleaned_segment_data_list = chunking_data_obj.remove_headers_footers(
+            cleaned_segment_data_list)
         exclude_types_list = processor_config_data.get('exclude', [])
         doc_name = document_data.metadata.standard_data.filename.value
-        document_id=document_data.document_id
+        document_id = document_data.document_id
         # updating doc name in segment data
         _ = [i.update({'doc_name': doc_name,
-                       'document_id':document_id})
+                       'document_id': document_id})
              for i in cleaned_segment_data_list]
         merged_title_paragraph = processor_config_data.get(
             'merge_title_paragraph', False)
         output_data = chunking_data_obj.group_chunk_data(
-            cleaned_segment_data_list, chunking_method, pages_list, exclude_types_list, merged_title_paragraph)
+            cleaned_segment_data_list, chunking_method, pages_list, exclude_types_list, merged_title_paragraph, replace_dict)
         page_segment_data_dict, meta_data_dict = output_data['page_data'], output_data['meta_data']
-        document_data.raw_data.segment_data = cleaned_segment_data_list
         # raw_data=infy_dpp_sdk.data.RawData(table_data=[],key_value_data=[],heading_data=[],
         #                                         page_header_data=[],
         #                                         page_footer_data=[],other_data=[],segment_data=cleaned_segment_data_list)

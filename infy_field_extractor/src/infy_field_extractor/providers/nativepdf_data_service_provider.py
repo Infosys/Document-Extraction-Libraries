@@ -1,5 +1,5 @@
 # ===============================================================================================================#
-# Copyright 2021 Infosys Ltd.                                                                                   #
+# Copyright 2021 Infosys Ltd.                                                                                    #
 # Use of this source code is governed by Apache License Version 2.0 that can be found in the LICENSE file or at  #
 # http://www.apache.org/licenses/                                                                                #
 # ===============================================================================================================#
@@ -11,8 +11,6 @@ from infy_common_utils.format_converter import ConvertAction
 import infy_common_utils.format_converter as format_converter
 from infy_field_extractor.interface.data_service_provider_interface import DataServiceProviderInterface, \
     FILE_DATA_LIST, ADDITIONAL_INFO, GET_TOKENS_OUTPUT, TEXT_MATCH_METHOD, BBOX, TEXT, GET_BBOX_FOR_OUTPUT
-
-format_converter.format_converter_jar_home = os.environ['FORMAT_CONVERTER_HOME']
 
 
 class NativePdfDataServiceProvider(DataServiceProviderInterface):
@@ -26,6 +24,7 @@ class NativePdfDataServiceProvider(DataServiceProviderInterface):
             log_level (int, optional): Logging Level. Defaults to None.
         """
         super(NativePdfDataServiceProvider, self).__init__(logger, log_level)
+        format_converter.format_converter_jar_home = os.environ['FORMAT_CONVERTER_HOME']
         self.logger.info("Initialized successfully")
 
     def get_tokens(

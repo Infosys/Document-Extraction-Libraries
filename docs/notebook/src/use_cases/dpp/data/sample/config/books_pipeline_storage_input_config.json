@@ -1,0 +1,102 @@
+{
+    "name": "Attribute storage to graphDB",
+    "description": "Pipeline to store the attributes of the documents in graphDB",
+    "variables": {
+        "DPP_STORAGE_ROOT_URI": "file://D:/STORAGE",
+        "DPP_STORAGE_SERVER_URL": "",
+        "DPP_STORAGE_ACCESS_KEY": "",
+        "DPP_STORAGE_SECRET_KEY": "",
+        "NEO4J_URL": "${ENV:NEO4J_URL}",
+        "NEO4J_USR_NAME": "${ENV:NEO4J_USR_NAME}",
+        "NEO4J_PWD": "${ENV:NEO4J_PWD}"
+    },
+    "processor_list": [
+        {
+            "enabled": true,
+            "processor_name": "request_creator",
+            "processor_namespace": "infy_dpp_core.request_creator",
+            "processor_class_name": "RequestCreator",
+            "processor_input_config_name_list": [
+                "RequestCreator"
+            ]
+        },
+        {
+            "enabled": true,
+            "processor_name": "db_query_generator",
+            "processor_namespace": "infy_dpp_storage.db_query_generator",
+            "processor_class_name": "DBQueryGenerator",
+            "processor_input_config_name_list": [
+                "DBQueryGenerator"
+            ]
+        },
+        {
+            "enabled": true,
+            "processor_name": "db_query_executor",
+            "processor_namespace": "infy_dpp_storage.db_query_executor",
+            "processor_class_name": "DBQueryExecutor",
+            "processor_input_config_name_list": [
+                "DBQueryExecutor"
+            ]
+        },
+        {
+            "enabled": true,
+            "processor_name": "request_closer",
+            "processor_namespace": "infy_dpp_core.request_closer",
+            "processor_class_name": "RequestCloser",
+            "processor_input_config_name_list": [
+                "RequestCloser"
+            ]
+        }
+    ],
+    "processor_input_config": {
+        "RequestCreator": {
+            "from_data_file": {
+                "enabled": false,
+                "read_path": "/data/input/",
+                "batch_size": 20,
+                "filter": {
+                    "include": [
+                        "pdf",
+                        "json",
+                        "txt"
+                    ],
+                    "exclude": [
+                        "_"
+                    ]
+                },
+                "work_root_path": "/data/work/",
+                "to_request_file": {
+                    "save_path": "/data/work/request/inference/start"
+                }
+            },
+            "from_request_file": {
+                "enabled": true,
+                "read_path": "/data/work/request/inference/complete",
+                "save_path": "/data/work/request/storage/start"
+            }
+        },
+        "RequestCloser": {
+            "work_root_path": "/data/work/",
+            "data_file": {
+                "output_root_path": ""
+            },
+            "output_root_path": "/data/output/",
+            "from_request_file": {
+                "read_path": "/data/work/request/storage/start",
+                "save_path": "/data/work/request/storage/complete"
+            }
+        },
+        "DBQueryGenerator": {
+            "database_type": "neo4j",
+            "schema_path": "/data/config/schema/books_schema.json"
+        },
+        "DBQueryExecutor": {
+            "database_type": "neo4j",
+            "database_credentials": {
+                "database_url": "${NEO4J_URL}",
+                "database_username": "${NEO4J_USR_NAME}",
+                "database_password": "${NEO4J_PWD}"
+            }
+        }
+    }
+}

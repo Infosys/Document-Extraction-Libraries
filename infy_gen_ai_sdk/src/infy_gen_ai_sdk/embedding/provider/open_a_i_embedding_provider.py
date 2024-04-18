@@ -1,5 +1,5 @@
 # ===============================================================================================================#
-# Copyright 2023 Infosys Ltd.                                                                                   #
+# Copyright 2023 Infosys Ltd.                                                                                    #
 # Use of this source code is governed by Apache License Version 2.0 that can be found in the LICENSE file or at  #
 # http://www.apache.org/licenses/                                                                                #
 # ===============================================================================================================#
@@ -16,7 +16,10 @@ class OpenAIEmbeddingProviderConfigData(BaseEmbeddingProviderConfigData):
     api_key: str
     api_version: str
     api_type: str
+    api_url: str
     chunk_size: int
+    model_name: str
+    deployment_name: str
 
 
 class OpenAIEmbeddingProvider(IEmbeddingProvider):
@@ -29,6 +32,11 @@ class OpenAIEmbeddingProvider(IEmbeddingProvider):
             'openai_api_base': config_data.api_url,
             'openai_api_type': config_data.api_type,
             'chunk_size': config_data.chunk_size,
+            'model': config_data.model_name,
+            'deployment': config_data.deployment_name
         }
         self.__embeddings = OpenAIEmbeddings(**service_config_data)
         super().__init__(self.__embeddings)
+
+            # 'model':config_data.model_name,
+            # 'deployment':config_data.model_name

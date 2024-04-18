@@ -11,6 +11,9 @@ infy_fs_utils = {path = "./lib/infy_fs_utils-0.0.2-py3-none-any.whl"}
 
 [packages]
 pydantic="==1.10.7"
+requests = "==2.31.0"
+Deprecated = "==1.2.14"
+fastapi = "==0.109.0"       #[groups=httpcontroller]
 
 [requires]
 python_version = "3"

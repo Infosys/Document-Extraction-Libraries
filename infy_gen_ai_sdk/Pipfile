@@ -17,6 +17,7 @@ faiss-cpu = "==1.7.4"
 # Required specifically for python 3.8
 typing-inspect = "==0.8.0"
 typing_extensions = "==4.5.0"
+sentence-transformers = "==2.2.2"
 
 [requires]
 python_version = "3"

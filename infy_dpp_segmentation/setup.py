@@ -165,11 +165,11 @@ if __name__ == '__main__':
 
     METADATA = dict(
         name="infy_dpp_segmentation",
-        version="0.0.2",
+        version="0.0.6",
         license="Apache License Version 2.0",
         author="Infosys Limited",
         author_email="",
-        description="Infosys DPP segmentation library",
+        description="DPP segmentation and chunking processors",
         long_description="",
         long_description_content_type="text/markdown",
         url="",

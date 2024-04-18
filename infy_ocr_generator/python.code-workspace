@@ -13,43 +13,44 @@
 			"dist": true,
 			"build": true,
 			"*.egg-info": true,
-			".pytest_cache": true
+			".pytest_cache": true,
+			"htmlcov": true,
+			".coverage": true,
 		},
 		"editor.formatOnSave": true,
-		"python.linting.pep8Enabled": true,
-		"python.linting.pylintPath": "pylint",
-		"python.linting.pylintArgs": [
+		"pylint.args": [
 			"--rcfile",
 			"../libraries.pylintrc"
-		],
-		"python.linting.pylintEnabled": true,
-		"python.linting.pep8Args": [
-			"--ignore=E501"
 		],
 		"python.testing.pytestArgs": [
 			"-s",
 			"-v",
-			"--cov-report=term-missing",
-			"--cov-report=html:./data/temp/report",
-			"--cov=src",
 			"tests",
 		],
 		"python.testing.unittestEnabled": false,
-		"python.testing.nosetestsEnabled": false,
 		"python.testing.pytestEnabled": true,
 		"python.testing.autoTestDiscoverOnSaveEnabled": true,
-		"python.testing.cwd": "${workspaceFolder}",
-		"python.languageServer": "Jedi"
+		"python.testing.cwd": "${workspaceFolder}"
 	},
 	"launch": {
 		"configurations": [
 			{
 				"name": "Python: Current File",
-				"type": "python",
+				"type": "debugpy",
 				"request": "launch",
 				"program": "${file}",
 				"console": "integratedTerminal",
-				"cwd": "${workspaceFolder}/src"
+				"cwd": "${workspaceFolder}/src",
+				"justMyCode": false
+			},
+			{
+				"name": "Python: Build Wheel File",
+				"type": "debugpy",
+				"request": "launch",
+				"program": "setup.py",
+				"console": "integratedTerminal",
+				"cwd": "${workspaceFolder}",
+				"justMyCode": false
 			}
 		],
 		"compounds": []

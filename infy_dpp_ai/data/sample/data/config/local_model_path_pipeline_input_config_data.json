@@ -1,0 +1,60 @@
+{
+    "name": "pipeline_input",
+    "description": "indexer's data encoder pipeline configuration",
+    "processor_list": [
+        {
+            "enabled": true,
+            "processor_name": "data_encoder",
+            "processor_namespace": "infy_dpp_ai.data_encoder.process.data_encoder",
+            "processor_class_name": "DataEncoder",
+            "processor_input_config_name_list": [
+                "DataEncoder"
+            ]
+        }
+    ],
+    "processor_input_config": {
+        "DataEncoder": {
+            "embedding": {
+                "openai": {
+                    "enabled": false,
+                    "configuration": {
+                        "api_type": "azure",
+                        "api_version": "2022-12-01",
+                        "api_url": "",
+                        "api_key": "",
+                        "model_name": "text-embedding-ada-002",
+                        "deployment_name": "text-embedding-ada-002",
+                        "chunk_size": 1000,
+                        "tiktoken_cache_dir": "C:/MyProgramFiles/AI/models/tiktoken_encoding"
+                    }
+                },
+                "sentence_transformer": {
+                    "enabled": true,
+                    "configuration": {
+                        "model_name": "all-MiniLM-L6-v2",
+                        "model_home_path": "C:/MyProgramFiles/AI/models"
+                    }
+                }
+            },
+            "storage": {
+                "faiss": {
+                    "enabled": true,
+                    "configuration": {
+                        "chunked_files_root_path": "/vectordb/chunked",
+                        "encoded_files_root_path": "/vectordb/encoded",
+                        "db_name": null
+                    }
+                },
+                "elasticsearch": {
+                    "enabled": false,
+                    "configuration": {
+                        "es_url": "",
+                        "user": "elastic",
+                        "password": "",
+                        "index": "test_index"
+                    }
+                }
+            }
+        }
+    }
+}

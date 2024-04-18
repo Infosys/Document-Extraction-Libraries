@@ -2,7 +2,7 @@
 	"folders": [
 		{
 			"path": "."
-		}		
+		}
 	],
 	"settings": {
 		"files.exclude": {
@@ -36,7 +36,7 @@
 		"configurations": [
 			{
 				"name": "Python: Current File",
-				"type": "python",
+				"type": "debugpy",
 				"request": "launch",
 				"program": "${file}",
 				"console": "integratedTerminal",
@@ -45,7 +45,7 @@
 			},
 			{
 				"name": "Python: Build Wheel File",
-				"type": "python",
+				"type": "debugpy",
 				"request": "launch",
 				"program": "setup.py",
 				"console": "integratedTerminal",

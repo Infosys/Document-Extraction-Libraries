@@ -1,4 +1,5 @@
 {
+    "dpp_version": "0.0.9",
     "request_id": "R-f2594a38b532",
     "description": "This file in real-world is auto-generated. It is provided here for unit testing only.",
     "input_config_file_path": "/data/config/dpp_pipeline1_input_config.json",

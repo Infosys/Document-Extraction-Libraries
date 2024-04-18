@@ -16,6 +16,7 @@
 			".pytest_cache": true,
 			"htmlcov": true,
 			".coverage": true,
+			"my_dummy_processor_app": true
 		},
 		"editor.formatOnSave": true,
 		"pylint.args": [
@@ -36,7 +37,7 @@
 		"configurations": [
 			{
 				"name": "Python: Current File",
-				"type": "python",
+				"type": "debugpy",
 				"request": "launch",
 				"program": "${file}",
 				"console": "integratedTerminal",
@@ -45,7 +46,7 @@
 			},
 			{
 				"name": "Python: Build Wheel File",
-				"type": "python",
+				"type": "debugpy",
 				"request": "launch",
 				"program": "setup.py",
 				"console": "integratedTerminal",

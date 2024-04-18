@@ -1,6 +1,12 @@
 {
     "name": "pipeline2",
     "description": "Sample Pdf extraction",
+    "variables": {
+        "FORMAT_CONVERTER_HOME": "C:/MyProgramFiles/InfyFormatConverter/",
+        "TESSERACT_HOME": "C:/Program Files/Tesseract-OCR",
+        "AZURE_READ_OCR_SUB_KEY": "",
+        "AZURE_READ_OCR_URL": ""
+    },
     "processor_list": [
         {
             "enabled": true,
@@ -17,15 +23,6 @@
             "processor_namespace": "infy_dpp_core.metadata_extractor",
             "processor_class_name": "MetadataExtractor",
             "processor_input_config_name_list": []
-        },
-        {
-            "enabled": true,
-            "processor_name": "document_data_saver",
-            "processor_namespace": "infy_dpp_core.document_data_saver",
-            "processor_class_name": "DocumentDataSaver",
-            "processor_input_config_name_list": [
-                "DocumentDataSaver"
-            ]
         },
         {
             "enabled": true,
@@ -80,15 +77,6 @@
             "processor_input_config_name_list": [
                 "RequestCloser"
             ]
-        },
-        {
-            "enabled": true,
-            "processor_name": "document_data_saver",
-            "processor_namespace": "infy_dpp_core.document_data_saver",
-            "processor_class_name": "DocumentDataSaver",
-            "processor_input_config_name_list": [
-                "DocumentDataSaver"
-            ]
         }
     ],
     "processor_input_config": {
@@ -128,9 +116,6 @@
                 "save_path": "/data/work/request/indexer/complete"
             }
         },
-        "DocumentDataSaver": {
-            "work_root_path": "/data/work/"
-        },
         "DocumentDataUpdater": {
             "config_data": [
                 {
@@ -150,29 +135,29 @@
                 {
                     "provider_name": "tesseract_ocr_provider",
                     "properties": {
-                        "tesseract_path": "C:/Program Files/Tesseract-OCR/tesseract.exe",
-                        "format_converter_home": "C:/MyProgramFiles/InfyFormatConverter/"
+                        "tesseract_path": "${TESSERACT_HOME}/tesseract.exe",
+                        "format_converter_home": "${FORMAT_CONVERTER_HOME}"
                     }
                 },
                 {
                     "provider_name": "azure_read_ocr_provider",
                     "properties": {
-                        "subscription_key": "",
-                        "url": "",
-                        "format_converter_home": "C:/MyProgramFiles/InfyFormatConverter/"
+                        "subscription_key": "${AZURE_READ_OCR_SUB_KEY}",
+                        "url": "${AZURE_READ_OCR_URL}",
+                        "format_converter_home": "${FORMAT_CONVERTER_HOME}"
                     }
                 },
                 {
                     "provider_name": "pdf_box_text_provider",
                     "properties": {
-                        "format_converter_home": "C:/MyProgramFiles/InfyFormatConverter/"
+                        "format_converter_home": "${FORMAT_CONVERTER_HOME}"
                     }
                 },
                 {
                     "provider_name": "json_provider",
                     "properties": {
                         "template1_file_path": "/data/config/templates/email_template.txt",
-                        "format_converter_home": "C:/MyProgramFiles/InfyFormatConverter/"
+                        "format_converter_home": "${FORMAT_CONVERTER_HOME}"
                     }
                 }
             ],

@@ -1,11 +1,12 @@
 # ===============================================================================================================#
-# Copyright 2022 Infosys Ltd.                                                                                   #
+# Copyright 2022 Infosys Ltd.                                                                                    #
 # Use of this source code is governed by Apache License Version 2.0 that can be found in the LICENSE file or at  #
 # http://www.apache.org/licenses/                                                                                #
 # ===============================================================================================================#
 
 from .document_data import DocumentData
 from .message_data import MessageData
+from .message_item_data import (MessageItemData, MessageTypeEnum, MessageCodeEnum)
 from .meta_data import MetaData
 from .page_data import PageData
 from .processor_response_data import ProcessorResponseData

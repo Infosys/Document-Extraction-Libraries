@@ -1,5 +1,5 @@
 # ===============================================================================================================#
-# Copyright 2023 Infosys Ltd.                                                                                   #
+# Copyright 2023 Infosys Ltd.                                                                                    #
 # Use of this source code is governed by Apache License Version 2.0 that can be found in the LICENSE file or at  #
 # http://www.apache.org/licenses/                                                                                #
 # ===============================================================================================================#
@@ -7,12 +7,15 @@
 import json
 import logging
 import importlib
+import traceback
 from typing import List
+from deprecated import deprecated
 import infy_fs_utils
-
 from ..interface import IOrchestratorNative, IProcessor
-from ..data import DocumentData, ProcessorResponseData
+from ..data import DocumentData, ProcessorResponseData, MessageCodeEnum
 from ..common import Constants
+from ..common.processor_helper import ProcessorHelper
+from ..common.config_data_helper import ConfigDataHelper
 
 
 class OrchestratorNativeBasic(IOrchestratorNative):
@@ -26,6 +29,7 @@ class OrchestratorNativeBasic(IOrchestratorNative):
         input_config_file_path: None
         input_config_data: None
 
+    @deprecated(version='0.0.10', reason="This class is deprecated. Please use new class OrchestratorNative.")
     def __init__(self, input_config_data: dict = None,
                  input_config_file_path: str = None):
         self.__fs_handler = infy_fs_utils.manager.FileSystemManager(
@@ -35,28 +39,32 @@ class OrchestratorNativeBasic(IOrchestratorNative):
             ).get_fs_logging_handler(Constants.FSLH_DPP).get_logger()
         else:
             self.__logger = logging.getLogger(__name__)
-
+        config_data_helper_obj = ConfigDataHelper(self.__logger)
         model = self.Model()
         if input_config_file_path:
-            model.input_config_data = json.loads(self.__fs_handler.read_file(
+            _input_config_data = json.loads(self.__fs_handler.read_file(
                 input_config_file_path))
         elif input_config_data:
-            model.input_config_data = input_config_data
+            _input_config_data = input_config_data
         else:
             raise ValueError(
                 'input_config_data or input_config_file_path is required')
+
+        model.input_config_data = config_data_helper_obj.do_interpolation(
+            _input_config_data)
         self.__model = model
 
+    @deprecated(version='0.0.10', reason="This class is deprecated. Please use new class OrchestratorNative.")
     def run_batch(self, document_data_list: List[DocumentData] = None,
                   context_data_list: List[dict] = None) -> List[ProcessorResponseData]:
         """Run the orchestrator pipeline"""
         self.__logger.debug('Entering run_batch')
         processor_response_data_list = []
-        for config_entry in self.__model.input_config_data.get('processor_list'):
+        for processor_input_config_data in self.__model.input_config_data.get('processor_list'):
             self.__logger.info('Current processor: '
-                               + config_entry['processor_namespace'] + '->'
-                               + config_entry['processor_class_name'])
-            if not config_entry.get('enabled'):
+                               + processor_input_config_data['processor_namespace'] + '->'
+                               + processor_input_config_data['processor_class_name'])
+            if not processor_input_config_data.get('enabled'):
                 self.__logger.debug(
                     'Processor skipped as processor is not enabled')
                 continue
@@ -68,15 +76,15 @@ class OrchestratorNativeBasic(IOrchestratorNative):
 
             # ------------ Auto import the processors ------------------
             library = importlib.import_module(
-                config_entry['processor_namespace'])
+                processor_input_config_data['processor_namespace'])
             my_processor_obj: IProcessor = getattr(
-                library, config_entry['processor_class_name'])()
+                library, processor_input_config_data['processor_class_name'])()
 
             # ------------ Filter the config data ------------------
             filtered_config_data = {}
-            for proc_config_dep in config_entry.get('processor_input_config_name_list', []):
-                filtered_config_data[proc_config_dep] = self.__model.input_config_data.get(
-                    'processor_input_config').get(proc_config_dep)
+            for processor_input_config_name in processor_input_config_data.get('processor_input_config_name_list', []):
+                filtered_config_data[processor_input_config_name] = self.__model.input_config_data.get(
+                    'processor_input_config').get(processor_input_config_name)
 
             # ------------ Call the pre run hook ------------------
             my_processor_obj, processor_response_data_list = self.pre_run_hook(
@@ -88,20 +96,71 @@ class OrchestratorNativeBasic(IOrchestratorNative):
                 continue
 
             # ------------ Call the processor ------------------
-            new_processor_response_list = my_processor_obj.do_execute_batch(
-                document_data_list, context_data_list, filtered_config_data)
+            try:
+                new_processor_response_list = my_processor_obj.do_execute_batch(
+                    document_data_list, context_data_list, filtered_config_data)
+            except Exception as ex:
+                full_trace_error = traceback.format_exc()
+                self.__logger.error(full_trace_error)
+                new_processor_response_list = []
+                for document_data, context_data in zip(document_data_list, context_data_list):
+                    _processor_response_data = ProcessorHelper.create_processor_response_data(
+                        document_data, context_data, ex)
+                    new_processor_response_list.append(
+                        _processor_response_data)
 
             # ------------ Call the post run hook ------------------
             processor_response_data_list = self.post_run_hook(
-                my_processor_obj, filtered_config_data, processor_response_data_list, new_processor_response_list)
+                my_processor_obj, filtered_config_data, processor_response_data_list,
+                new_processor_response_list)
 
             # ------------ Skip processor execution when document id is None ------------------
             document_data_list_temp, context_data_list_temp = [], []
-            for response_data in processor_response_data_list:
-                if response_data.document_data.document_id:
-                    document_data_list_temp.append(response_data.document_data)
-                    context_data_list_temp.append(response_data.context_data)
+            # file_not_found = False
+
+            stop_orchestrator = False
+
+            server_exception_message_list = []
+            for processor_response_data in processor_response_data_list:
+                server_exception_message_list.extend(ProcessorHelper.get_messages(
+                    processor_response_data, MessageCodeEnum.SERVER_ERR_UNHANDLED_EXCEPTION))
+
+            if server_exception_message_list:
+                stop_orchestrator = True
+                message = "\n".join([str(x)
+                                    for x in server_exception_message_list])
+                self.__logger.error(message)
+                print(message)
+
+            no_records_found_message_list = []
+            for processor_response_data in processor_response_data_list:
+                no_records_found_message_list.extend(ProcessorHelper.get_messages(
+                    processor_response_data, MessageCodeEnum.INFO_NO_RECORDS_FOUND))
+
+            if no_records_found_message_list:
+                stop_orchestrator = True
+                message = "\n".join([str(x)
+                                    for x in no_records_found_message_list])
+                self.__logger.info(message)
+                print(message)
+
+            for processor_response_data in processor_response_data_list:
+                if processor_response_data.document_data.document_id:
+                    document_data_list_temp.append(
+                        processor_response_data.document_data)
+                    context_data_list_temp.append(
+                        processor_response_data.context_data)
+                # if processor_response_data.message_data and processor_response_data.message_data.messages \
+                #         and processor_response_data.message_data.messages[0].message_code == MessageCodeEnum.INFO_NO_RECORDS_FOUND:
+                #     file_not_found = True
+                #     message = f"{processor_response_data.message_data.messages[0].message_text}"
+                #     break
+            if stop_orchestrator:
+                # self.__logger.debug(message)
+                # print(message)
+                break
             document_data_list, context_data_list = document_data_list_temp, context_data_list_temp
+
         self.__logger.debug('Exiting run_batch')
         return processor_response_data_list
 
@@ -113,6 +172,7 @@ class OrchestratorNativeBasic(IOrchestratorNative):
 
     def post_run_hook(self, processor_instance: object, config_data: dict,
                       processor_response_data_list: List[ProcessorResponseData],
-                      new_processor_response_data_list: List[ProcessorResponseData]) -> List[ProcessorResponseData]:
+                      new_processor_response_data_list: List[ProcessorResponseData]) \
+            -> List[ProcessorResponseData]:
         """ Post run hook for the processor """
         return new_processor_response_data_list

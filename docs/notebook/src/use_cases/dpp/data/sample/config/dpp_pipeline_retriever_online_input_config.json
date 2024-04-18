@@ -1,0 +1,69 @@
+{
+    "name": "pipeline2",
+    "description": "Sample 4-processor-pipeline configuration for integration testing",
+    "variables": {
+        "DPP_STORAGE_ROOT_URI": "file://D:/STORAGE",
+        "DPP_STORAGE_SERVER_URL": "",
+        "DPP_STORAGE_ACCESS_KEY": "",
+        "DPP_STORAGE_SECRET_KEY": "",
+        "OPENAI_KEY": "${ENV:OPENAI_KEY}",
+        "OPENAI_SERVER_URL": "${ENV:OPENAI_SERVER_URL}",
+        "MODEL_HOME": "C:/MyProgramFiles/AI/models"
+    },
+    "processor_list": [
+        {
+            "enabled": true,
+            "processor_name": "retriever",
+            "processor_namespace": "infy_dpp_ai.retriever.process.query_retriever_processor",
+            "processor_class_name": "QueryRetriever",
+            "processor_input_config_name_list": [
+                "QueryRetriever"
+            ]
+        }
+    ],
+    "processor_input_config": {
+        "QueryRetriever": {
+            "embedding": {
+                "openai": {
+                    "enabled": false,
+                    "configuration": {
+                        "api_type": "azure",
+                        "api_version": "2022-12-01",
+                        "api_url": "${OPENAI_SERVER_URL}",
+                        "api_key": "${OPENAI_KEY}",
+                        "model_name": "text-embedding-ada-002",
+                        "deployment_name": "text-embedding-ada-002",
+                        "chunk_size": 1000,
+                        "tiktoken_cache_dir": "${MODEL_HOME}/tiktoken_encoding"
+                    }
+                },
+                "sentence_transformer": {
+                    "enabled": true,
+                    "configuration": {
+                        "model_name": "all-MiniLM-L6-v2",
+                        "model_home_path": "${MODEL_HOME}"
+                    }
+                }
+            },
+            "storage": {
+                "faiss": {
+                    "enabled": true,
+                    "configuration": {
+                        "chunked_files_root_path": "/data/vectordb/chunked",
+                        "encoded_files_root_path": "/data/vectordb/encoded",
+                        "db_name": "documents"
+                    }
+                }
+            },
+            "queries": [
+                {
+                    "attribute_key": "query1",
+                    "question": "What is the percentage of women employees?",
+                    "top_k": 5,
+                    "pre_filter_fetch_k": 10,
+                    "filter_metadata": {}
+                }
+            ]
+        }
+    }
+}

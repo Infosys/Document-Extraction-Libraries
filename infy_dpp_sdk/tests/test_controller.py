@@ -1,5 +1,5 @@
 # ===============================================================================================================#
-# Copyright 2023 Infosys Ltd.                                                                                   #
+# Copyright 2023 Infosys Ltd.                                                                                    #
 # Use of this source code is governed by Apache License Version 2.0 that can be found in the LICENSE file or at  #
 # http://www.apache.org/licenses/                                                                                #
 # ===============================================================================================================#
@@ -17,7 +17,7 @@ REQUEST_FILE_PATH_2 = "/data/work/R-54a9450fe33b-dpp_controller_request.json"
 
 
 @pytest.fixture(scope='module', autouse=True)
-def pre_test(create_root_folders, copy_files_to_root_folder):
+def pre_test(create_root_folders, copy_files_to_root_folder, update_json_file):
     """Test pre-run method"""
     # Create data folders
     create_root_folders([STORAGE_ROOT_PATH])
@@ -37,7 +37,12 @@ def pre_test(create_root_folders, copy_files_to_root_folder):
         ['R-54a9450fe33b-dpp_controller_request.json', f"{SAMPLE_ROOT_PATH}/work",
             f"{STORAGE_ROOT_PATH}/data/work"],
     ]
-    copy_files_to_root_folder(FILES_TO_COPY)
+    copied_files = copy_files_to_root_folder(FILES_TO_COPY)
+    # Update dynamic value of STORAGE_ROOT_PATH in input config json file
+    update_json_file(copied_files[2][2] + '/' + copied_files[2][0],
+                     'variables.DPP_STORAGE_ROOT_URI', f"file://{STORAGE_ROOT_PATH}")
+    update_json_file(copied_files[3][2] + '/' + copied_files[3][0],
+                     'variables.DPP_STORAGE_ROOT_URI', f"file://{STORAGE_ROOT_PATH}")
 
     storage_config_data = infy_fs_utils.data.StorageConfigData(
         **{
@@ -62,11 +67,11 @@ def test_controller_1():
     """Test method to check normal scenario"""
     # Create command line arguments
     sys.argv = ['<leave empty>', '--request_file_path', REQUEST_FILE_PATH]
-    cli_controller = infy_dpp_sdk.controller.CliController()
-    controller_request_data: infy_dpp_sdk.data.ControllerRequestData = cli_controller.receive_request()
-    controller_response_data: infy_dpp_sdk.data.ControllerResponseData = cli_controller.do_execute_batch(
+    controller_cli = infy_dpp_sdk.controller.ControllerCLI()
+    controller_request_data: infy_dpp_sdk.data.ControllerRequestData = controller_cli.receive_request()
+    controller_response_data: infy_dpp_sdk.data.ControllerResponseData = controller_cli.do_execute_batch(
         controller_request_data)
-    response_file_path = cli_controller.send_response(controller_response_data)
+    response_file_path = controller_cli.send_response(controller_response_data)
 
     assert os.path.exists(f"{STORAGE_ROOT_PATH}{response_file_path}")
 
@@ -75,9 +80,9 @@ def test_controller_2():
     """Test method to check scenario where initial context data is provided by client"""
     # Create command line arguments
     sys.argv = ['<leave empty>', '--request_file_path', REQUEST_FILE_PATH_2]
-    cli_controller = infy_dpp_sdk.controller.CliController()
-    controller_request_data: infy_dpp_sdk.data.ControllerRequestData = cli_controller.receive_request()
-    controller_response_data: infy_dpp_sdk.data.ControllerResponseData = cli_controller.do_execute_batch(
+    controller_cli = infy_dpp_sdk.controller.ControllerCLI()
+    controller_request_data: infy_dpp_sdk.data.ControllerRequestData = controller_cli.receive_request()
+    controller_response_data: infy_dpp_sdk.data.ControllerResponseData = controller_cli.do_execute_batch(
         controller_request_data)
 
     def __test_context_data():
@@ -91,7 +96,7 @@ def test_controller_2():
 
     __test_context_data()
 
-    response_file_path = cli_controller.send_response(controller_response_data)
+    response_file_path = controller_cli.send_response(controller_response_data)
 
     assert os.path.exists(f"{STORAGE_ROOT_PATH}{response_file_path}")
 

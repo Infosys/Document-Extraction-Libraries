@@ -1,5 +1,5 @@
 # ===============================================================================================================#
-# Copyright 2023 Infosys Ltd.                                                                                   #
+# Copyright 2023 Infosys Ltd.                                                                                    #
 # Use of this source code is governed by Apache License Version 2.0 that can be found in the LICENSE file or at  #
 # http://www.apache.org/licenses/                                                                                #
 # ===============================================================================================================#
@@ -32,16 +32,17 @@ class DataEncoder(infy_dpp_sdk.interface.IProcessor):
     def do_execute(self, document_data: DocumentData, context_data: dict, config_data: dict) -> ProcessorResponseData:
         processor_response_data = infy_dpp_sdk.data.ProcessorResponseData()
         context_data = context_data if context_data else {}
-        self.__processor_config_data = config_data.get('DataEncoder', {})
+        __processor_config_data = config_data.get('DataEncoder', {})
         encoded_path_list = []
         document_id = document_data.document_id
 
-        for key, value in self.__processor_config_data.items():
+        for key, value in __processor_config_data.items():
             if key == 'embedding':
                 for e_key, e_val in value.items():
                     if e_val.get('enabled'):
                         get_llm = e_key
                         get_llm_config = e_val.get('configuration')
+                        model_name = get_llm_config.get("model_name")
             if key == 'storage':
                 for e_key, e_val in value.items():
                     if e_val.get('enabled'):
@@ -49,7 +50,7 @@ class DataEncoder(infy_dpp_sdk.interface.IProcessor):
                         get_storage_config = e_val.get('configuration')
                         encoded_files_root_path = get_storage_config.get(
                             "encoded_files_root_path")
-                        db_name=get_storage_config.get("db_name")
+                        db_name = get_storage_config.get("db_name")
 
         # Step 1 - Choose embedding provider
         embedding_provider_config_data_dict = get_llm_config
@@ -59,18 +60,18 @@ class DataEncoder(infy_dpp_sdk.interface.IProcessor):
 
             embedding_provider = infy_gen_ai_sdk.embedding.provider.StEmbeddingProvider(
                 embedding_provider_config_data)
-        if get_llm == 'openai-text-davinci-003' and get_storage == 'faiss':
+        if get_llm == 'openai' and get_storage == 'faiss':
             os.environ["TIKTOKEN_CACHE_DIR"] = embedding_provider_config_data_dict['tiktoken_cache_dir']
             embedding_provider_config_data = infy_gen_ai_sdk.embedding.provider.OpenAIEmbeddingProviderConfigData(
                 **embedding_provider_config_data_dict)
 
             embedding_provider = infy_gen_ai_sdk.embedding.provider.OpenAIEmbeddingProvider(
                 embedding_provider_config_data)
-            
+
         if db_name:
-           server_faiss_write_path = f'{encoded_files_root_path}/{get_llm}/{db_name}'
+            server_faiss_write_path = f'{encoded_files_root_path}/{get_llm}-{model_name}/{db_name}'
         else:
-            server_faiss_write_path = f'{encoded_files_root_path}/{get_llm}/{document_id}'
+            server_faiss_write_path = f'{encoded_files_root_path}/{get_llm}-{model_name}/{document_id}'
         # Step 2 - Choose vector db provider
         vector_db_provider_config_data_dict = {
             'db_folder_path': server_faiss_write_path,

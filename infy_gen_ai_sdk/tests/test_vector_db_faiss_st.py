@@ -70,7 +70,7 @@ def test_1():
     # Step 1 - Choose embedding provider
     embedding_provider_config_data = infy_gen_ai_sdk.embedding.provider.StEmbeddingProviderConfigData(
         **{
-            "api_url": "http://vainpdblr15:8003/api/v1/model/embedding/generate",
+            "api_url": "",
             "model_name": "all-MiniLM-L6-v2"
         })
 

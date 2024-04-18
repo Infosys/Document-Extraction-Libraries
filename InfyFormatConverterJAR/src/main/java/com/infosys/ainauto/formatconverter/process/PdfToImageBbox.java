@@ -84,10 +84,13 @@ public class PdfToImageBbox {
 					}
 				}
 
-				String outputDataFileName = CommonUtil.getPathTokens(pdfFilePath)[CommonUtil.PATH_TOKEN_FILE_NAME]
+				String outputDataFileName = CommonUtil.getPathTokens(pdfFilePath)[CommonUtil.PATH_TOKEN_FILE_NAME] 
+						+ "." + CommonUtil.getPathTokens(pdfFilePath)[CommonUtil.PATH_TOKEN_FILE_EXT] 
 						+ DATA_FILE_SUFFIX;
 				String outputPdfWithBboxFileName = CommonUtil
-						.getPathTokens(pdfFilePath)[CommonUtil.PATH_TOKEN_FILE_NAME] + PDF_WITH_BBOX_FILE_SUFFIX;
+						.getPathTokens(pdfFilePath)[CommonUtil.PATH_TOKEN_FILE_NAME] 
+						+ "." + CommonUtil.getPathTokens(pdfFilePath)[CommonUtil.PATH_TOKEN_FILE_EXT] 
+						+ PDF_WITH_BBOX_FILE_SUFFIX;
 				outputDataFilePath = outputDirPathActual + "/" + outputDataFileName;
 				outputPdfWithBboxFilePath = outputDirPathActual + "/" + outputPdfWithBboxFileName;
 

@@ -4,12 +4,13 @@
 # http://www.apache.org/licenses/                                                                                #
 # ===============================================================================================================#
 
-from . import (common, segment_generator, segment_parser, chunk_generator, chunk_saver)
+from . import (common, segment_generator, segment_classifier, page_column_detector,
+               segment_sequencer, segment_merger, segment_consolidator, chunk_generator, chunk_saver)
 
 
 # Validate module installed
 from .common.dependency_util import DependencyUtil
-VALIDATE_MODULE_INSTALLED = ['infy_dpp_sdk', 
+VALIDATE_MODULE_INSTALLED = ['infy_dpp_sdk',
                              'infy_common_utils',
                              'infy_ocr_generator',
                              'infy_ocr_parser']

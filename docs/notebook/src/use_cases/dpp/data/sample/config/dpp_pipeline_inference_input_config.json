@@ -2,12 +2,16 @@
     "name": "pipeline2",
     "description": "Sample 4-processor-pipeline configuration for integration testing",
     "variables": {
-        "DPP_SYS_PIPELINE_REQ_FILE_PATH": "<value will be auto updated>",
-        "DPP_SYS_PIPELINE_INPUT_CONFIG_PATH": "<value will be auto updated>",
         "DPP_STORAGE_ROOT_URI": "file://D:/STORAGE",
         "DPP_STORAGE_SERVER_URL": "",
         "DPP_STORAGE_ACCESS_KEY": "",
-        "DPP_STORAGE_SECRET_KEY": ""
+        "DPP_STORAGE_SECRET_KEY": "",
+        "OPENAI_KEY": "${ENV:OPENAI_KEY}",
+        "OPENAI_SERVER_URL": "${ENV:OPENAI_SERVER_URL}",
+        "MODEL_HOME": "C:/MyProgramFiles/AI/models",
+        "CUSTOM_LLM_BLOOM_INFERENCE_URL": "${ENV:CUSTOM_LLM_BLOOM_INFERENCE_URL}",
+        "CUSTOM_LLM_LLAMA_INFERENCE_URL": "${ENV:CUSTOM_LLM_LLAMA_INFERENCE_URL}",
+        "CUSTOM_LLM_MIXTRAL_INFERENCE_URL": "${ENV:CUSTOM_LLM_MIXTRAL_INFERENCE_URL}"
     },
     "processor_list": [
         {
@@ -21,29 +25,11 @@
         },
         {
             "enabled": true,
-            "processor_name": "document_data_saver",
-            "processor_namespace": "infy_dpp_core.document_data_saver",
-            "processor_class_name": "DocumentDataSaver",
-            "processor_input_config_name_list": [
-                "DocumentDataSaver"
-            ]
-        },
-        {
-            "enabled": true,
             "processor_name": "retriever",
             "processor_namespace": "infy_dpp_ai.retriever.process.query_retriever_processor",
             "processor_class_name": "QueryRetriever",
             "processor_input_config_name_list": [
                 "QueryRetriever"
-            ]
-        },
-        {
-            "enabled": true,
-            "processor_name": "document_data_saver",
-            "processor_namespace": "infy_dpp_core.document_data_saver",
-            "processor_class_name": "DocumentDataSaver",
-            "processor_input_config_name_list": [
-                "DocumentDataSaver"
             ]
         },
         {
@@ -57,29 +43,11 @@
         },
         {
             "enabled": true,
-            "processor_name": "document_data_saver",
-            "processor_namespace": "infy_dpp_core.document_data_saver",
-            "processor_class_name": "DocumentDataSaver",
-            "processor_input_config_name_list": [
-                "DocumentDataSaver"
-            ]
-        },
-        {
-            "enabled": true,
             "processor_name": "request_closer",
             "processor_namespace": "infy_dpp_core.request_closer",
             "processor_class_name": "RequestCloser",
             "processor_input_config_name_list": [
                 "RequestCloser"
-            ]
-        },
-        {
-            "enabled": true,
-            "processor_name": "document_data_saver",
-            "processor_namespace": "infy_dpp_core.document_data_saver",
-            "processor_class_name": "DocumentDataSaver",
-            "processor_input_config_name_list": [
-                "DocumentDataSaver"
             ]
         }
     ],
@@ -120,9 +88,6 @@
                 "save_path": "/data/work/request/inference/complete"
             }
         },
-        "DocumentDataSaver": {
-            "work_root_path": "/data/work/"
-        },
         "DocumentDataUpdater": {
             "config_data": [
                 {
@@ -139,21 +104,24 @@
         },
         "QueryRetriever": {
             "embedding": {
-                "openai-text-davinci-003": {
+                "openai": {
                     "enabled": false,
                     "configuration": {
                         "api_type": "azure",
                         "api_version": "2022-12-01",
-                        "api_url": "",
-                        "api_key": "",
-                        "chunk_size": 1000
+                        "api_url": "${OPENAI_SERVER_URL}",
+                        "api_key": "${OPENAI_KEY}",
+                        "model_name": "text-embedding-ada-002",
+                        "deployment_name": "text-embedding-ada-002",
+                        "chunk_size": 1000,
+                        "tiktoken_cache_dir": "${MODEL_HOME}/tiktoken_encoding"
                     }
                 },
                 "sentence_transformer": {
                     "enabled": true,
                     "configuration": {
-                        "api_url": "",
-                        "model_name": "all-MiniLM-L6-v2"
+                        "model_name": "all-MiniLM-L6-v2",
+                        "model_home_path": "${MODEL_HOME}"
                     }
                 }
             },
@@ -210,40 +178,72 @@
                 }
             },
             "llm": {
-                "openai-text-davinci-003": {
+                "openai": {
                     "enabled": false,
                     "configuration": {
                         "api_type": "azure",
                         "api_version": "2022-12-01",
-                        "api_url": "",
-                        "api_key": "",
+                        "api_url": "${OPENAI_SERVER_URL}",
+                        "api_key": "${OPENAI_KEY}",
                         "max_tokens": 1000,
                         "model_name": "text-davinci-003",
                         "deployment_name": "text-davinci-003",
                         "temperature": 0.7,
-                        "tiktoken_cache_dir": "C:/DPP/infy_libraries_client/CONTAINER/ML/tiktoken_encoding"
+                        "tiktoken_cache_dir": "${MODEL_HOME}/tiktoken_encoding"
                     },
                     "cache": {
                         "enabled": true,
                         "cache_root_path": "/data/cache/infy_model_service"
                     }
                 },
-                "llama2-7b": {
-                    "enabled": true,
-                    "configuration": {
-                        "inference_url": "",
-                        "max_new_tokens": 4096,
-                        "tiktoken_cache_dir": "C:/DPP/infy_libraries_client/CONTAINER/ML/tiktoken_encoding",
-                        "temperature": 1
-                    }
-                },
-                "bloom-7b1": {
-                    "enabled": false,
-                    "configuration": {
-                        "inference_url": "",
-                        "max_new_tokens": 4096,
-                        "tiktoken_cache_dir": "C:/DPP/infy_libraries_client/CONTAINER/ML/tiktoken_encoding",
-                        "temperature": 1
+                "custom": {
+                    "bloom-7b1": {
+                        "enabled": false,
+                        "configuration": {
+                            "inference_url": "${CUSTOM_LLM_BLOOM_INFERENCE_URL}",
+                            "tiktoken_cache_dir": "${MODEL_HOME}/tiktoken_encoding",
+                            "remove_query_from_response": true
+                        },
+                        "json_payload": {
+                            "inputs": "{query}",
+                            "parameters": {
+                                "max_new_tokens": 4096,
+                                "temperature": 1,
+                                "num_return_sequences": 1,
+                                "do_sample": true
+                            }
+                        }
+                    },
+                    "llama2-7b": {
+                        "enabled": false,
+                        "configuration": {
+                            "inference_url": "${CUSTOM_LLM_LLAMA_INFERENCE_URL}",
+                            "tiktoken_cache_dir": "${MODEL_HOME}/tiktoken_encoding",
+                            "remove_query_from_response": true
+                        },
+                        "json_payload": {
+                            "inputs": "{query}",
+                            "parameters": {
+                                "max_new_tokens": 4096,
+                                "temperature": 1,
+                                "num_return_sequences": 1,
+                                "do_sample": true
+                            }
+                        }
+                    },
+                    "mixtral8x7b-instruct": {
+                        "enabled": true,
+                        "configuration": {
+                            "inference_url": "${CUSTOM_LLM_MIXTRAL_INFERENCE_URL}",
+                            "tiktoken_cache_dir": "${MODEL_HOME}/tiktoken_encoding",
+                            "remove_query_from_response": false
+                        },
+                        "json_payload": {
+                            "inputs": "{query}",
+                            "parameters": {
+                                "max_new_tokens": 1024
+                            }
+                        }
                     }
                 }
             },
@@ -273,27 +273,32 @@
                     "content": [],
                     "file_path": "/data/config/prompt_templates/extractor_attribute_prompt_2.txt",
                     "context_template": "context_2"
+                },
+                "extractor_attribute_prompt_3": {
+                    "content": [],
+                    "file_path": "/data/config/prompt_templates/extractor_attribute_prompt_3.txt",
+                    "context_template": "context_2"
                 }
             },
             "inputs": [
                 {
                     "attribute_key": "women_emp_pct",
-                    "prompt_template": "extractor_attribute_prompt_2",
+                    "prompt_template": "extractor_attribute_prompt_3",
                     "model_type": "QnA"
                 },
                 {
                     "attribute_key": "financial_year",
-                    "prompt_template": "extractor_attribute_prompt_2",
+                    "prompt_template": "extractor_attribute_prompt_3",
                     "model_type": "QnA"
                 },
                 {
                     "attribute_key": "revenue_amt",
-                    "prompt_template": "extractor_attribute_prompt_2",
+                    "prompt_template": "extractor_attribute_prompt_3",
                     "model_type": "QnA"
                 },
                 {
                     "attribute_key": "business_rank",
-                    "prompt_template": "extractor_attribute_prompt_2",
+                    "prompt_template": "extractor_attribute_prompt_3",
                     "model_type": "QnA"
                 }
             ]

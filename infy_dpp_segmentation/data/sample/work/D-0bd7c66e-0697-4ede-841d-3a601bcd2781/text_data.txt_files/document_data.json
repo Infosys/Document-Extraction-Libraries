@@ -1,0 +1,45 @@
+{
+    "document_data": {
+        "document_id": "0bd7c66e-0697-4ede-841d-3a601bcd2781",
+        "metadata": {
+            "standard_data": {
+                "filepath": {
+                    "value": "/data/input/text_data.txt"
+                },
+                "filename": {
+                    "value": "text_data.txt"
+                },
+                "size": {
+                    "value": "3.03 KB"
+                },
+                "created_dtm": {
+                    "value": "2024-02-14 15:50:27"
+                },
+                "modified_dtm": {
+                    "value": "2024-02-14 15:50:27"
+                },
+                "mime_type": {
+                    "value": "text/plain"
+                },
+                "width": null,
+                "height": null
+            },
+            "extracted_data": null
+        },
+        "page_data": null,
+        "business_attribute_data": null,
+        "text_data": null,
+        "raw_data": null
+    },
+    "context_data": {
+        "request_creator": {
+            "work_file_path": "/data/work/D-0bd7c66e-0697-4ede-841d-3a601bcd2781/text_data.txt",
+            "group_request_file": "G-8e11f892-1520-41e9-b2a8-533e338d7d4f_group_request.json"
+        },
+        "request_closer": {
+            "output_folder_path": "/data/output/D-0bd7c66e-0697-4ede-841d-3a601bcd2781",
+            "work_folder_path": "/data/work/D-0bd7c66e-0697-4ede-841d-3a601bcd2781"
+        }
+    },
+    "message_data": null
+}

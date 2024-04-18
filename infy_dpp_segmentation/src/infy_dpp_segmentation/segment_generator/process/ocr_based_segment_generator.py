@@ -12,6 +12,8 @@ from infy_ocr_parser import ocr_parser
 from infy_ocr_parser.providers.tesseract_ocr_data_service_provider \
     import TesseractOcrDataServiceProvider as tesseract_parser
 from infy_ocr_generator import ocr_generator
+from infy_ocr_generator.providers.infy_ocr_engine_data_service_provider \
+    import InfyOcrEngineDataServiceProvider
 from infy_ocr_generator.providers.tesseract_ocr_data_service_provider \
     import TesseractOcrDataServiceProvider
 from infy_ocr_parser.providers.azure_read_ocr_data_service_provider \
@@ -29,16 +31,18 @@ from infy_dpp_segmentation.common.app_constant import OcrType
 import infy_dpp_sdk
 import infy_fs_utils
 
+
 class OcrBasedSegmentGenerator:
     """Ocr based segment generator class
     """
 
     def __init__(self, text_provider_dict: dict, model_provider_dict: dict) -> None:
         # self.__logger = LoggerFactory().get_logger()
-        self.__logger = infy_fs_utils.manager.FileSystemLoggingManager().get_fs_logging_handler(infy_dpp_sdk.common.Constants.FSLH_DPP).get_logger()
+        self.__logger = infy_fs_utils.manager.FileSystemLoggingManager(
+        ).get_fs_logging_handler(infy_dpp_sdk.common.Constants.FSLH_DPP).get_logger()
         self.__app_config = infy_dpp_sdk.common.AppConfigManager().get_app_config()
         self.__file_sys_handler = infy_fs_utils.manager.FileSystemManager(
-                                    ).get_fs_handler(infy_dpp_sdk.common.Constants.FSH_DPP)
+        ).get_fs_handler(infy_dpp_sdk.common.Constants.FSH_DPP)
 
         # self.__config_data = config_data.get('ocr_based', {})
         self.__model_provider_dict = model_provider_dict
@@ -50,13 +54,19 @@ class OcrBasedSegmentGenerator:
                 'Format converter path is not configured in the config file')
         self.__pytesseract_path = self.__text_provider_dict.get(
             'properties').get('tesseract_path', '')
+        self.__ocr_engine_exe_dir_path = self.__text_provider_dict.get(
+            'properties').get('ocr_engine_exe_dir_path', '')
+        self.__ocr_engine_model_dir_path = self.__text_provider_dict.get(
+            'properties').get('ocr_engine_model_dir_path', '')
+        self.__ocr_engine_language = self.__text_provider_dict.get(
+            'properties').get('ocr_engine_language', '')
         self._org_file_path = None
 
     def get_segment_data(self, from_files_full_path, out_file_full_path):
         """getting segment data"""
         self._org_file_path = from_files_full_path
         self.__doc_extension = os.path.splitext(
-                self._org_file_path)[1].lower()
+            self._org_file_path)[1].lower()
         # pdf to image
         config_data_dict = {
             "format_converter": {
@@ -67,19 +77,21 @@ class OcrBasedSegmentGenerator:
             },
             "format_converter_home": self.__converter_path
         }
-        
+
         image_generator_service_obj = ImageGeneratorService()
         if self.__doc_extension == '.pdf':
             self.__logger.info('...PDF to JPG conversion started...')
             # images_path_list, _ = image_generator_service_obj.convert_pdf_to_image(
             #     os.path.abspath(self._org_file_path), config_data_dict)
-        elif self.__doc_extension in  ['.jpg','.png','.jpeg']:
-            self.__logger.info('...IMG to JPG conversion started...')    
+        elif self.__doc_extension in ['.jpg', '.png', '.jpeg']:
+            self.__logger.info('...IMG to JPG conversion started...')
             images_path_list, _ = image_generator_service_obj.convert_img_to_jpg(
                 os.path.abspath(self._org_file_path), config_data_dict)
         else:
-            self.__logger.error(f'{self.__doc_extension} is not supported in OCR Segment generation')
-            raise Exception(f'{self.__doc_extension} is not supported in OCR Segment generation')    
+            self.__logger.error(
+                f'{self.__doc_extension} is not supported in OCR Segment generation')
+            raise Exception(
+                f'{self.__doc_extension} is not supported in OCR Segment generation')
         # ocr generator
         self.__logger.info('...OCR generation started...')
         ocr_files_path_list = self.generate_ocr(
@@ -91,7 +103,7 @@ class OcrBasedSegmentGenerator:
                 self.__model_provider_dict.get('properties'))
             segment_data_list = sg_ser_obj.get_segment_data(images_path_list)
         else:
-            segment_data_list = []    
+            segment_data_list = []
         # ocr parser  = object
         self.__logger.info('...OCR parsing started...')
         combined_segment_data_list = self.get_content_from_bbox(
@@ -106,6 +118,20 @@ class OcrBasedSegmentGenerator:
         ocr_data_gen_obj, ocr_data_ser_provider = self.__init_data_service_provider_objects(
             self.__text_provider_dict, out_file_full_path)
         if self.__text_provider_dict.get('provider_name').startswith(OcrType.TESSERACT):
+            to_be_ocr_gen_img_list, generated_ocr_file_list = self._check_existing_ocr_files(
+                image_path_list, '.hocr')
+            if len(to_be_ocr_gen_img_list) > 0:
+                doc_data_list = [
+                    {
+                        "doc_path": doc_file_path,
+                        "pages": os.path.basename(doc_file_path).replace('.jpg', '')
+                    } for index, doc_file_path in enumerate(to_be_ocr_gen_img_list)
+                ]
+                ocr_result_list = ocr_data_gen_obj.generate(
+                    doc_data_list=doc_data_list)
+                ocr_path_list = [ocr_result.get(
+                    'output_doc') for ocr_result in ocr_result_list]
+        if self.__text_provider_dict.get('provider_name').startswith(OcrType.INFY_OCR_ENGINE):
             to_be_ocr_gen_img_list, generated_ocr_file_list = self._check_existing_ocr_files(
                 image_path_list, '.hocr')
             if len(to_be_ocr_gen_img_list) > 0:
@@ -205,6 +231,8 @@ class OcrBasedSegmentGenerator:
         # ocr_tool = self.__config_data.get('ocr_tool')
         if self.__text_provider_dict.get('provider_name').startswith(OcrType.TESSERACT):
             ocr_parser_data_service_provider = tesseract_parser()
+        if self.__text_provider_dict.get('provider_name').startswith(OcrType.INFY_OCR_ENGINE):
+            ocr_parser_data_service_provider = tesseract_parser()
         if self.__text_provider_dict.get('provider_name').startswith(OcrType.AZURE_READ):
             ocr_parser_data_service_provider = azure_read_parser()
         if self.__text_provider_dict.get('provider_name').startswith(OcrType.PDF_BOX):
@@ -212,6 +240,8 @@ class OcrBasedSegmentGenerator:
             token_type_value = 2
         for ocr_file in ocr_file_list:
             if self.__text_provider_dict.get('provider_name').startswith(OcrType.TESSERACT):
+                page_no = os.path.basename(ocr_file).replace('.jpg.hocr', '')
+            if self.__text_provider_dict.get('provider_name').startswith(OcrType.INFY_OCR_ENGINE):
                 page_no = os.path.basename(ocr_file).replace('.jpg.hocr', '')
             if self.__text_provider_dict.get('provider_name').startswith(OcrType.AZURE_READ):
                 page_no = os.path.basename(ocr_file).replace(
@@ -230,8 +260,8 @@ class OcrBasedSegmentGenerator:
                             segment_data["bbox_format"] = "X1,Y1,X2,Y2"
                             content_bbox = segment_data.get('content_bbox')
                             within_bbox = [content_bbox[0], content_bbox[1],
-                                        content_bbox[2]-content_bbox[0],
-                                        content_bbox[3]-content_bbox[1]]
+                                           content_bbox[2]-content_bbox[0],
+                                           content_bbox[3]-content_bbox[1]]
                             phrases_dict_list = ocr_obj.get_tokens_from_ocr(
                                 token_type_value=token_type_value, within_bbox=within_bbox,
                                 pages=[int(page_no)], scaling_factor={'hor': 1, 'ver': 1})
@@ -242,20 +272,21 @@ class OcrBasedSegmentGenerator:
                                 updated_segment_data_list.append(segment_data)
             else:
                 lines_dict_list = ocr_obj.get_tokens_from_ocr(
-                                token_type_value=token_type_value)
+                    token_type_value=token_type_value)
                 for token in lines_dict_list:
                     if token["text"].strip() != '':
-                            segment_data = {}
-                            segment_data["content_type"] = "line"
-                            segment_data["content"] = token["text"]
-                            segment_data["bbox_format"] = "X1,Y1,X2,Y2"
-                            segment_data["content_bbox"] = [token["bbox"][0],token["bbox"][1],
-                                                            token["bbox"][0]+token["bbox"][2],
-                                                            token["bbox"][1]+token["bbox"][3]]
-                            segment_data["confidence_pct"] = -1
-                            segment_data["page"] = int(page_no)
-                            segment_data["sequence"] = -1
-                            updated_segment_data_list.append(segment_data)
+                        segment_data = {}
+                        segment_data["content_type"] = "line"
+                        segment_data["content"] = token["text"]
+                        segment_data["bbox_format"] = "X1,Y1,X2,Y2"
+                        segment_data["content_bbox"] = [token["bbox"][0], token["bbox"][1],
+                                                        token["bbox"][0] +
+                                                        token["bbox"][2],
+                                                        token["bbox"][1]+token["bbox"][3]]
+                        segment_data["confidence_pct"] = -1
+                        segment_data["page"] = int(page_no)
+                        segment_data["sequence"] = -1
+                        updated_segment_data_list.append(segment_data)
 
         return updated_segment_data_list
 
@@ -276,6 +307,20 @@ class OcrBasedSegmentGenerator:
             data_service_provider = TesseractOcrDataServiceProvider(
                 config_params_dict={'tesseract': {
                     'pytesseract_path': self.__pytesseract_path}},
+                logger=self.__logger,
+                output_dir=out_file_full_path)
+            ocr_gen_obj = ocr_generator.OcrGenerator(
+                data_service_provider=data_service_provider
+            )
+        if self.__text_provider_dict.get('provider_name').startswith(OcrType.INFY_OCR_ENGINE):
+            data_service_provider = InfyOcrEngineDataServiceProvider(
+                config_params_dict={
+                    'ocr_engine': {
+                        'exe_dir_path': self.__ocr_engine_exe_dir_path,
+                        'model_dir_path': self.__ocr_engine_model_dir_path,
+                        'lang': self.__ocr_engine_language,
+                        'ocr_format': 'hocr',  # Only hocr is required
+                    }},
                 logger=self.__logger,
                 output_dir=out_file_full_path)
             ocr_gen_obj = ocr_generator.OcrGenerator(

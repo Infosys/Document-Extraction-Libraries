@@ -6,9 +6,6 @@
 
 """Testing module"""
 
-import time
-import os
-import shutil
 from typing import List
 import pytest
 import infy_fs_utils
@@ -42,10 +39,10 @@ def pre_test(create_root_folders, copy_files_to_root_folder):
             "storage_access_key": "",
             "storage_secret_key": ""
         })
-
+    file_sys_handler = infy_fs_utils.provider.FileSystemHandler(
+        storage_config_data)
     infy_fs_utils.manager.FileSystemManager().add_fs_handler(
-        infy_fs_utils.provider.FileSystemHandler(storage_config_data),
-        infy_gen_ai_sdk.common.Constants.FSH_GEN_AI_SDK)
+        file_sys_handler, infy_gen_ai_sdk.common.Constants.FSH_GEN_AI_SDK)
 
     # Configure client properties
     client_config_data = infy_gen_ai_sdk.ClientConfigData(
@@ -56,6 +53,24 @@ def pre_test(create_root_folders, copy_files_to_root_folder):
         })
     infy_gen_ai_sdk.ClientConfigManager().load(client_config_data)
     print(infy_gen_ai_sdk.ClientConfigManager().get().dict())
+
+    logging_config_data = infy_fs_utils.data.LoggingConfigData(
+        **{
+            # "logger_group_name": "my_group_1",
+            "logging_level": 10,
+            "logging_format": "",
+            "logging_timestamp_format": "",
+            "log_file_data": {
+                "log_file_dir_path": "/logs",
+                "log_file_name_prefix": "infy_gen_ai_sdk",
+                # "log_file_name_suffix": "1",
+                "log_file_extension": ".log"
+
+            }})
+    infy_fs_utils.manager.FileSystemLoggingManager().add_fs_logging_handler(
+        infy_fs_utils.provider.FileSystemLoggingHandler(
+            logging_config_data, file_sys_handler),
+        infy_gen_ai_sdk.common.Constants.FSLH_GEN_AI_SDK)
 
     yield  # Run all test methods
     # Post run cleanup
@@ -69,7 +84,7 @@ def test_1():
     # Step 1 - Choose embedding provider
     embedding_provider_config_data = infy_gen_ai_sdk.embedding.provider.StEmbeddingProviderConfigData(
         **{
-            "api_url": "http://vainpdblr15:8003/api/v1/model/embedding/generate",
+            "api_url": "",
             "model_name": "all-MiniLM-L6-v2"
         })
     embedding_provider = infy_gen_ai_sdk.embedding.provider.StEmbeddingProvider(

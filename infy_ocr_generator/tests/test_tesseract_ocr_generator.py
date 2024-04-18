@@ -1,10 +1,9 @@
 # ===============================================================================================================#
-#
-# Copyright 2021 Infosys Ltd.
-# Use of this source code is governed by Apache License Version 2.0 that can be found in the LICENSE file or at
-# http://www.apache.org/licenses/
-#
+# Copyright 2021 Infosys Ltd.                                                                                    #
+# Use of this source code is governed by Apache License Version 2.0 that can be found in the LICENSE file or at  #
+# http://www.apache.org/licenses/                                                                                #
 # ===============================================================================================================#
+
 import os
 import logging
 from infy_ocr_generator.ocr_generator import OcrGenerator
@@ -22,9 +21,13 @@ def test_tesseract_ocr_generator():
     logger = logging.getLogger()
     logger.info('Initialization Completed')
 
+    EXPECTED_FILE_PATH = "./data/sample_1.png.hocr"
+    if os.path.exists(EXPECTED_FILE_PATH):
+        os.remove(EXPECTED_FILE_PATH)
+
     CONFIG_PARAMS_DICT = {
         "tesseract": {
-            "pytesseract_path": os.environ['PYTESSERACT_PATH']
+            "pytesseract_path": os.environ['TESSERACT_PATH']
         }
     }
     output_path = './data'
@@ -44,6 +47,7 @@ def test_tesseract_ocr_generator():
     )
 
     assert os.path.exists(ocr_result_list[0]['output_doc'])
+    assert ocr_result_list[0]['output_doc'] == EXPECTED_FILE_PATH
 
 
 def test_tesseract_not_found_error():

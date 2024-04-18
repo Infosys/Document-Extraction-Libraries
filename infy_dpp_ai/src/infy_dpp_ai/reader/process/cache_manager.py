@@ -1,29 +1,38 @@
 # ===============================================================================================================#
-# Copyright 2021 Infosys Ltd.                                                                                   #
+# Copyright 2021 Infosys Ltd.                                                                                    #
 # Use of this source code is governed by Apache License Version 2.0 that can be found in the LICENSE file or at  #
 # http://www.apache.org/licenses/                                                                                #
 # ===============================================================================================================#
 import hashlib
 import os
-from infy_dpp_ai.common.singleton import Singleton
-from infy_gen_ai_sdk.common.logger_factory import LoggerFactory
+import logging
 import infy_fs_utils
 import infy_dpp_sdk
+from infy_dpp_ai.common.singleton import Singleton
+# from infy_gen_ai_sdk.common.logger_factory import LoggerFactory
+
 
 class CacheManager(metaclass=Singleton):
     """Class that provides basic caching framework for all internal purposes"""
 
     def __init__(self, config_params: dict):
-        self.__logger = LoggerFactory().get_logger()
-        self.__file_sys_handler = infy_fs_utils.manager.FileSystemManager().get_fs_handler(infy_dpp_sdk.common.Constants.FSH_DPP)
+        # self.__logger = LoggerFactory().get_logger()
+        if infy_fs_utils.manager.FileSystemLoggingManager().has_fs_logging_handler(infy_dpp_sdk.common.Constants.FSLH_DPP):
+            self.__logger = infy_fs_utils.manager.FileSystemLoggingManager(
+            ).get_fs_logging_handler(infy_dpp_sdk.common.Constants.FSLH_DPP).get_logger()
+        else:
+            self.__logger = logging.getLogger(__name__)
+
+        self.__file_sys_handler = infy_fs_utils.manager.FileSystemManager(
+        ).get_fs_handler(infy_dpp_sdk.common.Constants.FSH_DPP)
         self.__cache_enabled = config_params.get('cache_enabled', False)
         self.__cache_root_path = os.path.expandvars(
             config_params.get('cache_path_root', ''))
-        self.__logger .info(f"Is cache enabled : {self.__cache_enabled}")
+        self.__logger.info(f"Is cache enabled : {self.__cache_enabled}")
         if self.__cache_enabled:
             cache_dir = self.__file_sys_handler.create_folders(
                 self.__cache_root_path)
-            self.__logger .info(f"folder name - {cache_dir}")
+            self.__logger.info(f"folder name - {cache_dir}")
 
     def add(self, key_file_path: str, file_path_list: list, bucket: str):
         """Adds a list of files to a specified bucket using key_file as identity
@@ -39,7 +48,7 @@ class CacheManager(metaclass=Singleton):
 
         # Get hash value of key file
         hash_value = self.__get_file_hash_value(key_file_path)
-        
+
         # Create bucket folder
         bucket_folder_path = f"{self.__cache_root_path}/{hash_value}/{bucket}"
         self.__file_sys_handler.create_folders(bucket_folder_path)
@@ -80,9 +89,9 @@ class CacheManager(metaclass=Singleton):
             return bucket_folder_path
         return None
 
-    def __get_file_hash_value(self,file_path: str) -> str:
+    def __get_file_hash_value(self, file_path: str) -> str:
         file_content = self.__file_sys_handler.read_file(file_path)
         hash_lib = hashlib.sha1()
         hash_lib.update(file_content.encode())
-        hash_value=hash_lib.hexdigest()
+        hash_value = hash_lib.hexdigest()
         return hash_value

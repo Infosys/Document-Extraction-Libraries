@@ -4,7 +4,7 @@
     "variables": {
         "DPP_SYS_PIPELINE_REQ_FILE_PATH": "<value will be auto updated>",
         "DPP_SYS_PIPELINE_INPUT_CONFIG_PATH": "<value will be auto updated>",
-        "DPP_STORAGE_ROOT_URI": "file://C:/DPP/infy_libraries_client/CONTAINER/ML/tiktoken_encoding/unittest/infy_dpp_core/STORAGE",
+        "DPP_STORAGE_ROOT_URI": "file://C:/temp/unittest/infy_dpp_core/STORAGE",
         "DPP_STORAGE_SERVER_URL": "",
         "DPP_STORAGE_ACCESS_KEY": "",
         "DPP_STORAGE_SECRET_KEY": ""

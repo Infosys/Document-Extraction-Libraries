@@ -1,5 +1,5 @@
 # ===============================================================================================================#
-# Copyright 2023 Infosys Ltd.                                                                                   #
+# Copyright 2023 Infosys Ltd.                                                                                    #
 # Use of this source code is governed by Apache License Version 2.0 that can be found in the LICENSE file or at  #
 # http://www.apache.org/licenses/                                                                                #
 # ===============================================================================================================#
@@ -7,18 +7,19 @@
 """Module for FAISS vector DB provider"""
 
 import os
+import logging
 from typing import List
 from langchain.vectorstores import FAISS
 from langchain.document_loaders import TextLoader
 import infy_fs_utils
 from infy_gen_ai_sdk.common.app_config_manager import AppConfigManager
 from infy_gen_ai_sdk.common.file_util import FileUtil
-from infy_gen_ai_sdk.common.logger_factory import LoggerFactory
 from infy_gen_ai_sdk.data.config_data import BaseVectorDbProviderConfigData
 from infy_gen_ai_sdk.data.vector_db_data import BaseVectorDbQueryParamsData, BaseVectorDbRecordData
 from infy_gen_ai_sdk.vectordb.interface.i_vector_db_provider import IVectorDbProvider
 from infy_gen_ai_sdk.embedding.interface.i_embedding_provider import IEmbeddingProvider
 from infy_gen_ai_sdk.common.constants import Constants
+from ....common import Constants
 
 
 class VectorDbProviderConfigData(BaseVectorDbProviderConfigData):
@@ -52,7 +53,13 @@ class FaissVectorDbProvider(IVectorDbProvider):
     __DB_TYPE = "FAISS"
 
     def __init__(self, config_data: VectorDbProviderConfigData, embedding_provider: IEmbeddingProvider) -> None:
-        self.__logger = LoggerFactory().get_logger()
+        if infy_fs_utils.manager.FileSystemLoggingManager().has_fs_logging_handler(
+                Constants.FSLH_GEN_AI_SDK):
+            self.__logger = infy_fs_utils.manager.FileSystemLoggingManager(
+            ).get_fs_logging_handler(Constants.FSLH_GEN_AI_SDK).get_logger()
+        else:
+            self.__logger = logging.getLogger(__name__)
+
         self.__app_config = AppConfigManager().get_app_config()
         self.__fs_handler = infy_fs_utils.manager.FileSystemManager(
         ).get_fs_handler(Constants.FSH_GEN_AI_SDK)
@@ -95,6 +102,8 @@ class FaissVectorDbProvider(IVectorDbProvider):
                 scores_list.append(MatchingVectorDbRecordData(
                     **vector_db_record_data_dict))
             sorted_scores_list = sorted(scores_list, key=lambda d: d.score)
+            self.__logger.debug("Sorted scores list size: %s",
+                                len(sorted_scores_list))
         except Exception as e:
             self.__logger.exception(e)
             raise e

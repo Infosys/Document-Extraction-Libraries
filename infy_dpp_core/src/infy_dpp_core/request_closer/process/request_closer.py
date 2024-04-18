@@ -1,5 +1,5 @@
 # ===============================================================================================================#
-# Copyright 2023 Infosys Ltd.                                                                                   #
+# Copyright 2023 Infosys Ltd.                                                                                    #
 # Use of this source code is governed by Apache License Version 2.0 that can be found in the LICENSE file or at  #
 # http://www.apache.org/licenses/                                                                                #
 # ===============================================================================================================#
@@ -40,7 +40,7 @@ class RequestCloser(infy_dpp_sdk.interface.IProcessor):
             'request_creator').get('group_request_file')
         work_file_path = context_data.get(
             'request_creator').get('work_file_path')
-        work_folder_path=os.path.dirname(work_file_path)
+        work_folder_path = os.path.dirname(work_file_path)
         request_file_path = f'{request_read_path}/{group_request_file}'
         group_id = group_request_file.replace('_group_request.json', '')
         sub_folder = f'{work_root_path}/queue/{group_id}'
@@ -85,8 +85,14 @@ class RequestCloser(infy_dpp_sdk.interface.IProcessor):
                 request_file_path, request_save_path)
         context_data[PROCESSEOR_CONTEXT_DATA_NAME] = {
             "output_folder_path": output_path,
-            "work_folder_path":work_folder_path
+            "work_folder_path": work_folder_path
         }
         response_data.document_data = document_data
         response_data.context_data = context_data
+
+        # ------ Save processor response data in work location ------
+        filename = document_data.metadata.standard_data.filename.value
+        doc_work_location = f"{work_root_path}/D-{document_data.document_id}/{filename}_files"
+        self.__file_sys_handler.write_file(
+            f"{doc_work_location}/processor_response_data.json", response_data.json(indent=4))
         return response_data

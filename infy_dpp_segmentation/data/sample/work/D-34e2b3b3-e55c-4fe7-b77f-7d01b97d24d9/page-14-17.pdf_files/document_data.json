@@ -1,0 +1,40 @@
+{
+    "document_data": {
+        "document_id": "34e2b3b3-e55c-4fe7-b77f-7d01b97d24d9",
+        "metadata": {
+            "standard_data": {
+                "filepath": {
+                    "value": "/data/input/page-14-17.pdf"
+                },
+                "filename": {
+                    "value": "page-14-17.pdf"
+                },
+                "size": {
+                    "value": "781.37 KB"
+                },
+                "created_dtm": {
+                    "value": "2024-01-08 18:12:10"
+                },
+                "modified_dtm": {
+                    "value": "2024-01-08 18:12:10"
+                },
+                "mime_type": {
+                    "value": "application/pdf"
+                },
+                "width": null,
+                "height": null
+            },
+            "extracted_data": null
+        },
+        "page_data": null,
+        "business_attribute_data": null,
+        "text_data": null,
+        "raw_data": null
+    },
+    "context_data": {
+        "request_creator": {
+            "work_file_path": "/data/work/D-34e2b3b3-e55c-4fe7-b77f-7d01b97d24d9/page-14-17.pdf"
+        }
+    },
+    "message_data": null
+}

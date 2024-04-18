@@ -7,11 +7,11 @@ verify_ssl = true
 pytest = "==6.2.5"
 pytest-cov = "==2.12.1"
 autopep8 = "==1.5.1"
-infy_dpp_sdk = {path = "./lib/infy_dpp_sdk-0.0.8-py3-none-any.whl"}
+infy_dpp_sdk = {path = "./lib/infy_dpp_sdk-0.0.10-py3-none-any.whl"}
 infy_fs_utils = {path = "./lib/infy_fs_utils-0.0.2-py3-none-any.whl"}
 
 [packages]
-jsonpath-ng = "==1.6.0"         #[groups=document-data-updater]
+jsonpath-ng = "==1.6.0"
 
 
 [requires]

@@ -1,5 +1,5 @@
 # ===============================================================================================================#
-# Copyright 2023 Infosys Ltd.                                                                                    #
+# Copyright 2024 Infosys Ltd.                                                                                   #
 # Use of this source code is governed by Apache License Version 2.0 that can be found in the LICENSE file or at  #
 # http://www.apache.org/licenses/                                                                                #
 # ===============================================================================================================#
@@ -24,7 +24,7 @@ class ChunkingData:
         return cleaned_data_list
 
     def group_chunk_data(self, segment_data_list, chunking_method, pages_list, exclude_types_list,
-                         merge_title_paragraph):
+                         merge_title_paragraph, replace_dict):
         if chunking_method == 'page':
             rule_name = 'rule_segment_page_data'
         if chunking_method == 'paragraph':
@@ -77,19 +77,20 @@ class ChunkingData:
         }
         return merged_output
 
-    # def merge_title_paragraph(self,segment_data_list):
-    #     t_p_group, cur_p =[],[]
-    #     for idx,segment_data in enumerate(segment_data_list):
-    #         if segment_data['content_type']=='Title' and segment_data_list[idx+1].get('content_type')!='Title':
-    #         # if segment_data['content_type']=='Title' and cur_p:
-    #             t_p=[]
-    #             t_p.append(segment_data)
-    #             for i in segment_data_list[idx+1:]:
-    #                 if i['content_type']=='Title' or i['page']!=segment_data['page']:
-    #                     break
-    #                 else:
-    #                     t_p.append(i)
-    #             t_p_group.append(t_p)
-    #         # else:
-    #         #     t_p_group.append(segment_data)
-    #     return t_p_group
+    def replace_data(self, cleaned_segment_data_list, replace_dict):
+        if replace_dict:
+            for replace_item in replace_dict:
+                find = replace_item["find"]
+                replace = replace_item["replace"]
+                for segment_data in cleaned_segment_data_list:
+                    if find in segment_data['content']:
+                        segment_data['content'] = segment_data['content'].replace(
+                            find, replace)
+        return cleaned_segment_data_list
+
+    def remove_headers_footers(self, segment_data_list):
+        cleaned_segment_data_list = []
+        for segment_data in segment_data_list:
+            if segment_data['content_type'] not in ['header', 'footer']:
+                cleaned_segment_data_list.append(segment_data)
+        return cleaned_segment_data_list

@@ -1,0 +1,49 @@
+{
+    "fields": {
+        "includes": [],
+        "excludes": [
+            "language"
+        ]
+    },
+    "nodes": [
+        {
+            "name": "title",
+            "refers_to": "name",
+            "properties": [
+                "author",
+                "genre",
+                "published",
+                "rating"
+            ]
+        },
+        {
+            "name": "author",
+            "refers_to": "author"
+        },
+        {
+            "name": "genre",
+            "refers_to": "genre"
+        },
+        {
+            "name": "published",
+            "refers_to": "published"
+        }
+    ],
+    "edges": [
+        {
+            "node1": "author",
+            "node2": "title",
+            "name": "WRITTEN_BY"
+        },
+        {
+            "node1": "title",
+            "node2": "genre",
+            "name": "CATEGORIZED_AS"
+        },
+        {
+            "node1": "title",
+            "node2": "published",
+            "name": "PUBLISHED_IN"
+        }
+    ]
+}

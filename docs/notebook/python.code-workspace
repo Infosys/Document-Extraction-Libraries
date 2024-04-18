@@ -1,8 +1,7 @@
 {
 	"folders": [
 		{
-			"path": ".",
-			"name": ""
+			"path": "."
 		}
 	],
 	"settings": {
@@ -10,37 +9,47 @@
 			".venv": true,
 			"logs": true,
 			"**/__pycache__": true,
-			"archive": true,
-			"dist": true,
-			"build": true,
-			"*.egg-info": true,
-			".pytest_cache": true
+			"**/.pytest_cache": true,
+			"**/.ipynb_checkpoints": true,
+			".vscode": true,
+			"target": true
 		},
 		"editor.formatOnSave": true,
-		"pylint.args": [
-			// "--rcfile",
-			// "../libraries.pylintrc"
+		"python.linting.enabled": true,
+		"python.linting.lintOnSave": true,
+		"python.linting.pylintPath": "pylint",
+		"python.linting.pylintArgs": [
+			"--rcfile",
+			"../libraries.pylintrc"
 		],
-		// "python.testing.pytestArgs": [
-		// 	"-s",
-		// 	"-v",
-		// 	"tests",
-		// ],
+		"python.linting.pylintEnabled": true,
+		"python.testing.pytestArgs": [
+			"-s",
+			"-v",
+			// "--cov-report=term-missing",
+			// "--cov-report=html:./data/temp/report",
+			// "--cov=src",
+			"tests",
+		],
 		"python.testing.unittestEnabled": false,
 		"python.testing.pytestEnabled": true,
 		"python.testing.autoTestDiscoverOnSaveEnabled": true,
-		"python.testing.cwd": "${workspaceFolder}"
+		"python.testing.cwd": "${workspaceFolder}",
+		"plantuml.exportOutDir": ".",
+		"plantuml.exportSubFolder": false,
+		"plantuml.exportFormat": "png",
 	},
 	"launch": {
 		"configurations": [
 			{
-				"name": "Python: Current File",
+				"name": "Python: Application",
 				"type": "python",
 				"request": "launch",
-				"program": "${file}",
+				"program": "app_controller.py",
 				"console": "integratedTerminal",
 				"cwd": "${workspaceFolder}/src",
 				"justMyCode": false
+			}
 			}
 		],
 		"compounds": []

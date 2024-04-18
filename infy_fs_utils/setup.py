@@ -1,5 +1,5 @@
 # ===============================================================================================================#
-# Copyright 2023 Infosys Ltd.                                                                                   #
+# Copyright 2023 Infosys Ltd.                                                                                    #
 # Use of this source code is governed by Apache License Version 2.0 that can be found in the LICENSE file or at  #
 # http://www.apache.org/licenses/                                                                                #
 # ===============================================================================================================#
@@ -127,6 +127,8 @@ class PipfileUtil:
         extras_name = None
         for line in nonempty_line_list:
             line = line.strip()
+            if line.startswith("#"):
+                continue
             # E.g. #[groups=native,cloud]
             if IDENTIFIER_GROUPS in line:
                 temp = line.split(IDENTIFIER_GROUPS)
@@ -167,7 +169,7 @@ if __name__ == '__main__':
         license="Apache License Version 2.0",
         author="Infosys Limited",
         author_email="",
-        description="Abstracted file system handler utils.",
+        description="Abstracted file system handler",
         long_description="",
         long_description_content_type="text/markdown",
         url="",

@@ -1,16 +1,16 @@
 # ===============================================================================================================#
-# Copyright 2023 Infosys Ltd.                                                                                   #
+# Copyright 2023 Infosys Ltd.                                                                                    #
 # Use of this source code is governed by Apache License Version 2.0 that can be found in the LICENSE file or at  #
 # http://www.apache.org/licenses/                                                                                #
 # ===============================================================================================================#
 
+import os
 import pytest
 import infy_fs_utils
 import infy_dpp_sdk
 
 
 STORAGE_ROOT_PATH = f"C:/temp/unittest/infy_dpp_sdk/{__name__}/STORAGE"
-# INPUT_CONFIG_FILE_PATH = f'{STORAGE_ROOT_PATH}/config/dpp_pipeline1_input_config.json'
 INPUT_CONFIG_FILE_PATH = '/data/config/dpp_pipeline1_input_config.json'
 
 
@@ -26,7 +26,7 @@ def pre_test(create_root_folders, copy_files_to_root_folder):
             f"{STORAGE_ROOT_PATH}/data/input"],
         ['company2.txt', f"{SAMPLE_ROOT_PATH}/input",
             f"{STORAGE_ROOT_PATH}/data/input"],
-        ['dpp_pipeline1_input_config.json', f"{SAMPLE_ROOT_PATH}/config",
+        [os.path.basename(INPUT_CONFIG_FILE_PATH), f"{SAMPLE_ROOT_PATH}/config",
             f"{STORAGE_ROOT_PATH}/data/config"]
     ]
     copy_files_to_root_folder(FILES_TO_COPY)
@@ -75,9 +75,34 @@ def test_pipeline_1():
     """Test method"""
     dpp_orchestrator = infy_dpp_sdk.orchestrator.OrchestratorNativeBasic(
         input_config_file_path=INPUT_CONFIG_FILE_PATH)
-    response_data_list = dpp_orchestrator.run_batch()
-    assert len(response_data_list) == 2
+    processor_response_data_list = dpp_orchestrator.run_batch()
+    assert len(processor_response_data_list) == 2
     document_id_list = [x.dict()['document_data']['document_id']
-                        for x in response_data_list]
+                        for x in processor_response_data_list]
     assert len(set(document_id_list)) == 2
-    print(response_data_list)
+    message_data_list = [x.dict()['message_data']
+                         for x in processor_response_data_list]
+    assert len(message_data_list) == 2
+    for message_data in message_data_list:
+        assert len(message_data['messages']) == 1
+        assert message_data['messages'][0]['message_type'] == infy_dpp_sdk.data.MessageTypeEnum.INFO
+        assert message_data['messages'][0]['message_code'] == infy_dpp_sdk.data.MessageCodeEnum.INFO_SUCCESS
+
+    print(processor_response_data_list)
+
+    # Run the orchestrator again to check for no records found handling
+    dpp_orchestrator = infy_dpp_sdk.orchestrator.OrchestratorNativeBasic(
+        input_config_file_path=INPUT_CONFIG_FILE_PATH)
+    processor_response_data_list = dpp_orchestrator.run_batch()
+    assert len(processor_response_data_list) >= 1
+    document_id_list = [x.dict()['document_data']['document_id']
+                        for x in processor_response_data_list]
+    assert len(set(document_id_list)) >= 1
+    message_data_list = [x.dict()['message_data']
+                         for x in processor_response_data_list]
+    assert len(message_data_list) >= 1
+    for message_data in message_data_list:
+        assert len(message_data['messages']) == 1
+        assert message_data['messages'][0]['message_type'] == infy_dpp_sdk.data.MessageTypeEnum.INFO
+
+    print(processor_response_data_list)

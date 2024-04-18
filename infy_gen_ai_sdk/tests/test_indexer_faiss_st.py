@@ -80,7 +80,7 @@ def test_1():
     # Step 1 - Choose embedding provider
     embedding_provider_config_data = infy_gen_ai_sdk.embedding.provider.StEmbeddingProviderConfigData(
         **{
-            "api_url": "http://vainpdblr15:8003/api/v1/model/embedding/generate",
+            "api_url": "",
             "model_name": "all-MiniLM-L6-v2"
         })
     embedding_provider = infy_gen_ai_sdk.embedding.provider.StEmbeddingProvider(
@@ -127,3 +127,39 @@ def test_1():
     vector_db_provider.save_record(db_record_data)
 
     assert os.path.exists(EXPECTED_DATA['VECTOR_DB']['FILE_PATH'])
+
+
+# WL281
+def test_2():
+    """Test method"""
+    # Step 1 - Choose embedding provider
+    embedding_provider_config_data = infy_gen_ai_sdk.embedding.provider.StEmbeddingProviderConfigData(
+        **{           
+            "model_name": "all-MiniLM-L6-v2",
+            "model_home_path":r"C:\MyProgramFiles\AI\models"
+        })
+    embedding_provider = infy_gen_ai_sdk.embedding.provider.StEmbeddingProvider(
+        embedding_provider_config_data)
+
+    # Step 2 - Choose vector db provider
+    vector_db_provider_config_data = infy_gen_ai_sdk.vectordb.provider.faiss.VectorDbProviderConfigData(
+        **{
+            'db_folder_path': '/vectordb/sentence_transformer_all-MiniLM-L6-v2/companies',
+            'db_index_name': 'companies'
+        })
+    vector_db_provider = infy_gen_ai_sdk.vectordb.provider.faiss.FaissVectorDbProvider(
+        vector_db_provider_config_data, embedding_provider)
+
+    # Step 3 - Add record(s) to vector db
+    # Record 1 of 3
+    db_record_data = infy_gen_ai_sdk.vectordb.provider.faiss.InsertVectorDbRecordData(
+        **{
+            'content_file_path': '/data/input/company_google.txt',
+            'metadata': {
+                'company': 'google'
+            }
+        })
+    vector_db_provider.save_record(db_record_data)    
+
+    assert os.path.exists(EXPECTED_DATA['VECTOR_DB']['FILE_PATH'])
+

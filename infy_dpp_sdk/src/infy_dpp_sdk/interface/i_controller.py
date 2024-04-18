@@ -1,5 +1,5 @@
 # ===============================================================================================================#
-# Copyright 2022 Infosys Ltd.                                                                                   #
+# Copyright 2022 Infosys Ltd.                                                                                    #
 # Use of this source code is governed by Apache License Version 2.0 that can be found in the LICENSE file or at  #
 # http://www.apache.org/licenses/                                                                                #
 # ===============================================================================================================#
@@ -12,8 +12,8 @@ from ..data import (ProcessorResponseData,
 
 
 class IController(ABC):
-    """Interface for accepting input from external systems for executing processor(s). 
-       E.g, CLI, REST API, etc."""
+    """Interface for executing processors when orchestrator is running remotely. 
+       E.g, CLI, HTTP etc."""
 
     def __init__(self):
         self.__controller_request_data = None
@@ -27,16 +27,6 @@ class IController(ABC):
         self.__controller_request_data = controller_request_data
         self.__load_data()
         return self.__do_run_batch()
-
-    @abstractmethod
-    def receive_request(self) -> ControllerRequestData:
-        """Receive the request data from caller. E.g, CLI, REST API, etc."""
-        raise NotImplementedError
-
-    @abstractmethod
-    def send_response(self, controller_response_data: ControllerResponseData) -> any:
-        """Send the response data to the caller. E.g, CLI, REST API, etc."""
-        raise NotImplementedError
 
     @abstractmethod
     def load_config_data(self, controller_request_data: ControllerRequestData) -> dict:
@@ -84,7 +74,7 @@ class IController(ABC):
         self.__input_config_data = input_config_data
 
         # Load document data and context data
-        self.__document_data_list, self.__context_data_list = self.load_snapshots(
+        self.__document_data_list, self.__context_data_list, _ = self.load_snapshots(
             controller_request_data)
         self.__controller_request_data = controller_request_data
 

@@ -1,14 +1,11 @@
 {
     "name": "pipeline1",
-    "description": "Sample 4-processor-pipeline configuration for unit testing",
+    "description": "Sample 4-processor-pipeline configuration for native orchestrator unit testing",
     "variables": {
-        "DPP_SYS_PIPELINE_REQ_FILE_PATH": "<value will be auto updated>",
-        "DPP_SYS_PIPELINE_INPUT_CONFIG_PATH": "<value will be auto updated>",
-        "CHUNKED_FILES_ROOT_PATH": "/docwbvectordb/chunked",
-        "ENCODED_FILES_ROOT_PATH": "/docwbvectordb/encoded",
-        "WORK_ROOT_PATH": "/data/work/",
-        "DPP_STORAGE_URI": "file://C:/workarea/documentworkbench",
-        "TIKTOKEN_CACHE_DIR": "C:/workarea/documentworkbench/data/config/tiktoken_encoding"
+        "DPP_STORAGE_ROOT_URI": "<value will be updated by unit test function>",
+        "DPP_STORAGE_SERVER_URL": "",
+        "DPP_STORAGE_ACCESS_KEY": "",
+        "DPP_STORAGE_SECRET_KEY": ""
     },
     "processor_list": [
         {

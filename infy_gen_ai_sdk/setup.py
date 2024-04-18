@@ -1,5 +1,5 @@
 # ===============================================================================================================#
-# Copyright 2023 Infosys Ltd.                                                                                   #
+# Copyright 2023 Infosys Ltd.                                                                                    #
 # Use of this source code is governed by Apache License Version 2.0 that can be found in the LICENSE file or at  #
 # http://www.apache.org/licenses/                                                                                #
 # ===============================================================================================================#
@@ -127,6 +127,8 @@ class PipfileUtil:
         extras_name = None
         for line in nonempty_line_list:
             line = line.strip()
+            if line.startswith("#"):
+                continue
             # E.g. #[groups=native,cloud]
             if IDENTIFIER_GROUPS in line:
                 temp = line.split(IDENTIFIER_GROUPS)
@@ -163,11 +165,11 @@ if __name__ == '__main__':
 
     METADATA = dict(
         name="infy_gen_ai_sdk",
-        version="0.0.2",
+        version="0.0.3",
         license="Apache License Version 2.0",
         author="Infosys Limited",
         author_email="",
-        description="Infosys Generative AI SDK",
+        description="Generative AI SDK",
         long_description="",
         long_description_content_type="text/markdown",
         url="",

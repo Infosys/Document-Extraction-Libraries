@@ -1,0 +1,33 @@
+{
+    "name": "query_gen_pl",
+    "description": "Sample query generation pl",
+    "variables": {
+        "DPP_SYS_PIPELINE_REQ_FILE_PATH": "<value will be auto updated>",
+        "DPP_SYS_PIPELINE_INPUT_CONFIG_PATH": "<value will be auto updated>",
+        "DPP_STORAGE_ROOT_URI": "file://D:/STORAGE",
+        "DPP_STORAGE_SERVER_URL": "",
+        "DPP_STORAGE_ACCESS_KEY": "",
+        "DPP_STORAGE_SECRET_KEY": ""
+    },
+    "processor_list": [
+        {
+            "enabled": true,
+            "processor_name": "db_query_executor",
+            "processor_namespace": "infy_dpp_storage.db_query_executor",
+            "processor_class_name": "DBQueryExecutor",
+            "processor_input_config_name_list": [
+                "DBQueryExecutor"
+            ]
+        }
+    ],
+    "processor_input_config": {
+        "DBQueryExecutor": {
+            "database_type": "neo4j",
+            "database_credentials": {
+                "database_url": "",
+                "database_username": "",
+                "database_password": ""
+            }
+        }
+    }
+}

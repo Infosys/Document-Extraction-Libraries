@@ -19,7 +19,7 @@ CONTAINER_ROOT_PATH = f"C:/temp/unittest/infy_gen_ai_sdk/{__name__}/CONTAINER"
 EXPECTED_DATA = {
     "VECTOR_DB": {
         "FILE_PATH": STORAGE_ROOT_PATH +
-        '/vectordb/openai-text-davinci-003/companies/companies.faiss'
+        '/vectordb/openai/companies/companies.faiss'
     }
 }
 
@@ -82,8 +82,10 @@ def test_1():
     embedding_provider_config_data = infy_gen_ai_sdk.embedding.provider.OpenAIEmbeddingProviderConfigData(
         **{
             "api_type": "azure",
-            "api_url": "https://openai-ppcazure017.openai.azure.com/",
+            "api_url": "",
             "api_key": os.environ['INFY_OPENAI_SECRET_KEY'],
+            "model_name": "text-embedding-ada-002",
+            "deployment_name": "text-embedding-ada-002",
             "api_version": "2022-12-01",
             "chunk_size": 1000
         })
@@ -93,7 +95,7 @@ def test_1():
     # Step 2 - Choose vector db provider
     vector_db_provider_config_data = infy_gen_ai_sdk.vectordb.provider.faiss.VectorDbProviderConfigData(
         **{
-            'db_folder_path': '/vectordb/openai-text-davinci-003/companies',
+            'db_folder_path': '/vectordb/openai/companies',
             'db_index_name': 'companies'
         })
     vector_db_provider = infy_gen_ai_sdk.vectordb.provider.faiss.FaissVectorDbProvider(

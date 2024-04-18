@@ -6,7 +6,7 @@
 	<artifactId>infy-format-converter</artifactId>
 	<packaging>jar</packaging>
 	<version>0.0.13</version>
-	<name>FormatConverter</name>
+	<name>InfyFormatConverter</name>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<jdk.version>1.8</jdk.version>
@@ -235,12 +235,7 @@
 								</goals>
 								<configuration>
 									<target>
-										<echo>Copying environment specific properties file</echo>
-										<copy todir="${my.deploy.folder}/scripts">
-											<fileset dir="src/main/resources/scripts">
-												<include name="*.*" />
-											</fileset>
-										</copy>
+										<echo>Copying environment specific properties file</echo>								
 										<copy todir="${my.deploy.folder}">
 											<fileset dir="src/main/resources">
 												<include name="XX*.properties" />

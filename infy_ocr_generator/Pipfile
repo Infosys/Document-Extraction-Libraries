@@ -12,16 +12,12 @@ autopep8 = "==1.5.1"
 imageio = "==2.9.0"
 urllib3 = "==1.26.7"
 
-#[extra-tesseract]
-pytesseract = "==0.3.2"
-#[extra-abbyy]
-pywin32 = ">=302,<=306"
-comtypes = "==1.1.10"
-#[extra-aws]
-boto3 = "==1.23.10"
-#[extra-azure]
-azure = "==4.0.0"
-azure-ai-formrecognizer = "==3.2.1"
+pytesseract = "==0.3.2"                 #[groups=tesseract]
+pywin32 = ">=302,<=306"                 #[groups=abbyy]
+comtypes = "==1.1.10"                   #[groups=abbyy]
+boto3 = "==1.23.10"                     #[groups=aws]
+azure = "==4.0.0"                       #[groups=afr]
+azure-ai-formrecognizer = "==3.2.1"     #[groups=afr]
 
 
 [requires]

@@ -1,0 +1,419 @@
+{
+    "name": "Indexing to vectorDB",
+    "description": "Pipeline to index documents to vectorDB",
+    "variables": {
+        "DPP_STORAGE_ROOT_URI": "file://D:/STORAGE",
+        "DPP_STORAGE_SERVER_URL": "",
+        "DPP_STORAGE_ACCESS_KEY": "",
+        "DPP_STORAGE_SECRET_KEY": "",
+        "FORMAT_CONVERTER_HOME": "C:/MyProgramFiles/InfyFormatConverter/",
+        "TESSERACT_HOME": "C:/Program Files/Tesseract-OCR",
+        "OPENAI_KEY": "${ENV:OPENAI_KEY}",
+        "OPENAI_SERVER_URL": "${ENV:OPENAI_SERVER_URL}",
+        "MODEL_HOME": "C:/MyProgramFiles/AI/models",
+        "AZURE_READ_OCR_SUB_KEY": "",
+        "AZURE_READ_OCR_URL": ""
+    },
+    "processor_list": [
+        {
+            "enabled": true,
+            "processor_name": "request_creator",
+            "processor_namespace": "infy_dpp_core.request_creator",
+            "processor_class_name": "RequestCreator",
+            "processor_input_config_name_list": [
+                "RequestCreator"
+            ]
+        },
+        {
+            "enabled": true,
+            "processor_name": "metadata_extractor",
+            "processor_namespace": "infy_dpp_core.metadata_extractor",
+            "processor_class_name": "MetadataExtractor",
+            "processor_input_config_name_list": []
+        },
+        {
+            "enabled": true,
+            "processor_name": "segment_generator",
+            "processor_namespace": "infy_dpp_segmentation.segment_generator",
+            "processor_class_name": "SegmentGenerator",
+            "processor_input_config_name_list": [
+                "SegmentGenerator"
+            ]
+        },
+        {
+            "enabled": true,
+            "processor_name": "segment_consolidator",
+            "processor_namespace": "infy_dpp_segmentation.segment_consolidator",
+            "processor_class_name": "SegmentConsolidator",
+            "processor_input_config_name_list": [
+                "SegmentConsolidator"
+            ]
+        },
+        {
+            "enabled": true,
+            "processor_name": "segment_classifier",
+            "processor_namespace": "infy_dpp_segmentation.segment_classifier",
+            "processor_class_name": "SegmentClassifier",
+            "processor_input_config_name_list": [
+                "SegmentClassifier"
+            ]
+        },
+        {
+            "enabled": true,
+            "processor_name": "page_column_detector",
+            "processor_namespace": "infy_dpp_segmentation.page_column_detector",
+            "processor_class_name": "PageColumnDetector",
+            "processor_input_config_name_list": [
+                "PageColumnDetector"
+            ]
+        },
+        {
+            "enabled": true,
+            "processor_name": "segment_merger",
+            "processor_namespace": "infy_dpp_segmentation.segment_merger",
+            "processor_class_name": "SegmentMerger",
+            "processor_input_config_name_list": [
+                "SegmentMerger"
+            ]
+        },
+        {
+            "enabled": true,
+            "processor_name": "Segment_sequencer",
+            "processor_namespace": "infy_dpp_segmentation.segment_sequencer",
+            "processor_class_name": "SegmentSequencer",
+            "processor_input_config_name_list": [
+                "SegmentSequencer"
+            ]
+        },
+        {
+            "enabled": true,
+            "processor_name": "chunk_generator",
+            "processor_namespace": "infy_dpp_segmentation.chunk_generator",
+            "processor_class_name": "ChunkDataParser",
+            "processor_input_config_name_list": [
+                "ChunkDataParser"
+            ]
+        },
+        {
+            "enabled": true,
+            "processor_name": "chunk_saver",
+            "processor_namespace": "infy_dpp_segmentation.chunk_saver",
+            "processor_class_name": "SaveChunkDataParser",
+            "processor_input_config_name_list": [
+                "SaveChunkDataParser"
+            ]
+        },
+        {
+            "enabled": true,
+            "processor_name": "data_encoder",
+            "processor_namespace": "infy_dpp_ai.data_encoder.process.data_encoder",
+            "processor_class_name": "DataEncoder",
+            "processor_input_config_name_list": [
+                "DataEncoder"
+            ]
+        },
+        {
+            "enabled": true,
+            "processor_name": "request_closer",
+            "processor_namespace": "infy_dpp_core.request_closer",
+            "processor_class_name": "RequestCloser",
+            "processor_input_config_name_list": [
+                "RequestCloser"
+            ]
+        }
+    ],
+    "processor_input_config": {
+        "SegmentGenerator": {
+            "textProviders": [
+                {
+                    "provider_name": "tesseract_ocr_provider",
+                    "properties": {
+                        "tesseract_path": "${TESSERACT_HOME}/tesseract.exe",
+                        "format_converter_home": "${FORMAT_CONVERTER_HOME}"
+                    }
+                },
+                {
+                    "provider_name": "azure_read_ocr_provider",
+                    "properties": {
+                        "subscription_key": "${AZURE_READ_OCR_SUB_KEY}",
+                        "url": "${AZURE_READ_OCR_URL}",
+                        "format_converter_home": "${FORMAT_CONVERTER_HOME}"
+                    }
+                },
+                {
+                    "provider_name": "pdf_box_text_provider",
+                    "properties": {
+                        "format_converter_home": "${FORMAT_CONVERTER_HOME}"
+                    }
+                },
+                {
+                    "provider_name": "json_provider",
+                    "properties": {
+                        "template1_file_path": "/data/config/templates/email_template.txt",
+                        "format_converter_home": "${FORMAT_CONVERTER_HOME}"
+                    }
+                },
+                {
+                    "provider_name": "txt_provider",
+                    "properties": {
+                        "format_converter_home": "${FORMAT_CONVERTER_HOME}"
+                    }
+                }
+            ],
+            "modelProviders": [
+                {
+                    "provider_name": "detectron",
+                    "properties": {
+                        "model_path": "/segment-generator-service/model_files/model_final.pth",
+                        "config_file_path": "/segment-generator-service/model_files/config.text",
+                        "model_threshold": 0.8
+                    }
+                }
+            ],
+            "techniques": [
+                {
+                    "enabled": false,
+                    "name": "technique1",
+                    "input_file_type": "image",
+                    "text_provider_name": "tesseract_ocr_provider",
+                    "model_provider_name": "detectron"
+                },
+                {
+                    "enabled": false,
+                    "name": "technique2",
+                    "input_file_type": "image",
+                    "text_provider_name": "azure_read_ocr_provider",
+                    "model_provider_name": "detectron"
+                },
+                {
+                    "enabled": true,
+                    "name": "technique3",
+                    "input_file_type": "pdf",
+                    "text_provider_name": "pdf_box_text_provider",
+                    "model_provider_name": null
+                },
+                {
+                    "enabled": false,
+                    "name": "technique4",
+                    "input_file_type": "pdf",
+                    "text_provider_name": "pdf_box_text_provider",
+                    "model_provider_name": "detectron"
+                },
+                {
+                    "enabled": true,
+                    "name": "technique5",
+                    "input_file_type": "json",
+                    "text_provider_name": "json_provider",
+                    "model_provider_name": null
+                },
+                {
+                    "enabled": true,
+                    "name": "technique6",
+                    "input_file_type": "txt",
+                    "text_provider_name": "txt_provider",
+                    "model_provider_name": null
+                }
+            ],
+            "debug": {
+                "enabled": false,
+                "generate_image": true,
+                "output_dir_path": "/debug/1.segment_generator"
+            }
+        },
+        "SegmentConsolidator": {
+            "enabled": true,
+            "debug": {
+                "enabled": false,
+                "generate_image": true,
+                "output_dir_path": "/debug/2.segment_consolidator"
+            }
+        },
+        "SegmentClassifier": {
+            "header": {
+                "enabled": true,
+                "min_height": 0,
+                "max_height": 250
+            },
+            "footer": {
+                "enabled": true,
+                "min_height": 3100,
+                "max_height": 3300
+            },
+            "debug": {
+                "enabled": false,
+                "generate_image": true,
+                "output_dir_path": "/debug/3.segment_classifier"
+            }
+        },
+        "PageColumnDetector": {
+            "column_techniques": [
+                {
+                    "enabled": true,
+                    "name": "column_technique1"
+                }
+            ],
+            "exclude": [
+                "header",
+                "footer"
+            ],
+            "debug": {
+                "enabled": false,
+                "generate_image": true,
+                "output_dir_path": "/debug/4.column_detector"
+            }
+        },
+        "SegmentMerger": {
+            "prefer_larger_segments": true,
+            "merge": {
+                "enabled": true,
+                "vertical_adjacent_segments_max_gap_in_pixel": 80,
+                "horizontal_adjacent_segments_max_gap_in_pixel": 10
+            },
+            "plot_bbox_segments": true,
+            "debug": {
+                "enabled": false,
+                "generate_image": true,
+                "output_dir_path": "/debug/5.segment_merger"
+            }
+        },
+        "SegmentSequencer": {
+            "pattern": {
+                "single-column": {
+                    "sequence-order": {
+                        "enabled": true
+                    }
+                },
+                "multi-column": {
+                    "left-right": {
+                        "enabled": false
+                    },
+                    "zig-zag": {
+                        "enabled": false
+                    }
+                }
+            },
+            "debug": {
+                "enabled": false,
+                "generate_image": true,
+                "output_dir_path": "/debug/6.segment_sequencer"
+            }
+        },
+        "ChunkDataParser": {
+            "chunking_method": "page",
+            "merge_title_paragraph": false,
+            "page_num": [
+                "1:10"
+            ],
+            "replace": [
+                {
+                    "find": "\u2019",
+                    "replace": "'"
+                },
+                {
+                    "find": "\u2018",
+                    "replace": "'"
+                },
+                {
+                    "find": "\u2026",
+                    "replace": ","
+                },
+                {
+                    "find": "\u2013",
+                    "replace": " "
+                }
+            ],
+            "exclude": [
+                "table",
+                "figure"
+            ]
+        },
+        "SaveChunkDataParser": {
+            "chunked_files_root_path": "/data/vectordb/chunked"
+        },
+        "RequestCreator": {
+            "from_data_file": {
+                "enabled": true,
+                "read_path": "/data/input/",
+                "batch_size": 20,
+                "filter": {
+                    "include": [
+                        "pdf",
+                        "json",
+                        "txt"
+                    ],
+                    "exclude": [
+                        "_"
+                    ]
+                },
+                "work_root_path": "/data/work/",
+                "to_request_file": {
+                    "save_path": "/data/work/request/indexer/start"
+                }
+            },
+            "from_request_file": {
+                "enabled": false,
+                "read_path": "/data/work/request/indexer/complete",
+                "save_path": "/data/work/request/inference/start"
+            }
+        },
+        "RequestCloser": {
+            "work_root_path": "/data/work/",
+            "data_file": {
+                "output_root_path": "/data/output/"
+            },
+            "output_root_path": "/data/output/",
+            "from_request_file": {
+                "read_path": "/data/work/request/indexer/start",
+                "save_path": "/data/work/request/indexer/complete"
+            }
+        },
+        "DocumentDataUpdater": {
+            "config_data": [
+                {
+                    "enabled": true,
+                    "json_path": "$.context_data.reader.output[*].model_output.sources[*]",
+                    "json_key": "bbox",
+                    "replace_key_enabled": false,
+                    "replace_with_key": "",
+                    "replace_with_value": "",
+                    "replace_value_enabled": false,
+                    "replace_value_with_rule_name": "rule_cus_001_transform_bbox_value"
+                }
+            ]
+        },
+        "DataEncoder": {
+            "embedding": {
+                "openai": {
+                    "enabled": false,
+                    "configuration": {
+                        "api_type": "azure",
+                        "api_version": "2022-12-01",
+                        "api_url": "${OPENAI_SERVER_URL}",
+                        "api_key": "${OPENAI_KEY}",
+                        "model_name": "text-embedding-ada-002",
+                        "deployment_name": "text-embedding-ada-002",
+                        "chunk_size": 1000,
+                        "tiktoken_cache_dir": "${MODEL_HOME}/tiktoken_encoding"
+                    }
+                },
+                "sentence_transformer": {
+                    "enabled": true,
+                    "configuration": {
+                        "model_name": "all-MiniLM-L6-v2",
+                        "model_home_path": "${MODEL_HOME}"
+                    }
+                }
+            },
+            "storage": {
+                "faiss": {
+                    "enabled": true,
+                    "configuration": {
+                        "chunked_files_root_path": "/data/vectordb/chunked",
+                        "encoded_files_root_path": "/data/vectordb/encoded",
+                        "db_name": null
+                    }
+                }
+            }
+        }
+    }
+}

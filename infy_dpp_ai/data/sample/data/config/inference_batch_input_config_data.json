@@ -24,15 +24,17 @@
     "processor_input_config": {
         "QueryRetriever": {
             "embedding": {
-                "openai-text-davinci-003": {
+                "openai": {
                     "enabled": true,
                     "configuration": {
                         "api_type": "azure",
                         "api_version": "2022-12-01",
                         "api_url": "",
                         "api_key": "",
+                        "model_name": "text-embedding-ada-002",
+                        "deployment_name": "text-embedding-ada-002",
                         "chunk_size": 1000,
-                        "tiktoken_cache_dir": "C:/DPP/infy_libraries_client/CONTAINER/ML/tiktoken_encoding"
+                        "tiktoken_cache_dir": "C:/MyProgramFiles/AI/models/tiktoken_encoding"
                     }
                 },
                 "sentence_transformer": {
@@ -114,7 +116,7 @@
                 }
             },
             "llm": {
-                "openai-text-davinci-003": {
+                "openai": {
                     "enabled": false,
                     "configuration": {
                         "api_type": "azure",
@@ -132,22 +134,54 @@
                         "cache_root_path": "/data/cache/infy_model_service"
                     }
                 },
-                "llama2-7b": {
+                "custom": {
+                    "bloom-7b1": {
                     "enabled": false,
                     "configuration": {
-                        "inference_url": "",
+                            "inference_url": "https://api-aicloud.ad.infosys.com/v1/language/generate/models/bloom7b1/versions/1/infer",
+                            "tiktoken_cache_dir": "C:/DPP/infy_libraries_client/CONTAINER/ML/tiktoken_encoding",
+                            "remove_query_from_response": true
+                        },
+                        "json_payload": {
+                            "inputs": "{query}",
+                            "parameters": {
                         "max_new_tokens": 4096,
-                        "tiktoken_cache_dir": "C:/DPP/infy_libraries_client/CONTAINER/ML/tiktoken_encoding",
-                        "temperature": 1
+                                "temperature": 1,
+                                "num_return_sequences": 1,
+                                "do_sample": true
                     }
+                        }
                 },
-                "bloom-7b1": {
+                    "llama2-7b": {
                     "enabled": true,
                     "configuration": {
-                        "inference_url": "",
+                            "inference_url": "",
+                            "tiktoken_cache_dir": "C:/DPP/infy_libraries_client/CONTAINER/ML/tiktoken_encoding",
+                            "remove_query_from_response": true
+                        },
+                        "json_payload": {
+                            "inputs": "{query}",
+                            "parameters": {
                         "max_new_tokens": 4096,
-                        "tiktoken_cache_dir": "C:/DPP/infy_libraries_client/CONTAINER/ML/tiktoken_encoding",
-                        "temperature": 1
+                                "temperature": 1,
+                                "num_return_sequences": 1,
+                                "do_sample": true
+                            }
+                        }
+                    },
+                    "mixtral8x7b-instruct": {
+                        "enabled": false,
+                        "configuration": {
+                            "inference_url": "",
+                            "tiktoken_cache_dir": "C:/DPP/infy_libraries_client/CONTAINER/ML/tiktoken_encoding",
+                            "remove_query_from_response": false
+                        },
+                        "json_payload": {
+                            "inputs": "{query}",
+                            "parameters": {
+                                "max_new_tokens": 1024
+                            }
+                        }
                     }
                 }
             },

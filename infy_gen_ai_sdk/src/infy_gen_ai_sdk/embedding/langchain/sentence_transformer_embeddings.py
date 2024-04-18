@@ -1,5 +1,5 @@
 # ===============================================================================================================#
-# Copyright 2023 Infosys Ltd.                                                                                   #
+# Copyright 2023 Infosys Ltd.                                                                                    #
 # Use of this source code is governed by Apache License Version 2.0 that can be found in the LICENSE file or at  #
 # http://www.apache.org/licenses/                                                                                #
 # ===============================================================================================================#
@@ -7,20 +7,27 @@
 
 import ast
 import requests
-
+import logging
+from typing import Any, Dict, List, Mapping, Optional
 from langchain.pydantic_v1 import BaseModel, Extra
 from langchain.schema.embeddings import Embeddings
-from typing import Any, Dict, List, Mapping, Optional
-
-from infy_gen_ai_sdk.common.logger_factory import LoggerFactory
+import infy_fs_utils
+from infy_gen_ai_sdk.embedding.langchain.sentence_transformer_service import SentenceTransformerService
+from ...common import Constants
 
 
 class SentenceTransformerEmbeddings(BaseModel, Embeddings):
-    base_url: str = ""
+    base_url: str = None
     model: str = ""
+    model_home_path: str = None
 
     def _call_api(self, input) -> List[float]:
-        __logger = LoggerFactory().get_logger()
+        if infy_fs_utils.manager.FileSystemLoggingManager().has_fs_logging_handler(
+                Constants.FSLH_GEN_AI_SDK):
+            __logger = infy_fs_utils.manager.FileSystemLoggingManager(
+            ).get_fs_logging_handler(Constants.FSLH_GEN_AI_SDK).get_logger()
+        else:
+            __logger = logging.getLogger(__name__)
         headers = {
             'accept': 'application/json',
             'Content-Type': 'application/json',
@@ -55,7 +62,14 @@ class SentenceTransformerEmbeddings(BaseModel, Embeddings):
     def _embed(self, input: List[str]) -> List[List[float]]:
         embeddings_list: List[List[float]] = []
         for prompt in input:
-            embeddings = self._call_api(prompt)
+            if self.model_home_path:
+                sentence_transform_service_obj = SentenceTransformerService(model_name=self.model,
+                                                                            model_home_path=self.model_home_path)
+                embeddings_result = sentence_transform_service_obj.generate_embedding(prompt,
+                                                                                      self.model)
+                embeddings = embeddings_result.get('embedding')
+            else:
+                embeddings = self._call_api(prompt)
             # embeddings_list = transf_embeddings.tolist()
             embeddings_list.append(embeddings)
         return embeddings_list

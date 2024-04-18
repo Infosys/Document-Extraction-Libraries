@@ -1,5 +1,5 @@
 # ===============================================================================================================#
-# Copyright 2022 Infosys Ltd.                                                                                   #
+# Copyright 2022 Infosys Ltd.                                                                                    #
 # Use of this source code is governed by Apache License Version 2.0 that can be found in the LICENSE file or at  #
 # http://www.apache.org/licenses/                                                                                #
 # ===============================================================================================================#
@@ -13,6 +13,7 @@ class SnapshotData(BaseModel):
     """Request file snapshot"""
     document_data_file_path: str = None
     context_data_file_path: str = None
+    message_data_file_path: str = None
 
     class Config:
         """Config"""
@@ -49,6 +50,7 @@ class RecordData(BaseModel):
 
 class ControllerRequestData(BaseModel):
     """Controller request data"""
+    dpp_version: str = None
     request_id: str = None
     description: str = None
     input_config_file_path: str = None

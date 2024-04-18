@@ -1,9 +1,8 @@
 # ===============================================================================================================#
-# Copyright 2023 Infosys Ltd.                                                                                   #
+# Copyright 2024 Infosys Ltd.                                                                                    #
 # Use of this source code is governed by Apache License Version 2.0 that can be found in the LICENSE file or at  #
 # http://www.apache.org/licenses/                                                                                #
 # ===============================================================================================================#
-
 import json
 import os
 import re
@@ -14,9 +13,7 @@ from infy_dpp_sdk.data import *
 import infy_gen_ai_sdk
 import infy_fs_utils
 from .cache_manager import CacheManager
-from ..service.provider.llama2_7b_llm_provider import Llama27bLlmProvider, Llama27bLlmProviderConfigData
-from ..service.provider.bloom_7b1_llm_provider import Bloom7b1LlmProvider, Bloom7b1LlmProviderConfigData
-
+from ..service.provider.custom_llm_provider import CustomLlmProvider, CustomLlmProviderConfigData
 PROCESSEOR_CONTEXT_DATA_NAME = "reader"
 
 # class ReaderProcessor():
@@ -38,16 +35,30 @@ class Reader(infy_dpp_sdk.interface.IProcessor):
 
     def do_execute(self, document_data: DocumentData, context_data: dict, config_data: dict) -> ProcessorResponseData:
         processor_response_data = infy_dpp_sdk.data.ProcessorResponseData()
-        self.__processor_config_data = config_data.get('Reader', {})
+        __processor_config_data = config_data.get('Reader', {})
         document_id = document_data.document_id
+        get_llm = ""
+        get_llm_config = {}
         used_cache = False
-        # if not self.__reader_obj:
-        for key, value in self.__processor_config_data.items():
+
+        for key, value in __processor_config_data.items():
             if key == 'llm':
                 for e_key, e_val in value.items():
-                    if e_val.get('enabled'):
-                        get_llm = e_key
-                        get_llm_config = e_val.get('configuration')
+                    if e_key == 'openai':
+                        if e_val.get('enabled'):
+                            get_llm = e_key
+                            get_llm_config = e_val.get('configuration')
+                            break
+                    elif e_key == 'custom':
+                        for custom_llm_key, custom_llm_val in e_val.items():
+                            if custom_llm_val.get('enabled'):
+                                get_llm = e_key
+                                get_llm_config = custom_llm_val.get(
+                                    'configuration')
+                                json_payload_dict = custom_llm_val.get(
+                                    'json_payload')
+                                custom_llm_name = custom_llm_key
+                                break
             if key == 'storage':
                 for e_key, e_val in value.items():
                     if e_val.get('enabled'):
@@ -57,23 +68,19 @@ class Reader(infy_dpp_sdk.interface.IProcessor):
                         # chunked_files_root_path= get_storage_config.get("chunked_files_root_path")
 
         # Step 1 - Choose LLM provider
-        if get_llm == 'openai-text-davinci-003' and get_storage == 'faiss':
+        if get_llm == 'openai' and get_storage == 'faiss':
             os.environ["TIKTOKEN_CACHE_DIR"] = get_llm_config['tiktoken_cache_dir']
             llm_provider_config_data = infy_gen_ai_sdk.llm.provider.OpenAILlmProviderConfigData(
                 **get_llm_config)
             llm_provider = infy_gen_ai_sdk.llm.provider.OpenAILlmProvider(
                 llm_provider_config_data)
-            cache_enabled = self.__processor_config_data.get('llm').get('openai-text-davinci-003'
-                                                                        ).get('cache').get('enabled')
-        if get_llm == 'llama2-7b' and get_storage == 'faiss':
-            llm_provider_config_data = Llama27bLlmProviderConfigData(
+            cache_enabled = __processor_config_data.get('llm').get('openai'
+                                                                   ).get('cache').get('enabled')
+        if get_llm == 'custom' and get_storage == 'faiss':
+            llm_provider_config_data = CustomLlmProviderConfigData(
                 **get_llm_config)
-            llm_provider = Llama27bLlmProvider(llm_provider_config_data)
-            cache_enabled = False
-        if get_llm == 'bloom-7b1' and get_storage == 'faiss':
-            llm_provider_config_data = Bloom7b1LlmProviderConfigData(
-                **get_llm_config)
-            llm_provider = Bloom7b1LlmProvider(llm_provider_config_data)
+            llm_provider = CustomLlmProvider(
+                llm_provider_config_data, json_payload_dict, custom_llm_name)
             cache_enabled = False
         context_data = context_data if context_data else {}
         # QUERY RETRIEVER VALIDATION  HANDLED#
@@ -88,9 +95,9 @@ class Reader(infy_dpp_sdk.interface.IProcessor):
             'query_retriever').get('queries')
 
         # Step 2 - Prepare data
-        reader_input_list = self.__processor_config_data['inputs']
-        named_propt_temp_dict = self.__processor_config_data['named_prompt_templates']
-        named_context_templates_dict = self.__processor_config_data['named_context_templates']
+        reader_input_list = __processor_config_data['inputs']
+        named_propt_temp_dict = __processor_config_data['named_prompt_templates']
+        named_context_templates_dict = __processor_config_data['named_context_templates']
         output_list = []
         for query in data_ret_queries_list:
             self.__logger.info(f'...Question...{query["question"]}')
@@ -109,16 +116,15 @@ class Reader(infy_dpp_sdk.interface.IProcessor):
                     f_file = match.get("content")
                     # template = re.sub(
                     #     '{chunk_text}', re.escape(f_file), v)
-                    template = v.replace( '{chunk_text}',f_file)
+                    template = v.replace('{chunk_text}', f_file)
                     if not remain_repl_words_list:
                         comb_file_content = comb_file_content + template
                     else:
                         for replace_word in remain_repl_words_list:
                             relevant_metadata_value = str(
                                 meta_data.get(replace_word))
-                            # template = re.sub(f'{{{replace_word}}}', repr(
-                            #     relevant_metadata_value), template)
-                            template = template.replace(f'{{{replace_word}}}',repr(relevant_metadata_value))
+                            template = template.replace(
+                                f'{{{replace_word}}}', repr(relevant_metadata_value))
                         comb_file_content = comb_file_content + template
 
                     if idx == len(top_k_matches_list)-1:
@@ -154,18 +160,17 @@ class Reader(infy_dpp_sdk.interface.IProcessor):
                         **request_data_dict
                     )
                     # CACHE HANDLING#
-                    if get_llm == 'openai-text-davinci-003':
-                        cache_rel_root_path = self.__processor_config_data.get('llm').get(
-                            'openai-text-davinci-003').get('cache').get('cache_root_path')
-                        # cache_root_path=self.__file_sys_handler.get_abs_path(cache_rel_root_path)
+                    if get_llm == 'openai':
+                        cache_rel_root_path = __processor_config_data.get('llm').get(
+                            'openai').get('cache').get('cache_root_path')
                         cache_root_path = cache_rel_root_path
                         config_params = {
                             "cache_enabled": cache_enabled,
                             "cache_path_root": cache_root_path
                         }
-                        self.__cache_manager = CacheManager(config_params)
-                        self.__bucket_name = "openai-text-davinci-003"
-                        temp_folder_path = f'{cache_root_path}/temp/infy_model_service/{self.__bucket_name}'
+                        __cache_manager = CacheManager(config_params)
+                        __bucket_name = "openai"
+                        temp_folder_path = f'{cache_root_path}/temp/infy_model_service/{__bucket_name}'
                         uuid = self.__get_uuid()
                         temp_uuid_folder_path, _ = self.__create_uuid_dir(
                             temp_folder_path, uuid)
@@ -177,18 +182,14 @@ class Reader(infy_dpp_sdk.interface.IProcessor):
                         combined_query += f'  \n Temperature : {get_llm_config.get("temperature")}'
                         self.__file_sys_handler.write_file(
                             combined_query_temp_file_path, combined_query)
-                        # with open(combined_query_temp_file_path, "w", encoding="utf-8") as file:
-                        #         file.write(combined_query)
-                        cache_file_path = self.__cache_manager.get(
-                            combined_query_temp_file_path, self.__bucket_name)
+                        cache_file_path = __cache_manager.get(
+                            combined_query_temp_file_path, __bucket_name)
                         if cache_enabled:
                             if cache_file_path:
                                 for cache_file in self.__file_sys_handler.list_files(cache_file_path, "*"):
                                     if os.path.basename(cache_file) == 'llm_response.txt':
                                         llm_response_txt = self.__file_sys_handler.read_file(
                                             cache_file)
-                                        # with open(cache_file, "r", encoding="utf-8") as file:
-                                        #     llm_response_txt=file.read()
                                         used_cache = True
                             else:
                                 cache_enabled = False
@@ -197,13 +198,13 @@ class Reader(infy_dpp_sdk.interface.IProcessor):
                         llm_response_data: infy_gen_ai_sdk.llm.provider.OpenAILlmResponseData = llm_provider.get_llm_response(
                             llm_request_data)
                         llm_response_txt = llm_response_data.llm_response_txt
-                        # Save response to cache only if get_llm == 'openai-text-davinci-003'
-                        if get_llm == 'openai-text-davinci-003':
+                        # Save response to cache only if get_llm == 'openai'
+                        if get_llm == 'openai':
                             result_temp_file_path = f'{temp_uuid_folder_path}/llm_response.txt'
                             self.__file_sys_handler.write_file(
                                 result_temp_file_path, llm_response_txt)
-                            self.__cache_manager.add(combined_query_temp_file_path, [
-                                                     result_temp_file_path], self.__bucket_name)
+                            __cache_manager.add(combined_query_temp_file_path, [
+                                result_temp_file_path], __bucket_name)
                             for temp_files in self.__file_sys_handler.list_files(temp_uuid_folder_path, "*"):
                                 self.__file_sys_handler.delete_file(temp_files)
                     answer = llm_response_txt

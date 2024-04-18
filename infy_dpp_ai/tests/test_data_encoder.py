@@ -1,5 +1,5 @@
 # ===============================================================================================================#
-# Copyright 2023 Infosys Ltd.                                                                                   #
+# Copyright 2023 Infosys Ltd.                                                                                    #
 # Use of this source code is governed by Apache License Version 2.0 that can be found in the LICENSE file or at  #
 # http://www.apache.org/licenses/                                                                                #
 # ===============================================================================================================#
@@ -24,7 +24,9 @@ def pre_test(create_root_folders, copy_files_to_root_folder):
         ['document_data.json', f"{SAMPLE_ROOT_PATH}/data/work/D-037c85b3-d45b-47db-abb0-b7aadf813b4e/page-14-17.pdf_files",
             f"{STORAGE_ROOT_PATH}/data/work/D-037c85b3-d45b-47db-abb0-b7aadf813b4e/page-14-17.pdf_files"],
         ['pipeline_input_config_data.json', f"{SAMPLE_ROOT_PATH}/data/config",
-            f"{STORAGE_ROOT_PATH}/data/config"],        
+            f"{STORAGE_ROOT_PATH}/data/config"],
+        ['local_model_path_pipeline_input_config_data.json', f"{SAMPLE_ROOT_PATH}/data/config",
+            f"{STORAGE_ROOT_PATH}/data/config"],          
         ['*.txt',f"{SAMPLE_ROOT_PATH}/vectordb/chunked",
             f"{STORAGE_ROOT_PATH}/vectordb/chunked"],
         ['*.json',f"{SAMPLE_ROOT_PATH}/vectordb/chunked",
@@ -111,6 +113,25 @@ def test_dpp_ai_pipeline_2():
         response_data_list = dpp_orchestrator.run_batch(
             [infy_dpp_sdk.data.DocumentData(**document_data_json.get('document_data'))],
             [document_data_json.get('context_data')])   
+    # --------- Save the response data to temp file ------------
+    for idx,response_data in enumerate(response_data_list):
+        output_file_path=f"{STORAGE_ROOT_PATH}/data/work/D-037c85b3-d45b-47db-abb0-b7aadf813b4e/page-14-17.pdf_files/document_data.json"
+        infy_dpp_ai.common.FileUtil.save_to_json(output_file_path,response_data.dict())
+        assert response_data.context_data.get('data_encoder') is not None
+
+def test_dpp_ai_pipeline_3():
+    """
+        Test case for embedding data using model_home_path instead of embedding API call to avoid sending PII to API.
+    """
+    document_data_json = infy_dpp_ai.common.FileUtil.load_json(
+        f"{STORAGE_ROOT_PATH}/data/work/D-037c85b3-d45b-47db-abb0-b7aadf813b4e/page-14-17.pdf_files/document_data.json")
+
+    # --------- Run the pipeline ------------
+    dpp_orchestrator = infy_dpp_sdk.orchestrator.OrchestratorNativeBasic(
+        input_config_file_path=f"/data/config/local_model_path_pipeline_input_config_data.json")    
+    response_data_list = dpp_orchestrator.run_batch(
+        [infy_dpp_sdk.data.DocumentData(**document_data_json.get('document_data'))],
+        [document_data_json.get('context_data')])   
     # --------- Save the response data to temp file ------------
     for idx,response_data in enumerate(response_data_list):
         output_file_path=f"{STORAGE_ROOT_PATH}/data/work/D-037c85b3-d45b-47db-abb0-b7aadf813b4e/page-14-17.pdf_files/document_data.json"

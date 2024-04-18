@@ -1,18 +1,20 @@
 # ===============================================================================================================#
-# Copyright 2023 Infosys Ltd.                                                                                   #
+# Copyright 2023 Infosys Ltd.                                                                                    #
 # Use of this source code is governed by Apache License Version 2.0 that can be found in the LICENSE file or at  #
 # http://www.apache.org/licenses/                                                                                #
 # ===============================================================================================================#
 
 """Module for Open AI LLM provider"""
 
+import logging
 from langchain.llms import AzureOpenAI
 from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain
-from infy_gen_ai_sdk.common.logger_factory import LoggerFactory
+import infy_fs_utils
 from infy_gen_ai_sdk.data.config_data import BaseLlmProviderConfigData
 from infy_gen_ai_sdk.data.llm_data import BaseLlmRequestData, BaseLlmResponseData
 from infy_gen_ai_sdk.llm.interface.i_llm_provider import ILlmProvider
+from ...common import Constants
 
 
 class OpenAILlmProviderConfigData(BaseLlmProviderConfigData):
@@ -22,7 +24,7 @@ class OpenAILlmProviderConfigData(BaseLlmProviderConfigData):
     api_type: str = None
     deployment_name: str = None
     max_tokens: int = None
-    temperature:int = None #0.7
+    temperature: int = None  # 0.7
 
 
 class OpenAILlmRequestData(BaseLlmRequestData):
@@ -37,7 +39,12 @@ class OpenAILlmProvider(ILlmProvider):
     """Open AI LLM provider"""
 
     def __init__(self, config_data: OpenAILlmProviderConfigData) -> None:
-        self.__logger = LoggerFactory().get_logger()
+        if infy_fs_utils.manager.FileSystemLoggingManager().has_fs_logging_handler(
+                Constants.FSLH_GEN_AI_SDK):
+            self.__logger = infy_fs_utils.manager.FileSystemLoggingManager(
+            ).get_fs_logging_handler(Constants.FSLH_GEN_AI_SDK).get_logger()
+        else:
+            self.__logger = logging.getLogger(__name__)
         service_config_data = {
             'openai_api_key': config_data.api_key,
             'openai_api_version': config_data.api_version,
@@ -46,7 +53,7 @@ class OpenAILlmProvider(ILlmProvider):
             'model_name': config_data.model_name,
             'deployment_name': config_data.deployment_name,
             'max_tokens': config_data.max_tokens,
-            'temperature':config_data.temperature
+            'temperature': config_data.temperature
         }
         self.__llm_obj = AzureOpenAI(**service_config_data)
 

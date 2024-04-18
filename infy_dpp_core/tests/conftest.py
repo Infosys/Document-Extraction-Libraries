@@ -1,5 +1,5 @@
 # ===============================================================================================================#
-# Copyright 2023 Infosys Ltd.                                                                                   #
+# Copyright 2023 Infosys Ltd.                                                                                    #
 # Use of this source code is governed by Apache License Version 2.0 that can be found in the LICENSE file or at  #
 # http://www.apache.org/licenses/                                                                                #
 # ===============================================================================================================#
@@ -32,6 +32,18 @@ def copy_files_to_root_folder() -> []:
 def update_json_file() -> []:
     """Update json file"""
     return __update_json_file
+
+
+@pytest.fixture(scope="module")
+def backup_folder():
+    """Backup folder"""
+    return __backup_folder
+
+
+@pytest.fixture(scope="module")
+def restore_folder():
+    """Restore folder"""
+    return __restore_folder
 
 
 #### Private methods ####
@@ -91,3 +103,28 @@ def __update_json_file(file_path, key_path, value):
         temp[keys[-1]] = value
         with open(file_path, 'w', encoding='utf-8') as f:
             json.dump(input_config_data, f, indent=4)
+
+
+def __backup_folder(source_root_folder_path, backup_folder_path):
+    if os.path.exists(source_root_folder_path):
+        try:
+            folder_name = os.path.basename(source_root_folder_path)
+            new_folder_path = backup_folder_path + "/" + folder_name
+            # delete old backup first
+            if os.path.exists(new_folder_path):
+                shutil.rmtree(new_folder_path)
+            # backup
+            shutil.move(source_root_folder_path, new_folder_path)
+        except OSError as error:
+            message = "Cannot backup folder: " + \
+                source_root_folder_path + str(error.args)
+            raise ValueError(message) from error
+
+
+def __restore_folder(backup_folder_path, source_root_folder_path):
+    try:
+        shutil.copytree(backup_folder_path, source_root_folder_path)
+    except OSError as error:
+        message = "Cannot restore folder: " + \
+            backup_folder_path + str(error.args)
+        raise ValueError(message) from error
