@@ -5,7 +5,7 @@ verify_ssl = true
 
 [dev-packages]
 autopep8 = "==1.5.1"
-pytest = "==6.2.5"
+pytest = "==7.4.4"
 pytest-cov = "==2.12.1"
 infy_ocr_generator = {path = "./lib/infy_ocr_generator-0.0.13-py3-none-any.whl", extras=["tesseract"]}
 infy_ocr_parser = {path = "./lib/infy_ocr_parser-0.0.17-py3-none-any.whl"}

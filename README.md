@@ -6,7 +6,7 @@
 ![](https://img.shields.io/github/stars/Infosys/Document-Extraction-Libraries)
 ![](https://img.shields.io/github/last-commit/Infosys/Document-Extraction-Libraries)
 
-# Document Extraction Libraries 3.5.0
+# Document Extraction Libraries 3.7.0
 
 Document Extraction Libraries are a suite of python/java libraries that provide APIs to **extract information from documents** (e.g. scanned/native PDFs, images etc.). For semi-structured documents (e.g. form-like documents), this can be done in a simple and predictable manner. For unstructured documents, it can extract the raw content, retrieve relevant text from it using **semantic search** and use a **Large Language Model (LLM)** to extract information.
 

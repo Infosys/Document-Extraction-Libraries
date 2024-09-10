@@ -5,14 +5,18 @@
       "processor_name": "request_creator",
       "processor_namespace": "infy_dpp_core.request_creator",
       "processor_class_name": "RequestCreator",
-      "processor_input_config_name_list": ["RequestCreator"]
+      "processor_input_config_name_list": [
+        "RequestCreator"
+      ]
     },
     {
       "enabled": true,
       "processor_name": "document_data_saver",
       "processor_namespace": "infy_dpp_core.document_data_saver",
       "processor_class_name": "DocumentDataSaver",
-      "processor_input_config_name_list": ["DocumentDataSaver"]
+      "processor_input_config_name_list": [
+        "DocumentDataSaver"
+      ]
     },
     {
       "enabled": true,
@@ -26,35 +30,45 @@
       "processor_name": "document_data_saver",
       "processor_namespace": "infy_dpp_core.document_data_saver",
       "processor_class_name": "DocumentDataSaver",
-      "processor_input_config_name_list": ["DocumentDataSaver"]
+      "processor_input_config_name_list": [
+        "DocumentDataSaver"
+      ]
     },
     {
       "enabled": true,
       "processor_name": "content_extractor",
       "processor_namespace": "infy_dpp_content_extractor.content_extractor",
       "processor_class_name": "ContentExtractor",
-      "processor_input_config_name_list": ["ContentExtractor"]
+      "processor_input_config_name_list": [
+        "ContentExtractor"
+      ]
     },
     {
       "enabled": true,
       "processor_name": "document_data_saver",
       "processor_namespace": "infy_dpp_core.document_data_saver",
       "processor_class_name": "DocumentDataSaver",
-      "processor_input_config_name_list": ["DocumentDataSaver"]
+      "processor_input_config_name_list": [
+        "DocumentDataSaver"
+      ]
     },
     {
       "enabled": true,
       "processor_name": "request_closer",
       "processor_namespace": "infy_dpp_core.request_closer",
       "processor_class_name": "RequestCloser",
-      "processor_input_config_name_list": ["RequestCloser"]
+      "processor_input_config_name_list": [
+        "RequestCloser"
+      ]
     },
     {
       "enabled": true,
       "processor_name": "document_data_saver",
       "processor_namespace": "infy_dpp_core.document_data_saver",
       "processor_class_name": "DocumentDataSaver",
-      "processor_input_config_name_list": ["DocumentDataSaver"]
+      "processor_input_config_name_list": [
+        "DocumentDataSaver"
+      ]
     }
   ],
   "processor_input_config": {
@@ -64,8 +78,14 @@
         "read_path": "/data/input/",
         "batch_size": 20,
         "filter": {
-          "include": ["pdf", "json", "txt"],
-          "exclude": ["_"]
+          "include": [
+            "pdf",
+            "json",
+            "txt"
+          ],
+          "exclude": [
+            "_"
+          ]
         },
         "work_root_path": "/data/work/",
         "to_request_file": {
@@ -96,28 +116,56 @@
       "techniques": [
         {
           "enabled": true,
-          "name": "pdf_plumber",
+          "name": "pdf_plumber_table_extractor",
+          "input_file_type": "pdf",
+          "text_provider_name": "pdf_box_text_provider",
+          "model_provider_name": null
+        },
+        {
+          "enabled": true,
+          "name": "pdf_box_image_extractor",
+          "input_file_type": "pdf",
+          "text_provider_name": "pdf_box_text_provider",
+          "model_provider_name": null
+        },
+        {
+          "enabled": true,
+          "name": "pdf_image_converter",
+          "input_file_type": "pdf",
+          "text_provider_name": "pdf_box_text_provider",
+          "model_provider_name": null
+        },
+        {
+          "enabled": true,
+          "name": "pdf_apache_pdfbox",
+          "input_file_type": "pdf",
+          "text_provider_name": "pdf_box_text_provider",
+          "model_provider_name": null
+        },
+        {
+          "enabled": true,
+          "name": "pdf_image_apache_pdfbox",
           "input_file_type": "pdf",
           "text_provider_name": "pdf_box_text_provider",
           "model_provider_name": null
         },
         {
           "enabled": false,
-          "name": "technique2",
+          "name": "img_tesseracct_ocr_extractor",
           "input_file_type": "image",
           "text_provider_name": "tesseract_ocr_provider",
           "model_provider_name": null
         },
         {
           "enabled": false,
-          "name": "technique3",
+          "name": "img_azure_read_ocr_extractor",
           "input_file_type": "image",
           "text_provider_name": "azure_read_ocr_provider",
           "model_provider_name": "detectron"
         },
         {
           "enabled": true,
-          "name": "technique4",
+          "name": "img_infy_ocr_engine_extractor",
           "input_file_type": "image",
           "text_provider_name": "infy_ocr_engine_provider",
           "model_provider_name": null

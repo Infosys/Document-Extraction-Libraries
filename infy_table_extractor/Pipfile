@@ -5,7 +5,7 @@ verify_ssl = true
 
 [dev-packages]
 autopep8 = "==1.5.1"
-pytest = "==6.2.5"
+pytest = "==7.4.4"
 pytest-cov = "==2.12.1"
 infy_common_utils = {path = "./lib/infy_common_utils-0.0.10-py3-none-any.whl"}
 

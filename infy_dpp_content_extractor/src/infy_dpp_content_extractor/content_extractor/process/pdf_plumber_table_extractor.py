@@ -48,7 +48,7 @@ class PdfPlumberTableExtractor:
     def _upload_data(self, local_file_path, server_file_path):
         try:
             self.__file_sys_handler.put_folder(
-                local_file_path, os.path.dirname(server_file_path))
+                local_file_path, server_file_path)
             self.__logger.info(
                 f'Folder {local_file_path} uploaded successfully')
         except Exception as e:

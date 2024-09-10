@@ -2,10 +2,6 @@
     "name": "Attribute storage to graphDB",
     "description": "Pipeline to store the attributes of the documents in graphDB",
     "variables": {
-        "DPP_STORAGE_ROOT_URI": "file://D:/STORAGE",
-        "DPP_STORAGE_SERVER_URL": "",
-        "DPP_STORAGE_ACCESS_KEY": "",
-        "DPP_STORAGE_SECRET_KEY": "",
         "NEO4J_URL": "${ENV:NEO4J_URL}",
         "NEO4J_USR_NAME": "${ENV:NEO4J_USR_NAME}",
         "NEO4J_PWD": "${ENV:NEO4J_PWD}"
@@ -57,7 +53,6 @@
                 "filter": {
                     "include": [
                         "pdf",
-                        "json",
                         "txt"
                     ],
                     "exclude": [

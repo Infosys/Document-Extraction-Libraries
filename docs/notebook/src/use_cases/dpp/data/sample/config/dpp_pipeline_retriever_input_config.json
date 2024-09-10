@@ -2,13 +2,10 @@
     "name": "pipeline2",
     "description": "Sample 4-processor-pipeline configuration for integration testing",
     "variables": {
-        "DPP_STORAGE_ROOT_URI": "file://D:/STORAGE",
-        "DPP_STORAGE_SERVER_URL": "",
-        "DPP_STORAGE_ACCESS_KEY": "",
-        "DPP_STORAGE_SECRET_KEY": "",
         "OPENAI_KEY": "${ENV:OPENAI_KEY}",
         "OPENAI_SERVER_URL": "${ENV:OPENAI_SERVER_URL}",
-        "MODEL_HOME": "C:/MyProgramFiles/AI/models"
+        "MODEL_HOME": "C:/MyProgramFiles/AI/models",
+        "CUSTOM_EMB_MISTRAL_INFERENCE_URL": "${ENV:CUSTOM_EMB_MISTRAL_INFERENCE_URL}"
     },
     "processor_list": [
         {
@@ -119,6 +116,14 @@
                     "configuration": {
                         "model_name": "all-MiniLM-L6-v2",
                         "model_home_path": "${MODEL_HOME}"
+                    }
+                },
+                "custom": {
+                    "enabled": false,
+                    "configuration": {
+                        "model_name": "mistral-embd",
+                        "api_key": "",
+                        "endpoint": "${CUSTOM_EMB_MISTRAL_INFERENCE_URL}"
                     }
                 }
             },

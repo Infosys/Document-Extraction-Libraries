@@ -6,6 +6,8 @@
 import os
 import time
 import glob
+import infy_dpp_sdk
+import infy_fs_utils
 from infy_ocr_parser import ocr_parser
 from infy_ocr_parser.providers.tesseract_ocr_data_service_provider \
     import TesseractOcrDataServiceProvider as tesseract_parser
@@ -18,9 +20,8 @@ from infy_ocr_parser.providers.azure_read_ocr_data_service_provider \
     import AzureReadOcrDataServiceProvider as azure_read_parser
 from infy_ocr_generator.providers.azure_read_ocr_data_service_provider \
     import AzureReadOcrDataServiceProvider
+from infy_dpp_content_extractor.content_extractor.service.image_generator_service import ImageGeneratorService
 
-import infy_dpp_sdk
-import infy_fs_utils
 
 from infy_dpp_content_extractor.common.app_constant import OcrType
 from infy_dpp_content_extractor.common.file_util import FileUtil
@@ -74,6 +75,40 @@ class ImagesTextExtractor:
             self.__app_config["CONTAINER"]["APP_DIR_TEMP_PATH"].replace('\\', '/').replace('//', '/'), ''))
         local_dir = os.path.dirname(image_json_file_path[0])
         self._upload_data(f'{local_dir}', f'{server_file_dir}')
+
+    def get_ocr_from_images(self, from_files_full_path, out_file_full_path):
+        org_file_path = from_files_full_path
+        doc_extension = os.path.splitext(
+            org_file_path)[1].lower()
+        # pdf to image
+        config_data_dict = {
+            "format_converter": {
+                "pages": [
+                ],
+                "to_dir": os.path.abspath(out_file_full_path),
+                "dpi": 300
+            },
+            "format_converter_home": self.__converter_path
+        }
+
+        image_generator_service_obj = ImageGeneratorService()
+
+        if doc_extension in ['.jpg', '.png', '.jpeg']:
+            self.__logger.info('...IMG to JPG conversion started...')
+            images_path_list, _ = image_generator_service_obj.convert_img_to_jpg(
+                os.path.abspath(org_file_path), config_data_dict)
+
+        self.__logger.info('...OCR generation started...')
+        ocr_files_path_list = self.generate_ocr(
+            images_path_list, out_file_full_path)
+
+        ocr_file_path = ocr_files_path_list[0].replace('\\', '/').replace('//', '/').replace(
+            self.__app_config["CONTAINER"]["APP_DIR_TEMP_PATH"].replace('\\', '/').replace('//', '/'), '')
+
+        image_file_path = images_path_list[0].replace('\\', '/').replace('//', '/').replace(
+            self.__app_config["CONTAINER"]["APP_DIR_TEMP_PATH"].replace('\\', '/').replace('//', '/'), '')
+
+        return ocr_file_path, image_file_path
 
     def generate_ocr(self, image_path_list, out_file_full_path):
         '''generate ocr'''
@@ -230,7 +265,7 @@ class ImagesTextExtractor:
     def _upload_data(self, local_file_path, server_file_path):
         try:
             self.__file_sys_handler.put_folder(
-                local_file_path, os.path.dirname(server_file_path))
+                local_file_path, server_file_path)
             self.__logger.info(
                 f'Folder {local_file_path} uploaded successfully')
         except Exception as e:
