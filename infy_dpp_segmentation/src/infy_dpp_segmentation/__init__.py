@@ -5,7 +5,7 @@
 # ===============================================================================================================#
 
 from . import (common, segment_generator, segment_classifier, page_column_detector,
-               segment_sequencer, segment_merger, segment_consolidator, chunk_generator, chunk_saver)
+               segment_sequencer, segment_merger, segment_consolidator, chunk_generator)
 
 
 # Validate module installed

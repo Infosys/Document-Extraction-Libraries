@@ -9,6 +9,7 @@ import cv2
 import infy_dpp_sdk
 from infy_dpp_sdk.data import DocumentData, ProcessorResponseData
 from infy_dpp_segmentation.common.file_util import FileUtil
+from infy_dpp_segmentation.common.sorting_util import ImageSortUtil
 
 PROCESSOR_CONTEXT_DATA_NAME = "page_column_detector"
 
@@ -28,7 +29,7 @@ class PageColumnDetector(infy_dpp_sdk.interface.IProcessor):
             technique_supported = True
 
         if technique_supported:
-            if column_detector_config.get('exclude'):
+            if 'exclude' in column_detector_config:
                 exclude = column_detector_config.get('exclude')
                 cleaned_segment_data_list = self.remove_headers_footers(
                     segment_data_list, exclude)
@@ -39,9 +40,11 @@ class PageColumnDetector(infy_dpp_sdk.interface.IProcessor):
 
             for technique in column_detector_config['column_techniques']:
                 if technique['enabled'] and technique['name'] == 'column_technique1':
+                    empty_lines = column_detector_config.get(
+                        'detect_empty_lines', False)
                     column_technique = 'column_detection'
-                    column_data = self.column_detection(
-                        cleaned_segment_data_list)
+                    column_data, cleaned_segment_data_list = self.column_detection(
+                        cleaned_segment_data_list, empty_lines)
 
             org_files_full_path = context_data['request_creator']['work_file_path']
             debug_config = column_detector_config.get('debug')
@@ -65,7 +68,7 @@ class PageColumnDetector(infy_dpp_sdk.interface.IProcessor):
 
         return processor_response_data
 
-    def column_detection(self, cleaned_segment_data_list):
+    def column_detection(self, cleaned_segment_data_list, empty_lines):
         sorted_data = sorted(cleaned_segment_data_list,
                              key=lambda x: (x['page'], x['content_bbox'][0]))
 
@@ -76,6 +79,8 @@ class PageColumnDetector(infy_dpp_sdk.interface.IProcessor):
 
         bbox = [sorted_data[0]['content_bbox'][0], sorted_data[0]['content_bbox'][1],
                 sorted_data[0]['content_bbox'][2], sorted_data[0]['content_bbox'][3]]
+
+        pages_columns_info = {}
 
         for i in range(1, len(sorted_data)):
             tl_x = sorted_data[i]['content_bbox'][0]
@@ -99,6 +104,11 @@ class PageColumnDetector(infy_dpp_sdk.interface.IProcessor):
                 column['page'] = current_page
                 columns_list.append(column)
 
+                if current_page not in pages_columns_info:
+                    pages_columns_info[current_page] = []
+                pages_columns_info[current_page].append(
+                    {'column_number': len(columns_list), 'segments': current_column})
+
                 current_column = [sorted_data[i]]
                 br_x_max = br_x
                 current_page = page
@@ -114,13 +124,49 @@ class PageColumnDetector(infy_dpp_sdk.interface.IProcessor):
         column['page'] = current_page
         columns_list.append(column)
 
-        return columns_list
+        if current_page not in pages_columns_info:
+            pages_columns_info[current_page] = []
+        pages_columns_info[current_page].append(
+            {'column_number': len(columns_list), 'segments': current_column})
+        if empty_lines:
+            cleaned_segment_data_list = self.detect_empty_lines(
+                pages_columns_info, cleaned_segment_data_list)
+
+        return columns_list, cleaned_segment_data_list
+
+    def detect_empty_lines(self, pages_columns_info, cleaned_segment_data_list):
+        for page, columns in pages_columns_info.items():
+            for column_info in columns:
+                segments = column_info['segments']
+                gaps = [segments[i+1]['content_bbox'][1] - segments[i]
+                        ['content_bbox'][3] for i in range(len(segments)-1)]
+                average_gap = sum(gaps) / len(gaps) if gaps else 0
+
+                for i in range(len(segments) - 1):
+                    gap = segments[i+1]['content_bbox'][1] - \
+                        segments[i]['content_bbox'][3]
+                    if gap > average_gap:
+                        content_end = segments[i]['content'].strip()[-1]
+                        next_content_start = segments[i +
+                                                      1]['content'].strip()[0]
+                        if content_end in [',', '.'] or next_content_start.isupper():
+                            # Find the matching segment in cleaned_segment_data_list
+                            for cleaned_segment in cleaned_segment_data_list:
+                                if (cleaned_segment['content_bbox'] == segments[i]['content_bbox'] and
+                                        cleaned_segment['page'] == page):
+                                    # Append '\n' to the content of the matching segment
+                                    cleaned_segment['content'] += '\n'
+                                    break
+        return cleaned_segment_data_list
 
     def remove_headers_footers(self, segment_data_list, exclude):
         cleaned_segment_data_list = []
-        for segment_data in segment_data_list:
-            if segment_data['content_type'] not in exclude:
-                cleaned_segment_data_list.append(segment_data)
+        if exclude:
+            for segment_data in segment_data_list:
+                if segment_data['content_type'] not in exclude:
+                    cleaned_segment_data_list.append(segment_data)
+        else:
+            cleaned_segment_data_list = segment_data_list
         return cleaned_segment_data_list
 
     def __plot_bbox(self, column_data, org_files_full_path, debug_config):
@@ -168,6 +214,8 @@ class PageColumnDetector(infy_dpp_sdk.interface.IProcessor):
         if os.path.isdir(debug_file_path) and any(os.path.isfile(os.path.join(debug_file_path, file)) and file.endswith('.jpg') for file in os.listdir(debug_file_path)):
             img_file_path_list = [os.path.join(debug_file_path, file) for file in os.listdir(
                 debug_file_path) if file.endswith('.jpg')]
+            img_file_path_list = ImageSortUtil.sort_image_files(
+                img_file_path_list)
             for page_number in range(1, len(img_file_path_list)+1):
                 columns_for_page = insert_list(column_data, page_number)
                 page_segment_list.append(columns_for_page)

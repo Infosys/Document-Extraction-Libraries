@@ -5,9 +5,13 @@
 # ===============================================================================================================#
 
 # Main class
-from .open_a_i_embedding_provider import (OpenAIEmbeddingProvider)
-from .st_embedding_provider import (StEmbeddingProvider)
+from .openai.openai_embedding_provider import (OpenAIEmbeddingProvider)
+from .st.st_embedding_provider import (StEmbeddingProvider)
+from .custom.custom_embedding_provider import (CustomEmbeddingProvider)
 # Config Data
-from .open_a_i_embedding_provider import (OpenAIEmbeddingProviderConfigData)
-from .st_embedding_provider import (StEmbeddingProviderConfigData)
+from .openai.openai_embedding_provider import (
+    OpenAIEmbeddingProviderConfigData)
+from .st.st_embedding_provider import (StEmbeddingProviderConfigData)
+from .custom.custom_embedding_provider import (
+    CustomEmbeddingProviderConfigData)
 # Domain Data

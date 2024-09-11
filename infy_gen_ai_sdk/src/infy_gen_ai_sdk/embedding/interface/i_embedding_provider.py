@@ -7,14 +7,23 @@
 """Module for embedding provider interface class"""
 
 import abc
+import numpy as np
+from ...schema.embedding_data import BaseEmbeddingData
 
 
 class IEmbeddingProvider(metaclass=abc.ABCMeta):
     """Interface class for embedding provider"""
 
-    def __init__(self, embeddings) -> None:
-        self.__embeddings = embeddings
+    @abc.abstractmethod
+    def generate_embedding(self, text: str) -> BaseEmbeddingData:
+        """Generate embedding for given text"""
+        raise NotImplementedError
 
-    def get_embeddings(self):
-        """Return embeddings `embeddings`"""
-        return self.__embeddings
+    def convert_to_numpy_array(self, text_embeddings):
+        """Convert embeddings to numpy array"""
+        # If the embeddings are in list format, convert them to numpy array of shape (1, n)
+        if isinstance(text_embeddings, list):
+            vector = np.array(text_embeddings, dtype=np.float32).reshape(1, -1)
+        else:
+            vector = text_embeddings
+        return vector

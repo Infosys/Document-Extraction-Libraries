@@ -12,7 +12,7 @@ from jsonpath_ng import parse
 import infy_dpp_sdk
 from infy_dpp_sdk.data import DocumentData, ProcessorResponseData
 from infy_dpp_segmentation.common.file_util import FileUtil
-
+from infy_dpp_segmentation.common.sorting_util import ImageSortUtil
 from infy_dpp_segmentation.segment_generator.process.pdf_box_based_segment_generator import PdfBoxBasedSegmentGenerator
 from infy_dpp_segmentation.segment_generator.process.ocr_based_segment_generator import OcrBasedSegmentGenerator
 
@@ -39,6 +39,12 @@ class SegmentGenerator(infy_dpp_sdk.interface.IProcessor):
         model_provider_dict = {}
         processor_response_data = ProcessorResponseData()
         segment_gen_config_data = config_data.get('SegmentGenerator', {})
+        # For parallel pipeline
+        if not segment_gen_config_data:
+            for key, val in config_data.items():
+                # PROCESSOR_CONTEXT_DATA_NAME = key
+                segment_gen_config_data = val
+                break
         # from_files_full_path = document_data.metadata.standard_data.filepath.value
         org_files_full_path = context_data['request_creator']['work_file_path']
         from_files_full_path = __get_temp_file_path(org_files_full_path)
@@ -64,6 +70,10 @@ class SegmentGenerator(infy_dpp_sdk.interface.IProcessor):
                     if input_file_type == 'pdf' and extension == '.pdf':
                         if model_provider_name:
                             extraction_technique = 'ocr_based'
+                        elif text_provider_name == "ContentExtractor.table_contents_file_path":
+                            extraction_technique = 'pdf_plumber_table_extraction'
+                        elif text_provider_name == "ContentExtractor.image_contents_file_path":
+                            extraction_technique = 'pdf_box_with_OCR_image_extraction'
                         else:
                             extraction_technique = 'native_pdf'
                     elif input_file_type == 'image' and extension in ['.jpg', '.jpeg', '.png']:
@@ -80,10 +90,15 @@ class SegmentGenerator(infy_dpp_sdk.interface.IProcessor):
             #     "document_data": document_data.json(), "context_data": context_data}
             out_file_full_path = f'{from_files_full_path}_files'
             if extraction_technique == 'native_pdf':
+                content_extracted = context_data.get('content_extractor')
+                if content_extracted:
+                    if content_extracted.get('ocr_files_path_list'):
+                        ocr_files_path_list = content_extracted.get(
+                            'ocr_files_path_list')
                 pdf_box_seg_gen_obj = PdfBoxBasedSegmentGenerator(
                     text_provider_dict)
                 segments_list = pdf_box_seg_gen_obj.get_segment_data(
-                    from_files_full_path, out_file_full_path)
+                    from_files_full_path, out_file_full_path, ocr_files_path_list)
                 segment_data_dict = {"technique": extraction_technique,
                                      "segments": segments_list}
                 segment_data_list.append(segment_data_dict)
@@ -117,6 +132,30 @@ class SegmentGenerator(infy_dpp_sdk.interface.IProcessor):
                 segment_data_dict = {"technique": extraction_technique,
                                      "segments": segments_list}
                 segment_data_list.append(segment_data_dict)
+            if extraction_technique == 'pdf_plumber_table_extraction':
+                content_extracted = context_data.get('content_extractor')
+                if content_extracted:
+                    if content_extracted.get('table_contents_file_path'):
+                        table_content_path = content_extracted.get(
+                            'table_contents_file_path')
+                        table_data_list = self.__get_table_content(
+                            table_content_path, from_files_full_path)
+                        extraction_technique = 'pdf_plumber_table_extraction'
+                        table_data_dict = {"technique": extraction_technique,
+                                           "segments": table_data_list}
+                        segment_data_list.append(table_data_dict)
+            if extraction_technique == 'pdf_box_with_OCR_image_extraction':
+                content_extracted = context_data.get('content_extractor')
+                if content_extracted:
+                    if content_extracted.get('image_contents_file_path'):
+                        image_content_path = content_extracted.get(
+                            'image_contents_file_path')
+                        image_data_list = self.__get_image_content(
+                            image_content_path, from_files_full_path)
+                        extraction_technique = 'pdf_box_with_OCR_image_extraction'
+                        image_data_dict = {"technique": extraction_technique,
+                                           "segments": image_data_list}
+                        segment_data_list.append(image_data_dict)
             # ToDo: R: to be uncommented for multi technique pdfs
             # detectron_segment_data_dict = {
             #     "technique": "detectron",
@@ -135,29 +174,6 @@ class SegmentGenerator(infy_dpp_sdk.interface.IProcessor):
                     self.__plot_bbox(
                         segment_data_list, org_files_full_path, debug_config, extraction_technique)
 
-        if extension == '.pdf':
-            content_extracted = context_data.get('content_extractor')
-            if content_extracted:
-                if content_extracted.get('table_contents_file_path'):
-                    table_content_path = content_extracted.get(
-                        'table_contents_file_path')
-                    table_data_list = self.__get_table_content(
-                        table_content_path, from_files_full_path)
-                    extraction_technique = 'pdf_plumber_table_extraction'
-                    table_data_dict = {"technique": extraction_technique,
-                                       "segments": table_data_list}
-                    segment_data_list.append(table_data_dict)
-
-                if content_extracted.get('image_contents_file_path'):
-                    image_content_path = content_extracted.get(
-                        'image_contents_file_path')
-                    image_data_list = self.__get_image_content(
-                        image_content_path, from_files_full_path)
-                    extraction_technique = 'pdf_box_with_OCR_image_extraction'
-                    image_data_dict = {"technique": extraction_technique,
-                                       "segments": image_data_list}
-                    segment_data_list.append(image_data_dict)
-
         raw_data = infy_dpp_sdk.data.RawData(table_data=[], key_value_data=[], heading_data=[],
                                              page_header_data=[],
                                              page_footer_data=[], other_data=[],
@@ -166,8 +182,13 @@ class SegmentGenerator(infy_dpp_sdk.interface.IProcessor):
                                                            for segment_data in segment_data_list]
                                              [0] if segment_data_list else None)
         document_data.raw_data = raw_data
-        context_data[PROCESSOR_CONTEXT_DATA_NAME] = {
-            'segment_data': segment_data_list}
+        if 'SegmentGenerator' in config_data:
+            context_data[PROCESSOR_CONTEXT_DATA_NAME] = {
+                'segment_data': segment_data_list}
+        else:
+            # For parallel pipeline
+            context_data[PROCESSOR_CONTEXT_DATA_NAME+'_'+segment_data_list[0].get('technique')] = {
+                'segment_data': segment_data_list}
 
         processor_response_data.document_data = document_data
         processor_response_data.context_data = context_data
@@ -280,6 +301,8 @@ class SegmentGenerator(infy_dpp_sdk.interface.IProcessor):
                                                   (debug_file_path)):
             img_file_path_list = [os.path.join(debug_file_path, file) for file in os.listdir(
                 debug_file_path) if file.endswith('.jpg')]
+            img_file_path_list = ImageSortUtil.sort_image_files(
+                img_file_path_list)
             for page_number in range(1, len(img_file_path_list)+1):
                 group_list = __insert_list(segment_data_list, page_number)
                 page_segment_list.append(group_list)
@@ -287,9 +310,12 @@ class SegmentGenerator(infy_dpp_sdk.interface.IProcessor):
                 __draw_bbox(
                     image_path, page_segment_list[index], output_dir, extraction_technique)
 
-    def __rescale_content_bbox(self, bbox, page_number, page_width, page_height, from_files_full_path):
-        page_content_path = f'{from_files_full_path}_files/{page_number}.jpg_pdfbox.json'
-        page_content = FileUtil.load_json(page_content_path)
+    def __rescale_content_bbox(self, bbox, page_number, page_width, page_height, storage_dir_path):
+        page_content_path = f'{storage_dir_path}/{page_number}.jpg_pdfbox.json'
+        page_content = json.loads(
+            self.__file_sys_handler.read_file(page_content_path))
+        # page_content_path = f'{from_files_full_path}_files/{page_number}.jpg_pdfbox.json'
+        # page_content = FileUtil.load_json(page_content_path)
         image_width = page_content['width']
         image_height = page_content['height']
 
@@ -302,15 +328,16 @@ class SegmentGenerator(infy_dpp_sdk.interface.IProcessor):
         return rescaled_bbox
 
     def __get_image_content(self, image_content_path, from_files_full_path):
-        image_content_full_path = f'{self.__file_sys_handler.get_bucket_name()}/{image_content_path}'
-        image_content = FileUtil.load_json(image_content_full_path)
+        image_content = json.loads(
+            self.__file_sys_handler.read_file(image_content_path))
         images_list = []
+        storage_dir_path = os.path.dirname(image_content_path)
         for page in image_content:
             for image in page['tokens']:
                 if image:
                     bbox = self.__rescale_content_bbox(
                         image['bbox'], page['page'], page['width'], page['height'],
-                        from_files_full_path)
+                        storage_dir_path)
 
                     image_data = {}
                     image_data["content_type"] = "image_text"
@@ -325,15 +352,16 @@ class SegmentGenerator(infy_dpp_sdk.interface.IProcessor):
         return images_list
 
     def __get_table_content(self, table_content_path, from_files_full_path):
-        table_content_full_path = f'{self.__file_sys_handler.get_bucket_name()}/{table_content_path}'
-        table_content = FileUtil.load_json(table_content_full_path)
+        table_content = json.loads(
+            self.__file_sys_handler.read_file(table_content_path))
         tables_list = []
+        storage_dir_path = os.path.dirname(table_content_path)
         for page in table_content:
             for table in page['tables']:
                 if table:
                     bbox = self.__rescale_content_bbox(
                         table['bbox'], page['page_number'], page['page_width'], page['page_height'],
-                        from_files_full_path)
+                        storage_dir_path)
 
                     table_data = {}
                     table_data["content_type"] = "table"

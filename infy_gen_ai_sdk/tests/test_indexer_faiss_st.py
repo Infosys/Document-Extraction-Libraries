@@ -6,7 +6,6 @@
 
 """Testing module"""
 
-import time
 import os
 import shutil
 import pytest
@@ -19,7 +18,7 @@ CONTAINER_ROOT_PATH = f"C:/temp/unittest/infy_gen_ai_sdk/{__name__}/CONTAINER"
 EXPECTED_DATA = {
     "VECTOR_DB": {
         "FILE_PATH": STORAGE_ROOT_PATH +
-        '/vectordb/sentence_transformer_all-MiniLM-L6-v2/companies/companies.faiss'
+        '/vectordb/st_all-MiniLM-L6-v2/companies/companies.faiss'
     }
 }
 
@@ -80,7 +79,7 @@ def test_1():
     # Step 1 - Choose embedding provider
     embedding_provider_config_data = infy_gen_ai_sdk.embedding.provider.StEmbeddingProviderConfigData(
         **{
-            "api_url": "",
+            "api_url": os.environ['SENTENCE_TRANSFORMER_SERVER_URL'],
             "model_name": "all-MiniLM-L6-v2"
         })
     embedding_provider = infy_gen_ai_sdk.embedding.provider.StEmbeddingProvider(
@@ -89,7 +88,7 @@ def test_1():
     # Step 2 - Choose vector db provider
     vector_db_provider_config_data = infy_gen_ai_sdk.vectordb.provider.faiss.VectorDbProviderConfigData(
         **{
-            'db_folder_path': '/vectordb/sentence_transformer_all-MiniLM-L6-v2/companies',
+            'db_folder_path': '/vectordb/st_all-MiniLM-L6-v2/companies',
             'db_index_name': 'companies'
         })
     vector_db_provider = infy_gen_ai_sdk.vectordb.provider.faiss.FaissVectorDbProvider(
@@ -134,9 +133,9 @@ def test_2():
     """Test method"""
     # Step 1 - Choose embedding provider
     embedding_provider_config_data = infy_gen_ai_sdk.embedding.provider.StEmbeddingProviderConfigData(
-        **{           
+        **{
             "model_name": "all-MiniLM-L6-v2",
-            "model_home_path":r"C:\MyProgramFiles\AI\models"
+            "model_home_path": r"C:\MyProgramFiles\AI\models"
         })
     embedding_provider = infy_gen_ai_sdk.embedding.provider.StEmbeddingProvider(
         embedding_provider_config_data)
@@ -144,7 +143,7 @@ def test_2():
     # Step 2 - Choose vector db provider
     vector_db_provider_config_data = infy_gen_ai_sdk.vectordb.provider.faiss.VectorDbProviderConfigData(
         **{
-            'db_folder_path': '/vectordb/sentence_transformer_all-MiniLM-L6-v2/companies',
+            'db_folder_path': '/vectordb/st_all-MiniLM-L6-v2/companies',
             'db_index_name': 'companies'
         })
     vector_db_provider = infy_gen_ai_sdk.vectordb.provider.faiss.FaissVectorDbProvider(
@@ -159,7 +158,6 @@ def test_2():
                 'company': 'google'
             }
         })
-    vector_db_provider.save_record(db_record_data)    
+    vector_db_provider.save_record(db_record_data)
 
     assert os.path.exists(EXPECTED_DATA['VECTOR_DB']['FILE_PATH'])
-

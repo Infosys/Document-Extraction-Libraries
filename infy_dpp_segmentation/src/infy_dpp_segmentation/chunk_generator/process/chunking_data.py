@@ -24,11 +24,13 @@ class ChunkingData:
         return cleaned_data_list
 
     def group_chunk_data(self, segment_data_list, chunking_method, pages_list, exclude_types_list,
-                         merge_title_paragraph, replace_dict):
+                         merge_title_paragraph, resources_file_path, max_char_limit):
         if chunking_method == 'page':
             rule_name = 'rule_segment_page_data'
-        if chunking_method == 'paragraph':
-            rule_name = 'rule_segment_paragraph_data'
+        if chunking_method == 'page_character':
+            rule_name = 'rule_segment_page_data'
+        if chunking_method == 'segment':
+            rule_name = 'rule_segment_segment_data'
             if merge_title_paragraph:
                 segment_data_list = self.merge_title_paragraph(
                     segment_data_list)
@@ -36,7 +38,7 @@ class ChunkingData:
             rule_name, rc_entity_name='')
         rule_instance: RuleSegmentBaseClass = rule_class()
         rule_result = rule_instance.template_method(
-            copy.deepcopy(segment_data_list), pages_list, exclude_types_list)
+            copy.deepcopy(segment_data_list), pages_list, exclude_types_list, resources_file_path, max_char_limit, chunking_method)
 
         return rule_result
 
@@ -88,9 +90,9 @@ class ChunkingData:
                             find, replace)
         return cleaned_segment_data_list
 
-    def remove_headers_footers(self, segment_data_list):
-        cleaned_segment_data_list = []
-        for segment_data in segment_data_list:
-            if segment_data['content_type'] not in ['header', 'footer']:
-                cleaned_segment_data_list.append(segment_data)
+    def delimit_segment(self, cleaned_segment_data_list, segment_delimeter):
+        # Add the delimiter to the 'content' of each segment
+        for item in cleaned_segment_data_list:
+            item['content'] += segment_delimeter
+
         return cleaned_segment_data_list

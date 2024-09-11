@@ -7,13 +7,14 @@
 from infy_dpp_segmentation.segment_sequencer.rules.rule_segment_base_class import RuleSegmentBaseClass
 import scipy.spatial.distance as distance
 import copy
+from infy_dpp_segmentation.common.file_util import FileUtil
 
 
 class RuleSegmentLeftToRight(RuleSegmentBaseClass):
     def __init__(self) -> None:
         super().__init__()
 
-    def generate_sequence_no(self, segment_data_list: list) -> list:
+    def generate_sequence_no(self, segment_data_list: list, pages, page) -> list:
         """_summary_
 
         Args:
@@ -44,6 +45,7 @@ class RuleSegmentLeftToRight(RuleSegmentBaseClass):
                     # print(data)
                     segment_data_dict = copy.deepcopy(i)
                     segment_data_dict['sequence'] = sequence_counter
+                    segment_data_dict["segment_id"] = f'S-{FileUtil.get_uuid()[:5]}'
                     updated_segment_data_list.append(segment_data_dict)
             sequence_counter += 1
         updated_segment_data_list.sort(key=lambda x: (

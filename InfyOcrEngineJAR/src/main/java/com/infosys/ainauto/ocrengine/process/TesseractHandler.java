@@ -118,11 +118,12 @@ public class TesseractHandler {
 
     private static void validateModelFile(String modelDir, String lang) throws Exception {
         String fileName = lang + Constants.FILE_EXT_MODEL;
-        String trainedDataFilePath = modelDir + "\\" + fileName;
+        String trainedDataFilePath = modelDir + File.separator + fileName;
         if (!new File(trainedDataFilePath).exists()) {
 
             throw new Exception("Model File not found for language '" + lang
-                    + "'.Please verify if a valid traindata is present in the 'models' folder.");
+                    + "'.Please verify if a valid traindata is present in the 'models' folder."
+                    + trainedDataFilePath);
         }
     }
 }

@@ -13,7 +13,7 @@ class SegementData:
     def __init__(self) -> None:
         pass
 
-    def update_sequence(self, segment_data_list, layout, pattern):
+    def update_sequence(self, segment_data_list, layout, pattern, pages, page):
         is_content_bbox_empty = False
         for segment_data in segment_data_list:
             if not segment_data.get("content_bbox"):
@@ -24,7 +24,7 @@ class SegementData:
                 rule_name, rc_entity_name='')
             rule_instance: RuleSegmentBaseClass = rule_class()
             rule_result = rule_instance.template_method(
-                copy.deepcopy(segment_data_list))
+                copy.deepcopy(segment_data_list), pages, page)
         # if  layout =='single' and pattern == 'default'
         elif layout == 'multi-column' and pattern == 'left-right':
             rule_name = 'rule_segment_left_to_right'
@@ -32,14 +32,14 @@ class SegementData:
                 rule_name, rc_entity_name='')
             rule_instance: RuleSegmentBaseClass = rule_class()
             rule_result = rule_instance.template_method(
-                copy.deepcopy(segment_data_list))
+                copy.deepcopy(segment_data_list), pages, page)
         elif layout == 'multi-column' and pattern == 'zig-zag':
             rule_name = 'rule_segment_zig_zag'
             rule_class = CommonUtil.get_rule_class_instance(
                 rule_name, rc_entity_name='')
             rule_instance: RuleSegmentBaseClass = rule_class()
             rule_result = rule_instance.template_method(
-                copy.deepcopy(segment_data_list))
+                copy.deepcopy(segment_data_list), pages, page)
         else:
             raise Exception('Invalid layout and pattern.')
         return rule_result

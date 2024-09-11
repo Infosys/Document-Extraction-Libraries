@@ -8,7 +8,7 @@
 
 import os
 import configparser
-from infy_gen_ai_sdk.common.singleton import Singleton
+from ..common.singleton import Singleton
 
 
 class AppConfigManager(metaclass=Singleton):

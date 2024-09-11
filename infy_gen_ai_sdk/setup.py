@@ -80,19 +80,34 @@ class PipfileUtil:
     @staticmethod
     def convert_to_pip_format(pipfile_format):
         '''Convert package name from Pipfile format to pip format'''
+        def parse_markers(text):
+            '''Parse markers from Pipfile format'''
+            items = text.split('markers=')
+            if len(items) < 2:
+                return text, None  # No markers
+            name = items[0]
+            name = name.replace(',', '')
+            marker = items[1]
+            marker = marker.replace('"', '')
+            marker = marker.replace('}', '')
+            return name, marker
         new_format = pipfile_format
-        if 'win32' not in new_format:
+        if '{' not in new_format:
             new_format = new_format.replace(
                 '=', '', 1).replace('"', '').replace(' ', '')
         else:
+            new_format, marker = parse_markers(new_format)
             new_format = new_format.replace(" ", "")
             new_format = new_format.replace('{version=', '')
             new_format = new_format.replace('}', '')
             new_format = new_format.replace("=", "", 1)
             new_format = new_format.replace(',sys_platform=', ';sys_platform')
+            new_format = new_format.replace(
+                ',python_version=', ';python_version')
             new_format = new_format.replace('"', '')
             new_format = new_format.replace(' ', '')
             new_format = new_format.replace("*", "")
+            new_format += f"; {marker}"
         return new_format
 
     @staticmethod
@@ -165,7 +180,7 @@ if __name__ == '__main__':
 
     METADATA = dict(
         name="infy_gen_ai_sdk",
-        version="0.0.3",
+        version="0.0.5",
         license="Apache License Version 2.0",
         author="Infosys Limited",
         author_email="",

@@ -9,6 +9,7 @@ import cv2
 import infy_dpp_sdk
 from infy_dpp_sdk.data import DocumentData, ProcessorResponseData
 from infy_dpp_segmentation.common.file_util import FileUtil
+from infy_dpp_segmentation.common.sorting_util import ImageSortUtil
 from infy_dpp_segmentation.segment_consolidator.process.segment_data_consolidator import SegmentDataConsolidator
 
 PROCESSOR_CONTEXT_DATA_NAME = "segment_consolidator"
@@ -22,12 +23,23 @@ class SegmentConsolidator(infy_dpp_sdk.interface.IProcessor):
 
         processor_response_data = ProcessorResponseData()
         context_data = context_data if context_data else {}
+        merge_parallel_segment_data_list = []
+        del_key_list = []
+        if context_data:
+            # combining parallel nodes segment data before conslidator starts processing
+            if 'segment_generator' not in context_data.keys():
+                for key, value in context_data.items():
+                    if key.startswith('segment_generator_'):
+                        merge_parallel_segment_data_list.extend(
+                            value.get('segment_data'))
 
         consolidator_config = config_data['SegmentConsolidator']
-        segment_data_list = context_data.get(
-            'segment_generator')['segment_data']
+        if len(merge_parallel_segment_data_list) > 0:
+            segment_data_list = merge_parallel_segment_data_list
+        else:
+            segment_data_list = context_data.get(
+                'segment_generator')['segment_data']
 
-        # segment_data_list = context_data.get('segment_generator')['segment_data']
         if consolidator_config.get('enabled'):
             technique_supported = False
             consolidated_segments = []
@@ -107,6 +119,8 @@ class SegmentConsolidator(infy_dpp_sdk.interface.IProcessor):
         if os.path.isdir(debug_file_path) and any(os.path.isfile(os.path.join(debug_file_path, file)) and file.endswith('.jpg') for file in os.listdir(debug_file_path)):
             img_file_path_list = [os.path.join(debug_file_path, file) for file in os.listdir(
                 debug_file_path) if file.endswith('.jpg')]
+            img_file_path_list = ImageSortUtil.sort_image_files(
+                img_file_path_list)
             for page_number in range(1, len(img_file_path_list)+1):
                 group_list = __insert_list(consolidated_segments, page_number)
                 page_segment_list.append(group_list)

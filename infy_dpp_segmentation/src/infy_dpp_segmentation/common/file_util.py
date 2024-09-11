@@ -1,9 +1,8 @@
 # ===============================================================================================================#
-# Copyright 2023 Infosys Ltd.                                                                                    #
+# Copyright 2020 Infosys Ltd.                                                                                   #
 # Use of this source code is governed by Apache License Version 2.0 that can be found in the LICENSE file or at  #
 # http://www.apache.org/licenses/                                                                                #
 # ===============================================================================================================#
-
 
 import errno
 import glob
@@ -284,7 +283,6 @@ class FileUtil:
                 "fileName": str(file_name),
                 "fileExtension": str(file_ext),
                 "fileNameWithoutExt": str(file_name_no_ext)}
-
     @classmethod
     def write_output(cls, data_dict, root_path=""):
         """
@@ -296,16 +294,15 @@ class FileUtil:
 
         try:
             # This path should not be changed as it's required for K8S ContainerOp to work
-            output_file_list = []
+            output_file_list=[]
             for key in data_dict.keys():
                 output_file_path = f'{root_path}/{key}.txt'
                 cls.__write_to_text_file(output_file_path, data_dict[key])
                 print('Output written to', output_file_path)
                 output_file_list.append(output_file_path)
-            return output_file_list
+            return output_file_list    
         except Exception as ex:
             print('Error occurred in write_output()', ex)
-
     @classmethod
     def __write_to_text_file(cls, output_file_path, data):
         try:
@@ -317,7 +314,7 @@ class FileUtil:
             raise ValueError(message, ex)
 
     @classmethod
-    def empty_dir(cls, folder):
+    def empty_dir(cls,folder):
         for filename in os.listdir(folder):
             file_path = os.path.join(folder, filename)
             try:
@@ -326,4 +323,4 @@ class FileUtil:
                 elif os.path.isdir(file_path):
                     shutil.rmtree(file_path)
             except Exception as e:
-                print('Failed to delete %s. Reason: %s' % (file_path, e))
+                print('Failed to delete %s. Reason: %s' % (file_path, e))            

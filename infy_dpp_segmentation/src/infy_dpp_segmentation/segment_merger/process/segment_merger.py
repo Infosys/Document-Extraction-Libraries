@@ -9,6 +9,7 @@ import cv2
 import infy_dpp_sdk
 from infy_dpp_sdk.data import DocumentData, ProcessorResponseData
 from infy_dpp_segmentation.common.file_util import FileUtil
+from infy_dpp_segmentation.common.sorting_util import ImageSortUtil
 from infy_dpp_segmentation.segment_merger.process.segment_data_merger_v import SegmentDataMerger
 
 PROCESSOR_CONTEXT_DATA_NAME = "segment_merger"
@@ -113,6 +114,8 @@ class SegmentMerger(infy_dpp_sdk.interface.IProcessor):
         if os.path.isdir(out_file_full_path) and any(os.path.isfile(os.path.join(out_file_full_path, file)) and file.endswith('.jpg') for file in os.listdir(out_file_full_path)):
             img_file_path_list = [os.path.join(out_file_full_path, file) for file in os.listdir(
                 out_file_full_path) if file.endswith('.jpg')]
+            img_file_path_list = ImageSortUtil.sort_image_files(
+                img_file_path_list)
             for page_number in range(1, len(img_file_path_list)+1):
                 group_list = __insert_list(segment_data_list, page_number)
                 page_segment_list.append(group_list)
@@ -162,6 +165,8 @@ class SegmentMerger(infy_dpp_sdk.interface.IProcessor):
         if os.path.isdir(debug_file_path) and any(os.path.isfile(os.path.join(debug_file_path, file)) and file.endswith('.jpg') for file in os.listdir(debug_file_path)):
             img_file_path_list = [os.path.join(debug_file_path, file) for file in os.listdir(
                 debug_file_path) if file.endswith('.jpg')]
+            img_file_path_list = ImageSortUtil.sort_image_files(
+                img_file_path_list)
             for page_number in range(1, len(img_file_path_list)+1):
                 group_list = __insert_list(merged_data_list, page_number)
                 page_segment_list.append(group_list)

@@ -4,7 +4,7 @@
 # http://www.apache.org/licenses/                                                                                #
 # ===============================================================================================================#
 
-from . import (embedding, llm, vectordb, data, common)
+from . import (embedding, llm, vectordb, schema, common)
 from .configuration import (ClientConfigManager,
                             ClientConfigData,
                             ContainerData)

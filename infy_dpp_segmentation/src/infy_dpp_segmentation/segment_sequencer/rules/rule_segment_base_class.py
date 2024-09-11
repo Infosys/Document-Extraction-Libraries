@@ -11,11 +11,11 @@ class RuleSegmentBaseClass(ABC):
     def __init__(self) -> None:
         super().__init__()
 
-    def template_method(self, segment_data_list: list):
+    def template_method(self, segment_data_list: list, pages, page):
         updated_segment_data_list = self.generate_sequence_no(
-            segment_data_list)
+            segment_data_list, pages, page)
         return updated_segment_data_list
 
     @abstractmethod
-    def generate_sequence_no(self, segment_data_list: list) -> list:
+    def generate_sequence_no(self, segment_data_list: list, pages, page) -> list:
         raise NotImplementedError

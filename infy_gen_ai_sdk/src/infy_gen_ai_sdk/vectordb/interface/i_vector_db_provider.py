@@ -8,8 +8,8 @@
 
 import abc
 from typing import List
-from infy_gen_ai_sdk.embedding.interface.i_embedding_provider import IEmbeddingProvider
-from infy_gen_ai_sdk.data.vector_db_data import BaseVectorDbQueryParamsData, BaseVectorDbRecordData
+from ...embedding.interface.i_embedding_provider import IEmbeddingProvider
+from ...schema.vector_db_data import BaseVectorDbQueryParamsData, BaseVectorDbRecordData
 
 
 class IVectorDbProvider(metaclass=abc.ABCMeta):

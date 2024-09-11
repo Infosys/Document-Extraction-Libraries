@@ -4,20 +4,20 @@ verify_ssl = true
 name = "pypi"
 
 [dev-packages]
-pytest = "==6.2.5"
+pytest = "==7.4.4"
 pytest-cov = "==2.12.1"
 autopep8 = "==1.5.1"
 infy_dpp_sdk = {path = "./lib/infy_dpp_sdk-0.0.10-py3-none-any.whl"}
-infy_fs_utils = {path = "./lib/infy_fs_utils-0.0.2-py3-none-any.whl"}
+infy_fs_utils = {path = "./lib/infy_fs_utils-0.0.4-py3-none-any.whl",extras=["cloud"]}
 infy_dpp_core = {path = "./lib/infy_dpp_core-0.0.3-py3-none-any.whl"}
-infy_dpp_content_extractor = {path = "./lib/infy_dpp_content_extractor-0.0.1-py3-none-any.whl"}
+infy_dpp_content_extractor = {path = "./lib/infy_dpp_content_extractor-0.0.2-py3-none-any.whl"}
 #segment-generator
 infy_common_utils = {path = "./lib/infy_common_utils-0.0.10-py3-none-any.whl"}
 infy_ocr_generator = {path = "./lib/infy_ocr_generator-0.0.13-py3-none-any.whl", extras=["tesseract"]}
-infy_ocr_parser = {path = "./lib/infy_ocr_parser-0.0.16-py3-none-any.whl"}
+infy_ocr_parser = {path = "./lib/infy_ocr_parser-0.0.17-py3-none-any.whl"}
 
 [packages]
-requests = "==2.31.0"                   #[groups=segment-generator]
+# requests (provided by infy_dpp_sdk)
 jsonpath-ng = "==1.6.0"                 #[groups=segment-generator]
 
 # torch = "==1.9.0"                       #[groups=segment-generator,detectron]
@@ -29,6 +29,7 @@ jsonpath-ng = "==1.6.0"                 #[groups=segment-generator]
 # detectron2-0.5+cpu-cp38-cp38-linux_x86_64.whl
 
 scipy = "==1.10.1"                      #[groups=segment-parser]
+langchain = "==0.2.6"
 
 
 [requires]

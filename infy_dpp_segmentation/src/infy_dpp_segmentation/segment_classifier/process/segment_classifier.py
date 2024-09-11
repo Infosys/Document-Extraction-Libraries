@@ -10,6 +10,7 @@ import infy_dpp_sdk
 from infy_dpp_sdk.data import DocumentData, ProcessorResponseData
 from infy_dpp_segmentation.segment_classifier.process.segment_classifier_rule_parser import SegmentClassifierRuleParser
 from infy_dpp_segmentation.common.file_util import FileUtil
+from infy_dpp_segmentation.common.sorting_util import ImageSortUtil
 
 PROCESSEOR_CONTEXT_DATA_NAME = "segment_classifier"
 
@@ -30,19 +31,39 @@ class SegmentClassifier(infy_dpp_sdk.interface.IProcessor):
         # data_dict = context_data['segment_generator']
         # segment_data_list = data_dict.get('segment_data')[0].get('segments')
         if technique_supported:
+            ocr_file_path_list = context_data.get(
+                'content_extractor', {}).get('ocr_files_path_list', [])
             header = None
             footer = None
             header_config = segment_classifier_config.get('header')
             if header_config and header_config.get('enabled'):
-                header = header_config
+                for technique in header_config.get('techniques', []):
+                    if technique.get('enabled'):
+                        if technique['name'] == 'auto_detect':
+                            header = technique
+                            break
+                        if technique['name'] == 'manually_detect':
+                            header = technique
+                            break
+                        else:
+                            header = None
             footer_config = segment_classifier_config.get('footer')
             if footer_config and footer_config.get('enabled'):
-                footer = footer_config
+                for technique in footer_config.get('techniques', []):
+                    if technique.get('enabled'):
+                        if technique['name'] == 'auto_detect':
+                            footer = technique
+                            break
+                        if technique['name'] == 'manually_detect':
+                            footer = technique
+                            break
+                        else:
+                            footer = None
             classified_segment_data_list = SegmentClassifierRuleParser().classify_segments(
-                segment_data_list, header, footer)
+                segment_data_list, header, footer, ocr_file_path_list)
             document_data.raw_data.segment_data = classified_segment_data_list
-            classification_technique = None
             segment_list = None
+            classification_technique = None
             classification_technique = "header_footer"
 
             org_files_full_path = context_data['request_creator']['work_file_path']
@@ -125,6 +146,8 @@ class SegmentClassifier(infy_dpp_sdk.interface.IProcessor):
         if os.path.isdir(debug_file_path) and any(os.path.isfile(os.path.join(debug_file_path, file)) and file.endswith('.jpg') for file in os.listdir(debug_file_path)):
             img_file_path_list = [os.path.join(debug_file_path, file) for file in os.listdir(
                 debug_file_path) if file.endswith('.jpg')]
+            img_file_path_list = ImageSortUtil.sort_image_files(
+                img_file_path_list)
             for page_number in range(1, len(img_file_path_list)+1):
                 group_list = __insert_list(
                     classified_segment_data_list, page_number)

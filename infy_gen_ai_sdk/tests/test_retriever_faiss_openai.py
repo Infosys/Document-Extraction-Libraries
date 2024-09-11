@@ -26,10 +26,8 @@ def pre_test(create_root_folders, copy_files_to_root_folder):
     # Copy files to pick up folder
     SAMPLE_ROOT_PATH = "./data/sample"
     FILES_TO_COPY = [
-        ['companies.faiss', f"{SAMPLE_ROOT_PATH}/vectordb/openai/companies",
-            f"{STORAGE_ROOT_PATH}/vectordb/openai/companies"],
-        ['companies.pkl', f"{SAMPLE_ROOT_PATH}/vectordb/openai/companies",
-            f"{STORAGE_ROOT_PATH}/vectordb/openai/companies"]
+        ['*', f"{SAMPLE_ROOT_PATH}/vectordb/openai_text-embedding-ada-002/companies",
+            f"{STORAGE_ROOT_PATH}/vectordb/openai_text-embedding-ada-002/companies"]
     ]
     copy_files_to_root_folder(FILES_TO_COPY)
 
@@ -69,7 +67,7 @@ def test_1():
     embedding_provider_config_data = infy_gen_ai_sdk.embedding.provider.OpenAIEmbeddingProviderConfigData(
         **{
             "api_type": "azure",
-            "api_url": "https://openai-ppcazure017.openai.azure.com/",
+            "api_url": os.environ['INFY_OPENAI_SERVER_URL'],
             "api_key": os.environ['INFY_OPENAI_SECRET_KEY'],
             "model_name": "text-embedding-ada-002",
             "deployment_name": "text-embedding-ada-002",
@@ -82,7 +80,7 @@ def test_1():
     # Step 2 - Choose vector db provider
     vector_db_provider_config_data = infy_gen_ai_sdk.vectordb.provider.faiss.VectorDbProviderConfigData(
         **{
-            'db_folder_path': '/vectordb/openai/companies',
+            'db_folder_path': '/vectordb/openai_text-embedding-ada-002/companies',
             'db_index_name': 'companies'
         })
     vector_db_provider = infy_gen_ai_sdk.vectordb.provider.faiss.FaissVectorDbProvider(

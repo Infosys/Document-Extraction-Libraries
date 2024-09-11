@@ -5,13 +5,18 @@
 # ===============================================================================================================#
 
 from infy_dpp_segmentation.segment_sequencer.rules.rule_segment_base_class import RuleSegmentBaseClass
+from infy_dpp_segmentation.common.file_util import FileUtil
 
 
 class RuleSegmentDefault(RuleSegmentBaseClass):
     def __init__(self) -> None:
         super().__init__()
 
-    def generate_sequence_no(self, segment_data_list: list) -> list:
+    def generate_sequence_no(self, segment_data_list: list, pages, page) -> list:
+        # Filter segments to include only those from the target page
+        segment_data_list = [
+            segment for segment in segment_data_list if segment['page'] == page]
+
         updated_segment_data_list = []
         counter = 1
         for segment_data in segment_data_list:
@@ -20,7 +25,8 @@ class RuleSegmentDefault(RuleSegmentBaseClass):
             #     pass
             # else:
             single_segment_data_dict = segment_data
-            single_segment_data_dict.update({"sequence": counter})
+            single_segment_data_dict.update({"sequence": counter,
+                                            "segment_id": f'S-{FileUtil.get_uuid()[:5]}'})
             updated_segment_data_list.append(single_segment_data_dict)
             counter = counter+1
         return updated_segment_data_list

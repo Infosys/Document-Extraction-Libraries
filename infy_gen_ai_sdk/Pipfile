@@ -4,20 +4,19 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
-pytest = "==6.2.5"
+pytest = "==7.4.4"
 pytest-cov = "==2.12.1"
 autopep8 = "==1.5.1"
-infy_fs_utils = {path = "./lib/infy_fs_utils-0.0.2-py3-none-any.whl"}
+infy_fs_utils = {path = "./lib/infy_fs_utils-0.0.4-py3-none-any.whl"}
 
 [packages]
-langchain = "==0.0.299"
-openai = "==0.27.8"
-tiktoken = "==0.4.0"
+openai = "==1.32.1"
+tiktoken = "==0.7.0"
 faiss-cpu = "==1.7.4"
-# Required specifically for python 3.8
-typing-inspect = "==0.8.0"
-typing_extensions = "==4.5.0"
-sentence-transformers = "==2.2.2"
+sentence-transformers = "==2.2.2"       #[groups=st]
+typing-inspect = {version="==0.8.0", markers="python_version=='3.8'"}
+typing_extensions = {version="==4.12.2", markers="python_version=='3.8'"}
+pydantic = "==1.10.7"
 
 [requires]
 python_version = "3"

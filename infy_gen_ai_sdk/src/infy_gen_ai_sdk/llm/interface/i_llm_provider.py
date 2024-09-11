@@ -8,8 +8,7 @@
 
 
 import abc
-
-from infy_gen_ai_sdk.data.llm_data import BaseLlmRequestData, BaseLlmResponseData
+from ...schema.llm_data import BaseLlmRequestData, BaseLlmResponseData
 
 
 class ILlmProvider(metaclass=abc.ABCMeta):

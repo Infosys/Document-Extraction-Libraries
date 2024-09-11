@@ -23,6 +23,8 @@ def pre_test(create_root_folders, copy_files_to_root_folder):
             f"{STORAGE_ROOT_PATH}/data/input"],
         ['pipeline_input_config_data.json', f"{SAMPLE_ROOT_PATH}/config",
             f"{STORAGE_ROOT_PATH}/data/config"],
+        ['parallel_pipeline_input_config_data.json', f"{SAMPLE_ROOT_PATH}/config",
+         f"{STORAGE_ROOT_PATH}/data/config"],
     ]
     copy_files_to_root_folder(FILES_TO_COPY)
 
@@ -89,3 +91,16 @@ def test_dpp_segmentation_1():
     segment_data = response_data_list[0].document_data.raw_data.segment_data[0]
     number = segment_data.get('sequence')
     assert number != -1
+
+
+def test_dpp_segmentation_parallel_segment_genrators():
+    """
+        Test case for dpp_segmentation
+    """
+    PROCESSOR_INPUT_CONFIG_PATH = '/data/config/parallel_pipeline_input_config_data.json'
+    dpp_orchestrator = infy_dpp_sdk.orchestrator.OrchestratorNative(
+        input_config_file_path=PROCESSOR_INPUT_CONFIG_PATH)
+    response_data_list = dpp_orchestrator.run_batch()
+
+    assert len(response_data_list[0].context_data) >= 5
+    assert response_data_list[0].document_data.raw_data.segment_data is not None

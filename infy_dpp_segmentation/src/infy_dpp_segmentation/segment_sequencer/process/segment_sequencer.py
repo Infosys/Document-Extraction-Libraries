@@ -10,6 +10,8 @@ import infy_dpp_sdk
 from infy_dpp_sdk.data import DocumentData, ProcessorResponseData
 from infy_dpp_segmentation.segment_sequencer.process.segment_data import SegementData
 from infy_dpp_segmentation.common.file_util import FileUtil
+from infy_dpp_segmentation.common.sorting_util import ImageSortUtil
+
 
 PROCESSEOR_CONTEXT_DATA_NAME = "segment_sequencer"
 
@@ -28,19 +30,23 @@ class SegmentSequencer(infy_dpp_sdk.interface.IProcessor):
 
         pattern = None
         layout = None
-        segments = context_data['page_column_detector']['segment_data'][0]['segments']
-        if not segments:
+        pg_col_dect_segment_data_list = context_data.get(
+            'page_column_detector', {}).get('segment_data', [])
+        columns = pg_col_dect_segment_data_list[0]['segments'] if pg_col_dect_segment_data_list else [
+        ]
+        if not columns:
             pages = {1: []}
         else:
             pages = {}
-            for segment in segments:
-                page = segment.get('page', 1)
+            for column in columns:
+                page = column.get('page', 1)
                 if page not in pages:
                     pages[page] = []
-                pages[page].append(segment)
+                pages[page].append(column)
 
-        for page, segments in pages.items():
-            if len(segments) > 1:
+        updated_segment_data_list = []
+        for page, columns in pages.items():
+            if len(columns) > 1:
                 layout = 'multi-column'
             else:
                 layout = 'single-column'
@@ -56,31 +62,32 @@ class SegmentSequencer(infy_dpp_sdk.interface.IProcessor):
                     elif layout == 'multi-column':
                         pattern = 'zig-zag'
 
-            updated_segment_data_list = SegementData().update_sequence(
-                segment_data_list, layout, pattern)
-            document_data.raw_data.segment_data = updated_segment_data_list
-            sequencer_technique = None
-            sequencer_list = None
-            sequencer_data_dict = []
-            sequencer_technique = pattern
-            sequencer_list = {"technique": sequencer_technique,
-                              "segments": updated_segment_data_list}
-            sequencer_data_dict.append(sequencer_list)
+            updated_segment_data_list += SegementData().update_sequence(
+                segment_data_list, layout, pattern, pages, page)
 
-            org_files_full_path = context_data['request_creator']['work_file_path']
-            debug_config = sequencer_config.get('debug')
-            if debug_config.get('enabled'):
-                if debug_config.get('generate_image'):
-                    self.__plot_bbox(updated_segment_data_list,
-                                     org_files_full_path, debug_config)
+        document_data.raw_data.segment_data = updated_segment_data_list
+        sequencer_technique = None
+        sequencer_list = None
+        sequencer_data_dict = []
+        sequencer_technique = pattern
+        sequencer_list = {"technique": sequencer_technique,
+                          "segments": updated_segment_data_list}
+        sequencer_data_dict.append(sequencer_list)
 
-            context_data[PROCESSEOR_CONTEXT_DATA_NAME] = {
-                'segment_data': sequencer_data_dict}
+        org_files_full_path = context_data['request_creator']['work_file_path']
+        debug_config = sequencer_config.get('debug')
+        if debug_config.get('enabled'):
+            if debug_config.get('generate_image'):
+                self.__plot_bbox(updated_segment_data_list,
+                                 org_files_full_path, debug_config)
 
-            processor_response_data.document_data = document_data
-            processor_response_data.context_data = context_data
+        context_data[PROCESSEOR_CONTEXT_DATA_NAME] = {
+            'segment_data': sequencer_data_dict}
 
-            return processor_response_data
+        processor_response_data.document_data = document_data
+        processor_response_data.context_data = context_data
+
+        return processor_response_data
 
     def __plot_bbox(self, updated_segment_data_list, org_files_full_path, debug_config):
         def __get_storage_file_path(org_files_full_path):
@@ -125,6 +132,8 @@ class SegmentSequencer(infy_dpp_sdk.interface.IProcessor):
         if os.path.isdir(debug_file_path) and any(os.path.isfile(os.path.join(debug_file_path, file)) and file.endswith('.jpg') for file in os.listdir(debug_file_path)):
             img_file_path_list = [os.path.join(debug_file_path, file) for file in os.listdir(
                 debug_file_path) if file.endswith('.jpg')]
+            img_file_path_list = ImageSortUtil.sort_image_files(
+                img_file_path_list)
             for page_number in range(1, len(img_file_path_list)+1):
                 group_list = __insert_list(
                     updated_segment_data_list, page_number)

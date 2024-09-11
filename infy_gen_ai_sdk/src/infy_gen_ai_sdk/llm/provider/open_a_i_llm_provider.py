@@ -7,13 +7,11 @@
 """Module for Open AI LLM provider"""
 
 import logging
-from langchain.llms import AzureOpenAI
-from langchain.prompts import PromptTemplate
-from langchain.chains import LLMChain
+from openai import AzureOpenAI
 import infy_fs_utils
-from infy_gen_ai_sdk.data.config_data import BaseLlmProviderConfigData
-from infy_gen_ai_sdk.data.llm_data import BaseLlmRequestData, BaseLlmResponseData
-from infy_gen_ai_sdk.llm.interface.i_llm_provider import ILlmProvider
+from ...schema.config_data import BaseLlmProviderConfigData
+from ...schema.llm_data import BaseLlmRequestData, BaseLlmResponseData
+from ...llm.interface.i_llm_provider import ILlmProvider
 from ...common import Constants
 
 
@@ -25,6 +23,11 @@ class OpenAILlmProviderConfigData(BaseLlmProviderConfigData):
     deployment_name: str = None
     max_tokens: int = None
     temperature: int = None  # 0.7
+    is_chat_model: bool = None
+    top_p: float = None
+    frequency_penalty: float = None
+    presence_penalty: float = None
+    stop: str = None
 
 
 class OpenAILlmRequestData(BaseLlmRequestData):
@@ -46,34 +49,57 @@ class OpenAILlmProvider(ILlmProvider):
         else:
             self.__logger = logging.getLogger(__name__)
         service_config_data = {
-            'openai_api_key': config_data.api_key,
-            'openai_api_version': config_data.api_version,
-            'openai_api_base': config_data.api_url,
-            'openai_api_type': config_data.api_type,
-            'model_name': config_data.model_name,
-            'deployment_name': config_data.deployment_name,
-            'max_tokens': config_data.max_tokens,
-            'temperature': config_data.temperature
+            'api_key': config_data.api_key,
+            'api_version': config_data.api_version,
+            'azure_endpoint': config_data.api_url,
+            'azure_deployment': config_data.deployment_name,
         }
         self.__llm_obj = AzureOpenAI(**service_config_data)
+        self.__max_tokens = config_data.max_tokens
+        self.__model = config_data.model_name
+        self.__temperature = config_data.temperature
+        self.__is_chat_model = config_data.is_chat_model
+        self.__top_p = config_data.top_p
+        self.__frequency_penalty = config_data.frequency_penalty
+        self.__presence_penalty = config_data.presence_penalty
+        self.__stop = config_data.stop
 
     def get_llm_response(self, llm_request_data: OpenAILlmRequestData) -> OpenAILlmResponseData:
         try:
             llm_response_data = OpenAILlmResponseData()
             llm_obj = self.__llm_obj
-            variable_to_value_dict = llm_request_data.template_var_to_value_dict
-            variable_list = list(variable_to_value_dict.keys())
-            prompt_template_obj = PromptTemplate(template=llm_request_data.prompt_template,
-                                                 input_variables=variable_list)
-
-            # This is done just to get the flattened LLM request text
-            llm_request_txt = prompt_template_obj.format(
-                **variable_to_value_dict)
-            llm_response_data.llm_request_txt = llm_request_txt
-
-            llm_chain = LLMChain(prompt=prompt_template_obj, llm=llm_obj)
-            llm_response_txt = llm_chain.run(**variable_to_value_dict)
-
+            prompt_template = llm_request_data.prompt_template
+            __context = llm_request_data.template_var_to_value_dict.get(
+                'context')
+            __question = llm_request_data.template_var_to_value_dict.get(
+                'question')
+            start_phrase = prompt_template.format(
+                context=__context, question=__question)
+            # gpt4-8k,gpt-4-32k
+            if (self.__is_chat_model):
+                message_text = [
+                    {"role": "system", "content": start_phrase}]
+                response = llm_obj.chat.completions.create(
+                    model=self.__model,
+                    messages=message_text,
+                    temperature=self.__temperature,
+                    max_tokens=self.__max_tokens,
+                    top_p=self.__top_p,
+                    frequency_penalty=self.__frequency_penalty,
+                    presence_penalty=self.__presence_penalty,
+                    stop=self.__stop
+                )
+                llm_response_txt = response.choices[0].message.content
+            else:
+                # text-davinci-003
+                params_not_required = [
+                    'top_p', 'frequency_penalty', 'presence_penalty', 'stop']
+                if self.__top_p or self.__frequency_penalty or self.__presence_penalty or self.__stop:
+                    self.__logger.warning(
+                        '%s params not required for this model', params_not_required)
+                response = llm_obj.completions.create(
+                    model=self.__model, prompt=start_phrase, max_tokens=self.__max_tokens)
+                llm_response_txt = response.choices[0].text
             llm_response_data.llm_response_txt = llm_response_txt
         except Exception as e:
             self.__logger.exception(e)

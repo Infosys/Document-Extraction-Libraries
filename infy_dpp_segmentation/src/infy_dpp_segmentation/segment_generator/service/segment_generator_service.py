@@ -3,17 +3,20 @@
 # Use of this source code is governed by Apache License Version 2.0 that can be found in the LICENSE file or at  #
 # http://www.apache.org/licenses/                                                                                #
 # ===============================================================================================================#
+
 import requests
 import os
 from infy_dpp_segmentation.segment_generator.service.detectron_service import DetectronService
 import infy_fs_utils
 import infy_dpp_sdk
 
+
 class SegmentGeneratorService:
     '''segment generator service class'''
 
     def __init__(self, model_config) -> None:
-        self.__logger = infy_fs_utils.manager.FileSystemLoggingManager().get_fs_logging_handler(infy_dpp_sdk.common.Constants.FSLH_DPP).get_logger()
+        self.__logger = infy_fs_utils.manager.FileSystemLoggingManager(
+        ).get_fs_logging_handler(infy_dpp_sdk.common.Constants.FSLH_DPP).get_logger()
         self.__detectron_service_obj = DetectronService(model_config)
 
     def get_segment_data(self, image_file_path_list):

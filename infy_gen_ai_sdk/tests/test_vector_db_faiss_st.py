@@ -6,9 +6,6 @@
 
 """Testing module"""
 
-import time
-import os
-import shutil
 from typing import List
 import pytest
 import infy_fs_utils
@@ -28,10 +25,8 @@ def pre_test(create_root_folders, copy_files_to_root_folder):
     # Copy files to pick up folder
     SAMPLE_ROOT_PATH = "./data/sample"
     FILES_TO_COPY = [
-        ['companies.faiss', f"{SAMPLE_ROOT_PATH}/vectordb/sentence_transformer_all-MiniLM-L6-v2/companies",
-            f"{STORAGE_ROOT_PATH}/vectordb/sentence_transformer_all-MiniLM-L6-v2/companies"],
-        ['companies.pkl', f"{SAMPLE_ROOT_PATH}/vectordb/sentence_transformer_all-MiniLM-L6-v2/companies",
-            f"{STORAGE_ROOT_PATH}/vectordb/sentence_transformer_all-MiniLM-L6-v2/companies"]
+        ['*', f"{SAMPLE_ROOT_PATH}/vectordb/st_all-MiniLM-L6-v2/companies",
+            f"{STORAGE_ROOT_PATH}/vectordb/st_all-MiniLM-L6-v2/companies"]
     ]
     copy_files_to_root_folder(FILES_TO_COPY)
 
@@ -70,8 +65,8 @@ def test_1():
     # Step 1 - Choose embedding provider
     embedding_provider_config_data = infy_gen_ai_sdk.embedding.provider.StEmbeddingProviderConfigData(
         **{
-            "api_url": "",
-            "model_name": "all-MiniLM-L6-v2"
+            "model_name": "all-MiniLM-L6-v2",
+            "model_home_path": r"C:\MyProgramFiles\AI\models"
         })
 
     embedding_provider = infy_gen_ai_sdk.embedding.provider.StEmbeddingProvider(
@@ -80,7 +75,7 @@ def test_1():
     # Step 2 - Choose vector db provider
     vector_db_provider_config_data = infy_gen_ai_sdk.vectordb.provider.faiss.VectorDbProviderConfigData(
         **{
-            'db_folder_path': '/vectordb/sentence_transformer_all-MiniLM-L6-v2/companies',
+            'db_folder_path': '/vectordb/st_all-MiniLM-L6-v2/companies',
             'db_index_name': 'companies'
         })
     vector_db_provider = infy_gen_ai_sdk.vectordb.provider.faiss.FaissVectorDbProvider(

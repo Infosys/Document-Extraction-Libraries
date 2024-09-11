@@ -1,0 +1,479 @@
+{
+  "variables": {
+    "FORMAT_CONVERTER_HOME": "C:/MyProgramFiles/InfyFormatConverter/",
+    "OPENAI_KEY": "${ENV:OPENAI_KEY}",
+    "OPENAI_SERVER_URL": "${ENV:OPENAI_SERVER_URL}",
+    "TESSERACT_HOME": "C:/Program Files/Tesseract-OCR",
+    "INFY_OCR_ENGINE_HOME": "C:/MyProgramFiles/InfyOcrEngine",
+    "MODEL_HOME": "C:/MyProgramFiles/AI/models",
+    "AZURE_READ_OCR_SUB_KEY": "",
+    "AZURE_READ_OCR_URL": ""
+  },
+  "processor_list": [
+    {
+      "enabled": true,
+      "processor_name": "request_creator",
+      "processor_namespace": "infy_dpp_core.request_creator",
+      "processor_class_name": "RequestCreator",
+      "processor_input_config_name_list": [
+        "RequestCreator"
+      ]
+    },
+    {
+      "enabled": true,
+      "processor_name": "metadata_extractor",
+      "processor_namespace": "infy_dpp_core.metadata_extractor",
+      "processor_class_name": "MetadataExtractor",
+      "processor_input_config_name_list": []
+    },
+    {
+      "enabled": true,
+      "processor_name": "document_data_saver",
+      "processor_namespace": "infy_dpp_core.document_data_saver",
+      "processor_class_name": "DocumentDataSaver",
+      "processor_input_config_name_list": [
+        "DocumentDataSaver"
+      ]
+    },
+    {
+      "enabled": true,
+      "processor_name": "content_extractor",
+      "processor_namespace": "infy_dpp_content_extractor.content_extractor",
+      "processor_class_name": "ContentExtractor",
+      "processor_input_config_name_list": [
+        "ContentExtractor"
+      ]
+    },
+    {
+      "enabled": true,
+      "processor_name": "document_data_saver",
+      "processor_namespace": "infy_dpp_core.document_data_saver",
+      "processor_class_name": "DocumentDataSaver",
+      "processor_input_config_name_list": [
+        "DocumentDataSaver"
+      ]
+    },
+    {
+      "processor_list": [
+        {
+          "enabled": true,
+          "processor_name": "segment_generator_pdfbox",
+          "processor_namespace": "infy_dpp_segmentation.segment_generator",
+          "processor_class_name": "SegmentGenerator",
+          "processor_input_config_name_list": [
+            "SegmentGeneratorPdfBox"
+          ]
+        },
+        {
+          "enabled": true,
+          "processor_name": "segment_generator_pdf_table_extract",
+          "processor_namespace": "infy_dpp_segmentation.segment_generator",
+          "processor_class_name": "SegmentGenerator",
+          "processor_input_config_name_list": [
+            "SegmentGeneratorPdfTableExtract"
+          ]
+        },
+        {
+          "enabled": true,
+          "processor_name": "segment_generator_pdf_img_extract",
+          "processor_namespace": "infy_dpp_segmentation.segment_generator",
+          "processor_class_name": "SegmentGenerator",
+          "processor_input_config_name_list": [
+            "SegmentGeneratorPdfImgContentExtract"
+          ]
+        }
+      ]
+    },
+    {
+      "enabled": true,
+      "processor_name": "segment_consolidator",
+      "processor_namespace": "infy_dpp_segmentation.segment_consolidator",
+      "processor_class_name": "SegmentConsolidator",
+      "processor_input_config_name_list": [
+        "SegmentConsolidator"
+      ]
+    },
+    {
+      "enabled": true,
+      "processor_name": "segment_classifier",
+      "processor_namespace": "infy_dpp_segmentation.segment_classifier",
+      "processor_class_name": "SegmentClassifier",
+      "processor_input_config_name_list": [
+        "SegmentClassifier"
+      ]
+    },
+    {
+      "enabled": true,
+      "processor_name": "page_column_detector",
+      "processor_namespace": "infy_dpp_segmentation.page_column_detector",
+      "processor_class_name": "PageColumnDetector",
+      "processor_input_config_name_list": [
+        "PageColumnDetector"
+      ]
+    },
+    {
+      "enabled": true,
+      "processor_name": "segment_merger",
+      "processor_namespace": "infy_dpp_segmentation.segment_merger",
+      "processor_class_name": "SegmentMerger",
+      "processor_input_config_name_list": [
+        "SegmentMerger"
+      ]
+    },
+    {
+      "enabled": true,
+      "processor_name": "Segment_sequencer",
+      "processor_namespace": "infy_dpp_segmentation.segment_sequencer",
+      "processor_class_name": "SegmentSequencer",
+      "processor_input_config_name_list": [
+        "SegmentSequencer"
+      ]
+    },
+    {
+      "enabled": true,
+      "processor_name": "chunk_generator",
+      "processor_namespace": "infy_dpp_segmentation.chunk_generator",
+      "processor_class_name": "ChunkDataParser",
+      "processor_input_config_name_list": [
+        "ChunkDataParser"
+      ]
+    },
+    {
+      "enabled": true,
+      "processor_name": "chunk_saver",
+      "processor_namespace": "infy_dpp_segmentation.chunk_saver",
+      "processor_class_name": "SaveChunkDataParser",
+      "processor_input_config_name_list": [
+        "SaveChunkDataParser"
+      ]
+    },
+    {
+      "enabled": true,
+      "processor_name": "request_closer",
+      "processor_namespace": "infy_dpp_core.request_closer",
+      "processor_class_name": "RequestCloser",
+      "processor_input_config_name_list": [
+        "RequestCloser"
+      ]
+    },
+    {
+      "enabled": true,
+      "processor_name": "document_data_saver",
+      "processor_namespace": "infy_dpp_core.document_data_saver",
+      "processor_class_name": "DocumentDataSaver",
+      "processor_input_config_name_list": [
+        "DocumentDataSaver"
+      ]
+    }
+  ],
+  "processor_input_config": {
+    "SegmentGeneratorPdfBox": {
+      "textProviders": [
+        {
+          "provider_name": "pdf_box_text_provider",
+          "properties": {
+            "format_converter_home": "${FORMAT_CONVERTER_HOME}"
+          }
+        }
+      ],
+      "modelProviders": [],
+      "techniques": [
+        {
+          "enabled": true,
+          "name": "pdf_box_technique",
+          "input_file_type": "pdf",
+          "text_provider_name": "pdf_box_text_provider",
+          "model_provider_name": null
+        }
+      ],
+      "debug": {
+        "enabled": false,
+        "generate_image": true,
+        "output_dir_path": "/debug/1.segment_generator"
+      }
+    },
+    "SegmentGeneratorPdfTableExtract": {
+      "textProviders": [
+        {
+          "provider_name": "ContentExtractor.table_contents_file_path",
+          "properties": {}
+        }
+      ],
+      "modelProviders": [],
+      "techniques": [
+        {
+          "enabled": true,
+          "name": "pdf_plumber_table_extractor_technique",
+          "input_file_type": "pdf",
+          "text_provider_name": "ContentExtractor.table_contents_file_path",
+          "model_provider_name": null
+        }
+      ],
+      "debug": {
+        "enabled": false,
+        "generate_image": true,
+        "output_dir_path": "/debug/1.segment_generator"
+      }
+    },
+    "SegmentGeneratorPdfImgContentExtract": {
+      "textProviders": [
+        {
+          "provider_name": "ContentExtractor.image_contents_file_path",
+          "properties": {}
+        }
+      ],
+      "modelProviders": [],
+      "techniques": [
+        {
+          "enabled": true,
+          "name": "pdf_image_content_extractor_technique9",
+          "input_file_type": "pdf",
+          "text_provider_name": "ContentExtractor.image_contents_file_path",
+          "model_provider_name": null
+        }
+      ],
+      "debug": {
+        "enabled": false,
+        "generate_image": true,
+        "output_dir_path": "/debug/1.segment_generator"
+      }
+    },
+    "SegmentConsolidator": {
+      "enabled": true,
+      "debug": {
+        "enabled": true,
+        "generate_image": true,
+        "output_dir_path": "/debug/2.segment_consolidator"
+      }
+    },
+    "SegmentClassifier": {
+      "header": {
+        "enabled": true,
+        "min_height": 0,
+        "max_height": 250
+      },
+      "footer": {
+        "enabled": true,
+        "min_height": 3100,
+        "max_height": 3300
+      },
+      "debug": {
+        "enabled": true,
+        "generate_image": true,
+        "output_dir_path": "/debug/3.segment_classifier"
+      }
+    },
+    "PageColumnDetector": {
+      "column_techniques": [
+        {
+          "enabled": true,
+          "name": "column_technique1"
+        }
+      ],
+      "exclude": [
+        "header",
+        "footer"
+      ],
+      "debug": {
+        "enabled": true,
+        "generate_image": true,
+        "output_dir_path": "/debug/4.column_detector"
+      }
+    },
+    "SegmentMerger": {
+      "prefer_larger_segments": true,
+      "merge": {
+        "enabled": true,
+        "vertical_adjacent_segments_max_gap_in_pixel": 80,
+        "horizontal_adjacent_segments_max_gap_in_pixel": 10
+      },
+      "plot_bbox_segments": true,
+      "debug": {
+        "enabled": true,
+        "generate_image": true,
+        "output_dir_path": "/debug/5.segment_merger"
+      }
+    },
+    "SegmentSequencer": {
+      "pattern": {
+        "single-column": {
+          "sequence-order": {
+            "enabled": false
+          }
+        },
+        "multi-column": {
+          "left-right": {
+            "enabled": false
+          },
+          "zig-zag": {
+            "enabled": true
+          }
+        }
+      },
+      "debug": {
+        "enabled": true,
+        "generate_image": true,
+        "output_dir_path": "/debug/6.segment_sequencer"
+      }
+    },
+    "ChunkDataParser": {
+      "chunking_method": "page",
+      "merge_title_paragraph": false,
+      "replace": [
+        {
+          "find": "\u2019",
+          "replace": "'"
+        },
+        {
+          "find": "\u2018",
+          "replace": "'"
+        },
+        {
+          "find": "\u2026",
+          "replace": ","
+        }
+      ],
+      "page_num": [
+        "1:10"
+      ],
+      "exclude": [
+        "figure"
+      ]
+    },
+    "SaveChunkDataParser": {
+      "chunked_files_root_path": "/data/vectordb/chunked"
+    },
+    "RequestCreator": {
+      "from_data_file": {
+        "enabled": true,
+        "read_path": "/data/input/",
+        "batch_size": 20,
+        "filter": {
+          "include": [
+            "pdf",
+            "json",
+            "txt"
+          ],
+          "exclude": [
+            "_"
+          ]
+        },
+        "work_root_path": "/data/work/",
+        "to_request_file": {
+          "save_path": "/data/work/request/indexer/start"
+        }
+      },
+      "from_request_file": {
+        "enabled": false,
+        "read_path": "/data/work/request/indexer/complete",
+        "save_path": "/data/work/request/inference/start"
+      }
+    },
+    "RequestCloser": {
+      "work_root_path": "/data/work/",
+      "data_file": {
+        "output_root_path": "/data/output/"
+      },
+      "output_root_path": "/data/output/",
+      "from_request_file": {
+        "read_path": "/data/work/request/indexer/start",
+        "save_path": "/data/work/request/indexer/complete"
+      }
+    },
+    "DocumentDataSaver": {
+      "work_root_path": "/data/work/"
+    },
+    "ContentExtractor": {
+      "techniques": [
+        {
+          "enabled": true,
+          "name": "pdf_plumber_table_extractor",
+          "input_file_type": "pdf",
+          "text_provider_name": "pdf_box_text_provider",
+          "model_provider_name": null
+        },
+        {
+          "enabled": true,
+          "name": "pdf_box_image_extractor",
+          "input_file_type": "pdf",
+          "text_provider_name": "pdf_box_text_provider",
+          "model_provider_name": null
+        },
+        {
+          "enabled": true,
+          "name": "pdf_image_converter",
+          "input_file_type": "pdf",
+          "text_provider_name": "pdf_box_text_provider",
+          "model_provider_name": null
+        },
+        {
+          "enabled": true,
+          "name": "pdf_apache_pdfbox",
+          "input_file_type": "pdf",
+          "text_provider_name": "pdf_box_text_provider",
+          "model_provider_name": null
+        },
+        {
+          "enabled": true,
+          "name": "pdf_image_apache_pdfbox",
+          "input_file_type": "pdf",
+          "text_provider_name": "pdf_box_text_provider",
+          "model_provider_name": null
+        },
+        {
+          "enabled": false,
+          "name": "img_tesseracct_ocr_extractor",
+          "input_file_type": "image",
+          "text_provider_name": "tesseract_ocr_provider",
+          "model_provider_name": null
+        },
+        {
+          "enabled": false,
+          "name": "img_azure_read_ocr_extractor",
+          "input_file_type": "image",
+          "text_provider_name": "azure_read_ocr_provider",
+          "model_provider_name": "detectron"
+        },
+        {
+          "enabled": true,
+          "name": "img_infy_ocr_engine_extractor",
+          "input_file_type": "image",
+          "text_provider_name": "infy_ocr_engine_provider",
+          "model_provider_name": null
+        }
+      ],
+      "textProviders": [
+        {
+          "provider_name": "tesseract_ocr_provider",
+          "properties": {
+            "tesseract_path": "${TESSERACT_HOME}/tesseract.exe",
+            "format_converter_home": "${FORMAT_CONVERTER_HOME}"
+          }
+        },
+        {
+          "provider_name": "infy_ocr_engine_provider",
+          "properties": {
+            "ocr_engine_exe_dir_path": "${INFY_OCR_ENGINE_HOME}",
+            "ocr_engine_model_dir_path": "${MODEL_HOME}/tessdata",
+            "ocr_engine_language": "eng",
+            "format_converter_home": "${FORMAT_CONVERTER_HOME}"
+          }
+        },
+        {
+          "provider_name": "azure_read_ocr_provider",
+          "properties": {
+            "subscription_key": "${AZURE_READ_OCR_SUB_KEY}",
+            "url": "${AZURE_READ_OCR_URL}",
+            "format_converter_home": "${FORMAT_CONVERTER_HOME}"
+          }
+        },
+        {
+          "provider_name": "pdf_box_text_provider",
+          "properties": {
+            "format_converter_home": "${FORMAT_CONVERTER_HOME}"
+          }
+        }
+      ]
+    }
+  }
+}
