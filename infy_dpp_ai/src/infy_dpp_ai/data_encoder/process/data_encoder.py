@@ -51,6 +51,13 @@ class DataEncoder(infy_dpp_sdk.interface.IProcessor):
                         encoded_files_root_path = get_storage_config.get(
                             "encoded_files_root_path")
                         db_name = get_storage_config.get("db_name")
+                        distance_metric = get_storage_config.get(
+                            "distance_metric")
+                        if distance_metric is not None:
+                            for key, value in distance_metric.items():
+                                if value is True:
+                                    distance_metric = key
+                                    break
 
         # Step 1 - Choose embedding provider
         embedding_provider_config_data_dict = get_llm_config
@@ -67,6 +74,12 @@ class DataEncoder(infy_dpp_sdk.interface.IProcessor):
 
             embedding_provider = infy_gen_ai_sdk.embedding.provider.OpenAIEmbeddingProvider(
                 embedding_provider_config_data)
+        if get_llm == 'custom' and get_storage == 'faiss':
+            embedding_provider_config_data = infy_gen_ai_sdk.embedding.provider.CustomEmbeddingProviderConfigData(
+                **embedding_provider_config_data_dict)
+
+            embedding_provider = infy_gen_ai_sdk.embedding.provider.CustomEmbeddingProvider(
+                embedding_provider_config_data)
 
         if db_name:
             server_faiss_write_path = f'{encoded_files_root_path}/{get_llm}-{model_name}/{db_name}'
@@ -82,7 +95,7 @@ class DataEncoder(infy_dpp_sdk.interface.IProcessor):
         vector_db_provider = infy_gen_ai_sdk.vectordb.provider.faiss.FaissVectorDbProvider(
             vector_db_provider_config_data, embedding_provider)
 
-        chunk_data = context_data.get('save_chunk_data')
+        chunk_data = context_data.get('chunk_generator')
         for text_file_path in chunk_data.get('chunked_data_list'):
             #
             if f'{text_file_path}_metadata.json' in chunk_data.get('chunked_file_meta_data_list'):
@@ -103,7 +116,10 @@ class DataEncoder(infy_dpp_sdk.interface.IProcessor):
 
         encoded_path_list.append(server_faiss_write_path)
         context_data[PROCESSEOR_CONTEXT_DATA_NAME] = {
-            'encoded_path_list': encoded_path_list}
+            'encoded_path_list': encoded_path_list,
+            'embedding_model': model_name,
+            'distance_metric': distance_metric
+        }
 
         # Populate response data
         processor_response_data.document_data = document_data

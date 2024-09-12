@@ -35,7 +35,7 @@
             ]
         },
         {
-            "enabled": false,
+            "enabled": true,
             "processor_name": "document_data_saver",
             "processor_namespace": "infy_dpp_core.document_data_saver",
             "processor_class_name": "DocumentDataSaver",

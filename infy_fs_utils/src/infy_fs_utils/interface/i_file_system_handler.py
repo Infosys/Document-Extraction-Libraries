@@ -24,7 +24,7 @@ class IFileSystemHandler(ABC):
         parsed_url = urlparse(self.__storage_root_uri)
         self.__scheme = parsed_url.scheme
         self.__bucket_name = parsed_url.netloc+parsed_url.path
-        self.__storage_config_data=storage_config_data
+        self.__storage_config_data = storage_config_data
 
     @abstractmethod
     def get_instance(self):
@@ -56,13 +56,19 @@ class IFileSystemHandler(ABC):
         raise NotImplementedError
 
     @abstractmethod
-    def list_files(self, directory_path, file_filter='*.*'):
-        """Returns the list of files in a given directory"""
+    def list_files(self, directory_path, file_filter='*.*', empty_file_name='empty.fsh'):
+        """
+        Returns the list of files in a given directory.
+        In case of cloud storage, excludes empty file `empty_file_name`
+        """
         raise NotImplementedError
 
     @abstractmethod
-    def get_folder(self, source_dir, target_dir, recursive=True):
-        """Downloads files from remote folder `source_dir` to local folder `target_dir`."""
+    def get_folder(self, source_dir, target_dir, recursive=True, empty_file_name='empty.fsh'):
+        """
+        Downloads files from remote folder `source_dir` to local folder `target_dir`.
+        In case of cloud storage, excludes empty file `empty_file_name`
+        """
         raise NotImplementedError
 
     @abstractmethod
@@ -71,8 +77,22 @@ class IFileSystemHandler(ABC):
         raise NotImplementedError
 
     @abstractmethod
-    def create_folders(self, dir_path, create_parents=True):
-        """Create directory and parent directories if `create_parents=True`"""
+    def move_folder(self, source_dir, target_dir, recursive=True):
+        """Moves files from remote folder `source_dir` to remote folder `target_dir`."""
+        raise NotImplementedError
+
+    @abstractmethod
+    def delete_folder(self, dir_path, recursive=True):
+        """Deletes a given directory"""
+        raise NotImplementedError
+
+    @abstractmethod
+    def create_folders(self, dir_path, create_parents=True, empty_file_name='empty.fsh'):
+        """
+        Create directory and parent directories if `create_parents=True`
+        In case of cloud storage, creates an empty file `empty_file_name` 
+        to create the directory.
+        """
         raise NotImplementedError
 
     @abstractmethod
@@ -93,6 +113,16 @@ class IFileSystemHandler(ABC):
     @abstractmethod
     def exists(self, resource_path) -> bool:
         """Returns True if resource exists."""
+        raise NotImplementedError
+
+    @abstractmethod
+    def put_file(self, source_file, target_file):
+        """Uploads a file from local `source_file` to remote `target_file`."""
+        raise NotImplementedError
+
+    @abstractmethod
+    def get_file(self, source_file, target_file):
+        """Downloads a file from remote `source_file` to local `target_file`."""
         raise NotImplementedError
 
     def get_scheme(self):

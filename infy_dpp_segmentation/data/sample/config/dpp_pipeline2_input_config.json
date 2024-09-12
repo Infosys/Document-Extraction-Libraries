@@ -104,7 +104,7 @@
                     "provider_name": "azure_read_ocr_provider",
                     "properties": {
                         "subscription_key": "",
-                        "url": "https://southeastasia.api.cognitive.microsoft.com/vision/v3.2/read/analyze",
+                        "url": "",
                         "format_converter_home": "C:/MyProgramFiles/InfyFormatConverter"
                     }
                 },

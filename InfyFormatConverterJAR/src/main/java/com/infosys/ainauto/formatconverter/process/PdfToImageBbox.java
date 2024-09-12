@@ -64,7 +64,12 @@ public class PdfToImageBbox {
 				PDFStreamEngineCustom pdfStreamEngineCustom = new PDFStreamEngineCustom();
 				pdfStreamEngineCustom.setPageNum(pageNumBase1);
 				// Do the processing and store results internally
-				pdfStreamEngineCustom.processPage(pdPage);
+				try{
+					pdfStreamEngineCustom.processPage(pdPage);
+					
+				}catch(Exception e){
+					continue;
+				}			
 
 				PageData pageData = pdfStreamEngineCustom.getPageData();
 				pageDataList.add(pageData);

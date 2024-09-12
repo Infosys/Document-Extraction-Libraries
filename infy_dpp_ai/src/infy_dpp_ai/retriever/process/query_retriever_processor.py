@@ -4,11 +4,13 @@
 # http://www.apache.org/licenses/                                                                                #
 # ===============================================================================================================#
 import os
+import json
 from typing import List
 import infy_dpp_sdk
 from infy_dpp_sdk.data import *
 import infy_gen_ai_sdk
 import infy_fs_utils
+from infy_dpp_ai.common.file_util import FileUtil
 
 PROCESSEOR_CONTEXT_DATA_NAME = "query_retriever"
 
@@ -44,6 +46,13 @@ class QueryRetriever(infy_dpp_sdk.interface.IProcessor):
                         chunked_files_root_path = get_storage_config.get(
                             "chunked_files_root_path")
                         db_name = get_storage_config.get("db_name")
+                        distance_metric = get_storage_config.get(
+                            "distance_metric")
+                        if distance_metric is not None:
+                            for key, value in distance_metric.items():
+                                if value is True:
+                                    distance_metric = key
+                                    break
         if not db_name:
             doc_work_folder_abs_path_list = self.__file_sys_handler.list_files(
                 encoded_files_root_path, f'/*/{document_id}')
@@ -112,8 +121,15 @@ class QueryRetriever(infy_dpp_sdk.interface.IProcessor):
 
             embedding_provider = infy_gen_ai_sdk.embedding.provider.OpenAIEmbeddingProvider(
                 embedding_provider_config_data)
+        if sub_folder_name == f'custom-{model_name}' and get_embedding == 'custom' and get_storage == 'faiss':
+            embedding_provider_config_data = infy_gen_ai_sdk.embedding.provider.CustomEmbeddingProviderConfigData(
+                **embedding_provider_config_data_dict)
+
+            embedding_provider = infy_gen_ai_sdk.embedding.provider.CustomEmbeddingProvider(
+                embedding_provider_config_data)
+
         if db_name:
-           server_faiss_write_path = f'{encoded_files_root_path}/{get_embedding}-{model_name}/{db_name}'
+            server_faiss_write_path = f'{encoded_files_root_path}/{get_embedding}-{model_name}/{db_name}'
         else:
             server_faiss_write_path = f'{encoded_files_root_path}/{get_embedding}-{model_name}/{document_id}'
         # Step 2 - Choose vector db provider
@@ -126,9 +142,22 @@ class QueryRetriever(infy_dpp_sdk.interface.IProcessor):
         vector_db_provider = infy_gen_ai_sdk.vectordb.provider.faiss.FaissVectorDbProvider(
             vector_db_provider_config_data, embedding_provider)
         queries_list = []
-        for query_dict in __processor_config_data['queries']:
+        request_creator_context = context_data.get('request_creator', {})
+        question_config_request_file = request_creator_context.get(
+            'question_config_request_file')
+        if question_config_request_file:
+            # queries_request = FileUtil.load_json(
+            #     self.__file_sys_handler.read_file(question_config_request_file))
+            queries_request = json.loads(self.__file_sys_handler.read_file(
+                question_config_request_file))
+        else:
+            queries_request = __processor_config_data['queries']
+
+        for query_dict in queries_request:
             query = query_dict['question']
             top_result = query_dict['top_k']
+            min_distance = query_dict.get('min_distance', 0)
+            max_distance = query_dict.get('max_distance', None)
             # Step 3 - Run query to get best matches
             query_params_data = infy_gen_ai_sdk.vectordb.provider.faiss.VectorDbQueryParamsData(
                 **{
@@ -137,17 +166,47 @@ class QueryRetriever(infy_dpp_sdk.interface.IProcessor):
                     'pre_filter_fetch_k': query_dict['pre_filter_fetch_k'],
                     'filter_metadata': query_dict['filter_metadata']
                 })
-            records: List[infy_gen_ai_sdk.vectordb.provider.faiss.MatchingVectorDbRecordData] = vector_db_provider.get_matches(
-                query_params_data)
+            try:
+                records: List[infy_gen_ai_sdk.vectordb.provider.faiss.MatchingVectorDbRecordData] = vector_db_provider.get_matches(
+                    query_params_data)
+            except Exception as e:
+                print(f"Exception occurred: {e}")
+                records = []
+
             top_k_matches_list = []
-            for record in records:
-                top_k_matches_list.append({"file_path": record.db_folder_path,
-                                           "score": record.score,
-                                           "content": record.content,
-                                           "meta_data": record.metadata
-                                           })
+            if not records:
+                top_k_matches_list.append(
+                    {"file_path": '',
+                     "score": '',
+                     "min_distance": min_distance,
+                     "max_distance": max_distance,
+                     "content": '',
+                     "meta_data": '',
+                     "message": "No records found. Vector database is empty."})
+            else:
+                for record in records:
+                    if (max_distance is None or record.score <= max_distance) and record.score >= min_distance:
+                        top_k_matches_list.append({"file_path": record.db_folder_path,
+                                                   "score": record.score,
+                                                   "min_distance": min_distance,
+                                                   "max_distance": max_distance,
+                                                   "content": record.content,
+                                                   "meta_data": record.metadata
+                                                   })
+                if not top_k_matches_list:
+                    top_k_matches_list.append(
+                        {"file_path": '',
+                         "score": '',
+                         "min_distance": min_distance,
+                         "max_distance": max_distance,
+                         "content": '',
+                         "meta_data": '',
+                         "message": "No records found. Score value not within the range of min_distance and max_distance configured."
+                         })
             queries_list.append({"attribute_key": query_dict["attribute_key"],
-                                "question": query,
+                                 "question": query,
+                                 "embedding_model": model_name,
+                                 "distance_metric": distance_metric,
                                  "top_k": top_result,
                                  "top_k_matches": top_k_matches_list
                                  })

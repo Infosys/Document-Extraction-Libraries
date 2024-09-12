@@ -67,7 +67,7 @@ class RequestCreator(infy_dpp_sdk.interface.IProcessor):
                     #     # should_start_process = FileUtil.generate_file_lock(input_doc, queue_data.get('queue_root_path'),
                     #     #                                                    self.__file_sys_handler)
                     should_start_process = FileUtil.generate_file_lock(input_doc, sub_folder,
-                                                                    self.__file_sys_handler)
+                                                                       self.__file_sys_handler)
                     if not should_start_process:
                         continue
                     # ---- Create file paths -----
@@ -165,23 +165,23 @@ class RequestCreator(infy_dpp_sdk.interface.IProcessor):
             else:
                 message_data = infy_dpp_sdk.data.MessageData()
                 message_item_data = infy_dpp_sdk.data.MessageItemData(
-                message_code=infy_dpp_sdk.data.MessageCodeEnum.INFO_NO_RECORDS_FOUND,   
-                message_type=infy_dpp_sdk.data.MessageTypeEnum.INFO,
-                message_text=f"No files found in {read_path}, stopping pipeline execution")
+                    message_code=infy_dpp_sdk.data.MessageCodeEnum.INFO_NO_RECORDS_FOUND,
+                    message_type=infy_dpp_sdk.data.MessageTypeEnum.INFO,
+                    message_text=f"No files found in {read_path}, stopping pipeline execution")
                 message_data.messages.append(message_item_data)
 
                 response_list.append(infy_dpp_sdk.data.ProcessorResponseData(
-                document_data=infy_dpp_sdk.data.DocumentData(),
-                context_data={},
-                message_data=message_data
+                    document_data=infy_dpp_sdk.data.DocumentData(),
+                    context_data={},
+                    message_data=message_data
                 ))
-                
+
         if len(response_list) < 1:
             message_data = infy_dpp_sdk.data.MessageData()
             message_item_data = infy_dpp_sdk.data.MessageItemData(
-            message_code=infy_dpp_sdk.data.MessageCodeEnum.INFO_NO_RECORDS_FOUND,   
-            message_type=infy_dpp_sdk.data.MessageTypeEnum.INFO,
-            message_text="File Not Found, stopping pipeline execution")
+                message_code=infy_dpp_sdk.data.MessageCodeEnum.INFO_NO_RECORDS_FOUND,
+                message_type=infy_dpp_sdk.data.MessageTypeEnum.INFO,
+                message_text="File Not Found, stopping pipeline execution")
             message_data.messages.append(message_item_data)
 
             response_list.append(infy_dpp_sdk.data.ProcessorResponseData(
@@ -195,11 +195,19 @@ class RequestCreator(infy_dpp_sdk.interface.IProcessor):
         req_config_data = config_data.get(
             'RequestCreator', {}).get('from_data_file')
         read_path = req_config_data.get('read_path')
-        # TODO: [added by raj] add logic to include/exclude files
-        # found_files = self.__file_sys_handler.list_files1(read_path)
+        include_file_exten_list = req_config_data.get('filter').get('include')
+        exclude_file_exten_list = req_config_data.get('filter').get('exclude')
+        # logic to include/exclude files
         found_files = self.__file_sys_handler.list_files(read_path)
+        if len(include_file_exten_list):
+            found_files = [file for file in found_files if os.path.splitext(
+                file)[1][1:] in include_file_exten_list]
+        if len(exclude_file_exten_list):
+            found_files = [file for file in found_files if os.path.splitext(
+                file)[1][1:] not in exclude_file_exten_list]
         if len(found_files) > 0:
             found_files = found_files[0:batch_size]
         else:
-            self.__logger.info(f"No files found in {read_path}, stopping pipeline execution")
+            self.__logger.info(
+                f"No files found in {read_path}, stopping pipeline execution")
         return found_files

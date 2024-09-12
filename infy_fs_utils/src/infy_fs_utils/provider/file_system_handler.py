@@ -5,7 +5,7 @@
 # ===============================================================================================================#
 
 """Module containing FileSystemHandler class"""
-
+import glob
 import os
 import uuid
 import fsspec
@@ -46,11 +46,12 @@ class FileSystemHandler(IFileSystemHandler):
         # file target locations untouched.
         # Here move is added so that files have the read access . with only write there is no group read access
         mode = 'w'
-        u_id = self.__get_uuid()[:5]
-        temp_file_path = f'{os.path.dirname(file_path)}/{u_id}_{os.path.basename(file_path)}'
-        with self.__fs.transaction:
-            with self.__fs.open(self.__prepare_uri(temp_file_path), mode, encoding=encoding) as file:
-                file.write(data)
+        u_id = self.__get_uuid()
+        temp_file_path = f'{os.path.dirname(file_path)}/{u_id}_{os.path.basename(file_path)}.tmp'
+        self.__create_missing_parents(temp_file_path)
+        # with self.__fs.transaction:
+        with self.__fs.open(self.__prepare_uri(temp_file_path), mode, encoding=encoding) as file:
+            file.write(data)
         self.move_file(temp_file_path, file_path)
 
     def append_file(self, file_path, data, encoding='utf8'):
@@ -62,13 +63,17 @@ class FileSystemHandler(IFileSystemHandler):
         """Deletes a given file"""
         self.__fs.rm(self.__prepare_uri(file_path))
 
-    def list_files(self, directory_path, file_filter=None):
+    def list_files(self, directory_path, file_filter=None, empty_file_name='empty.fsh'):
         """Returns the list of files in a given directory"""
         if file_filter is None:
-            return self.__list_all_files(directory_path)
-        file_list = self.__fs.glob(self.__prepare_uri(
-            f"{directory_path}/{file_filter}"))
-        file_list = [self.__unprepare_uri(file) for file in file_list]
+            file_list = self.__list_all_files(directory_path)
+        else:
+            file_list = self.__fs.glob(self.__prepare_uri(
+                f"{directory_path}/{file_filter}"))
+            file_list = [self.__unprepare_uri(file) for file in file_list]
+        if self.get_scheme() != 'file':
+            file_list = [x for x in file_list if not os.path.basename(
+                x) == empty_file_name]
         return file_list
 
     def __list_all_files(self, file_path):
@@ -82,25 +87,67 @@ class FileSystemHandler(IFileSystemHandler):
         file_list = [self.__unprepare_uri(file) for file in file_list]
         return file_list
 
-    def get_folder(self, source_dir, target_dir, recursive=True):
+    def get_folder(self, source_dir, target_dir, recursive=True, empty_file_name='empty.fsh'):
         """Downloads files from remote folder `source_dir` to local folder `target_dir`."""
         self.__fs.get(self.__prepare_uri(source_dir),
                       target_dir, recursive=recursive)
+        if self.get_scheme() != 'file' and empty_file_name:
+            for root, _, files in os.walk(target_dir):
+                for file in files:
+                    if file == empty_file_name:
+                        os.remove(os.path.join(root, file))
 
     def put_folder(self, source_dir, target_dir, recursive=True):
         """Uploads files from local folder `source_dir` to remote folder `target_dir`."""
-        self.__fs.put(os.path.abspath(source_dir),
-                      self.__prepare_uri(target_dir), recursive=recursive)
+        if self.exists(target_dir):
+            files_list = glob.glob(source_dir+'/**', recursive=True)
+            for file in files_list:
+                if os.path.isfile(file):
+                    self.put_file(file, target_dir+'/' +
+                                  os.path.relpath(file, source_dir))
+        else:
+            self.__fs.put(os.path.abspath(source_dir),
+                          self.__prepare_uri(target_dir), recursive=recursive)
 
-    def create_folders(self, dir_path, create_parents=True):
+    def move_folder(self, source_dir, target_dir, recursive=True):
+        """Moves files from remote folder `source_dir` to remote folder `target_dir`."""
+        self.__fs.mv(self.__prepare_uri(source_dir),
+                     self.__prepare_uri(target_dir), recursive)
+
+    def delete_folder(self, dir_path, recursive=True):
+        """Deletes a given directory"""
+        self.__fs.rm(self.__prepare_uri(dir_path), recursive)
+
+    def create_folders(self, dir_path, create_parents=True, empty_file_name='empty.fsh'):
         """Create directory and parent directories if `create_parents=True`"""
-        self.__fs.mkdirs(self.__prepare_uri(dir_path), create_parents)
+        if self.get_scheme() == 'file':
+            self.__fs.mkdirs(self.__prepare_uri(dir_path), create_parents)
+        else:  # Write an empty system file to create the directory
+            dir_name_list = dir_path.split('/')
+            dir_sub_path = ''
+            for dir_name in dir_name_list:
+                if dir_name:
+                    dir_sub_path += '/' + dir_name
+                    self.write_file(dir_sub_path + '/' + empty_file_name, '')
+
+            # self.write_file(dir_path + '/' + empty_file_name, '')
 
     def move_file(self, source_path, target_path) -> str:
         """Moves a file from `source_path` to `target_path`."""
+        # self.__my_print("move_file() ", threading.current_thread().name,
+        #                 f"source_path: {self.__prepare_uri(source_path)}, target_path: {self.__prepare_uri(target_path)}")
+        # try:
         self.__fs.move(self.__prepare_uri(source_path),
                        self.__prepare_uri(target_path))
+        # except Exception as e:
+        #     self.__my_print("move_file() Error:", threading.current_thread().name,
+        #                     f"Exception: {e}\n", "Traceback:", traceback.format_exc())
         return target_path + '/' + os.path.basename(source_path)
+
+    # def __my_print(self, *values: object):
+    #     lock = threading.Lock()
+    #     with lock:
+    #         print(str(datetime.datetime.now()), values)
 
     def copy_file(self, source_path, target_path) -> str:
         """Copies a file from `source_path` to `target_path`."""
@@ -121,6 +168,16 @@ class FileSystemHandler(IFileSystemHandler):
         except FileNotFoundError:
             pass
         return False
+
+    def put_file(self, source_file, target_file):
+        """Uploads a file from local `source_file` to remote `target_file`."""
+        self.__create_missing_parents(target_file)
+        self.__fs.put(source_file, self.__prepare_uri(target_file))
+
+    def get_file(self, source_file, target_file):
+        """Downloads a file from remote `source_file` to local `target_file`."""
+        self.__fs.get(self.__prepare_uri(source_file), target_file)
+
     # ----- private methods -----
 
     def __prepare_uri(self, path):
@@ -143,3 +200,12 @@ class FileSystemHandler(IFileSystemHandler):
 
     def __get_uuid(self):
         return str(uuid.uuid4())
+
+    def __create_missing_parents(self, file_path):
+        """Create parent directories if not exists only for local filesystem"""
+        file_path = file_path.lstrip('/').replace('\\', '/').replace('//', '/')
+        if self.get_scheme() == 'file':
+            # If local file system, create parent directories because fsspec does not
+            parent_dir_path = os.path.dirname(file_path)
+            if not self.exists(parent_dir_path):
+                self.create_folders(parent_dir_path)

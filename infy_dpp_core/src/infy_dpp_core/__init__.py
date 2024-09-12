@@ -5,7 +5,7 @@
 # ===============================================================================================================#
 
 from . import (common, document_data_updater, document_data_saver,
-               request_creator, metadata_extractor, request_closer)
+               request_creator, metadata_extractor, request_closer, request_creator_pseudo)
 
 
 # Validate module installed

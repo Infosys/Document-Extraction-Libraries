@@ -12,8 +12,8 @@ import requests
 import infy_fs_utils
 import infy_dpp_sdk
 # from infy_gen_ai_sdk.common.logger_factory import LoggerFactory
-from infy_gen_ai_sdk.data.config_data import BaseLlmProviderConfigData
-from infy_gen_ai_sdk.data.llm_data import BaseLlmRequestData, BaseLlmResponseData
+from infy_gen_ai_sdk.schema.config_data import BaseLlmProviderConfigData
+from infy_gen_ai_sdk.schema.llm_data import BaseLlmRequestData, BaseLlmResponseData
 from infy_gen_ai_sdk.llm.interface.i_llm_provider import ILlmProvider
 from .tokenizer_service import TokenizerService
 
@@ -23,6 +23,7 @@ class CustomLlmProviderConfigData(BaseLlmProviderConfigData):
     inference_url: str = None
     tiktoken_cache_dir: str = None
     remove_query_from_response: bool = None
+    verify_ssl: bool = True
 
 
 class CustomLlmRequestData(BaseLlmRequestData):
@@ -49,6 +50,7 @@ class CustomLlmProvider(ILlmProvider):
             config_data.tiktoken_cache_dir)
         self.__json_payload = json_payload_dict
         self.custom_llm_name = custom_llm_name
+        self.verify_ssl = config_data.verify_ssl
 
     def get_llm_response(self, llm_request_data: CustomLlmRequestData) -> CustomLlmResponseData:
         try:
@@ -87,7 +89,7 @@ class CustomLlmProvider(ILlmProvider):
             self.__logger.debug("REQUEST %s:%s ", request_id,
                                 json.dumps(json_payload, indent=4))
             model_response = requests.post(
-                url, json=json_payload, verify=False, timeout=180)
+                url, json=json_payload, verify=self.verify_ssl, timeout=180)
             if model_response.status_code == 200:
                 self.__logger .info(
                     'API call to %s Inference model successfull', self.custom_llm_name)

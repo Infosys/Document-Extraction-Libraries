@@ -84,4 +84,7 @@ def test_dpp_core_1():
         input_config_file_path=PROCESSOR_INPUT_CONFIG_PATH)
     response_data_list = dpp_orchestrator.run_batch()
 
+    message_data = response_data_list[0].message_data
+    assert message_data is None
+
     assert response_data_list[0].context_data.get('request_closer') is not None

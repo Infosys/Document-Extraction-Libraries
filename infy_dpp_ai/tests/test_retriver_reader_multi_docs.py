@@ -8,7 +8,6 @@ import json
 import pytest
 import infy_dpp_sdk
 import infy_fs_utils
-import infy_dpp_ai
 STORAGE_ROOT_PATH = f"C:/temp/unittest/infy_dpp_ai/{__name__}/STORAGE"
 CONTAINER_ROOT_PATH = f"C:/temp/unittest/infy_dpp_ai/{__name__}/CONTAINER"
 PROCESSOR_INPUT_CONFIG_PATH = "/data/config/books_pipeline_inference_input_config_trail.json"
@@ -75,7 +74,7 @@ def pre_test(create_root_folders, copy_files_to_root_folder):
 
 def test_reader_pipeline():
     """
-        Test case for segmentation_pipeline
+        Test case for dpp ai reader pipeline
     """
     file_sys_handler = infy_fs_utils.manager.FileSystemManager(
     ).get_fs_handler(infy_dpp_sdk.common.Constants.FSH_DPP)

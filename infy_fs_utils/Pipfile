@@ -4,13 +4,13 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
-pytest = "==6.2.5"
+pytest = "==7.4.4"
 pytest-cov = "==2.12.1"
 autopep8 = "==1.5.1"
 
 [packages]
-pydantic="==1.10.7"
-fsspec="==2023.9.1"
+pydantic=">=1.10.7,<3"
+fsspec=">=2023.9.1,<=2024.5"
 s3fs="==2023.9.1"          #[groups=cloud]
 
 [requires]

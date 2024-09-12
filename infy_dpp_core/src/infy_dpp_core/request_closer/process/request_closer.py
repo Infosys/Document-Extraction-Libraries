@@ -51,6 +51,7 @@ class RequestCloser(infy_dpp_sdk.interface.IProcessor):
 
         # ------ Move original input file to output location ---------
         original_file = document_data.metadata.standard_data.filepath.value
+        original_file_name = document_data.metadata.standard_data.filename.value
         # storage_uri = FileUtil.safe_file_path(self.__file_sys_handler.get_storage_uri().split("://")[1])
         storage_uri = FileUtil.safe_file_path(
             self.__file_sys_handler.get_storage_root_uri().split("://")[1])
@@ -59,7 +60,8 @@ class RequestCloser(infy_dpp_sdk.interface.IProcessor):
         data_file_output_path = processor_config_data.get(
             'data_file').get('output_root_path')
         if data_file_output_path:
-            self.__file_sys_handler.move_file(temp_original_file, output_path)
+            self.__file_sys_handler.move_file(
+                temp_original_file, output_path+"/"+original_file_name)
 
         # ------ Save document data in output location ------
         document_data_file = FileUtil.safe_file_path(
@@ -78,7 +80,7 @@ class RequestCloser(infy_dpp_sdk.interface.IProcessor):
                 self.__file_sys_handler.create_folders(request_save_path)
                 self.__file_sys_handler.move_file(
                     request_file_path, request_save_path)
-                FileUtil.delete_empty_dir(f'{storage_uri}/{sub_folder}')
+                self.__file_sys_handler.delete_folder(sub_folder)
         else:
             self.__file_sys_handler.create_folders(request_save_path)
             self.__file_sys_handler.move_file(

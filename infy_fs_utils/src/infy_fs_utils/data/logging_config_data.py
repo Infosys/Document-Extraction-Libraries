@@ -6,7 +6,10 @@
 
 import socket
 import time
-from pydantic import BaseModel, ValidationError, validator
+try:
+    from pydantic.v1 import BaseModel, ValidationError, validator
+except ImportError:
+    from pydantic import BaseModel, ValidationError, validator
 
 
 class LogFileData(BaseModel):

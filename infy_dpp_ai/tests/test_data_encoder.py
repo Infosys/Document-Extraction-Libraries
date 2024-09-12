@@ -4,13 +4,12 @@
 # http://www.apache.org/licenses/                                                                                #
 # ===============================================================================================================#
 import pytest
-import infy_dpp_sdk
-import infy_dpp_ai
 import infy_fs_utils
-
+import infy_dpp_sdk
 
 STORAGE_ROOT_PATH = f"C:/temp/unittest/infy_dpp_ai/{__name__}/STORAGE"
 CONTAINER_ROOT_PATH = f"C:/temp/unittest/infy_dpp_ai/{__name__}/CONTAINER"
+
 
 @pytest.fixture(scope='module', autouse=True)
 def pre_test(create_root_folders, copy_files_to_root_folder):
@@ -18,22 +17,15 @@ def pre_test(create_root_folders, copy_files_to_root_folder):
     # Create data folders
     create_root_folders([STORAGE_ROOT_PATH, CONTAINER_ROOT_PATH])
     # Copy files to pick up folder
-    SAMPLE_ROOT_PATH = "./data/sample"
-
+    SAMPLE_ROOT_PATH = "./data/sample/data"
     FILES_TO_COPY = [
-        ['document_data.json', f"{SAMPLE_ROOT_PATH}/data/work/D-037c85b3-d45b-47db-abb0-b7aadf813b4e/page-14-17.pdf_files",
-            f"{STORAGE_ROOT_PATH}/data/work/D-037c85b3-d45b-47db-abb0-b7aadf813b4e/page-14-17.pdf_files"],
-        ['pipeline_input_config_data.json', f"{SAMPLE_ROOT_PATH}/data/config",
+        ['page-14-17.pdf', f"{SAMPLE_ROOT_PATH}/input",
+            f"{STORAGE_ROOT_PATH}/data/input"],
+        ['pipeline_input_config_data.json', f"{SAMPLE_ROOT_PATH}/config",
             f"{STORAGE_ROOT_PATH}/data/config"],
-        ['local_model_path_pipeline_input_config_data.json', f"{SAMPLE_ROOT_PATH}/data/config",
-            f"{STORAGE_ROOT_PATH}/data/config"],          
-        ['*.txt',f"{SAMPLE_ROOT_PATH}/vectordb/chunked",
-            f"{STORAGE_ROOT_PATH}/vectordb/chunked"],
-        ['*.json',f"{SAMPLE_ROOT_PATH}/vectordb/chunked",
-            f"{STORAGE_ROOT_PATH}/vectordb/chunked"]
     ]
-    copy_files_to_root_folder(FILES_TO_COPY)  
-    
+    copy_files_to_root_folder(FILES_TO_COPY)
+
     storage_config_data = infy_fs_utils.data.StorageConfigData(
         **{
             "storage_root_uri": f"file://{STORAGE_ROOT_PATH}",
@@ -41,22 +33,22 @@ def pre_test(create_root_folders, copy_files_to_root_folder):
             "storage_access_key": "",
             "storage_secret_key": ""
         })
- 
     file_sys_handler = infy_fs_utils.provider.FileSystemHandler(
         storage_config_data)
     infy_fs_utils.manager.FileSystemManager().add_fs_handler(
-        file_sys_handler,infy_dpp_sdk.common.Constants.FSH_DPP)   
-    
-    
+        file_sys_handler,
+        infy_dpp_sdk.common.Constants.FSH_DPP)
+
     logging_config_data = infy_fs_utils.data.LoggingConfigData(
         **{
-            
+            # "logger_group_name": "my_group_1",
             "logging_level": 10,
             "logging_format": "",
             "logging_timestamp_format": "",
             "log_file_data": {
                 "log_file_dir_path": "/logs",
                 "log_file_name_prefix": "infy_dpp_sdk",
+                # "log_file_name_suffix": "1",
                 "log_file_extension": ".log"
 
             }})
@@ -64,6 +56,7 @@ def pre_test(create_root_folders, copy_files_to_root_folder):
         infy_fs_utils.provider.FileSystemLoggingHandler(
             logging_config_data, file_sys_handler),
         infy_dpp_sdk.common.Constants.FSLH_DPP)
+
     # Configure client properties
     client_config_data = infy_dpp_sdk.ClientConfigData(
         **{
@@ -72,6 +65,7 @@ def pre_test(create_root_folders, copy_files_to_root_folder):
             }
         })
     infy_dpp_sdk.ClientConfigManager().load(client_config_data)
+
     yield  # Run all test methods
     # Post run cleanup
     # Delete file system handler so that other test modules don't get duplicate key error
@@ -79,61 +73,15 @@ def pre_test(create_root_folders, copy_files_to_root_folder):
         infy_dpp_sdk.common.Constants.FSH_DPP)
     infy_fs_utils.manager.FileSystemLoggingManager().delete_fs_logging_handler(
         infy_dpp_sdk.common.Constants.FSLH_DPP)
- 
 
-def test_dpp_ai_pipeline_1():
-    """
-        Test case for segmentation_pipeline
-    """
-    document_data_json = infy_dpp_ai.common.FileUtil.load_json(
-        f"{STORAGE_ROOT_PATH}/data/work/D-037c85b3-d45b-47db-abb0-b7aadf813b4e/page-14-17.pdf_files/document_data.json")
 
-    # --------- Run the pipeline ------------
+def test_dpp_ai_1():
+    """
+        Test case for dpp_ai
+    """
+    PROCESSOR_INPUT_CONFIG_PATH = '/data/config/pipeline_input_config_data.json'
     dpp_orchestrator = infy_dpp_sdk.orchestrator.OrchestratorNativeBasic(
-        input_config_file_path=f"/data/config/pipeline_input_config_data.json")    
-    response_data_list = dpp_orchestrator.run_batch(
-        [infy_dpp_sdk.data.DocumentData(**document_data_json.get('document_data'))],
-        [document_data_json.get('context_data')])   
-    # --------- Save the response data to temp file ------------
-    for idx,response_data in enumerate(response_data_list):
-        output_file_path=f"{STORAGE_ROOT_PATH}/data/work/D-037c85b3-d45b-47db-abb0-b7aadf813b4e/page-14-17.pdf_files/document_data.json"
-        infy_dpp_ai.common.FileUtil.save_to_json(output_file_path,response_data.dict())
-        assert response_data.context_data.get('data_encoder') is not None
+        input_config_file_path=PROCESSOR_INPUT_CONFIG_PATH)
+    response_data_list = dpp_orchestrator.run_batch()
 
-def test_dpp_ai_pipeline_2():
-    """
-        Test case for data encoding 2 file in same vector db if "db_name" key is in faiss configuration
-    """
-    for i in (1,2):
-        document_data_json = infy_dpp_ai.common.FileUtil.load_json(
-            f"{STORAGE_ROOT_PATH}/data/work/D-037c85b3-d45b-47db-abb0-b7aadf813b4e/page-14-17.pdf_files/document_data.json")
-        # --------- Run the pipeline ------------
-        dpp_orchestrator = infy_dpp_sdk.orchestrator.OrchestratorNativeBasic(
-            input_config_file_path=f"/data/config/pipeline_input_config_data.json")    
-        response_data_list = dpp_orchestrator.run_batch(
-            [infy_dpp_sdk.data.DocumentData(**document_data_json.get('document_data'))],
-            [document_data_json.get('context_data')])   
-    # --------- Save the response data to temp file ------------
-    for idx,response_data in enumerate(response_data_list):
-        output_file_path=f"{STORAGE_ROOT_PATH}/data/work/D-037c85b3-d45b-47db-abb0-b7aadf813b4e/page-14-17.pdf_files/document_data.json"
-        infy_dpp_ai.common.FileUtil.save_to_json(output_file_path,response_data.dict())
-        assert response_data.context_data.get('data_encoder') is not None
-
-def test_dpp_ai_pipeline_3():
-    """
-        Test case for embedding data using model_home_path instead of embedding API call to avoid sending PII to API.
-    """
-    document_data_json = infy_dpp_ai.common.FileUtil.load_json(
-        f"{STORAGE_ROOT_PATH}/data/work/D-037c85b3-d45b-47db-abb0-b7aadf813b4e/page-14-17.pdf_files/document_data.json")
-
-    # --------- Run the pipeline ------------
-    dpp_orchestrator = infy_dpp_sdk.orchestrator.OrchestratorNativeBasic(
-        input_config_file_path=f"/data/config/local_model_path_pipeline_input_config_data.json")    
-    response_data_list = dpp_orchestrator.run_batch(
-        [infy_dpp_sdk.data.DocumentData(**document_data_json.get('document_data'))],
-        [document_data_json.get('context_data')])   
-    # --------- Save the response data to temp file ------------
-    for idx,response_data in enumerate(response_data_list):
-        output_file_path=f"{STORAGE_ROOT_PATH}/data/work/D-037c85b3-d45b-47db-abb0-b7aadf813b4e/page-14-17.pdf_files/document_data.json"
-        infy_dpp_ai.common.FileUtil.save_to_json(output_file_path,response_data.dict())
-        assert response_data.context_data.get('data_encoder') is not None
+    assert response_data_list[0].context_data.get('data_encoder') is not None

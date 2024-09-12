@@ -7,7 +7,6 @@ import json
 import pytest
 import infy_dpp_sdk
 import infy_fs_utils
-import infy_dpp_ai
 
 STORAGE_ROOT_PATH = f"C:/temp/unittest/infy_dpp_ai/{__name__}/STORAGE"
 CONTAINER_ROOT_PATH = f"C:/temp/unittest/infy_dpp_ai/{__name__}/CONTAINER"
@@ -24,14 +23,8 @@ def pre_test(create_root_folders, copy_files_to_root_folder):
             f"{STORAGE_ROOT_PATH}/data/config"],
         ['extractor_attribute_prompt_2.txt', f"{SAMPLE_ROOT_PATH}/data/config/prompt_templates",
             f"{STORAGE_ROOT_PATH}/data/config/prompt_templates"],
-        ['*.txt', f"{SAMPLE_ROOT_PATH}/vectordb/chunked",
-            f"{STORAGE_ROOT_PATH}/vectordb/chunked"],
-        ['*.json', f"{SAMPLE_ROOT_PATH}/vectordb/chunked",
-            f"{STORAGE_ROOT_PATH}/vectordb/chunked"],
-        ['*.pkl', "C:/Temp/unittest/infy_dpp_ai/tests.test_data_encoder/STORAGE/vectordb/encoded",
-            f"{STORAGE_ROOT_PATH}/vectordb/encoded"],
-        ['*.faiss', "C:/Temp/unittest/infy_dpp_ai/tests.test_data_encoder/STORAGE/vectordb/encoded",
-            f"{STORAGE_ROOT_PATH}/vectordb/encoded"],
+        ['*.*', f"{SAMPLE_ROOT_PATH}/vectordb",
+            f"{STORAGE_ROOT_PATH}/vectordb"]
     ]
     copy_files_to_root_folder(FILES_TO_COPY)
 
@@ -81,7 +74,7 @@ def pre_test(create_root_folders, copy_files_to_root_folder):
 
 def test_reader_pipeline_1():
     """
-        Test case for segmentation_pipeline
+        Test case for ai reader pipeline
     """
     file_sys_handler = infy_fs_utils.manager.FileSystemManager(
     ).get_fs_handler(infy_dpp_sdk.common.Constants.FSH_DPP)
@@ -94,8 +87,6 @@ def test_reader_pipeline_1():
     response_data = infy_dpp_sdk.data.ProcessorResponseData(
         document_data=document_data, context_data=context_data)
     document_data_json = json.loads(response_data.json(indent=4))
-    # document_data_json =json.loads(file_sys_handler.read_file
-    #                                ("/data/work/D-037c85b3-d45b-47db-abb0-b7aadf813b4e/page-14-17.pdf_files/document_data.json"))
     # --------- Run the pipeline ------------
     dpp_orchestrator = infy_dpp_sdk.orchestrator.OrchestratorNativeBasic(
         input_config_file_path=PROCESSOR_INPUT_CONFIG_PATH)
@@ -105,8 +96,6 @@ def test_reader_pipeline_1():
         [document_data_json.get('context_data')])
     # --------- Save the response data to temp file ------------#
     for response_data in response_data_list:
-        # output_file_path="/data/work/D-037c85b3-d45b-47db-abb0-b7aadf813b4e/page-14-17.pdf_files/processor_response_data.json"
-        # file_sys_handler.write_file(output_file_path, json.dumps(response_data.dict(),indent=4))
         print(json.dumps(response_data.dict(), indent=4))
         assert response_data.context_data.get(
             'query_retriever').get('queries') is not None

@@ -3,6 +3,7 @@
 # Use of this source code is governed by Apache License Version 2.0 that can be found in the LICENSE file or at  #
 # http://www.apache.org/licenses/                                                                                #
 # ===============================================================================================================#
+
 import json
 import os
 import re
@@ -12,6 +13,8 @@ import infy_dpp_sdk
 from infy_dpp_sdk.data import *
 import infy_gen_ai_sdk
 import infy_fs_utils
+
+from infy_dpp_ai.reader.service.provider.moderator import Moderator
 from .cache_manager import CacheManager
 from ..service.provider.custom_llm_provider import CustomLlmProvider, CustomLlmProviderConfigData
 PROCESSEOR_CONTEXT_DATA_NAME = "reader"
@@ -40,6 +43,11 @@ class Reader(infy_dpp_sdk.interface.IProcessor):
         get_llm = ""
         get_llm_config = {}
         used_cache = False
+        moderation_config = {}
+        moderation_payload = {}
+        moderation_results = {}
+        moderation_status = "PASSED"
+        moderation_enabled = False
 
         for key, value in __processor_config_data.items():
             if key == 'llm':
@@ -66,8 +74,14 @@ class Reader(infy_dpp_sdk.interface.IProcessor):
                         get_storage_config = e_val.get('configuration')
                         # encoded_files_root_path= get_storage_config.get("encoded_files_root_path")
                         # chunked_files_root_path= get_storage_config.get("chunked_files_root_path")
+            if key == 'moderation':
+                moderation_enabled = value.get('enabled')
+                if moderation_enabled:
+                    moderation_config = value.get('configuration')
+                    moderation_payload = value.get('json_payload')
 
         # Step 1 - Choose LLM provider
+        model_name = ''
         if get_llm == 'openai' and get_storage == 'faiss':
             os.environ["TIKTOKEN_CACHE_DIR"] = get_llm_config['tiktoken_cache_dir']
             llm_provider_config_data = infy_gen_ai_sdk.llm.provider.OpenAILlmProviderConfigData(
@@ -76,12 +90,14 @@ class Reader(infy_dpp_sdk.interface.IProcessor):
                 llm_provider_config_data)
             cache_enabled = __processor_config_data.get('llm').get('openai'
                                                                    ).get('cache').get('enabled')
+            model_name = llm_provider_config_data.deployment_name
         if get_llm == 'custom' and get_storage == 'faiss':
             llm_provider_config_data = CustomLlmProviderConfigData(
                 **get_llm_config)
             llm_provider = CustomLlmProvider(
                 llm_provider_config_data, json_payload_dict, custom_llm_name)
             cache_enabled = False
+            model_name = custom_llm_name
         context_data = context_data if context_data else {}
         # QUERY RETRIEVER VALIDATION  HANDLED#
         if context_data.get('query_retriever').get('error'):
@@ -111,7 +127,11 @@ class Reader(infy_dpp_sdk.interface.IProcessor):
                 all_replace_words_list = re.findall(r'\{(\w+)\}', v)
                 remain_repl_words_list = copy.deepcopy(all_replace_words_list)
                 remain_repl_words_list.remove('chunk_text')
-                for idx, match in enumerate(top_k_matches_list):
+                skip_llm_call = False
+                for idx, match in enumerate(top_k_matches_list[:reader_input_list[0]['top_k']]):
+                    if "message" in match:
+                        skip_llm_call = True
+                        continue
                     meta_data = match.get('meta_data')
                     f_file = match.get("content")
                     # template = re.sub(
@@ -127,11 +147,26 @@ class Reader(infy_dpp_sdk.interface.IProcessor):
                                 f'{{{replace_word}}}', repr(relevant_metadata_value))
                         comb_file_content = comb_file_content + template
 
-                    if idx == len(top_k_matches_list)-1:
+                    if idx == len(top_k_matches_list[:reader_input_list[0]['top_k']])-1:
                         combined_files_dict[k] = comb_file_content
 
             for input in reader_input_list:
                 if input['attribute_key'] == qr_attr_key:
+                    if skip_llm_call:
+                        output_list.append({
+                            "attribute_key": qr_attr_key,
+                            "message": "No Records found.",
+                            "retriever_output": '',
+                            "model_name": '',
+                            "total_attempts": 0,
+                            "model_input": '',
+                            "model_output": '',
+                            "moderation_input": '',
+                            "moderation_output": '',
+                            "retriver_confidence_pct": '',
+                            "source_metadata": '',
+                            "used_cache": ''})
+                        continue
                     templ_prompt_list = named_propt_temp_dict[input['prompt_template']].get(
                         'content', [])
                     context_template_name = named_propt_temp_dict[input['prompt_template']].get(
@@ -145,6 +180,8 @@ class Reader(infy_dpp_sdk.interface.IProcessor):
                                 file_path)
                     else:
                         template_str = ''.join(templ_prompt_list)
+                    response_validation = named_propt_temp_dict[input['prompt_template']].get(
+                        'response_validation', {})
 
                     # Step 2 - Prepare data
                     CONTEXT = combined_text
@@ -194,27 +231,75 @@ class Reader(infy_dpp_sdk.interface.IProcessor):
                             else:
                                 cache_enabled = False
                     if not cache_enabled:
-                        # Step 3 - Fire query to LLM
-                        llm_response_data: infy_gen_ai_sdk.llm.provider.OpenAILlmResponseData = llm_provider.get_llm_response(
-                            llm_request_data)
-                        llm_response_txt = llm_response_data.llm_response_txt
-                        # Save response to cache only if get_llm == 'openai'
-                        if get_llm == 'openai':
-                            result_temp_file_path = f'{temp_uuid_folder_path}/llm_response.txt'
-                            self.__file_sys_handler.write_file(
-                                result_temp_file_path, llm_response_txt)
-                            __cache_manager.add(combined_query_temp_file_path, [
-                                result_temp_file_path], __bucket_name)
-                            for temp_files in self.__file_sys_handler.list_files(temp_uuid_folder_path, "*"):
-                                self.__file_sys_handler.delete_file(temp_files)
-                    answer = llm_response_txt
+                        if moderation_enabled:
+                            moderator = Moderator()
+                            prompt = self.__build_prompt(llm_request_data)
+                            moderation_payload['Prompt'] = prompt
+                            moderation_results = moderator.perform_moderation_checks(
+                                moderation_config, moderation_payload)
+                            moderation_status = moderation_results.get(
+                                'summary').get('status')
+                        if moderation_status == "PASSED":
+                            # Step 3 - Fire query to LLM
+                            if response_validation.get('enabled', False):
+                                max_attempts = response_validation.get(
+                                    'total_attempts', 1)
+                                llm_attempts = 1
+                                while llm_attempts <= max_attempts:
+                                    llm_response_data: infy_gen_ai_sdk.llm.provider.OpenAILlmResponseData = llm_provider.get_llm_response(
+                                        llm_request_data)
+                                    llm_response_txt = llm_response_data.llm_response_txt
+                                    llm_response_json = llm_response_txt
+                                    expected_type = response_validation.get(
+                                        'type', 'string')
+                                    if expected_type == 'json':
+                                        if isinstance(llm_response_txt, str):
+                                            try:
+                                                llm_response_json = json.loads(
+                                                    llm_response_txt)
+                                                break
+                                            except json.JSONDecodeError:
+                                                llm_attempts += 1
+                                                continue
+                                        else:
+                                            break
+                            else:
+                                llm_response_data: infy_gen_ai_sdk.llm.provider.OpenAILlmResponseData = llm_provider.get_llm_response(
+                                    llm_request_data)
+                                llm_response_txt = llm_response_data.llm_response_txt
+                                llm_response_json = llm_response_txt
+
+                            if moderation_enabled:
+                                moderation_payload['Prompt'] = llm_response_txt
+                                moderation_results = moderator.perform_moderation_checks(
+                                    moderation_config, moderation_payload)
+                                moderation_status = moderation_results.get(
+                                    'summary').get('status')
+                            if moderation_status != "PASSED":
+                                llm_response_txt = "ANSWER FAILED MODERATION CHECKS"
+                            # Save response to cache only if get_llm == 'openai'
+                            if get_llm == 'openai':
+                                result_temp_file_path = f'{temp_uuid_folder_path}/llm_response.txt'
+                                self.__file_sys_handler.write_file(
+                                    result_temp_file_path, llm_response_txt)
+                                __cache_manager.add(combined_query_temp_file_path, [
+                                    result_temp_file_path], __bucket_name)
+                                for temp_files in self.__file_sys_handler.list_files(temp_uuid_folder_path, "*"):
+                                    self.__file_sys_handler.delete_file(
+                                        temp_files)
+                        else:
+                            llm_response_txt = "FAILED MODERATION CHECKS"
+                            self.__logger.debug("Moderation Results :%s",
+                                                json.dumps(moderation_results, indent=4))
+                    answer = llm_response_json
+                    retriever_output = {"top_k": reader_input_list[0]['top_k']}
                     source_metadata = []
                     retriver_confidence_pct = -1
                     try:
-                        try:
-                            answer = json.loads(answer)
-                        except ValueError:
-                            answer = json.loads(answer.replace("'", "\""))
+                        # try:
+                        #     answer = json.loads(answer)
+                        # except ValueError:
+                        #     answer = json.loads(answer.replace("'", "\""))
                         retriver_confidence_pct = self.__calculate_conf_pct(
                             answer)
                         chunk_id = str(answer.get('sources', {})
@@ -233,8 +318,13 @@ class Reader(infy_dpp_sdk.interface.IProcessor):
                         pass
                     output_list.append({
                         "attribute_key": qr_attr_key,
+                        "retriever_output": retriever_output,
+                        "model_name": model_name,
+                        "total_attempts": min(llm_attempts, max_attempts),
                         "model_input": request_data_dict,
                         "model_output": answer,
+                        "moderation_input": moderation_payload.copy(),
+                        "moderation_output": moderation_results,
                         "retriver_confidence_pct": retriver_confidence_pct,
                         "source_metadata": source_metadata,
                         "used_cache": used_cache
@@ -280,3 +370,16 @@ class Reader(infy_dpp_sdk.interface.IProcessor):
         if not self.__file_sys_handler.exists(dir_path):
             self.__file_sys_handler.create_folders(dir_path)
         return dir_path
+
+    def __build_prompt(self, llm_request_data):
+        context = llm_request_data.template_var_to_value_dict.get(
+            'context')
+        question = llm_request_data.template_var_to_value_dict.get('question')
+        prompt_template = llm_request_data.prompt_template
+        prompt = prompt_template.replace(
+            '{context}', context).replace('{question}', question)
+        prompt = self.__remove_prompt_template(prompt_template, prompt)
+        return prompt
+
+    def __remove_prompt_template(self, prompt_template, prompt):
+        return prompt[len(prompt_template):].strip()
