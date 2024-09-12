@@ -1,12 +1,7 @@
 {
     "name": "pipeline5",
-    "description": "Sample 1-processor-pipeline configuration for error handling unit testing",
-    "variables": {
-        "DPP_STORAGE_ROOT_URI": "<value will be updated by unit test function>",
-        "DPP_STORAGE_SERVER_URL": "",
-        "DPP_STORAGE_ACCESS_KEY": "",
-        "DPP_STORAGE_SECRET_KEY": ""
-    },
+    "description": "Sample pipeline for error handling unit testing",
+    "variables": {},
     "processor_list": [
         {
             "enabled": true,

@@ -1,0 +1,352 @@
+{
+    "page": 1,
+    "width": 2550,
+    "height": 3299,
+    "bbox": "X1,Y1,X2,Y2",
+    "tokens": [
+        {
+            "id": "P1_L1",
+            "type": "line",
+            "text": " ",
+            "uri": "",
+            "bbox": [
+                300,
+                169,
+                309,
+                190
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L2",
+            "type": "line",
+            "text": " ",
+            "uri": "",
+            "bbox": [
+                300,
+                220,
+                309,
+                240
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L3",
+            "type": "line",
+            "text": " ",
+            "uri": "",
+            "bbox": [
+                2250,
+                338,
+                2278,
+                386
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L4",
+            "type": "line",
+            "text": " ",
+            "uri": "",
+            "bbox": [
+                1275,
+                522,
+                1305,
+                573
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L5",
+            "type": "line",
+            "text": " ",
+            "uri": "",
+            "bbox": [
+                495,
+                699,
+                521,
+                742
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L6",
+            "type": "line",
+            "text": "STATEMENT OF WORK  ",
+            "uri": "",
+            "bbox": [
+                495,
+                879,
+                1575,
+                922
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L7",
+            "type": "line",
+            "text": "Project Name : ABC CLOUD INFRA NETWORK UPGRADE ",
+            "uri": "",
+            "bbox": [
+                488,
+                1054,
+                1608,
+                1073
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L8",
+            "type": "line",
+            "text": "Issued to Organization Name : ABC ",
+            "uri": "",
+            "bbox": [
+                488,
+                1109,
+                1160,
+                1128
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L9",
+            "type": "line",
+            "text": "Issued to Organization Address : New York 12345 ",
+            "uri": "",
+            "bbox": [
+                488,
+                1164,
+                1423,
+                1183
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L10",
+            "type": "line",
+            "text": "Issue to Organization Name: DEF ",
+            "uri": "",
+            "bbox": [
+                488,
+                1261,
+                1122,
+                1281
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L11",
+            "type": "line",
+            "text": "Issued by Organization Address : Los Angeles 12334 ",
+            "uri": "",
+            "bbox": [
+                488,
+                1316,
+                1481,
+                1335
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L12",
+            "type": "line",
+            "text": " ",
+            "uri": "",
+            "bbox": [
+                300,
+                1391,
+                309,
+                1412
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L13",
+            "type": "line",
+            "text": " ",
+            "uri": "",
+            "bbox": [
+                300,
+                1492,
+                312,
+                1511
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L14",
+            "type": "line",
+            "text": " ",
+            "uri": "",
+            "bbox": [
+                300,
+                1589,
+                312,
+                1608
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L15",
+            "type": "line",
+            "text": " ",
+            "uri": "",
+            "bbox": [
+                300,
+                1685,
+                312,
+                1705
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L16",
+            "type": "line",
+            "text": " ",
+            "uri": "",
+            "bbox": [
+                300,
+                1782,
+                312,
+                1802
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L17",
+            "type": "line",
+            "text": " ",
+            "uri": "",
+            "bbox": [
+                2250,
+                1879,
+                2262,
+                1898
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L18",
+            "type": "line",
+            "text": " ",
+            "uri": "",
+            "bbox": [
+                300,
+                1955,
+                312,
+                1975
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L19",
+            "type": "line",
+            "text": " ",
+            "uri": "",
+            "bbox": [
+                300,
+                2052,
+                312,
+                2071
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L20",
+            "type": "line",
+            "text": " ",
+            "uri": "",
+            "bbox": [
+                300,
+                2148,
+                312,
+                2168
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L21",
+            "type": "line",
+            "text": " ",
+            "uri": "",
+            "bbox": [
+                300,
+                2245,
+                312,
+                2265
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L22",
+            "type": "line",
+            "text": " ",
+            "uri": "",
+            "bbox": [
+                300,
+                2342,
+                312,
+                2361
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L23",
+            "type": "line",
+            "text": " ",
+            "uri": "",
+            "bbox": [
+                300,
+                2439,
+                312,
+                2458
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L24",
+            "type": "line",
+            "text": " ",
+            "uri": "",
+            "bbox": [
+                300,
+                2536,
+                312,
+                2555
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L25",
+            "type": "line",
+            "text": " ",
+            "uri": "",
+            "bbox": [
+                300,
+                2632,
+                312,
+                2652
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L26",
+            "type": "line",
+            "text": " ",
+            "uri": "",
+            "bbox": [
+                300,
+                2729,
+                312,
+                2749
+            ],
+            "tokens": []
+        }
+    ],
+    "infy_ocr_generator_metadata": {
+        "dpi": 300,
+        "width": 2550,
+        "height": 3299,
+        "doc_page_num": "1"
+    }
+}

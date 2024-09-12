@@ -1,0 +1,111 @@
+{
+    "name": "pipeline1p",
+    "description": "Sample pipeline with parallel flow for native orchestrator unit testing",
+    "variables": {},
+    "processor_list": [
+        {
+            "enabled": true,
+            "processor_name": "document_downloader",
+            "processor_namespace": "tests.use_cases.uc_01.processors.document_downloader",
+            "processor_class_name": "DocumentDownloaderV1",
+            "processor_input_config_name_list": [
+                "DocumentDownloader"
+            ]
+        },
+        {
+            "enabled": true,
+            "processor_name": "content_extractor",
+            "processor_namespace": "tests.use_cases.uc_01.processors.content_extractor",
+            "processor_class_name": "ContentExtractorV1",
+            "processor_input_config_name_list": [
+                "ContentExtractor"
+            ]
+        },
+        {
+            "processor_list": [
+                {
+                    "enabled": true,
+                    "processor_name": "attribute_extractorA",
+                    "processor_namespace": "tests.use_cases.uc_01.processors.attribute_extractor",
+                    "processor_class_name": "AttributeExtractorV1",
+                    "processor_input_config_name_list": [
+                        "AttributeExtractor1"
+                    ]
+                },
+                {
+                    "enabled": true,
+                    "processor_name": "attribute_extractorB",
+                    "processor_namespace": "tests.use_cases.uc_01.processors.attribute_extractor",
+                    "processor_class_name": "AttributeExtractorV1",
+                    "processor_input_config_name_list": [
+                        "AttributeExtractor2"
+                    ]
+                }
+            ]
+        },
+        {
+            "processor_list": [
+                {
+                    "enabled": false,
+                    "processor_name": "attribute_extractorC",
+                    "processor_namespace": "tests.use_cases.uc_01.processors.attribute_extractor",
+                    "processor_class_name": "AttributeExtractorV1",
+                    "processor_input_config_name_list": [
+                        "AttributeExtractor"
+                    ]
+                },
+                {
+                    "enabled": false,
+                    "processor_name": "attribute_extractorD",
+                    "processor_namespace": "tests.use_cases.uc_01.processors.attribute_extractor",
+                    "processor_class_name": "AttributeExtractorV1",
+                    "processor_input_config_name_list": [
+                        "AttributeExtractor"
+                    ]
+                }
+            ]
+        },
+        {
+            "enabled": true,
+            "processor_name": "document_uploader",
+            "processor_namespace": "tests.use_cases.uc_01.processors.document_uploader",
+            "processor_class_name": "DocumentUploaderV1",
+            "processor_input_config_name_list": [
+                "DocumentUploader"
+            ]
+        }
+    ],
+    "processor_input_config": {
+        "DocumentDownloader": {
+            "readPath": "/data/input",
+            "filter": {
+                "include": [
+                    "*.txt",
+                    "*.jpg"
+                ],
+                "exclude": []
+            },
+            "writePath": "/data/work"
+        },
+        "ContentExtractor": {},
+        "AttributeExtractor1": {
+            "required_tokens": [
+                {
+                    "name": "Company Name",
+                    "position": 5
+                }
+            ]
+        },
+        "AttributeExtractor2": {
+            "required_tokens": [
+                {
+                    "name": "Country",
+                    "position": 9
+                }
+            ]
+        },
+        "DocumentUploader": {
+            "writePath": "/data/output"
+        }
+    }
+}

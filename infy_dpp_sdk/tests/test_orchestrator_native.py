@@ -11,7 +11,8 @@ import infy_dpp_sdk
 
 
 STORAGE_ROOT_PATH = f"C:/temp/unittest/infy_dpp_sdk/{__name__}/STORAGE"
-INPUT_CONFIG_FILE_PATH = '/data/config/dpp_pipeline1_input_config.json'
+SERIAL_FLOW_INPUT_CONFIG_FILE_PATH = '/data/config/dpp_pipeline1_input_config.json'
+PARALLEL_FLOW_INPUT_CONFIG_FILE_PATH = '/data/config/dpp_pipeline1p_input_config.json'
 
 
 @pytest.fixture(scope='module', autouse=True)
@@ -26,7 +27,9 @@ def pre_test(create_root_folders, copy_files_to_root_folder):
             f"{STORAGE_ROOT_PATH}/data/input"],
         ['company2.txt', f"{SAMPLE_ROOT_PATH}/input",
             f"{STORAGE_ROOT_PATH}/data/input"],
-        [os.path.basename(INPUT_CONFIG_FILE_PATH), f"{SAMPLE_ROOT_PATH}/config",
+        [os.path.basename(SERIAL_FLOW_INPUT_CONFIG_FILE_PATH), f"{SAMPLE_ROOT_PATH}/config",
+            f"{STORAGE_ROOT_PATH}/data/config"],
+        [os.path.basename(PARALLEL_FLOW_INPUT_CONFIG_FILE_PATH), f"{SAMPLE_ROOT_PATH}/config",
             f"{STORAGE_ROOT_PATH}/data/config"]
     ]
     copy_files_to_root_folder(FILES_TO_COPY)
@@ -71,29 +74,52 @@ def pre_test(create_root_folders, copy_files_to_root_folder):
         infy_dpp_sdk.common.Constants.FSLH_DPP)
 
 
-def test_pipeline_1():
+def test_pipeline_serial_1():
     """Test method"""
     dpp_orchestrator = infy_dpp_sdk.orchestrator.OrchestratorNative(
-        input_config_file_path=INPUT_CONFIG_FILE_PATH)
+        input_config_file_path=SERIAL_FLOW_INPUT_CONFIG_FILE_PATH)
     processor_response_data_list = dpp_orchestrator.run_batch()
-    # processor_exec_list, processor_exec_output_dict = dpp_orchestrator.run_batch()
+
     assert len(processor_response_data_list) == 2
     document_id_list = [x.dict()['document_data']['document_id']
                         for x in processor_response_data_list]
     assert len(set(document_id_list)) == 2
+
+    # Validate business data
+    business_attribute_data_list = [x.dict()['document_data']['business_attribute_data']
+                                    for x in processor_response_data_list]
+    company_names, company_countries = [], []
+    for business_attribute_data in business_attribute_data_list:
+        print(business_attribute_data)
+        company_names.extend(
+            [x['text'] for x in business_attribute_data if x['name'] == 'Company Name'])
+        company_countries.extend(
+            [x['text'] for x in business_attribute_data if x['name'] == 'Country'])
+
+    assert set(company_names) == {'Infosys', 'Microsoft'}
+    assert set(company_countries) == {'Indian', 'American'}
+
     message_data_list = [x.dict()['message_data']
                          for x in processor_response_data_list]
+
     assert len(message_data_list) == 2
     for message_data in message_data_list:
         assert len(message_data['messages']) == 1
         assert message_data['messages'][0]['message_type'] == infy_dpp_sdk.data.MessageTypeEnum.INFO
         assert message_data['messages'][0]['message_code'] == infy_dpp_sdk.data.MessageCodeEnum.INFO_SUCCESS
 
+    processor_exec_list, processor_exec_output_dict = dpp_orchestrator.get_run_batch_summary()
+    assert processor_exec_list == [
+        'document_downloader', 'content_extractor',
+        'attribute_extractor', 'document_uploader']
+    assert [x for x in processor_exec_output_dict] == [
+        '001', '002', '003', '004']
+
     print(processor_response_data_list)
 
     # Run the orchestrator again to check for no records found handling
     dpp_orchestrator = infy_dpp_sdk.orchestrator.OrchestratorNative(
-        input_config_file_path=INPUT_CONFIG_FILE_PATH)
+        input_config_file_path=SERIAL_FLOW_INPUT_CONFIG_FILE_PATH)
     processor_response_data_list = dpp_orchestrator.run_batch()
     assert len(processor_response_data_list) >= 1
     document_id_list = [x.dict()['document_data']['document_id']
@@ -105,5 +131,51 @@ def test_pipeline_1():
     for message_data in message_data_list:
         assert len(message_data['messages']) == 1
         assert message_data['messages'][0]['message_type'] == infy_dpp_sdk.data.MessageTypeEnum.INFO
+
+    print(processor_response_data_list)
+
+
+def test_pipeline_parallel_1():
+    """Test method"""
+    dpp_orchestrator = infy_dpp_sdk.orchestrator.OrchestratorNative(
+        input_config_file_path=PARALLEL_FLOW_INPUT_CONFIG_FILE_PATH)
+    processor_response_data_list = dpp_orchestrator.run_batch()
+
+    assert len(processor_response_data_list) == 2
+    document_id_list = [x.dict()['document_data']['document_id']
+                        for x in processor_response_data_list]
+    assert len(set(document_id_list)) == 2
+
+    # Validate business data
+    business_attribute_data_list = [x.dict()['document_data']['business_attribute_data']
+                                    for x in processor_response_data_list]
+    company_names, company_countries = [], []
+    for business_attribute_data in business_attribute_data_list:
+        print(business_attribute_data)
+        company_names.extend(
+            [x['text'] for x in business_attribute_data if x['name'] == 'Company Name'])
+        company_countries.extend(
+            [x['text'] for x in business_attribute_data if x['name'] == 'Country'])
+
+    assert set(company_names) == {'Infosys', 'Microsoft'}
+    assert set(company_countries) == {'Indian', 'American'}
+
+    message_data_list = [x.dict()['message_data']
+                         for x in processor_response_data_list]
+    assert len(message_data_list) == 2
+    for message_data in message_data_list:
+        assert len(message_data['messages']) == 1
+        assert message_data['messages'][0]['message_type'] == infy_dpp_sdk.data.MessageTypeEnum.INFO
+        assert message_data['messages'][0]['message_code'] == infy_dpp_sdk.data.MessageCodeEnum.INFO_SUCCESS
+
+    processor_exec_list, processor_exec_output_dict = dpp_orchestrator.get_run_batch_summary()
+    # Serial processors should execute in order
+    assert processor_exec_list[0:2] + [processor_exec_list[4]] == [
+        'document_downloader', 'content_extractor', 'document_uploader']
+    # Parallel processors can execute in any order
+    assert sorted(processor_exec_list[2:4]) == [
+        'attribute_extractorA', 'attribute_extractorB']
+    assert [x for x in processor_exec_output_dict] == [
+        '001', '002', '003', '005']
 
     print(processor_response_data_list)

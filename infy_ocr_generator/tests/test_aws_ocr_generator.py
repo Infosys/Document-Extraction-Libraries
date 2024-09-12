@@ -1,15 +1,15 @@
 # ===============================================================================================================#
-#
-# Copyright 2023 Infosys Ltd.
-# Use of this source code is governed by Apache License Version 2.0 that can be found in the LICENSE file or at
-# http://www.apache.org/licenses/
-#
+# Copyright 2021 Infosys Ltd.                                                                                   #
+# Use of this source code is governed by Apache License Version 2.0 that can be found in the LICENSE file or at  #
+# http://www.apache.org/licenses/                                                                                #
 # ===============================================================================================================#
 
 import os
 import time
+import pytest
 from infy_ocr_generator.ocr_generator import OcrGenerator
-from infy_ocr_generator.providers.aws_detect_doc_txt_ocr_data_service_provider import AwsDetectDocumentTextDataServiceProvider
+from infy_ocr_generator.providers.aws_detect_doc_txt_ocr_data_service_provider \
+    import AwsDetectDocumentTextDataServiceProvider
 
 CONFIG_PARAMS_DICT = {
     'aws': {
@@ -20,6 +20,7 @@ CONFIG_PARAMS_DICT = {
 }
 
 
+@pytest.mark.skip(reason="Please uncomment when software is available")
 def test_aws_ocr_generator():
     """AWS DETECTDOCUMENTTEXT OCR test method"""
     image_file_path = os.path.abspath('./data/sample_1.png')

@@ -1,0 +1,15 @@
+{
+    "dpp_version": null,
+    "request_id": "R-123456789012-001",
+    "description": null,
+    "input_config_file_path": "/data/config/dpp_pipeline2_input_config.json",
+    "processor_filter": {
+        "includes": [
+            "document_downloader"
+        ],
+        "excludes": []
+    },
+    "context": null,
+    "snapshot_dir_root_path": "/data/temp/work/dpp_orchestrator/snapshots",
+    "records": null
+}

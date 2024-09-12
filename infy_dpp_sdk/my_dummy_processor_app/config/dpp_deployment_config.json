@@ -18,12 +18,7 @@
             "args": {
                 "request_file_path": "${SYS_CONTROLLER_REQ_FILE_PATH}"
             },
-            "env": {
-                "DPP_STORAGE_ROOT_URI": "${DPP_STORAGE_ROOT_URI}",
-                "DPP_STORAGE_SERVER_URL": "${DPP_STORAGE_SERVER_URL}",
-                "DPP_STORAGE_ACCESS_KEY": "${DPP_STORAGE_ACCESS_KEY}",
-                "DPP_STORAGE_SECRET_KEY": "${DPP_STORAGE_SECRET_KEY}"
-            },
+            "env": {},
             "output": {
                 "variables": {
                     "SYS_CONTROLLER_RES_FILE_PATH": "response_file_path"
@@ -43,12 +38,7 @@
             "args": {
                 "request_file_path": "${SYS_CONTROLLER_REQ_FILE_PATH}"
             },
-            "env": {
-                "DPP_STORAGE_ROOT_URI": "${DPP_STORAGE_ROOT_URI}",
-                "DPP_STORAGE_SERVER_URL": "${DPP_STORAGE_SERVER_URL}",
-                "DPP_STORAGE_ACCESS_KEY": "${DPP_STORAGE_ACCESS_KEY}",
-                "DPP_STORAGE_SECRET_KEY": "${DPP_STORAGE_SECRET_KEY}"
-            },
+            "env": {},
             "output": {
                 "variables": {
                     "SYS_CONTROLLER_RES_FILE_PATH": "response_file_path"
@@ -68,17 +58,18 @@
             "args": {
                 "request_file_path": "${SYS_CONTROLLER_REQ_FILE_PATH}"
             },
-            "env": {
-                "DPP_STORAGE_ROOT_URI": "${DPP_STORAGE_ROOT_URI}",
-                "DPP_STORAGE_SERVER_URL": "${DPP_STORAGE_SERVER_URL}",
-                "DPP_STORAGE_ACCESS_KEY": "${DPP_STORAGE_ACCESS_KEY}",
-                "DPP_STORAGE_SECRET_KEY": "${DPP_STORAGE_SECRET_KEY}"
-            },
+            "env": {},
             "output": {
                 "variables": {
                     "SYS_CONTROLLER_RES_FILE_PATH": "response_file_path"
                 }
             }
+        },
+        "attribute_extractorA": {
+            "alias_of": "attribute_extractor"
+        },
+        "attribute_extractorB": {
+            "alias_of": "attribute_extractor"
         },
         "document_uploader": {
             "enabled": true,
@@ -93,12 +84,7 @@
             "args": {
                 "request_file_path": "${SYS_CONTROLLER_REQ_FILE_PATH}"
             },
-            "env": {
-                "DPP_STORAGE_ROOT_URI": "${DPP_STORAGE_ROOT_URI}",
-                "DPP_STORAGE_SERVER_URL": "${DPP_STORAGE_SERVER_URL}",
-                "DPP_STORAGE_ACCESS_KEY": "${DPP_STORAGE_ACCESS_KEY}",
-                "DPP_STORAGE_SECRET_KEY": "${DPP_STORAGE_SECRET_KEY}"
-            },
+            "env": {},
             "output": {
                 "variables": {
                     "SYS_CONTROLLER_RES_FILE_PATH": "response_file_path"

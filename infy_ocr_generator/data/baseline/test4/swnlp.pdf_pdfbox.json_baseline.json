@@ -1,0 +1,3412 @@
+[
+    {
+        "page": 1,
+        "width": 612.0,
+        "height": 792.0,
+        "bbox": "X1,Y1,X2,Y2",
+        "tokens": [
+            {
+                "id": "P1_L1",
+                "type": "line",
+                "text": " ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    40.62,
+                    74.275,
+                    45.6
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L2",
+                "type": "line",
+                "text": " ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    52.74,
+                    74.275,
+                    57.72
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L3",
+                "type": "line",
+                "text": " ",
+                "uri": "",
+                "bbox": [
+                    540.1,
+                    81.14,
+                    546.724,
+                    92.78
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L4",
+                "type": "line",
+                "text": " ",
+                "uri": "",
+                "bbox": [
+                    306.05,
+                    125.3272,
+                    313.2891,
+                    137.54
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L5",
+                "type": "line",
+                "text": " ",
+                "uri": "",
+                "bbox": [
+                    118.82,
+                    167.9207,
+                    124.9249,
+                    178.22
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L6",
+                "type": "line",
+                "text": "STATEMENT OF WORK  ",
+                "uri": "",
+                "bbox": [
+                    118.82,
+                    211.0007,
+                    377.9349,
+                    221.3
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L7",
+                "type": "line",
+                "text": "Project Name : ABC CLOUD INFRA NETWORK UPGRADE ",
+                "uri": "",
+                "bbox": [
+                    117.02,
+                    253.0188,
+                    385.9989,
+                    257.69
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L8",
+                "type": "line",
+                "text": "Issued to Organization Name : ABC ",
+                "uri": "",
+                "bbox": [
+                    117.02,
+                    266.2188,
+                    278.3389,
+                    270.89
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L9",
+                "type": "line",
+                "text": "Issued to Organization Address : New York 12345 ",
+                "uri": "",
+                "bbox": [
+                    117.02,
+                    279.4188,
+                    341.5789,
+                    284.09
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L10",
+                "type": "line",
+                "text": "Issue to Organization Name: DEF ",
+                "uri": "",
+                "bbox": [
+                    117.02,
+                    302.8188,
+                    269.3389,
+                    307.49
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L11",
+                "type": "line",
+                "text": "Issued by Organization Address : Los Angeles 12334 ",
+                "uri": "",
+                "bbox": [
+                    117.02,
+                    315.8988,
+                    355.5189,
+                    320.57
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L12",
+                "type": "line",
+                "text": " ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    333.95,
+                    74.275,
+                    338.93
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L13",
+                "type": "line",
+                "text": " ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    358.1388,
+                    74.7929,
+                    362.81
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L14",
+                "type": "line",
+                "text": " ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    381.4188,
+                    74.7929,
+                    386.09
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L15",
+                "type": "line",
+                "text": " ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    404.5788,
+                    74.7929,
+                    409.25
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L16",
+                "type": "line",
+                "text": " ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    427.8788,
+                    74.7929,
+                    432.55
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L17",
+                "type": "line",
+                "text": " ",
+                "uri": "",
+                "bbox": [
+                    540.1,
+                    451.0388,
+                    542.8688,
+                    455.71
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L18",
+                "type": "line",
+                "text": " ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    469.3988,
+                    74.7929,
+                    474.07
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L19",
+                "type": "line",
+                "text": " ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    492.5588,
+                    74.7929,
+                    497.23
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L20",
+                "type": "line",
+                "text": " ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    515.7188,
+                    74.7929,
+                    520.39
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L21",
+                "type": "line",
+                "text": " ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    538.9987,
+                    74.7929,
+                    543.67
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L22",
+                "type": "line",
+                "text": " ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    562.1588,
+                    74.7929,
+                    566.83
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L23",
+                "type": "line",
+                "text": " ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    585.4387,
+                    74.7929,
+                    590.11
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L24",
+                "type": "line",
+                "text": " ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    608.7487,
+                    74.7929,
+                    613.42
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L25",
+                "type": "line",
+                "text": " ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    631.9088,
+                    74.7929,
+                    636.58
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L26",
+                "type": "line",
+                "text": " ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    655.1887,
+                    74.7929,
+                    659.86
+                ],
+                "tokens": []
+            }
+        ]
+    },
+    {
+        "page": 2,
+        "width": 612.0,
+        "height": 792.0,
+        "bbox": "X1,Y1,X2,Y2",
+        "tokens": [
+            {
+                "id": "P2_L1",
+                "type": "line",
+                "text": "Contents ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    69.4953,
+                    136.6431,
+                    76.08
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L2",
+                "type": "line",
+                "text": " ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    87.8,
+                    75.1128,
+                    94.82
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L3",
+                "type": "line",
+                "text": "Introduction .................................................................................................................................................................. 2 ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    110.3087,
+                    542.1151,
+                    114.98
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L4",
+                "type": "line",
+                "text": "Background Information ............................................................................................................................................. 2 ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    129.3888,
+                    542.1151,
+                    134.06
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L5",
+                "type": "line",
+                "text": "Current Environment .............................................................................................................................................. 2 ",
+                "uri": "",
+                "bbox": [
+                    81.984,
+                    148.4688,
+                    542.1151,
+                    153.14
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L6",
+                "type": "line",
+                "text": "Goals and Objectives ............................................................................................................................................. 2 ",
+                "uri": "",
+                "bbox": [
+                    81.984,
+                    167.4287,
+                    542.1151,
+                    172.1
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L7",
+                "type": "line",
+                "text": "Scope of Work ............................................................................................................................................................. 3 ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    186.5088,
+                    542.1151,
+                    191.18
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L8",
+                "type": "line",
+                "text": "Deliverables ............................................................................................................................................................. 3 ",
+                "uri": "",
+                "bbox": [
+                    81.984,
+                    205.4688,
+                    542.1151,
+                    210.14
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L9",
+                "type": "line",
+                "text": "Milestones ................................................................................................................................................................ 3 ",
+                "uri": "",
+                "bbox": [
+                    81.984,
+                    224.5487,
+                    542.1151,
+                    229.22
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L10",
+                "type": "line",
+                "text": "Period of Performance ............................................................................................................................................... 4 ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    243.6288,
+                    542.1151,
+                    248.3
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L11",
+                "type": "line",
+                "text": "Place of Performance ................................................................................................................................................. 4 ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    262.6187,
+                    542.1151,
+                    267.29
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L12",
+                "type": "line",
+                "text": "Applicable Standards ................................................................................................................................................. 4 ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    281.6988,
+                    542.1151,
+                    286.37
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L13",
+                "type": "line",
+                "text": "Specific Requirements ............................................................................................................................................... 4 ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    300.7788,
+                    542.1151,
+                    305.45
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L14",
+                "type": "line",
+                "text": "Resource Requirements ............................................................................................................................................ 4 ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    319.7388,
+                    542.1151,
+                    324.41
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L15",
+                "type": "line",
+                "text": "Vendor Responsibilities ............................................................................................................................................. 4 ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    338.8188,
+                    542.1151,
+                    343.49
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L16",
+                "type": "line",
+                "text": "Client Responsibilities ................................................................................................................................................ 4 ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    357.8988,
+                    542.1151,
+                    362.57
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L17",
+                "type": "line",
+                "text": "Project Risks ................................................................................................................................................................ 5 ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    376.8588,
+                    542.1151,
+                    381.53
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L18",
+                "type": "line",
+                "text": "Assumptions ................................................................................................................................................................ 5 ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    395.9388,
+                    542.1151,
+                    400.61
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L19",
+                "type": "line",
+                "text": "Completion Criteria ..................................................................................................................................................... 5 ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    415.0188,
+                    542.1151,
+                    419.69
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L20",
+                "type": "line",
+                "text": "Change Control Procedure ........................................................................................................................................ 5 ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    433.9988,
+                    542.1151,
+                    438.67
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L21",
+                "type": "line",
+                "text": "Contract Type and Invoice Procedures ................................................................................................................... 6 ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    453.0788,
+                    542.1151,
+                    457.75
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L22",
+                "type": "line",
+                "text": "Other Information and Supporting Documentation ................................................................................................ 6 ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    472.1588,
+                    542.1151,
+                    476.83
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L23",
+                "type": "line",
+                "text": "Points of Contact ......................................................................................................................................................... 6 ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    491.1188,
+                    542.1151,
+                    495.79
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L24",
+                "type": "line",
+                "text": "Acceptance .................................................................................................................................................................. 6 ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    510.1988,
+                    542.1151,
+                    514.87
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L25",
+                "type": "line",
+                "text": " ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    529.0387,
+                    74.7929,
+                    533.71
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L26",
+                "type": "line",
+                "text": " ",
+                "uri": "",
+                "bbox": [
+                    540.1,
+                    552.1987,
+                    542.8688,
+                    556.87
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L27",
+                "type": "line",
+                "text": " ",
+                "uri": "",
+                "bbox": [
+                    540.1,
+                    575.4788,
+                    542.8688,
+                    580.15
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L28",
+                "type": "line",
+                "text": " ",
+                "uri": "",
+                "bbox": [
+                    540.1,
+                    598.6687,
+                    542.8688,
+                    603.34
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L29",
+                "type": "line",
+                "text": " ",
+                "uri": "",
+                "bbox": [
+                    540.1,
+                    621.9487,
+                    542.8688,
+                    626.62
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L30",
+                "type": "line",
+                "text": " ",
+                "uri": "",
+                "bbox": [
+                    540.1,
+                    645.1088,
+                    542.8688,
+                    649.78
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L31",
+                "type": "line",
+                "text": " ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    668.3887,
+                    74.7929,
+                    673.06
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L32",
+                "type": "line",
+                "text": " ",
+                "uri": "",
+                "bbox": [
+                    540.1,
+                    691.5447,
+                    542.8688,
+                    696.216
+                ],
+                "tokens": []
+            }
+        ]
+    },
+    {
+        "page": 3,
+        "width": 612.0,
+        "height": 792.0,
+        "bbox": "X1,Y1,X2,Y2",
+        "tokens": [
+            {
+                "id": "P3_L1",
+                "type": "line",
+                "text": "INTRODUCTION ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    71.1423,
+                    168.4491,
+                    76.32
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L2",
+                "type": "line",
+                "text": " ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    93.2688,
+                    74.7929,
+                    97.94
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L3",
+                "type": "line",
+                "text": "ABC wants overhaul of its current cloud infra network infrastructure  ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    106.4688,
+                    373.8789,
+                    111.14
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L4",
+                "type": "line",
+                "text": "BACKGROUND INFORMATION ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    133.2022,
+                    250.4391,
+                    138.38
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L5",
+                "type": "line",
+                "text": " ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    155.3087,
+                    74.7929,
+                    159.98
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L6",
+                "type": "line",
+                "text": "ABC wants to position itself has a strong player in cloud computing and hence this upgrade project is very ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    168.5088,
+                    541.4515,
+                    173.18
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L7",
+                "type": "line",
+                "text": "critical to its future vision. ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    181.7088,
+                    186.5089,
+                    186.38
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L8",
+                "type": "line",
+                "text": "CURRENT ENVIRONMENT ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    207.8687,
+                    214.6189,
+                    212.54
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L9",
+                "type": "line",
+                "text": "The mission of the cloud infra network upgrade project is to enhance the efficiency, reliability, and ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    229.2288,
+                    505.2458,
+                    233.9
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L10",
+                "type": "line",
+                "text": "security of the existing network infrastructure, enabling seamless connectivity and improved performance ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    242.3087,
+                    538.0776,
+                    246.98
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L11",
+                "type": "line",
+                "text": "for all users. ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    255.6588,
+                    129.2689,
+                    260.33
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L12",
+                "type": "line",
+                "text": "Strategic Objectives: ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    278.8188,
+                    166.4689,
+                    283.49
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L13",
+                "type": "line",
+                "text": "\u2022 ",
+                "uri": "",
+                "bbox": [
+                    90.024,
+                    302.9632,
+                    97.3529,
+                    307.49
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L14",
+                "type": "line",
+                "text": "Improve Network Performance: Enhance network speed, bandwidth, and latency to ensure faster ",
+                "uri": "",
+                "bbox": [
+                    108.02,
+                    302.8188,
+                    538.8996,
+                    307.49
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L15",
+                "type": "line",
+                "text": "and more responsive connectivity, enabling efficient data transfer and reduced network ",
+                "uri": "",
+                "bbox": [
+                    108.02,
+                    314.2188,
+                    494.7881,
+                    318.89
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L16",
+                "type": "line",
+                "text": "congestion. ",
+                "uri": "",
+                "bbox": [
+                    108.02,
+                    325.7388,
+                    161.9089,
+                    330.41
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L17",
+                "type": "line",
+                "text": "\u2022 ",
+                "uri": "",
+                "bbox": [
+                    90.024,
+                    338.1232,
+                    97.3529,
+                    342.65
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L18",
+                "type": "line",
+                "text": "Enhance Scalability: Upgrade the network infrastructure to support increased user capacity and ",
+                "uri": "",
+                "bbox": [
+                    108.02,
+                    337.9788,
+                    531.7285,
+                    342.65
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L19",
+                "type": "line",
+                "text": "accommodate future growth in network demands, enabling seamless expansion without ",
+                "uri": "",
+                "bbox": [
+                    108.02,
+                    349.3788,
+                    497.8545,
+                    354.05
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L20",
+                "type": "line",
+                "text": "compromising performance. ",
+                "uri": "",
+                "bbox": [
+                    108.02,
+                    360.8988,
+                    234.7789,
+                    365.57
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L21",
+                "type": "line",
+                "text": "\u2022 ",
+                "uri": "",
+                "bbox": [
+                    90.024,
+                    373.2832,
+                    97.3529,
+                    377.81
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L22",
+                "type": "line",
+                "text": "Strengthen Security Measures: Implement robust security protocols and measures to protect the ",
+                "uri": "",
+                "bbox": [
+                    108.02,
+                    373.1388,
+                    535.5032,
+                    377.81
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L23",
+                "type": "line",
+                "text": "network infrastructure from unauthorized access, data breaches, malware, and other cyber ",
+                "uri": "",
+                "bbox": [
+                    108.02,
+                    384.5388,
+                    511.1013,
+                    389.21
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L24",
+                "type": "line",
+                "text": "threats, ensuring the confidentiality, integrity, and availability of data. ",
+                "uri": "",
+                "bbox": [
+                    108.02,
+                    396.0588,
+                    413.2389,
+                    400.73
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L25",
+                "type": "line",
+                "text": "\u2022 ",
+                "uri": "",
+                "bbox": [
+                    90.024,
+                    408.4432,
+                    97.3529,
+                    412.97
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L26",
+                "type": "line",
+                "text": "Optimize Network Reliability: Improve network uptime and minimize downtime by implementing ",
+                "uri": "",
+                "bbox": [
+                    108.02,
+                    408.2988,
+                    530.0153,
+                    412.97
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L27",
+                "type": "line",
+                "text": "redundancy measures, fault-tolerant configurations, and proactive monitoring to detect and ",
+                "uri": "",
+                "bbox": [
+                    108.02,
+                    419.7188,
+                    511.2797,
+                    424.39
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L28",
+                "type": "line",
+                "text": "address potential network issues before they cause disruptions. ",
+                "uri": "",
+                "bbox": [
+                    108.02,
+                    431.2388,
+                    391.9989,
+                    435.91
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L29",
+                "type": "line",
+                "text": "\u2022 ",
+                "uri": "",
+                "bbox": [
+                    90.024,
+                    443.6232,
+                    97.3529,
+                    448.15
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L30",
+                "type": "line",
+                "text": "Streamline Network Management: Implement centralized network management tools and ",
+                "uri": "",
+                "bbox": [
+                    108.02,
+                    443.4788,
+                    504.4612,
+                    448.15
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L31",
+                "type": "line",
+                "text": "technologies to simplify network administration, monitoring, and troubleshooting processes, ",
+                "uri": "",
+                "bbox": [
+                    108.02,
+                    454.8788,
+                    513.4418,
+                    459.55
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L32",
+                "type": "line",
+                "text": "enabling faster response times and efficient resource allocation. ",
+                "uri": "",
+                "bbox": [
+                    108.02,
+                    466.3988,
+                    393.3189,
+                    471.07
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L33",
+                "type": "line",
+                "text": "\u2022 ",
+                "uri": "",
+                "bbox": [
+                    90.024,
+                    478.7832,
+                    97.3529,
+                    483.31
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L34",
+                "type": "line",
+                "text": "Enhance User Experience: Ensure a seamless and consistent user experience by optimizing ",
+                "uri": "",
+                "bbox": [
+                    108.02,
+                    478.6388,
+                    519.7281,
+                    483.31
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L35",
+                "type": "line",
+                "text": "network performance, reducing latency, and providing reliable connectivity across different ",
+                "uri": "",
+                "bbox": [
+                    108.02,
+                    490.0388,
+                    509.418,
+                    494.71
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L36",
+                "type": "line",
+                "text": "devices and locations. ",
+                "uri": "",
+                "bbox": [
+                    108.02,
+                    501.5588,
+                    209.2189,
+                    506.23
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L37",
+                "type": "line",
+                "text": "Current Technology : Native ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    518.1188,
+                    199.2289,
+                    522.79
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L38",
+                "type": "line",
+                "text": "Current Constraints : Budget ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    541.3987,
+                    201.6289,
+                    546.07
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L39",
+                "type": "line",
+                "text": "GOALS AND OBJECTIVES ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    567.5587,
+                    213.2989,
+                    572.23
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L40",
+                "type": "line",
+                "text": "Business Goal: Improve network performance and reliability to enhance overall business operations. ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    588.8287,
+                    518.0289,
+                    593.5
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L41",
+                "type": "line",
+                "text": "Technical Goal: Upgrade network infrastructure to leverage advanced technologies and meet technical ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    611.9888,
+                    527.8619,
+                    616.66
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L42",
+                "type": "line",
+                "text": "requirements. ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    625.3087,
+                    135.9889,
+                    629.98
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L43",
+                "type": "line",
+                "text": "Service Goal: Enhance network services and support to meet customer expectations and service level ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    648.4688,
+                    525.6146,
+                    653.14
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L44",
+                "type": "line",
+                "text": "agreements (SLAs). ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    661.6687,
+                    163.7089,
+                    666.34
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L45",
+                "type": "line",
+                "text": "Security Goal: Strengthen network security to protect against cyber threats and ensure data ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    684.9487,
+                    478.9814,
+                    689.62
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L46",
+                "type": "line",
+                "text": "confidentiality. ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    698.1447,
+                    138.1489,
+                    702.816
+                ],
+                "tokens": []
+            }
+        ]
+    },
+    {
+        "page": 4,
+        "width": 612.0,
+        "height": 792.0,
+        "bbox": "X1,Y1,X2,Y2",
+        "tokens": [
+            {
+                "id": "P4_L1",
+                "type": "line",
+                "text": "SCOPE OF WORK ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    71.1423,
+                    179.0091,
+                    76.32
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L2",
+                "type": "line",
+                "text": " ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    88.2288,
+                    74.7929,
+                    92.9
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L3",
+                "type": "line",
+                "text": "\u2022 ",
+                "uri": "",
+                "bbox": [
+                    90.024,
+                    100.6132,
+                    97.3529,
+                    105.14
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L4",
+                "type": "line",
+                "text": "Evaluate the current network infrastructure and identify areas for improvement. ",
+                "uri": "",
+                "bbox": [
+                    108.02,
+                    100.4688,
+                    458.8389,
+                    105.14
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L5",
+                "type": "line",
+                "text": "\u2022 ",
+                "uri": "",
+                "bbox": [
+                    90.024,
+                    112.7332,
+                    97.3529,
+                    117.26
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L6",
+                "type": "line",
+                "text": "Design and implement a scalable and high-performance network architecture. ",
+                "uri": "",
+                "bbox": [
+                    108.02,
+                    112.5888,
+                    454.3989,
+                    117.26
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L7",
+                "type": "line",
+                "text": "\u2022 ",
+                "uri": "",
+                "bbox": [
+                    90.024,
+                    124.9732,
+                    97.3529,
+                    129.5
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L8",
+                "type": "line",
+                "text": "Upgrade network equipment, including switches, routers, firewalls, and wireless access points. ",
+                "uri": "",
+                "bbox": [
+                    108.02,
+                    124.8288,
+                    528.2289,
+                    129.5
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L9",
+                "type": "line",
+                "text": "\u2022 ",
+                "uri": "",
+                "bbox": [
+                    90.024,
+                    137.0932,
+                    97.3529,
+                    141.62
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L10",
+                "type": "line",
+                "text": "Enhance network security measures, including implementing robust authentication and access ",
+                "uri": "",
+                "bbox": [
+                    108.02,
+                    136.9488,
+                    527.994,
+                    141.62
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L11",
+                "type": "line",
+                "text": "control mechanisms. ",
+                "uri": "",
+                "bbox": [
+                    108.02,
+                    148.4688,
+                    202.4689,
+                    153.14
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L12",
+                "type": "line",
+                "text": "\u2022 ",
+                "uri": "",
+                "bbox": [
+                    90.024,
+                    160.8532,
+                    97.3529,
+                    165.38
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L13",
+                "type": "line",
+                "text": "Optimize network performance and bandwidth utilization. ",
+                "uri": "",
+                "bbox": [
+                    108.02,
+                    160.7088,
+                    362.1189,
+                    165.38
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L14",
+                "type": "line",
+                "text": "\u2022 ",
+                "uri": "",
+                "bbox": [
+                    90.024,
+                    172.9732,
+                    97.3529,
+                    177.5
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L15",
+                "type": "line",
+                "text": "Ensure minimal disruption to ongoing network operations during the upgrade process. ",
+                "uri": "",
+                "bbox": [
+                    108.02,
+                    172.8288,
+                    489.9489,
+                    177.5
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L16",
+                "type": "line",
+                "text": "\u2022 ",
+                "uri": "",
+                "bbox": [
+                    90.024,
+                    185.2132,
+                    97.3529,
+                    189.74
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L17",
+                "type": "line",
+                "text": "Test and validate the upgraded network to ensure its functionality and performance. ",
+                "uri": "",
+                "bbox": [
+                    108.02,
+                    185.0688,
+                    480.4389,
+                    189.74
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L18",
+                "type": "line",
+                "text": " ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    201.5088,
+                    74.7929,
+                    206.18
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L19",
+                "type": "line",
+                "text": " ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    224.6688,
+                    74.7929,
+                    229.34
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L20",
+                "type": "line",
+                "text": "DELIVERABLES ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    250.9788,
+                    158.7889,
+                    255.65
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L21",
+                "type": "line",
+                "text": "\u2022 ",
+                "uri": "",
+                "bbox": [
+                    90.024,
+                    268.0432,
+                    97.3529,
+                    272.57
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L22",
+                "type": "line",
+                "text": "Network Assessment Report: Documenting the current network infrastructure, including its ",
+                "uri": "",
+                "bbox": [
+                    108.02,
+                    267.8988,
+                    508.9897,
+                    272.57
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L23",
+                "type": "line",
+                "text": "strengths, weaknesses, and areas for improvement. ",
+                "uri": "",
+                "bbox": [
+                    108.02,
+                    279.2988,
+                    340.3789,
+                    283.97
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L24",
+                "type": "line",
+                "text": "\u2022 ",
+                "uri": "",
+                "bbox": [
+                    90.024,
+                    291.6832,
+                    97.3529,
+                    296.21
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L25",
+                "type": "line",
+                "text": "Network Design Plan: Providing a detailed network architecture design, including equipment ",
+                "uri": "",
+                "bbox": [
+                    108.02,
+                    291.5388,
+                    516.9314,
+                    296.21
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L26",
+                "type": "line",
+                "text": "specifications, network topology, and security measures. ",
+                "uri": "",
+                "bbox": [
+                    108.02,
+                    302.9388,
+                    360.9189,
+                    307.61
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L27",
+                "type": "line",
+                "text": "\u2022 ",
+                "uri": "",
+                "bbox": [
+                    90.024,
+                    315.3232,
+                    97.3529,
+                    319.85
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L28",
+                "type": "line",
+                "text": "Network Upgrade Implementation: Deploying new network equipment, configuring devices, and ",
+                "uri": "",
+                "bbox": [
+                    108.02,
+                    315.1788,
+                    531.1807,
+                    319.85
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L29",
+                "type": "line",
+                "text": "implementing security measures as per the design plan. ",
+                "uri": "",
+                "bbox": [
+                    108.02,
+                    326.6988,
+                    358.2789,
+                    331.37
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L30",
+                "type": "line",
+                "text": "\u2022 ",
+                "uri": "",
+                "bbox": [
+                    90.024,
+                    339.0832,
+                    97.3529,
+                    343.61
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L31",
+                "type": "line",
+                "text": "Network Performance Testing Report: Conducting thorough testing to ensure network ",
+                "uri": "",
+                "bbox": [
+                    108.02,
+                    338.9388,
+                    488.6904,
+                    343.61
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L32",
+                "type": "line",
+                "text": "functionality, performance, and security. ",
+                "uri": "",
+                "bbox": [
+                    108.02,
+                    350.3388,
+                    287.5789,
+                    355.01
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L33",
+                "type": "line",
+                "text": "\u2022 ",
+                "uri": "",
+                "bbox": [
+                    90.024,
+                    362.7232,
+                    97.3529,
+                    367.25
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L34",
+                "type": "line",
+                "text": "Network Upgrade Documentation: Providing comprehensive documentation of the upgraded ",
+                "uri": "",
+                "bbox": [
+                    108.02,
+                    362.5788,
+                    517.3063,
+                    367.25
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L35",
+                "type": "line",
+                "text": "network, including configuration details, diagrams, and operational procedures. ",
+                "uri": "",
+                "bbox": [
+                    108.02,
+                    373.9788,
+                    459.4389,
+                    378.65
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L36",
+                "type": "line",
+                "text": " ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    390.5388,
+                    74.7929,
+                    395.21
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L37",
+                "type": "line",
+                "text": " ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    413.6988,
+                    74.7929,
+                    418.37
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L38",
+                "type": "line",
+                "text": "MILESTONES ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    439.9988,
+                    146.7889,
+                    444.67
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L39",
+                "type": "line",
+                "text": " ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    461.2388,
+                    74.7929,
+                    465.91
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L40",
+                "type": "line",
+                "text": "List the major project milestones and their estimated delivery dates. ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    474.4388,
+                    373.2789,
+                    479.11
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L41",
+                "type": "line",
+                "text": "1. Project Initiation \u2013 Estimated Delivery Date is 5th Jan 2023 ",
+                "uri": "",
+                "bbox": [
+                    90.024,
+                    497.5988,
+                    368.1189,
+                    502.27
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L42",
+                "type": "line",
+                "text": "2. Network Assessment \u2013 Estimated Delivery Date is 2nd Feb 2023 ",
+                "uri": "",
+                "bbox": [
+                    90.024,
+                    509.1188,
+                    393.6789,
+                    513.79
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L43",
+                "type": "line",
+                "text": "3. Requirement Gathering\u2013 Estimated Delivery Date is 3rd Mar 2023 ",
+                "uri": "",
+                "bbox": [
+                    90.024,
+                    520.6387,
+                    399.4389,
+                    525.31
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L44",
+                "type": "line",
+                "text": "4. Design and Planning\u2013 Estimated Delivery Date is 4th Apr 2023 ",
+                "uri": "",
+                "bbox": [
+                    90.024,
+                    532.1588,
+                    385.8789,
+                    536.83
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L45",
+                "type": "line",
+                "text": "5. Procurement\u2013 Estimated Delivery Date is 5th May 2023 ",
+                "uri": "",
+                "bbox": [
+                    90.024,
+                    543.6787,
+                    354.0789,
+                    548.35
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L46",
+                "type": "line",
+                "text": "6. Infrastructure Setup\u2013 Estimated Delivery Date is 6th Jun 2023 ",
+                "uri": "",
+                "bbox": [
+                    90.024,
+                    555.0787,
+                    382.0389,
+                    559.75
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L47",
+                "type": "line",
+                "text": "7. Testing and Validation\u2013 Estimated Delivery Date is 7th Jul 2023 ",
+                "uri": "",
+                "bbox": [
+                    90.024,
+                    566.5988,
+                    389.8389,
+                    571.27
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L48",
+                "type": "line",
+                "text": "8. Data Migration\u2013 Estimated Delivery Date is 8th Aug 2023 ",
+                "uri": "",
+                "bbox": [
+                    90.024,
+                    578.1187,
+                    360.9189,
+                    582.79
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L49",
+                "type": "line",
+                "text": "9. Training and Documentation\u2013 Estimated Delivery Date is 9th Sep 2023 ",
+                "uri": "",
+                "bbox": [
+                    90.024,
+                    589.6687,
+                    421.5189,
+                    594.34
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L50",
+                "type": "line",
+                "text": "10. Rollout and Deployment \u2013 Estimated Delivery Date is 10th Oct 2023 ",
+                "uri": "",
+                "bbox": [
+                    90.024,
+                    601.1887,
+                    408.5589,
+                    605.86
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L51",
+                "type": "line",
+                "text": "11. Monitoring and Optimization \u2013 Estimated Delivery Date is 11th Oct 2023 ",
+                "uri": "",
+                "bbox": [
+                    90.024,
+                    612.7087,
+                    426.4389,
+                    617.38
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L52",
+                "type": "line",
+                "text": "12. Project Closure\u2013 Estimated Delivery Date is 12th Dec 2023 ",
+                "uri": "",
+                "bbox": [
+                    90.024,
+                    624.1088,
+                    369.7989,
+                    628.78
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L53",
+                "type": "line",
+                "text": " ",
+                "uri": "",
+                "bbox": [
+                    90.024,
+                    640.6687,
+                    92.7929,
+                    645.34
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L54",
+                "type": "line",
+                "text": " ",
+                "uri": "",
+                "bbox": [
+                    90.024,
+                    663.9487,
+                    92.7929,
+                    668.62
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L55",
+                "type": "line",
+                "text": " ",
+                "uri": "",
+                "bbox": [
+                    90.024,
+                    687.1088,
+                    92.7929,
+                    691.78
+                ],
+                "tokens": []
+            }
+        ]
+    },
+    {
+        "page": 5,
+        "width": 612.0,
+        "height": 792.0,
+        "bbox": "X1,Y1,X2,Y2",
+        "tokens": [
+            {
+                "id": "P5_L1",
+                "type": "line",
+                "text": "PERIOD OF PERFORMANCE ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    71.1423,
+                    239.9991,
+                    76.32
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P5_L2",
+                "type": "line",
+                "text": " ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    93.2688,
+                    74.7929,
+                    97.94
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P5_L3",
+                "type": "line",
+                "text": "Project Start Date: 5th Jan 2023 ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    106.4688,
+                    214.2589,
+                    111.14
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P5_L4",
+                "type": "line",
+                "text": "Project End Date: 31st Dec 2023 ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    129.7487,
+                    217.7389,
+                    134.42
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P5_L5",
+                "type": "line",
+                "text": "PLACE OF PERFORMANCE ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    156.3622,
+                    233.1591,
+                    161.54
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P5_L6",
+                "type": "line",
+                "text": " ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    178.4688,
+                    74.7929,
+                    183.14
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P5_L7",
+                "type": "line",
+                "text": "Project Locations : ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    191.6688,
+                    157.1089,
+                    196.34
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P5_L8",
+                "type": "line",
+                "text": "1. Pune ",
+                "uri": "",
+                "bbox": [
+                    90.024,
+                    214.9488,
+                    134.1889,
+                    219.62
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P5_L9",
+                "type": "line",
+                "text": "2. Noida ",
+                "uri": "",
+                "bbox": [
+                    90.024,
+                    226.3488,
+                    136.9489,
+                    231.02
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P5_L10",
+                "type": "line",
+                "text": " ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    242.9088,
+                    74.7929,
+                    247.58
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P5_L11",
+                "type": "line",
+                "text": "APPLICABLE STANDARDS ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    269.6722,
+                    228.3591,
+                    274.85
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P5_L12",
+                "type": "line",
+                "text": " ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    291.7788,
+                    74.7929,
+                    296.45
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P5_L13",
+                "type": "line",
+                "text": "NA ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    304.9788,
+                    88.7129,
+                    309.65
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P5_L14",
+                "type": "line",
+                "text": "SPECIFIC REQUIREMENTS ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    331.5922,
+                    233.2791,
+                    336.77
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P5_L15",
+                "type": "line",
+                "text": " ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    353.6988,
+                    74.7929,
+                    358.37
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P5_L16",
+                "type": "line",
+                "text": "NA ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    366.8988,
+                    88.7129,
+                    371.57
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P5_L17",
+                "type": "line",
+                "text": "RESOURCE REQUIREMENTS ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    393.6322,
+                    244.9191,
+                    398.81
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P5_L18",
+                "type": "line",
+                "text": " ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    415.7388,
+                    74.7929,
+                    420.41
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P5_L19",
+                "type": "line",
+                "text": "Project Manager \u2013 2 ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    428.9588,
+                    164.7889,
+                    433.63
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P5_L20",
+                "type": "line",
+                "text": "Project Lead \u2013 5 ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    452.1188,
+                    147.6289,
+                    456.79
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P5_L21",
+                "type": "line",
+                "text": "Tester -1 ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    475.3988,
+                    114.7489,
+                    480.07
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P5_L22",
+                "type": "line",
+                "text": " ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    498.6788,
+                    74.7929,
+                    503.35
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P5_L23",
+                "type": "line",
+                "text": "VENDOR RESPONSIBILITIES ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    525.2922,
+                    243.3591,
+                    530.47
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P5_L24",
+                "type": "line",
+                "text": "\u2022 ",
+                "uri": "",
+                "bbox": [
+                    90.024,
+                    543.2232,
+                    97.3529,
+                    547.75
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P5_L25",
+                "type": "line",
+                "text": "Consulting ",
+                "uri": "",
+                "bbox": [
+                    108.02,
+                    543.0787,
+                    158.0689,
+                    547.75
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P5_L26",
+                "type": "line",
+                "text": "\u2022 ",
+                "uri": "",
+                "bbox": [
+                    90.024,
+                    555.4632,
+                    97.3529,
+                    559.99
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P5_L27",
+                "type": "line",
+                "text": "Design ",
+                "uri": "",
+                "bbox": [
+                    108.02,
+                    555.3187,
+                    141.8689,
+                    559.99
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P5_L28",
+                "type": "line",
+                "text": "CLIENT RESPONSIBILITIES ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    575.2123,
+                    235.4391,
+                    580.39
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P5_L29",
+                "type": "line",
+                "text": "\u2022 ",
+                "uri": "",
+                "bbox": [
+                    90.024,
+                    593.1732,
+                    97.3529,
+                    597.7
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P5_L30",
+                "type": "line",
+                "text": "Vendor selection ",
+                "uri": "",
+                "bbox": [
+                    108.02,
+                    593.0287,
+                    185.3089,
+                    597.7
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P5_L31",
+                "type": "line",
+                "text": "\u2022 ",
+                "uri": "",
+                "bbox": [
+                    90.024,
+                    605.2932,
+                    97.3529,
+                    609.82
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P5_L32",
+                "type": "line",
+                "text": "Equipment procurement ",
+                "uri": "",
+                "bbox": [
+                    108.02,
+                    605.1487,
+                    217.4989,
+                    609.82
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P5_L33",
+                "type": "line",
+                "text": " ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    621.7087,
+                    74.7929,
+                    626.38
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P5_L34",
+                "type": "line",
+                "text": " ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    644.8687,
+                    74.7929,
+                    649.54
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P5_L35",
+                "type": "line",
+                "text": " ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    668.1487,
+                    74.7929,
+                    672.82
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P5_L36",
+                "type": "line",
+                "text": " ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    691.3047,
+                    74.7929,
+                    695.976
+                ],
+                "tokens": []
+            }
+        ]
+    },
+    {
+        "page": 6,
+        "width": 612.0,
+        "height": 792.0,
+        "bbox": "X1,Y1,X2,Y2",
+        "tokens": [
+            {
+                "id": "P6_L1",
+                "type": "line",
+                "text": "PROJECT RISKS ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    77.1623,
+                    172.2891,
+                    82.34
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P6_L2",
+                "type": "line",
+                "text": "\u2022 ",
+                "uri": "",
+                "bbox": [
+                    90.024,
+                    95.0932,
+                    97.3529,
+                    99.62
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P6_L3",
+                "type": "line",
+                "text": "Compatibility issues: There may be compatibility issues between the existing network ",
+                "uri": "",
+                "bbox": [
+                    108.02,
+                    94.9488,
+                    486.7889,
+                    99.62
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P6_L4",
+                "type": "line",
+                "text": "infrastructure and the new equipment or software being implemented, leading to operational ",
+                "uri": "",
+                "bbox": [
+                    108.02,
+                    106.3488,
+                    516.3102,
+                    111.02
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P6_L5",
+                "type": "line",
+                "text": "disruptions or the need for additional modifications. ",
+                "uri": "",
+                "bbox": [
+                    108.02,
+                    117.8687,
+                    336.4189,
+                    122.54
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P6_L6",
+                "type": "line",
+                "text": "\u2022 ",
+                "uri": "",
+                "bbox": [
+                    90.024,
+                    130.4058,
+                    95.9791,
+                    134.06
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P6_L7",
+                "type": "line",
+                "text": "Downtime and service interruptions: During the network upgrade process, there is a risk of ",
+                "uri": "",
+                "bbox": [
+                    108.02,
+                    129.3888,
+                    509.6019,
+                    134.06
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P6_L8",
+                "type": "line",
+                "text": "unplanned downtime and service interruptions, which can impact business operations and result ",
+                "uri": "",
+                "bbox": [
+                    108.02,
+                    140.9088,
+                    535.0651,
+                    145.58
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P6_L9",
+                "type": "line",
+                "text": "in financial losses. ",
+                "uri": "",
+                "bbox": [
+                    108.02,
+                    152.4287,
+                    191.3751,
+                    157.1
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P6_L10",
+                "type": "line",
+                "text": "ASSUMPTIONS ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    172.4422,
+                    163.4091,
+                    177.62
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P6_L11",
+                "type": "line",
+                "text": "\u2022 ",
+                "uri": "",
+                "bbox": [
+                    90.024,
+                    190.3732,
+                    97.3529,
+                    194.9
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P6_L12",
+                "type": "line",
+                "text": "Network equipment compatibility: It is assumed that the existing network infrastructure and ",
+                "uri": "",
+                "bbox": [
+                    108.02,
+                    190.2288,
+                    510.2351,
+                    194.9
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P6_L13",
+                "type": "line",
+                "text": "equipment are compatible with the planned upgrade. This includes switches, routers, servers, ",
+                "uri": "",
+                "bbox": [
+                    108.02,
+                    201.6288,
+                    523.4814,
+                    206.3
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P6_L14",
+                "type": "line",
+                "text": "and other network components. ",
+                "uri": "",
+                "bbox": [
+                    108.02,
+                    213.1488,
+                    250.9789,
+                    217.82
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P6_L15",
+                "type": "line",
+                "text": "\u2022 ",
+                "uri": "",
+                "bbox": [
+                    90.024,
+                    225.5332,
+                    97.3529,
+                    230.06
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P6_L16",
+                "type": "line",
+                "text": "Resource availability: Sufficient resources, such as hardware, software, and human resources, ",
+                "uri": "",
+                "bbox": [
+                    108.02,
+                    225.3888,
+                    528.4017,
+                    230.06
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P6_L17",
+                "type": "line",
+                "text": "are assumed to be available to support the network upgrade project. This includes budget ",
+                "uri": "",
+                "bbox": [
+                    108.02,
+                    236.7888,
+                    506.7815,
+                    241.46
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P6_L18",
+                "type": "line",
+                "text": "allocation, procurement processes, and skilled personnel. ",
+                "uri": "",
+                "bbox": [
+                    108.02,
+                    248.3388,
+                    365.3589,
+                    253.01
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P6_L19",
+                "type": "line",
+                "text": "COMPLETION CRITERIA ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    268.3523,
+                    216.5991,
+                    273.53
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P6_L20",
+                "type": "line",
+                "text": "1. Functionality: All network components and systems should be fully operational and functioning as ",
+                "uri": "",
+                "bbox": [
+                    90.024,
+                    290.4588,
+                    539.9654,
+                    295.13
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P6_L21",
+                "type": "line",
+                "text": "intended. This includes routers, switches, servers, firewalls, and any other network devices. ",
+                "uri": "",
+                "bbox": [
+                    108.02,
+                    303.6588,
+                    514.9089,
+                    308.33
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P6_L22",
+                "type": "line",
+                "text": "2. Performance: The upgraded network should demonstrate improved performance compared to the ",
+                "uri": "",
+                "bbox": [
+                    90.024,
+                    326.8188,
+                    541.7281,
+                    331.49
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P6_L23",
+                "type": "line",
+                "text": "previous network. This can be measured in terms of increased bandwidth, reduced latency, ",
+                "uri": "",
+                "bbox": [
+                    108.02,
+                    340.0188,
+                    513.7524,
+                    344.69
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P6_L24",
+                "type": "line",
+                "text": "improved network response times, and enhanced overall network speed. ",
+                "uri": "",
+                "bbox": [
+                    108.02,
+                    353.3388,
+                    432.0789,
+                    358.01
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P6_L25",
+                "type": "line",
+                "text": "3. Scalability: The upgraded network should have the ability to accommodate future growth and ",
+                "uri": "",
+                "bbox": [
+                    90.024,
+                    376.4988,
+                    520.0155,
+                    381.17
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P6_L26",
+                "type": "line",
+                "text": "expansion. It should be scalable to handle increased traffic, additional devices, and emerging ",
+                "uri": "",
+                "bbox": [
+                    108.02,
+                    389.6988,
+                    522.1533,
+                    394.37
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P6_L27",
+                "type": "line",
+                "text": "technologies. ",
+                "uri": "",
+                "bbox": [
+                    108.02,
+                    402.8988,
+                    169.7089,
+                    407.57
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P6_L28",
+                "type": "line",
+                "text": "4. Reliability: The network should be highly reliable, with minimal downtime and disruptions. It ",
+                "uri": "",
+                "bbox": [
+                    90.024,
+                    426.1988,
+                    511.689,
+                    430.87
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P6_L29",
+                "type": "line",
+                "text": "should be able to handle peak loads and maintain a stable connection. ",
+                "uri": "",
+                "bbox": [
+                    108.02,
+                    439.3988,
+                    422.8389,
+                    444.07
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P6_L30",
+                "type": "line",
+                "text": "5. Security: The upgraded network should have enhanced security measures in place to protect ",
+                "uri": "",
+                "bbox": [
+                    90.024,
+                    462.6788,
+                    521.4229,
+                    467.35
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P6_L31",
+                "type": "line",
+                "text": "against unauthorized access, data breaches, and other cybersecurity threats. This may include ",
+                "uri": "",
+                "bbox": [
+                    108.02,
+                    475.8788,
+                    529.5772,
+                    480.55
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P6_L32",
+                "type": "line",
+                "text": "implementing firewalls, intrusion detection systems, encryption protocols, and access controls. ",
+                "uri": "",
+                "bbox": [
+                    108.02,
+                    489.0788,
+                    527.1489,
+                    493.75
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P6_L33",
+                "type": "line",
+                "text": "6. Compatibility: The upgraded network should be compatible with existing infrastructure and ",
+                "uri": "",
+                "bbox": [
+                    90.024,
+                    512.3588,
+                    508.5625,
+                    517.03
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P6_L34",
+                "type": "line",
+                "text": "systems. It should seamlessly integrate with other applications, databases, and software. ",
+                "uri": "",
+                "bbox": [
+                    108.02,
+                    525.5587,
+                    503.8689,
+                    530.23
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P6_L35",
+                "type": "line",
+                "text": " ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    548.7188,
+                    74.7929,
+                    553.39
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P6_L36",
+                "type": "line",
+                "text": "CHANGE CONTROL PROCEDURE ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    575.4523,
+                    270.3591,
+                    580.63
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P6_L37",
+                "type": "line",
+                "text": " ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    597.5887,
+                    74.7929,
+                    602.26
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P6_L38",
+                "type": "line",
+                "text": "NA  ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    610.7888,
+                    91.4729,
+                    615.46
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P6_L39",
+                "type": "line",
+                "text": " ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    634.0687,
+                    74.7929,
+                    638.74
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P6_L40",
+                "type": "line",
+                "text": " ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    657.2288,
+                    74.7929,
+                    661.9
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P6_L41",
+                "type": "line",
+                "text": " ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    680.5087,
+                    74.7929,
+                    685.18
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P6_L42",
+                "type": "line",
+                "text": " ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    703.6647,
+                    74.7929,
+                    708.336
+                ],
+                "tokens": []
+            }
+        ]
+    },
+    {
+        "page": 7,
+        "width": 612.0,
+        "height": 792.0,
+        "bbox": "X1,Y1,X2,Y2",
+        "tokens": [
+            {
+                "id": "P7_L1",
+                "type": "line",
+                "text": "CONTRACT TYPE AND INVOICE PROCEDURES ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    71.1423,
+                    350.2991,
+                    76.32
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P7_L2",
+                "type": "line",
+                "text": " ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    93.2688,
+                    74.7929,
+                    97.94
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P7_L3",
+                "type": "line",
+                "text": "Contract Type : T&M ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    106.4688,
+                    167.0689,
+                    111.14
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P7_L4",
+                "type": "line",
+                "text": "Invoice Frequency : Hybrid ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    129.7487,
+                    193.7089,
+                    134.42
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P7_L5",
+                "type": "line",
+                "text": "OTHER INFORMATION AND SUPPORTING DOCUMENTATION ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    156.3622,
+                    430.5791,
+                    161.54
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P7_L6",
+                "type": "line",
+                "text": " ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    178.4688,
+                    74.7929,
+                    183.14
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P7_L7",
+                "type": "line",
+                "text": "NA ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    191.6688,
+                    88.7129,
+                    196.34
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P7_L8",
+                "type": "line",
+                "text": "POINTS OF CONTACT ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    218.4023,
+                    203.3691,
+                    223.58
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P7_L9",
+                "type": "line",
+                "text": " ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    240.5088,
+                    74.7929,
+                    245.18
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P7_L10",
+                "type": "line",
+                "text": "Mr. A   +11111111111 ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    253.7387,
+                    174.0289,
+                    258.41
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P7_L11",
+                "type": "line",
+                "text": "Mr. J    +22222222222 ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    276.8988,
+                    175.1089,
+                    281.57
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P7_L12",
+                "type": "line",
+                "text": " ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    300.1788,
+                    74.7929,
+                    304.85
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P7_L13",
+                "type": "line",
+                "text": " ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    323.3388,
+                    74.7929,
+                    328.01
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P7_L14",
+                "type": "line",
+                "text": " ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    346.6188,
+                    74.7929,
+                    351.29
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P7_L15",
+                "type": "line",
+                "text": "ACCEPTANCE ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    373.3522,
+                    157.7691,
+                    378.53
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P7_L16",
+                "type": "line",
+                "text": "Date:   2nd Jan 2023 ",
+                "uri": "",
+                "bbox": [
+                    324.05,
+                    395.4588,
+                    415.7589,
+                    400.13
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P7_L17",
+                "type": "line",
+                "text": "By initialing each page and signing below, I __________Mr. Jack_______________________, in my ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    418.6388,
+                    519.5631,
+                    423.31
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P7_L18",
+                "type": "line",
+                "text": "capacity as  ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    431.8388,
+                    127.5889,
+                    436.51
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P7_L19",
+                "type": "line",
+                "text": "________________________CIO_____________, of _______DEF_____________________________ ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    445.0388,
+                    535.0117,
+                    449.71
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P7_L20",
+                "type": "line",
+                "text": "agree to   ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    458.3588,
+                    117.0289,
+                    463.03
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P7_L21",
+                "type": "line",
+                "text": "and accept the terms set forth in this Statement of Work. ",
+                "uri": "",
+                "bbox": [
+                    72.024,
+                    481.5188,
+                    324.4189,
+                    486.19
+                ],
+                "tokens": []
+            }
+        ]
+    }
+]

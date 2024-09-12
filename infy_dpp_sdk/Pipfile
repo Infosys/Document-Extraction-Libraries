@@ -4,14 +4,14 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
-pytest = "==6.2.5"
+pytest = "==7.4.4"
 pytest-cov = "==2.12.1"
 autopep8 = "==1.5.1"
-infy_fs_utils = {path = "./lib/infy_fs_utils-0.0.2-py3-none-any.whl"}
+infy_fs_utils = {path = "./lib/infy_fs_utils-0.0.4-py3-none-any.whl",extras = ["cloud"]}
 
 [packages]
 pydantic="==1.10.7"
-requests = "==2.31.0"
+requests = "==2.32.3"
 Deprecated = "==1.2.14"
 fastapi = "==0.109.0"       #[groups=httpcontroller]
 

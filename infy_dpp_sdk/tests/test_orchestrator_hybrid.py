@@ -10,21 +10,22 @@ import infy_fs_utils
 import infy_dpp_sdk
 
 STORAGE_ROOT_PATH = f"C:/temp/unittest/infy_dpp_sdk/{__name__}/STORAGE"
+CONTAINER_ROOT_PATH = f"C:/temp/unittest/infy_dpp_sdk/{__name__}/CONTAINER"
 INPUT_CONFIG_FILE_PATH = '/data/config/dpp_pipeline3_input_config.json'
 DEPLOYMENT_CONFIG_FILE_PATH = '/data/config/dpp_deployment_config.json'
 
 
 @pytest.fixture(scope='module', autouse=True)
-def pre_test(create_root_folders, copy_files_to_root_folder, update_json_file):
+def pre_test(create_root_folders, copy_files_to_root_folder):
     """Test pre-run method"""
     # Create data folders
-    create_root_folders([STORAGE_ROOT_PATH])
+    create_root_folders([STORAGE_ROOT_PATH, CONTAINER_ROOT_PATH])
     # Copy files to pick up folder
     # Deployment config file is owned by a separate application
     SAMPLE_ROOT_PATH = os.path.abspath("./my_dummy_processor_app")
     FILES_TO_COPY = [
         ['dpp_deployment_config.json', f"{SAMPLE_ROOT_PATH}/config",
-            f"{STORAGE_ROOT_PATH}/data/config"]
+            f"{CONTAINER_ROOT_PATH}/data/config"]
     ]
     copy_files_to_root_folder(FILES_TO_COPY)
     SAMPLE_ROOT_PATH = "./data/sample"
@@ -36,10 +37,7 @@ def pre_test(create_root_folders, copy_files_to_root_folder, update_json_file):
         [os.path.basename(INPUT_CONFIG_FILE_PATH), f"{SAMPLE_ROOT_PATH}/config",
             f"{STORAGE_ROOT_PATH}/data/config"]
     ]
-    copied_files = copy_files_to_root_folder(FILES_TO_COPY)
-    # Update dynamic value of STORAGE_ROOT_PATH in input config json file
-    update_json_file(copied_files[2][2] + '/' + copied_files[2][0],
-                     'variables.DPP_STORAGE_ROOT_URI', f"file://{STORAGE_ROOT_PATH}")
+    copy_files_to_root_folder(FILES_TO_COPY)
 
     storage_config_data = infy_fs_utils.data.StorageConfigData(
         **{
@@ -84,9 +82,10 @@ def pre_test(create_root_folders, copy_files_to_root_folder, update_json_file):
 
 def test_pipeline_scenario_1():
     """Test method for normal scenario"""
+    abs_deployment_config_file_path = f"{CONTAINER_ROOT_PATH}{DEPLOYMENT_CONFIG_FILE_PATH}"
     dpp_orchestrator = infy_dpp_sdk.orchestrator.OrchestratorHybrid(
         input_config_file_path=INPUT_CONFIG_FILE_PATH,
-        deployment_config_file_path=DEPLOYMENT_CONFIG_FILE_PATH)
+        deployment_config_file_path=abs_deployment_config_file_path)
 
     processor_response_data_list = dpp_orchestrator.run_batch()
     processor_exec_list, processor_exec_output_dict = dpp_orchestrator.get_run_batch_summary()
@@ -103,9 +102,10 @@ def test_pipeline_scenario_1():
 
 def test_pipeline_scenario_2():
     """Test method for scenario where initial context data is provided by client"""
+    abs_deployment_config_file_path = f"{CONTAINER_ROOT_PATH}{DEPLOYMENT_CONFIG_FILE_PATH}"
     dpp_orchestrator = infy_dpp_sdk.orchestrator.OrchestratorHybrid(
         input_config_file_path=INPUT_CONFIG_FILE_PATH,
-        deployment_config_file_path=DEPLOYMENT_CONFIG_FILE_PATH)
+        deployment_config_file_path=abs_deployment_config_file_path)
 
     context_data = {'Preprocessor': {'a': 1, 'b': 2}}
     processor_response_data_list = dpp_orchestrator.run_batch(context_data)

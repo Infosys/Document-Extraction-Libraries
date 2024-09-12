@@ -89,8 +89,11 @@ class IController(ABC):
             excludes = controller_request_data.processor_filter.excludes
         else:
             includes, excludes = [], []
+
+        config_data_processor_list = self.__get_flat_processor_list(
+            input_config_data["processor_list"])
         valid_processors = [x["processor_name"]
-                            for x in input_config_data["processor_list"]]
+                            for x in config_data_processor_list]
 
         # Find any requested processors not present in input_config_data
         invalid_processors = [x for x in includes +
@@ -99,12 +102,22 @@ class IController(ABC):
             message = f"Invalid processors found in 'processor_filter' section of request file = {invalid_processors} "
             raise ValueError(message)
         if includes:
-            requested_processor_list = [x for x in input_config_data["processor_list"]
+            requested_processor_list = [x for x in config_data_processor_list
                                         if x["processor_name"] in includes]
         elif excludes:
-            requested_processor_list = [x for x in input_config_data["processor_list"]
+            requested_processor_list = [x for x in config_data_processor_list
                                         if x["processor_name"] not in excludes]
         else:
-            requested_processor_list = input_config_data["processor_list"]
+            requested_processor_list = config_data_processor_list
 
         return requested_processor_list
+
+    def __get_flat_processor_list(self, processor_list: List[dict]):
+        """Convert nested structure to flat structure"""
+        _processor_list = []
+        for obj in processor_list:
+            if obj.get("processor_list"):
+                _processor_list.extend(obj.get("processor_list"))
+            else:
+                _processor_list.append(obj)
+        return _processor_list

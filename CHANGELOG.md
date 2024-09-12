@@ -1,4 +1,30 @@
 # Document-Extraction-Libraries
+## V3.7.0
+- New interactive tool `tool_05_embedding_clusters.ipynb` to experiment with embeddings and their clusters.
+
+## V3.6.0
+- New interactive tool tool_03_prompt_engineering.ipynb to help with prompt engineering added.
+- Made changes to the different techniques used to generate segments to be able to run in parallel.
+- Merged chunk_parser and chunk_saver to chunk_generator.
+- Made changes to new chunk_generator to save the resources inside vectordb folder.
+- Renamed paragraph chunking to segment chunking. Available chunking methods are page and segments based.
+- Made changes to Reader processor:
+  - added retry logic for LLM calls if response format is not as expected (up to a configurable max value)
+  - added option to consider a subset of top_k values from retriever while building the context
+- Custom embedding support added.
+
+## V3.5.3
+- InfyFormatConverter modified to handle error.
+
+## V3.5.2
+- Added missing files for tool_02_semantic_search.ipynb
+
+## V 3.5.1
+- Bug fix for kernel issue.
+- Ability to filter response based on document name during QnA.
+- Vectordb file type changed.
+- Support for chat models gpt-4 and gpt-4-32k.
+
 ## V 3.5.0
 - Ability to extract images from native pdf and do OCR to get any text within it. (The libraries modified - InfyFormatConverterJAR, infy_common_utils, infy_dpp_content_extractor, infy_dpp_segmentation)
 - Modified pipeline card to visualize the pipeline.

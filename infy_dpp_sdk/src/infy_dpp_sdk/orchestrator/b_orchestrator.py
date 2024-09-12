@@ -10,6 +10,7 @@ from typing import List
 import logging
 import time
 import uuid
+import concurrent.futures
 import infy_fs_utils
 from ..data import (ControllerRequestData, ControllerResponseData,
                     ProcessorFilterData, ProcessorResponseData, MessageCodeEnum)
@@ -25,6 +26,7 @@ class BOrchestrator(IOrchestrator, ABC):
 
     _fs_handler: infy_fs_utils.interface.IFileSystemHandler = None
     _logger: logging.Logger = None
+    __PROCESSOR_DISABLED = "disabled"
 
     def __init__(self, input_config_file_path: str, deployment_config_file_path: str = None):
         super().__init__(input_config_file_path, deployment_config_file_path)
@@ -45,89 +47,67 @@ class BOrchestrator(IOrchestrator, ABC):
     # ---------- Public Methods ---------
     def run_batch(self, context_data: dict = None):
         model = self.__model
+        snapshot_util = SnapshotUtil()
         processor_exec_list = []
         processor_exec_output_dict = {}
         request_group_num = f"R-{str(uuid.uuid4())[24:]}"
         processor_list = model.input_config_data.get('processor_list', [])
         processor_list_count = len(processor_list)
         for idx, processor_input_config_data in enumerate(processor_list):
-            processor_name = processor_input_config_data.get(
-                'processor_name')
             processor_num = f"{idx+1:03d}"
-            request_id = f"{request_group_num}-{processor_num}"
-            message_info = f"Processor #{idx+1} of {processor_list_count}| {request_id} | {processor_name}"
-            if not processor_input_config_data.get('enabled'):
-                self._logger.info(message_info + " | Skipped (disabled)")
-                continue
-            self._logger.info(message_info + " | Started")
-            start_time = time.time()
-
-            # Get processor specifig input config variables which are same as overall input config variables
-            input_variable_dict = model.input_config_data.get(
-                'variables', {}).copy()
-            # Fetch output of previous processor and update input_variable_dict
-            prev_processor_output_dict = processor_exec_output_dict.get(
-                processor_exec_list[-1], {}) if processor_exec_list else {}
-            input_variable_dict.update(prev_processor_output_dict)
-
-            # Prepare config data which is a subset of entire "processor_input_config" data
-            # containing only the required config data specified in "processor_input_config_name_list"
-            filtered_config_data = {}
-            for processor_input_config_name in processor_input_config_data.get(
-                    'processor_input_config_name_list', []):
-                filtered_config_data[processor_input_config_name] = model.input_config_data.get(
-                    'processor_input_config').get(processor_input_config_name)
-            # Update to main entity
-            processor_input_config_data['processor_input_config'] = filtered_config_data
-
-            # Generate controller request data
-            controller_request_data = self.__create_controller_request_data(
-                processor_input_config_data, request_id, input_variable_dict, context_data)
-
-            # Get processor specific deployment config data
-            processor_deployment_config_data = None
-            if model.deployment_config_data:
-                processor_deployment_config_data = model.deployment_config_data['processors'].get(
-                    processor_name).copy()
-
-            controller_response_data, output_variable_dict = self.__run_processor(
-                controller_request_data, processor_input_config_data,
-                processor_deployment_config_data, input_variable_dict)
-
-            processor_response_data_list: List[ProcessorResponseData] = SnapshotUtil(
-            ).create_processor_response_data_list(controller_response_data)
-
-            self.__update_processor_name(
-                processor_name, processor_response_data_list)
-
-            stop_orchestrator = False
-            tracked_message_list = self.__get_tracked_message_list(
-                processor_response_data_list)
-
-            processor_exec_output_dict[processor_name] = output_variable_dict
-            processor_exec_list.append(processor_name)
-            elapsed_time = round((time.time() - start_time)/60, 4)
-            message_elapsed_time = f"Execution time: {elapsed_time} mins"
-            if tracked_message_list:
-                stop_orchestrator = True
-                itemised_message = ""
-                for document_id, message_list in tracked_message_list:
-                    itemised_message += f"\ndocument_id: {document_id} => " + "\n".join([x.json(indent=4)
-                                                                                         for x in message_list])
-                message_err = message_info + \
-                    f" | Failed | {message_elapsed_time}"
-                # message_err += " | Error: " + "\n".join([x.json(indent=4)
-                #                                          for x in tracked_message_list])
-                message_err += " | Error: " + itemised_message
-                self._logger.error(message_err)
-                print(message_err)
+            sub_processor_list = processor_input_config_data.get(
+                'processor_list')
+            if sub_processor_list:
+                concurrent_result_list = []
+                with concurrent.futures.ThreadPoolExecutor() as executor:
+                    futures = []
+                    for idxY, processor_input_config_dataY in enumerate(sub_processor_list):
+                        sub_processor_num = f"{processor_num}.{idxY+1:03d}"
+                        future = executor.submit(self.__prepare_and_run_processor,
+                                                 processor_input_config_dataY, sub_processor_num,
+                                                 request_group_num, processor_list_count,
+                                                 processor_exec_output_dict, context_data,
+                                                 processor_exec_list)
+                        futures.append(future)
+                    for future in futures:
+                        result = future.result()
+                        if result[0] == self.__PROCESSOR_DISABLED:
+                            continue
+                        concurrent_result_list.append(result)
+                        # if result and len(result) == 2:
+                        #     processor_response_data_list, stop_orchestrator = result
+                if not concurrent_result_list:
+                    continue
+                sub_processor_nums = [
+                    x for x in processor_exec_output_dict if f"{processor_num}." in x]
+                controller_res_file_path_list = [processor_exec_output_dict.get(x, {}).get(
+                    Constants.SYS_CONTROLLER_RES_FILE_PATH) for x in sub_processor_nums]
+                controller_response_data, processor_response_data_list = \
+                    snapshot_util.consolidate_controller_response_data(
+                        controller_res_file_path_list)
+                controller_res_file_path = snapshot_util.save_controller_response_data(
+                    controller_response_data)
+                for sub_processor_num in sub_processor_nums:
+                    del processor_exec_output_dict[sub_processor_num]
+                processor_exec_output_dict[processor_num] = {
+                    Constants.SYS_CONTROLLER_RES_FILE_PATH: controller_res_file_path
+                }
+                # TODO: M Write logic to merge the results of sub-processors
+                # E.g. R-c7d6f3d00afa-003.001_dpp_controller_response.json AND
+                # R-c7d6f3d00afa-003.002_dpp_controller_response.json
+                # That means 003.001 document_data, context_data, message_data with
+                # 003.002 document_data, context_data, message_data
             else:
-                self._logger.info(
-                    message_info + " | Completed | " + message_elapsed_time)
-            if stop_orchestrator:
-                # self.__logger.debug(message)
-                # print(message)
-                break
+                result = self.__prepare_and_run_processor(
+                    processor_input_config_data, processor_num, request_group_num,
+                    processor_list_count, processor_exec_output_dict, context_data,
+                    processor_exec_list)
+                if result and len(result) == 2:
+                    processor_response_data_list, stop_orchestrator = result
+                if stop_orchestrator:
+                    # self.__logger.debug(message)
+                    # print(message)
+                    break
         self.__processor_exec_list = processor_exec_list
         self.__processor_exec_output_dict = processor_exec_output_dict
         # return processor_exec_list, processor_exec_output_dict
@@ -138,6 +118,93 @@ class BOrchestrator(IOrchestrator, ABC):
         return self.__processor_exec_list, self.__processor_exec_output_dict
 
     # ---------- Private Methods ---------
+    def __prepare_and_run_processor(self, processor_input_config_data: dict,
+                                    processor_num, request_group_num, processor_list_count,
+                                    processor_exec_output_dict, context_data,
+                                    processor_exec_list):
+
+        model = self.__model
+        processor_name = processor_input_config_data.get(
+            'processor_name')
+
+        request_id = f"{request_group_num}-{processor_num}"
+        message_info = f"Processor #{processor_num} of {processor_list_count}| {request_id} | {processor_name}"
+        if not processor_input_config_data.get('enabled'):
+            self._logger.info(message_info + " | Skipped (disabled)")
+            return self.__PROCESSOR_DISABLED, None  # continue
+        self._logger.info(message_info + " | Started")
+        start_time = time.time()
+
+        # Get processor specifig input config variables which are same as overall input config variables
+        input_variable_dict = model.input_config_data.get(
+            'variables', {}).copy()
+        # Fetch output of previous processor and update input_variable_dict
+        prev_processor_num = self.__get_previous_processor_num(
+            processor_num, processor_exec_output_dict)
+        prev_processor_output_dict = processor_exec_output_dict.get(
+            prev_processor_num, {})
+        input_variable_dict.update(prev_processor_output_dict)
+
+        # Prepare config data which is a subset of entire "processor_input_config" data
+        # containing only the required config data specified in "processor_input_config_name_list"
+        filtered_config_data = {}
+        for processor_input_config_name in processor_input_config_data.get(
+                'processor_input_config_name_list', []):
+            filtered_config_data[processor_input_config_name] = model.input_config_data.get(
+                'processor_input_config').get(processor_input_config_name)
+        # Update to main entity
+        processor_input_config_data['processor_input_config'] = filtered_config_data
+
+        # Generate controller request data
+        controller_request_data = self.__create_controller_request_data(
+            processor_input_config_data, request_id, input_variable_dict, context_data)
+
+        # Get processor specific deployment config data
+        processor_deployment_config_data = None
+        if model.deployment_config_data:
+            item = model.deployment_config_data['processors'].get(
+                processor_name)
+            alias_of = item.get("alias_of")
+            item = model.deployment_config_data['processors'].get(
+                alias_of) if alias_of else item
+            processor_deployment_config_data = item.copy()
+
+        controller_response_data, output_variable_dict = self.__run_processor(
+            controller_request_data, processor_input_config_data,
+            processor_deployment_config_data, input_variable_dict)
+
+        processor_response_data_list: List[ProcessorResponseData] = SnapshotUtil(
+        ).create_processor_response_data_list(controller_response_data)
+
+        self.__update_processor_name(
+            processor_name, processor_response_data_list)
+
+        stop_orchestrator = False
+        tracked_message_list = self.__get_tracked_message_list(
+            processor_response_data_list)
+
+        processor_exec_output_dict[processor_num] = output_variable_dict
+        processor_exec_list.append(processor_name)
+        elapsed_time = round((time.time() - start_time), 4)
+        message_elapsed_time = f"Execution time: {elapsed_time} secs"
+        if tracked_message_list:
+            stop_orchestrator = True
+            itemised_message = ""
+            for document_id, message_list in tracked_message_list:
+                itemised_message += f"\ndocument_id: {document_id} => " + "\n".join([x.json(indent=4)
+                                                                                    for x in message_list])
+            message_err = message_info + \
+                f" | Failed | {message_elapsed_time}"
+            # message_err += " | Error: " + "\n".join([x.json(indent=4)
+            #                                          for x in tracked_message_list])
+            message_err += " | Error: " + itemised_message
+            self._logger.error(message_err)
+            print(message_err)
+        else:
+            self._logger.info(
+                message_info + " | Completed | " + message_elapsed_time)
+        return processor_response_data_list, stop_orchestrator
+
     def __run_processor(self, controller_request_data: ControllerRequestData,
                         processor_input_config_data: dict, processor_deployment_config_data: dict,
                         input_variable_dict: dict):
@@ -182,18 +249,15 @@ class BOrchestrator(IOrchestrator, ABC):
     def __read_controller_response_data(self, variables_dict) -> ControllerResponseData:
         dpp_controller_res_file_path = variables_dict.get(
             Constants.SYS_CONTROLLER_RES_FILE_PATH, None)
-        controller_response_data: ControllerResponseData = None
-        if dpp_controller_res_file_path:
-            data = json.loads(self._fs_handler.read_file(
-                dpp_controller_res_file_path))
-            controller_response_data = ControllerResponseData(**data)
+        controller_response_data: ControllerResponseData = SnapshotUtil().read_controller_response_data(
+            dpp_controller_res_file_path)
         return controller_response_data
 
     def __create_controller_request_file(self, controller_request_data: ControllerRequestData):
         temp_folder_path = Constants.ORCHESTRATOR_ROOT_PATH
         request_id = controller_request_data.request_id
         self._fs_handler.create_folders(temp_folder_path)
-        json_file_path = f"{temp_folder_path}/{request_id}_dpp_controller_request.json"
+        json_file_path = f"{temp_folder_path}/{request_id}{Constants.CONTROLLER_REQUEST_FILE_NAME_SUFFIX}"
         self._logger.info("Processor input config file path - %s",
                           json_file_path)
         # Due to TypeError: Object of type ProcessorFilterData is not JSON serializable
@@ -249,4 +313,68 @@ class BOrchestrator(IOrchestrator, ABC):
                 v = input_variable_dict.get(f_v.upper() if f_v else f_v)
             updated_arg_dict[k] = v
         __processor_deployment_config_data['env'] = updated_arg_dict
+
+        # Add storage related env variables
+        storage_config_data: infy_fs_utils.data.StorageConfigData = \
+            self._get_fs_handler().get_storage_config_data()
+        std_env_var = {
+            Constants.SYS_ENV_VAR_DPP_STORAGE_ROOT_URI: storage_config_data.storage_root_uri,
+            Constants.SYS_ENV_VAR_DPP_STORAGE_SERVER_URL: storage_config_data.storage_server_url,
+            Constants.SYS_ENV_VAR_DPP_STORAGE_ACCESS_KEY: storage_config_data.storage_access_key,
+            Constants.SYS_ENV_VAR_DPP_STORAGE_SECRET_KEY: storage_config_data.storage_secret_key
+        }
+        __processor_deployment_config_data['env'].update(std_env_var)
+
         return __processor_deployment_config_data
+
+    def __get_previous_processor_num(self, processor_num: str, processor_exec_output_dict: dict) -> str:
+        processor_exec_list = list(processor_exec_output_dict.keys())
+        if not processor_exec_list:
+            return None
+        # processor_exec_list.append(processor_num)
+        # is_sub_processor_flow = "." in processor_num
+        processor_exec_list.reverse()
+        processor_exec_map = {}
+        for item in processor_exec_list:
+            main, _, sub = item.partition('.')
+            if main not in processor_exec_map:
+                processor_exec_map[main] = []
+            if sub:
+                processor_exec_map[main].append(sub)
+
+        is_sub_processor_flow = "." in processor_num
+        if is_sub_processor_flow:
+            for item in processor_exec_map:
+                main, _, sub = item.partition('.')
+                if not sub:
+                    return main
+        else:
+            for main_num, sub_nums in processor_exec_map.items():
+                if not sub_nums:
+                    return main_num
+                keys = [f"{main_num}.{x}" for x in sub_nums]
+                return keys
+
+        # processor_exec_list = processor_exec_list.reverse()
+        # match_start_idx = None
+        # for idx, item in enumerate(processor_exec_list):
+        #     if processor_num == item:
+        #         match_start_idx = idx + 1
+        #         break
+
+        # for i in range(match_start_idx, len(processor_exec_list)):
+        #     print(i)
+
+        # return processor_exec_list[match_start_idx]
+
+        # is_sub_processor_flow = "." in processor_num
+        # if is_sub_processor_flow:
+        #     _processor_num = processor_num.split('.')[0]  # E.g. 003.001 => 003
+        #     for i in range(int(_processor_num)-1, 0, -1):
+        #         if f"{i:03d}" in processor_exec_output_dict:
+        #             return f"{i:03d}"
+        # else:
+        #     for i in range(int(processor_num)-1, 0, -1):
+        #         if f"{i:03d}" in processor_exec_output_dict:
+        #             return f"{i:03d}"
+        # return None

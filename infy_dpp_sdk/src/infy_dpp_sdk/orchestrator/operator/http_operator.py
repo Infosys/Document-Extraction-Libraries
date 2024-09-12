@@ -11,8 +11,8 @@ import logging
 import requests
 import infy_fs_utils
 from ...data import (ControllerResponseData)
-from ...common.dpp_json_encoder import DppJSONEncoder
 from ...common import Constants
+from ...common.snapshot_util import SnapshotUtil
 
 
 class HTTPOperator():
@@ -41,6 +41,7 @@ class HTTPOperator():
                 new_env[key] = val if val else ""
             return new_env
 
+        snapshot_util = SnapshotUtil()
         new_output_variables_dict = {}
         try:
             api_url = processor_deployment_config_data['http_controller_base_url'] + \
@@ -61,12 +62,12 @@ class HTTPOperator():
             controller_response_data: ControllerResponseData = None
             response = requests.post(
                 api_url, json=data, headers=dpp_headers,
-                verify=False, timeout=180)
+                verify=True, timeout=180)
             if response.ok:
                 controller_response_data = ControllerResponseData(
                     **response.json())
 
-            dpp_controller_res_file_path = self.__create_controller_response_file(
+            dpp_controller_res_file_path = snapshot_util.save_controller_response_data(
                 controller_response_data)
 
             output_variables_dict = processor_deployment_config_data['output']['variables']
@@ -109,20 +110,3 @@ class HTTPOperator():
         except Exception as ex:
             raise Exception(ex) from ex
         return new_output_variables_dict
-
-    def __create_controller_response_file(self, controller_response_data: ControllerResponseData):
-        temp_folder_path = Constants.ORCHESTRATOR_ROOT_PATH
-        request_id = controller_response_data.request_id
-        self.__fs_handler.create_folders(temp_folder_path)
-        json_file_path = f"{temp_folder_path}/{request_id}_dpp_controller_response.json"
-        self.__logger.info("Processor input config file path - %s",
-                           json_file_path)
-        # Due to TypeError: Object of type ProcessorFilterData is not JSON serializable
-        controller_response_data = json.loads(
-            DppJSONEncoder().encode(controller_response_data))
-        data_as_json_str = json.dumps(controller_response_data, indent=4)
-        self.__fs_handler.write_file(
-            json_file_path, data_as_json_str, encoding='utf-8')
-        # rel_path = json_file_path.replace(data_root_path, "")
-        # return rel_path
-        return json_file_path

@@ -47,8 +47,9 @@ class IOrchestrator(ABC):
         model.deployment_config_data = None
         auto_generated_deployment_config = False
         if model.deployment_config_file_path:
-            deployment_config_data = json.loads(self.__fs_handler.read_file(
-                model.deployment_config_file_path))
+            # Deployment config file path should be in local storage
+            with open(model.deployment_config_file_path, encoding='utf-8') as file:
+                deployment_config_data = json.load(file)
         else:
             deployment_config_data = config_data_helper_obj.generate_default_deployment_config(
                 input_config_data)

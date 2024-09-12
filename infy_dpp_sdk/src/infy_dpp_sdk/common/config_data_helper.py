@@ -25,7 +25,13 @@ class ConfigDataHelper():
     def generate_default_deployment_config(self, input_config_data: dict) -> dict:
         """Generate a default deployment config data from input config data"""
         processors_dict = {}
-        processor_list = input_config_data.get('processor_list', [])
+        processor_list = []
+        level_1_list = input_config_data.get('processor_list', [])
+        for item in level_1_list:
+            if item.get('processor_list'):
+                processor_list.extend(item.get('processor_list'))
+            else:
+                processor_list.append(item)
         for processor in processor_list:
             processor_name = processor.get('processor_name')
             processors_dict[processor_name] = {

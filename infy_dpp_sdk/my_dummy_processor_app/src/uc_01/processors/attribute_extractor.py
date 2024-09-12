@@ -31,7 +31,9 @@ class AttributeExtractorV1(infy_dpp_sdk.interface.IProcessor):
                    context_data: dict, config_data: dict) -> infy_dpp_sdk.data.ProcessorResponseData:
         logger = self.get_logger()
         logger.debug("Entering")
-        config_data = config_data.get("AttributeExtractor")
+        context_data_key = [x for x in config_data.keys(
+        ) if x.startswith(self.__PROCESSOR_CONTEXT_DATA_NAME)][0]
+        config_data = config_data.get(context_data_key)
 
         message_data = infy_dpp_sdk.data.MessageData()
 
@@ -57,13 +59,8 @@ class AttributeExtractorV1(infy_dpp_sdk.interface.IProcessor):
             }
             business_attributes.append(business_attribute_data)
 
-        # Populate document data
-        if not document_data.business_attribute_data:
-            document_data.business_attribute_data = []
-        document_data.business_attribute_data.extend(business_attributes)
-
         # Populate context data
-        context_data[self.__PROCESSOR_CONTEXT_DATA_NAME] = None
+        context_data[context_data_key] = business_attributes
 
         # Populate response data
         message_item_data = infy_dpp_sdk.data.MessageItemData(

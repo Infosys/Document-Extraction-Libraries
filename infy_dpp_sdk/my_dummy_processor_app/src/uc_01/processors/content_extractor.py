@@ -32,13 +32,13 @@ class ContentExtractorV1(infy_dpp_sdk.interface.IProcessor):
         text_data = infy_dpp_sdk.data.TextData(page=1, text=file_content)
         document_data.text_data = [text_data]
 
-        context_data[self.__PROCESSOR_CONTEXT_DATA_NAME] = None
+        context_data[self.__PROCESSOR_CONTEXT_DATA_NAME] = file_content
 
         # Populate response data
         message_item_data = infy_dpp_sdk.data.MessageItemData(
-            message_code=infy_dpp_sdk.data.MessageCodeEnum.INFO_SUCCESS,   
+            message_code=infy_dpp_sdk.data.MessageCodeEnum.INFO_SUCCESS,
             message_type=infy_dpp_sdk.data.MessageTypeEnum.INFO,
-            )
+        )
         message_data.messages.append(message_item_data)
         processor_response_data = infy_dpp_sdk.data.ProcessorResponseData(
             document_data=document_data, context_data=context_data,

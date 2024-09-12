@@ -32,7 +32,7 @@ class ContentExtractorV1(infy_dpp_sdk.interface.IProcessor):
         text_data = infy_dpp_sdk.data.TextData(page=1, text=file_content)
         document_data.text_data = [text_data]
 
-        context_data[self.__PROCESSOR_CONTEXT_DATA_NAME] = None
+        context_data[self.__PROCESSOR_CONTEXT_DATA_NAME] = file_content
 
         # Populate response data
         message_item_data = infy_dpp_sdk.data.MessageItemData(

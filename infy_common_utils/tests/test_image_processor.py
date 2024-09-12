@@ -12,9 +12,7 @@ import tkinter as tk
 from PIL import Image, ImageDraw, ImageColor, ImageTk
 from infy_common_utils.image_processor import ImageProcessor
 
-GITHUB_TEMPLATE_LOCATION = ("D:\\INFYGITHUB\\ainautosolutions\\workbenchlibraries\\stackXtractor\\"
-                            "unit_test_data\\infy_common_utils")
-IMAGE_FILE = f"{GITHUB_TEMPLATE_LOCATION}\\citi-2\\1-3.jpg"
+IMAGE_FILE = os.path.abspath("./data/1.jpg")
 IMAGE_FILE_LIST = [IMAGE_FILE]
 DEBUG_MODE_ENABLED = False
 
@@ -78,8 +76,8 @@ class ImageVisualizer:
 
 def test_draw_bbox_1():
     """Positive test to draw_bbox api"""
-    config_param_dict_list = [{"bbox": [995, 298, 827, 341]}, {"bbox": [
-        1003, 265, 239, 33], "color": (0, 0, 255)}, {"bbox": [1003, 640, 320, 33], "color": (0, 0, 255)}]
+    config_param_dict_list = [{"bbox": [3636, 625, 4071, 888]}, {"bbox": [1637, 646, 2355, 1069], "color": (
+        0, 0, 255)}, {"bbox": [4275, 964, 4809, 1227], "color": (0, 0, 255)}]
     result = ImageProcessor.draw_bbox(
         IMAGE_FILE, None, config_param_dict_list)
     if DEBUG_MODE_ENABLED:
@@ -92,7 +90,7 @@ def test_draw_bbox_1():
 
 def test_draw_bbox_2():
     """Positive test to draw_bbox api without optional value"""
-    config_param_dict_list = [{"bbox": [995, 298, 827, 341]}]
+    config_param_dict_list = [{"bbox": [3636, 625, 4071, 888]}]
     result = ImageProcessor.draw_bbox(
         IMAGE_FILE, None, config_param_dict_list)
     if DEBUG_MODE_ENABLED:
@@ -105,8 +103,8 @@ def test_draw_bbox_2():
 
 def test_draw_bbox_and_get_horizontally_cropped_image():
     """Test method"""
-    config_param_dict_list = [{"bbox": [995, 298, 827, 341]}, {"bbox": [
-        1003, 265, 239, 33], "color": (0, 0, 255)}, {"bbox": [1003, 640, 320, 33], "color": (0, 0, 255)}]
+    config_param_dict_list = [{"bbox": [3636, 625, 4071, 888]}, {"bbox": [1637, 646, 2355, 1069], "color": (
+        0, 0, 255)}, {"bbox": [4275, 964, 4809, 1227], "color": (0, 0, 255)}]
     result = ImageProcessor.draw_bbox(
         IMAGE_FILE, None, config_param_dict_list,
         margin_horizontal=50)
@@ -120,8 +118,8 @@ def test_draw_bbox_and_get_horizontally_cropped_image():
 
 def test_draw_bbox_and_get_vertically_cropped_image():
     """Test method"""
-    config_param_dict_list = [{"bbox": [995, 298, 827, 341]}, {"bbox": [
-        1003, 265, 239, 33], "color": (0, 0, 255)}, {"bbox": [1003, 640, 320, 33], "color": (0, 0, 255)}]
+    config_param_dict_list = [{"bbox": [3636, 625, 4071, 888]}, {"bbox": [1637, 646, 2355, 1069], "color": (
+        0, 0, 255)}, {"bbox": [4275, 964, 4809, 1227], "color": (0, 0, 255)}]
     result = ImageProcessor.draw_bbox(
         IMAGE_FILE, None, config_param_dict_list,
         margin_vertical=50)
@@ -135,8 +133,8 @@ def test_draw_bbox_and_get_vertically_cropped_image():
 
 def test_draw_bbox_and_get_hor_and_ver_cropped_image():
     """Test method"""
-    config_param_dict_list = [{"bbox": [995, 298, 827, 341]}, {"bbox": [
-        1003, 265, 239, 33], "color": (0, 0, 255)}, {"bbox": [1003, 640, 320, 33], "color": (0, 0, 255)}]
+    config_param_dict_list = [{"bbox": [3636, 625, 4071, 888]}, {"bbox": [1637, 646, 2355, 1069], "color": (
+        0, 0, 255)}, {"bbox": [4275, 964, 4809, 1227], "color": (0, 0, 255)}]
     result = ImageProcessor.draw_bbox(
         IMAGE_FILE, None, config_param_dict_list,
         margin_horizontal=50,
@@ -163,10 +161,10 @@ def test_plot_1():
     """Test method"""
     result_json = {
         'regions': [
-            {'anchorTextBBox': [{'text': ['E-{0,1}mail'],
-                                 'bbox': [1281, 682, 75, 17],
+            {'anchorTextBBox': [{'text': ['Women employees'],
+                                 'bbox': [3676, 625, 4022, 651],
                                  'scalingFactor': 1.0}],
-             'regionBBox': [{'bbox': [1281, 682, 77, 19],
+             'regionBBox': [{'bbox': [3676, 625, 4022, 651],
                              'page': 1,
                              'scalingFactor': 1.0}]}],
         'error': None}
@@ -193,7 +191,7 @@ def test_plot_1():
 def test_deskew_not_corrected():
     """Deskew api test method"""
     image_file = IMAGE_FILE
-    output_file_path = "data/temp/1-3.jpg_original.jpg"
+    output_file_path = "data/temp/1.jpg_original.jpg"
     # revert_original_img(backup_file_path, image_file)
     result = ImageProcessor.deskew(
         image_file, output_file_path=output_file_path)
@@ -203,60 +201,6 @@ def test_deskew_not_corrected():
                           {'name': 'CV2_HOUGH_LP', 'selected': False, 'detected_skew_angle': 0.0}],
                       'threshold_angle': 0.1,
                       'output_file_path': None,
-                      'backup_file_path': None,
-                      'error': None}
-
-
-def test_deskew_corrected():
-    """Deskew api test method"""
-    image_file = f"{GITHUB_TEMPLATE_LOCATION}/citi-firefight/c_table_13.png"
-    output_file_path = "data/temp/c_table_13.png_deskewed.png"
-    # backup_file_path = f"{GITHUB_TEMPLATE_LOCATION}/citi-firefight/c_table_13.png_original.png"
-    # revert_original_img(backup_file_path, image_file)
-    result = ImageProcessor.deskew(
-        image_file, output_file_path=output_file_path)
-    print(result)
-    assert result == {'skew_corrected': True,
-                      'method': [
-                          {'name': 'CV2_HOUGH_LP', 'selected': True, 'detected_skew_angle': 0.50703}],
-                      'threshold_angle': 0.1,
-                      'output_file_path': 'data/temp/c_table_13.png_deskewed.png',
-                      'backup_file_path': None,
-                      'error': None}
-
-
-def test_deskew_not_corrected_2():
-    """Deskew api test method"""
-    image_file = f"{GITHUB_TEMPLATE_LOCATION}/citi-w9-docs/911-Remediation-W9.jpg"
-    output_file_path = "data/temp/911-Remediation-W9.jpg_deskewed.jpg"
-    # backup_file_path = f"{GITHUB_TEMPLATE_LOCATION}/citi-w9-docs/911-Remediation-W9.jpg_original.jpg"
-    # revert_original_img(backup_file_path, image_file)
-    result = ImageProcessor.deskew(
-        image_file, output_file_path=output_file_path)
-    print(result)
-    assert result == {'skew_corrected': False,
-                      'method': [
-                          {'name': 'CV2_HOUGH_LP', 'selected': False, 'detected_skew_angle': 0.0}],
-                      'threshold_angle': 0.1,
-                      'output_file_path': None,
-                      'backup_file_path': None,
-                      'error': None}
-
-
-def test_deskew_corrected_2():
-    """Deskew api test method"""
-    image_file = f"{GITHUB_TEMPLATE_LOCATION}/citi-w9-docs/RT80.jpg"
-    output_file_path = "data/temp/citi-w9-docs_RT80.jpg_deskewed.jpg"
-    # backup_file_path = f"{GITHUB_TEMPLATE_LOCATION}/citi-w9-docs/RT80_orig.jpg"
-    # revert_original_img(backup_file_path, image_file)
-    result = ImageProcessor.deskew(
-        image_file, output_file_path=output_file_path)
-    print(result)
-    assert result == {'skew_corrected': True,
-                      'method': [
-                          {'name': 'CV2_HOUGH_LP', 'selected': True, 'detected_skew_angle': -0.8041}],
-                      'threshold_angle': 0.1,
-                      'output_file_path': output_file_path,
                       'backup_file_path': None,
                       'error': None}
 

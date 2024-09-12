@@ -6,6 +6,7 @@
 
 import json
 from typing import List
+import logging
 import infy_fs_utils
 from ..data import (ControllerRequestData,
                     ControllerResponseData, ProcessorResponseData)
@@ -23,6 +24,11 @@ class BController(IController):
         super().__init__()
         self.__fs_handler = infy_fs_utils.manager.FileSystemManager(
         ).get_fs_handler(Constants.FSH_DPP)
+        if infy_fs_utils.manager.FileSystemLoggingManager().has_fs_logging_handler(Constants.FSLH_DPP):
+            self.__logger = infy_fs_utils.manager.FileSystemLoggingManager(
+            ).get_fs_logging_handler(Constants.FSLH_DPP).get_logger()
+        else:
+            self.__logger = logging.getLogger(__name__)
 
     def do_execute_batch(self, controller_request_data: ControllerRequestData) -> ControllerResponseData:
         print("Executing BController...")
@@ -41,6 +47,9 @@ class BController(IController):
                        processor_response_data_list: List[ProcessorResponseData]) \
             -> ControllerResponseData:
         return SnapshotUtil().save_snapshots(controller_request_data, processor_response_data_list)
+    
+    def _get_logger(self):
+        return self.__logger
 
     # --------- Private Methods -------------
     def __load_json(self, file_path) -> any:

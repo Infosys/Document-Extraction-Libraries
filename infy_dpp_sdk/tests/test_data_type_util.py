@@ -43,5 +43,5 @@ def test_get_all_key_paths_1():
     with open(SAMPLE_FILE_PATH, encoding='utf-8') as f1:
         data_dict = json.load(f1)
     key_paths = DataTypeUtil().get_all_key_paths(data_dict)
-    assert len(key_paths) == 35
+    assert len(key_paths) == 31
     assert key_paths[0] == ['name', 'pipeline1']

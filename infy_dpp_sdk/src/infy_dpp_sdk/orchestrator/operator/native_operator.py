@@ -12,7 +12,6 @@ import traceback
 import infy_fs_utils
 from ...interface import IProcessor
 from ...data import (ControllerRequestData, ControllerResponseData)
-from ...common.dpp_json_encoder import DppJSONEncoder
 from ...common import Constants
 from ...common.snapshot_util import SnapshotUtil
 from ...common.processor_helper import ProcessorHelper
@@ -100,7 +99,7 @@ class NativeOperator():
             controller_response_data: ControllerResponseData = snapshot_util.save_snapshots(
                 controller_request_data, new_processor_response_list)
 
-            dpp_controller_res_file_path = self.__create_controller_response_file(
+            dpp_controller_res_file_path = snapshot_util.save_controller_response_data(
                 controller_response_data)
 
             output_variables_dict = processor_deployment_config_data['output']['variables']
@@ -112,20 +111,3 @@ class NativeOperator():
         except Exception as ex:
             raise Exception(ex) from ex
         return new_output_variables_dict
-
-    def __create_controller_response_file(self, controller_response_data: ControllerResponseData):
-        temp_folder_path = Constants.ORCHESTRATOR_ROOT_PATH
-        request_id = controller_response_data.request_id
-        self.__fs_handler.create_folders(temp_folder_path)
-        json_file_path = f"{temp_folder_path}/{request_id}_dpp_controller_response.json"
-        self.__logger.info("Processor input config file path - %s",
-                           json_file_path)
-        # Due to TypeError: Object of type ProcessorFilterData is not JSON serializable
-        controller_response_data = json.loads(
-            DppJSONEncoder().encode(controller_response_data))
-        data_as_json_str = json.dumps(controller_response_data, indent=4)
-        self.__fs_handler.write_file(
-            json_file_path, data_as_json_str, encoding='utf-8')
-        # rel_path = json_file_path.replace(data_root_path, "")
-        # return rel_path
-        return json_file_path

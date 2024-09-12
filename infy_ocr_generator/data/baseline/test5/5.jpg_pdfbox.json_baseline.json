@@ -1,0 +1,482 @@
+{
+    "page": 5,
+    "width": 2550,
+    "height": 3299,
+    "bbox": "X1,Y1,X2,Y2",
+    "tokens": [
+        {
+            "id": "P5_L1",
+            "type": "line",
+            "text": "PERIOD OF PERFORMANCE ",
+            "uri": "",
+            "bbox": [
+                300,
+                296,
+                1000,
+                318
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P5_L2",
+            "type": "line",
+            "text": " ",
+            "uri": "",
+            "bbox": [
+                300,
+                389,
+                312,
+                408
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P5_L3",
+            "type": "line",
+            "text": "Project Start Date: 5th Jan 2023 ",
+            "uri": "",
+            "bbox": [
+                300,
+                443,
+                893,
+                463
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P5_L4",
+            "type": "line",
+            "text": "Project End Date: 31st Dec 2023 ",
+            "uri": "",
+            "bbox": [
+                300,
+                540,
+                907,
+                560
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P5_L5",
+            "type": "line",
+            "text": "PLACE OF PERFORMANCE ",
+            "uri": "",
+            "bbox": [
+                300,
+                651,
+                971,
+                673
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P5_L6",
+            "type": "line",
+            "text": " ",
+            "uri": "",
+            "bbox": [
+                300,
+                743,
+                312,
+                763
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P5_L7",
+            "type": "line",
+            "text": "Project Locations : ",
+            "uri": "",
+            "bbox": [
+                300,
+                798,
+                655,
+                818
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P5_L8",
+            "type": "line",
+            "text": "1. Pune ",
+            "uri": "",
+            "bbox": [
+                375,
+                895,
+                559,
+                915
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P5_L9",
+            "type": "line",
+            "text": "2. Noida ",
+            "uri": "",
+            "bbox": [
+                375,
+                943,
+                571,
+                962
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P5_L10",
+            "type": "line",
+            "text": " ",
+            "uri": "",
+            "bbox": [
+                300,
+                1012,
+                312,
+                1031
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P5_L11",
+            "type": "line",
+            "text": "APPLICABLE STANDARDS ",
+            "uri": "",
+            "bbox": [
+                300,
+                1123,
+                951,
+                1145
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P5_L12",
+            "type": "line",
+            "text": " ",
+            "uri": "",
+            "bbox": [
+                300,
+                1215,
+                312,
+                1235
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P5_L13",
+            "type": "line",
+            "text": "NA ",
+            "uri": "",
+            "bbox": [
+                300,
+                1270,
+                370,
+                1290
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P5_L14",
+            "type": "line",
+            "text": "SPECIFIC REQUIREMENTS ",
+            "uri": "",
+            "bbox": [
+                300,
+                1381,
+                972,
+                1403
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P5_L15",
+            "type": "line",
+            "text": " ",
+            "uri": "",
+            "bbox": [
+                300,
+                1473,
+                312,
+                1493
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P5_L16",
+            "type": "line",
+            "text": "NA ",
+            "uri": "",
+            "bbox": [
+                300,
+                1528,
+                370,
+                1548
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P5_L17",
+            "type": "line",
+            "text": "RESOURCE REQUIREMENTS ",
+            "uri": "",
+            "bbox": [
+                300,
+                1640,
+                1020,
+                1661
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P5_L18",
+            "type": "line",
+            "text": " ",
+            "uri": "",
+            "bbox": [
+                300,
+                1732,
+                312,
+                1751
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P5_L19",
+            "type": "line",
+            "text": "Project Manager \u2013 2 ",
+            "uri": "",
+            "bbox": [
+                300,
+                1787,
+                687,
+                1806
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P5_L20",
+            "type": "line",
+            "text": "Project Lead \u2013 5 ",
+            "uri": "",
+            "bbox": [
+                300,
+                1883,
+                615,
+                1903
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P5_L21",
+            "type": "line",
+            "text": "Tester -1 ",
+            "uri": "",
+            "bbox": [
+                300,
+                1980,
+                478,
+                2000
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P5_L22",
+            "type": "line",
+            "text": " ",
+            "uri": "",
+            "bbox": [
+                300,
+                2077,
+                312,
+                2097
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P5_L23",
+            "type": "line",
+            "text": "VENDOR RESPONSIBILITIES ",
+            "uri": "",
+            "bbox": [
+                300,
+                2188,
+                1014,
+                2210
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P5_L24",
+            "type": "line",
+            "text": "\u2022 ",
+            "uri": "",
+            "bbox": [
+                375,
+                2263,
+                406,
+                2282
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P5_L25",
+            "type": "line",
+            "text": "Consulting ",
+            "uri": "",
+            "bbox": [
+                450,
+                2262,
+                659,
+                2282
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P5_L26",
+            "type": "line",
+            "text": "\u2022 ",
+            "uri": "",
+            "bbox": [
+                375,
+                2314,
+                406,
+                2333
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P5_L27",
+            "type": "line",
+            "text": "Design ",
+            "uri": "",
+            "bbox": [
+                450,
+                2313,
+                591,
+                2333
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P5_L28",
+            "type": "line",
+            "text": "CLIENT RESPONSIBILITIES ",
+            "uri": "",
+            "bbox": [
+                300,
+                2396,
+                981,
+                2418
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P5_L29",
+            "type": "line",
+            "text": "\u2022 ",
+            "uri": "",
+            "bbox": [
+                375,
+                2471,
+                406,
+                2490
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P5_L30",
+            "type": "line",
+            "text": "Vendor selection ",
+            "uri": "",
+            "bbox": [
+                450,
+                2470,
+                772,
+                2490
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P5_L31",
+            "type": "line",
+            "text": "\u2022 ",
+            "uri": "",
+            "bbox": [
+                375,
+                2521,
+                406,
+                2540
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P5_L32",
+            "type": "line",
+            "text": "Equipment procurement ",
+            "uri": "",
+            "bbox": [
+                450,
+                2521,
+                906,
+                2540
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P5_L33",
+            "type": "line",
+            "text": " ",
+            "uri": "",
+            "bbox": [
+                300,
+                2590,
+                312,
+                2609
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P5_L34",
+            "type": "line",
+            "text": " ",
+            "uri": "",
+            "bbox": [
+                300,
+                2686,
+                312,
+                2706
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P5_L35",
+            "type": "line",
+            "text": " ",
+            "uri": "",
+            "bbox": [
+                300,
+                2783,
+                312,
+                2803
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P5_L36",
+            "type": "line",
+            "text": " ",
+            "uri": "",
+            "bbox": [
+                300,
+                2880,
+                312,
+                2899
+            ],
+            "tokens": []
+        }
+    ],
+    "infy_ocr_generator_metadata": {
+        "dpi": 300,
+        "width": 2550,
+        "height": 3299,
+        "doc_page_num": "5"
+    }
+}

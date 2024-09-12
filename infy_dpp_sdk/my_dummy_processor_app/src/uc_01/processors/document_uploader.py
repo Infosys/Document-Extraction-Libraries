@@ -27,6 +27,16 @@ class DocumentUploaderV1(infy_dpp_sdk.interface.IProcessor):
 
         message_data = infy_dpp_sdk.data.MessageData()
 
+        business_attributes = []
+        for key, value in context_data.items():
+            if key.startswith("AttributeExtractor"):
+                business_attributes.extend(value)
+
+        # Populate document data
+        if not document_data.business_attribute_data:
+            document_data.business_attribute_data = []
+        document_data.business_attribute_data.extend(business_attributes)
+
         _config_data = config_data.get("DocumentUploader")
         fs_handler: infy_fs_utils.interface.IFileSystemHandler = self.get_fs_handler()
         output_folder_path = _config_data.get('writePath')
@@ -40,13 +50,16 @@ class DocumentUploaderV1(infy_dpp_sdk.interface.IProcessor):
         }
         # Populate response data
         message_item_data = infy_dpp_sdk.data.MessageItemData(
-            message_code=infy_dpp_sdk.data.MessageCodeEnum.INFO_SUCCESS,   
+            message_code=infy_dpp_sdk.data.MessageCodeEnum.INFO_SUCCESS,
             message_type=infy_dpp_sdk.data.MessageTypeEnum.INFO,
-            )
+        )
         message_data.messages.append(message_item_data)
         processor_response_data = infy_dpp_sdk.data.ProcessorResponseData(
             document_data=document_data, context_data=context_data,
             message_data=message_data)
+        # To test scenario without message_data in response
+        # processor_response_data = infy_dpp_sdk.data.ProcessorResponseData(
+        #     document_data=document_data, context_data=context_data)
 
         logger.debug("Exiting")
         return processor_response_data

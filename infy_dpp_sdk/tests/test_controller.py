@@ -17,7 +17,7 @@ REQUEST_FILE_PATH_2 = "/data/work/R-54a9450fe33b-dpp_controller_request.json"
 
 
 @pytest.fixture(scope='module', autouse=True)
-def pre_test(create_root_folders, copy_files_to_root_folder, update_json_file):
+def pre_test(create_root_folders, copy_files_to_root_folder):
     """Test pre-run method"""
     # Create data folders
     create_root_folders([STORAGE_ROOT_PATH])
@@ -37,12 +37,7 @@ def pre_test(create_root_folders, copy_files_to_root_folder, update_json_file):
         ['R-54a9450fe33b-dpp_controller_request.json', f"{SAMPLE_ROOT_PATH}/work",
             f"{STORAGE_ROOT_PATH}/data/work"],
     ]
-    copied_files = copy_files_to_root_folder(FILES_TO_COPY)
-    # Update dynamic value of STORAGE_ROOT_PATH in input config json file
-    update_json_file(copied_files[2][2] + '/' + copied_files[2][0],
-                     'variables.DPP_STORAGE_ROOT_URI', f"file://{STORAGE_ROOT_PATH}")
-    update_json_file(copied_files[3][2] + '/' + copied_files[3][0],
-                     'variables.DPP_STORAGE_ROOT_URI', f"file://{STORAGE_ROOT_PATH}")
+    copy_files_to_root_folder(FILES_TO_COPY)
 
     storage_config_data = infy_fs_utils.data.StorageConfigData(
         **{
