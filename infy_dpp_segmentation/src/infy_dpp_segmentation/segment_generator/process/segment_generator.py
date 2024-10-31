@@ -50,6 +50,9 @@ class SegmentGenerator(infy_dpp_sdk.interface.IProcessor):
         from_files_full_path = __get_temp_file_path(org_files_full_path)
         _, extension = os.path.splitext(from_files_full_path)
         for technique in segment_gen_config_data.get('techniques', []):
+            segments_list = []
+            table_data_list = []
+            image_data_list = []
             if not technique.get("enabled"):
                 continue
             else:
@@ -72,13 +75,20 @@ class SegmentGenerator(infy_dpp_sdk.interface.IProcessor):
                             extraction_technique = 'ocr_based'
                         elif text_provider_name == "ContentExtractor.table_contents_file_path":
                             extraction_technique = 'pdf_plumber_table_extraction'
+                        elif text_provider_name == "ContentExtractor.img_yolox_infy_table_extractor_file_path":
+                            extraction_technique = 'yolox_infy_table_extraction'
                         elif text_provider_name == "ContentExtractor.image_contents_file_path":
                             extraction_technique = 'pdf_box_with_OCR_image_extraction'
+                        elif text_provider_name in ["tesseract_ocr_provider", "infy_ocr_engine_provider", "azure_read_ocr_provider"]:
+                            extraction_technique = 'pdf_scanned_ocr_extraction'
                         else:
                             extraction_technique = 'native_pdf'
-                    elif input_file_type == 'image' and extension in ['.jpg', '.jpeg', '.png']:
+                    elif input_file_type == 'image' and extension in ['.jpg', '.jpeg', '.png', '.tif', '.tiff']:
                         # ,'.tif','.tiff'
-                        extraction_technique = 'ocr_based'
+                        if text_provider_name == "ContentExtractor.img_yolox_infy_table_extractor_file_path":
+                            extraction_technique = 'yolox_infy_table_extraction'
+                        else:
+                            extraction_technique = 'ocr_based'
                     elif input_file_type == 'txt' and extension == '.txt':
                         extraction_technique = 'text'
                     else:
@@ -95,21 +105,30 @@ class SegmentGenerator(infy_dpp_sdk.interface.IProcessor):
                     if content_extracted.get('ocr_files_path_list'):
                         ocr_files_path_list = content_extracted.get(
                             'ocr_files_path_list')
-                pdf_box_seg_gen_obj = PdfBoxBasedSegmentGenerator(
-                    text_provider_dict)
-                segments_list = pdf_box_seg_gen_obj.get_segment_data(
-                    from_files_full_path, out_file_full_path, ocr_files_path_list)
-                segment_data_dict = {"technique": extraction_technique,
-                                     "segments": segments_list}
-                segment_data_list.append(segment_data_dict)
+                        pdf_box_seg_gen_obj = PdfBoxBasedSegmentGenerator(
+                            text_provider_dict)
+                        segments_list = pdf_box_seg_gen_obj.get_segment_data(
+                            from_files_full_path, out_file_full_path, ocr_files_path_list)
+                        segment_data_dict = {"technique": extraction_technique,
+                                             "segments": segments_list}
+                        segment_data_list.append(segment_data_dict)
             if extraction_technique == 'ocr_based':
-                ocr_based_seg_gene_obj = OcrBasedSegmentGenerator(
-                    text_provider_dict, model_provider_dict)
-                segments_list = ocr_based_seg_gene_obj.get_segment_data(
-                    from_files_full_path, out_file_full_path)
-                segment_data_dict = {"technique": extraction_technique,
-                                     "segments": segments_list}
-                segment_data_list.append(segment_data_dict)
+                ocr_files_list = []
+                content_extracted = context_data.get('content_extractor')
+                if content_extracted:
+                    if content_extracted.get('image_ocr').get('image_ocr_file_path'):
+                        ocr_files_list = [content_extracted.get(
+                            'image_ocr').get('image_ocr_file_path')]
+                    elif content_extracted.get('tiff_image_ocr').get('tiff_image_ocr_file_path_list'):
+                        ocr_files_list = content_extracted.get(
+                            'tiff_image_ocr').get('tiff_image_ocr_file_path_list')
+                    ocr_based_seg_gene_obj = OcrBasedSegmentGenerator(
+                        text_provider_dict, model_provider_dict)
+                    segments_list = ocr_based_seg_gene_obj.get_segment_data(
+                        from_files_full_path, out_file_full_path, ocr_files_list)
+                    segment_data_dict = {"technique": extraction_technique,
+                                         "segments": segments_list}
+                    segment_data_list.append(segment_data_dict)
             if extraction_technique == 'json':
                 flattened_text = self.__get_plain_text(
                     template_file_path, from_files_full_path)
@@ -140,10 +159,22 @@ class SegmentGenerator(infy_dpp_sdk.interface.IProcessor):
                             'table_contents_file_path')
                         table_data_list = self.__get_table_content(
                             table_content_path, from_files_full_path)
-                        extraction_technique = 'pdf_plumber_table_extraction'
-                        table_data_dict = {"technique": extraction_technique,
-                                           "segments": table_data_list}
-                        segment_data_list.append(table_data_dict)
+                extraction_technique = 'pdf_plumber_table_extraction'
+                table_data_dict = {"technique": extraction_technique,
+                                   "segments": table_data_list}
+                segment_data_list.append(table_data_dict)
+            if extraction_technique == 'yolox_infy_table_extraction':
+                content_extracted = context_data.get('content_extractor')
+                if content_extracted:
+                    if content_extracted.get('img_yolox_infy_table_extractor_file_path'):
+                        table_content_path = content_extracted.get(
+                            'img_yolox_infy_table_extractor_file_path')
+                        table_data_list = self.__get_table_content(
+                            table_content_path, from_files_full_path)
+                extraction_technique = 'yolox_infy_table_extraction'
+                table_data_dict = {"technique": extraction_technique,
+                                   "segments": table_data_list}
+                segment_data_list.append(table_data_dict)
             if extraction_technique == 'pdf_box_with_OCR_image_extraction':
                 content_extracted = context_data.get('content_extractor')
                 if content_extracted:
@@ -152,10 +183,24 @@ class SegmentGenerator(infy_dpp_sdk.interface.IProcessor):
                             'image_contents_file_path')
                         image_data_list = self.__get_image_content(
                             image_content_path, from_files_full_path)
-                        extraction_technique = 'pdf_box_with_OCR_image_extraction'
-                        image_data_dict = {"technique": extraction_technique,
-                                           "segments": image_data_list}
-                        segment_data_list.append(image_data_dict)
+                extraction_technique = 'pdf_box_with_OCR_image_extraction'
+                image_data_dict = {"technique": extraction_technique,
+                                   "segments": image_data_list}
+                segment_data_list.append(image_data_dict)
+            if extraction_technique == 'pdf_scanned_ocr_extraction':
+                content_extracted = context_data.get('content_extractor')
+                if content_extracted:
+                    if content_extracted.get('pdf_scanned_ocr_path_list'):
+                        pdf_scanned_ocr_path_list = content_extracted.get(
+                            'pdf_scanned_ocr_path_list')
+                        ocr_based_seg_gene_obj = OcrBasedSegmentGenerator(
+                            text_provider_dict, model_provider_dict)
+                        segments_list = ocr_based_seg_gene_obj.get_segment_data(
+                            from_files_full_path, out_file_full_path, pdf_scanned_ocr_path_list)
+                        segment_data_dict = {"technique": extraction_technique,
+                                             "segments": segments_list}
+                        segment_data_list.append(segment_data_dict)
+
             # ToDo: R: to be uncommented for multi technique pdfs
             # detectron_segment_data_dict = {
             #     "technique": "detectron",
@@ -312,6 +357,8 @@ class SegmentGenerator(infy_dpp_sdk.interface.IProcessor):
 
     def __rescale_content_bbox(self, bbox, page_number, page_width, page_height, storage_dir_path):
         page_content_path = f'{storage_dir_path}/{page_number}.jpg_pdfbox.json'
+        if not self.__file_sys_handler.exists(page_content_path):
+            return bbox
         page_content = json.loads(
             self.__file_sys_handler.read_file(page_content_path))
         # page_content_path = f'{from_files_full_path}_files/{page_number}.jpg_pdfbox.json'

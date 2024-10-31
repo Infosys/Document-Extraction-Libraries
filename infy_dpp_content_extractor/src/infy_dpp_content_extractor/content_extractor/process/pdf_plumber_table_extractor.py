@@ -25,14 +25,16 @@ class PdfPlumberTableExtractor:
             from_files_full_path, out_file_full_path)
 
         tables_content = FileUtil.load_json(tables_content_file_path)
+        all_tables_empty = True
         # Iterate over each page in tables_content
         for page in tables_content:
-            # Check if 'tables' key exists in the page and if all tables are empty
-            if 'tables' in page and all(not token for token in page['tables']):
-                FileUtil.delete_file(tables_content_file_path)
-                return ""
-            else:
+            # Check if all tables are empty
+            if any(page['tables']):
+                all_tables_empty = False
                 break
+        if all_tables_empty:
+            FileUtil.delete_file(tables_content_file_path)
+            return ""
 
         # upload the json file to the work location
         server_file_dir = os.path.dirname(tables_content_file_path.replace('\\', '/').replace('//', '/').replace(

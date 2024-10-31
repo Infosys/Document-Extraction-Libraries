@@ -23,24 +23,28 @@ class ChunkingData:
             cleaned_data_list.append(segment_data)
         return cleaned_data_list
 
-    def group_chunk_data(self, segment_data_list, chunking_method, pages_list, exclude_types_list,
-                         merge_title_paragraph, resources_file_path, max_char_limit):
-        if chunking_method == 'page':
-            rule_name = 'rule_segment_page_data'
-        if chunking_method == 'page_character':
-            rule_name = 'rule_segment_page_data'
-        if chunking_method == 'segment':
-            rule_name = 'rule_segment_segment_data'
-            if merge_title_paragraph:
-                segment_data_list = self.merge_title_paragraph(
-                    segment_data_list)
-        rule_class = CommonUtil.get_rule_class_instance(
-            rule_name, rc_entity_name='')
-        rule_instance: RuleSegmentBaseClass = rule_class()
-        rule_result = rule_instance.template_method(
-            copy.deepcopy(segment_data_list), pages_list, exclude_types_list, resources_file_path, max_char_limit, chunking_method)
+    def group_chunk_data(self, segment_data_list, chunking_method, pages_list, exclude_types_list, merge_title_paragraph, resources_file_path):
+        results = {}
+        for method, config in chunking_method.items():
+            if config.get('enabled', False):  # Check if the method is enabled
+                if method == 'page':
+                    rule_name = 'rule_segment_page_data'
+                elif method == 'segment':
+                    rule_name = 'rule_segment_segment_data'
+                elif method == 'page_character':
+                    rule_name = 'rule_segment_page_data'
+                elif method == 'page_and_segment_type':
+                    rule_name = 'rule_segment_page_segment_type_data'
 
-        return rule_result
+                if rule_name:
+                    rule_class = CommonUtil.get_rule_class_instance(
+                        rule_name, rc_entity_name='')
+                    rule_instance: RuleSegmentBaseClass = rule_class()
+                    rule_result = rule_instance.template_method(
+                        copy.deepcopy(segment_data_list), pages_list, exclude_types_list, resources_file_path, method, config)
+                    results[method] = rule_result
+
+        return results
 
     def merge_title_paragraph(self, segment_data_list):
         # Initialize variables

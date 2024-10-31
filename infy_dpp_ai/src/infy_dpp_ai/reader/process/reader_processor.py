@@ -17,6 +17,7 @@ import infy_fs_utils
 from infy_dpp_ai.reader.service.provider.moderator import Moderator
 from .cache_manager import CacheManager
 from ..service.provider.custom_llm_provider import CustomLlmProvider, CustomLlmProviderConfigData
+from ..service.provider.llama_3_1_llm_provider import LlamaLlmProvider, LlamaLlmProviderConfigData
 PROCESSEOR_CONTEXT_DATA_NAME = "reader"
 
 # class ReaderProcessor():
@@ -40,6 +41,8 @@ class Reader(infy_dpp_sdk.interface.IProcessor):
         processor_response_data = infy_dpp_sdk.data.ProcessorResponseData()
         __processor_config_data = config_data.get('Reader', {})
         document_id = document_data.document_id
+        vector_storage = ""
+        sparse_storage = ""
         get_llm = ""
         get_llm_config = {}
         used_cache = False
@@ -48,11 +51,19 @@ class Reader(infy_dpp_sdk.interface.IProcessor):
         moderation_results = {}
         moderation_status = "PASSED"
         moderation_enabled = False
+        vector_enabled = False
+        sparse_enabled = False
+        rrf_enabled = False
 
         for key, value in __processor_config_data.items():
             if key == 'llm':
                 for e_key, e_val in value.items():
                     if e_key == 'openai':
+                        if e_val.get('enabled'):
+                            get_llm = e_key
+                            get_llm_config = e_val.get('configuration')
+                            break
+                    if e_key == 'llama-3-1':
                         if e_val.get('enabled'):
                             get_llm = e_key
                             get_llm_config = e_val.get('configuration')
@@ -68,21 +79,40 @@ class Reader(infy_dpp_sdk.interface.IProcessor):
                                 custom_llm_name = custom_llm_key
                                 break
             if key == 'storage':
-                for e_key, e_val in value.items():
-                    if e_val.get('enabled'):
-                        get_storage = e_key
-                        get_storage_config = e_val.get('configuration')
-                        # encoded_files_root_path= get_storage_config.get("encoded_files_root_path")
-                        # chunked_files_root_path= get_storage_config.get("chunked_files_root_path")
+                for storage_key, storage_value in value.items():
+                    if storage_key == 'vectordb':
+                        for e_key, e_val in storage_value.items():
+                            if e_key and e_val.get('enabled'):
+                                vector_enabled = True
+                                vector_storage = e_key
+                                vector_storage_config = e_val.get(
+                                    'configuration')
+                                # encoded_files_root_path= get_storage_config.get("encoded_files_root_path")
+                                # chunked_files_root_path= get_storage_config.get("chunked_files_root_path")
+
+                    if storage_key == 'sparseindex':
+                        for e_key, e_val in storage_value.items():
+                            if e_key and e_val.get('enabled'):
+                                sparse_enabled = True
+                                sparse_storage = e_key
+
             if key == 'moderation':
                 moderation_enabled = value.get('enabled')
                 if moderation_enabled:
                     moderation_config = value.get('configuration')
                     moderation_payload = value.get('json_payload')
 
+            if key == 'hybrid_search':
+                for hybrid_key, hybrid_value in value.items():
+                    if hybrid_key == 'rrf':
+                        if hybrid_value.get('enabled'):
+                            rrf_enabled = True
+
         # Step 1 - Choose LLM provider
         model_name = ''
-        if get_llm == 'openai' and get_storage == 'faiss':
+        vector_types = ['faiss']
+        sparse_types = ['bm25s', 'infy_db_service']
+        if get_llm == 'openai' and (vector_storage in vector_types or sparse_storage in sparse_types):
             os.environ["TIKTOKEN_CACHE_DIR"] = get_llm_config['tiktoken_cache_dir']
             llm_provider_config_data = infy_gen_ai_sdk.llm.provider.OpenAILlmProviderConfigData(
                 **get_llm_config)
@@ -91,13 +121,20 @@ class Reader(infy_dpp_sdk.interface.IProcessor):
             cache_enabled = __processor_config_data.get('llm').get('openai'
                                                                    ).get('cache').get('enabled')
             model_name = llm_provider_config_data.deployment_name
-        if get_llm == 'custom' and get_storage == 'faiss':
+        if get_llm == 'custom' and (vector_storage in vector_types or sparse_storage in sparse_types):
             llm_provider_config_data = CustomLlmProviderConfigData(
                 **get_llm_config)
             llm_provider = CustomLlmProvider(
                 llm_provider_config_data, json_payload_dict, custom_llm_name)
             cache_enabled = False
             model_name = custom_llm_name
+        if get_llm == 'llama-3-1' and (vector_storage in vector_types or sparse_storage in sparse_types):
+            llm_provider_config_data = LlamaLlmProviderConfigData(
+                **get_llm_config)
+            llm_provider = LlamaLlmProvider(
+                llm_provider_config_data)
+            cache_enabled = False
+            model_name = llm_provider_config_data.deployment_name
         context_data = context_data if context_data else {}
         # QUERY RETRIEVER VALIDATION  HANDLED#
         if context_data.get('query_retriever').get('error'):
@@ -119,7 +156,23 @@ class Reader(infy_dpp_sdk.interface.IProcessor):
             self.__logger.info(f'...Question...{query["question"]}')
             QUESTION = query["question"]
             qr_attr_key = query['attribute_key']
-            top_k_matches_list = query['top_k_matches']
+            top_k_matches_list = []
+
+            top_k_len = len(query['top_k_matches'])
+            if top_k_len > 1 and sum([vector_enabled, sparse_enabled]) >= 2 and rrf_enabled:
+                key_to_use = 'rrf'
+            elif top_k_len >= 1 and vector_enabled and not sparse_enabled:
+                key_to_use = 'vectordb'
+            elif top_k_len >= 1 and vector_enabled and sparse_enabled and not rrf_enabled:
+                key_to_use = 'vectordb'
+            elif top_k_len >= 1 and sparse_enabled and not vector_enabled:
+                key_to_use = 'sparseindex'
+
+            for item in query['top_k_matches']:
+                if key_to_use in item:
+                    top_k_matches_list.extend(item[key_to_use])
+                else:
+                    continue
             # Combining text logic
             combined_files_dict = {}
             for k, v in named_context_templates_dict.items():

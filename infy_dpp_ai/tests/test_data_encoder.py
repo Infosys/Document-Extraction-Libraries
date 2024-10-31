@@ -84,4 +84,4 @@ def test_dpp_ai_1():
         input_config_file_path=PROCESSOR_INPUT_CONFIG_PATH)
     response_data_list = dpp_orchestrator.run_batch()
 
-    assert response_data_list[0].context_data.get('data_encoder') is not None
+    assert response_data_list[0].context_data.get('db_indexer') is not None

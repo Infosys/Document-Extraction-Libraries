@@ -81,16 +81,15 @@ def test_dpp_segmentation_1():
     """
     PROCESSOR_INPUT_CONFIG_PATH = '/data/config/pipeline_input_config_data_page_char.json'
     dpp_orchestrator = infy_dpp_sdk.orchestrator.OrchestratorNativeBasic(
-    input_config_file_path=PROCESSOR_INPUT_CONFIG_PATH)
+        input_config_file_path=PROCESSOR_INPUT_CONFIG_PATH)
     response_data_list = dpp_orchestrator.run_batch()
-    page_char_list = response_data_list[0].context_data.get('chunk_generator').get('page_segment_data')
-    meta_data = response_data_list[0].context_data.get('chunk_generator').get('meta_data')
+    page_char_list = response_data_list[0].context_data.get(
+        'chunk_generator').get('page_character').get('chunked_data')
+    meta_data = response_data_list[0].context_data.get(
+        'chunk_generator').get('page_character').get('meta_data')
 
     for page_char in page_char_list:
         assert len(page_char_list.get(page_char)) <= 800
-    for key , value in meta_data.items():
+    for key, value in meta_data.items():
         seq_no = value.get('sequence_no')
         assert seq_no != -1
-    
-
-

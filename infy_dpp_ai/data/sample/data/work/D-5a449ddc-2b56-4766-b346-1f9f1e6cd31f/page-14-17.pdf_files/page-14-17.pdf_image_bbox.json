@@ -1,0 +1,242 @@
+[
+    {
+        "page": 1,
+        "width": 1224.0,
+        "height": 792.0,
+        "bbox": "X1,Y1,X2,Y2",
+        "tokens": [
+            {
+                "id": "P1_IMG1",
+                "type": "image",
+                "text": "",
+                "uri": "file:///P1_IMG1.jpg",
+                "bbox": [
+                    44.1511,
+                    743.2665,
+                    210.3616,
+                    561.1904
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_IMG2",
+                "type": "image",
+                "text": "",
+                "uri": "file:///P1_IMG2.jpg",
+                "bbox": [
+                    662.009,
+                    229.0394,
+                    827.9197,
+                    87.874
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_IMG3",
+                "type": "image",
+                "text": "",
+                "uri": "file:///P1_IMG3.jpg",
+                "bbox": [
+                    831.3726,
+                    437.5393,
+                    1004.1726,
+                    334.3393
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_IMG4",
+                "type": "image",
+                "text": "INfosys | Springhiard ",
+                "uri": "file:///P1_IMG4.png",
+                "bbox": [
+                    1039.1599,
+                    205.3843,
+                    1161.3755,
+                    172.0528
+                ],
+                "tokens": []
+            }
+        ]
+    },
+    {
+        "page": 2,
+        "width": 1224.0,
+        "height": 792.0,
+        "bbox": "X1,Y1,X2,Y2",
+        "tokens": [
+            {
+                "id": "P2_IMG1",
+                "type": "image",
+                "text": "",
+                "uri": "file:///P2_IMG1.jpg",
+                "bbox": [
+                    610.901,
+                    742.0257,
+                    1179.7446,
+                    83.9739
+                ],
+                "tokens": []
+            }
+        ]
+    },
+    {
+        "page": 3,
+        "width": 1224.0,
+        "height": 792.0,
+        "bbox": "X1,Y1,X2,Y2",
+        "tokens": [
+            {
+                "id": "P3_IMG1",
+                "type": "image",
+                "text": "",
+                "uri": "file:///P3_IMG1.jpg",
+                "bbox": [
+                    610.9238,
+                    741.9951,
+                    1179.7441,
+                    83.8701
+                ],
+                "tokens": []
+            }
+        ]
+    },
+    {
+        "page": 4,
+        "width": 1224.0,
+        "height": 792.0,
+        "bbox": "X1,Y1,X2,Y2",
+        "tokens": [
+            {
+                "id": "P4_IMG1",
+                "type": "image",
+                "text": "tor Advisory Servi e Grrernance ",
+                "uri": "file:///P4_IMG1.jpg",
+                "bbox": [
+                    44.4728,
+                    586.5894,
+                    210.3546,
+                    459.774
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_IMG2",
+                "type": "image",
+                "text": "HCM EXCELLENCE AWARDS Ny / Brandon Hall GROUE 3 ",
+                "uri": "file:///P4_IMG2.png",
+                "bbox": [
+                    405.9871,
+                    573.0081,
+                    550.7468,
+                    471.5605
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_IMG3",
+                "type": "image",
+                "text": "",
+                "uri": "file:///P4_IMG3.png",
+                "bbox": [
+                    876.9243,
+                    244.4393,
+                    958.2793,
+                    167.198
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_IMG4",
+                "type": "image",
+                "text": "TP ... CERTIFIED EXCELLENCE IN EMPLOYEE CONDITIONS EMPLOYER | 2023 .4 ",
+                "uri": "file:///P4_IMG4.png",
+                "bbox": [
+                    663.0236,
+                    582.4832,
+                    827.4724,
+                    507.3257
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_IMG5",
+                "type": "image",
+                "text": "WINNER 2022 ©ONE AWARDS Innovation Ecosystem ",
+                "uri": "file:///P4_IMG5.png",
+                "bbox": [
+                    1014.1968,
+                    340.2845,
+                    1076.5801,
+                    250.7138
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_IMG6",
+                "type": "image",
+                "text": "Voice of the customer (wrs) TOP 10 1 for ",
+                "uri": "file:///P4_IMG6.png",
+                "bbox": [
+                    1047.1057,
+                    184.5462,
+                    1145.4038,
+                    86.3267
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_IMG7",
+                "type": "image",
+                "text": "TOP 10 BEST COMPANIES FOR WOMEN INDIA 2022 §§} seramount ",
+                "uri": "file:///P4_IMG7.png",
+                "bbox": [
+                    635.1713,
+                    356.4023,
+                    854.8745,
+                    136.591
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_IMG8",
+                "type": "image",
+                "text": "",
+                "uri": "file:///P4_IMG8.png",
+                "bbox": [
+                    868.3937,
+                    438.7299,
+                    967.6063,
+                    339.6274
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_IMG9",
+                "type": "image",
+                "text": "",
+                "uri": "file:///P4_IMG9.jpg",
+                "bbox": [
+                    1014.7047,
+                    660.6906,
+                    1178.5787,
+                    552.5337
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_IMG10",
+                "type": "image",
+                "text": "AC Among Nation-Builders India's Best Employers 202 ",
+                "uri": "file:///P4_IMG10.jpg",
+                "bbox": [
+                    842.4567,
+                    655.135,
+                    999.2126,
+                    621.2529
+                ],
+                "tokens": []
+            }
+        ]
+    }
+]

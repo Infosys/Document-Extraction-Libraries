@@ -6,3 +6,4 @@
 
 from .nativepdf_data_service_provider import NativePdfDataServiceProvider
 from .tesseract_data_service_provider import TesseractDataServiceProvider
+from .infy_ocr_engine_data_service_provider import InfyOcrEngineDataServiceProvider

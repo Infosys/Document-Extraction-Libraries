@@ -1,0 +1,18 @@
+[Unit]
+Description=Infosys Search Service (Dev)
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/projadmin/workarea/docwbsln/services/infy_search_service/src
+ExecStart=/usr/bin/bash -c "source /home/projadmin/workarea/docwbsln/services/infy_search_service/.venv/bin/activate; export $(grep -v '^#' ../.env | xargs -d '\n'); python main.py"
+User=projadmin
+Group=projadmin
+Restart=always
+RestartSec=9
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=InfySearchService
+
+[Install]
+WantedBy=multi-user.target

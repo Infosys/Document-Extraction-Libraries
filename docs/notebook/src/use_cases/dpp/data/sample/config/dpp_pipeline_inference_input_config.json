@@ -8,7 +8,8 @@
     "CUSTOM_LLM_BLOOM_INFERENCE_URL": "${ENV:CUSTOM_LLM_BLOOM_INFERENCE_URL}",
     "CUSTOM_LLM_LLAMA_INFERENCE_URL": "${ENV:CUSTOM_LLM_LLAMA_INFERENCE_URL}",
     "CUSTOM_LLM_MIXTRAL_INFERENCE_URL": "${ENV:CUSTOM_LLM_MIXTRAL_INFERENCE_URL}",
-    "CUSTOM_EMB_MISTRAL_INFERENCE_URL": "${ENV:CUSTOM_EMB_MISTRAL_INFERENCE_URL}"
+    "CUSTOM_EMB_MISTRAL_INFERENCE_URL": "${ENV:CUSTOM_EMB_MISTRAL_INFERENCE_URL}",
+    "CUSTOM_LLM_LLAMA_3_1_INFERENCE_URL": "${ENV:CUSTOM_LLM_LLAMA_3_1_INFERENCE_URL}"
   },
   "processor_list": [
     {
@@ -16,36 +17,28 @@
       "processor_name": "request_creator",
       "processor_namespace": "infy_dpp_core.request_creator",
       "processor_class_name": "RequestCreator",
-      "processor_input_config_name_list": [
-        "RequestCreator"
-      ]
+      "processor_input_config_name_list": ["RequestCreator"]
     },
     {
       "enabled": true,
       "processor_name": "retriever",
       "processor_namespace": "infy_dpp_ai.retriever.process.query_retriever_processor",
       "processor_class_name": "QueryRetriever",
-      "processor_input_config_name_list": [
-        "QueryRetriever"
-      ]
+      "processor_input_config_name_list": ["QueryRetriever"]
     },
     {
       "enabled": true,
       "processor_name": "reader",
       "processor_namespace": "infy_dpp_ai.reader.process.reader_processor",
       "processor_class_name": "Reader",
-      "processor_input_config_name_list": [
-        "Reader"
-      ]
+      "processor_input_config_name_list": ["Reader"]
     },
     {
       "enabled": true,
       "processor_name": "request_closer",
       "processor_namespace": "infy_dpp_core.request_closer",
       "processor_class_name": "RequestCloser",
-      "processor_input_config_name_list": [
-        "RequestCloser"
-      ]
+      "processor_input_config_name_list": ["RequestCloser"]
     }
   ],
   "processor_input_config": {
@@ -55,12 +48,8 @@
         "read_path": "/data/input/",
         "batch_size": 20,
         "filter": {
-          "include": [
-            "pdf"
-          ],
-          "exclude": [
-            "_"
-          ]
+          "include": ["pdf"],
+          "exclude": ["_"]
         },
         "work_root_path": "/data/work/",
         "to_request_file": {
@@ -117,7 +106,8 @@
           "enabled": true,
           "configuration": {
             "model_name": "all-MiniLM-L6-v2",
-            "model_home_path": "${MODEL_HOME}"
+            "model_home_path": "${MODEL_HOME}",
+            "tiktoken_cache_dir": "${MODEL_HOME}/tiktoken_encoding"
           }
         },
         "custom": {
@@ -130,19 +120,81 @@
         }
       },
       "storage": {
-        "faiss": {
-          "enabled": true,
-          "configuration": {
-            "chunked_files_root_path": "/data/vectordb/chunked",
-            "encoded_files_root_path": "/data/vectordb/encoded",
-            "db_name": "documents"
+        "vectordb": {
+          "faiss": {
+            "enabled": true,
+            "configuration": {
+              "chunked_files_root_path": "/data/vectordb/chunked",
+              "encoded_files_root_path": "/data/vectordb/encoded",
+              "db_name": "documents",
+              "index_id": "",
+              "collections": [
+                {
+                  "collection_name": "documents",
+                  "collection_secret_key": ""
+                }
+              ],
+              "distance_metric": {
+                "eucledian": true
+              }
+            }
+          },
+          "infy_db_service": {
+            "enabled": false,
+            "configuration": {
+              "db_service_url": "",
+              "model_name": "all-MiniLM-L6-v2",
+              "index_id": "",
+              "collections": [
+                {
+                  "collection_name": "documents",
+                  "collection_secret_key": ""
+                }
+              ]
+            }
           }
+        },
+        "sparseindex": {
+          "bm25s": {
+            "enabled": false,
+            "configuration": {
+              "sparse_index_root_path": "/data/db/sparseindex",
+              "db_name": "documents",
+              "index_id": "",
+              "collections": [
+                {
+                  "collection_name": "documents",
+                  "collection_secret_key": ""
+                }
+              ],
+              "nltk_data_dir": "C:/MyProgramFiles/AI/nltk_data"
+            }
+          },
+          "infy_db_service": {
+            "enabled": false,
+            "configuration": {
+              "db_service_url": "",
+              "method_name": "bm25s",
+              "index_id": "",
+              "collections": [
+                {
+                  "collection_name": "documents",
+                  "collection_secret_key": ""
+                }
+              ]
+            }
+          }
+        }
+      },
+      "hybrid_search": {
+        "rrf": {
+          "enabled": false
         }
       },
       "queries": [
         {
           "attribute_key": "women_emp_pct",
-          "question": "What is the percentage of women employees?",
+          "question": "What is the percentage of women employees in Infosys?",
           "top_k": 1,
           "pre_filter_fetch_k": 10,
           "filter_metadata": {}
@@ -172,13 +224,34 @@
     },
     "Reader": {
       "storage": {
-        "faiss": {
-          "enabled": true,
-          "configuration": {
-            "chunked_files_root_path": "/data/vectordb/chunked",
-            "encoded_files_root_path": "/data/vectordb/encoded",
-            "db_name": "documents"
+        "vectordb": {
+          "faiss": {
+            "enabled": true,
+            "configuration": {
+              "chunked_files_root_path": "/data/vectordb/chunked",
+              "encoded_files_root_path": "/data/vectordb/encoded",
+              "db_name": "documents",
+              "distance_metric": {
+                "eucledian": true
+              }
+            }
+          },
+          "infy_db_service": {
+            "enabled": false
           }
+        },
+        "sparseindex": {
+          "bm25s": {
+            "enabled": false
+          },
+          "infy_db_service": {
+            "enabled": false
+          }
+        }
+      },
+      "hybrid_search": {
+        "rrf": {
+          "enabled": false
         }
       },
       "llm": {
@@ -186,18 +259,33 @@
           "enabled": false,
           "configuration": {
             "api_type": "azure",
-            "api_version": "2022-12-01",
+            "api_version": "2024-02-15-preview",
             "api_url": "${OPENAI_SERVER_URL}",
             "api_key": "${OPENAI_KEY}",
             "max_tokens": 1000,
-            "model_name": "text-davinci-003",
-            "deployment_name": "text-davinci-003",
+            "model_name": "gpt-4",
+            "deployment_name": "gpt4",
             "temperature": 0.7,
+            "is_chat_model": true,
             "tiktoken_cache_dir": "${MODEL_HOME}/tiktoken_encoding"
           },
           "cache": {
             "enabled": true,
             "cache_root_path": "/data/cache/infy_model_service"
+          }
+        },
+        "llama-3-1": {
+          "enabled": true,
+          "configuration": {
+            "inference_url": "${CUSTOM_LLM_LLAMA_3_1_INFERENCE_URL}",
+            "model": "/models/Meta-Llama-3.1-70B-fp8",
+            "temperature": 0.7,
+            "deployment_name": "llama3.1-70b-instuct",
+            "top_p": 0.95,
+            "max_tokens": 800,
+            "stop": null,
+            "presence_penalty": 0,
+            "frequency_penalty": 0
           }
         },
         "custom": {
@@ -238,7 +326,7 @@
             }
           },
           "mixtral8x7b-instruct": {
-            "enabled": true,
+            "enabled": false,
             "configuration": {
               "inference_url": "${CUSTOM_LLM_MIXTRAL_INFERENCE_URL}",
               "tiktoken_cache_dir": "${MODEL_HOME}/tiktoken_encoding",

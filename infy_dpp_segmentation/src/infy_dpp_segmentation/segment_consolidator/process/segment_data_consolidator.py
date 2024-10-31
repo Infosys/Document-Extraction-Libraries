@@ -13,11 +13,17 @@ class SegmentDataConsolidator:
         return not (bbox1[2] <= bbox2[0] or bbox1[0] >= bbox2[2] or bbox1[3] <= bbox2[1] or bbox1[1] >= bbox2[3])
 
     def segment_data_insert(self, data):
+        if data['content_type'] == 'table':
+            print('table')
         for existing_data in self.segment_data_result_list:
             if ((existing_data['page'] == data['page']) and (self.overlaps(data['content_bbox'], existing_data['content_bbox']))):
-                return
+                if data['content_type'] != 'table':
+                    return
+                else:
+                    if hash(data['content']) == hash(existing_data['content']):
+                        return
 
-        if (data['content_type'] == 'image_text'):
+        if (data['content_type'] == 'image_text' or data['content_type'] == 'table'):
             self.segment_data_result_list.append(data)
         elif (data['content_bbox'][3] - data['content_bbox'][1] < 1500):
             self.segment_data_result_list.append(data)

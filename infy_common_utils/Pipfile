@@ -9,7 +9,7 @@ pytest-cov = "==2.12.1"
 autopep8 = "==1.5.1"
 
 [packages]
-opencv-python = "==4.5.5.64"
+opencv-python = ">=4.5.5.64,<5.0.0"
 imageio = "==2.9.0"
 
 [requires]

@@ -92,7 +92,8 @@ def test_1():
     vector_db_provider_config_data = infy_gen_ai_sdk.vectordb.provider.faiss.VectorDbProviderConfigData(
         **{
             'db_folder_path': '/vectordb/st_all-MiniLM-L6-v2/companies',
-            'db_index_name': 'companies'
+            'db_index_name': 'companies',
+            'db_index_secret_key': '1234'
         })
     vector_db_provider = infy_gen_ai_sdk.vectordb.provider.faiss.FaissVectorDbProvider(
         vector_db_provider_config_data, embedding_provider)

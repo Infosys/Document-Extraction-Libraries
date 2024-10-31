@@ -180,7 +180,7 @@ if __name__ == '__main__':
 
     METADATA = dict(
         name="infy_gen_ai_sdk",
-        version="0.0.5",
+        version="0.0.6",
         license="Apache License Version 2.0",
         author="Infosys Limited",
         author_email="",

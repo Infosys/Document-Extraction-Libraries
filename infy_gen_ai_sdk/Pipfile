@@ -17,6 +17,11 @@ sentence-transformers = "==2.2.2"       #[groups=st]
 typing-inspect = {version="==0.8.0", markers="python_version=='3.8'"}
 typing_extensions = {version="==4.12.2", markers="python_version=='3.8'"}
 pydantic = "==1.10.7"
+bm25s = "==0.1.7"
+# torchvision temporarly added as Sentence Transformer downloads latest version having below issue
+# [WinError 126] The specified module could not be found. Error loading "\.venv\Lib\site-packages\torch\lib\fbgemm.dll" or one of its dependencies.
+torchvision="==0.18.1"
+numpy = "==1.24.4"
 
 [requires]
 python_version = "3"

@@ -96,7 +96,7 @@ public class CommonUtil {
 	}
 
 	public static boolean saveAsFile(String fileFullPath, String content) {
-		byte data[] = content.getBytes();
+		byte data[] = content.getBytes(StandardCharsets.UTF_8);
 		boolean isSuccess = true;
 		try (FileOutputStream out = new FileOutputStream(fileFullPath)) {
 			out.write(data);

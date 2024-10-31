@@ -35,7 +35,7 @@ public class Ocr {
 
     private enum EnumSwitchName {
         FROM_FILE("fromfile"), MODEL_DIR("modeldir"), TO_DIR("todir"), LANGUAGE("lang"),
-        OCR_FORMAT("ocrformat");
+        OCR_FORMAT("ocrformat"), PAGE_SEG_MODE("psm");
 
         private String propertyValue;
 
@@ -49,6 +49,7 @@ public class Ocr {
     }
 
     public static void main(String[] args) {
+        long startTime = System.currentTimeMillis();
         try {
             boolean isShowHelpText = false;
             if (args.length > 0) {
@@ -65,6 +66,11 @@ public class Ocr {
         } catch (Exception ex) {
             LOGGER.error("Error occurred in main method.", ex);
             CommonUtil.returnResultToCaller("Error occurred in main method. Please refer to log file for details.");
+        } finally {
+            long endTime = System.currentTimeMillis();
+            long duration = endTime - startTime;
+            double durationSeconds = duration / 1000.0;
+            System.out.println("Time taken: " + durationSeconds + " seconds");
         }
     }
 
@@ -100,6 +106,7 @@ public class Ocr {
         switchData.setLanguage(switchMap.getOrDefault(EnumSwitchName.LANGUAGE.getValue(), Constants.LANGUAGE_ENG));
         switchData.setToDir(switchMap.getOrDefault(EnumSwitchName.TO_DIR.getValue(), null));
         switchData.setOcrFormat(switchMap.getOrDefault(EnumSwitchName.OCR_FORMAT.getValue(), "txt"));
+        switchData.setPageSegMode(switchMap.getOrDefault(EnumSwitchName.PAGE_SEG_MODE.getValue(), "3"));
 
         return switchData;
     }

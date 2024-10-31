@@ -16,7 +16,7 @@ class RuleSegmentSegmentData(RuleSegmentBaseClass):
         self._page_list = page_list
         self._exclude_types_list = exclude_types_list
 
-    def group_segment_data(self, segment_data_list: list, resources_file_path: str, max_char_limit: int, chunking_method: str) -> dict:
+    def group_segment_data(self, segment_data_list: list, resources_file_path: str, chunking_method: str, config: object) -> dict:
         output_dict = {}
         page_data_dict, meta_data_dict = {}, {}
         for idx, segment_data in enumerate(segment_data_list):
@@ -24,7 +24,7 @@ class RuleSegmentSegmentData(RuleSegmentBaseClass):
             page_no = segment_data['page']
             sequence_no = segment_data['sequence']
             content_type = segment_data['content_type']
-            page_seq_comb = f'{page_no}_{sequence_no}'
+            page_seq_comb = f'{page_no}_segment_{sequence_no}'
             if page_no in self._page_list and content_type not in self._exclude_types_list:
                 content = f'{segment_data["content"]}'
                 page_data_dict[page_seq_comb] = content
@@ -36,6 +36,7 @@ class RuleSegmentSegmentData(RuleSegmentBaseClass):
                     "bbox": segment_data['content_bbox'],
                     "doc_name": segment_data['doc_name'],
                     "document_id": segment_data['document_id'],
+                    "chunking_method": chunking_method,
                     "char_count": f'{len(page_data_dict[page_seq_comb])}',
                     "resources": [
                         {

@@ -1,0 +1,229 @@
+Strategy
+
+
+Our clients and prospective clients are faced with
+
+
+transformative business opportunities due to advances in
+
+
+software and computing technology. These organizations
+
+
+are dealing with the challenge of having to reinvent 
+their core offerings, processes and systems rapidly and 
+position themselves as 'digitally enabled'. The journey to 
+the digital future requires not just an understanding of 
+new technologies and new ways of working, but a deep 
+appreciation of existing technology landscapes, business 
+processes and practices. Our strategy is to be a navigator 
+for our clients as they ideate, plan and execute their 
+journey to a digital future.
+We have embraced a four-pronged strategy to strengthen 
+our relevance with clients and drive accelerated 
+value creation:
+
+
+Energize the core
+We believe the investments we have made, and continue 
+to make, in our strategy will enable us to advise and help 
+our clients as they tackle the current market conditions. 
+Further, we have been able to successfully enable most of 
+our employees worldwide to work remotely and securely 
+– giving us the operational stability to deliver on client 
+commitments and ensuring our own business continuity.
+Over the last four years, we have executed this strategy 
+and generated significant outcomes.
+
+
+Scale agile digital
+Our revenue from digital technology-related services 
+and solutions has more than doubled in the last three 
+years, and currently comprises 57% of our total revenue. 
+We are rated as a leader in 54 industry analyst ratings 
+across our digital offerings. These outcomes are a result 
+of investments we have made to expand our digital 
+footprint via reskilling of our employees, targeted 
+acquisitions, strong ecosystem partnerships, innovation 
+experience centers across the world, intellectual property 
+development, reconfiguring our workspaces for agile 
+software development and enhancing our brand.
+
+
+Scale agile digital
+
+
+Reskill our people
+
+
+Expand localization
+
+
+Our human experience-related services expanded with
+
+
+the opening of eight innovation hubs, six digital studios,
+
+
+12 proximity centers and 20 living labs around the world.
+
+
+During the fiscal, we entered into a definitive agreement
+
+
+to acquire oddity to augment our human experience 
+capabilities in Europe. Through our academia partnerships 
+with Purdue, Trinity, RISD and eCornell, we have trained 
+over 4,500 employees in niche digital skills.
+Our Insight and data analytics services and solutions 
+were further strengthened with the launch of our Infosys 
+Applied AI solutions, coupled with the Infosys Data 
+Workbench. Our AI platform, Infosys Applied AI, helps 
+enterprises adopt a comprehensive approach and roadmap 
+to scaling enterprise-grade AI for their businesses. 
+With advances in next-generation computing power, ready 
+access to datasets on the cloud to train Machine Learning 
+models and consumable Artificial Intelligence (AI) services, 
+our solutions enable our clients to generate insights from 
+their data and open opportunities for data monetization.
+Our Innovate-related services and solutions are boosted 
+by workspaces that have been specifically redesigned 
+for agile software development, teams reskilled in agile 
+methodologies, certified scrum masters and capabilities 
+in horizontal technologies such as 5G, autonomous tech, 
+product engineering, internet of things and blockchain.
+Our Accelerate-related services are aimed at rapidly 
+transforming our clients' legacy technology landscapes 
+and processes with digital technology. We invested in, and 
+built strong partnerships with cloud hyperscalers such as 
+AWS, GCP and Microsoft Azure, and SaaS providers. 
+In fiscal 2022, we expanded our integrated cloud offering 
+Infosys Cobalt™, which now offers over 35,000 cloud 
+assets and over 300 industry cloud solution blueprints. 
+Infosys Cobalt™ is helping enterprises to securely access 
+cloud capabilities with the assurance of single-point 
+accountability for outcomes.
+We launched Infosys Equinox, our flagship digital 
+commerce platform, which is a set of core microservices 
+encompassing all digital commerce scenarios to help 
+enterprises rapidly build and deploy features across all 
+touchpoints and channels, without the friction associated 
+with legacy platforms.
+Our Automation and AI services grew on the back of our 
+alliances with leading Robotic Process Automation (RPA) 
+solution providers and niche AI players, powered by our
+
+
+Strategy
+
+
+best-in-class solutions, IPs and frameworks. We have
+
+
+automated over 20,000+ processes for our clients and have
+
+
+over 1,000 ready use cases across industries.
+
+
+Our Assure services, in software testing and cybersecurity,
+
+
+continued to grow with investments in Cyber Gaze, our 
+cybersecurity dashboard and suite of related applications.
+
+
+Energize the core
+Leveraging automation and AI, we are winning and 
+executing several engagements for our clients to 
+modernize their core legacy technology and process 
+landscapes. We made significant investments in our 
+Live Enterprise platform, including our Bot Factory of 
+preconfigured automation bots and LEAP, our platform 
+for optimizing large-scale application maintenance and 
+reengineering. In fiscal 2022, we won a total contract 
+value of over US$ 9.5 billion in large deals, continuing 
+to demonstrate our capabilities and competitiveness in 
+executing complex transformation programs. In addition, 
+investments in our own internal systems, reimagination 
+of our internal processes and automation of software 
+development processes have helped increase our agility, 
+boost productivity and enhance our competitiveness even 
+in the current paradigm of remote working.
+
+
+Reskill our people
+Continuous learning and reskilling have always 
+been integral to our operating model. We operate 
+our reskilling program with the twin objectives of 
+increasing fulfillment of demand for digital skills in 
+client projects and for enriching the expertise of our 
+global workforce in next-generation technologies and 
+methodologies. We invested in, and scaled, our digital 
+reskilling program globally. Lex, our in-house-developed, 
+anytime-anywhere-learning platform, offers over 
+13,700 courses curated for easy consumption on mobile 
+devices with advanced telemetry, gamification and 
+certification features. Over 2,99,000 of our employees use 
+Lex and are spending approximately 2.3 million training 
+days compared to 1.9 million in the last fiscal with close to 
+45 minutes per day on average for learning activities.
+
+
+value creation
+
+
+review
+Strategy
+
+
+value
+
+
+With the objective of creating differentiated talent pools
+
+
+in our markets, we made significant investments in 
+expanding our local workforce in the US, the UK, Europe, 
+Japan, China and Australia. We established innovation 
+hubs, nearshore centers and digital design studios across 
+geographies. Further, we expanded our university and 
+community college partnerships in all these regions to 
+aid internships, recruitment, training and joint research. 
+In fiscal 2022, we recruited over 14,805 employees locally 
+in our markets, of which 3,650 were fresh graduates. 
+This initiative also significantly de-risks our operations from 
+regulatory changes related to immigration policies.
+Looking ahead, and to continue staying relevant to the 
+emerging needs of our clients, our strategic areas of focus 
+for the next few years will be to further:
+• Scale our cloud capabilities, especially around cloud 
+advisory, data on cloud, cloud security, SaaS, PaaS, IaaS 
+and private cloud;
+• Expand capabilities in key digital technology areas 
+such as AI, product engineering, cybersecurity and 
+human experience;
+• Strengthen our employee value proposition for the 
+newer contexts of work and workplace;
+• Run our operations in a cost-effective and agile manner, 
+including increasing the levels of automation in our 
+service delivery;
+• Deliver on our ESG commitments, while at the 
+same time enabling our clients to realize their 
+sustainability goals.
+
+
+Expand localization
+
+
+reports
+
+
+statements
+
+
+[{"": null, "null": ""}]
+
+
+BRSR
+

@@ -1,0 +1,426 @@
+{
+  "name": "Local inference_batch_pipeline",
+  "description": "inference pipeline configuration",
+  "variables": {
+    "OPENAI_KEY": "${ENV:OPENAI_KEY}",
+    "OPENAI_SERVER_URL": "${ENV:OPENAI_SERVER_URL}",
+    "MODEL_HOME": "C:/MyProgramFiles/AI/models",
+    "CUSTOM_LLM_BLOOM_INFERENCE_URL": "${ENV:CUSTOM_LLM_BLOOM_INFERENCE_URL}",
+    "CUSTOM_LLM_LLAMA_INFERENCE_URL": "${ENV:CUSTOM_LLM_LLAMA_INFERENCE_URL}",
+    "CUSTOM_LLM_MIXTRAL_INFERENCE_URL": "${ENV:CUSTOM_LLM_MIXTRAL_INFERENCE_URL}",
+    "CUSTOM_LLM_LLAMA_3_1_INFERENCE_URL": "${ENV:CUSTOM_LLM_LLAMA_3_1_INFERENCE_URL}",
+    "SENTENCE_TRANSFORMER_SERVER_URL": "${ENV:SENTENCE_TRANSFORMER_SERVER_URL}",
+    "CUSTOM_EMB_MISTRAL_INFERENCE_URL": "${ENV:CUSTOM_EMB_MISTRAL_INFERENCE_URL}"
+  },
+  "processor_list": [
+    {
+      "enabled": true,
+      "processor_name": "retriever",
+      "processor_namespace": "infy_dpp_ai.retriever.process.query_retriever_processor",
+      "processor_class_name": "QueryRetriever",
+      "processor_input_config_name_list": ["QueryRetriever"]
+    },
+    {
+      "enabled": true,
+      "processor_name": "document_data_saver",
+      "processor_namespace": "infy_dpp_core.document_data_saver",
+      "processor_class_name": "DocumentDataSaver",
+      "processor_input_config_name_list": ["DocumentDataSaver"]
+    },
+    {
+      "enabled": true,
+      "processor_name": "reader",
+      "processor_namespace": "infy_dpp_ai.reader.process.reader_processor",
+      "processor_class_name": "Reader",
+      "processor_input_config_name_list": ["Reader"]
+    },
+    {
+      "enabled": true,
+      "processor_name": "document_data_saver",
+      "processor_namespace": "infy_dpp_core.document_data_saver",
+      "processor_class_name": "DocumentDataSaver",
+      "processor_input_config_name_list": ["DocumentDataSaver"]
+    }
+  ],
+  "processor_input_config": {
+    "QueryRetriever": {
+      "embedding": {
+        "openai": {
+          "enabled": false,
+          "configuration": {
+            "api_type": "azure",
+            "api_version": "2022-12-01",
+            "api_url": "${OPENAI_SERVER_URL}",
+            "api_key": "${OPENAI_KEY}",
+            "model_name": "text-embedding-ada-002",
+            "deployment_name": "text-embedding-ada-002",
+            "chunk_size": 1000,
+            "tiktoken_cache_dir": "${MODEL_HOME}/tiktoken_encoding"
+          }
+        },
+        "sentence_transformer": {
+          "enabled": true,
+          "configuration": {
+            "model_name": "all-MiniLM-L6-v2",
+            "model_home_path": "${MODEL_HOME}",
+            "tiktoken_cache_dir": "${MODEL_HOME}/tiktoken_encoding"
+          }
+        },
+        "custom": {
+          "enabled": false,
+          "configuration": {
+            "model_name": "mistral-embd",
+            "api_key": "",
+            "endpoint": "${CUSTOM_EMB_MISTRAL_INFERENCE_URL}"
+          }
+        }
+      },
+      "storage": {
+        "vectordb": {
+          "faiss": {
+            "enabled": true,
+            "configuration": {
+              "chunked_files_root_path": "/data/vectordb/chunked",
+              "encoded_files_root_path": "/data/vectordb/encoded",
+              "db_name": "documents",
+              "index_id": "",
+              "collections": [
+                {
+                  "collection_name": "documents",
+                  "collection_secret_key": ""
+                }
+              ],
+              "distance_metric": {
+                "eucledian": true
+              }
+            }
+          },
+          "infy_db_service": {
+            "enabled": false,
+            "configuration": {
+              "db_service_url": "",
+              "model_name": "all-MiniLM-L6-v2",
+              "collections": [
+                {
+                  "collection_name": "documents",
+                  "collection_secret_key": ""
+                }
+              ]
+            }
+          }
+        },
+        "sparseindex": {
+          "bm25s": {
+            "enabled": true,
+            "configuration": {
+              "sparse_index_root_path": "/data/db/sparseindex",
+              "db_name": "documents",
+              "index_id": "",
+              "collections": [
+                {
+                  "collection_name": "documents",
+                  "collection_secret_key": ""
+                }
+              ],
+              "nltk_data_dir": "C:/MyProgramFiles/AI/nltk_data"
+            }
+          },
+          "infy_db_service": {
+            "enabled": false,
+            "configuration": {
+              "db_service_url": "",
+              "method_name": "bm25s",
+              "collections": [
+                {
+                  "collection_name": "documents",
+                  "collection_secret_key": ""
+                }
+              ]
+            }
+          }
+        }
+      },
+      "hybrid_search": {
+        "rrf": {
+          "enabled": true
+        }
+      },
+      "queries": [
+        {
+          "attribute_key": "women_emp_pct",
+          "question": "What is the percentage of women employees?",
+          "top_k": 4,
+          "pre_filter_fetch_k": 10,
+          "filter_metadata": {},
+          "min_distance": 0,
+          "max_distance": 2
+        }
+      ]
+    },
+    "Reader": {
+      "storage": {
+        "vectordb": {
+          "faiss": {
+            "enabled": true,
+            "configuration": {
+              "chunked_files_root_path": "/data/vectordb/chunked",
+              "encoded_files_root_path": "/data/vectordb/encoded",
+              "db_name": "documents",
+              "distance_metric": {
+                "eucledian": true
+              }
+            }
+          },
+          "infy_db_service": {
+            "enabled": false
+          }
+        },
+        "sparseindex": {
+          "bm25s": {
+            "enabled": true
+          },
+          "infy_db_service": {
+            "enabled": false
+          }
+        }
+      },
+      "hybrid_search": {
+        "rrf": {
+          "enabled": true
+        }
+      },
+      "moderation": {
+        "enabled": false,
+        "configuration": {
+          "api_url": ""
+        },
+        "json_payload": {
+          "AccountName": "",
+          "userid": "None",
+          "PortfolioName": "",
+          "lotNumber": "1",
+          "Prompt": "{prompt}",
+          "ModerationChecks": [
+            "PromptInjection",
+            "JailBreak",
+            "Toxicity",
+            "Piidetct",
+            "Refusal",
+            "Profanity",
+            "RestrictTopic",
+            "TextQuality",
+            "CustomizedTheme"
+          ],
+          "ModerationCheckThresholds": {
+            "PromptinjectionThreshold": 0.7,
+            "JailbreakThreshold": 0.7,
+            "PiientitiesConfiguredToDetect": [
+              "PERSON",
+              "LOCATION",
+              "DATE",
+              "AU_ABN",
+              "AU_ACN",
+              "AADHAR_NUMBER",
+              "AU_MEDICARE",
+              "AU_TFN",
+              "CREDIT_CARD",
+              "CRYPTO",
+              "DATE_TIME",
+              "EMAIL_ADDRESS",
+              "ES_NIF",
+              "IBAN_CODE",
+              "IP_ADDRESS",
+              "IT_DRIVER_LICENSE",
+              "IT_FISCAL_CODE",
+              "IT_IDENTITY_CARD",
+              "IT_PASSPORT",
+              "IT_VAT_CODE",
+              "MEDICAL_LICENSE",
+              "PAN_Number",
+              "PHONE_NUMBER",
+              "SG_NRIC_FIN",
+              "UK_NHS",
+              "URL",
+              "PASSPORT",
+              "US_ITIN",
+              "US_PASSPORT",
+              "US_SSN"
+            ],
+            "PiientitiesConfiguredToBlock": ["AADHAR_NUMBER", "PAN_Number"],
+            "RefusalThreshold": 0.7,
+            "ToxicityThresholds": {
+              "ToxicityThreshold": 0.6,
+              "SevereToxicityThreshold": 0.6,
+              "ObsceneThreshold": 0.6,
+              "ThreatThreshold": 0.6,
+              "InsultThreshold": 0.6,
+              "IdentityAttackThreshold": 0.6,
+              "SexualExplicitThreshold": 0.6
+            },
+            "ProfanityCountThreshold": 1,
+            "RestrictedtopicDetails": {
+              "RestrictedtopicThreshold": 0.7,
+              "Restrictedtopics": [
+                "terrorism",
+                "explosives",
+                "nudity",
+                "sexual Content",
+                "cruelty",
+                "cheating",
+                "fraud",
+                "crime",
+                "hacking",
+                "security Breach",
+                "immoral",
+                "cyberattack",
+                "exam Misconduct",
+                "conspiracy",
+                "unethical",
+                "illegal",
+                "robbery",
+                "forgery",
+                "misinformation"
+              ]
+            },
+            "CustomTheme": {
+              "Themename": "string",
+              "Themethresold": 0.6,
+              "ThemeTexts": ["Text1", "Text2", "Text3"]
+            }
+          }
+        }
+      },
+      "llm": {
+        "openai": {
+          "enabled": false,
+          "configuration": {
+            "api_type": "azure",
+            "api_version": "2024-02-15-preview",
+            "api_url": "${OPENAI_SERVER_URL}",
+            "api_key": "${OPENAI_KEY}",
+            "max_tokens": 1000,
+            "model_name": "gpt-4",
+            "deployment_name": "gpt4",
+            "temperature": 0.7,
+            "is_chat_model": true,
+            "tiktoken_cache_dir": "${MODEL_HOME}/tiktoken_encoding"
+          },
+          "cache": {
+            "enabled": true,
+            "cache_root_path": "/data/cache/infy_model_service"
+          }
+        },
+        "llama-3-1": {
+          "enabled": false,
+          "configuration": {
+            "inference_url": "${CUSTOM_LLM_LLAMA_3_1_INFERENCE_URL}",
+            "model": "/models/Meta-Llama-3.1-70B-fp8",
+            "temperature": 0.7,
+            "deployment_name": "llama3.1-70b-instuct",
+            "top_p": 0.95,
+            "max_tokens": 800,
+            "stop": null,
+            "presence_penalty": 0,
+            "frequency_penalty": 0
+          }
+        },
+        "custom": {
+          "bloom-7b1": {
+            "enabled": false,
+            "configuration": {
+              "inference_url": "${CUSTOM_LLM_BLOOM_INFERENCE_URL}",
+              "tiktoken_cache_dir": "${MODEL_HOME}/tiktoken_encoding",
+              "remove_query_from_response": true
+            },
+            "json_payload": {
+              "inputs": "{query}",
+              "parameters": {
+                "max_new_tokens": 4096,
+                "temperature": 1,
+                "num_return_sequences": 1,
+                "do_sample": true
+              }
+            }
+          },
+          "llama2-7b": {
+            "enabled": false,
+            "configuration": {
+              "inference_url": "${CUSTOM_LLM_LLAMA_INFERENCE_URL}",
+              "tiktoken_cache_dir": "${MODEL_HOME}/tiktoken_encoding",
+              "remove_query_from_response": true,
+              "verify_ssl": false
+            },
+            "json_payload": {
+              "inputs": "{query}",
+              "parameters": {
+                "max_new_tokens": 4096,
+                "temperature": 1,
+                "num_return_sequences": 1,
+                "do_sample": true
+              }
+            }
+          },
+          "mixtral8x7b-instruct": {
+            "enabled": true,
+            "configuration": {
+              "inference_url": "${CUSTOM_LLM_MIXTRAL_INFERENCE_URL}",
+              "tiktoken_cache_dir": "${MODEL_HOME}/tiktoken_encoding",
+              "remove_query_from_response": false,
+              "verify_ssl": false
+            },
+            "json_payload": {
+              "inputs": "{query}",
+              "parameters": {
+                "max_new_tokens": 1024
+              }
+            }
+          }
+        }
+      },
+      "named_context_templates": {
+        "context_default": "{chunk_text}",
+        "context_1": "[chunk_id={chunk_id},page_no={page_no},sequence_no={sequence_no},bbox={bbox},doc_name={doc_name}]\n{chunk_text}\n",
+        "context_2": "[chunk_id={chunk_id},page_no={page_no},sequence_no={sequence_no}]\n{chunk_text}\n"
+      },
+      "named_prompt_templates": {
+        "prompt_template_1": {
+          "content": [
+            "Use the following pieces of context to answer the question at the end.",
+            "If you don't know the answer or even doubtful a bit, just say that you don't know,",
+            " don't try to make up an answer.Just give the shortest and most appropriate relavant answer to the question.",
+            "{context}",
+            "Question: {question}",
+            "Helpful Answer:"
+          ],
+          "context_template": "context_default"
+        },
+        "extractor_attribute_prompt": {
+          "content": [],
+          "file_path": "/data/config/prompt_templates/extractor_attribute_prompt.txt",
+          "context_template": "context_1"
+        },
+        "extractor_attribute_prompt_2": {
+          "content": [],
+          "file_path": "/data/config/prompt_templates/extractor_attribute_prompt_2.txt",
+          "context_template": "context_2",
+          "response_validation": {
+            "enabled": true,
+            "type": "json",
+            "total_attempts": 3
+          }
+        }
+      },
+      "inputs": [
+        {
+          "attribute_key": "women_emp_pct",
+          "prompt_template": "extractor_attribute_prompt_2",
+          "model_type": "QnA",
+          "top_k": 2
+        }
+      ]
+    },
+    "DocumentDataSaver": {
+      "work_root_path": "/data/work/"
+    }
+  }
+}

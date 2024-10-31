@@ -1,0 +1,17 @@
+{
+    "chunk_id": "C-2ffb5",
+    "page_no": 1,
+    "sequence_no": 1,
+    "bbox_format": "X1,Y1,X2,Y2",
+    "bbox": null,
+    "doc_name": "vr.txt",
+    "document_id": "cfe53a10-43f3-4bcc-88cc-9340483b33e2",
+    "chunking_method": "page",
+    "char_count": "1",
+    "resources": [
+        {
+            "type": "doc_path",
+            "path": "/data/vectordb/resources/cfe53a10-6d0c-4a80-99d1-dfb5f6eca078.txt"
+        }
+    ]
+}

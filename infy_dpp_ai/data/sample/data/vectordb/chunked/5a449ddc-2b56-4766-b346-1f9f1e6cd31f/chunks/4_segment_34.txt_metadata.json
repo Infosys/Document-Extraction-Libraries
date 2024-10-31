@@ -1,0 +1,22 @@
+{
+    "chunk_id": "C-2ea87",
+    "page_no": 4,
+    "sequence_no": 34,
+    "bbox_format": "X1,Y1,X2,Y2",
+    "bbox": [
+        4362.940416666667,
+        768.7094871212122,
+        4772.515833333334,
+        359.5855849747475
+    ],
+    "doc_name": "page-14-17.pdf",
+    "document_id": "5a449ddc-2b56-4766-b346-1f9f1e6cd31f",
+    "chunking_method": "segment",
+    "char_count": "42",
+    "resources": [
+        {
+            "type": "doc_path",
+            "path": "/data/vectordb/resources/5a449ddc-9d9a-479a-9532-6859b41b8676.pdf"
+        }
+    ]
+}

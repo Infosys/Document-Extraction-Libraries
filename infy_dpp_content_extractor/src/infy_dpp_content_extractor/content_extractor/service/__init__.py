@@ -7,3 +7,5 @@
 from .pdf_plumber_service import PdfPlumberService
 from .images_from_pdf_extractor_service import ImagesFromPdfExtractorService
 from .image_generator_service import ImageGeneratorService
+from .yolox_table_detector_service import YoloxTableDetectorService
+from .infy_table_extractor_service import InfyTableExtractorService

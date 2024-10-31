@@ -34,7 +34,7 @@ class ImageGeneratorService(metaclass=Singleton):
             pdf_file_path, convert_action=ConvertAction.PDF_TO_IMAGE, config_param_dict=config_param_dict_cp)
         if not img_files:
             img_files = []
-        
+
         return img_files, error
 
     def convert_img_to_jpg(self, filepath, config_param_dict):
@@ -50,6 +50,28 @@ class ImageGeneratorService(metaclass=Singleton):
             image_path = self.__convert_image_to_jpg(
                 filepath, save_image_path)
         return [image_path], ''
+
+    def convert_tiff_to_jpg(self, filepath, config_param_dict):
+        self.__logger.info(f"[TIFF2JPG]: Convert File - {filepath}")
+        doc_extension = os.path.splitext(
+            filepath)[1].lower()
+        config_param_dict_cp = copy.deepcopy(
+            config_param_dict.get("format_converter"))
+        image_path_list = []
+        if doc_extension in ['.tiff', '.tif']:
+            work_folder = self.__manage_converter_config(
+                filepath, config_param_dict_cp)
+            im = Image.open(filepath)
+            for i in range(im.n_frames):
+                im.seek(i)
+                im.save(f'{work_folder}/{i + 1}.jpg')
+                # save_image_path = f'{work_folder}/{i + 1}.jpg'
+                # image_path = self.__convert_image_to_jpg(
+                #     filepath, save_image_path)
+                # image_path_list.append(image_path)
+                image_path_list.append(f'{work_folder}/{i + 1}.jpg')
+        # return [image_path],
+        return image_path_list, ''
 
     def __convert_image_to_jpg(self, orig_image_path, save_as_path):
         parent_path = os.path.dirname(save_as_path)

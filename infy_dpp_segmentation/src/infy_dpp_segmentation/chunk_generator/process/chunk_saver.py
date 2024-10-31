@@ -20,7 +20,7 @@ class ChunkSaver:
         self.__file_sys_handler = infy_fs_utils.manager.FileSystemManager(
         ).get_fs_handler(infy_dpp_sdk.common.Constants.FSH_DPP)
 
-    def save_chunk_data(self, page_segment_data_dict, document_id, save_chunk_config, meta_data_dict):
+    def save_chunk_data(self, document_id, save_chunk_config, page_segment_data_dict, meta_data_dict):
         if page_segment_data_dict:
             chunked_data_dict = page_segment_data_dict
             chunked_file_root_path = save_chunk_config.get('chunks_path')

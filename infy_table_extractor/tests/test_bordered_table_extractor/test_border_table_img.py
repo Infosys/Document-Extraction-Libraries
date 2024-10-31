@@ -6,6 +6,7 @@
 
 import os
 import json
+import pandas as pd
 import logging
 import infy_table_extractor as ite
 
@@ -41,6 +42,7 @@ def test_bordered_table_extractor_bbox_RGBLineDetect():
         img_filepath, within_bbox=[73, 2001, 4009, 937]
     )
     __pretty_print(result)
+    __save_to_excel(result['fields'][0]['table_value'], img_filepath)
     assert result['error'] is None
     assert __get_summary(result) == {
         'table_count': 1,
@@ -105,3 +107,13 @@ def __get_summary(api_result):
 def __pretty_print(dictionary):
     p = json.dumps(dictionary, indent=4)
     print(p.replace('\"', '\''))
+
+
+def __save_to_excel(table_value, img_path):
+    df = pd.json_normalize(table_value)
+    # Postprocessing to remove newline chars
+    df.columns = df.columns.str.replace(r'\n', '', regex=True)
+    df = df.replace(r'\n', '', regex=True)
+
+    output_file = os.path.basename(img_path) + "_tesseract.xlsx"
+    df.to_excel(output_file, index=False)

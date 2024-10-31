@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title></title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name='ocr-system' content='tesseract'/>
+</head>
+<body>
+  <div class='ocr_page' id='page_1' title='image "C:\temp\unittest\infy_dpp_segmentation\tests.test_segmentation_orchestrator_native_two\CONTAINER\data\temp\data\work\D-5a449ddc-2b56-4766-b346-1f9f1e6cd31f\page-14-17.pdf_files\P4_IMG2.png"; bbox 0 0 604 423; ppageno 0; scan_res 70 70'>
+   <div class='ocr_carea' id='block_1_1' title="bbox 184 80 418 118">
+    <p class='ocr_par' id='par_1_1' lang='eng' title="bbox 184 80 418 118">
+     <span class='ocr_caption' id='line_1_1' title="bbox 184 80 402 104; baseline 0 0; x_size 29.369864; x_descenders 5.369863; x_ascenders 10">
+      <span class='ocrx_word' id='word_1_1' title='bbox 184 80 236 104; x_wconf 50'>Ny</span>
+      <span class='ocrx_word' id='word_1_2' title='bbox 396 102 402 104; x_wconf 42'>3</span>
+     </span>
+     <span class='ocr_caption' id='line_1_2' title="bbox 252 96 418 118; baseline 0 -2; x_size 25.369864; x_descenders 5.369863; x_ascenders 6">
+      <span class='ocrx_word' id='word_1_3' title='bbox 252 96 360 118; x_wconf 88'>Brandon</span>
+      <span class='ocrx_word' id='word_1_4' title='bbox 372 96 418 116; x_wconf 88'>Hall</span>
+     </span>
+    </p>
+   </div>
+   <div class='ocr_carea' id='block_1_2' title="bbox 168 124 436 176">
+    <p class='ocr_par' id='par_1_2' lang='eng' title="bbox 168 124 436 176">
+     <span class='ocr_line' id='line_1_3' title="bbox 186 124 382 148; baseline 0 -8; x_size 30.25; x_descenders 8.5; x_ascenders 7.25">
+      <span class='ocrx_word' id='word_1_5' title='bbox 186 146 188 148; x_wconf 90'>/</span>
+      <span class='ocrx_word' id='word_1_6' title='bbox 288 124 382 140; x_wconf 2'>GROUE</span>
+     </span>
+     <span class='ocr_line' id='line_1_4' title="bbox 168 160 436 176; baseline 0.007 -2; x_size 22.252872; x_descenders 6.2528734; x_ascenders 5.3333335">
+      <span class='ocrx_word' id='word_1_7' title='bbox 168 160 212 176; x_wconf 84'>HCM</span>
+      <span class='ocrx_word' id='word_1_8' title='bbox 220 160 344 176; x_wconf 91'>EXCELLENCE</span>
+      <span class='ocrx_word' id='word_1_9' title='bbox 350 160 436 176; x_wconf 90'>AWARDS</span>
+     </span>
+    </p>
+   </div>
+   <div class='ocr_photo' id='block_1_3' title="bbox 18 0 588 411"></div>
+  </div>
+</body>
+</html>

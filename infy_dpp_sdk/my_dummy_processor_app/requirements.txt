@@ -2,5 +2,5 @@ uvicorn[standard]==0.25.0
 python-dotenv==1.0.1
 # Internal libraries in alphabetical order
 ./lib/infy_dpp_sdk-0.0.10-py3-none-any.whl[httpcontroller]
-./lib/infy_fs_utils-0.0.2-py3-none-any.whl[cloud]
+./lib/infy_fs_utils-0.0.4-py3-none-any.whl[cloud]
 

@@ -1,0 +1,17 @@
+{
+    "chunk_id": "C-2bc3f",
+    "page_no": 2,
+    "sequence_no": 1,
+    "bbox_format": "X1,Y1,X2,Y2",
+    "bbox": null,
+    "doc_name": "survey.tiff",
+    "document_id": "3530f03e-d60c-46db-9611-8b14e2784475",
+    "chunking_method": "page",
+    "char_count": "2",
+    "resources": [
+        {
+            "type": "doc_path",
+            "path": "/data/vectordb/resources/3530f03e-4bbb-41e0-b8b0-bf53e9efa4f6.tiff"
+        }
+    ]
+}

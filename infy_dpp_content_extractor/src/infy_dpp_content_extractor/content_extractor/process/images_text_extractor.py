@@ -98,9 +98,27 @@ class ImagesTextExtractor:
             images_path_list, _ = image_generator_service_obj.convert_img_to_jpg(
                 os.path.abspath(org_file_path), config_data_dict)
 
+        if doc_extension in ['.tiff', '.tif']:
+            self.__logger.info('...TIFF to JPG conversion started...')
+            images_path_list, _ = image_generator_service_obj.convert_tiff_to_jpg(
+                os.path.abspath(org_file_path), config_data_dict)
+
         self.__logger.info('...OCR generation started...')
         ocr_files_path_list = self.generate_ocr(
             images_path_list, out_file_full_path)
+
+        if doc_extension in ['.tiff', '.tif']:
+            ocr_path_list = []
+            image_path_list = []
+            for i, image_path in enumerate(images_path_list):
+                image_path = image_path.replace('\\', '/').replace('//', '/').replace(
+                    self.__app_config["CONTAINER"]["APP_DIR_TEMP_PATH"].replace('\\', '/').replace('//', '/'), '')
+                ocr_path = ocr_files_path_list[i].replace('\\', '/').replace('//', '/').replace(
+                    self.__app_config["CONTAINER"]["APP_DIR_TEMP_PATH"].replace('\\', '/').replace('//', '/'), '')
+
+                image_path_list.append(image_path)
+                ocr_path_list.append(ocr_path)
+            return ocr_path_list, image_path_list
 
         ocr_file_path = ocr_files_path_list[0].replace('\\', '/').replace('//', '/').replace(
             self.__app_config["CONTAINER"]["APP_DIR_TEMP_PATH"].replace('\\', '/').replace('//', '/'), '')

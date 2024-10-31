@@ -4,11 +4,14 @@
 # http://www.apache.org/licenses/                                                                                #
 # ===============================================================================================================#
 
+import os
 import re
+import cv2
 import infy_dpp_sdk
 import infy_fs_utils
 from infy_dpp_sdk.data import *
 from infy_dpp_core.common.file_util import FileUtil
+from infy_dpp_segmentation.common.sorting_util import ImageSortUtil
 from infy_dpp_segmentation.chunk_generator.process.chunking_data import ChunkingData
 from infy_dpp_segmentation.chunk_generator.process.chunk_saver import ChunkSaver
 
@@ -19,6 +22,7 @@ class ChunkGenerator(infy_dpp_sdk.interface.IProcessor):
     def __init__(self):
         self.__file_sys_handler = infy_fs_utils.manager.FileSystemManager(
         ).get_fs_handler(infy_dpp_sdk.common.Constants.FSH_DPP)
+        self.__app_config = infy_dpp_sdk.common.AppConfigManager().get_app_config()
 
     def do_execute(self, document_data: DocumentData, context_data: dict, config_data: dict) -> ProcessorResponseData:
         chunking_data_obj = ChunkingData()
@@ -40,7 +44,6 @@ class ChunkGenerator(infy_dpp_sdk.interface.IProcessor):
         cleaned_segment_data_list = chunking_data_obj.clean_data(
             segment_data_list)
         chunking_method = processor_config_data['chunking_method']
-        max_char_limit = processor_config_data.get('max_char_limit', 0)
         replace_dict = processor_config_data.get('replace', [])
         cleaned_segment_data_list = chunking_data_obj.replace_data(
             cleaned_segment_data_list, replace_dict)
@@ -74,8 +77,7 @@ class ChunkGenerator(infy_dpp_sdk.interface.IProcessor):
         self.__file_sys_handler.copy_file(doc_file_path, resources_file_path)
 
         output_data = chunking_data_obj.group_chunk_data(
-            cleaned_segment_data_list, chunking_method, pages_list, exclude_types_list, merged_title_paragraph, resources_file_path, max_char_limit)
-        page_segment_data_dict, meta_data_dict = output_data['page_data'], output_data['meta_data']
+            cleaned_segment_data_list, chunking_method, pages_list, exclude_types_list, merged_title_paragraph, resources_file_path)
         # raw_data=infy_dpp_sdk.data.RawData(table_data=[],key_value_data=[],heading_data=[],
         #                                         page_header_data=[],
         #                                         page_footer_data=[],other_data=[],segment_data=cleaned_segment_data_list)
@@ -83,15 +85,18 @@ class ChunkGenerator(infy_dpp_sdk.interface.IProcessor):
 
         # chunk-saving logic
         save_chunk_config = processor_config_data['chunks']
-        chunked_file_path_list, chunked_file_meta_data_path_list = save_chunk_data_obj.save_chunk_data(
-            page_segment_data_dict, document_id, save_chunk_config, meta_data_dict)
+        context_data[PROCESSEOR_CONTEXT_DATA_NAME] = {}
+        for e_key, e_val in output_data.items():
+            chunked_data_dict, meta_data_dict = e_val['page_data'], e_val['meta_data']
+            chunked_file_path_list, chunked_file_meta_data_path_list = save_chunk_data_obj.save_chunk_data(
+                document_id, save_chunk_config, chunked_data_dict, meta_data_dict)
 
-        context_data[PROCESSEOR_CONTEXT_DATA_NAME] = {'cleaned_segment_data': cleaned_segment_data_list,
-                                                      "page_segment_data": page_segment_data_dict,
-                                                      "meta_data": meta_data_dict,
-                                                      'chunked_data_list': chunked_file_path_list,
-                                                      "chunked_file_meta_data_list": chunked_file_meta_data_path_list,
-                                                      "chunking_method": chunking_method}
+            context_data[PROCESSEOR_CONTEXT_DATA_NAME][e_key] = {"cleaned_segment_data": cleaned_segment_data_list,
+                                                                 "chunked_data": chunked_data_dict,
+                                                                 "meta_data": meta_data_dict,
+                                                                 "chunked_data_list": chunked_file_path_list,
+                                                                 "chunked_file_meta_data_list": chunked_file_meta_data_path_list,
+                                                                 "chunking_method": e_key}
 
         # Populate response data
         processor_response_data.document_data = document_data

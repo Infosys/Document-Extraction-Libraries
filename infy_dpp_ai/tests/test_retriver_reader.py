@@ -23,8 +23,10 @@ def pre_test(create_root_folders, copy_files_to_root_folder):
             f"{STORAGE_ROOT_PATH}/data/config"],
         ['extractor_attribute_prompt_2.txt', f"{SAMPLE_ROOT_PATH}/data/config/prompt_templates",
             f"{STORAGE_ROOT_PATH}/data/config/prompt_templates"],
-        ['*.*', f"{SAMPLE_ROOT_PATH}/vectordb",
-            f"{STORAGE_ROOT_PATH}/vectordb"]
+        ['*.*', f"{SAMPLE_ROOT_PATH}/data/vectordb",
+            f"{STORAGE_ROOT_PATH}/data/vectordb"],
+        ['*.*', f"{SAMPLE_ROOT_PATH}/data/db",
+            f"{STORAGE_ROOT_PATH}/data/db"]
     ]
     copy_files_to_root_folder(FILES_TO_COPY)
 

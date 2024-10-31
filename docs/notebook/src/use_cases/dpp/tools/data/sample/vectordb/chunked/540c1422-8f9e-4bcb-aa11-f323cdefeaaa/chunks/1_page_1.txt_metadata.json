@@ -1,0 +1,17 @@
+{
+    "chunk_id": "C-26289",
+    "page_no": 1,
+    "sequence_no": 1,
+    "bbox_format": "X1,Y1,X2,Y2",
+    "bbox": null,
+    "doc_name": "invoice2.jpg",
+    "document_id": "540c1422-8f9e-4bcb-aa11-f323cdefeaaa",
+    "chunking_method": "page",
+    "char_count": "1",
+    "resources": [
+        {
+            "type": "doc_path",
+            "path": "/data/vectordb/resources/540c1422-0f1b-4c0c-a404-0ec55173357f.jpg"
+        }
+    ]
+}

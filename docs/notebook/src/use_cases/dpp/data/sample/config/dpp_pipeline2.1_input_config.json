@@ -1,152 +1,210 @@
 {
-    "name": "pipeline2.1",
-    "description": "Sample Custom processor 'my_processor' added to existing 4-processor-pipeline configuration for integration testing",
-    "variables": {
-        "OPENAI_KEY": "${ENV:OPENAI_KEY}",
-        "OPENAI_SERVER_URL": "${ENV:OPENAI_SERVER_URL}",
-        "MODEL_HOME": "C:/MyProgramFiles/AI/models",
-        "CUSTOM_EMB_MISTRAL_INFERENCE_URL": "${ENV:CUSTOM_EMB_MISTRAL_INFERENCE_URL}"
+  "name": "pipeline2.1",
+  "description": "Sample Custom processor 'my_processor' added to existing 4-processor-pipeline configuration for integration testing",
+  "variables": {
+    "OPENAI_KEY": "${ENV:OPENAI_KEY}",
+    "OPENAI_SERVER_URL": "${ENV:OPENAI_SERVER_URL}",
+    "MODEL_HOME": "C:/MyProgramFiles/AI/models",
+    "CUSTOM_EMB_MISTRAL_INFERENCE_URL": "${ENV:CUSTOM_EMB_MISTRAL_INFERENCE_URL}"
+  },
+  "processor_list": [
+    {
+      "enabled": true,
+      "processor_name": "request_creator",
+      "processor_namespace": "infy_dpp_core.request_creator",
+      "processor_class_name": "RequestCreator",
+      "processor_input_config_name_list": [
+        "RequestCreator"
+      ]
     },
-    "processor_list": [
-        {
-            "enabled": true,
-            "processor_name": "request_creator",
-            "processor_namespace": "infy_dpp_core.request_creator",
-            "processor_class_name": "RequestCreator",
-            "processor_input_config_name_list": [
-                "RequestCreator"
-            ]
-        },
-        {
-            "enabled": true,
-            "processor_name": "retriever",
-            "processor_namespace": "infy_dpp_ai.retriever.process.query_retriever_processor",
-            "processor_class_name": "QueryRetriever",
-            "processor_input_config_name_list": [
-                "QueryRetriever"
-            ]
-        },
-        {
-            "enabled": true,
-            "processor_name": "my_processor",
-            "processor_namespace": "custom.my_processor",
-            "processor_class_name": "MyProcessor",
-            "processor_input_config_name_list": [
-                "MyProcessor"
-            ]
-        },
-        {
-            "enabled": true,
-            "processor_name": "request_closer",
-            "processor_namespace": "infy_dpp_core.request_closer",
-            "processor_class_name": "RequestCloser",
-            "processor_input_config_name_list": [
-                "RequestCloser"
-            ]
-        }
-    ],
-    "processor_input_config": {
-        "MyProcessor": {},
-        "RequestCreator": {
-            "from_data_file": {
-                "enabled": false,
-                "read_path": "/data/input/",
-                "batch_size": 20,
-                "filter": {
-                    "include": [
-                        "pdf",
-                        "json"
-                    ],
-                    "exclude": [
-                        "_"
-                    ]
-                },
-                "work_root_path": "/data/work/",
-                "to_request_file": {
-                    "save_path": "/data/work/request/indexer/start"
-                }
-            },
-            "from_request_file": {
-                "enabled": true,
-                "read_path": "/data/work/request/indexer/complete",
-                "save_path": "/data/work/request/inference/start"
-            }
-        },
-        "RequestCloser": {
-            "work_root_path": "/data/work/",
-            "data_file": {
-                "output_root_path": ""
-            },
-            "output_root_path": "/data/output/",
-            "from_request_file": {
-                "read_path": "/data/work/request/inference/start",
-                "save_path": "/data/work/request/inference/complete"
-            }
-        },
-        "DocumentDataUpdater": {
-            "config_data": [
-                {
-                    "enabled": true,
-                    "json_path": "$.context_data.reader.output[*].model_output.sources[*]",
-                    "json_key": "bbox",
-                    "replace_key_enabled": false,
-                    "replace_with_key": "",
-                    "replace_with_value": "",
-                    "replace_value_enabled": false,
-                    "replace_value_with_rule_name": "rule_cus_001_transform_bbox_value"
-                }
-            ]
-        },
-        "QueryRetriever": {
-            "embedding": {
-                "openai": {
-                    "enabled": false,
-                    "configuration": {
-                        "api_type": "azure",
-                        "api_version": "2022-12-01",
-                        "api_url": "${OPENAI_SERVER_URL}",
-                        "api_key": "${OPENAI_KEY}",
-                        "model_name": "text-embedding-ada-002",
-                        "deployment_name": "text-embedding-ada-002",
-                        "chunk_size": 1000,
-                        "tiktoken_cache_dir": "${MODEL_HOME}/tiktoken_encoding"
-                    }
-                },
-                "sentence_transformer": {
-                    "enabled": true,
-                    "configuration": {
-                        "model_name": "all-MiniLM-L6-v2",
-                        "model_home_path": "${MODEL_HOME}"
-                    }
-                },
-                "custom": {
-                    "enabled": false,
-                    "configuration": {
-                        "model_name": "mistral-embd",
-                        "api_key": "",
-                        "endpoint": "${CUSTOM_EMB_MISTRAL_INFERENCE_URL}"
-                    }
-                }
-            },
-            "storage": {
-                "faiss": {
-                    "enabled": true,
-                    "configuration": {
-                        "chunked_files_root_path": "/data/vectordb/chunked",
-                        "encoded_files_root_path": "/data/vectordb/encoded",
-                        "db_name": "documents"
-                    }
-                }
-            },
-            "queries": [
-                {
-                    "attribute_key": "query1",
-                    "question": "What is the percentage of women employees?",
-                    "top_k": 5,
-                    "pre_filter_fetch_k": 10,
-                    "filter_metadata": {}
-                }
-            ]
-        }
+    {
+      "enabled": true,
+      "processor_name": "retriever",
+      "processor_namespace": "infy_dpp_ai.retriever.process.query_retriever_processor",
+      "processor_class_name": "QueryRetriever",
+      "processor_input_config_name_list": [
+        "QueryRetriever"
+      ]
+    },
+    {
+      "enabled": true,
+      "processor_name": "my_processor",
+      "processor_namespace": "custom.my_processor",
+      "processor_class_name": "MyProcessor",
+      "processor_input_config_name_list": [
+        "MyProcessor"
+      ]
+    },
+    {
+      "enabled": true,
+      "processor_name": "request_closer",
+      "processor_namespace": "infy_dpp_core.request_closer",
+      "processor_class_name": "RequestCloser",
+      "processor_input_config_name_list": [
+        "RequestCloser"
+      ]
     }
+  ],
+  "processor_input_config": {
+    "MyProcessor": {},
+    "RequestCreator": {
+      "from_data_file": {
+        "enabled": false,
+        "read_path": "/data/input/",
+        "batch_size": 20,
+        "filter": {
+          "include": [
+            "pdf",
+            "json"
+          ],
+          "exclude": [
+            "_"
+          ]
+        },
+        "work_root_path": "/data/work/",
+        "to_request_file": {
+          "save_path": "/data/work/request/indexer/start"
+        }
+      },
+      "from_request_file": {
+        "enabled": true,
+        "read_path": "/data/work/request/indexer/complete",
+        "save_path": "/data/work/request/inference/start"
+      }
+    },
+    "RequestCloser": {
+      "work_root_path": "/data/work/",
+      "data_file": {
+        "output_root_path": ""
+      },
+      "output_root_path": "/data/output/",
+      "from_request_file": {
+        "read_path": "/data/work/request/inference/start",
+        "save_path": "/data/work/request/inference/complete"
+      }
+    },
+    "DocumentDataUpdater": {
+      "config_data": [
+        {
+          "enabled": true,
+          "json_path": "$.context_data.reader.output[*].model_output.sources[*]",
+          "json_key": "bbox",
+          "replace_key_enabled": false,
+          "replace_with_key": "",
+          "replace_with_value": "",
+          "replace_value_enabled": false,
+          "replace_value_with_rule_name": "rule_cus_001_transform_bbox_value"
+        }
+      ]
+    },
+    "QueryRetriever": {
+      "embedding": {
+        "openai": {
+          "enabled": false,
+          "configuration": {
+            "api_type": "azure",
+            "api_version": "2022-12-01",
+            "api_url": "${OPENAI_SERVER_URL}",
+            "api_key": "${OPENAI_KEY}",
+            "model_name": "text-embedding-ada-002",
+            "deployment_name": "text-embedding-ada-002",
+            "chunk_size": 1000,
+            "tiktoken_cache_dir": "${MODEL_HOME}/tiktoken_encoding"
+          }
+        },
+        "sentence_transformer": {
+          "enabled": true,
+          "configuration": {
+            "model_name": "all-MiniLM-L6-v2",
+            "model_home_path": "${MODEL_HOME}"
+          }
+        },
+        "custom": {
+          "enabled": false,
+          "configuration": {
+            "model_name": "mistral-embd",
+            "api_key": "",
+            "endpoint": "${CUSTOM_EMB_MISTRAL_INFERENCE_URL}"
+          }
+        }
+      },
+      "storage": {
+        "vectordb": {
+          "faiss": {
+            "enabled": true,
+            "configuration": {
+              "chunked_files_root_path": "/data/vectordb/chunked",
+              "encoded_files_root_path": "/data/vectordb/encoded",
+              "db_name": "documents",
+              "collections": [
+                {
+                  "collection_name": "documents",
+                  "collection_secret_key": ""
+                }
+              ],
+              "distance_metric": {
+                "eucledian": true
+              }
+            }
+          },
+          "infy_db_service": {
+            "enabled": false,
+            "configuration": {
+              "db_service_url": "",
+              "model_name": "all-MiniLM-L6-v2",
+              "collections": [
+                {
+                  "collection_name": "documents",
+                  "collection_secret_key": ""
+                }
+              ]
+            }
+          }
+        },
+        "sparseindex": {
+          "bm25s": {
+            "enabled": false,
+            "configuration": {
+              "sparse_index_root_path": "/data/db/sparseindex",
+              "db_name": "documents",
+              "collections": [
+                {
+                  "collection_name": "documents",
+                  "collection_secret_key": ""
+                }
+              ],
+              "nltk_data_dir": "C:/MyProgramFiles/AI/nltk_data"
+            }
+          },
+          "infy_db_service": {
+            "enabled": false,
+            "configuration": {
+              "db_service_url": "",
+              "method_name": "bm25s",
+              "collections": [
+                {
+                  "collection_name": "documents",
+                  "collection_secret_key": ""
+                }
+              ]
+            }
+          }
+        }
+      },
+      "hybrid_search": {
+        "rrf": {
+          "enabled": false
+        }
+      },
+      "queries": [
+        {
+          "attribute_key": "query1",
+          "question": "What is the percentage of women employees in Infosys?",
+          "top_k": 5,
+          "pre_filter_fetch_k": 10,
+          "filter_metadata": {}
+        }
+      ]
+    }
+  }
 }

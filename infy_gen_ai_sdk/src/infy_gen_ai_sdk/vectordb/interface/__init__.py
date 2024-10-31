@@ -5,3 +5,4 @@
 # ===============================================================================================================#
 
 from .i_vector_db_provider import IVectorDbProvider
+from .i_online_vectordb_provider import IOnlineVectorDbProvider

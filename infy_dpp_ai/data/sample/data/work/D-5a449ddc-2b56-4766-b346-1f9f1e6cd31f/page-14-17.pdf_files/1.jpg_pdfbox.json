@@ -1,0 +1,1990 @@
+{
+    "page": 1,
+    "width": 5100,
+    "height": 3299,
+    "bbox": "X1,Y1,X2,Y2",
+    "tokens": [
+        {
+            "id": "P1_L1",
+            "type": "line",
+            "text": "Performance overview",
+            "uri": "",
+            "bbox": [
+                189,
+                160,
+                735,
+                195
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L2",
+            "type": "line",
+            "text": "Business highlights",
+            "uri": "",
+            "bbox": [
+                189,
+                224,
+                950,
+                283
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L3",
+            "type": "line",
+            "text": "Infosys achieved industry-",
+            "uri": "",
+            "bbox": [
+                1637,
+                646,
+                2241,
+                680
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L4",
+            "type": "line",
+            "text": "Women employees",
+            "uri": "",
+            "bbox": [
+                3676,
+                625,
+                4022,
+                651
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L5",
+            "type": "line",
+            "text": "leading revenue growth of ",
+            "uri": "",
+            "bbox": [
+                1637,
+                711,
+                2264,
+                745
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L6",
+            "type": "line",
+            "text": "39.4%",
+            "uri": "",
+            "bbox": [
+                3716,
+                697,
+                3982,
+                763
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L7",
+            "type": "line",
+            "text": "15.4% with healthy operating ",
+            "uri": "",
+            "bbox": [
+                1637,
+                776,
+                2328,
+                810
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L8",
+            "type": "line",
+            "text": "Steady progress towards ",
+            "uri": "",
+            "bbox": [
+                3636,
+                813,
+                4071,
+                838
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L9",
+            "type": "line",
+            "text": "margin of 21.0% for fiscal ",
+            "uri": "",
+            "bbox": [
+                1637,
+                841,
+                2233,
+                875
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L10",
+            "type": "line",
+            "text": "gender\u00a0diversity goals",
+            "uri": "",
+            "bbox": [
+                3657,
+                863,
+                4041,
+                888
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L11",
+            "type": "line",
+            "text": "2023. Our ESG Vision 2030 and ",
+            "uri": "",
+            "bbox": [
+                1637,
+                906,
+                2355,
+                939
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L12",
+            "type": "line",
+            "text": "ambitions continue to drive ",
+            "uri": "",
+            "bbox": [
+                1637,
+                971,
+                2286,
+                1004
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L13",
+            "type": "line",
+            "text": "Digital skilling",
+            "uri": "",
+            "bbox": [
+                4275,
+                964,
+                4535,
+                989
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L14",
+            "type": "line",
+            "text": "Tech for Good",
+            "uri": "",
+            "bbox": [
+                2786,
+                999,
+                3039,
+                1024
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L15",
+            "type": "line",
+            "text": "value for all our stakeholders.",
+            "uri": "",
+            "bbox": [
+                1637,
+                1036,
+                2321,
+                1069
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L16",
+            "type": "line",
+            "text": "114mn +",
+            "uri": "",
+            "bbox": [
+                2786,
+                1071,
+                3127,
+                1137
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L17",
+            "type": "line",
+            "text": "8.5mn",
+            "uri": "",
+            "bbox": [
+                4275,
+                1035,
+                4536,
+                1102
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L18",
+            "type": "line",
+            "text": "Carbon offset programs",
+            "uri": "",
+            "bbox": [
+                3552,
+                1166,
+                3984,
+                1191
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L19",
+            "type": "line",
+            "text": "People are a part of our digital ",
+            "uri": "",
+            "bbox": [
+                4275,
+                1152,
+                4809,
+                1177
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L20",
+            "type": "line",
+            "text": "Lives empowered via our Tech for ",
+            "uri": "",
+            "bbox": [
+                2786,
+                1187,
+                3377,
+                1212
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L21",
+            "type": "line",
+            "text": "skilling\u00a0initiatives",
+            "uri": "",
+            "bbox": [
+                4275,
+                1201,
+                4572,
+                1227
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L22",
+            "type": "line",
+            "text": "Good solutions in e-governance, ",
+            "uri": "",
+            "bbox": [
+                2786,
+                1237,
+                3359,
+                1262
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L23",
+            "type": "line",
+            "text": "education and healthcare",
+            "uri": "",
+            "bbox": [
+                2786,
+                1287,
+                3230,
+                1312
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L24",
+            "type": "line",
+            "text": "2,40,000+",
+            "uri": "",
+            "bbox": [
+                3552,
+                1238,
+                4014,
+                1304
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L25",
+            "type": "line",
+            "text": "Operating margin",
+            "uri": "",
+            "bbox": [
+                946,
+                1316,
+                1269,
+                1342
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L26",
+            "type": "line",
+            "text": "Rural families continue to benefit",
+            "uri": "",
+            "bbox": [
+                3552,
+                1329,
+                4126,
+                1354
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L27",
+            "type": "line",
+            "text": "21.0",
+            "uri": "",
+            "bbox": [
+                946,
+                1388,
+                1139,
+                1454
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L28",
+            "type": "line",
+            "text": "Buyback completed",
+            "uri": "",
+            "bbox": [
+                1702,
+                1372,
+                2060,
+                1397
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L29",
+            "type": "line",
+            "text": "%",
+            "uri": "",
+            "bbox": [
+                1141,
+                1406,
+                1207,
+                1454
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L30",
+            "type": "line",
+            "text": "Robust operating margin",
+            "uri": "",
+            "bbox": [
+                946,
+                1504,
+                1382,
+                1529
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L31",
+            "type": "line",
+            "text": "? 9,300cr",
+            "uri": "",
+            "bbox": [
+                1702,
+                1461,
+                2056,
+                1510
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L32",
+            "type": "line",
+            "text": "Carbon neutrality",
+            "uri": "",
+            "bbox": [
+                2809,
+                1484,
+                3128,
+                1509
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L33",
+            "type": "line",
+            "text": "at an average price of ? 1,539.06",
+            "uri": "",
+            "bbox": [
+                1702,
+                1559,
+                2260,
+                1584
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L34",
+            "type": "line",
+            "text": "Carbon neutral for ",
+            "uri": "",
+            "bbox": [
+                2809,
+                1553,
+                3439,
+                1599
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L35",
+            "type": "line",
+            "text": "Revenues",
+            "uri": "",
+            "bbox": [
+                236,
+                1608,
+                410,
+                1634
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L36",
+            "type": "line",
+            "text": "Basic earnings per share",
+            "uri": "",
+            "bbox": [
+                935,
+                1623,
+                1370,
+                1648
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L37",
+            "type": "line",
+            "text": "4 years in a row",
+            "uri": "",
+            "bbox": [
+                2809,
+                1627,
+                3327,
+                1673
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L38",
+            "type": "line",
+            "text": "(par value of ? 5 each)",
+            "uri": "",
+            "bbox": [
+                935,
+                1673,
+                1313,
+                1698
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L39",
+            "type": "line",
+            "text": "?1",
+            "uri": "",
+            "bbox": [
+                236,
+                1710,
+                347,
+                1763
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L40",
+            "type": "line",
+            "text": " ",
+            "uri": "",
+            "bbox": [
+                283,
+                1738,
+                292,
+                1763
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L41",
+            "type": "line",
+            "text": ",46,767cr",
+            "uri": "",
+            "bbox": [
+                340,
+                1687,
+                772,
+                1763
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L42",
+            "type": "line",
+            "text": "20.7% growth Y-o-Y ",
+            "uri": "",
+            "bbox": [
+                236,
+                1821,
+                587,
+                1846
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L43",
+            "type": "line",
+            "text": "57.63",
+            "uri": "",
+            "bbox": [
+                935,
+                1747,
+                1220,
+                1823
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L44",
+            "type": "line",
+            "text": "Scope 1, 2 and 3 emissions",
+            "uri": "",
+            "bbox": [
+                2809,
+                1723,
+                3268,
+                1748
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L45",
+            "type": "line",
+            "text": "~50,000",
+            "uri": "",
+            "bbox": [
+                4374,
+                1708,
+                4767,
+                1756
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L46",
+            "type": "line",
+            "text": "Return on equity",
+            "uri": "",
+            "bbox": [
+                1709,
+                1757,
+                2014,
+                1783
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L47",
+            "type": "line",
+            "text": "Fresh graduates hired globally",
+            "uri": "",
+            "bbox": [
+                4308,
+                1793,
+                4832,
+                1818
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L48",
+            "type": "line",
+            "text": "15.4% CC growth Y-o-Y",
+            "uri": "",
+            "bbox": [
+                236,
+                1871,
+                631,
+                1896
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L49",
+            "type": "line",
+            "text": "9.7% growth Y-o-Y",
+            "uri": "",
+            "bbox": [
+                935,
+                1848,
+                1255,
+                1873
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L50",
+            "type": "line",
+            "text": "31.2%",
+            "uri": "",
+            "bbox": [
+                1709,
+                1829,
+                1970,
+                1895
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L51",
+            "type": "line",
+            "text": "Improved by 2.1% over ",
+            "uri": "",
+            "bbox": [
+                1709,
+                1918,
+                2074,
+                1940
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L52",
+            "type": "line",
+            "text": "Note:",
+            "uri": "",
+            "bbox": [
+                2769,
+                1903,
+                2840,
+                1922
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L53",
+            "type": "line",
+            "text": "(1)",
+            "uri": "",
+            "bbox": [
+                2769,
+                1949,
+                2787,
+                1960
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L54",
+            "type": "line",
+            "text": "the\u00a0last fiscal",
+            "uri": "",
+            "bbox": [
+                1709,
+                1962,
+                1912,
+                1985
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L55",
+            "type": "line",
+            "text": " Free cash flow is defined as net cash provided by operating activities less capital expenditure as per the Consolidated Statement of Cash Flows ",
+            "uri": "",
+            "bbox": [
+                2787,
+                1952,
+                4694,
+                1971
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L56",
+            "type": "line",
+            "text": "Digital revenues ",
+            "uri": "",
+            "bbox": [
+                235,
+                2001,
+                539,
+                2027
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L57",
+            "type": "line",
+            "text": "prepared under IFRS.",
+            "uri": "",
+            "bbox": [
+                2810,
+                1989,
+                3088,
+                2008
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L58",
+            "type": "line",
+            "text": "(2)",
+            "uri": "",
+            "bbox": [
+                2769,
+                2036,
+                2788,
+                2047
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L59",
+            "type": "line",
+            "text": "(as a % of total revenue)",
+            "uri": "",
+            "bbox": [
+                235,
+                2052,
+                647,
+                2077
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L60",
+            "type": "line",
+            "text": " Comprise cash and cash equivalents, current and non-current investments excluding investments in unquoted equity and preference shares, and others.",
+            "uri": "",
+            "bbox": [
+                2788,
+                2038,
+                4823,
+                2057
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L61",
+            "type": "line",
+            "text": "Consolidated cash and ",
+            "uri": "",
+            "bbox": [
+                965,
+                2078,
+                1381,
+                2104
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L62",
+            "type": "line",
+            "text": "Free cash(1)",
+            "uri": "",
+            "bbox": [
+                1678,
+                2097,
+                1871,
+                2109
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L63",
+            "type": "line",
+            "text": "62.2",
+            "uri": "",
+            "bbox": [
+                235,
+                2130,
+                466,
+                2206
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L64",
+            "type": "line",
+            "text": "investments(2)",
+            "uri": "",
+            "bbox": [
+                965,
+                2128,
+                1213,
+                2140
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L65",
+            "type": "line",
+            "text": "%",
+            "uri": "",
+            "bbox": [
+                461,
+                2155,
+                531,
+                2206
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L66",
+            "type": "line",
+            "text": "Key trends",
+            "uri": "",
+            "bbox": [
+                2763,
+                2206,
+                2972,
+                2234
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L67",
+            "type": "line",
+            "text": "25.6% CC growth Y-o-Y",
+            "uri": "",
+            "bbox": [
+                235,
+                2264,
+                633,
+                2289
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L68",
+            "type": "line",
+            "text": "? 31,286cr",
+            "uri": "",
+            "bbox": [
+                965,
+                2218,
+                1384,
+                2266
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L69",
+            "type": "line",
+            "text": "? 20,443cr",
+            "uri": "",
+            "bbox": [
+                1678,
+                2187,
+                2106,
+                2235
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L70",
+            "type": "line",
+            "text": " FCF conversion at 84.8% of net profit",
+            "uri": "",
+            "bbox": [
+                1678,
+                2285,
+                2325,
+                2310
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L71",
+            "type": "line",
+            "text": "In ? crore, except per equity share data",
+            "uri": "",
+            "bbox": [
+                2779,
+                2292,
+                3414,
+                2315
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L72",
+            "type": "line",
+            "text": "FY 2023",
+            "uri": "",
+            "bbox": [
+                3667,
+                2292,
+                3796,
+                2315
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L73",
+            "type": "line",
+            "text": "FY 2022",
+            "uri": "",
+            "bbox": [
+                3942,
+                2292,
+                4071,
+                2315
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L74",
+            "type": "line",
+            "text": "FY 2021",
+            "uri": "",
+            "bbox": [
+                4218,
+                2292,
+                4345,
+                2315
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L75",
+            "type": "line",
+            "text": "FY 2020",
+            "uri": "",
+            "bbox": [
+                4491,
+                2292,
+                4620,
+                2315
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L76",
+            "type": "line",
+            "text": "FY 2019",
+            "uri": "",
+            "bbox": [
+                4768,
+                2292,
+                4894,
+                2315
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L77",
+            "type": "line",
+            "text": "Continue to main strong ",
+            "uri": "",
+            "bbox": [
+                965,
+                2316,
+                1397,
+                2341
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L78",
+            "type": "line",
+            "text": "liquidity\u00a0position",
+            "uri": "",
+            "bbox": [
+                965,
+                2366,
+                1259,
+                2391
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L79",
+            "type": "line",
+            "text": "Revenues(1)",
+            "uri": "",
+            "bbox": [
+                2779,
+                2354,
+                2952,
+                2364
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L80",
+            "type": "line",
+            "text": "1,46,767",
+            "uri": "",
+            "bbox": [
+                3668,
+                2354,
+                3796,
+                2376
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L81",
+            "type": "line",
+            "text": "1,21,641",
+            "uri": "",
+            "bbox": [
+                3945,
+                2354,
+                4071,
+                2376
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L82",
+            "type": "line",
+            "text": "1,00,472",
+            "uri": "",
+            "bbox": [
+                4216,
+                2354,
+                4345,
+                2376
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L83",
+            "type": "line",
+            "text": "90,791",
+            "uri": "",
+            "bbox": [
+                4517,
+                2354,
+                4620,
+                2376
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L84",
+            "type": "line",
+            "text": "82,675 ",
+            "uri": "",
+            "bbox": [
+                4793,
+                2354,
+                4902,
+                2376
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L85",
+            "type": "line",
+            "text": "Net profit(1)(2)",
+            "uri": "",
+            "bbox": [
+                2779,
+                2415,
+                2977,
+                2425
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L86",
+            "type": "line",
+            "text": "Large deal TCV",
+            "uri": "",
+            "bbox": [
+                1708,
+                2431,
+                1978,
+                2456
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L87",
+            "type": "line",
+            "text": "24,095",
+            "uri": "",
+            "bbox": [
+                3693,
+                2415,
+                3796,
+                2438
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L88",
+            "type": "line",
+            "text": "22,110",
+            "uri": "",
+            "bbox": [
+                3974,
+                2415,
+                4071,
+                2438
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L89",
+            "type": "line",
+            "text": "19,351",
+            "uri": "",
+            "bbox": [
+                4246,
+                2415,
+                4345,
+                2438
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L90",
+            "type": "line",
+            "text": "16,594",
+            "uri": "",
+            "bbox": [
+                4517,
+                2415,
+                4620,
+                2438
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L91",
+            "type": "line",
+            "text": "15,404",
+            "uri": "",
+            "bbox": [
+                4791,
+                2415,
+                4894,
+                2438
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L92",
+            "type": "line",
+            "text": "(Total contract value in US$ billion)",
+            "uri": "",
+            "bbox": [
+                1708,
+                2481,
+                2308,
+                2506
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L93",
+            "type": "line",
+            "text": "Basic earnings per share (in ?)(1)",
+            "uri": "",
+            "bbox": [
+                2779,
+                2477,
+                3264,
+                2487
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L94",
+            "type": "line",
+            "text": "57.63",
+            "uri": "",
+            "bbox": [
+                3716,
+                2477,
+                3796,
+                2499
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L95",
+            "type": "line",
+            "text": "52.52",
+            "uri": "",
+            "bbox": [
+                3986,
+                2477,
+                4071,
+                2499
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L96",
+            "type": "line",
+            "text": "45.61",
+            "uri": "",
+            "bbox": [
+                4263,
+                2477,
+                4345,
+                2499
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L97",
+            "type": "line",
+            "text": "38.97",
+            "uri": "",
+            "bbox": [
+                4536,
+                2477,
+                4620,
+                2499
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L98",
+            "type": "line",
+            "text": "35.44 ",
+            "uri": "",
+            "bbox": [
+                4810,
+                2477,
+                4902,
+                2499
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L99",
+            "type": "line",
+            "text": "$9.8",
+            "uri": "",
+            "bbox": [
+                1708,
+                2573,
+                1911,
+                2619
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L100",
+            "type": "line",
+            "text": "Market capitalization",
+            "uri": "",
+            "bbox": [
+                2779,
+                2538,
+                3109,
+                2561
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L101",
+            "type": "line",
+            "text": "5,92,394",
+            "uri": "",
+            "bbox": [
+                3666,
+                2538,
+                3796,
+                2561
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L102",
+            "type": "line",
+            "text": "8,02,162",
+            "uri": "",
+            "bbox": [
+                3944,
+                2538,
+                4071,
+                2561
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L103",
+            "type": "line",
+            "text": "5,82,880",
+            "uri": "",
+            "bbox": [
+                4212,
+                2538,
+                4345,
+                2561
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L104",
+            "type": "line",
+            "text": "2,73,214",
+            "uri": "",
+            "bbox": [
+                4492,
+                2538,
+                4620,
+                2561
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L105",
+            "type": "line",
+            "text": "3,24,448 ",
+            "uri": "",
+            "bbox": [
+                4762,
+                2538,
+                4902,
+                2561
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L106",
+            "type": "line",
+            "text": "b",
+            "uri": "",
+            "bbox": [
+                1912,
+                2570,
+                1958,
+                2619
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L107",
+            "type": "line",
+            "text": "In US$ million, except per equity share data",
+            "uri": "",
+            "bbox": [
+                2779,
+                2641,
+                3487,
+                2664
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L108",
+            "type": "line",
+            "text": "FY 2023",
+            "uri": "",
+            "bbox": [
+                3667,
+                2641,
+                3796,
+                2664
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L109",
+            "type": "line",
+            "text": "FY 2022",
+            "uri": "",
+            "bbox": [
+                3941,
+                2641,
+                4070,
+                2664
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L110",
+            "type": "line",
+            "text": "FY 2021",
+            "uri": "",
+            "bbox": [
+                4216,
+                2641,
+                4344,
+                2664
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L111",
+            "type": "line",
+            "text": "FY 2020",
+            "uri": "",
+            "bbox": [
+                4489,
+                2641,
+                4618,
+                2664
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L112",
+            "type": "line",
+            "text": "FY 2019",
+            "uri": "",
+            "bbox": [
+                4766,
+                2641,
+                4892,
+                2664
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L113",
+            "type": "line",
+            "text": "Sustained momentum in large ",
+            "uri": "",
+            "bbox": [
+                1708,
+                2668,
+                2243,
+                2694
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L114",
+            "type": "line",
+            "text": "deal\u00a0wins continues",
+            "uri": "",
+            "bbox": [
+                1708,
+                2718,
+                2050,
+                2743
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L115",
+            "type": "line",
+            "text": "Revenues(1)",
+            "uri": "",
+            "bbox": [
+                2779,
+                2703,
+                2952,
+                2713
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L116",
+            "type": "line",
+            "text": "18,212",
+            "uri": "",
+            "bbox": [
+                3696,
+                2703,
+                3796,
+                2726
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L117",
+            "type": "line",
+            "text": "16,311",
+            "uri": "",
+            "bbox": [
+                3972,
+                2703,
+                4070,
+                2726
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L118",
+            "type": "line",
+            "text": "13,561",
+            "uri": "",
+            "bbox": [
+                4244,
+                2703,
+                4344,
+                2726
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L119",
+            "type": "line",
+            "text": "12,780",
+            "uri": "",
+            "bbox": [
+                4517,
+                2703,
+                4618,
+                2726
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L120",
+            "type": "line",
+            "text": "11,799 ",
+            "uri": "",
+            "bbox": [
+                4794,
+                2703,
+                4900,
+                2726
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L121",
+            "type": "line",
+            "text": "Net profit(1)(2)",
+            "uri": "",
+            "bbox": [
+                2779,
+                2765,
+                2977,
+                2775
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L122",
+            "type": "line",
+            "text": "2,981",
+            "uri": "",
+            "bbox": [
+                3713,
+                2765,
+                3796,
+                2787
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L123",
+            "type": "line",
+            "text": "2,963",
+            "uri": "",
+            "bbox": [
+                3986,
+                2765,
+                4070,
+                2787
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L124",
+            "type": "line",
+            "text": "2,613",
+            "uri": "",
+            "bbox": [
+                4263,
+                2765,
+                4344,
+                2787
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L125",
+            "type": "line",
+            "text": "2,331",
+            "uri": "",
+            "bbox": [
+                4535,
+                2765,
+                4618,
+                2787
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L126",
+            "type": "line",
+            "text": "2,199",
+            "uri": "",
+            "bbox": [
+                4811,
+                2765,
+                4892,
+                2787
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L127",
+            "type": "line",
+            "text": "Basic earnings per share (in ?)(1)",
+            "uri": "",
+            "bbox": [
+                2779,
+                2826,
+                3264,
+                2836
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L128",
+            "type": "line",
+            "text": "0.71",
+            "uri": "",
+            "bbox": [
+                3731,
+                2826,
+                3796,
+                2849
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L129",
+            "type": "line",
+            "text": "0.70",
+            "uri": "",
+            "bbox": [
+                4005,
+                2826,
+                4070,
+                2849
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L130",
+            "type": "line",
+            "text": "0.62",
+            "uri": "",
+            "bbox": [
+                4279,
+                2826,
+                4344,
+                2849
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L131",
+            "type": "line",
+            "text": "0.55",
+            "uri": "",
+            "bbox": [
+                4553,
+                2826,
+                4618,
+                2849
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L132",
+            "type": "line",
+            "text": "0.51 ",
+            "uri": "",
+            "bbox": [
+                4827,
+                2826,
+                4900,
+                2849
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L133",
+            "type": "line",
+            "text": "Number of US$ 50 million + clients",
+            "uri": "",
+            "bbox": [
+                1678,
+                2855,
+                2299,
+                2881
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L134",
+            "type": "line",
+            "text": "Dividend per share (in ?)",
+            "uri": "",
+            "bbox": [
+                1042,
+                2903,
+                1481,
+                2929
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L135",
+            "type": "line",
+            "text": "Market capitalization",
+            "uri": "",
+            "bbox": [
+                2779,
+                2887,
+                3109,
+                2910
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L136",
+            "type": "line",
+            "text": "72,351",
+            "uri": "",
+            "bbox": [
+                3693,
+                2887,
+                3796,
+                2910
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L137",
+            "type": "line",
+            "text": "104,706",
+            "uri": "",
+            "bbox": [
+                3948,
+                2887,
+                4070,
+                2910
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L138",
+            "type": "line",
+            "text": "79,760",
+            "uri": "",
+            "bbox": [
+                4243,
+                2887,
+                4344,
+                2910
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L139",
+            "type": "line",
+            "text": "34,966",
+            "uri": "",
+            "bbox": [
+                4514,
+                2887,
+                4618,
+                2910
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L140",
+            "type": "line",
+            "text": "47,614 ",
+            "uri": "",
+            "bbox": [
+                4797,
+                2887,
+                4900,
+                2910
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L141",
+            "type": "line",
+            "text": "34.0",
+            "uri": "",
+            "bbox": [
+                1160,
+                2975,
+                1363,
+                3041
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L142",
+            "type": "line",
+            "text": "75",
+            "uri": "",
+            "bbox": [
+                1678,
+                2927,
+                1791,
+                2993
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L143",
+            "type": "line",
+            "text": "Notes:",
+            "uri": "",
+            "bbox": [
+                2769,
+                2976,
+                2852,
+                2994
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L144",
+            "type": "line",
+            "text": "Strong client metrics with increase  ",
+            "uri": "",
+            "bbox": [
+                1678,
+                3018,
+                2292,
+                3043
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L145",
+            "type": "line",
+            "text": "(1) Based on IFRS consolidated financial statements",
+            "uri": "",
+            "bbox": [
+                2769,
+                3022,
+                3447,
+                3043
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L146",
+            "type": "line",
+            "text": "9.7% growth Y-o-Y",
+            "uri": "",
+            "bbox": [
+                1102,
+                3066,
+                1422,
+                3091
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L147",
+            "type": "line",
+            "text": "of 11 clients Y-o-Y",
+            "uri": "",
+            "bbox": [
+                1678,
+                3068,
+                1982,
+                3093
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L148",
+            "type": "line",
+            "text": "(2) Attributable to owners of the Company",
+            "uri": "",
+            "bbox": [
+                2769,
+                3071,
+                3329,
+                3092
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L149",
+            "type": "line",
+            "text": "28",
+            "uri": "",
+            "bbox": [
+                189,
+                3186,
+                223,
+                3206
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L150",
+            "type": "line",
+            "text": "Infosys Integrated Annual Report 2022-23",
+            "uri": "",
+            "bbox": [
+                1760,
+                3186,
+                2337,
+                3206
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L151",
+            "type": "line",
+            "text": "Infosys Integrated Annual Report 2022-23",
+            "uri": "",
+            "bbox": [
+                2763,
+                3186,
+                3340,
+                3206
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P1_L152",
+            "type": "line",
+            "text": "29",
+            "uri": "",
+            "bbox": [
+                4877,
+                3186,
+                4911,
+                3206
+            ],
+            "tokens": []
+        }
+    ],
+    "infy_ocr_generator_metadata": {
+        "dpi": 300,
+        "width": 5100,
+        "height": 3299,
+        "doc_page_num": "1"
+    }
+}

@@ -1,0 +1,17 @@
+{
+    "chunk_id": "C-e36df",
+    "page_no": 1,
+    "sequence_no": 1,
+    "bbox_format": "X1,Y1,X2,Y2",
+    "bbox": null,
+    "doc_name": "AR_2022-23_page-14-17.pdf",
+    "document_id": "9fda3b24-3def-4079-aaba-b2c5c13fe659",
+    "chunking_method": "page",
+    "char_count": "1",
+    "resources": [
+        {
+            "type": "doc_path",
+            "path": "/data/vectordb/resources/9fda3b24-db45-4c7c-942e-c8b5af0af297.pdf"
+        }
+    ]
+}

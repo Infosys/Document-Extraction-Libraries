@@ -20,7 +20,8 @@
 		"editor.formatOnSave": true,
 		"pylint.args": [
 			"--rcfile",
-			"../libraries.pylintrc"
+			"../libraries.pylintrc",
+			"--generate-members"
 		],
 		"python.testing.pytestArgs": [
 			"-s",

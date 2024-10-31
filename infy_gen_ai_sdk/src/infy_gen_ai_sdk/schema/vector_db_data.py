@@ -4,6 +4,7 @@
 # http://www.apache.org/licenses/                                                                                #
 # ===============================================================================================================#
 
+from typing import Optional
 from pydantic import BaseModel
 
 
@@ -21,3 +22,12 @@ class BaseVectorDbQueryParamsData(BaseModel):
     top_k: int   # Max number of matching records to return
     # Number of documents to fetch before filtering.
     pre_filter_fetch_k: int
+
+
+class OnlineVectorDbConfigData(BaseModel):
+    """Base class for online provider config data"""
+    db_service_url: str = None
+    model_name: str = None
+    index_id: Optional[str] = None
+    collection_name: str = None
+    collection_secret_key: str = None

@@ -1,287 +1,373 @@
 {
-    "name": "Attribute extraction from vectorDB",
-    "description": "Pipeline to extract the attributes from the vectorDB",
-    "variables": {
-        "OPENAI_KEY": "${ENV:OPENAI_KEY}",
-        "OPENAI_SERVER_URL": "${ENV:OPENAI_SERVER_URL}",
-        "MODEL_HOME": "C:/MyProgramFiles/AI/models",
-        "CUSTOM_LLM_BLOOM_INFERENCE_URL": "${ENV:CUSTOM_LLM_BLOOM_INFERENCE_URL}",
-        "CUSTOM_LLM_LLAMA_INFERENCE_URL": "${ENV:CUSTOM_LLM_LLAMA_INFERENCE_URL}",
-        "CUSTOM_LLM_MIXTRAL_INFERENCE_URL": "${ENV:CUSTOM_LLM_MIXTRAL_INFERENCE_URL}",
-        "CUSTOM_EMB_MISTRAL_INFERENCE_URL": "${ENV:CUSTOM_EMB_MISTRAL_INFERENCE_URL}"
+  "name": "Attribute extraction from vectorDB",
+  "description": "Pipeline to extract the attributes from the vectorDB",
+  "variables": {
+    "OPENAI_KEY": "${ENV:OPENAI_KEY}",
+    "OPENAI_SERVER_URL": "${ENV:OPENAI_SERVER_URL}",
+    "MODEL_HOME": "C:/MyProgramFiles/AI/models",
+    "CUSTOM_LLM_BLOOM_INFERENCE_URL": "${ENV:CUSTOM_LLM_BLOOM_INFERENCE_URL}",
+    "CUSTOM_LLM_LLAMA_INFERENCE_URL": "${ENV:CUSTOM_LLM_LLAMA_INFERENCE_URL}",
+    "CUSTOM_LLM_MIXTRAL_INFERENCE_URL": "${ENV:CUSTOM_LLM_MIXTRAL_INFERENCE_URL}",
+    "CUSTOM_EMB_MISTRAL_INFERENCE_URL": "${ENV:CUSTOM_EMB_MISTRAL_INFERENCE_URL}"
+  },
+  "processor_list": [
+    {
+      "enabled": true,
+      "processor_name": "request_creator",
+      "processor_namespace": "infy_dpp_core.request_creator",
+      "processor_class_name": "RequestCreator",
+      "processor_input_config_name_list": ["RequestCreator"]
     },
-    "processor_list": [
-        {
-            "enabled": true,
-            "processor_name": "request_creator",
-            "processor_namespace": "infy_dpp_core.request_creator",
-            "processor_class_name": "RequestCreator",
-            "processor_input_config_name_list": [
-                "RequestCreator"
-            ]
-        },
-        {
-            "enabled": true,
-            "processor_name": "retriever",
-            "processor_namespace": "infy_dpp_ai.retriever.process.query_retriever_processor",
-            "processor_class_name": "QueryRetriever",
-            "processor_input_config_name_list": [
-                "QueryRetriever"
-            ]
-        },
-        {
-            "enabled": true,
-            "processor_name": "reader",
-            "processor_namespace": "infy_dpp_ai.reader.process.reader_processor",
-            "processor_class_name": "Reader",
-            "processor_input_config_name_list": [
-                "Reader"
-            ]
-        },
-        {
-            "enabled": true,
-            "processor_name": "request_closer",
-            "processor_namespace": "infy_dpp_core.request_closer",
-            "processor_class_name": "RequestCloser",
-            "processor_input_config_name_list": [
-                "RequestCloser"
-            ]
-        }
-    ],
-    "processor_input_config": {
-        "RequestCreator": {
-            "from_data_file": {
-                "enabled": false,
-                "read_path": "/data/input/",
-                "batch_size": 20,
-                "filter": {
-                    "include": [
-                        "pdf",
-                        "txt"
-                    ],
-                    "exclude": [
-                        "_"
-                    ]
-                },
-                "work_root_path": "/data/work/",
-                "to_request_file": {
-                    "save_path": "/data/work/request/indexer/start"
-                }
-            },
-            "from_request_file": {
-                "enabled": true,
-                "read_path": "/data/work/request/indexer/complete",
-                "save_path": "/data/work/request/inference/start"
-            }
-        },
-        "RequestCloser": {
-            "work_root_path": "/data/work/",
-            "data_file": {
-                "output_root_path": ""
-            },
-            "output_root_path": "/data/output/",
-            "from_request_file": {
-                "read_path": "/data/work/request/inference/start",
-                "save_path": "/data/work/request/inference/complete"
-            }
-        },
-        "QueryRetriever": {
-            "embedding": {
-                "openai": {
-                    "enabled": false,
-                    "configuration": {
-                        "api_type": "azure",
-                        "api_version": "2022-12-01",
-                        "api_url": "${OPENAI_SERVER_URL}",
-                        "api_key": "${OPENAI_KEY}",
-                        "model_name": "text-embedding-ada-002",
-                        "deployment_name": "text-embedding-ada-002",
-                        "chunk_size": 1000,
-                        "tiktoken_cache_dir": "${MODEL_HOME}/tiktoken_encoding"
-                    }
-                },
-                "sentence_transformer": {
-                    "enabled": true,
-                    "configuration": {
-                        "model_name": "all-MiniLM-L6-v2",
-                        "model_home_path": "${MODEL_HOME}"
-                    }
-                },
-                "custom": {
-                    "enabled": false,
-                    "configuration": {
-                        "model_name": "mistral-embd",
-                        "api_key": "",
-                        "endpoint": "${CUSTOM_EMB_MISTRAL_INFERENCE_URL}"
-                    }
-                }
-            },
-            "storage": {
-                "faiss": {
-                    "enabled": true,
-                    "configuration": {
-                        "chunked_files_root_path": "/data/vectordb/chunked",
-                        "encoded_files_root_path": "/data/vectordb/encoded",
-                        "db_name": null
-                    }
-                }
-            },
-            "queries": [
-                {
-                    "attribute_key": "value_extraction",
-                    "question": "What is the name, author, genre, published, rating and language of the book?",
-                    "top_k": 1,
-                    "pre_filter_fetch_k": 10,
-                    "filter_metadata": {}
-                }
-            ]
-        },
-        "Reader": {
-            "storage": {
-                "faiss": {
-                    "enabled": true,
-                    "configuration": {
-                        "chunked_files_root_path": "/data/vectordb/chunked",
-                        "encoded_files_root_path": "/data/vectordb/encoded",
-                        "db_name": "documents"
-                    }
-                }
-            },
-            "llm": {
-                "openai": {
-                    "enabled": false,
-                    "configuration": {
-                        "api_type": "azure",
-                        "api_version": "2022-12-01",
-                        "api_url": "${OPENAI_SERVER_URL}",
-                        "api_key": "${OPENAI_KEY}",
-                        "max_tokens": 1000,
-                        "model_name": "text-davinci-003",
-                        "deployment_name": "text-davinci-003",
-                        "temperature": 0.5,
-                        "tiktoken_cache_dir": "${MODEL_HOME}/tiktoken_encoding"
-                    },
-                    "cache": {
-                        "enabled": true,
-                        "cache_root_path": "/data/cache/infy_model_service"
-                    }
-                },
-                "custom": {
-                    "bloom-7b1": {
-                        "enabled": false,
-                        "configuration": {
-                            "inference_url": "${CUSTOM_LLM_BLOOM_INFERENCE_URL}",
-                            "tiktoken_cache_dir": "${MODEL_HOME}/tiktoken_encoding",
-                            "remove_query_from_response": true,
-                            "verify_ssl": false
-                        },
-                        "json_payload": {
-                            "inputs": "{query}",
-                            "parameters": {
-                                "max_new_tokens": 4096,
-                                "temperature": 1,
-                                "num_return_sequences": 1,
-                                "do_sample": true
-                            }
-                        }
-                    },
-                    "llama2-7b": {
-                        "enabled": false,
-                        "configuration": {
-                            "inference_url": "${CUSTOM_LLM_LLAMA_INFERENCE_URL}",
-                            "tiktoken_cache_dir": "${MODEL_HOME}/tiktoken_encoding",
-                            "remove_query_from_response": true,
-                            "verify_ssl": false
-                        },
-                        "json_payload": {
-                            "inputs": "{query}",
-                            "parameters": {
-                                "max_new_tokens": 4096,
-                                "temperature": 1,
-                                "num_return_sequences": 1,
-                                "do_sample": true
-                            }
-                        }
-                    },
-                    "mixtral8x7b-instruct": {
-                        "enabled": true,
-                        "configuration": {
-                            "inference_url": "${CUSTOM_LLM_MIXTRAL_INFERENCE_URL}",
-                            "tiktoken_cache_dir": "${MODEL_HOME}/tiktoken_encoding",
-                            "remove_query_from_response": false,
-                            "verify_ssl": false
-                        },
-                        "json_payload": {
-                            "inputs": "{query}",
-                            "parameters": {
-                                "max_new_tokens": 1024,
-                                "temperature": 0.1
-                            }
-                        }
-                    }
-                }
-            },
-            "named_context_templates": {
-                "context_default": "{chunk_text}",
-                "context_1": "[chunk_id={chunk_id},page_no={page_no},sequence_no={sequence_no},bbox={bbox},doc_name={doc_name}]\n{chunk_text}\n",
-                "context_2": "[chunk_id={chunk_id},page_no={page_no},sequence_no={sequence_no}]\n{chunk_text}\n"
-            },
-            "named_prompt_templates": {
-                "prompt_template_1": {
-                    "content": [
-                        "Use the following pieces of context to answer the question at the end.",
-                        "If you don't know the answer or even doubtful a bit, just say that you don't know,",
-                        " don't try to make up an answer.Just give the shortest and most appropriate relavant answer to the question.",
-                        "{context}",
-                        "Question: {question}",
-                        "Helpful Answer:"
-                    ],
-                    "context_template": "context_default"
-                },
-                "extractor_attribute_prompt": {
-                    "content": [],
-                    "file_path": "/data/config/prompt_templates/extractor_attribute_prompt.txt",
-                    "context_template": "context_1"
-                },
-                "extractor_attribute_prompt_2": {
-                    "content": [],
-                    "file_path": "/data/config/prompt_templates/extractor_attribute_prompt_2.txt",
-                    "context_template": "context_2",
-                    "response_validation": {
-                        "enabled": true,
-                        "type": "json",
-                        "total_attempts": 3
-                    }
-                },
-                "books_prompt": {
-                    "content": [],
-                    "file_path": "/data/config/prompt_templates/books_prompt.txt",
-                    "context_template": "context_default",
-                    "response_validation": {
-                        "enabled": true,
-                        "type": "json",
-                        "total_attempts": 3
-                    }
-                },
-                "books_prompt_2": {
-                    "content": [],
-                    "file_path": "/data/config/prompt_templates/books_prompt_2.txt",
-                    "context_template": "context_default",
-                    "response_validation": {
-                        "enabled": true,
-                        "type": "json",
-                        "total_attempts": 3
-                    }
-                }
-            },
-            "inputs": [
-                {
-                    "attribute_key": "value_extraction",
-                    "prompt_template": "books_prompt",
-                    "model_type": "QnA",
-                    "top_k": 2
-                }
-            ]
-        }
+    {
+      "enabled": true,
+      "processor_name": "retriever",
+      "processor_namespace": "infy_dpp_ai.retriever.process.query_retriever_processor",
+      "processor_class_name": "QueryRetriever",
+      "processor_input_config_name_list": ["QueryRetriever"]
+    },
+    {
+      "enabled": true,
+      "processor_name": "reader",
+      "processor_namespace": "infy_dpp_ai.reader.process.reader_processor",
+      "processor_class_name": "Reader",
+      "processor_input_config_name_list": ["Reader"]
+    },
+    {
+      "enabled": true,
+      "processor_name": "request_closer",
+      "processor_namespace": "infy_dpp_core.request_closer",
+      "processor_class_name": "RequestCloser",
+      "processor_input_config_name_list": ["RequestCloser"]
     }
+  ],
+  "processor_input_config": {
+    "RequestCreator": {
+      "from_data_file": {
+        "enabled": false,
+        "read_path": "/data/input/",
+        "batch_size": 20,
+        "filter": {
+          "include": ["pdf", "txt"],
+          "exclude": ["_"]
+        },
+        "work_root_path": "/data/work/",
+        "to_request_file": {
+          "save_path": "/data/work/request/indexer/start"
+        }
+      },
+      "from_request_file": {
+        "enabled": true,
+        "read_path": "/data/work/request/indexer/complete",
+        "save_path": "/data/work/request/inference/start"
+      }
+    },
+    "RequestCloser": {
+      "work_root_path": "/data/work/",
+      "data_file": {
+        "output_root_path": ""
+      },
+      "output_root_path": "/data/output/",
+      "from_request_file": {
+        "read_path": "/data/work/request/inference/start",
+        "save_path": "/data/work/request/inference/complete"
+      }
+    },
+    "QueryRetriever": {
+      "embedding": {
+        "openai": {
+          "enabled": false,
+          "configuration": {
+            "api_type": "azure",
+            "api_version": "2022-12-01",
+            "api_url": "${OPENAI_SERVER_URL}",
+            "api_key": "${OPENAI_KEY}",
+            "model_name": "text-embedding-ada-002",
+            "deployment_name": "text-embedding-ada-002",
+            "chunk_size": 1000,
+            "tiktoken_cache_dir": "${MODEL_HOME}/tiktoken_encoding"
+          }
+        },
+        "sentence_transformer": {
+          "enabled": true,
+          "configuration": {
+            "model_name": "all-MiniLM-L6-v2",
+            "model_home_path": "${MODEL_HOME}",
+            "tiktoken_cache_dir": "${MODEL_HOME}/tiktoken_encoding"
+          }
+        },
+        "custom": {
+          "enabled": false,
+          "configuration": {
+            "model_name": "mistral-embd",
+            "api_key": "",
+            "endpoint": "${CUSTOM_EMB_MISTRAL_INFERENCE_URL}"
+          }
+        }
+      },
+      "storage": {
+        "vectordb": {
+          "faiss": {
+            "enabled": true,
+            "configuration": {
+              "chunked_files_root_path": "/data/vectordb/chunked",
+              "encoded_files_root_path": "/data/vectordb/encoded",
+              "db_name": null,
+              "index_id": "",
+              "collections": [
+                {
+                  "collection_name": "",
+                  "collection_secret_key": ""
+                }
+              ],
+              "distance_metric": {
+                "eucledian": true
+              }
+            }
+          },
+          "infy_db_service": {
+            "enabled": false,
+            "configuration": {
+              "db_service_url": "",
+              "model_name": "all-MiniLM-L6-v2",
+              "index_id": "",
+              "collections": [
+                {
+                  "collection_name": "",
+                  "collection_secret_key": ""
+                }
+              ]
+            }
+          }
+        },
+        "sparseindex": {
+          "bm25s": {
+            "enabled": false,
+            "configuration": {
+              "sparse_index_root_path": "/data/db/sparseindex",
+              "db_name": null,
+              "index_id": "",
+              "collections": [
+                {
+                  "collection_name": "",
+                  "collection_secret_key": ""
+                }
+              ],
+              "nltk_data_dir": "C:/MyProgramFiles/AI/nltk_data"
+            }
+          },
+          "infy_db_service": {
+            "enabled": false,
+            "configuration": {
+              "db_service_url": "",
+              "method_name": "bm25s",
+              "index_id": "",
+              "collections": [
+                {
+                  "collection_name": "",
+                  "collection_secret_key": ""
+                }
+              ]
+            }
+          }
+        }
+      },
+      "hybrid_search": {
+        "rrf": {
+          "enabled": false
+        }
+      },
+      "queries": [
+        {
+          "attribute_key": "value_extraction",
+          "question": "What is the name, author, genre, published, rating and language of the book?",
+          "top_k": 1,
+          "pre_filter_fetch_k": 10,
+          "filter_metadata": {}
+        }
+      ]
+    },
+    "Reader": {
+      "storage": {
+        "vectordb": {
+          "faiss": {
+            "enabled": true,
+            "configuration": {
+              "chunked_files_root_path": "/data/vectordb/chunked",
+              "encoded_files_root_path": "/data/vectordb/encoded",
+              "db_name": null,
+              "distance_metric": {
+                "eucledian": true
+              }
+            }
+          },
+          "infy_db_service": {
+            "enabled": false
+          }
+        },
+        "sparseindex": {
+          "bm25s": {
+            "enabled": false
+          },
+          "infy_db_service": {
+            "enabled": false
+          }
+        }
+      },
+      "hybrid_search": {
+        "rrf": {
+          "enabled": false
+        }
+      },
+      "llm": {
+        "openai": {
+          "enabled": false,
+          "configuration": {
+            "api_type": "azure",
+            "api_version": "2024-02-15-preview",
+            "api_url": "${OPENAI_SERVER_URL}",
+            "api_key": "${OPENAI_KEY}",
+            "max_tokens": 1000,
+            "model_name": "gpt-4",
+            "deployment_name": "gpt4",
+            "temperature": 0.7,
+            "is_chat_model": true,
+            "tiktoken_cache_dir": "${MODEL_HOME}/tiktoken_encoding"
+          },
+          "cache": {
+            "enabled": true,
+            "cache_root_path": "/data/cache/infy_model_service"
+          }
+        },
+        "llama-3-1": {
+          "enabled": true,
+          "configuration": {
+            "inference_url": "${CUSTOM_LLM_LLAMA_3_1_INFERENCE_URL}",
+            "model": "/models/Meta-Llama-3.1-70B-fp8",
+            "temperature": 0.7,
+            "deployment_name": "llama3.1-70b-instuct",
+            "top_p": 0.95,
+            "max_tokens": 800,
+            "stop": null,
+            "presence_penalty": 0,
+            "frequency_penalty": 0
+          }
+        },
+        "custom": {
+          "bloom-7b1": {
+            "enabled": false,
+            "configuration": {
+              "inference_url": "${CUSTOM_LLM_BLOOM_INFERENCE_URL}",
+              "tiktoken_cache_dir": "${MODEL_HOME}/tiktoken_encoding",
+              "remove_query_from_response": true,
+              "verify_ssl": false
+            },
+            "json_payload": {
+              "inputs": "{query}",
+              "parameters": {
+                "max_new_tokens": 4096,
+                "temperature": 1,
+                "num_return_sequences": 1,
+                "do_sample": true
+              }
+            }
+          },
+          "llama2-7b": {
+            "enabled": false,
+            "configuration": {
+              "inference_url": "${CUSTOM_LLM_LLAMA_INFERENCE_URL}",
+              "tiktoken_cache_dir": "${MODEL_HOME}/tiktoken_encoding",
+              "remove_query_from_response": true,
+              "verify_ssl": false
+            },
+            "json_payload": {
+              "inputs": "{query}",
+              "parameters": {
+                "max_new_tokens": 4096,
+                "temperature": 1,
+                "num_return_sequences": 1,
+                "do_sample": true
+              }
+            }
+          },
+          "mixtral8x7b-instruct": {
+            "enabled": false,
+            "configuration": {
+              "inference_url": "${CUSTOM_LLM_MIXTRAL_INFERENCE_URL}",
+              "tiktoken_cache_dir": "${MODEL_HOME}/tiktoken_encoding",
+              "remove_query_from_response": false,
+              "verify_ssl": false
+            },
+            "json_payload": {
+              "inputs": "{query}",
+              "parameters": {
+                "max_new_tokens": 1024,
+                "temperature": 0.1
+              }
+            }
+          }
+        }
+      },
+      "named_context_templates": {
+        "context_default": "{chunk_text}",
+        "context_1": "[chunk_id={chunk_id},page_no={page_no},sequence_no={sequence_no},bbox={bbox},doc_name={doc_name}]\n{chunk_text}\n",
+        "context_2": "[chunk_id={chunk_id},page_no={page_no},sequence_no={sequence_no}]\n{chunk_text}\n"
+      },
+      "named_prompt_templates": {
+        "prompt_template_1": {
+          "content": [
+            "Use the following pieces of context to answer the question at the end.",
+            "If you don't know the answer or even doubtful a bit, just say that you don't know,",
+            " don't try to make up an answer.Just give the shortest and most appropriate relavant answer to the question.",
+            "{context}",
+            "Question: {question}",
+            "Helpful Answer:"
+          ],
+          "context_template": "context_default"
+        },
+        "extractor_attribute_prompt": {
+          "content": [],
+          "file_path": "/data/config/prompt_templates/extractor_attribute_prompt.txt",
+          "context_template": "context_1"
+        },
+        "extractor_attribute_prompt_2": {
+          "content": [],
+          "file_path": "/data/config/prompt_templates/extractor_attribute_prompt_2.txt",
+          "context_template": "context_2",
+          "response_validation": {
+            "enabled": true,
+            "type": "json",
+            "total_attempts": 3
+          }
+        },
+        "books_prompt": {
+          "content": [],
+          "file_path": "/data/config/prompt_templates/books_prompt.txt",
+          "context_template": "context_default",
+          "response_validation": {
+            "enabled": true,
+            "type": "json",
+            "total_attempts": 3
+          }
+        },
+        "books_prompt_2": {
+          "content": [],
+          "file_path": "/data/config/prompt_templates/books_prompt_2.txt",
+          "context_template": "context_default",
+          "response_validation": {
+            "enabled": true,
+            "type": "json",
+            "total_attempts": 3
+          }
+        }
+      },
+      "inputs": [
+        {
+          "attribute_key": "value_extraction",
+          "prompt_template": "books_prompt",
+          "model_type": "QnA",
+          "top_k": 2
+        }
+      ]
+    }
+  }
 }

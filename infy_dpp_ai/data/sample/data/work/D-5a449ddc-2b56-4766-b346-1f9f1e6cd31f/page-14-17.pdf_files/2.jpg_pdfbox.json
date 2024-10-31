@@ -1,0 +1,1340 @@
+{
+    "page": 2,
+    "width": 5100,
+    "height": 3299,
+    "bbox": "X1,Y1,X2,Y2",
+    "tokens": [
+        {
+            "id": "P2_L1",
+            "type": "line",
+            "text": "Performance overview",
+            "uri": "",
+            "bbox": [
+                189,
+                160,
+                735,
+                195
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L2",
+            "type": "line",
+            "text": "Chairman\u2019s message",
+            "uri": "",
+            "bbox": [
+                189,
+                224,
+                997,
+                283
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L3",
+            "type": "line",
+            "text": "Navigating uncertainty",
+            "uri": "",
+            "bbox": [
+                189,
+                364,
+                912,
+                410
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L4",
+            "type": "line",
+            "text": "If there is one overriding theme that defines our current ",
+            "uri": "",
+            "bbox": [
+                189,
+                488,
+                1161,
+                513
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L5",
+            "type": "line",
+            "text": "problems, but continually innovate and architect for ",
+            "uri": "",
+            "bbox": [
+                1310,
+                488,
+                2219,
+                513
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L6",
+            "type": "line",
+            "text": "world, it is that it is suffused with uncertainty. The placid ",
+            "uri": "",
+            "bbox": [
+                189,
+                542,
+                1165,
+                567
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L7",
+            "type": "line",
+            "text": "challenges that may emerge in the future. We build it ",
+            "uri": "",
+            "bbox": [
+                1310,
+                542,
+                2235,
+                567
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L8",
+            "type": "line",
+            "text": "and the predictable are behind us as each new day brings ",
+            "uri": "",
+            "bbox": [
+                189,
+                596,
+                1194,
+                621
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L9",
+            "type": "line",
+            "text": "for ourselves first, and then, deeply rooted in our own ",
+            "uri": "",
+            "bbox": [
+                1310,
+                596,
+                2245,
+                621
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L10",
+            "type": "line",
+            "text": "new inputs and new events that derail the carefully-crafted ",
+            "uri": "",
+            "bbox": [
+                189,
+                650,
+                1218,
+                675
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L11",
+            "type": "line",
+            "text": "experience, take it widely to our clients. ",
+            "uri": "",
+            "bbox": [
+                1310,
+                650,
+                2000,
+                675
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L12",
+            "type": "line",
+            "text": "models we have constructed of the world around us. The ",
+            "uri": "",
+            "bbox": [
+                189,
+                704,
+                1178,
+                729
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L13",
+            "type": "line",
+            "text": "The awesome possibilities of generative AI, we know from ",
+            "uri": "",
+            "bbox": [
+                1310,
+                728,
+                2314,
+                753
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L14",
+            "type": "line",
+            "text": "cocktail of inflation, interest rates, geopolitics, war, demand ",
+            "uri": "",
+            "bbox": [
+                189,
+                758,
+                1221,
+                783
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L15",
+            "type": "line",
+            "text": "our own journey to becoming an AI-first enterprise, is not ",
+            "uri": "",
+            "bbox": [
+                1310,
+                782,
+                2305,
+                807
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L16",
+            "type": "line",
+            "text": "volatility, supply chain dislocations, the shift from efficiency ",
+            "uri": "",
+            "bbox": [
+                189,
+                812,
+                1225,
+                837
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L17",
+            "type": "line",
+            "text": "without its risks. The problems of AI hallucination, systemic ",
+            "uri": "",
+            "bbox": [
+                1310,
+                836,
+                2330,
+                861
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L18",
+            "type": "line",
+            "text": "to resilience and security, all stirring quickly and without ",
+            "uri": "",
+            "bbox": [
+                189,
+                867,
+                1170,
+                892
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L19",
+            "type": "line",
+            "text": "biases, lack of explainability along with plenty of practical, ",
+            "uri": "",
+            "bbox": [
+                1310,
+                890,
+                2317,
+                915
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L20",
+            "type": "line",
+            "text": "warning, is what\u2019s before us. In any week, we may oscillate ",
+            "uri": "",
+            "bbox": [
+                189,
+                921,
+                1199,
+                946
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L21",
+            "type": "line",
+            "text": "ethical and intellectual property-related issues remain open ",
+            "uri": "",
+            "bbox": [
+                1310,
+                944,
+                2346,
+                969
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L22",
+            "type": "line",
+            "text": "from caution to optimism and back to caution based on ",
+            "uri": "",
+            "bbox": [
+                189,
+                975,
+                1161,
+                1000
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L23",
+            "type": "line",
+            "text": "and up for debate. We also know, from our experience, ",
+            "uri": "",
+            "bbox": [
+                1310,
+                998,
+                2255,
+                1024
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L24",
+            "type": "line",
+            "text": "the news of the\u00a0day. ",
+            "uri": "",
+            "bbox": [
+                189,
+                1029,
+                545,
+                1054
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L25",
+            "type": "line",
+            "text": "that the path to scaling AI enterprise-wide is non-linear. ",
+            "uri": "",
+            "bbox": [
+                1310,
+                1053,
+                2274,
+                1078
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L26",
+            "type": "line",
+            "text": "Such times of intense uncertainty, great short-term ",
+            "uri": "",
+            "bbox": [
+                189,
+                1107,
+                1079,
+                1132
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L27",
+            "type": "line",
+            "text": "Often, organizations, seeking to mine value from data and ",
+            "uri": "",
+            "bbox": [
+                1310,
+                1107,
+                2318,
+                1132
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L28",
+            "type": "line",
+            "text": "pressure, and crunched resources require that companies ",
+            "uri": "",
+            "bbox": [
+                189,
+                1161,
+                1188,
+                1186
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L29",
+            "type": "line",
+            "text": "AI models, successfully undertake pilots but fail to factor in ",
+            "uri": "",
+            "bbox": [
+                1310,
+                1161,
+                2329,
+                1186
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L30",
+            "type": "line",
+            "text": "must become better, more efficient in their ability to be ",
+            "uri": "",
+            "bbox": [
+                189,
+                1215,
+                1154,
+                1240
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L31",
+            "type": "line",
+            "text": "what it will take to scale value across the whole enterprise. ",
+            "uri": "",
+            "bbox": [
+                1310,
+                1215,
+                2322,
+                1240
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L32",
+            "type": "line",
+            "text": "resilient in the present while also securing their future ",
+            "uri": "",
+            "bbox": [
+                189,
+                1269,
+                1128,
+                1294
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L33",
+            "type": "line",
+            "text": "As demands increase, data volumes grow, and complexity ",
+            "uri": "",
+            "bbox": [
+                1310,
+                1269,
+                2313,
+                1294
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L34",
+            "type": "line",
+            "text": "growth. This is easier said than done. The extreme volatility ",
+            "uri": "",
+            "bbox": [
+                189,
+                1323,
+                1213,
+                1348
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L35",
+            "type": "line",
+            "text": "rises, companies find themselves unable to surmount the ",
+            "uri": "",
+            "bbox": [
+                1310,
+                1323,
+                2303,
+                1348
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L36",
+            "type": "line",
+            "text": "that surrounds us creates so many probable future states, ",
+            "uri": "",
+            "bbox": [
+                189,
+                1378,
+                1187,
+                1403
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L37",
+            "type": "line",
+            "text": "associated challenges and start to question the path to ",
+            "uri": "",
+            "bbox": [
+                1310,
+                1378,
+                2264,
+                1403
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L38",
+            "type": "line",
+            "text": "that it simply isn\u2019t prudent for businesses to plan to ",
+            "uri": "",
+            "bbox": [
+                189,
+                1432,
+                1082,
+                1457
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L39",
+            "type": "line",
+            "text": "value. Navigating to value-at-scale from AI and retaining ",
+            "uri": "",
+            "bbox": [
+                1310,
+                1432,
+                2287,
+                1457
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L40",
+            "type": "line",
+            "text": "succeed in any one anticipated future scenario. Instead, we ",
+            "uri": "",
+            "bbox": [
+                189,
+                1486,
+                1215,
+                1511
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L41",
+            "type": "line",
+            "text": "the larger strategic vision while breaking down the tasks ",
+            "uri": "",
+            "bbox": [
+                1310,
+                1486,
+                2288,
+                1511
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L42",
+            "type": "line",
+            "text": "need to develop the flexibility to be able to avoid limiting ",
+            "uri": "",
+            "bbox": [
+                189,
+                1540,
+                1190,
+                1565
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L43",
+            "type": "line",
+            "text": "into sequential small wins, is not always intuitive or simple. ",
+            "uri": "",
+            "bbox": [
+                1310,
+                1540,
+                2328,
+                1565
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L44",
+            "type": "line",
+            "text": "choices, reduce concentration risk, quickly adapt, and learn ",
+            "uri": "",
+            "bbox": [
+                189,
+                1594,
+                1219,
+                1619
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L45",
+            "type": "line",
+            "text": "With our AI-first strategy, Infosys is guided by that road ",
+            "uri": "",
+            "bbox": [
+                1310,
+                1594,
+                2261,
+                1619
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L46",
+            "type": "line",
+            "text": "to thrive in any new reality. ",
+            "uri": "",
+            "bbox": [
+                189,
+                1648,
+                664,
+                1673
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L47",
+            "type": "line",
+            "text": "map. We are also bringing to our global clients the ability ",
+            "uri": "",
+            "bbox": [
+                1310,
+                1648,
+                2298,
+                1673
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L48",
+            "type": "line",
+            "text": "The era of optionality is upon us.",
+            "uri": "",
+            "bbox": [
+                189,
+                1726,
+                752,
+                1751
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L49",
+            "type": "line",
+            "text": "to accelerate business value and amplify human potential ",
+            "uri": "",
+            "bbox": [
+                1310,
+                1702,
+                2311,
+                1727
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L50",
+            "type": "line",
+            "text": "using AI technologies with Infosys TopazTM.",
+            "uri": "",
+            "bbox": [
+                1310,
+                1757,
+                2045,
+                1782
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L51",
+            "type": "line",
+            "text": "Optionality can take various forms. In our IT infrastructure, ",
+            "uri": "",
+            "bbox": [
+                189,
+                1804,
+                1201,
+                1829
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L52",
+            "type": "line",
+            "text": "it is the ability to dynamically reconfigure the way we ",
+            "uri": "",
+            "bbox": [
+                189,
+                1858,
+                1117,
+                1883
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L53",
+            "type": "line",
+            "text": "The digital transformation of every industry and every ",
+            "uri": "",
+            "bbox": [
+                1310,
+                1834,
+                2252,
+                1859
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L54",
+            "type": "line",
+            "text": "work \u2013 remotely, in office or hybrid. In the area of talent, it ",
+            "uri": "",
+            "bbox": [
+                189,
+                1912,
+                1194,
+                1937
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L55",
+            "type": "line",
+            "text": "business, over the last several years, has laid the foundation ",
+            "uri": "",
+            "bbox": [
+                1310,
+                1888,
+                2345,
+                1914
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L56",
+            "type": "line",
+            "text": "is about building and deploying agile learning platforms ",
+            "uri": "",
+            "bbox": [
+                189,
+                1966,
+                1172,
+                1991
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L57",
+            "type": "line",
+            "text": "to create optionality as we navigate the way forward. ",
+            "uri": "",
+            "bbox": [
+                1310,
+                1943,
+                2233,
+                1968
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L58",
+            "type": "line",
+            "text": "so that our people can hone their skill sets to match ",
+            "uri": "",
+            "bbox": [
+                189,
+                2020,
+                1091,
+                2045
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L59",
+            "type": "line",
+            "text": "Our clients have always trusted us to assist them not only ",
+            "uri": "",
+            "bbox": [
+                1310,
+                1997,
+                2306,
+                2022
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L60",
+            "type": "line",
+            "text": "new demand and new technologies. It is about having a ",
+            "uri": "",
+            "bbox": [
+                189,
+                2075,
+                1166,
+                2100
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L61",
+            "type": "line",
+            "text": "to make the right digital investments but to safeguard ",
+            "uri": "",
+            "bbox": [
+                1310,
+                2051,
+                2254,
+                2076
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L62",
+            "type": "line",
+            "text": "digital-first and AI-first business architecture which can ",
+            "uri": "",
+            "bbox": [
+                189,
+                2129,
+                1146,
+                2154
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L63",
+            "type": "line",
+            "text": "these investments for their future. Today, we are excited ",
+            "uri": "",
+            "bbox": [
+                1310,
+                2105,
+                2280,
+                2130
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L64",
+            "type": "line",
+            "text": "be constantly configured. It is finding the right balance ",
+            "uri": "",
+            "bbox": [
+                189,
+                2183,
+                1145,
+                2208
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L65",
+            "type": "line",
+            "text": "by the opportunity and humbled by the responsibility we ",
+            "uri": "",
+            "bbox": [
+                1310,
+                2159,
+                2313,
+                2184
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L66",
+            "type": "line",
+            "text": "between retaining the core of a company and working ",
+            "uri": "",
+            "bbox": [
+                189,
+                2237,
+                1140,
+                2262
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L67",
+            "type": "line",
+            "text": "have to enable them to bring all their digital capabilities ",
+            "uri": "",
+            "bbox": [
+                1310,
+                2213,
+                2287,
+                2238
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L68",
+            "type": "line",
+            "text": "with partners on others. Optionality must be ingrained in ",
+            "uri": "",
+            "bbox": [
+                189,
+                2291,
+                1185,
+                2316
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L69",
+            "type": "line",
+            "text": "together to execute quickly and effectively for now, while ",
+            "uri": "",
+            "bbox": [
+                1310,
+                2268,
+                2310,
+                2293
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L70",
+            "type": "line",
+            "text": "strategy and execution.",
+            "uri": "",
+            "bbox": [
+                189,
+                2345,
+                594,
+                2370
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L71",
+            "type": "line",
+            "text": "developing multiple options to amplify their competitive ",
+            "uri": "",
+            "bbox": [
+                1310,
+                2322,
+                2304,
+                2347
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L72",
+            "type": "line",
+            "text": "advantage and market leadership in an uncertain future. ",
+            "uri": "",
+            "bbox": [
+                1310,
+                2376,
+                2294,
+                2401
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L73",
+            "type": "line",
+            "text": "Our CEO, Salil Parekh, and his global leadership team, ",
+            "uri": "",
+            "bbox": [
+                189,
+                2423,
+                1117,
+                2448
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L74",
+            "type": "line",
+            "text": "Our client relevance has never been so compelling, our ",
+            "uri": "",
+            "bbox": [
+                1310,
+                2430,
+                2268,
+                2455
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L75",
+            "type": "line",
+            "text": "realized early on the value that advanced digital ",
+            "uri": "",
+            "bbox": [
+                189,
+                2477,
+                1027,
+                2502
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L76",
+            "type": "line",
+            "text": "investment in employees as continuous and consistent, ",
+            "uri": "",
+            "bbox": [
+                1310,
+                2484,
+                2276,
+                2509
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L77",
+            "type": "line",
+            "text": "technologies like AI and cloud, and more recently, ",
+            "uri": "",
+            "bbox": [
+                189,
+                2531,
+                1058,
+                2556
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L78",
+            "type": "line",
+            "text": "and our purpose so keen. We are ready to co-create with ",
+            "uri": "",
+            "bbox": [
+                1310,
+                2538,
+                2292,
+                2563
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L79",
+            "type": "line",
+            "text": "generative AI, can bring to imagine and execute for ",
+            "uri": "",
+            "bbox": [
+                189,
+                2586,
+                1083,
+                2611
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L80",
+            "type": "line",
+            "text": "our clients and our entire ecosystem a flexible future that ",
+            "uri": "",
+            "bbox": [
+                1310,
+                2592,
+                2305,
+                2617
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L81",
+            "type": "line",
+            "text": "multiple options in the future. They came together as ",
+            "uri": "",
+            "bbox": [
+                189,
+                2640,
+                1117,
+                2665
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L82",
+            "type": "line",
+            "text": "puts people first and benefits the broader society even as ",
+            "uri": "",
+            "bbox": [
+                1310,
+                2647,
+                2310,
+                2672
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L83",
+            "type": "line",
+            "text": "One Infosys to orchestrate teams that lead the charge to ",
+            "uri": "",
+            "bbox": [
+                189,
+                2694,
+                1158,
+                2719
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L84",
+            "type": "line",
+            "text": "it propels business forward. After all, like many have said, ",
+            "uri": "",
+            "bbox": [
+                1310,
+                2701,
+                2300,
+                2726
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L85",
+            "type": "line",
+            "text": "continually transform Infosys into an organization that truly ",
+            "uri": "",
+            "bbox": [
+                189,
+                2748,
+                1225,
+                2773
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L86",
+            "type": "line",
+            "text": "imagination is our invisible power to create all things. Our ",
+            "uri": "",
+            "bbox": [
+                1310,
+                2755,
+                2270,
+                2780
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L87",
+            "type": "line",
+            "text": "realizes human-machine synergies, from fundamentally ",
+            "uri": "",
+            "bbox": [
+                189,
+                2802,
+                1157,
+                2827
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L88",
+            "type": "line",
+            "text": "future can be as bright as we imagine it to be.",
+            "uri": "",
+            "bbox": [
+                1310,
+                2809,
+                2057,
+                2834
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L89",
+            "type": "line",
+            "text": "rethinking organizational design to segmenting cognitive ",
+            "uri": "",
+            "bbox": [
+                189,
+                2856,
+                1195,
+                2881
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L90",
+            "type": "line",
+            "text": "tasks to get the right balance between people, technology, ",
+            "uri": "",
+            "bbox": [
+                189,
+                2910,
+                1215,
+                2935
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L91",
+            "type": "line",
+            "text": "Bengaluru",
+            "uri": "",
+            "bbox": [
+                1327,
+                2902,
+                1471,
+                2922
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L92",
+            "type": "line",
+            "text": "Nandan M. Nilekani",
+            "uri": "",
+            "bbox": [
+                1968,
+                2897,
+                2321,
+                2922
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L93",
+            "type": "line",
+            "text": "May 29, 2023",
+            "uri": "",
+            "bbox": [
+                1327,
+                2944,
+                1509,
+                2964
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L94",
+            "type": "line",
+            "text": "Chairman",
+            "uri": "",
+            "bbox": [
+                2186,
+                2944,
+                2321,
+                2964
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L95",
+            "type": "line",
+            "text": "Nandan M. Nilekani",
+            "uri": "",
+            "bbox": [
+                4492,
+                2929,
+                4844,
+                2954
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L96",
+            "type": "line",
+            "text": "and process. Today, Infosys is steadily progressing towards ",
+            "uri": "",
+            "bbox": [
+                189,
+                2965,
+                1202,
+                2990
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L97",
+            "type": "line",
+            "text": "Chairman",
+            "uri": "",
+            "bbox": [
+                4492,
+                2977,
+                4644,
+                2999
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L98",
+            "type": "line",
+            "text": "a future where we don\u2019t just solve immediate business ",
+            "uri": "",
+            "bbox": [
+                189,
+                3019,
+                1135,
+                3044
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L99",
+            "type": "line",
+            "text": "30",
+            "uri": "",
+            "bbox": [
+                189,
+                3186,
+                223,
+                3206
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L100",
+            "type": "line",
+            "text": "Infosys Integrated Annual Report 2022-23",
+            "uri": "",
+            "bbox": [
+                1760,
+                3186,
+                2337,
+                3206
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L101",
+            "type": "line",
+            "text": "Infosys Integrated Annual Report 2022-23",
+            "uri": "",
+            "bbox": [
+                2763,
+                3186,
+                3340,
+                3206
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L102",
+            "type": "line",
+            "text": "31",
+            "uri": "",
+            "bbox": [
+                4877,
+                3186,
+                4911,
+                3206
+            ],
+            "tokens": []
+        }
+    ],
+    "infy_ocr_generator_metadata": {
+        "dpi": 300,
+        "width": 5100,
+        "height": 3299,
+        "doc_page_num": "2"
+    }
+}

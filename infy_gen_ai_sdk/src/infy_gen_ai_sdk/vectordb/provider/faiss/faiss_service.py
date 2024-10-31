@@ -16,20 +16,24 @@ import faiss
 class FaissService():
     """Wrapper for FAISS"""
 
-    def __init__(self, db_folder_path: str = '', db_name: str = ''):
+    def __init__(self, db_folder_path: str = '', index_name: str = '', index_secret_key: str = ''):
         self.__index = None
         self.__data_dict = None
         self.__map_dict = None  # Store relationship between index and data
+        self.__secret_key_dict = {
+            "secret_key": index_secret_key} if index_secret_key else {}
         # DB folder path
         self.__db_folder_path = db_folder_path
         # DB file names
-        self.__index_file_name = f"{db_name}.faiss"
-        self.__data_file_name = f"{db_name}.data.json"
-        self.__map_file_name = f"{db_name}.map.json"
+        self.__index_file_name = f"{index_name}.faiss"
+        self.__data_file_name = f"{index_name}.data.json"
+        self.__map_file_name = f"{index_name}.map.json"
+        self.__secret_key_file_name = f"{index_name}.metadata.json"
         # DB file paths
         self.__index_file_path = f"{self.__db_folder_path}/{self.__index_file_name}"
         self.__data_file_path = f"{self.__db_folder_path}/{self.__data_file_name}"
         self.__map_file_path = f"{self.__db_folder_path}/{self.__map_file_name}"
+        self.__secret_key_file_path = f"{self.__db_folder_path}/{self.__secret_key_file_name}"
 
     def create_new(self, vector_dimension: int):
         """Create a new vector DB"""
@@ -121,34 +125,81 @@ class FaissService():
         """Load the vector DB from local file system"""
         self.__validate_fields()
         index_file_path = self.__index_file_path
-        data_file_path, map_file_path = self.__data_file_path, self.__map_file_path
-        index = faiss.read_index(index_file_path)
-        data_dict, map_dict = {}, {}
-        with open(data_file_path, 'r', encoding='utf-8') as file:
-            data_dict = json.load(file)
-        with open(map_file_path, 'r', encoding='utf-8') as file:
-            map_dict = json.load(file)
-        self.__index = index
-        self.__data_dict = data_dict
-        self.__map_dict = map_dict
+        data_file_path, map_file_path, secret_key_file_path = self.__data_file_path, self.__map_file_path, self.__secret_key_file_path
+
+        if os.path.exists(secret_key_file_path):
+            with open(secret_key_file_path, 'r', encoding='utf-8') as file:
+                secret_key_dict = json.load(file)
+                stored_secret_key = secret_key_dict.get("secret_key")
+                if self.__secret_key_dict is not None and stored_secret_key == self.__secret_key_dict.get("secret_key", ""):
+                    index = faiss.read_index(index_file_path)
+                    data_dict, map_dict = {}, {}
+                    with open(data_file_path, 'r', encoding='utf-8') as file:
+                        data_dict = json.load(file)
+                    with open(map_file_path, 'r', encoding='utf-8') as file:
+                        map_dict = json.load(file)
+                    self.__index = index
+                    self.__data_dict = data_dict
+                    self.__map_dict = map_dict
+                else:
+                    raise ValueError(
+                        "Secret key provided does not match the collection, please provide correct secret key.")
+        else:
+            index = faiss.read_index(index_file_path)
+            data_dict, map_dict = {}, {}
+            with open(data_file_path, 'r', encoding='utf-8') as file:
+                data_dict = json.load(file)
+            with open(map_file_path, 'r', encoding='utf-8') as file:
+                map_dict = json.load(file)
+            self.__index = index
+            self.__data_dict = data_dict
+            self.__map_dict = map_dict
 
     def save_local(self):
         """Save the vector DB to the local file system"""
         if not os.path.exists(self.__db_folder_path):
             os.makedirs(self.__db_folder_path)
         index_file_path = self.__index_file_path
-        data_file_path, map_file_path = self.__data_file_path, self.__map_file_path
+        data_file_path, map_file_path, secret_key_file_path = self.__data_file_path, self.__map_file_path, self.__secret_key_file_path
         index = self.__index
-        data_dict, map_dict = self.__data_dict, self.__map_dict
+        data_dict, map_dict, secret_key_dict = self.__data_dict, self.__map_dict, self.__secret_key_dict
         faiss.write_index(index, index_file_path)
         with open(data_file_path, 'w', encoding='utf-8') as file:
             json.dump(data_dict, file, indent=4)
         with open(map_file_path, 'w', encoding='utf-8') as file:
             json.dump(map_dict, file, indent=4)
+        if secret_key_dict is not None and secret_key_dict:
+            if not os.path.exists(secret_key_file_path):
+                with open(secret_key_file_path, 'w', encoding='utf-8') as file:
+                    json.dump(secret_key_dict, file, indent=4)
 
     def get_record_count(self):
         """Get the record count"""
         return self.__index.ntotal
+
+    def delete_local(self):
+        """Load the vector DB from local file system"""
+        self.__validate_fields()
+        index_file_path, data_file_path, map_file_path, secret_key_file_path = self.__index_file_path, self.__data_file_path, self.__map_file_path, self.__secret_key_file_path
+        records_list = []
+        if os.path.exists(secret_key_file_path):
+            with open(secret_key_file_path, 'r', encoding='utf-8') as file:
+                secret_key_dict = json.load(file)
+                stored_secret_key = secret_key_dict.get("secret_key")
+                if self.__secret_key_dict is not None and stored_secret_key == self.__secret_key_dict.get("secret_key", ""):
+                    records_list.append(index_file_path)
+                    records_list.append(data_file_path)
+                    records_list.append(map_file_path)
+                    records_list.append(secret_key_file_path)
+                else:
+                    raise ValueError(
+                        "Secret key provided does not match the collection, please provide correct secret key.")
+        else:
+            records_list.append(index_file_path)
+            records_list.append(data_file_path)
+            records_list.append(map_file_path)
+
+        return records_list
 
     # ----------- Private Methods ------------
 

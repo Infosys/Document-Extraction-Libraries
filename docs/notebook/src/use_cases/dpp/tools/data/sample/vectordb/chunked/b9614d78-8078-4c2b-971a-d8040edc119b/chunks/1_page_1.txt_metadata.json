@@ -1,0 +1,17 @@
+{
+    "chunk_id": "C-36166",
+    "page_no": 1,
+    "sequence_no": 1,
+    "bbox_format": "X1,Y1,X2,Y2",
+    "bbox": null,
+    "doc_name": "sports_statistics.pdf",
+    "document_id": "b9614d78-8078-4c2b-971a-d8040edc119b",
+    "chunking_method": "page",
+    "char_count": "1",
+    "resources": [
+        {
+            "type": "doc_path",
+            "path": "/data/vectordb/resources/b9614d78-6d73-4134-8e24-2ac62b6e9832.pdf"
+        }
+    ]
+}

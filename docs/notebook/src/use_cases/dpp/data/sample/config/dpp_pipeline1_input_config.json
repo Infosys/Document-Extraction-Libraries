@@ -1,6 +1,6 @@
 {
-    "name": "pipeline1",
-    "description": "Sample Image extraction",
+    "name": "Segmentation vizualization pipeline",
+    "description": "Segmentation vizualization pipeline",
     "variables": {
         "FORMAT_CONVERTER_HOME": "C:/MyProgramFiles/InfyFormatConverter/",
         "TESSERACT_HOME": "C:/Program Files/Tesseract-OCR",
@@ -156,6 +156,10 @@
                     "properties": {}
                 },
                 {
+                    "provider_name": "ContentExtractor.img_yolox_infy_table_extractor_file_path",
+                    "properties": {}
+                },
+                {
                     "provider_name": "ContentExtractor.image_contents_file_path",
                     "properties": {}
                 },
@@ -163,6 +167,15 @@
                     "provider_name": "tesseract_ocr_provider",
                     "properties": {
                         "tesseract_path": "${TESSERACT_HOME}/tesseract.exe",
+                        "format_converter_home": "${FORMAT_CONVERTER_HOME}"
+                    }
+                },
+                {
+                    "provider_name": "infy_ocr_engine_provider",
+                    "properties": {
+                        "ocr_engine_exe_dir_path": "${INFY_OCR_ENGINE_HOME}",
+                        "ocr_engine_model_dir_path": "${MODEL_HOME}/tessdata",
+                        "ocr_engine_language": "eng",
                         "format_converter_home": "${FORMAT_CONVERTER_HOME}"
                     }
                 },
@@ -188,11 +201,8 @@
                     }
                 },
                 {
-                    "provider_name": "infy_ocr_engine_provider",
+                    "provider_name": "txt_provider",
                     "properties": {
-                        "ocr_engine_exe_dir_path": "${INFY_OCR_ENGINE_HOME}",
-                        "ocr_engine_model_dir_path": "${MODEL_HOME}/tessdata",
-                        "ocr_engine_language": "eng",
                         "format_converter_home": "${FORMAT_CONVERTER_HOME}"
                     }
                 }
@@ -201,8 +211,8 @@
                 {
                     "provider_name": "detectron",
                     "properties": {
-                        "model_path": "/model_files/model_final.pth",
-                        "config_file_path": "/model_files/config.text",
+                        "model_path": "/home/projadmin/workarea/documentworkbench/docwbsolution/python/segment-generator-service/model_files/model_final.pth",
+                        "config_file_path": "/home/projadmin/workarea/documentworkbench/docwbsolution/python/segment-generator-service/model_files/config.text",
                         "model_threshold": 0.8
                     }
                 }
@@ -213,7 +223,7 @@
                     "name": "technique1",
                     "input_file_type": "image",
                     "text_provider_name": "tesseract_ocr_provider",
-                    "model_provider_name": null
+                    "model_provider_name": "detectron"
                 },
                 {
                     "enabled": false,
@@ -223,7 +233,7 @@
                     "model_provider_name": "detectron"
                 },
                 {
-                    "enabled": false,
+                    "enabled": true,
                     "name": "technique3",
                     "input_file_type": "pdf",
                     "text_provider_name": "pdf_box_text_provider",
@@ -237,17 +247,17 @@
                     "model_provider_name": "detectron"
                 },
                 {
-                    "enabled": false,
+                    "enabled": true,
                     "name": "technique5",
                     "input_file_type": "json",
                     "text_provider_name": "json_provider",
                     "model_provider_name": null
                 },
                 {
-                    "enabled": false,
+                    "enabled": true,
                     "name": "technique6",
-                    "input_file_type": "image",
-                    "text_provider_name": "azure_read_ocr_provider",
+                    "input_file_type": "txt",
+                    "text_provider_name": "txt_provider",
                     "model_provider_name": null
                 },
                 {
@@ -269,6 +279,27 @@
                     "name": "technique9",
                     "input_file_type": "pdf",
                     "text_provider_name": "ContentExtractor.image_contents_file_path",
+                    "model_provider_name": null
+                },
+                {
+                    "enabled": true,
+                    "name": "technique10",
+                    "input_file_type": "pdf",
+                    "text_provider_name": "ContentExtractor.img_yolox_infy_table_extractor_file_path",
+                    "model_provider_name": null
+                },
+                {
+                    "enabled": true,
+                    "name": "technique10",
+                    "input_file_type": "image",
+                    "text_provider_name": "ContentExtractor.img_yolox_infy_table_extractor_file_path",
+                    "model_provider_name": null
+                },
+                {
+                    "enabled": false,
+                    "name": "technique11",
+                    "input_file_type": "pdf",
+                    "text_provider_name": "tesseract_ocr_provider",
                     "model_provider_name": null
                 }
             ],
@@ -312,8 +343,8 @@
                     {
                         "enabled": true,
                         "name": "manually_detect",
-                        "min_height_percent": 3100,
-                        "max_height_percent": 3300
+                        "min_height_percent": 95,
+                        "max_height_percent": 100
                     }
                 ]
             },
@@ -330,6 +361,7 @@
                     "name": "column_technique1"
                 }
             ],
+            "detect_empty_lines": false,
             "exclude": [
                 "header",
                 "footer"
@@ -415,6 +447,13 @@
                 },
                 {
                     "enabled": false,
+                    "name": "pdf_scanned_ocr_extractor",
+                    "input_file_type": "pdf",
+                    "text_provider_name": "tesseract_ocr_provider",
+                    "model_provider_name": null
+                },
+                {
+                    "enabled": false,
                     "name": "img_tesseracct_ocr_extractor",
                     "input_file_type": "image",
                     "text_provider_name": "tesseract_ocr_provider",
@@ -433,6 +472,41 @@
                     "input_file_type": "image",
                     "text_provider_name": "infy_ocr_engine_provider",
                     "model_provider_name": null
+                },
+                {
+                    "enabled": false,
+                    "name": "img_yolox_infy_table_extractor",
+                    "input_file_type": "pdf",
+                    "line_detection_method": "OPENCV_LINE_DETECT",
+                    "text_provider_name": "infy_ocr_engine_provider",
+                    "model_provider_name": "yolox",
+                    "debug": {
+                        "enabled": false,
+                        "generate_image": false,
+                        "output_dir_path": "/debug/table_detector"
+                    }
+                },
+                {
+                    "enabled": false,
+                    "name": "img_yolox_infy_table_extractor",
+                    "input_file_type": "image",
+                    "line_detection_method": "OPENCV_LINE_DETECT",
+                    "text_provider_name": "infy_ocr_engine_provider",
+                    "model_provider_name": "yolox",
+                    "debug": {
+                        "enabled": false,
+                        "generate_image": false,
+                        "output_dir_path": "/debug/table_detector"
+                    }
+                }
+            ],
+            "modelProviders": [
+                {
+                    "provider_name": "yolox",
+                    "properties": {
+                        "yolox_model_home": "C:/MyProgramFiles/AI/models/unstructuredio/yolo_x_layout",
+                        "model_name": "yolox_local"
+                    }
                 }
             ],
             "textProviders": [
@@ -440,7 +514,8 @@
                     "provider_name": "tesseract_ocr_provider",
                     "properties": {
                         "tesseract_path": "C:/MyProgramFiles/Tesseract-OCR/tesseract.exe",
-                        "format_converter_home": "C:/MyProgramFiles/InfyFormatConverter"
+                        "format_converter_home": "C:/MyProgramFiles/InfyFormatConverter",
+                        "scanned_pdf": true
                     }
                 },
                 {
@@ -449,7 +524,8 @@
                         "ocr_engine_exe_dir_path": "C:/MyProgramFiles/InfyOcrEngine",
                         "ocr_engine_model_dir_path": "C:/MyProgramFiles/AI/models/tessdata",
                         "ocr_engine_language": "eng",
-                        "format_converter_home": "C:/MyProgramFiles/InfyFormatConverter"
+                        "format_converter_home": "C:/MyProgramFiles/InfyFormatConverter",
+                        "scanned_pdf": true
                     }
                 },
                 {
@@ -457,7 +533,8 @@
                     "properties": {
                         "subscription_key": "",
                         "url": "",
-                        "format_converter_home": "C:/MyProgramFiles/InfyFormatConverter"
+                        "format_converter_home": "C:/MyProgramFiles/InfyFormatConverter",
+                        "scanned_pdf": true
                     }
                 },
                 {

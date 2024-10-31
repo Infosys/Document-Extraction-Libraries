@@ -6,7 +6,7 @@
 ![](https://img.shields.io/github/stars/Infosys/Document-Extraction-Libraries)
 ![](https://img.shields.io/github/last-commit/Infosys/Document-Extraction-Libraries)
 
-# Document Extraction Libraries 3.7.0
+# Document Extraction Libraries 3.9.0
 
 Document Extraction Libraries are a suite of python/java libraries that provide APIs to **extract information from documents** (e.g. scanned/native PDFs, images etc.). For semi-structured documents (e.g. form-like documents), this can be done in a simple and predictable manner. For unstructured documents, it can extract the raw content, retrieve relevant text from it using **semantic search** and use a **Large Language Model (LLM)** to extract information.
 
@@ -18,7 +18,7 @@ These libraries can be used as SDKs to solve document digitization problems and 
 
 ## Prerequisites 
 
-- Python >=3.8 or <=3.11
+- Python >=3.10 or <=3.11
 - Java >=8
 - OCR Tool (Tesseract / Azure Read OCR V 3.2) _(for non-digital documents)_
 
@@ -43,6 +43,17 @@ S# | Library	| Description |
 13| infy_dpp_ai | A collection of processors for tasks like generating embeddings, calling LLMs with prompt templates etc.
 14 | infy_dpp_storage | A collection of processors to help store data to graph DB etc. 
 15 | infy_dpp_content_extractor | A collection of processors for extracting raw contents from documents. 
+
+## Apps
+
+The details of each app and its core functionality is given below.
+
+S# | App	| Description | 
+---|-------|---------------|
+1 | infy_dpp_processor| It is implementation of indexing pipeline. This apps can be deployed as docker image on Kubernetes cluster and managed via an orchestrator like Airflow or Kubeflow to run the indexing pipeline.
+2 | infy_db_service| There are two ways to store the created indexes, one is locally in the environment where indexing pipeline is running, and the other one is using infy_db_service which provides way to store indexes in a central environment where this service is hosted.
+3 | infy_search_service| This is implementation of inferencing pipeline.If infy_db_service is used to store created indexes then use infy_search_service to query on those documents.
+
 ## How does it Work
 
 ### Semi-structured documents
@@ -67,8 +78,10 @@ Step |Library | Input | Output
 
 ## Examples
 
-For code examples, please read [docs/notebook](docs/notebook).
-
+For code examples, please read [docs/notebook](docs/notebook).  
+For infy_dpp_processor, please read [apps/infy_dpp_processor/README.md](apps/infy_dpp_processor/README.md)  
+For infy_db_service, please read [apps/infy_db_service/README.md](apps/infy_db_service/README.md)  
+For infy_search_service,please read [apps/infy_search_service/README.md](apps/infy_search_service/README.md)  
 ## Reference
 
 For API specifications, please read [docs/reference](docs/reference).

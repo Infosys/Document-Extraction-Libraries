@@ -81,7 +81,9 @@
           "include": [
             "pdf",
             "json",
-            "txt"
+            "txt",
+            "jpg",
+            "tiff"
           ],
           "exclude": [
             "_"
@@ -150,6 +152,13 @@
           "model_provider_name": null
         },
         {
+          "enabled": true,
+          "name": "pdf_scanned_ocr_extractor",
+          "input_file_type": "pdf",
+          "text_provider_name": "tesseract_ocr_provider",
+          "model_provider_name": null
+        },
+        {
           "enabled": false,
           "name": "img_tesseracct_ocr_extractor",
           "input_file_type": "image",
@@ -167,8 +176,43 @@
           "enabled": true,
           "name": "img_infy_ocr_engine_extractor",
           "input_file_type": "image",
-          "text_provider_name": "infy_ocr_engine_provider",
+          "text_provider_name": "tesseract_ocr_provider",
           "model_provider_name": null
+        },
+        {
+          "enabled": false,
+          "name": "img_yolox_infy_table_extractor",
+          "input_file_type": "pdf",
+          "line_detection_method": "OPENCV_LINE_DETECT",
+          "text_provider_name": "infy_ocr_engine_provider",
+          "model_provider_name": "yolox",
+          "debug": {
+            "enabled": false,
+            "generate_image": false,
+            "output_dir_path": "/debug/table_detector"
+          }
+        },
+        {
+          "enabled": true,
+          "name": "img_yolox_infy_table_extractor",
+          "input_file_type": "image",
+          "line_detection_method": "OPENCV_LINE_DETECT",
+          "text_provider_name": "infy_ocr_engine_provider",
+          "model_provider_name": "yolox",
+          "debug": {
+            "enabled": false,
+            "generate_image": false,
+            "output_dir_path": "/debug/table_detector"
+          }
+        }
+      ],
+      "modelProviders": [
+        {
+          "provider_name": "yolox",
+          "properties": {
+            "yolox_model_home": "C:/MyProgramFiles/AI/models/unstructuredio/yolo_x_layout",
+            "model_name": "yolox_local"
+          }
         }
       ],
       "textProviders": [
@@ -176,7 +220,8 @@
           "provider_name": "tesseract_ocr_provider",
           "properties": {
             "tesseract_path": "C:/MyProgramFiles/Tesseract-OCR/tesseract.exe",
-            "format_converter_home": "C:/MyProgramFiles/InfyFormatConverter"
+            "format_converter_home": "C:/MyProgramFiles/InfyFormatConverter",
+            "scanned_pdf": true
           }
         },
         {

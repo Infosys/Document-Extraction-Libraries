@@ -38,3 +38,8 @@ class IVectorDbProvider(metaclass=abc.ABCMeta):
     def get_records(self, count: int = -1) -> List[BaseVectorDbRecordData]:
         """Get all records from vector dB"""
         raise NotImplementedError
+
+    @abc.abstractmethod
+    def delete_records(self):
+        """Delete specific records from vector dB"""
+        raise NotImplementedError

@@ -1,0 +1,21 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title></title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name='ocr-system' content='tesseract'/>
+</head>
+<body>
+  <div class='ocr_page' id='page_1' title='image "C:\temp\unittest\infy_dpp_segmentation\tests.test_segmentation_orchestrator_native_two\CONTAINER\data\temp\data\work\D-5a449ddc-2b56-4766-b346-1f9f1e6cd31f\page-14-17.pdf_files\P1_IMG4.png"; bbox 0 0 510 139; ppageno 0; scan_res 70 70'>
+   <div class='ocr_carea' id='block_1_1' title="bbox 36 32 474 109">
+    <p class='ocr_par' id='par_1_1' lang='eng' title="bbox 36 32 474 109">
+     <span class='ocr_line' id='line_1_1' title="bbox 36 32 474 109; baseline 0.005 -14; x_size 78; x_descenders 14; x_ascenders 25">
+      <span class='ocrx_word' id='word_1_1' title='bbox 36 34 224 109; x_wconf 54'>INfosys</span>
+      <span class='ocrx_word' id='word_1_2' title='bbox 240 32 244 95; x_wconf 93'>|</span>
+      <span class='ocrx_word' id='word_1_3' title='bbox 260 46 474 103; x_wconf 10'>Springhiard</span>
+     </span>
+    </p>
+   </div>
+  </div>
+</body>
+</html>

@@ -1,4 +1,18 @@
 # Document-Extraction-Libraries
+## V3.9.0
+- Llama-3.1-70B model support added for inferencing.
+- Below are apps implementing indexing and inferencing pipeline:
+  * `infy_dpp_processor`: For indexing pipeline to deploy infy_dpp_processor as docker image on Kubernetes cluster.
+  * `infy_db_service`: There are two ways to store the indexes created, one is locally in the environment where this pipeline is running, and the other one is using infy_db_service which provides way to store indexes in a central environment where this service is hosted.
+  * `infy_search_service`: If infy_db_service is used to store created indexes then use infy_search_service to query on those documents.
+
+## V3.8.0
+- New interactive tool `tool_06_hybrid_search.ipynb` to demonstrates hybrid search capabilities.
+- Table detection and extraction feature for pdf and image input(.tiff, .jpg, .png) in indexing pipeline added.
+- Bug fix for pdf_plumber table extraction
+- New chunking technique i.e.page_and_segment_type added.
+- Added support of index_id while indexing.
+- Added support for scanned pdf in content extraction.
 ## V3.7.0
 - New interactive tool `tool_05_embedding_clusters.ipynb` to experiment with embeddings and their clusters.
 

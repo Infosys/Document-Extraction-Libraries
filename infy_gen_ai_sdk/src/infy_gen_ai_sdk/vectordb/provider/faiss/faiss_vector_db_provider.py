@@ -8,7 +8,7 @@
 
 import os
 import logging
-from typing import List
+from typing import List, Optional
 import infy_fs_utils
 from .faiss_service import FaissService
 from ....common.app_config_manager import AppConfigManager
@@ -25,6 +25,7 @@ class VectorDbProviderConfigData(BaseVectorDbProviderConfigData):
     """Domain class"""
     db_folder_path: str
     db_index_name: str
+    db_index_secret_key: Optional[str] = None
 
 
 class InsertVectorDbRecordData(BaseVectorDbRecordData):
@@ -36,6 +37,12 @@ class MatchingVectorDbRecordData(BaseVectorDbRecordData):
     """Domain class"""
     db_folder_path: str = None
     score: float = None
+
+
+class VectordbCollectionData(BaseVectorDbRecordData):
+    """Domain class"""
+    db_index_name: str = None
+    db_index_secret_key: str = None
 
 
 class VectorDbRecordData(BaseVectorDbRecordData):
@@ -84,7 +91,7 @@ class FaissVectorDbProvider(IVectorDbProvider):
                 raise ValueError(
                     f"File doesn't exist: {db_folder_path_for_load}")
             faiss_service_obj = FaissService(
-                db_folder_path_for_load, config_data['db_index_name'])
+                db_folder_path_for_load, config_data['db_index_name'], config_data.get('db_index_secret_key', None))
             faiss_service_obj.load_local()
 
             query = query_params_data.query
@@ -122,6 +129,7 @@ class FaissVectorDbProvider(IVectorDbProvider):
             db_folder_path = config_data['db_folder_path']
             local_db_folder_path = config_data['local_db_folder_path']
             db_index_name = config_data['db_index_name']
+            db_index_secret_key = config_data.get('db_index_secret_key', None)
 
             local_content_file_path = f'{self.__app_config["CONTAINER"]["APP_DIR_TEMP_PATH"]}/{FileUtil.get_uuid()}'
 
@@ -136,8 +144,8 @@ class FaissVectorDbProvider(IVectorDbProvider):
             embedding_data: EmbeddingData = self._embedding_provider.generate_embedding(
                 content)
             faiss_service_obj = FaissService(
-                local_db_folder_path, db_index_name)
-            if os.path.exists(local_db_folder_path):
+                local_db_folder_path, db_index_name, db_index_secret_key)
+            if os.path.exists(local_db_folder_path) and os.path.exists(f'{local_db_folder_path}/{db_index_name}.faiss'):
                 faiss_service_obj.load_local()
             else:
                 faiss_service_obj.create_new(embedding_data.vector_dimension)
@@ -173,7 +181,7 @@ class FaissVectorDbProvider(IVectorDbProvider):
                 raise ValueError(
                     f"File doesn't exist: {db_folder_path_for_load}")
             faiss_service_obj = FaissService(
-                db_folder_path_for_load, config_data['db_index_name'])
+                db_folder_path_for_load, config_data['db_index_name'], config_data.get('db_index_secret_key', None))
             faiss_service_obj.load_local()
             records = faiss_service_obj.get_records(end=count)
             record_list = []
@@ -193,6 +201,36 @@ class FaissVectorDbProvider(IVectorDbProvider):
             self.__logger.exception(e)
             raise e
         return record_list
+
+    def delete_records(self):
+        try:
+            config_data = self.__internal_config_data
+            local_db_folder_path = config_data['local_db_folder_path']
+            db_folder_path = config_data['db_folder_path']
+            db_index_name = config_data.get('db_index_name', '')
+            db_index_secret_key = config_data.get('db_index_secret_key', '')
+            records_list = []
+
+            faiss_service_obj = FaissService(
+                local_db_folder_path, db_index_name, db_index_secret_key)
+            if os.path.exists(local_db_folder_path) and os.path.exists(f'{local_db_folder_path}/{db_index_name}.faiss'):
+                records_list = faiss_service_obj.delete_local()
+                base_path = (self.__fs_handler.get_abs_path(
+                    rel_path=db_folder_path)).replace('filefile://', '')
+                if records_list:
+                    for file_path in records_list:
+                        file_path = os.path.relpath(
+                            file_path, base_path)
+                        file_path = f'{db_folder_path}/{file_path}'
+                        self.__fs_handler.delete_file(file_path)
+
+            else:
+                raise ValueError(
+                    "Collection does not exist.")
+
+        except Exception as e:
+            self.__logger.exception(e)
+            raise e
 
     ######## Private Methods #############
 

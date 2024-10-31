@@ -35,9 +35,10 @@ public class OcrTest {
         String expectedTxtFilePath = outputPath + "eng.png.txt";
         String lang = "eng";
         String ocrFormat = "txt";
+        String pageSegMode = "3";
         TestHelper.recursiveDelete(new File(expectedTxtFilePath));
         String args[] = { "--fromfile", fromFile, "--modeldir", MODEL_DIR_PATH,
-                "--ocrformat", ocrFormat, "--todir", outputPath, "--lang", lang };
+                "--ocrformat", ocrFormat, "--todir", outputPath, "--lang", lang, "--psm", pageSegMode };
         Ocr.main(args);
         assertTrue("Text File should exist", TestHelper.doesFileExist(expectedTxtFilePath));
     }
@@ -48,9 +49,10 @@ public class OcrTest {
         String fromFile = RESOURCE_PATH + "input\\" + "eng.png";
         String expectedTxtFilePath = outputPath + "eng.png.txt";
         String ocrFormat = "txt";
+        String pageSegMode = "3";
         TestHelper.recursiveDelete(new File(expectedTxtFilePath));
         String args[] = { "--fromfile", fromFile, "--modeldir", MODEL_DIR_PATH,
-                "--ocrformat", ocrFormat, "--todir", outputPath };
+                "--ocrformat", ocrFormat, "--todir", outputPath, "--psm", pageSegMode };
         Ocr.main(args);
         assertTrue("Text File should exist", TestHelper.doesFileExist(expectedTxtFilePath));
     }
@@ -62,10 +64,11 @@ public class OcrTest {
         String expectedTxtFilePath = outputPath + "eng.png.txt";
         String expectedHocrFilePath = outputPath + "eng.png.hocr";
         String ocrFormat = "txt,hocr";
+        String pageSegMode = "3";
         TestHelper.recursiveDelete(new File(expectedTxtFilePath));
         TestHelper.recursiveDelete(new File(expectedHocrFilePath));
         String args[] = { "--fromfile", fromFile, "--modeldir", MODEL_DIR_PATH,
-                "--ocrformat", ocrFormat, "--todir", outputPath };
+                "--ocrformat", ocrFormat, "--todir", outputPath, "--psm", pageSegMode };
         Ocr.main(args);
         assertTrue("Text File should exist", TestHelper.doesFileExist(expectedTxtFilePath));
         assertTrue("Hocr File should exist", TestHelper.doesFileExist(expectedHocrFilePath));
@@ -90,9 +93,10 @@ public class OcrTest {
         String expectedHocrFilePath = outputPath + "hin.png.hocr";
         String lang = "hin";
         String ocrFormat = "hocr";
+        String pageSegMode = "3";
         TestHelper.recursiveDelete(new File(expectedHocrFilePath));
         String args[] = { "--fromfile", fromFile, "--modeldir", MODEL_DIR_PATH,
-                "--ocrformat", ocrFormat, "--todir", outputPath, "--lang", lang };
+                "--ocrformat", ocrFormat, "--todir", outputPath, "--lang", lang, "--psm", pageSegMode };
         Ocr.main(args);
         assertTrue("Hocr File should exist", TestHelper.doesFileExist(expectedHocrFilePath));
     }
@@ -104,11 +108,26 @@ public class OcrTest {
         String expectedHocrFilePath = outputPath + "hin.png.hocr";
         String lang = "abc"; // Invalid language
         String ocrFormat = "hocr";
+        String pageSegMode = "3";
         TestHelper.recursiveDelete(new File(expectedHocrFilePath));
+        String args[] = { "--fromfile", fromFile, "--modeldir", MODEL_DIR_PATH,
+                "--ocrformat", ocrFormat, "--todir", outputPath, "--lang", lang, "--psm", pageSegMode };
+        Ocr.main(args);
+        // assertTrue("Train data not present", TestHelper.doesFileExist(toFile));
+    }
+
+    @Test
+    public void testMainImageToTextNoPageSegMode() throws Exception {
+        String outputPath = RESOURCE_PATH + "output\\";
+        String fromFile = RESOURCE_PATH + "input\\" + "eng.png";
+        String expectedTxtFilePath = outputPath + "eng.png.txt";
+        String lang = "eng";
+        String ocrFormat = "txt";
+        TestHelper.recursiveDelete(new File(expectedTxtFilePath));
         String args[] = { "--fromfile", fromFile, "--modeldir", MODEL_DIR_PATH,
                 "--ocrformat", ocrFormat, "--todir", outputPath, "--lang", lang };
         Ocr.main(args);
-        // assertTrue("Train data not present", TestHelper.doesFileExist(toFile));
+        assertTrue("Text File should exist", TestHelper.doesFileExist(expectedTxtFilePath));
     }
 
     @AfterClass

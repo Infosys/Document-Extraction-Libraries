@@ -14,6 +14,7 @@ public class SwitchData {
 	private String ocrFormat;
 	private String toDir;
 	private String modelDirPath;
+	private String pageSegMode;
 
 	public String getFromFile() {
 		return fromFile;
@@ -53,5 +54,13 @@ public class SwitchData {
 
 	public void setModelDirPath(String modelDirPath) {
 		this.modelDirPath = modelDirPath;
+	}
+
+	public String getPageSegMode() {
+		return pageSegMode;
+	}
+
+	public void setPageSegMode(String pageSegMode) {
+		this.pageSegMode = pageSegMode;
 	}
 }

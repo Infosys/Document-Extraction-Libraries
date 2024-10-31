@@ -1,0 +1,102 @@
+{
+	"folders": [
+		{
+			"path": ".",
+			"name": "main"
+		},
+		{
+			"path": "../../processors/config/",
+			"name": "[3. DPP Config Folder]"
+		}
+	],
+	"settings": {
+		"files.exclude": {
+			".venv": true,
+			"logs": true,
+			"**/__pycache__": true,
+			"archive": true,
+			"dist": true,
+			"build": true,
+			"*.egg-info": true,
+			".pytest_cache": true,
+			"target": true
+		},
+		"editor.formatOnSave": true,
+		"python.linting.pep8Enabled": true,
+		"python.linting.pylintPath": "pylint",
+		"python.linting.pylintArgs": [
+			"--rcfile",
+			"../apps.pylintrc"
+		],
+		"python.linting.pylintEnabled": true,
+		"python.venvPath": "${workspaceFolder:main}/.venv",
+	},
+	"launch": {
+		"configurations": [
+			{
+				"name": "Python: app_executor_container_request_creator",
+				"type": "python",
+				"request": "launch",
+				"program": "app_executor_container.py",
+				"console": "integratedTerminal",
+				"cwd": "${workspaceFolder:main}/src",
+				"args": [
+					"--request_file_path",
+					"",
+					"--processor_input_config_file_path",
+					"/config/dpp_request_creator_input_config.json",
+				],
+				"env": {
+					"DPP_STORAGE_URI": "file://C:/TFS/ManaExpertServices/Solutions/DocWorkbench/components/python/apps/infy_dpp_processor/data/",
+					"DPP_CONTAINER_ROOT_PATH": "C:/TFS/ManaExpertServices/Solutions/DocWorkbench/components/python/apps/infy_dpp_processor/data/"
+				}
+			},
+			{
+				"name": "Python: app_executor_container_segment_generator",
+				"type": "python",
+				"request": "launch",
+				"program": "app_executor_container.py",
+				"console": "integratedTerminal",
+				"cwd": "${workspaceFolder:main}/src",
+				"args": [
+					"--request_file_path",
+					"/work/R-9d79a207-df18-4a68-88a6-96dd5a3d6aef_request_file.json",
+					"--processor_input_config_file_path",
+					"/config/dpp_segment_generator_input_config.json",
+				],
+				"env": {
+					"DPP_STORAGE_URI": "file://C:/TFS/ManaExpertServices/Solutions/DocWorkbench/components/python/apps/infy_dpp_processor/data/",
+					"DPP_CONTAINER_ROOT_PATH": "C:/TFS/ManaExpertServices/Solutions/DocWorkbench/components/python/apps/infy_dpp_processor/data/"
+				}
+			},
+			{
+				"name": "Python: app_executor_container_segment_parser",
+				"type": "python",
+				"request": "launch",
+				"program": "app_executor_container.py",
+				"console": "integratedTerminal",
+				"cwd": "${workspaceFolder:main}/src",
+				"args": [
+					"--request_file_path",
+					"/work/R-9d79a207-df18-4a68-88a6-96dd5a3d6aef_request_file.json",
+					"--processor_input_config_file_path",
+					"/config/dpp_segment_parser_input_config.json",
+				],
+				"env": {
+					"DPP_STORAGE_URI": "file://C:/TFS/ManaExpertServices/Solutions/DocWorkbench/components/python/apps/infy_dpp_processor/data/",
+					"DPP_CONTAINER_ROOT_PATH": "C:/TFS/ManaExpertServices/Solutions/DocWorkbench/components/python/apps/infy_dpp_processor/data/"
+				}
+			},
+			{
+				"name": "Python: app_scheduler",
+				"type": "python",
+				"request": "launch",
+				"program": "app_scheduler.py",
+				"console": "integratedTerminal",
+				"cwd": "${workspaceFolder:main}/src",
+				"justMyCode": false
+			}
+		],
+		"compounds": []
+	}
+}

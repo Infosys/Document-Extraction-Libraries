@@ -100,18 +100,6 @@ def test_convert_pdf_to_image_one_page():
         assert os.path.isfile(img_file)
 
 
-def test_invalid_format_converter_path():
-    """Test method"""
-    format_converter.format_converter_jar_home = None
-    try:
-        FormatConverter.execute(
-            None, convert_action=ConvertAction.PDF_TO_IMAGE, config_param_dict={})
-
-    except Exception as ex:
-        assert (
-            ex.args[0] == "Could not find any jar file of format 'infy-format-converter-*.jar' at provided path 'None'")
-
-
 def test_convert_pdf2mulpdf_1():
     """Test method"""
     from_file = os.path.abspath("./data/page-14-17.pdf")
@@ -177,3 +165,15 @@ def test_images_from_pdf():
 
     print(output_files)
     assert len(output_files) is not None
+
+
+def test_invalid_format_converter_path():
+    """Test method"""
+    format_converter.format_converter_jar_home = None
+    try:
+        FormatConverter.execute(
+            None, convert_action=ConvertAction.PDF_TO_IMAGE, config_param_dict={})
+
+    except Exception as ex:
+        assert (
+            ex.args[0] == "Could not find any jar file of format 'infy-format-converter-*.jar' at provided path 'None'")

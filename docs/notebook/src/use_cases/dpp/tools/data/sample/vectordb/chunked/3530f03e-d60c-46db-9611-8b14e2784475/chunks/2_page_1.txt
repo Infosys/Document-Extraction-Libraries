@@ -1,0 +1,18 @@
+The results were compiled in Employee Health Metrics
+The second table details employee health metrics, including BMI, physical
+activity level, and self-reported health status.
+
+
+[{"Employee Name": "Sarah Williams", "Body Mass Index": "24.5", "Physical (1-10)": "s", "Self-Report (1-10)": "9"}, {"Employee Name": "David Johnson", "Body Mass Index": "27.0", "Physical (1-10)": "5", "Self-Report (1-10)": "6"}, {"Employee Name": "Rachel Green", "Body Mass Index": "22.0", "Physical (1-10)": "9", "Self-Report (1-10)": "10"}, {"Employee Name": "Michael Brown", "Body Mass Index": "30.5", "Physical (1-10)": "4", "Self-Report (1-10)": "5"}, {"Employee Name": "Jessica Smith", "Body Mass Index": "23.5", "Physical (1-10)": "9", "Self-Report (1-10)": "10"}]
+
+
+Analysis of Employee Wellness Programs
+
+
+The Employee Health Metrics table reveals a correlation between
+participation in wellness programs and self-reported health status.
+Employees who actively participate in wellness initiatives, such as Rachel
+Green and Jessica Smith, tend to report better health outcomes and higher
+physical activity levels. This suggests that the wellness programs are effective
+in promoting healthier lifestyles among employees.
+

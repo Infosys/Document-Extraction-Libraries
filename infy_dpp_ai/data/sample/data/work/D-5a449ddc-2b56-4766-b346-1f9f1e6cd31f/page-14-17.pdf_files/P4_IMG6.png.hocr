@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title></title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name='ocr-system' content='tesseract'/>
+</head>
+<body>
+  <div class='ocr_page' id='page_1' title='image "C:\temp\unittest\infy_dpp_segmentation\tests.test_segmentation_orchestrator_native_two\CONTAINER\data\temp\data\work\D-5a449ddc-2b56-4766-b346-1f9f1e6cd31f\page-14-17.pdf_files\P4_IMG6.png"; bbox 0 0 410 410; ppageno 0; scan_res 70 70'>
+   <div class='ocr_photo' id='block_1_1' title="bbox 82 0 185 46"></div>
+   <div class='ocr_carea' id='block_1_2' title="bbox 118 70 288 100">
+    <p class='ocr_par' id='par_1_1' lang='eng' title="bbox 118 62 380 106">
+     <span class='ocr_line' id='line_1_1' title="bbox 118 70 288 100; baseline 0.023 -8; x_size 37; x_descenders 6; x_ascenders 9">
+      <span class='ocrx_word' id='word_1_1' title='bbox 118 62 172 106; x_wconf 0'>(wrs)</span>
+      <span class='ocrx_word' id='word_1_2' title='bbox 188 76 244 96; x_wconf 89'>TOP</span>
+      <span class='ocrx_word' id='word_1_3' title='bbox 260 76 288 96; x_wconf 96'>10</span>
+     </span>
+    </p>
+   </div>
+   <div class='ocr_carea' id='block_1_3' title="bbox 102 136 306 174">
+    <p class='ocr_par' id='par_1_2' lang='eng' title="bbox 102 136 306 174">
+     <span class='ocr_line' id='line_1_2' title="bbox 178 136 232 152; baseline 0 -2; x_size 15.882353; x_descenders 3.8823531; x_ascenders 4.5882354">
+      <span class='ocrx_word' id='word_1_4' title='bbox 178 138 196 150; x_wconf 4'>1</span>
+      <span class='ocrx_word' id='word_1_5' title='bbox 208 136 232 152; x_wconf 91'>for</span>
+     </span>
+     <span class='ocr_line' id='line_1_3' title="bbox 102 158 306 174; baseline 0 0; x_size 21.238094; x_descenders 5.2380953; x_ascenders 6">
+      <span class='ocrx_word' id='word_1_6' title='bbox 102 160 154 174; x_wconf 55'>Voice</span>
+      <span class='ocrx_word' id='word_1_7' title='bbox 160 158 178 174; x_wconf 90'>of</span>
+      <span class='ocrx_word' id='word_1_8' title='bbox 186 160 214 174; x_wconf 90'>the</span>
+      <span class='ocrx_word' id='word_1_9' title='bbox 222 162 306 174; x_wconf 92'>customer</span>
+     </span>
+    </p>
+   </div>
+   <div class='ocr_photo' id='block_1_4' title="bbox 0 44 410 180"></div>
+   <div class='ocr_separator' id='block_1_5' title="bbox 176 186 234 190"></div>
+   <div class='ocr_photo' id='block_1_6' title="bbox 0 224 410 410"></div>
+  </div>
+</body>
+</html>

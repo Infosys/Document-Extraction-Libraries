@@ -4,7 +4,7 @@ To run the notebook files locally, please follow the instructions below.
 
 ## Prerequisites 
 
-- Python (version >=3.8.8 and <3.12)
+- Python (version >=3.10.5 and <3.12)
 - Java (JDK or JRE) >= 8
 - Apache Maven >= 3.8
 - Tesseract >= 5.0 (Optional, Ref: https://tesseract-ocr.github.io)
@@ -15,13 +15,12 @@ Verify that python is available on PATH. If not, please check `Appendix` below.
 
 ```dos
 python --version
-# Python 3.X.X
+# Python X.X.X
 ```
 
+Open command prompt and navigate to `\docs\notebook` directory.
 
 ### Create virtual environment
-
-> Create venv from `\docs\notebook` directory
 
 ```dos
 python -m venv .venv
@@ -35,11 +34,11 @@ python -m venv .venv
 
 ### Install dependencies
 
-> Note: This step might take a few minutes.
+> Note: This step might take a few minutes. 
+
 ```dos
 pip install -r .\requirements.txt
 ```
-
 
 ### Start Jupyter Notebook
 

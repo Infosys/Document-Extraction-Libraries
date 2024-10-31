@@ -7,3 +7,5 @@
 from .pdf_plumber_table_extractor import PdfPlumberTableExtractor
 from .pdf_box_images_extractor import PdfBoxImagesExtractor
 from .images_text_extractor import ImagesTextExtractor
+from .yolox_table_extractor import YoloxTableExtactor
+from .pdf_scanned_ocr_extractor import PdfScannedOcrExtractor

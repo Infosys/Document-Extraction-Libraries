@@ -1,0 +1,167 @@
+[
+    {
+        "page_number": 1,
+        "page_width": 1224,
+        "page_height": 792,
+        "tables": [
+            {
+                "table_id": "p1_tb1",
+                "bbox": [
+                    1014.772,
+                    85.03899999999999,
+                    1178.646,
+                    308.902
+                ],
+                "data": [
+                    {
+                        "": "Digital skilling\n8.5\nmn\nPeople are a part of our digital\nskilling initiatives"
+                    }
+                ]
+            },
+            {
+                "table_id": "p1_tb2",
+                "bbox": [
+                    76.9925,
+                    196.0190888888889,
+                    103.87055000000001,
+                    208.47990000000001
+                ],
+                "data": []
+            },
+            {
+                "table_id": "p1_tb3",
+                "bbox": [
+                    57.651,
+                    358.35976666666664,
+                    66.47404,
+                    378.5315
+                ],
+                "data": [
+                    {
+                        "": ""
+                    }
+                ]
+            },
+            {
+                "table_id": "p1_tb4",
+                "bbox": [
+                    90.55945416666667,
+                    358.35976666666664,
+                    103.87055000000001,
+                    378.5315
+                ],
+                "data": [
+                    {
+                        "": ""
+                    }
+                ]
+            },
+            {
+                "table_id": "p1_tb5",
+                "bbox": [
+                    45.354000000000006,
+                    373.8760375,
+                    209.39274285714288,
+                    742.1100000000001
+                ],
+                "data": [
+                    {
+                        "Revenues\n1,46,767\n₹ cr\n20.7% growth Y-o-Y\n15.4% CC growth Y-o-Y": "Digital revenues\n(as a % of total revenue)\n62.2\n%\n25.6% CC growth Y-o-Y"
+                    },
+                    {
+                        "Revenues\n1,46,767\n₹ cr\n20.7% growth Y-o-Y\n15.4% CC growth Y-o-Y": ""
+                    }
+                ]
+            },
+            {
+                "table_id": "p1_tb6",
+                "bbox": [
+                    849.1655000000001,
+                    544.986,
+                    915.1061363636363,
+                    618.736
+                ],
+                "data": [
+                    {
+                        "FY 2023": "1,46,767"
+                    },
+                    {
+                        "FY 2023": "24,095"
+                    },
+                    {
+                        "FY 2023": "57.63"
+                    },
+                    {
+                        "FY 2023": "5,92,394"
+                    }
+                ]
+            },
+            {
+                "table_id": "p1_tb7",
+                "bbox": [
+                    849.1655000000001,
+                    629.29349,
+                    915.1061363636363,
+                    702.611
+                ],
+                "data": [
+                    {
+                        "FY 2023": "18,212"
+                    },
+                    {
+                        "FY 2023": "2,981"
+                    },
+                    {
+                        "FY 2023": "0.71"
+                    },
+                    {
+                        "FY 2023": "72,351"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "page_number": 2,
+        "page_width": 1224,
+        "page_height": 792,
+        "tables": []
+    },
+    {
+        "page_number": 3,
+        "page_width": 1224,
+        "page_height": 792,
+        "tables": []
+    },
+    {
+        "page_number": 4,
+        "page_width": 1224,
+        "page_height": 792,
+        "tables": [
+            {
+                "table_id": "p4_tb1",
+                "bbox": [
+                    401.3856,
+                    417.26003333333324,
+                    427.4830953487112,
+                    428.02209999999997
+                ],
+                "data": []
+            },
+            {
+                "table_id": "p4_tb2",
+                "bbox": [
+                    397.102,
+                    459.158,
+                    560.913,
+                    643.8065
+                ],
+                "data": [
+                    {
+                        "": "Won the Gold Award at the\nBrandon Hall Group Excellence in\nTechnology Awards"
+                    }
+                ]
+            }
+        ]
+    }
+]

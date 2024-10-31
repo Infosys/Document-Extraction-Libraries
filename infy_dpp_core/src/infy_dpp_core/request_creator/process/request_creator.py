@@ -54,7 +54,7 @@ class RequestCreator(infy_dpp_sdk.interface.IProcessor):
             self.__file_sys_handler.create_folders(f'{sub_folder}')
             self.__file_sys_handler.create_folders(
                 f'{req_file_save_root_path}')
-            
+
             input_files = self.__read_files(config_data, batch_size)
             if input_files:
                 for input_doc in input_files:
@@ -85,7 +85,8 @@ class RequestCreator(infy_dpp_sdk.interface.IProcessor):
                     self.__file_sys_handler.create_folders(supporting_files)
 
                     # ---- Copy input file to work folder -----
-                    self.__file_sys_handler.copy_file(temp_input_doc, work_file)
+                    self.__file_sys_handler.copy_file(
+                        temp_input_doc, work_file)
 
                     # ---- Create response data -----
                     metadata = infy_dpp_sdk.data.MetaData(
@@ -96,7 +97,8 @@ class RequestCreator(infy_dpp_sdk.interface.IProcessor):
                     context_data = {
                         PROCESSEOR_CONTEXT_DATA_NAME: {
                             "work_file_path": work_file,
-                            "group_request_file": request_file
+                            "group_request_file": request_file,
+                            "group_request_id": group_id
                         }
                     }
                     message_data = infy_dpp_sdk.data.MessageData()

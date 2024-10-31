@@ -11,6 +11,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.lang.NumberFormatException;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.nio.charset.StandardCharsets;
@@ -24,6 +25,11 @@ import com.infosys.ainauto.ocrengine.model.SwitchData;
 
 import net.sourceforge.tess4j.Tesseract;
 import net.sourceforge.tess4j.TesseractException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.core.util.DefaultIndenter;
+import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 
 public class TesseractHandler {
 
@@ -32,7 +38,7 @@ public class TesseractHandler {
     public static void extractText(SwitchData switchData)
             throws TesseractException, Exception {
 
-        String imageFilePath = switchData.getFromFile();
+        String inputFilePath = switchData.getFromFile();
         String outputDir = switchData.getToDir();
         String ocrFormat = switchData.getOcrFormat();
 
@@ -52,7 +58,7 @@ public class TesseractHandler {
         }
         try {
 
-            String outputDirPathActual = getOutputDirPathActual(imageFilePath, outputDir);
+            String outputDirPathActual = getOutputDirPathActual(inputFilePath, outputDir);
             CommonUtil.createDirsRecursively(outputDirPathActual);
             if (requestedOcrFormats.contains(Constants.OCR_FORMAT_HOCR)) {
                 String outputFilePath = writeToFile(switchData, Constants.FILE_EXT_HOCR, outputDirPathActual);
@@ -70,10 +76,9 @@ public class TesseractHandler {
 
     private static String writeToFile(SwitchData switchData, String fileExtension,
             String outputDirPathActual)
-            throws TesseractException, FileNotFoundException, IOException {
+            throws TesseractException, FileNotFoundException, IOException, NumberFormatException {
 
-        String imageFilePath = switchData.getFromFile();
-        File image = new File(imageFilePath);
+        String inputFilePath = switchData.getFromFile();
         String outputFilePath;
         Tesseract tesseract = new Tesseract();
         tesseract.setLanguage(switchData.getLanguage());
@@ -86,30 +91,72 @@ public class TesseractHandler {
             tesseract.setVariable("tessedit_create_txt", "1");
         }
 
-        tesseract.setPageSegMode(3);
+        int pageSegMode;
+
+        try {
+            pageSegMode = Integer.parseInt(switchData.getPageSegMode());
+            if (pageSegMode != 3 && pageSegMode != 6 && pageSegMode != 7) {
+                throw new NumberFormatException("Page segmentation mode must be 3, 6, or 7.");
+            }
+        } catch (NumberFormatException e) {
+            throw new NumberFormatException("Invalid page segmentation mode: " + switchData.getPageSegMode());
+        }
+
+        tesseract.setPageSegMode(pageSegMode);
         tesseract.setVariable("hocr_font_info", "0");
+        if (inputFilePath.endsWith(".json")) {
+            ObjectMapper objectMapper = new ObjectMapper();
+            JsonNode rootNode = objectMapper.readTree(new File(inputFilePath));
+            for (JsonNode node : rootNode) {
+                String imagePath = node.get("image_path").asText();
+                String data = getDataFromImage(imagePath, tesseract);
+                ((ObjectNode) node).put("data", data);
+            }
+            outputFilePath = getOutputFilePath(inputFilePath, outputDirPathActual, "_infy_ocr_engine.json");
+            // objectMapper.writeValue(new File(outputFilePath), rootNode);
+            // objectMapper.writer(new DefaultPrettyPrinter()).writeValue(new
+            // File(outputFilePath), rootNode);
+            DefaultPrettyPrinter prettyPrinter = new DefaultPrettyPrinter();
+            prettyPrinter.indentArraysWith(DefaultIndenter.SYSTEM_LINEFEED_INSTANCE.withIndent("    "));
+            prettyPrinter.indentObjectsWith(DefaultIndenter.SYSTEM_LINEFEED_INSTANCE.withIndent("    "));
+
+            objectMapper.writer(prettyPrinter).writeValue(new File(outputFilePath), rootNode);
+        } else {
+            String result = getDataFromImage(inputFilePath, tesseract);
+            outputFilePath = getOutputFilePath(inputFilePath, outputDirPathActual, fileExtension);
+            Writer fstream = new OutputStreamWriter(
+                    new FileOutputStream(outputFilePath), StandardCharsets.UTF_8);
+            fstream.write(result);
+            fstream.close();
+        }
+        return outputFilePath;
+    }
+
+    private static String getDataFromImage(String imageFilePath, Tesseract tesseract)
+            throws TesseractException {
+        File image = new File(imageFilePath);
         String result = tesseract.doOCR(image);
 
         String fileName = CommonUtil.getPathTokens(imageFilePath)[CommonUtil.PATH_TOKEN_FILE_NAME]
                 + "." + CommonUtil.getPathTokens(imageFilePath)[CommonUtil.PATH_TOKEN_FILE_EXT];
 
         result = result.replace(imageFilePath, fileName);
+        result = result.replaceAll("\\n$", "");
 
-        String outputFileName = CommonUtil.getPathTokens(imageFilePath)[CommonUtil.PATH_TOKEN_FILE_NAME]
-                + "." + CommonUtil.getPathTokens(imageFilePath)[CommonUtil.PATH_TOKEN_FILE_EXT]
-                + fileExtension;
-        outputFilePath = outputDirPathActual + "/" + outputFileName;
-        Writer fstream = new OutputStreamWriter(
-                new FileOutputStream(outputFilePath), StandardCharsets.UTF_8);
-        fstream.write(result);
-        fstream.close();
-        return outputFilePath;
+        return result;
     }
 
-    private static String getOutputDirPathActual(String imageFilePath, String outputDir) {
+    private static String getOutputFilePath(String inputFilePath, String outputDirPathActual, String fileExtension) {
+        String outputFileName = CommonUtil.getPathTokens(inputFilePath)[CommonUtil.PATH_TOKEN_FILE_NAME]
+                + "." + CommonUtil.getPathTokens(inputFilePath)[CommonUtil.PATH_TOKEN_FILE_EXT]
+                + fileExtension;
+        return outputDirPathActual + "/" + outputFileName;
+    }
+
+    private static String getOutputDirPathActual(String inputFilePath, String outputDir) {
         String outputDirPathActual;
         if (outputDir == null) {
-            outputDirPathActual = CommonUtil.getActualOutputDirPath(outputDir, imageFilePath, false);
+            outputDirPathActual = CommonUtil.getActualOutputDirPath(outputDir, inputFilePath, false);
         } else {
             outputDirPathActual = outputDir;
         }

@@ -1,0 +1,17 @@
+{
+    "chunk_id": "C-78de7",
+    "page_no": 1,
+    "sequence_no": 1,
+    "bbox_format": "X1,Y1,X2,Y2",
+    "bbox": null,
+    "doc_name": "AR_2021-22_page-20-21.pdf",
+    "document_id": "5d7e8a4f-371f-4607-85c5-61167b529b02",
+    "chunking_method": "page",
+    "char_count": "1",
+    "resources": [
+        {
+            "type": "doc_path",
+            "path": "/data/vectordb/resources/5d7e8a4f-c39d-4db2-bc29-b4298de97d7e.pdf"
+        }
+    ]
+}

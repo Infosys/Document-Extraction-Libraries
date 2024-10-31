@@ -1,0 +1,25 @@
+BikeGPE Riders:
+
+
+[{"Rider": "Marc Sparquez", "Team": "Oil Magnets", "Nationality": "Spanish", "Points": "236", "Wins": "6", "Podiums": "8"}, {"Rider": "Fabio D", "Team": "Davidputr Racing", "Nationality": "French", "Points": "210", "Wins": "5", "Podiums": "7"}, {"Rider": "Smart Miller", "Team": "Dom Team", "Nationality": "Australian", "Points": "185", "Wins": "3", "Podiums": "6"}, {"Rider": "Joan Ameer", "Team": "Sun Racing", "Nationality": "Spanish", "Points": "162", "Wins": "2", "Podiums": "5"}, {"Rider": "Aleix Diesel", "Team": "Meteor Racing Team", "Nationality": "Spanish", "Points": "118", "Wins": "0", "Podiums": "3"}, {"Rider": "Jonas Zaro", "Team": "Byebye Racing", "Nationality": "French", "Points": "94", "Wins": "0", "Podiums": "2"}, {"Rider": "Brad Rock", "Team": "Rainbow Bull", "Nationality": "South African", "Points": "73", "Wins": "0", "Podiums": "1"}]
+
+
+Algorithm 1 drivers are the elite of the motorsport world, piloting cutting-edge machines at 
+breathtaking speeds. Renowned for their precision, reflexes, and mental acuity, these athletes 
+navigate the most challenging circuits on the planet, pushing the limits of both their vehicles 
+and themselves. Each A1 driver is a maestro behind the wheel, orchestrating a symphony of 
+speed and strategy as they compete in a high-stakes global championship that demands 
+unparalleled skill and commitment.
+
+
+A1 drivers are not just athletes but ambassadors for their sport. Their on-track battles, strategic 
+maneuvers, and dedication to excellence captivate millions of fans worldwide, turning each 
+Grand Prix into a spectacle that marries cutting-edge technology with the indomitable spirit of 
+human competition.
+
+
+Algorithm 1 Drivers:
+
+
+[{"Driver": "Lewis Hamid", "Team": "Twin Birds Team", "Nationality": "British", "Points": "263", "Wins": "5", "Podiums": "8"}, {"Driver": "Min Verstappen", "Team": "Rainbow Bull Racing", "Nationality": "Dutch", "Points": "248", "Wins": "4", "Podiums": "7"}, {"Driver": "Valtteri Glasses", "Team": "Romeo July Racing", "Nationality": "Finnish", "Points": "182", "Wins": "2", "Podiums": "6"}, {"Driver": "Charles Boss", "Team": "Riat Team", "Nationality": "Monegasque", "Points": "158", "Wins": "1", "Podiums": "5"}, {"Driver": "Lando Angel", "Team": "McLovin Team", "Nationality": "British", "Points": "137", "Wins": "0", "Podiums": "4"}, {"Driver": "Sebastian Doctor", "Team": "Martin Carlos Team", "Nationality": "German", "Points": "112", "Wins": "0", "Podiums": "3"}, {"Driver": "Ric Boomer", "Team": "McLovin Team", "Nationality": "Australian", "Points": "97", "Wins": "0", "Podiums": "2"}, {"Driver": "Pierre Petrol", "Team": "Beta Tauri Team", "Nationality": "French", "Points": "82", "Wins": "0", "Podiums": "2"}, {"Driver": "Ferdinand Alone", "Team": "Pine groove Team", "Nationality": "Spanish", "Points": "76", "Wins": "0", "Podiums": "1"}]
+
