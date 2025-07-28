@@ -1,0 +1,337 @@
+{
+  "name": "Qna generation pipeline",
+  "description": "Pipeline for automating question answer pair generation at chunk level",
+  "variables": {
+    "MODEL_HOME": "/home/MyProgramFiles/AI/models",
+    "AZURE_OPENAI_SERVER_BASE_URL": "${ENV:AZURE_OPENAI_SERVER_BASE_URL}",
+    "AZURE_OPENAI_SECRET_KEY": "${ENV:AZURE_OPENAI_SECRET_KEY}",
+    "LITELLM_PROXY_SERVER_BASE_URL": "${ENV:LITELLM_PROXY_SERVER_BASE_URL}",
+    "LITELLM_PROXY_SECRET_KEY": "${ENV:LITELLM_PROXY_SECRET_KEY}"
+  },
+  "processor_list": [
+    {
+      "enabled": true,
+      "processor_name": "request_creator",
+      "processor_namespace": "infy_dpp_core.request_creator.request_creator_v2",
+      "processor_class_name": "RequestCreatorV2",
+      "processor_input_config_name_list": [
+        "RequestCreator"
+      ]
+    },
+    {
+      "enabled": true,
+      "processor_name": "qna_generator",
+      "processor_namespace": "infy_dpp_content_generator.qna_generator",
+      "processor_class_name": "QnaGenerator",
+      "processor_input_config_name_list": [
+        "QnaGenerator"
+      ]
+    },
+    {
+      "enabled": true,
+      "processor_name": "qna_consolidator",
+      "processor_namespace": "infy_dpp_content_generator.qna_consolidator",
+      "processor_class_name": "QnaConsolidator",
+      "processor_input_config_name_list": [
+        "QnaConsolidator"
+      ]
+    },
+    {
+      "enabled": true,
+      "processor_name": "request_closer",
+      "processor_namespace": "infy_dpp_core.request_closer.process.request_closer_v2",
+      "processor_class_name": "RequestCloserV2",
+      "processor_input_config_name_list": [
+        "RequestCloser"
+      ]
+    }
+  ],
+  "processor_input_config": {
+    "RequestCreator": {
+      "content_evaluation": {
+        "enabled": false,
+        "from_data_file": {
+          "read_path": "/data/input/",
+          "work_root_path": "/data/work/"
+        }
+      },
+      "inference": {
+        "enabled": false,
+        "from_data_file": {
+          "read_path": "/data/input/",
+          "work_root_path": "/data/work/",
+          "top_k": 4,
+          "pre_filter_fetch_k": 100
+        }
+      },
+      "evaluation": {
+        "enabled": false,
+        "from_data_file": {
+          "read_path": "/data/input/",
+          "work_root_path": "/data/work/"
+        }
+      },
+      "report": {
+        "enabled": false,
+        "from_data_file": {
+          "read_path": "/data/input/",
+          "work_root_path": "/data/work/"
+        }
+      },
+      "qna_generator": {
+        "enabled": true,
+        "from_request_file": {
+          "read_path": "/data/work/request/indexer/complete",
+          "save_path": "/data/work/request/qna_generation/start",
+          "work_root_path": "/data/work/"
+        }
+      }
+    },
+    "RequestCloser": {
+      "work_root_path": "/data/work/",
+      "data_file": {
+        "output_root_path": "/data/output/"
+      },
+      "output_root_path": "/data/output/",
+      "from_request_file": {
+        "enabled": true,
+        "read_path": "/data/work/request/qna_generation/start",
+        "save_path": "/data/work/request/qna_generation/complete"
+      }
+    },
+    "QnaGenerator": {
+      "techniques": [
+        {
+          "enabled": false,
+          "name": "llama_with_chunk_context",
+          "qna_strategy_name": "$..qna_strategy.strategy_two_stage",
+          "llm_providers": {
+            "llm_provider_1": "$..llm.custom.meta-llama-3-3-70B-intruct_300_token",
+            "llm_provider_2": "$..llm.custom.meta-llama-3-3-70B-intruct_1000_tokens"
+          },
+          "content_class": "chunk",
+          "content_type": "",
+          "page_num": [
+            "1"
+          ],
+          "min_content_char_length": 100
+        },
+        {
+          "enabled": false,
+          "name": "llama_with_segment_context",
+          "qna_strategy_name": "$..qna_strategy.strategy_two_stage",
+          "llm_providers": {
+            "llm_provider_1": "$..llm.custom.meta-llama-3-3-70B-intruct_300_token",
+            "llm_provider_2": "$..llm.custom.meta-llama-3-3-70B-intruct_1000_tokens"
+          },
+          "content_class": "segment",
+          "content_type": "",
+          "page_num": [
+            "1"
+          ],
+          "min_content_char_length": 100
+        },
+        {
+          "enabled": true,
+          "name": "openai_with_segment_context_two_stage",
+          "qna_strategy_name": "$..qna_strategy.strategy_two_stage",
+          "llm_providers": {
+            "llm_provider_1": "$..llm.openai",
+            "llm_provider_2": "$..llm.openai"
+          },
+          "content_class": "segment",
+          "content_type": "",
+          "page_num": [
+            "1"
+          ],
+          "min_content_char_length": 100
+        },
+        {
+          "enabled": false,
+          "name": "openai_with_segment_context",
+          "qna_strategy_name": "$..qna_strategy.strategy_zeroshotpair",
+          "llm_providers": {
+            "llm_provider_1": "$..llm.openai"
+          },
+          "content_class": "segment",
+          "content_type": "",
+          "page_num": [
+            "1"
+          ],
+          "min_content_char_length": 100
+        },
+        {
+          "enabled": false,
+          "name": "openai_with_chunk_context",
+          "qna_strategy_name": "$..qna_strategy.strategy_zeroshotpair",
+          "llm_providers": {
+            "llm_provider_1": "$..llm.openai"
+          },
+          "content_class": "chunk",
+          "content_type": "",
+          "page_num": [
+            "1"
+          ],
+          "min_content_char_length": 100
+        },
+        {
+          "enabled": false,
+          "name": "openai_with_segment_context_table",
+          "qna_strategy_name": "$..qna_strategy.strategy_zeroshotpair",
+          "llm_providers": {
+            "llm_provider_1": "$..llm.openai"
+          },
+          "content_class": "segment",
+          "content_type": "table",
+          "page_num": [
+            "1:10"
+          ],
+          "min_content_char_length": 100
+        }
+      ],
+      "question_types": {
+        "set_of_9": {
+          "Subjective": 3,
+          "Procedural": 0,
+          "Factual": 0,
+          "Hypothetical": 0,
+          "Temporal": 0,
+          "Cause and Effect": 0,
+          "Deductive": 3,
+          "Mathematical": 3,
+          "Analytical": 3
+        },
+        "set_of_5": {
+          "Procedural": 1,
+          "Factual": 0,
+          "Hypothetical": 0,
+          "Temporal": 0,
+          "Cause and Effect": 1
+        }
+      },
+      "qna_strategy": {
+        "strategy_zeroshotpair": {
+          "enabled": false,
+          "qna_strategy_provider_config_data": {
+            "class": "infy_content_generator.generator.provider.ZeroShotPairStrategyConfigData",
+            "properties": {
+              "with_sub_context": false,
+              "que_type": "$..question_types.set_of_9"
+            }
+          },
+          "qna_strategy_provider": {
+            "class": "infy_content_generator.generator.provider.ZeroShotPairStrategyProvider",
+            "properties": {
+              "prompt_files_path": {
+                "with_sub_context": null,
+                "without_sub_context": null
+              }
+            }
+          }
+        },
+        "strategy_two_stage": {
+          "enabled": true,
+          "qna_strategy_provider_config_data": {
+            "class": "infy_content_generator.generator.provider.TwoStageStrategyConfigData",
+            "properties": {
+              "que_type": "$..question_types.set_of_9"
+            }
+          },
+          "qna_strategy_provider": {
+            "class": "infy_content_generator.generator.provider.TwoStageStrategyProvider",
+            "properties": {
+              "prompt_files_path": {
+                "question": null,
+                "answer": null
+              }
+            }
+          }
+        }
+      },
+      "llm": {
+        "custom": {
+          "meta-llama-3-3-70B-intruct_300_token": {
+            "enabled": false,
+            "configuration": {
+              "api_url": "${CUSTOM_LLM_LLAMA_INFERENCE_URL}",
+              "model_name": "Meta-Llama-3.3-70B-Instruct",
+              "headers": {
+                "X-Cluster": "H100"
+              },
+              "json_payload": {
+                "model": "/models/Meta-Llama-3.3-70B-Instruct",
+                "max_tokens": 300,
+                "temperature": 0.1,
+                "top_p": 0.9,
+                "presence_penalty": 0,
+                "frequency_penalty": 0
+              }
+            },
+            "llm_provider_class": "infy_content_generator.llm.provider.ChatLlmProvider",
+            "llm_provider_config_data_class": "infy_content_generator.llm.provider.ChatLlmProviderConfigData"
+          },
+          "meta-llama-3-3-70B-intruct_1000_tokens": {
+            "enabled": false,
+            "configuration": {
+              "api_url": "${CUSTOM_LLM_LLAMA_INFERENCE_URL}",
+              "model_name": "Meta-Llama-3.3-70B-Instruct",
+              "headers": {
+                "X-Cluster": "H100"
+              },
+              "json_payload": {
+                "model": "/models/Meta-Llama-3.3-70B-Instruct",
+                "max_tokens": 1000,
+                "temperature": 0.9,
+                "top_p": 0.9,
+                "presence_penalty": 0,
+                "frequency_penalty": 0
+              }
+            },
+            "llm_provider_class": "infy_content_generator.llm.provider.ChatLlmProvider",
+            "llm_provider_config_data_class": "infy_content_generator.llm.provider.ChatLlmProviderConfigData"
+          }
+        },
+        "openai": {
+          "enabled": true,
+          "configuration": {
+            "api_type": "azure",
+            "api_url": "${AZURE_OPENAI_SERVER_BASE_URL}",
+            "api_key": "${AZURE_OPENAI_SECRET_KEY}",
+            "api_version": "2024-02-15-preview",
+            "model_name": "gpt-4",
+            "deployment_name": "gpt4",
+            "max_tokens": 1000,
+            "temperature": 0.5,
+            "is_chat_model": true,
+            "top_p": 0.95,
+            "frequency_penalty": 0,
+            "presence_penalty": 0,
+            "stop": null
+          },
+          "llm_provider_class": "infy_content_generator.llm.provider.OpenAILlmProvider",
+          "llm_provider_config_data_class": "infy_content_generator.llm.provider.OpenAILlmProviderConfigData"
+        }
+      }
+    },
+    "QnaConsolidator": {
+      "transform": {
+        "Q_No": "Q####",
+        "Classification": "type",
+        "Question": "question",
+        "Ground_Truth": "answer",
+        "Answer_Source": "answer_source",
+        "Content_Class": "content_class",
+        "Content_Class_Id": "content_class_id",
+        "Ground_Truth_Page": "page_no",
+        "Ground_Truth_Sequence": "sequence_no",
+        "Document_Name": "document_name",
+        "Answer_Segment": "content_type",
+        "Doc_Id": "doc_id",
+        "Technique_Name": "technique_name",
+        "LLM_Name": "llm_name",
+        "QnA_Strategy_Name": "qna_strategy_name"
+      },
+      "output_root_path": "/data/output/"
+    }
+  }
+}

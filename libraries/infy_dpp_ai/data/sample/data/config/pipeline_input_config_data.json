@@ -1,0 +1,903 @@
+{
+  "name": "pipeline_input",
+  "description": "indexer's data encoder pipeline configuration",
+  "variables": {
+    "FORMAT_CONVERTER_HOME": "C:/del/programfiles/InfyFormatConverter/",
+    "INFY_OCR_ENGINE_HOME": "C:/del/programfiles/InfyOcrEngine",
+    "TESSERACT_HOME": "C:/del/programfiles/Tesseract-OCR",
+    "MODEL_HOME": "C:/del/ai/models",
+    "AI_HOME": "C:/del/ai",
+    "CA_CERTS_PATH": "",
+    "AZURE_OPENAI_SERVER_BASE_URL": "${ENV:AZURE_OPENAI_SERVER_BASE_URL}",
+    "AZURE_OPENAI_SECRET_KEY": "${ENV:AZURE_OPENAI_SECRET_KEY}",
+    "LITELLM_PROXY_SERVER_BASE_URL": "${ENV:LITELLM_PROXY_SERVER_BASE_URL}",
+    "LITELLM_PROXY_SECRET_KEY": "${ENV:LITELLM_PROXY_SECRET_KEY}",
+    "INFY_DB_SERVICE_BASE_URL": "${ENV:INFY_DB_SERVICE_BASE_URL}",
+    "INFY_MODEL_SERVICE_BASE_URL": "${ENV:INFY_MODEL_SERVICE_BASE_URL}",
+    "INFY_RESOURCE_SERVICE_BASE_URL": "${ENV:INFY_RESOURCE_SERVICE_BASE_URL}",
+    "CUSTOM_EMB_MISTRAL_INFERENCE_URL": "${ENV:CUSTOM_EMB_MISTRAL_INFERENCE_URL}",
+    "AZURE_READ_OCR_SUB_KEY": "",
+    "AZURE_READ_OCR_URL": ""
+  },
+  "processor_list": [
+    {
+      "enabled": true,
+      "processor_name": "request_creator",
+      "processor_namespace": "infy_dpp_core.request_creator",
+      "processor_class_name": "RequestCreator",
+      "processor_input_config_name_list": [
+        "RequestCreator"
+      ]
+    },
+    {
+      "enabled": true,
+      "processor_name": "metadata_extractor",
+      "processor_namespace": "infy_dpp_core.metadata_extractor",
+      "processor_class_name": "MetadataExtractor",
+      "processor_input_config_name_list": []
+    },
+    {
+      "enabled": true,
+      "processor_name": "content_extractor",
+      "processor_namespace": "infy_dpp_content_extractor.content_extractor",
+      "processor_class_name": "ContentExtractor",
+      "processor_input_config_name_list": [
+        "ContentExtractor"
+      ]
+    },
+    {
+      "enabled": true,
+      "processor_name": "segment_generator",
+      "processor_namespace": "infy_dpp_segmentation.segment_generator",
+      "processor_class_name": "SegmentGenerator",
+      "processor_input_config_name_list": [
+        "SegmentGenerator"
+      ]
+    },
+    {
+      "enabled": true,
+      "processor_name": "segment_consolidator",
+      "processor_namespace": "infy_dpp_segmentation.segment_consolidator",
+      "processor_class_name": "SegmentConsolidator",
+      "processor_input_config_name_list": [
+        "SegmentConsolidator"
+      ]
+    },
+    {
+      "enabled": true,
+      "processor_name": "segment_classifier",
+      "processor_namespace": "infy_dpp_segmentation.segment_classifier",
+      "processor_class_name": "SegmentClassifier",
+      "processor_input_config_name_list": [
+        "SegmentClassifier"
+      ]
+    },
+    {
+      "enabled": true,
+      "processor_name": "page_column_detector",
+      "processor_namespace": "infy_dpp_segmentation.page_column_detector",
+      "processor_class_name": "PageColumnDetector",
+      "processor_input_config_name_list": [
+        "PageColumnDetector"
+      ]
+    },
+    {
+      "enabled": true,
+      "processor_name": "segment_merger",
+      "processor_namespace": "infy_dpp_segmentation.segment_merger",
+      "processor_class_name": "SegmentMerger",
+      "processor_input_config_name_list": [
+        "SegmentMerger"
+      ]
+    },
+    {
+      "enabled": true,
+      "processor_name": "Segment_sequencer",
+      "processor_namespace": "infy_dpp_segmentation.segment_sequencer",
+      "processor_class_name": "SegmentSequencer",
+      "processor_input_config_name_list": [
+        "SegmentSequencer"
+      ]
+    },
+    {
+      "enabled": true,
+      "processor_name": "chunk_generator",
+      "processor_namespace": "infy_dpp_segmentation.chunk_generator",
+      "processor_class_name": "ChunkGenerator",
+      "processor_input_config_name_list": [
+        "ChunkGenerator"
+      ]
+    },
+    {
+      "enabled": true,
+      "processor_name": "metadata_extractor_custom_document",
+      "processor_namespace": "infy_dpp_ai.metadata_extractor_custom.process.metadata_extractor_custom",
+      "processor_class_name": "MetadataExtractorCustom",
+      "processor_input_config_name_list": [
+        "MetadataExtractorCustom"
+      ]
+    },
+    {
+      "enabled": true,
+      "processor_name": "db_indexer",
+      "processor_namespace": "infy_dpp_ai.db_indexer.process.db_indexer",
+      "processor_class_name": "DbIndexer",
+      "processor_input_config_name_list": [
+        "DbIndexer"
+      ]
+    },
+    {
+      "enabled": true,
+      "processor_name": "request_closer",
+      "processor_namespace": "infy_dpp_core.request_closer",
+      "processor_class_name": "RequestCloser",
+      "processor_input_config_name_list": [
+        "RequestCloser"
+      ]
+    },
+    {
+      "enabled": true,
+      "processor_name": "document_data_saver",
+      "processor_namespace": "infy_dpp_core.document_data_saver",
+      "processor_class_name": "DocumentDataSaver",
+      "processor_input_config_name_list": [
+        "DocumentDataSaver"
+      ]
+    }
+  ],
+  "processor_input_config": {
+    "SegmentGenerator": {
+      "textProviders": [
+        {
+          "provider_name": "ContentExtractor.table_contents_file_path",
+          "properties": {}
+        },
+        {
+          "provider_name": "ContentExtractor.image_contents_file_path",
+          "properties": {}
+        },
+        {
+          "provider_name": "tesseract_ocr_provider",
+          "properties": {
+            "tesseract_path": "${TESSERACT_HOME}/tesseract.exe",
+            "format_converter_home": "${FORMAT_CONVERTER_HOME}"
+          }
+        },
+        {
+          "provider_name": "infy_ocr_engine_provider",
+          "properties": {
+            "ocr_engine_exe_dir_path": "${INFY_OCR_ENGINE_HOME}",
+            "ocr_engine_model_dir_path": "${MODEL_HOME}/tessdata",
+            "ocr_engine_language": "eng",
+            "format_converter_home": "${FORMAT_CONVERTER_HOME}"
+          }
+        },
+        {
+          "provider_name": "azure_read_ocr_provider",
+          "properties": {
+            "subscription_key": "${AZURE_READ_OCR_SUB_KEY}",
+            "url": "${AZURE_READ_OCR_URL}",
+            "format_converter_home": "${FORMAT_CONVERTER_HOME}"
+          }
+        },
+        {
+          "provider_name": "pdf_box_text_provider",
+          "properties": {
+            "format_converter_home": "${FORMAT_CONVERTER_HOME}"
+          }
+        },
+        {
+          "provider_name": "json_provider",
+          "properties": {
+            "template1_file_path": "/data/config/templates/email_template.txt",
+            "format_converter_home": "${FORMAT_CONVERTER_HOME}"
+          }
+        },
+        {
+          "provider_name": "txt_provider",
+          "properties": {
+            "format_converter_home": "${FORMAT_CONVERTER_HOME}"
+          }
+        }
+      ],
+      "modelProviders": [
+        {
+          "provider_name": "detectron",
+          "properties": {
+            "model_path": "/home/projadmin/workarea/documentworkbench/docwbsolution/python/segment-generator-service/model_files/model_final.pth",
+            "config_file_path": "/home/projadmin/workarea/documentworkbench/docwbsolution/python/segment-generator-service/model_files/config.text",
+            "model_threshold": 0.8
+          }
+        }
+      ],
+      "techniques": [
+        {
+          "enabled": false,
+          "name": "technique1",
+          "input_file_type": "image",
+          "text_provider_name": "tesseract_ocr_provider",
+          "model_provider_name": null
+        },
+        {
+          "enabled": false,
+          "name": "technique2",
+          "input_file_type": "image",
+          "text_provider_name": "azure_read_ocr_provider",
+          "model_provider_name": "detectron"
+        },
+        {
+          "enabled": true,
+          "name": "technique3",
+          "input_file_type": "pdf",
+          "text_provider_name": "pdf_box_text_provider",
+          "model_provider_name": null
+        },
+        {
+          "enabled": false,
+          "name": "technique4",
+          "input_file_type": "pdf",
+          "text_provider_name": "pdf_box_text_provider",
+          "model_provider_name": "detectron"
+        },
+        {
+          "enabled": false,
+          "name": "technique5",
+          "input_file_type": "json",
+          "text_provider_name": "json_provider",
+          "model_provider_name": null
+        },
+        {
+          "enabled": false,
+          "name": "technique6",
+          "input_file_type": "image",
+          "text_provider_name": "azure_read_ocr_provider",
+          "model_provider_name": null
+        },
+        {
+          "enabled": true,
+          "name": "technique7",
+          "input_file_type": "image",
+          "text_provider_name": "infy_ocr_engine_provider",
+          "model_provider_name": null
+        },
+        {
+          "enabled": true,
+          "name": "technique8",
+          "input_file_type": "txt",
+          "text_provider_name": "txt_provider",
+          "model_provider_name": null
+        },
+        {
+          "enabled": true,
+          "name": "technique9",
+          "input_file_type": "pdf",
+          "text_provider_name": "ContentExtractor.table_contents_file_path",
+          "model_provider_name": null
+        },
+        {
+          "enabled": true,
+          "name": "technique10",
+          "input_file_type": "pdf",
+          "text_provider_name": "ContentExtractor.image_contents_file_path",
+          "model_provider_name": null
+        },
+        {
+          "enabled": false,
+          "name": "technique11",
+          "input_file_type": "pdf",
+          "text_provider_name": "tesseract_ocr_provider",
+          "model_provider_name": null
+        }
+      ],
+      "debug": {
+        "enabled": true,
+        "generate_image": true,
+        "output_dir_path": "/debug/1.segment_generator"
+      }
+    },
+    "SegmentConsolidator": {
+      "enabled": true,
+      "debug": {
+        "enabled": true,
+        "generate_image": true,
+        "output_dir_path": "/debug/2.segment_consolidator"
+      }
+    },
+    "SegmentClassifier": {
+      "header": {
+        "enabled": true,
+        "techniques": [
+          {
+            "enabled": false,
+            "name": "auto_detect"
+          },
+          {
+            "enabled": true,
+            "name": "manually_detect",
+            "min_height_percent": 0,
+            "max_height_percent": 5
+          }
+        ]
+      },
+      "footer": {
+        "enabled": true,
+        "techniques": [
+          {
+            "enabled": false,
+            "name": "auto_detect"
+          },
+          {
+            "enabled": true,
+            "name": "manually_detect",
+            "min_height_percent": 95,
+            "max_height_percent": 100
+          }
+        ]
+      },
+      "debug": {
+        "enabled": true,
+        "generate_image": true,
+        "output_dir_path": "/debug/3.segment_classifier"
+      }
+    },
+    "PageColumnDetector": {
+      "column_techniques": [
+        {
+          "enabled": true,
+          "name": "column_technique1"
+        }
+      ],
+      "detect_empty_lines": false,
+      "exclude": [
+        "header",
+        "footer"
+      ],
+      "debug": {
+        "enabled": true,
+        "generate_image": true,
+        "output_dir_path": "/debug/4.column_detector"
+      }
+    },
+    "SegmentMerger": {
+      "prefer_larger_segments": true,
+      "merge": {
+        "enabled": false,
+        "vertical_adjacent_segments_max_gap_in_pixel": 80,
+        "horizontal_adjacent_segments_max_gap_in_pixel": 10
+      },
+      "plot_bbox_segments": true,
+      "debug": {
+        "enabled": true,
+        "generate_image": true,
+        "output_dir_path": "/debug/5.segment_merger"
+      }
+    },
+    "SegmentSequencer": {
+      "pattern": {
+        "single-column": {
+          "sequence-order": {
+            "enabled": false
+          }
+        },
+        "multi-column": {
+          "left-right": {
+            "enabled": false
+          },
+          "zig-zag": {
+            "enabled": true
+          }
+        }
+      },
+      "debug": {
+        "enabled": true,
+        "generate_image": true,
+        "output_dir_path": "/debug/6.segment_sequencer"
+      }
+    },
+    "ChunkGenerator": {
+      "chunking_method": {
+        "page": {
+          "enabled": true
+        },
+        "segment": {
+          "enabled": false
+        },
+        "page_character": {
+          "enabled": false,
+          "max_char_limit": 800
+        },
+        "page_and_segment_type": {
+          "enabled": false,
+          "keep_together": {
+            "text": {
+              "enabled": false
+            },
+            "table": {
+              "enabled": false
+            },
+            "image": {
+              "enabled": false
+            }
+          },
+          "keep_seperate": {
+            "text": {
+              "enabled": true
+            },
+            "table": {
+              "enabled": true
+            },
+            "image": {
+              "enabled": true
+            }
+          }
+        }
+      },
+      "merge_title_paragraph": false,
+      "segment_delimeter": "",
+      "replace": [
+        {
+          "find": "\u2019",
+          "replace": "'"
+        },
+        {
+          "find": "\u2018",
+          "replace": "'"
+        },
+        {
+          "find": "\u2026",
+          "replace": ","
+        }
+      ],
+      "page_num": [
+        "1:10"
+      ],
+      "exclude": [
+        "figure"
+      ],
+      "chunks": {
+        "chunks_path": "/data/vectordb/chunked"
+      },
+      "resources": {
+        "local": {
+          "enabled": true,
+          "resources_path": "/data/vectordb/resources"
+        },
+        "server": {
+          "enabled": false,
+          "resources_base_url": "${INFY_RESOURCE_SERVICE_URL}"
+        }
+      }
+    },
+    "RequestCreator": {
+      "from_data_file": {
+        "enabled": true,
+        "read_path": "/data/input/",
+        "batch_size": 20,
+        "filter": {
+          "include": [
+            "pdf",
+            "json",
+            "txt",
+            "jpg"
+          ],
+          "exclude": [
+            "_"
+          ]
+        },
+        "work_root_path": "/data/work/",
+        "to_request_file": {
+          "save_path": "/data/work/request/indexer/start"
+        }
+      },
+      "from_request_file": {
+        "enabled": false,
+        "read_path": "/data/work/request/indexer/complete",
+        "save_path": "/data/work/request/inference/start"
+      }
+    },
+    "RequestCloser": {
+      "work_root_path": "/data/work/",
+      "data_file": {
+        "output_root_path": "/data/output/"
+      },
+      "output_root_path": "/data/output/",
+      "from_request_file": {
+        "read_path": "/data/work/request/indexer/start",
+        "save_path": "/data/work/request/indexer/complete"
+      },
+      "event_handler": {
+        "success": [
+          {
+            "name": "IndexIdHandler",
+            "enabled": false,
+            "api_endpoint": "",
+            "payload": {
+              "indexName": "",
+              "indexId": ""
+            },
+            "headers": {
+              "userId": "",
+              "accept": ""
+            }
+          }
+        ],
+        "failure": []
+      }
+    },
+    "DocumentDataSaver": {
+      "work_root_path": "/data/work/"
+    },
+    "ContentExtractor": {
+      "techniques": [
+        {
+          "enabled": true,
+          "name": "pdf_plumber_table_extractor",
+          "input_file_type": "pdf",
+          "text_provider_name": "pdf_box_text_provider",
+          "model_provider_name": null
+        },
+        {
+          "enabled": true,
+          "name": "pdf_box_image_extractor",
+          "input_file_type": "pdf",
+          "text_provider_name": "pdf_box_text_provider",
+          "model_provider_name": null
+        },
+        {
+          "enabled": true,
+          "name": "pdf_image_converter",
+          "input_file_type": "pdf",
+          "text_provider_name": "pdf_box_text_provider",
+          "model_provider_name": null
+        },
+        {
+          "enabled": true,
+          "name": "pdf_apache_pdfbox",
+          "input_file_type": "pdf",
+          "text_provider_name": "pdf_box_text_provider",
+          "model_provider_name": null
+        },
+        {
+          "enabled": true,
+          "name": "pdf_image_apache_pdfbox",
+          "input_file_type": "pdf",
+          "text_provider_name": "pdf_box_text_provider",
+          "model_provider_name": null
+        },
+        {
+          "enabled": false,
+          "name": "pdf_scanned_ocr_extractor",
+          "input_file_type": "pdf",
+          "text_provider_name": "tesseract_ocr_provider",
+          "model_provider_name": null
+        },
+        {
+          "enabled": false,
+          "name": "img_tesseracct_ocr_extractor",
+          "input_file_type": "image",
+          "text_provider_name": "tesseract_ocr_provider",
+          "model_provider_name": null
+        },
+        {
+          "enabled": false,
+          "name": "img_azure_read_ocr_extractor",
+          "input_file_type": "image",
+          "text_provider_name": "azure_read_ocr_provider",
+          "model_provider_name": "detectron"
+        },
+        {
+          "enabled": true,
+          "name": "img_infy_ocr_engine_extractor",
+          "input_file_type": "image",
+          "text_provider_name": "infy_ocr_engine_provider",
+          "model_provider_name": null
+        }
+      ],
+      "textProviders": [
+        {
+          "provider_name": "tesseract_ocr_provider",
+          "properties": {
+            "tesseract_path": "${TESSERACT_HOME}/tesseract.exe",
+            "format_converter_home": "${FORMAT_CONVERTER_HOME}",
+            "scanned_pdf": true
+          }
+        },
+        {
+          "provider_name": "infy_ocr_engine_provider",
+          "properties": {
+            "ocr_engine_exe_dir_path": "${INFY_OCR_ENGINE_HOME}",
+            "ocr_engine_model_dir_path": "${MODEL_HOME}/tessdata",
+            "ocr_engine_language": "eng",
+            "format_converter_home": "${FORMAT_CONVERTER_HOME}",
+            "scanned_pdf": true
+          }
+        },
+        {
+          "provider_name": "azure_read_ocr_provider",
+          "properties": {
+            "subscription_key": "${AZURE_READ_OCR_SUB_KEY}",
+            "url": "${AZURE_READ_OCR_URL}",
+            "format_converter_home": "${FORMAT_CONVERTER_HOME}"
+          }
+        },
+        {
+          "provider_name": "pdf_box_text_provider",
+          "properties": {
+            "format_converter_home": "${FORMAT_CONVERTER_HOME}"
+          }
+        }
+      ]
+    },
+    "MetadataExtractorCustom": {
+      "document": {
+        "enabled": true,
+        "page": "1:5",
+        "llm": {
+          "models": [
+            {
+              "name": "gpt-4-direct",
+              "enabled": true,
+              "batch": {
+                "size": 1
+              },
+              "configuration": {
+                "api_url": "${AZURE_OPENAI_SERVER_BASE_URL}",
+                "api_key": "${AZURE_OPENAI_SECRET_KEY}",
+                "model_name": "openai/gpt-4",
+                "deployment_name": "gpt4",
+                "max_tokens": 1000,
+                "temperature": 0.7
+              }
+            },
+            {
+              "name": "gpt-35-turbo-direct",
+              "enabled": false,
+              "batch": {
+                "size": 1
+              },
+              "configuration": {
+                "api_url": "${AZURE_OPENAI_SERVER_BASE_URL}",
+                "api_key": "${AZURE_OPENAI_SECRET_KEY}",
+                "model_name": "openai/gpt-35-turbo",
+                "deployment_name": "gpt-35-turbo",
+                "max_tokens": 1000,
+                "temperature": 0.7
+              }
+            },
+            {
+              "name": "gpt-4-proxy",
+              "enabled": false,
+              "batch": {
+                "size": 1
+              },
+              "configuration": {
+                "api_url": "${LITELLM_PROXY_SERVER_BASE_URL}",
+                "api_key": "${AZURE_OPENAI_SECRET_KEY}",
+                "model_name": "gpt-4-32k_2",
+                "deployment_name": "gpt-4-32k_2",
+                "max_tokens": 1000,
+                "temperature": 0.7
+              }
+            },
+            {
+              "name": "Llama-3.1-8B-Proxy",
+              "enabled": false,
+              "batch": {
+                "size": 1
+              },
+              "configuration": {
+                "api_url": "${LITELLM_PROXY_SERVER_BASE_URL}",
+                "api_key": "${LITELLM_PROXY_SECRET_KEY}",
+                "model_name": "Meta-Llama-3.1-8B-Instruct",
+                "deployment_name": "Meta-Llama-3.1-8B-Instruct",
+                "max_tokens": 1000,
+                "temperature": 0.7
+              }
+            },
+            {
+              "name": "Llama-3.3-70B-Proxy",
+              "enabled": false,
+              "batch": {
+                "size": 1
+              },
+              "configuration": {
+                "api_url": "${LITELLM_PROXY_SERVER_BASE_URL}",
+                "api_key": "${LITELLM_PROXY_SECRET_KEY}",
+                "model_name": "Meta-Llama-3.3-70B-Instruct",
+                "deployment_name": "Meta-Llama-3.3-70B-Instruct",
+                "max_tokens": 1000,
+                "temperature": 0.7
+              }
+            },
+            {
+              "name": "Mixtral-7B-Proxy",
+              "enabled": false,
+              "batch": {
+                "size": 1
+              },
+              "configuration": {
+                "api_url": "${LITELLM_PROXY_SERVER_BASE_URL}",
+                "api_key": "${LITELLM_PROXY_SECRET_KEY}",
+                "model_name": "mixtral-8x7b-instruct",
+                "deployment_name": "mixtral-8x7b-instruct",
+                "max_tokens": 1000,
+                "temperature": 0.7
+              }
+            }
+          ]
+        },
+        "decider_prompt_path": "data/config/prompt_templates/mde_prompts/mde_prompt_decider.txt",
+        "optimize_llm": {
+          "enabled": false,
+          "prompt_path": "data/config/prompt_templates/mde_prompts/mde_prompt_optimized.txt"
+        },
+        "header_footer": {
+          "enabled": true,
+          "header_prefix": "Header:",
+          "footer_prefix": "Footer:"
+        },
+        "query_list": [
+          {
+            "query": "What year is this document published in yyyy?",
+            "query_key": "year",
+            "technique": "metadata_extraction_technique_1",
+            "use_model_based_prompts": true,
+            "prompt_path": "data/config/prompt_templates/mde_prompts/mde_prompt.txt"
+          },
+          {
+            "query": "What is the nyse code for the company this document is talking about?",
+            "query_key": "company_name",
+            "technique": "metadata_extraction_technique_1",
+            "use_model_based_prompts": true,
+            "prompt_path": "data/config/prompt_templates/mde_prompts/mde_prompt.txt"
+          }
+        ],
+        "model_based_prompts": [
+          {
+            "model_name": [
+              "openai/gpt-4",
+              "openai/gpt-35-turbo",
+              "gpt-4-32k_2"
+            ],
+            "prompt_template": "data/config/prompt_templates/mde_prompts/mde_prompt_openai.txt"
+          },
+          {
+            "model_name": [
+              "Meta-Llama-3.1-8B-Instruct",
+              "Meta-Llama-3.1-70B-Instruct-FP8"
+            ],
+            "prompt_template": "data/config/prompt_templates/mde_prompts/mde_prompt_llama.txt"
+          }
+        ]
+      },
+      "query": {
+        "enabled": false
+      }
+    },
+    "DbIndexer": {
+      "embedding": {
+        "openai": {
+          "enabled": false,
+          "configuration": {
+            "api_type": "azure",
+            "api_version": "2022-12-01",
+            "api_url": "${AZURE_OPENAI_SERVER_BASE_URL}",
+            "api_key": "${AZURE_OPENAI_SECRET_KEY}",
+            "model_name": "text-embedding-ada-002",
+            "deployment_name": "text-embedding-ada-002",
+            "chunk_size": 1000,
+            "tiktoken_cache_dir": "${MODEL_HOME}/tiktoken_encoding"
+          }
+        },
+        "sentence_transformer": {
+          "enabled": true,
+          "configuration": {
+            "model_name": "all-MiniLM-L6-v2",
+            "api_url": "${INFY_MODEL_SERVICE_BASE_URL}"
+          }
+        },
+        "custom": {
+          "enabled": false,
+          "configuration": {
+            "model_name": "mistral-embd",
+            "api_key": "",
+            "endpoint": "${CUSTOM_EMB_MISTRAL_INFERENCE_URL}"
+          }
+        }
+      },
+      "index": {
+        "enabled": true,
+        "index_name": "test",
+        "index_id": ""
+      },
+      "storage": {
+        "vectordb": {
+          "faiss": {
+            "enabled": true,
+            "configuration": {
+              "chunked_files_root_path": "/data/vectordb/chunked",
+              "encoded_files_root_path": "/data/vectordb/encoded",
+              "db_name": "documents",
+              "collections": [
+                {
+                  "collection_name": "documents",
+                  "collection_secret_key": "",
+                  "chunk_type": ""
+                }
+              ],
+              "distance_metric": {
+                "eucledian": true
+              }
+            }
+          },
+          "infy_db_service": {
+            "enabled": false,
+            "configuration": {
+              "db_service_url": "${INFY_DB_SERVICE_BASE_URL}",
+              "model_name": "all-MiniLM-L6-v2",
+              "collections": [
+                {
+                  "collection_name": "documents",
+                  "collection_secret_key": "",
+                  "chunk_type": ""
+                }
+              ]
+            }
+          },
+          "elasticsearch": {
+            "enabled": false,
+            "configuration": {
+              "db_server_url": "",
+              "authenticate": "",
+              "username": "",
+              "password": "",
+              "verify_certs": "",
+              "cert_fingerprint": "",
+              "ca_certs_path": "${CA_CERTS_PATH}"
+            }
+          }
+        },
+        "sparseindex": {
+          "bm25s": {
+            "enabled": true,
+            "configuration": {
+              "sparse_index_root_path": "/data/db/sparseindex",
+              "db_name": "documents",
+              "collections": [
+                {
+                  "collection_name": "documents",
+                  "collection_secret_key": "",
+                  "chunk_type": ""
+                }
+              ],
+              "nltk_data_dir": "${AI_HOME}/nltk_data"
+            }
+          },
+          "infy_db_service": {
+            "enabled": false,
+            "configuration": {
+              "db_service_url": "${INFY_DB_SERVICE_BASE_URL}",
+              "method_name": "bm25s",
+              "collections": [
+                {
+                  "collection_name": "documents",
+                  "collection_secret_key": "",
+                  "chunk_type": ""
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "orchestrator": {
+    "processor_invocation": {
+      "default_mode": "cli",
+      "dask": {
+        "enabled": false,
+        "scheduler_endpoint": ""
+      }
+    }
+  }
+}

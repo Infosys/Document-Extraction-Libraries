@@ -1,0 +1,10 @@
+#[dev-packages]
+pytest==7.4.4
+pytest-cov==2.12.1
+autopep8==1.5.1
+requests==2.32.3
+python-multipart==0.0.9
+
+#[packages]
+fastapi==0.109.0
+uvicorn[standard]==0.25.0

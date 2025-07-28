@@ -1,4 +1,35 @@
 # Document-Extraction-Libraries
+## V4.0.0
+- Added litellm support for making LLM calls.
+- Added ability to extract custom metadata during indexing.
+- Below is the app implementing synthetic data generation, synthetic data evaluation and RAG evaluation:
+  * `infy_dpp_eval_processor`: It helps run the pipelines as docker images on Kubernetes cluster.
+- Below are services implementing model serving and resource saving during indexing pipeline:
+  * `infy_model_service`: For serving models needed during indexing pipeline using Ray serve.
+  * `infy_resource_service`: For saving input resources during indexing pipeline.
+- Below is a tool to test `infy_search_service`:
+  * `infy_search_service_tool`: A tool which acts as a UI for `infy_search_service`.
+
+## V3.10.2
+- Moved all library folders under libraries directory.
+
+## V3.10.1
+- Added support for using non-secure(HTTP) Elasticsearch instances to store vector indexes.
+
+## V3.10.0
+- Added support for using Elasticsearch to store vector indexes.
+
+## V3.9.3
+- Added new ability to pass table_settings to detect tables.
+- Bug fix to extract and replace hyperlinks in tables from native PDF documents.
+
+## V3.9.2
+- Bug fix to extract hyperlinks in tables from native PDF documents.
+- Bug fix for table extraction.
+
+## V3.9.1
+- Ability to extract hyperlinks from native PDF documents.
+
 ## V3.9.0
 - Llama-3.1-70B model support added for inferencing.
 - Below are apps implementing indexing and inferencing pipeline:
@@ -13,7 +44,11 @@
 - New chunking technique i.e.page_and_segment_type added.
 - Added support of index_id while indexing.
 - Added support for scanned pdf in content extraction.
+
 ## V3.7.0
+- Feature to automatically create question-answer pair details excel used by RAG Evaluation pipeline.
+- RAG evaluation pipeline feature added.    
+- New interactive tool`tool_04_rag_metrics.ipynb`to experiment with data and RAG performance metrics.
 - New interactive tool `tool_05_embedding_clusters.ipynb` to experiment with embeddings and their clusters.
 
 ## V3.6.0

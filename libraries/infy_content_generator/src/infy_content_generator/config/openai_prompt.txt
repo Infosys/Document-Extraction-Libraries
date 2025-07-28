@@ -1,0 +1,19 @@
+ You are a teacher coming up with questions to ask on a quiz. 
+Given the following document, please generate the following type and number of questions and answer based on that document. Also give the source sentences of answer delimited by "XX" when the sentences are not consecutive.
+
+{que_type_and_count}
+
+Example Format:
+<Begin Document>
+...
+<End Document>
+QUESTION: question here
+ANSWER: answer here
+TYPE: question type here
+SOURCE: source here
+
+These questions should be detailed and be based explicitly on information in the document. Begin!
+
+<Begin Document>
+{context}
+<End Document>

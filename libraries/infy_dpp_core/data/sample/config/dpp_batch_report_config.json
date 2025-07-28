@@ -1,0 +1,127 @@
+{
+    "name": "Index id handler pipeline",
+    "description": "Sample configuration for testing pipeline to pass index_id to handler api",
+    "variables": {
+        "FORMAT_CONVERTER_HOME": "C:/del/programfiles/InfyFormatConverter/",
+        "INFY_OCR_ENGINE_HOME": "C:/del/programfiles/InfyOcrEngine",
+        "TESSERACT_HOME": "C:/del/programfiles/Tesseract-OCR",
+        "MODEL_HOME": "C:/del/ai/models"
+    },
+    "processor_list": [
+        {
+            "enabled": false,
+            "processor_name": "request_creator",
+            "processor_namespace": "infy_dpp_core.request_creator",
+            "processor_class_name": "RequestCreator",
+            "processor_input_config_name_list": [
+                "RequestCreator"
+            ]
+        },
+        {
+            "enabled": true,
+            "processor_name": "batch_reporter",
+            "processor_namespace": "infy_dpp_core.batch_reporter",
+            "processor_class_name": "BatchReporter",
+            "processor_input_config_name_list": [
+                "BatchReporter"
+            ]
+        },
+        {
+            "enabled": true,
+            "processor_name": "request_closer",
+            "processor_namespace": "infy_dpp_core.request_closer",
+            "processor_class_name": "RequestCloser",
+            "processor_input_config_name_list": [
+                "RequestCloser"
+            ]
+        },
+        {
+            "enabled": true,
+            "processor_name": "document_data_saver",
+            "processor_namespace": "infy_dpp_core.document_data_saver",
+            "processor_class_name": "DocumentDataSaver",
+            "processor_input_config_name_list": [
+                "DocumentDataSaver"
+            ]
+        }
+    ],
+    "processor_input_config": {
+        "RequestCreator": {
+            "from_data_file": {
+                "enabled": true,
+                "read_path": "/data/input/",
+                "batch_size": 20,
+                "filter": {
+                    "include": [
+                        "pdf",
+                        "json",
+                        "txt",
+                        "tiff"
+                    ],
+                    "exclude": [
+                        "_"
+                    ]
+                },
+                "work_root_path": "/data/work/",
+                "to_request_file": {
+                    "save_path": "/data/work/request/indexer/start"
+                }
+            },
+            "from_request_file": {
+                "enabled": false,
+                "read_path": "/data/work/request/indexer/complete",
+                "save_path": "/data/work/request/inference/start"
+            }
+        },
+        "RequestCloser": {
+            "work_root_path": "/data/work/",
+            "data_file": {
+                "output_root_path": "/data/output/"
+            },
+            "output_root_path": "/data/output/",
+            "from_request_file": {
+                "read_path": "/data/work/request/indexer/start",
+                "save_path": "/data/work/request/indexer/complete"
+            },
+            "event_handler": {
+                "success": [
+                    {
+                        "name": "IndexIdHandler",
+                        "enabled": false,
+                        "api_endpoint": "",
+                        "payload": {
+                            "indexName": "",
+                            "indexId": ""
+                        },
+                        "headers": {
+                            "userId": "",
+                            "accept": ""
+                        }
+                    }
+                ],
+                "failure": []
+            }
+        },
+        "DocumentDataSaver": {
+            "work_root_path": "/data/work/"
+        },
+        "BatchReporter": {
+            "summary_report_path": "/data/output/batch_summary.json",
+            "attributes_mapping": {
+                "file_path": "$.document_data.metadata.standard_data.filepath.value",
+                "file_name": "$.document_data.metadata.standard_data.filename.value",
+                "file_size": "$.document_data.metadata.standard_data.size.value",
+                "file_pages": "$.document_data.metadata.standard_data.pages.value",
+                "work_file_path": "$.context_data.request_creator.work_file_path",
+                "group_request_id": "$.context_data.request_creator.group_request_id",
+                "content_ext_pdf_to_images_path": "$.context_data.content_extractor.pdf_to_images_files_path_list",
+                "content_ext_apache_pdfbox_path": "$.context_data.content_extractor.pdf_apache_pdfbox_ocr_file_path",
+                "content_ext_ocr_files_path": "$.context_data.content_extractor.ocr_files_path_list",
+                "content_ext_table_contents_path": "$.context_data.content_extractor.table_contents_file_path",
+                "content_ext_image_contents_path": "$.context_data.content_extractor.image_contents_file_path",
+                "content_ext_image_ocr": "$.context_data.content_extractor.image_ocr",
+                "segment_gen_techniques": "$.context_data.segment_generator.segment_data[*].technique"
+            }
+        }
+    }
+}

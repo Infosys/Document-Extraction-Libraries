@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title></title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name='ocr-system' content='tesseract'/>
+</head>
+<body>
+  <div class='ocr_page' id='page_1' title='image "D:\tmp\dpp_processor_container\temp\infy_dpp_processor\CONTAINER\data\temp\data\work\D-6b3b15ab-e557-4aa1-bb4b-e4cc01ffc48d\AR_2022-23_page-14-17.pdf_files\P4_IMG10.jpg"; bbox 0 0 327 71; ppageno 0; scan_res 70 70'>
+   <div class='ocr_carea' id='block_1_1' title="bbox 152 9 320 55">
+    <p class='ocr_par' id='par_1_1' lang='eng' title="bbox 152 9 320 55">
+     <span class='ocr_line' id='line_1_1' title="bbox 153 9 198 21; baseline 0 0; x_size 22.75; x_descenders 5.5; x_ascenders 5.75">
+      <span class='ocrx_word' id='word_1_1' title='bbox 153 9 198 21; x_wconf 37'>India&#39;s</span>
+     </span>
+     <span class='ocr_line' id='line_1_2' title="bbox 153 25 262 36; baseline 0 0; x_size 22.75; x_descenders 5.5; x_ascenders 5.75">
+      <span class='ocrx_word' id='word_1_2' title='bbox 153 25 184 36; x_wconf 91'>Best</span>
+      <span class='ocrx_word' id='word_1_3' title='bbox 189 25 262 36; x_wconf 90'>Employers</span>
+     </span>
+     <span class='ocr_line' id='line_1_3' title="bbox 152 40 320 55; baseline 0 -4; x_size 22.75; x_descenders 5.5; x_ascenders 5.75">
+      <span class='ocrx_word' id='word_1_4' title='bbox 152 40 204 55; x_wconf 88'>Among</span>
+      <span class='ocrx_word' id='word_1_5' title='bbox 220 40 320 52; x_wconf 91'>Nation-Builders</span>
+     </span>
+    </p>
+   </div>
+   <div class='ocr_carea' id='block_1_2' title="bbox 95 53 184 69">
+    <p class='ocr_par' id='par_1_2' lang='eng' title="bbox 95 53 184 69">
+     <span class='ocr_line' id='line_1_4' title="bbox 95 53 184 69; baseline 0 -3; x_size 22.75; x_descenders 5.5; x_ascenders 5.75">
+      <span class='ocrx_word' id='word_1_6' title='bbox 95 53 125 69; x_wconf 0'>AC</span>
+      <span class='ocrx_word' id='word_1_7' title='bbox 154 55 184 66; x_wconf 64'>202</span>
+     </span>
+    </p>
+   </div>
+   <div class='ocr_photo' id='block_1_3' title="bbox 89 10 131 51"></div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,58 @@
+{
+  "variables": {
+    "FORMAT_CONVERTER_HOME": "C:/del/programfiles/InfyFormatConverter/",
+    "INFY_OCR_ENGINE_HOME": "C:/del/programfiles/InfyOcrEngine",
+    "TESSERACT_HOME": "C:/del/programfiles/Tesseract-OCR",
+    "MODEL_HOME": "C:/del/ai/models",
+    "AZURE_OPENAI_SERVER_BASE_URL": "${ENV:AZURE_OPENAI_SERVER_BASE_URL}",
+    "AZURE_OPENAI_SECRET_KEY": "${ENV:AZURE_OPENAI_SECRET_KEY}",
+    "AZURE_READ_OCR_SUB_KEY": "",
+    "AZURE_READ_OCR_URL": ""
+  },
+  "processor_list": [
+    {
+      "enabled": true,
+      "processor_name": "request_creator",
+      "processor_namespace": "infy_dpp_core.request_creator.request_creator_v2",
+      "processor_class_name": "RequestCreatorV2",
+      "processor_input_config_name_list": [
+        "RequestCreator"
+      ]
+    },
+    {
+      "enabled": true,
+      "processor_name": "request_closer",
+      "processor_namespace": "infy_dpp_core.request_closer.process.request_closer_v2",
+      "processor_class_name": "RequestCloserV2",
+      "processor_input_config_name_list": [
+        "RequestCloser"
+      ]
+    }
+  ],
+  "processor_input_config": {
+    "RequestCreator": {
+      "content_evaluation": {
+        "enabled": true,
+        "from_data_file": {
+          "read_path": "/data/input/",
+          "work_root_path": "/data/work/"
+        }
+      },
+      "segmentDetection": {
+        "enabled": false,
+        "from_data_file": {
+          "enabled": true,
+          "read_path": "/data/input/",
+          "work_root_path": "/data/work/"
+        }
+      }
+    },
+    "RequestCloser": {
+      "work_root_path": "/data/work/",
+      "data_file": {
+        "output_root_path": "/data/output/"
+      },
+      "output_root_path": "/data/output/"
+    }
+  }
+}

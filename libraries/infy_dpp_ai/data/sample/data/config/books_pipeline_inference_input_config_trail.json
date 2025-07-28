@@ -1,0 +1,330 @@
+{
+  "name": "inference_batch_pipeline",
+  "description": "inference pipeline configuration",
+  "variables": {
+    "FORMAT_CONVERTER_HOME": "C:/del/programfiles/InfyFormatConverter/",
+    "INFY_OCR_ENGINE_HOME": "C:/del/programfiles/InfyOcrEngine",
+    "TESSERACT_HOME": "C:/del/programfiles/Tesseract-OCR",
+    "MODEL_HOME": "C:/del/ai/models",
+    "AI_HOME": "C:/del/ai",
+    "AZURE_OPENAI_SERVER_BASE_URL": "${ENV:AZURE_OPENAI_SERVER_BASE_URL}",
+    "AZURE_OPENAI_SECRET_KEY": "${ENV:AZURE_OPENAI_SECRET_KEY}",
+    "LITELLM_PROXY_SERVER_BASE_URL": "${ENV:LITELLM_PROXY_SERVER_BASE_URL}",
+    "LITELLM_PROXY_SECRET_KEY": "${ENV:LITELLM_PROXY_SECRET_KEY}"
+  },
+  "processor_list": [
+    {
+      "enabled": true,
+      "processor_name": "retriever",
+      "processor_namespace": "infy_dpp_ai.retriever.process.query_retriever_processor",
+      "processor_class_name": "QueryRetriever",
+      "processor_input_config_name_list": [
+        "QueryRetriever"
+      ]
+    },
+    {
+      "enabled": true,
+      "processor_name": "reader",
+      "processor_namespace": "infy_dpp_ai.reader.process.reader_processor",
+      "processor_class_name": "Reader",
+      "processor_input_config_name_list": [
+        "Reader"
+      ]
+    }
+  ],
+  "processor_input_config": {
+    "QueryRetriever": {
+      "embedding": {
+        "openai": {
+          "enabled": false,
+          "configuration": {
+            "api_type": "azure",
+            "api_version": "2022-12-01",
+            "api_url": "${AZURE_OPENAI_SERVER_BASE_URL}",
+            "api_key": "${AZURE_OPENAI_SECRET_KEY}",
+            "model_name": "text-embedding-ada-002",
+            "deployment_name": "text-embedding-ada-002",
+            "chunk_size": 1000,
+            "tiktoken_cache_dir": "${MODEL_HOME}/tiktoken_encoding"
+          }
+        },
+        "sentence_transformer": {
+          "enabled": true,
+          "configuration": {
+            "model_name": "all-MiniLM-L6-v2",
+            "api_url": "${INFY_MODEL_SERVICE_BASE_URL}"
+          }
+        },
+        "custom": {
+          "enabled": false,
+          "configuration": {
+            "model_name": "mistral-embd",
+            "api_key": "",
+            "endpoint": "${CUSTOM_EMB_MISTRAL_INFERENCE_URL}"
+          }
+        }
+      },
+      "storage": {
+        "vectordb": {
+          "faiss": {
+            "enabled": true,
+            "configuration": {
+              "chunked_files_root_path": "/data/vectordb/chunked",
+              "encoded_files_root_path": "/data/vectordb/encoded",
+              "db_name": null,
+              "index_id": "",
+              "collections": [
+                {
+                  "collection_name": "document",
+                  "collection_secret_key": ""
+                }
+              ],
+              "distance_metric": {
+                "eucledian": true
+              }
+            }
+          },
+          "infy_db_service": {
+            "enabled": false,
+            "configuration": {
+              "db_service_url": "${INFY_DB_SERVICE_BASE_URL}",
+              "model_name": "all-MiniLM-L6-v2",
+              "collections": [
+                {
+                  "collection_name": "",
+                  "collection_secret_key": ""
+                }
+              ]
+            }
+          }
+        },
+        "sparseindex": {
+          "bm25s": {
+            "enabled": false,
+            "configuration": {
+              "sparse_index_root_path": "/data/db/sparseindex",
+              "db_name": null,
+              "index_id": "",
+              "collections": [
+                {
+                  "collection_name": "",
+                  "collection_secret_key": ""
+                }
+              ],
+              "nltk_data_dir": "${AI_HOME}/nltk_data"
+            }
+          },
+          "infy_db_service": {
+            "enabled": false,
+            "configuration": {
+              "db_service_url": "${INFY_DB_SERVICE_BASE_URL}",
+              "method_name": "bm25s",
+              "collections": [
+                {
+                  "collection_name": "",
+                  "collection_secret_key": ""
+                }
+              ]
+            }
+          }
+        }
+      },
+      "hybrid_search": {
+        "rrf": {
+          "enabled": false
+        }
+      },
+      "queries": [
+        {
+          "attribute_key": "value_extraction",
+          "question": "What is the name, author, genre, published, rating and language of the book?",
+          "top_k": 1,
+          "pre_filter_fetch_k": 10,
+          "filter_metadata": {},
+          "min_distance": 0,
+          "max_distance": 2
+        }
+      ]
+    },
+    "Reader": {
+      "storage": {
+        "vectordb": {
+          "faiss": {
+            "enabled": true
+          },
+          "infy_db_service": {
+            "enabled": false
+          }
+        },
+        "sparseindex": {
+          "bm25s": {
+            "enabled": false
+          },
+          "infy_db_service": {
+            "enabled": false
+          }
+        }
+      },
+      "hybrid_search": {
+        "rrf": {
+          "enabled": false
+        }
+      },
+      "llm": {
+        "models": [
+          {
+            "name": "gpt-4-direct",
+            "enabled": true,
+            "batch": {
+              "size": 1
+            },
+            "configuration": {
+              "api_url": "${AZURE_OPENAI_SERVER_BASE_URL}",
+              "api_key": "${AZURE_OPENAI_SECRET_KEY}",
+              "model_name": "openai/gpt-4",
+              "deployment_name": "gpt4",
+              "max_tokens": 1000,
+              "temperature": 0.7
+            }
+          },
+          {
+            "name": "gpt-35-turbo-direct",
+            "enabled": false,
+            "batch": {
+              "size": 1
+            },
+            "configuration": {
+              "api_url": "${AZURE_OPENAI_SERVER_BASE_URL}",
+              "api_key": "${AZURE_OPENAI_SECRET_KEY}",
+              "model_name": "openai/gpt-35-turbo",
+              "deployment_name": "gpt-35-turbo",
+              "max_tokens": 1000,
+              "temperature": 0.7
+            }
+          },
+          {
+            "name": "gpt-4-proxy",
+            "enabled": false,
+            "batch": {
+              "size": 1
+            },
+            "configuration": {
+              "api_url": "${LITELLM_PROXY_SERVER_BASE_URL}",
+              "api_key": "${AZURE_OPENAI_SECRET_KEY}",
+              "model_name": "gpt-4-32k_2",
+              "deployment_name": "gpt-4-32k_2",
+              "max_tokens": 1000,
+              "temperature": 0.7
+            }
+          },
+          {
+            "name": "Llama-3.1-8B-Proxy",
+            "enabled": false,
+            "batch": {
+              "size": 1
+            },
+            "configuration": {
+              "api_url": "${LITELLM_PROXY_SERVER_BASE_URL}",
+              "api_key": "${LITELLM_PROXY_SECRET_KEY}",
+              "model_name": "Meta-Llama-3.1-8B-Instruct",
+              "deployment_name": "Meta-Llama-3.1-8B-Instruct",
+              "max_tokens": 1000,
+              "temperature": 0.7
+            }
+          },
+          {
+            "name": "Llama-3.3-70B-Proxy",
+            "enabled": false,
+            "batch": {
+              "size": 1
+            },
+            "configuration": {
+              "api_url": "${LITELLM_PROXY_SERVER_BASE_URL}",
+              "api_key": "${LITELLM_PROXY_SECRET_KEY}",
+              "model_name": "Meta-Llama-3.3-70B-Instruct",
+              "deployment_name": "Meta-Llama-3.3-70B-Instruct",
+              "max_tokens": 1000,
+              "temperature": 0.7
+            }
+          },
+          {
+            "name": "Mixtral-7B-Proxy",
+            "enabled": false,
+            "batch": {
+              "size": 1
+            },
+            "configuration": {
+              "api_url": "${LITELLM_PROXY_SERVER_BASE_URL}",
+              "api_key": "${LITELLM_PROXY_SECRET_KEY}",
+              "model_name": "mixtral-8x7b-instruct",
+              "deployment_name": "mixtral-8x7b-instruct",
+              "max_tokens": 1000,
+              "temperature": 0.7
+            }
+          }
+        ]
+      },
+      "named_context_templates": {
+        "context_default": "{chunk_text}",
+        "context_1": "[chunk_id={chunk_id},page_no={page_no},sequence_no={sequence_no},bbox={bbox},doc_name={doc_name}]\n{chunk_text}\n",
+        "context_2": "[chunk_id={chunk_id},page_no={page_no},sequence_no={sequence_no}]\n{chunk_text}\n"
+      },
+      "named_prompt_templates": {
+        "prompt_template_1": {
+          "content": [
+            "Use the following pieces of context to answer the question at the end.",
+            "If you don't know the answer or even doubtful a bit, just say that you don't know,",
+            " don't try to make up an answer.Just give the shortest and most appropriate relavant answer to the question.",
+            "{context}",
+            "Question: {question}",
+            "Helpful Answer:"
+          ],
+          "context_template": "context_default",
+          "response_validation": {
+            "enabled": true,
+            "type": "json",
+            "total_attempts": 3
+          }
+        },
+        "extractor_attribute_prompt": {
+          "content": [],
+          "file_path": "/data/config/prompt_templates/extractor_attribute_prompt.txt",
+          "context_template": "context_1",
+          "response_validation": {
+            "enabled": true,
+            "type": "json",
+            "total_attempts": 3
+          }
+        },
+        "extractor_attribute_prompt_2": {
+          "content": [],
+          "file_path": "/data/config/prompt_templates/extractor_attribute_prompt_2.txt",
+          "context_template": "context_2",
+          "response_validation": {
+            "enabled": true,
+            "type": "json",
+            "total_attempts": 3
+          }
+        },
+        "books_prompt": {
+          "content": [],
+          "file_path": "/data/config/prompt_templates/books_prompt.txt",
+          "context_template": "context_2",
+          "response_validation": {
+            "enabled": true,
+            "type": "json",
+            "total_attempts": 3
+          }
+        }
+      },
+      "inputs": [
+        {
+          "attribute_key": "value_extraction",
+          "prompt_template": "books_prompt",
+          "model_type": "QnA",
+          "top_k": 2
+        }
+      ]
+    }
+  }
+}

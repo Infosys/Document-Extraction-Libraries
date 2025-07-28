@@ -1,0 +1,22 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+pytest = "==7.4.4"
+pytest-cov = "==2.12.1"
+autopep8 = "==1.5.1"
+infy_fs_utils = {path = "./lib/infy_fs_utils-0.0.5-py3-none-any.whl",extras = ["cloud"]}
+
+[packages]
+pydantic=">=1.10.7,<3"
+requests = "==2.32.3"
+Deprecated = "==1.2.14"
+fastapi = "==0.109.0"       #[groups=httpcontroller]
+dask = "==2024.8.2"         #[groups=dask]
+distributed = "==2024.8.2"  #[groups=dask]
+bokeh = "==3.6.0"           #[groups=dask]
+
+[requires]
+python_version = "3"

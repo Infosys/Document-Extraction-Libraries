@@ -1,0 +1,678 @@
+{
+    "variables": {
+        "ENV_TYPE": "local",
+        "VAR_CLI_CONTROLLER_DIR": "infy_dpp_processor",
+        "VAR_CLI_CONTROLLER_EVAL_DIR": "infy_dpp_eval_processor",
+        "VAR_CLI_CONTROLLER_FILE": "app_dpp_container_external.py",
+        "APP_VENV_SCRIPT_DIR": "./.venv/Scripts/",
+        "APP_VENV_ACTIVATE_CMD": "python.exe",
+        "APP_CONTAINER_IMG_NAME": "",
+        "DPP_STORAGE_ROOT_URI": "file://C:/del/fs/appuc/STORAGE",
+        "DPP_STORAGE_SERVER_URL": "localhost",
+        "LOG_FILE_NAME": "indexer",
+        "LOG_LEVEL": "DEBUG",
+        "SYS_RES_FILE_PATH": "response_file_path",
+        "SYS_PREVIOUS_FILE_PATH": "prev_response_file_path",
+        "SYS_PREVIOUS_FILE_PATH_1": "prev_response_file_path_1",
+        "SYS_PREVIOUS_FILE_PATH_2": "prev_response_file_path_2",
+        "SYS_PREVIOUS_FILE_PATH_3": "prev_response_file_path_3"
+    },
+    "processors": {
+        "request_creator": {
+            "enabled": true,
+            "cli_controller_dir": "${VAR_CLI_CONTROLLER_DIR}",
+            "cli_controller_file": "${VAR_CLI_CONTROLLER_FILE}",
+            "venv_script_dir": "${APP_VENV_SCRIPT_DIR}",
+            "venv_activate_cmd": "${APP_VENV_ACTIVATE_CMD}",
+            "container_img_name": "${APP_CONTAINER_IMG_NAME}",
+            "args": {
+                "prev_proc_response_file_path": "NULL"
+            },
+            "env": {
+                "env_type": "${ENV_TYPE}",
+                "storage_root_uri": "${DPP_STORAGE_ROOT_URI}",
+                "storage_root_url": "${DPP_STORAGE_SERVER_URL}",
+                "log_file_name": "${LOG_FILE_NAME}",
+                "log_level": "${LOG_LEVEL}"
+            },
+            "output": {
+                "variables": {
+                    "SYS_CONTROLLER_RES_FILE_PATH": "${SYS_RES_FILE_PATH}",
+                    "SYS_CONTROLLER_PREVIOUS_FILE_PATH": "${SYS_PREVIOUS_FILE_PATH}"
+                }
+            }
+        },
+        "metadata_extractor": {
+            "enabled": true,
+            "cli_controller_dir": "${VAR_CLI_CONTROLLER_DIR}",
+            "cli_controller_file": "${VAR_CLI_CONTROLLER_FILE}",
+            "venv_script_dir": "${APP_VENV_SCRIPT_DIR}",
+            "venv_activate_cmd": "${APP_VENV_ACTIVATE_CMD}",
+            "container_img_name": "${APP_CONTAINER_IMG_NAME}",
+            "args": {
+                "prev_proc_response_file_path": "${SYS_PREVIOUS_FILE_PATH}"
+            },
+            "env": {
+                "env_type": "${ENV_TYPE}",
+                "storage_root_uri": "${DPP_STORAGE_ROOT_URI}",
+                "storage_root_url": "${DPP_STORAGE_SERVER_URL}",
+                "log_file_name": "${LOG_FILE_NAME}",
+                "log_level": "${LOG_LEVEL}"
+            },
+            "output": {
+                "variables": {
+                    "SYS_CONTROLLER_RES_FILE_PATH": "${SYS_RES_FILE_PATH}",
+                    "SYS_CONTROLLER_PREVIOUS_FILE_PATH": "${SYS_PREVIOUS_FILE_PATH}"
+                }
+            }
+        },
+        "content_extractor": {
+            "enabled": true,
+            "cli_controller_dir": "${VAR_CLI_CONTROLLER_DIR}",
+            "cli_controller_file": "${VAR_CLI_CONTROLLER_FILE}",
+            "venv_script_dir": "${APP_VENV_SCRIPT_DIR}",
+            "venv_activate_cmd": "${APP_VENV_ACTIVATE_CMD}",
+            "container_img_name": "${APP_CONTAINER_IMG_NAME}",
+            "args": {
+                "prev_proc_response_file_path": "${SYS_PREVIOUS_FILE_PATH}"
+            },
+            "env": {
+                "env_type": "${ENV_TYPE}",
+                "storage_root_uri": "${DPP_STORAGE_ROOT_URI}",
+                "storage_root_url": "${DPP_STORAGE_SERVER_URL}",
+                "log_file_name": "${LOG_FILE_NAME}",
+                "log_level": "${LOG_LEVEL}"
+            },
+            "output": {
+                "variables": {
+                    "SYS_CONTROLLER_RES_FILE_PATH": "${SYS_RES_FILE_PATH}",
+                    "SYS_CONTROLLER_PREVIOUS_FILE_PATH": "${SYS_PREVIOUS_FILE_PATH}"
+                }
+            }
+        },
+        "text_extractor": {
+            "enabled": true,
+            "cli_controller_dir": "${VAR_CLI_CONTROLLER_DIR}",
+            "cli_controller_file": "${VAR_CLI_CONTROLLER_FILE}",
+            "venv_script_dir": "${APP_VENV_SCRIPT_DIR}",
+            "venv_activate_cmd": "${APP_VENV_ACTIVATE_CMD}",
+            "container_img_name": "${APP_CONTAINER_IMG_NAME}",
+            "args": {
+                "prev_proc_response_file_path": "${SYS_PREVIOUS_FILE_PATH}"
+            },
+            "env": {
+                "env_type": "${ENV_TYPE}",
+                "storage_root_uri": "${DPP_STORAGE_ROOT_URI}",
+                "storage_root_url": "${DPP_STORAGE_SERVER_URL}",
+                "log_file_name": "${LOG_FILE_NAME}",
+                "log_level": "${LOG_LEVEL}"
+            },
+            "output": {
+                "variables": {
+                    "SYS_CONTROLLER_RES_FILE_PATH": "${SYS_RES_FILE_PATH}",
+                    "SYS_CONTROLLER_PREVIOUS_FILE_PATH": "${SYS_PREVIOUS_FILE_PATH}"
+                }
+            }
+        },
+        "table_extractor": {
+            "enabled": true,
+            "cli_controller_dir": "${VAR_CLI_CONTROLLER_DIR}",
+            "cli_controller_file": "${VAR_CLI_CONTROLLER_FILE}",
+            "venv_script_dir": "${APP_VENV_SCRIPT_DIR}",
+            "venv_activate_cmd": "${APP_VENV_ACTIVATE_CMD}",
+            "container_img_name": "${APP_CONTAINER_IMG_NAME}",
+            "args": {
+                "prev_proc_response_file_path": "${SYS_PREVIOUS_FILE_PATH}"
+            },
+            "env": {
+                "env_type": "${ENV_TYPE}",
+                "storage_root_uri": "${DPP_STORAGE_ROOT_URI}",
+                "storage_root_url": "${DPP_STORAGE_SERVER_URL}",
+                "log_file_name": "${LOG_FILE_NAME}",
+                "log_level": "${LOG_LEVEL}"
+            },
+            "output": {
+                "variables": {
+                    "SYS_CONTROLLER_RES_FILE_PATH": "${SYS_RES_FILE_PATH}",
+                    "SYS_CONTROLLER_PREVIOUS_FILE_PATH": "${SYS_PREVIOUS_FILE_PATH}"
+                }
+            }
+        },
+        "segment_generator": {
+            "enabled": true,
+            "cli_controller_dir": "${VAR_CLI_CONTROLLER_DIR}",
+            "cli_controller_file": "${VAR_CLI_CONTROLLER_FILE}",
+            "venv_script_dir": "${APP_VENV_SCRIPT_DIR}",
+            "venv_activate_cmd": "${APP_VENV_ACTIVATE_CMD}",
+            "container_img_name": "${APP_CONTAINER_IMG_NAME}",
+            "args": {
+                "prev_proc_response_file_path": "${SYS_PREVIOUS_FILE_PATH}"
+            },
+            "env": {
+                "env_type": "${ENV_TYPE}",
+                "storage_root_uri": "${DPP_STORAGE_ROOT_URI}",
+                "storage_root_url": "${DPP_STORAGE_SERVER_URL}",
+                "log_file_name": "${LOG_FILE_NAME}",
+                "log_level": "${LOG_LEVEL}"
+            },
+            "output": {
+                "variables": {
+                    "SYS_CONTROLLER_RES_FILE_PATH": "${SYS_RES_FILE_PATH}",
+                    "SYS_CONTROLLER_PREVIOUS_FILE_PATH": "${SYS_PREVIOUS_FILE_PATH}"
+                }
+            }
+        },
+        "segment_generator_pdfbox": {
+            "enabled": true,
+            "cli_controller_dir": "${VAR_CLI_CONTROLLER_DIR}",
+            "cli_controller_file": "${VAR_CLI_CONTROLLER_FILE}",
+            "venv_script_dir": "${APP_VENV_SCRIPT_DIR}",
+            "venv_activate_cmd": "${APP_VENV_ACTIVATE_CMD}",
+            "container_img_name": "${APP_CONTAINER_IMG_NAME}",
+            "args": {
+                "prev_proc_response_file_path": "${SYS_PREVIOUS_FILE_PATH}"
+            },
+            "env": {
+                "env_type": "${ENV_TYPE}",
+                "storage_root_uri": "${DPP_STORAGE_ROOT_URI}",
+                "storage_root_url": "${DPP_STORAGE_SERVER_URL}",
+                "log_file_name": "${LOG_FILE_NAME}",
+                "log_level": "${LOG_LEVEL}"
+            },
+            "output": {
+                "variables": {
+                    "SYS_CONTROLLER_RES_FILE_PATH": "${SYS_RES_FILE_PATH}",
+                    "SYS_CONTROLLER_PREVIOUS_FILE_PATH": "${SYS_PREVIOUS_FILE_PATH_1}"
+                }
+            }
+        },
+        "segment_generator_pdf_table_extract": {
+            "enabled": true,
+            "cli_controller_dir": "${VAR_CLI_CONTROLLER_DIR}",
+            "cli_controller_file": "${VAR_CLI_CONTROLLER_FILE}",
+            "venv_script_dir": "${APP_VENV_SCRIPT_DIR}",
+            "venv_activate_cmd": "${APP_VENV_ACTIVATE_CMD}",
+            "container_img_name": "${APP_CONTAINER_IMG_NAME}",
+            "args": {
+                "prev_proc_response_file_path": "${SYS_PREVIOUS_FILE_PATH}"
+            },
+            "env": {
+                "env_type": "${ENV_TYPE}",
+                "storage_root_uri": "${DPP_STORAGE_ROOT_URI}",
+                "storage_root_url": "${DPP_STORAGE_SERVER_URL}",
+                "log_file_name": "${LOG_FILE_NAME}",
+                "log_level": "${LOG_LEVEL}"
+            },
+            "output": {
+                "variables": {
+                    "SYS_CONTROLLER_RES_FILE_PATH": "${SYS_RES_FILE_PATH}",
+                    "SYS_CONTROLLER_PREVIOUS_FILE_PATH": "${SYS_PREVIOUS_FILE_PATH_2}"
+                }
+            }
+        },
+        "segment_generator_pdf_img_extract": {
+            "enabled": true,
+            "cli_controller_dir": "${VAR_CLI_CONTROLLER_DIR}",
+            "cli_controller_file": "${VAR_CLI_CONTROLLER_FILE}",
+            "venv_script_dir": "${APP_VENV_SCRIPT_DIR}",
+            "venv_activate_cmd": "${APP_VENV_ACTIVATE_CMD}",
+            "container_img_name": "${APP_CONTAINER_IMG_NAME}",
+            "args": {
+                "prev_proc_response_file_path": "${SYS_PREVIOUS_FILE_PATH}"
+            },
+            "env": {
+                "env_type": "${ENV_TYPE}",
+                "storage_root_uri": "${DPP_STORAGE_ROOT_URI}",
+                "storage_root_url": "${DPP_STORAGE_SERVER_URL}",
+                "log_file_name": "${LOG_FILE_NAME}",
+                "log_level": "${LOG_LEVEL}"
+            },
+            "output": {
+                "variables": {
+                    "SYS_CONTROLLER_RES_FILE_PATH": "${SYS_RES_FILE_PATH}",
+                    "SYS_CONTROLLER_PREVIOUS_FILE_PATH": "${SYS_PREVIOUS_FILE_PATH_3}"
+                }
+            }
+        },
+        "segment_consolidator": {
+            "enabled": true,
+            "cli_controller_dir": "${VAR_CLI_CONTROLLER_DIR}",
+            "cli_controller_file": "${VAR_CLI_CONTROLLER_FILE}",
+            "venv_script_dir": "${APP_VENV_SCRIPT_DIR}",
+            "venv_activate_cmd": "${APP_VENV_ACTIVATE_CMD}",
+            "container_img_name": "${APP_CONTAINER_IMG_NAME}",
+            "args": {
+                "prev_proc_response_file_path": "${SYS_PREVIOUS_FILE_PATH}",
+                "prev_proc_response_file_path_1": "${SYS_PREVIOUS_FILE_PATH_1}",
+                "prev_proc_response_file_path_2": "${SYS_PREVIOUS_FILE_PATH_2}",
+                "prev_proc_response_file_path_3": "${SYS_PREVIOUS_FILE_PATH_3}"
+            },
+            "env": {
+                "env_type": "${ENV_TYPE}",
+                "storage_root_uri": "${DPP_STORAGE_ROOT_URI}",
+                "storage_root_url": "${DPP_STORAGE_SERVER_URL}",
+                "log_file_name": "${LOG_FILE_NAME}",
+                "log_level": "${LOG_LEVEL}"
+            },
+            "output": {
+                "variables": {
+                    "SYS_CONTROLLER_RES_FILE_PATH": "${SYS_RES_FILE_PATH}",
+                    "SYS_CONTROLLER_PREVIOUS_FILE_PATH": "${SYS_PREVIOUS_FILE_PATH}"
+                }
+            }
+        },
+        "segment_classifier": {
+            "enabled": true,
+            "cli_controller_dir": "${VAR_CLI_CONTROLLER_DIR}",
+            "cli_controller_file": "${VAR_CLI_CONTROLLER_FILE}",
+            "venv_script_dir": "${APP_VENV_SCRIPT_DIR}",
+            "venv_activate_cmd": "${APP_VENV_ACTIVATE_CMD}",
+            "container_img_name": "${APP_CONTAINER_IMG_NAME}",
+            "args": {
+                "prev_proc_response_file_path": "${SYS_PREVIOUS_FILE_PATH}"
+            },
+            "env": {
+                "env_type": "${ENV_TYPE}",
+                "storage_root_uri": "${DPP_STORAGE_ROOT_URI}",
+                "storage_root_url": "${DPP_STORAGE_SERVER_URL}",
+                "log_file_name": "${LOG_FILE_NAME}",
+                "log_level": "${LOG_LEVEL}"
+            },
+            "output": {
+                "variables": {
+                    "SYS_CONTROLLER_RES_FILE_PATH": "${SYS_RES_FILE_PATH}",
+                    "SYS_CONTROLLER_PREVIOUS_FILE_PATH": "${SYS_PREVIOUS_FILE_PATH}"
+                }
+            }
+        },
+        "page_column_detector": {
+            "enabled": true,
+            "cli_controller_dir": "${VAR_CLI_CONTROLLER_DIR}",
+            "cli_controller_file": "${VAR_CLI_CONTROLLER_FILE}",
+            "venv_script_dir": "${APP_VENV_SCRIPT_DIR}",
+            "venv_activate_cmd": "${APP_VENV_ACTIVATE_CMD}",
+            "container_img_name": "${APP_CONTAINER_IMG_NAME}",
+            "args": {
+                "prev_proc_response_file_path": "${SYS_PREVIOUS_FILE_PATH}"
+            },
+            "env": {
+                "env_type": "${ENV_TYPE}",
+                "storage_root_uri": "${DPP_STORAGE_ROOT_URI}",
+                "storage_root_url": "${DPP_STORAGE_SERVER_URL}",
+                "log_file_name": "${LOG_FILE_NAME}",
+                "log_level": "${LOG_LEVEL}"
+            },
+            "output": {
+                "variables": {
+                    "SYS_CONTROLLER_RES_FILE_PATH": "${SYS_RES_FILE_PATH}",
+                    "SYS_CONTROLLER_PREVIOUS_FILE_PATH": "${SYS_PREVIOUS_FILE_PATH}"
+                }
+            }
+        },
+        "segment_merger": {
+            "enabled": true,
+            "cli_controller_dir": "${VAR_CLI_CONTROLLER_DIR}",
+            "cli_controller_file": "${VAR_CLI_CONTROLLER_FILE}",
+            "venv_script_dir": "${APP_VENV_SCRIPT_DIR}",
+            "venv_activate_cmd": "${APP_VENV_ACTIVATE_CMD}",
+            "container_img_name": "${APP_CONTAINER_IMG_NAME}",
+            "args": {
+                "prev_proc_response_file_path": "${SYS_PREVIOUS_FILE_PATH}"
+            },
+            "env": {
+                "env_type": "${ENV_TYPE}",
+                "storage_root_uri": "${DPP_STORAGE_ROOT_URI}",
+                "storage_root_url": "${DPP_STORAGE_SERVER_URL}",
+                "log_file_name": "${LOG_FILE_NAME}",
+                "log_level": "${LOG_LEVEL}"
+            },
+            "output": {
+                "variables": {
+                    "SYS_CONTROLLER_RES_FILE_PATH": "${SYS_RES_FILE_PATH}",
+                    "SYS_CONTROLLER_PREVIOUS_FILE_PATH": "${SYS_PREVIOUS_FILE_PATH}"
+                }
+            }
+        },
+        "Segment_sequencer": {
+            "enabled": true,
+            "cli_controller_dir": "${VAR_CLI_CONTROLLER_DIR}",
+            "cli_controller_file": "${VAR_CLI_CONTROLLER_FILE}",
+            "venv_script_dir": "${APP_VENV_SCRIPT_DIR}",
+            "venv_activate_cmd": "${APP_VENV_ACTIVATE_CMD}",
+            "container_img_name": "${APP_CONTAINER_IMG_NAME}",
+            "args": {
+                "prev_proc_response_file_path": "${SYS_PREVIOUS_FILE_PATH}"
+            },
+            "env": {
+                "env_type": "${ENV_TYPE}",
+                "storage_root_uri": "${DPP_STORAGE_ROOT_URI}",
+                "storage_root_url": "${DPP_STORAGE_SERVER_URL}",
+                "log_file_name": "${LOG_FILE_NAME}",
+                "log_level": "${LOG_LEVEL}"
+            },
+            "output": {
+                "variables": {
+                    "SYS_CONTROLLER_RES_FILE_PATH": "${SYS_RES_FILE_PATH}",
+                    "SYS_CONTROLLER_PREVIOUS_FILE_PATH": "${SYS_PREVIOUS_FILE_PATH}"
+                }
+            }
+        },
+        "chunk_generator": {
+            "enabled": true,
+            "cli_controller_dir": "${VAR_CLI_CONTROLLER_DIR}",
+            "cli_controller_file": "${VAR_CLI_CONTROLLER_FILE}",
+            "venv_script_dir": "${APP_VENV_SCRIPT_DIR}",
+            "venv_activate_cmd": "${APP_VENV_ACTIVATE_CMD}",
+            "container_img_name": "${APP_CONTAINER_IMG_NAME}",
+            "args": {
+                "prev_proc_response_file_path": "${SYS_PREVIOUS_FILE_PATH}"
+            },
+            "env": {
+                "env_type": "${ENV_TYPE}",
+                "storage_root_uri": "${DPP_STORAGE_ROOT_URI}",
+                "storage_root_url": "${DPP_STORAGE_SERVER_URL}",
+                "log_file_name": "${LOG_FILE_NAME}",
+                "log_level": "${LOG_LEVEL}"
+            },
+            "output": {
+                "variables": {
+                    "SYS_CONTROLLER_RES_FILE_PATH": "${SYS_RES_FILE_PATH}",
+                    "SYS_CONTROLLER_PREVIOUS_FILE_PATH": "${SYS_PREVIOUS_FILE_PATH}"
+                }
+            }
+        },
+        "metadata_extractor_custom_document": {
+            "enabled": true,
+            "cli_controller_dir": "${VAR_CLI_CONTROLLER_DIR}",
+            "cli_controller_file": "${VAR_CLI_CONTROLLER_FILE}",
+            "venv_script_dir": "${APP_VENV_SCRIPT_DIR}",
+            "venv_activate_cmd": "${APP_VENV_ACTIVATE_CMD}",
+            "container_img_name": "${APP_CONTAINER_IMG_NAME}",
+            "args": {
+                "prev_proc_response_file_path": "${SYS_PREVIOUS_FILE_PATH}"
+            },
+            "env": {
+                "env_type": "${ENV_TYPE}",
+                "storage_root_uri": "${DPP_STORAGE_ROOT_URI}",
+                "storage_root_url": "${DPP_STORAGE_SERVER_URL}",
+                "log_file_name": "${LOG_FILE_NAME}",
+                "log_level": "${LOG_LEVEL}"
+            },
+            "output": {
+                "variables": {
+                    "SYS_CONTROLLER_RES_FILE_PATH": "${SYS_RES_FILE_PATH}",
+                    "SYS_CONTROLLER_PREVIOUS_FILE_PATH": "${SYS_PREVIOUS_FILE_PATH}"
+                }
+            }
+        },
+        "db_indexer": {
+            "enabled": true,
+            "cli_controller_dir": "${VAR_CLI_CONTROLLER_DIR}",
+            "cli_controller_file": "${VAR_CLI_CONTROLLER_FILE}",
+            "venv_script_dir": "${APP_VENV_SCRIPT_DIR}",
+            "venv_activate_cmd": "${APP_VENV_ACTIVATE_CMD}",
+            "container_img_name": "${APP_CONTAINER_IMG_NAME}",
+            "args": {
+                "prev_proc_response_file_path": "${SYS_PREVIOUS_FILE_PATH}"
+            },
+            "env": {
+                "env_type": "${ENV_TYPE}",
+                "storage_root_uri": "${DPP_STORAGE_ROOT_URI}",
+                "storage_root_url": "${DPP_STORAGE_SERVER_URL}",
+                "log_file_name": "${LOG_FILE_NAME}",
+                "log_level": "${LOG_LEVEL}"
+            },
+            "output": {
+                "variables": {
+                    "SYS_CONTROLLER_RES_FILE_PATH": "${SYS_RES_FILE_PATH}",
+                    "SYS_CONTROLLER_PREVIOUS_FILE_PATH": "${SYS_PREVIOUS_FILE_PATH}"
+                }
+            }
+        },
+        "db_indexer_vector": {
+            "enabled": true,
+            "cli_controller_dir": "${VAR_CLI_CONTROLLER_DIR}",
+            "cli_controller_file": "${VAR_CLI_CONTROLLER_FILE}",
+            "venv_script_dir": "${APP_VENV_SCRIPT_DIR}",
+            "venv_activate_cmd": "${APP_VENV_ACTIVATE_CMD}",
+            "container_img_name": "${APP_CONTAINER_IMG_NAME}",
+            "args": {
+                "prev_proc_response_file_path": "${SYS_PREVIOUS_FILE_PATH}"
+            },
+            "env": {
+                "env_type": "${ENV_TYPE}",
+                "storage_root_uri": "${DPP_STORAGE_ROOT_URI}",
+                "storage_root_url": "${DPP_STORAGE_SERVER_URL}",
+                "log_file_name": "${LOG_FILE_NAME}",
+                "log_level": "${LOG_LEVEL}"
+            },
+            "output": {
+                "variables": {
+                    "SYS_CONTROLLER_RES_FILE_PATH": "${SYS_RES_FILE_PATH}",
+                    "SYS_CONTROLLER_PREVIOUS_FILE_PATH": "${SYS_PREVIOUS_FILE_PATH_1}"
+                }
+            }
+        },
+        "db_indexer_sparse": {
+            "enabled": true,
+            "cli_controller_dir": "${VAR_CLI_CONTROLLER_DIR}",
+            "cli_controller_file": "${VAR_CLI_CONTROLLER_FILE}",
+            "venv_script_dir": "${APP_VENV_SCRIPT_DIR}",
+            "venv_activate_cmd": "${APP_VENV_ACTIVATE_CMD}",
+            "container_img_name": "${APP_CONTAINER_IMG_NAME}",
+            "args": {
+                "prev_proc_response_file_path": "${SYS_PREVIOUS_FILE_PATH}"
+            },
+            "env": {
+                "env_type": "${ENV_TYPE}",
+                "storage_root_uri": "${DPP_STORAGE_ROOT_URI}",
+                "storage_root_url": "${DPP_STORAGE_SERVER_URL}",
+                "log_file_name": "${LOG_FILE_NAME}",
+                "log_level": "${LOG_LEVEL}"
+            },
+            "output": {
+                "variables": {
+                    "SYS_CONTROLLER_RES_FILE_PATH": "${SYS_RES_FILE_PATH}",
+                    "SYS_CONTROLLER_PREVIOUS_FILE_PATH": "${SYS_PREVIOUS_FILE_PATH_2}"
+                }
+            }
+        },
+        "qna_generator": {
+            "enabled": true,
+            "cli_controller_dir": "${VAR_CLI_CONTROLLER_EVAL_DIR}",
+            "cli_controller_file": "${VAR_CLI_CONTROLLER_FILE}",
+            "venv_script_dir": "${APP_VENV_SCRIPT_DIR}",
+            "venv_activate_cmd": "${APP_VENV_ACTIVATE_CMD}",
+            "container_img_name": "${APP_CONTAINER_IMG_NAME}",
+            "args": {
+                "prev_proc_response_file_path": "${SYS_PREVIOUS_FILE_PATH}"
+            },
+            "env": {
+                "env_type": "${ENV_TYPE}",
+                "storage_root_uri": "${DPP_STORAGE_ROOT_URI}",
+                "storage_root_url": "${DPP_STORAGE_SERVER_URL}",
+                "log_file_name": "${LOG_FILE_NAME}",
+                "log_level": "${LOG_LEVEL}"
+            },
+            "output": {
+                "variables": {
+                    "SYS_CONTROLLER_RES_FILE_PATH": "${SYS_RES_FILE_PATH}",
+                    "SYS_CONTROLLER_PREVIOUS_FILE_PATH": "${SYS_PREVIOUS_FILE_PATH_3}"
+                }
+            }
+        },
+        "qna_consolidator": {
+            "enabled": true,
+            "cli_controller_dir": "${VAR_CLI_CONTROLLER_EVAL_DIR}",
+            "cli_controller_file": "${VAR_CLI_CONTROLLER_FILE}",
+            "venv_script_dir": "${APP_VENV_SCRIPT_DIR}",
+            "venv_activate_cmd": "${APP_VENV_ACTIVATE_CMD}",
+            "container_img_name": "${APP_CONTAINER_IMG_NAME}",
+            "args": {
+                "prev_proc_response_file_path": "${SYS_PREVIOUS_FILE_PATH}",
+                "prev_proc_response_file_path_1": "${SYS_PREVIOUS_FILE_PATH_1}",
+                "prev_proc_response_file_path_2": "${SYS_PREVIOUS_FILE_PATH_2}",
+                "prev_proc_response_file_path_3": "${SYS_PREVIOUS_FILE_PATH_3}"
+            },
+            "env": {
+                "env_type": "${ENV_TYPE}",
+                "storage_root_uri": "${DPP_STORAGE_ROOT_URI}",
+                "storage_root_url": "${DPP_STORAGE_SERVER_URL}",
+                "log_file_name": "${LOG_FILE_NAME}",
+                "log_level": "${LOG_LEVEL}"
+            },
+            "output": {
+                "variables": {
+                    "SYS_CONTROLLER_RES_FILE_PATH": "${SYS_RES_FILE_PATH}",
+                    "SYS_CONTROLLER_PREVIOUS_FILE_PATH": "${SYS_PREVIOUS_FILE_PATH}"
+                }
+            }
+        },
+        "content_evaluator": {
+            "enabled": true,
+            "cli_controller_dir": "${VAR_CLI_CONTROLLER_EVAL_DIR}",
+            "cli_controller_file": "${VAR_CLI_CONTROLLER_FILE}",
+            "venv_script_dir": "${APP_VENV_SCRIPT_DIR}",
+            "venv_activate_cmd": "${APP_VENV_ACTIVATE_CMD}",
+            "container_img_name": "${APP_CONTAINER_IMG_NAME}",
+            "args": {
+                "prev_proc_response_file_path": "${SYS_PREVIOUS_FILE_PATH}"
+            },
+            "env": {
+                "env_type": "${ENV_TYPE}",
+                "storage_root_uri": "${DPP_STORAGE_ROOT_URI}",
+                "storage_root_url": "${DPP_STORAGE_SERVER_URL}",
+                "log_file_name": "${LOG_FILE_NAME}",
+                "log_level": "${LOG_LEVEL}"
+            },
+            "output": {
+                "variables": {
+                    "SYS_CONTROLLER_RES_FILE_PATH": "${SYS_RES_FILE_PATH}",
+                    "SYS_CONTROLLER_PREVIOUS_FILE_PATH": "${SYS_PREVIOUS_FILE_PATH}"
+                }
+            }
+        },
+        "content_reporter": {
+            "enabled": true,
+            "cli_controller_dir": "${VAR_CLI_CONTROLLER_EVAL_DIR}",
+            "cli_controller_file": "${VAR_CLI_CONTROLLER_FILE}",
+            "venv_script_dir": "${APP_VENV_SCRIPT_DIR}",
+            "venv_activate_cmd": "${APP_VENV_ACTIVATE_CMD}",
+            "container_img_name": "${APP_CONTAINER_IMG_NAME}",
+            "args": {
+                "prev_proc_response_file_path": "${SYS_PREVIOUS_FILE_PATH}"
+            },
+            "env": {
+                "env_type": "${ENV_TYPE}",
+                "storage_root_uri": "${DPP_STORAGE_ROOT_URI}",
+                "storage_root_url": "${DPP_STORAGE_SERVER_URL}",
+                "log_file_name": "${LOG_FILE_NAME}",
+                "log_level": "${LOG_LEVEL}"
+            },
+            "output": {
+                "variables": {
+                    "SYS_CONTROLLER_RES_FILE_PATH": "${SYS_RES_FILE_PATH}",
+                    "SYS_CONTROLLER_PREVIOUS_FILE_PATH": "${SYS_PREVIOUS_FILE_PATH}"
+                }
+            }
+        },
+        "semantic_search": {
+            "enabled": true,
+            "cli_controller_dir": "${VAR_CLI_CONTROLLER_EVAL_DIR}",
+            "cli_controller_file": "${VAR_CLI_CONTROLLER_FILE}",
+            "venv_script_dir": "${APP_VENV_SCRIPT_DIR}",
+            "venv_activate_cmd": "${APP_VENV_ACTIVATE_CMD}",
+            "container_img_name": "${APP_CONTAINER_IMG_NAME}",
+            "args": {
+                "prev_proc_response_file_path": "${SYS_PREVIOUS_FILE_PATH}"
+            },
+            "env": {
+                "env_type": "${ENV_TYPE}",
+                "storage_root_uri": "${DPP_STORAGE_ROOT_URI}",
+                "storage_root_url": "${DPP_STORAGE_SERVER_URL}",
+                "log_file_name": "${LOG_FILE_NAME}",
+                "log_level": "${LOG_LEVEL}"
+            },
+            "output": {
+                "variables": {
+                    "SYS_CONTROLLER_RES_FILE_PATH": "${SYS_RES_FILE_PATH}",
+                    "SYS_CONTROLLER_PREVIOUS_FILE_PATH": "${SYS_PREVIOUS_FILE_PATH}"
+                }
+            }
+        },
+        "rag_evaluator": {
+            "enabled": true,
+            "cli_controller_dir": "${VAR_CLI_CONTROLLER_EVAL_DIR}",
+            "cli_controller_file": "${VAR_CLI_CONTROLLER_FILE}",
+            "venv_script_dir": "${APP_VENV_SCRIPT_DIR}",
+            "venv_activate_cmd": "${APP_VENV_ACTIVATE_CMD}",
+            "container_img_name": "${APP_CONTAINER_IMG_NAME}",
+            "args": {
+                "prev_proc_response_file_path": "${SYS_PREVIOUS_FILE_PATH}"
+            },
+            "env": {
+                "env_type": "${ENV_TYPE}",
+                "storage_root_uri": "${DPP_STORAGE_ROOT_URI}",
+                "storage_root_url": "${DPP_STORAGE_SERVER_URL}",
+                "log_file_name": "${LOG_FILE_NAME}",
+                "log_level": "${LOG_LEVEL}"
+            },
+            "output": {
+                "variables": {
+                    "SYS_CONTROLLER_RES_FILE_PATH": "${SYS_RES_FILE_PATH}",
+                    "SYS_CONTROLLER_PREVIOUS_FILE_PATH": "${SYS_PREVIOUS_FILE_PATH}"
+                }
+            }
+        },
+        "rag_report_generator": {
+            "enabled": true,
+            "cli_controller_dir": "${VAR_CLI_CONTROLLER_EVAL_DIR}",
+            "cli_controller_file": "${VAR_CLI_CONTROLLER_FILE}",
+            "venv_script_dir": "${APP_VENV_SCRIPT_DIR}",
+            "venv_activate_cmd": "${APP_VENV_ACTIVATE_CMD}",
+            "container_img_name": "${APP_CONTAINER_IMG_NAME}",
+            "args": {
+                "prev_proc_response_file_path": "${SYS_PREVIOUS_FILE_PATH}"
+            },
+            "env": {
+                "env_type": "${ENV_TYPE}",
+                "storage_root_uri": "${DPP_STORAGE_ROOT_URI}",
+                "storage_root_url": "${DPP_STORAGE_SERVER_URL}",
+                "log_file_name": "${LOG_FILE_NAME}",
+                "log_level": "${LOG_LEVEL}"
+            },
+            "output": {
+                "variables": {
+                    "SYS_CONTROLLER_RES_FILE_PATH": "${SYS_RES_FILE_PATH}",
+                    "SYS_CONTROLLER_PREVIOUS_FILE_PATH": "${SYS_PREVIOUS_FILE_PATH}"
+                }
+            }
+        },
+        "request_closer": {
+            "enabled": true,
+            "cli_controller_dir": "${VAR_CLI_CONTROLLER_DIR}",
+            "cli_controller_file": "${VAR_CLI_CONTROLLER_FILE}",
+            "venv_script_dir": "${APP_VENV_SCRIPT_DIR}",
+            "venv_activate_cmd": "${APP_VENV_ACTIVATE_CMD}",
+            "container_img_name": "${APP_CONTAINER_IMG_NAME}",
+            "args": {
+                "prev_proc_response_file_path": "${SYS_PREVIOUS_FILE_PATH}",
+                "prev_proc_response_file_path_1": "${SYS_PREVIOUS_FILE_PATH_1}",
+                "prev_proc_response_file_path_2": "${SYS_PREVIOUS_FILE_PATH_2}"
+            },
+            "env": {
+                "env_type": "${ENV_TYPE}",
+                "storage_root_uri": "${DPP_STORAGE_ROOT_URI}",
+                "storage_root_url": "${DPP_STORAGE_SERVER_URL}",
+                "log_file_name": "${LOG_FILE_NAME}",
+                "log_level": "${LOG_LEVEL}"
+            },
+            "output": {
+                "variables": {
+                    "SYS_CONTROLLER_RES_FILE_PATH": "${SYS_RES_FILE_PATH}",
+                    "SYS_CONTROLLER_PREVIOUS_FILE_PATH": "${SYS_PREVIOUS_FILE_PATH}"
+                }
+            }
+        }
+    }
+}

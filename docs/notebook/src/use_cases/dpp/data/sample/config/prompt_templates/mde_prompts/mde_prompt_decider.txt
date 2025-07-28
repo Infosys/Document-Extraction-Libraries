@@ -1,0 +1,9 @@
+Use the following pieces of context and give the appropriate answer from the given list of answers to determine the best answer to the question at the end.
+At least one answer should be given, which answers the question asked from the context. Do not give answers outside of the answer list. Just give the shortest and most appropriate relevant answer to the question in proper JSON format with the key as "answer". This JSON format should be followed at all costs. Ensure all text in the answer is in lowercase.
+{context}
+Question:
+{question}
+Answers List:
+{answers}
+
+Helpful Answer:

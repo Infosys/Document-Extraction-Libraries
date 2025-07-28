@@ -1,0 +1,28 @@
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    border-radius: 0px;
+    padding: 0px;
+    text-align: center;
+    border-top: 1px solid #999;
+    background-color: #000;
+    height: 1.3rem;
+    font-size: small;
+}
+
+.footer .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px;
+}
+
+.footer .text-muted {
+    color: #999 !important;
+}
+
+.footer .float-right {
+    color: #999 !important;
+    margin-left: auto;
+}

@@ -1,0 +1,37 @@
+{
+    "infy_dpp_processor": {
+        "config_file_path": [
+            "./config/dev/testing/dpp_pipeline_index_input_config.json",
+            "./config/dev/testing/dpp_tf_parallel_pipeline_index_input_config_data.json"
+        ],
+        "prompt_template_path": [
+            "./config/prompt_templates"
+        ],
+        "dataset_path": {
+            "dataset_annualreport": [
+                "../../_internal/samples/input/AR_2022-23_page-14-17.pdf"
+            ]
+        }
+    },
+    "infy_dpp_eval_processor": {
+        "config_file_path": [
+            "./config/dev/testing/dpp_pipeline_idx_gen_input_config.json",
+            "./config/dev/testing/dpp_tf_pipeline_qna_truth_data_eval_input_config.json",
+            "./config/dev/testing/dpp_tf_pipeline_rag_evaluation.json"
+        ],
+        "prompt_template_path": [
+            "./config/prompt_templates"
+        ],
+        "dataset_path": {
+            "dataset_annualreport": [
+                "../../_internal/samples/input/AR_2022-23_page-14-17.pdf"
+            ],
+            "dataset_ar_qna_data": [
+                "../../_internal/samples/input/question_data.xlsx"
+            ],
+            "dataset_ar_qna_report": [
+                "../../_internal/samples/input/qna_report.xlsx"
+            ]
+        }
+    }
+}

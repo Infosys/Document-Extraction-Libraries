@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title></title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name='ocr-system' content='tesseract'/>
+</head>
+<body>
+  <div class='ocr_page' id='page_1' title='image "D:\tmp\dpp_processor_container\temp\infy_dpp_processor\CONTAINER\data\temp\data\work\D-6b3b15ab-e557-4aa1-bb4b-e4cc01ffc48d\AR_2022-23_page-14-17.pdf_files\P4_IMG7.png"; bbox 0 0 916 916; ppageno 0; scan_res 70 70'>
+   <div class='ocr_photo' id='block_1_1' title="bbox 112 212 805 351"></div>
+   <div class='ocr_carea' id='block_1_2' title="bbox 492 254 766 305">
+    <p class='ocr_par' id='par_1_1' lang='eng' title="bbox 492 254 766 305">
+     <span class='ocr_caption' id='line_1_1' title="bbox 492 254 766 305; baseline -0.011 -12; x_size 52; x_descenders 13; x_ascenders 17">
+      <span class='ocrx_word' id='word_1_1' title='bbox 492 254 534 300; x_wconf 7'>§§}</span>
+      <span class='ocrx_word' id='word_1_2' title='bbox 550 264 766 305; x_wconf 92'>seramount</span>
+     </span>
+    </p>
+   </div>
+   <div class='ocr_carea' id='block_1_3' title="bbox 158 430 281 459">
+    <p class='ocr_par' id='par_1_2' lang='eng' title="bbox 158 430 281 459">
+     <span class='ocr_line' id='line_1_2' title="bbox 158 430 281 459; baseline 0 0; x_size 39.333332; x_descenders 9.833333; x_ascenders 9.833333">
+      <span class='ocrx_word' id='word_1_3' title='bbox 158 430 230 459; x_wconf 91'>TOP</span>
+      <span class='ocrx_word' id='word_1_4' title='bbox 242 430 281 459; x_wconf 96'>10</span>
+     </span>
+    </p>
+   </div>
+   <div class='ocr_carea' id='block_1_4' title="bbox 159 468 669 573">
+    <p class='ocr_par' id='par_1_3' lang='eng' title="bbox 159 468 669 573">
+     <span class='ocr_line' id='line_1_3' title="bbox 159 468 669 518; baseline 0.002 -2; x_size 64.370369; x_descenders 16.092592; x_ascenders 16.092592">
+      <span class='ocrx_word' id='word_1_5' title='bbox 159 469 293 518; x_wconf 90'>BEST</span>
+      <span class='ocrx_word' id='word_1_6' title='bbox 305 468 669 518; x_wconf 91'>COMPANIES</span>
+     </span>
+     <span class='ocr_line' id='line_1_4' title="bbox 159 524 552 573; baseline 0 -1; x_size 64.370369; x_descenders 16.092592; x_ascenders 16.092592">
+      <span class='ocrx_word' id='word_1_7' title='bbox 159 524 281 573; x_wconf 91'>FOR</span>
+      <span class='ocrx_word' id='word_1_8' title='bbox 291 524 552 573; x_wconf 91'>WOMEN</span>
+     </span>
+    </p>
+   </div>
+   <div class='ocr_carea' id='block_1_5' title="bbox 160 580 318 605">
+    <p class='ocr_par' id='par_1_4' lang='eng' title="bbox 160 580 318 605">
+     <span class='ocr_line' id='line_1_5' title="bbox 160 580 318 605; baseline 0.006 -1; x_size 31.777779; x_descenders 7.9444447; x_ascenders 7.9444447">
+      <span class='ocrx_word' id='word_1_9' title='bbox 160 581 240 604; x_wconf 92'>INDIA</span>
+      <span class='ocrx_word' id='word_1_10' title='bbox 249 580 318 605; x_wconf 96'>2022</span>
+     </span>
+    </p>
+   </div>
+  </div>
+</body>
+</html>

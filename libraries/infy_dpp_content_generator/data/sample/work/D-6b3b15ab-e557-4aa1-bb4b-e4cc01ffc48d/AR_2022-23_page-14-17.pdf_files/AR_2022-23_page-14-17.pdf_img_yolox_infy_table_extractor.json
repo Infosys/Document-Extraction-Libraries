@@ -1,0 +1,404 @@
+[
+    {
+        "page_number": 1,
+        "page_width": 5100,
+        "page_height": 3299,
+        "tables": [
+            {
+                "table_id": "p1_tb1",
+                "bbox": [
+                    2748,
+                    1886,
+                    4742,
+                    2070
+                ],
+                "data": [],
+                "html_data": "",
+                "debug_path": null
+            },
+            {
+                "table_id": "p1_tb2",
+                "bbox": [
+                    2747,
+                    2256,
+                    4911,
+                    2933
+                ],
+                "data": [
+                    {
+                        "type": "columnHeader",
+                        "row_index": 0,
+                        "column_index": 0,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "In T crore, except per equity share data",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "columnHeader",
+                        "row_index": 0,
+                        "column_index": 1,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "FY 2023 FY 2022 FY 2021 FY 2020 FY 2019",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 1,
+                        "column_index": 0,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Revenues\"",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 1,
+                        "column_index": 1,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "1,46,767 1,21,641 1,00,472 90,791 82,675",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 2,
+                        "column_index": 0,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Net profit\"@",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 2,
+                        "column_index": 1,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "24,095 22,10 19,351 16,594 15,404",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 3,
+                        "column_index": 0,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Basic earnings per share (in %)",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 3,
+                        "column_index": 1,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "57.63 52.52 45.61 38.97 3544",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 4,
+                        "column_index": 0,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Market capitalization",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 4,
+                        "column_index": 1,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "592,394 8,02,162 5,82,880 2,73,214 3,24,448",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 5,
+                        "column_index": 0,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "AL",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 5,
+                        "column_index": 1,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "e",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 6,
+                        "column_index": 0,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "In US$ million, except per equity share data",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 6,
+                        "column_index": 1,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "FY 2023 FY 2022 FY 2021 FY 2020 FY 2019",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 7,
+                        "column_index": 0,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Revenues",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 7,
+                        "column_index": 1,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "18,212 16,311 13,561 12,780 11,799",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 8,
+                        "column_index": 0,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Net profit?",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 8,
+                        "column_index": 1,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "2,981 2,963 2,613 2,331 2,199",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 9,
+                        "column_index": 0,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Basic earnings per share (in %)",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 9,
+                        "column_index": 1,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "0.71 0.70 0.62 0.55 0.51",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 10,
+                        "column_index": 0,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Market capitalization",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 10,
+                        "column_index": 1,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "72,351 104,706 79,760 34,966 47,614",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    }
+                ],
+                "html_data": "<table border=\"1\">  <tr>    <th>In T crore, except per equity share data</th>    <th>FY 2023 FY 2022 FY 2021 FY 2020 FY 2019</th>  </tr>  <tr>    <td>Revenues\"</td>    <td>1,46,767 1,21,641 1,00,472 90,791 82,675</td>  </tr>  <tr>    <td>Net profit\"@</td>    <td>24,095 22,10 19,351 16,594 15,404</td>  </tr>  <tr>    <td>Basic earnings per share (in %)</td>    <td>57.63 52.52 45.61 38.97 3544</td>  </tr>  <tr>    <td>Market capitalization</td>    <td>592,394 8,02,162 5,82,880 2,73,214 3,24,448</td>  </tr>  <tr>    <td>AL</td>    <td>e</td>  </tr>  <tr>    <td>In US$ million, except per equity share data</td>    <td>FY 2023 FY 2022 FY 2021 FY 2020 FY 2019</td>  </tr>  <tr>    <td>Revenues</td>    <td>18,212 16,311 13,561 12,780 11,799</td>  </tr>  <tr>    <td>Net profit?</td>    <td>2,981 2,963 2,613 2,331 2,199</td>  </tr>  <tr>    <td>Basic earnings per share (in %)</td>    <td>0.71 0.70 0.62 0.55 0.51</td>  </tr>  <tr>    <td>Market capitalization</td>    <td>72,351 104,706 79,760 34,966 47,614</td>  </tr></table>",
+                "debug_path": "D:\\tmp\\dpp_processor_container\\temp\\infy_dpp_processor\\CONTAINER\\data\\temp\\data\\work\\D-6b3b15ab-e557-4aa1-bb4b-e4cc01ffc48d\\AR_2022-23_page-14-17.pdf_files\\1_20250130-221724"
+            }
+        ]
+    },
+    {
+        "page_number": 3,
+        "page_width": 5100,
+        "page_height": 3299,
+        "tables": [
+            {
+                "table_id": "p3_tb1",
+                "bbox": [
+                    1319,
+                    2159,
+                    2326,
+                    2265
+                ],
+                "data": [
+                    {
+                        "type": "columnHeader",
+                        "row_index": 0,
+                        "column_index": 0,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "L",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 1,
+                        "column_index": 0,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Bengaluru",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 2,
+                        "column_index": 0,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Viay 29, 2025 Chier executive Ofricer and IVial",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 3,
+                        "column_index": 0,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 4,
+                        "column_index": 0,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 5,
+                        "column_index": 0,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 6,
+                        "column_index": 0,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 7,
+                        "column_index": 0,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 8,
+                        "column_index": 0,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 9,
+                        "column_index": 0,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 10,
+                        "column_index": 0,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 11,
+                        "column_index": 0,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 12,
+                        "column_index": 0,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "L",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    }
+                ],
+                "html_data": "<table border=\"1\">  <tr>    <th>L</th>  </tr>  <tr>    <td>Bengaluru</td>  </tr>  <tr>    <td>Viay 29, 2025 Chier executive Ofricer and IVial</td>  </tr>  <tr>    <td></td>  </tr>  <tr>    <td></td>  </tr>  <tr>    <td></td>  </tr>  <tr>    <td></td>  </tr>  <tr>    <td></td>  </tr>  <tr>    <td></td>  </tr>  <tr>    <td></td>  </tr>  <tr>    <td></td>  </tr>  <tr>    <td></td>  </tr>  <tr>    <td>L</td>  </tr></table>",
+                "debug_path": "D:\\tmp\\dpp_processor_container\\temp\\infy_dpp_processor\\CONTAINER\\data\\temp\\data\\work\\D-6b3b15ab-e557-4aa1-bb4b-e4cc01ffc48d\\AR_2022-23_page-14-17.pdf_files\\3_20250130-221801"
+            }
+        ]
+    }
+]

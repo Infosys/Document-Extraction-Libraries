@@ -1,0 +1,32 @@
+/* You can add global styles to this file, and also import other style files */
+.toast {
+    visibility: hidden;
+    min-width: 400px;
+    margin-left: -200px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 10px;
+    padding: 10px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    top: 5vh;
+    font-size: 17px;
+    opacity: 0;
+    transition: opacity 0.3s, top 0.3s; 
+  }
+  
+  .toast.show {
+    visibility: visible;
+    opacity: 1;
+    top: 5vh;
+  }
+  
+  .toast.success {
+    background-color: #198754;
+  }
+  
+  .toast.error {
+    background-color: #dc3545;
+  }

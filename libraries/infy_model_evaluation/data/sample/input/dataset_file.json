@@ -1,0 +1,106 @@
+    [
+        {
+            "question": "How many goals did Robert Lewandowski score?",
+            "contexts": [
+                "Football players are the epitome of athleticism and skill on the field. Renowned for their  physical prowess and strategic acumen, these athletes exhibit exceptional teamwork and  individual brilliance. From dazzling dribbles to powerful strikes, football players showcase a  diverse range of talents that captivate fans worldwide. The sport's global appeal is fueled by  iconic players who transcend borders and cultures, becoming household names celebrated for  their contributions to the beautiful game.",
+                "Beyond the pitch, football players often play a crucial role as ambassadors for social causes. Many use  their platform to address issues such as discrimination, inequality, and community development.  Whether they're leading their teams to victory or championing social justice, football players wield  their influence both on and off the field, leaving a lasting impact on the world beyond the realm of  sports",
+                "{\"Player\": \"Lionel Messi\", \"Club\": \"Paris Saint-Germain\", \"Nationality\": \"Argentine\", \"Goals\": \"21\", \"Assists\": \"12\"}, {\"Player\": \"Cristiano Ronaldo\", \"Club\": \"Manchester United\", \"Nationality\": \"Portuguese\", \"Goals\": \"18\", \"Assists\": \"8\"}, {\"Player\": \"Kylian Mbapp\u00e9\", \"Club\": \"Real Madrid\", \"Nationality\": \"French\", \"Goals\": \"15\", \"Assists\": \"10\"}, {\"Player\": \"Robert Lewandowski\", \"Club\": \"Bayern Munich\", \"Nationality\": \"Polish\", \"Goals\": \"23\", \"Assists\": \"5\"}, {\"Player\": \"Mohamed Salah\", \"Club\": \"Liverpool\", \"Nationality\": \"Egyptian\", \"Goals\": \"17\", \"Assists\": \"9\"}, {\"Player\": \"Erling Haaland\", \"Club\": \"Borussia Dortmund\", \"Nationality\": \"Norwegian\", \"Goals\": \"19\", \"Assists\": \"6\"}"
+            ],
+            "ground_truth": "23",
+            "answer": "23",
+            "additional_field_file_name": "sports_statistics.pdf",
+            "additional_field_page_no": "1"
+        },
+        {
+            "question": "What is the operating margin?",
+            "contexts": [
+                "nRevenues (in ` crore) 1,21,641 21.1% growth Y-o-Y   19.7% CC growth Y-o-Y\nOperating margin 23.0% Robust operating margin\nDigital revenues   (as a % of total revenue) 57.0% 41.2% CC growth Y-o-Y (basis US$)"
+            ],
+            "ground_truth": "23.0%",
+            "answer": "23.0",
+            "additional_field_file_name": "AR_2022_23.pdf",
+            "additional_field_page_no": "5"
+        },
+        {
+            "question": "What is the growth in constant currency?",
+            "contexts": [
+                "nRevenues (in ` crore) 1,21,641 21.1% growth Y-o-Y   19.7% CC growth Y-o-Y\nOperating margin 23.0% Robust operating margin\nDigital revenues   (as a % of total revenue) 57.0% 41.2% CC growth Y-o-Y (basis US$)"
+            ],
+            "ground_truth": "21.1%",
+            "answer": "21.1%",
+            "additional_field_file_name": "AR_2022_23.pdf",
+            "additional_field_page_no": "5"
+        },
+        {
+            "question": "What is the percentage of digital revenue?",
+            "contexts": [
+                "nRevenues (in ` crore) 1,21,641 21.1% growth Y-o-Y   19.7% CC growth Y-o-Y\nOperating margin 23.0% Robust operating margin\nDigital revenues   (as a % of total revenue) 57.0% 41.2% CC growth Y-o-Y (basis US$)"
+            ],
+            "ground_truth": "57.0% of total revenue",
+            "answer": "57.0%",
+            "additional_field_file_name": "AR_2022_23.pdf",
+            "additional_field_page_no": "5"
+        },
+        {
+            "question": "What is the revenue?",
+            "contexts": [
+                "nRevenues (in ` crore) 1,21,641 21.1% growth Y-o-Y   19.7% CC growth Y-o-Y\nOperating margin 23.0% Robust operating margin\nDigital revenues   (as a % of total revenue) 57.0% 41.2% CC growth Y-o-Y (basis US$)"
+            ],
+            "ground_truth": "1,21,641 crore",
+            "answer": "1,21,641",
+            "additional_field_file_name": "AR_2022_23.pdf",
+            "additional_field_page_no": "5"
+        },
+        {
+            "question": "What is the document about?",
+            "contexts": [
+                "Performance overview Business highlights 28 Digital revenues prepared under IFRS.(as a % of total revenue)62.2 Revenues 15.4% CC growth Y-o-Y 1,46,767 Basic earnings per share (par value of ₹ 5 each)₹ cr 57.63 9.7% growth Y-o-Y (par value of ₹ 5 each)₹ cr Operating margin21 .0 Robust operating margin Consolidated cash and Free cash(1) investments(2)% ₹ 31,286cr Continue to main strong liquidity position investments(2)% Dividend per share (in ₹) 9.7% growth Y-o-Y 34.0 Infosys achieved industry- leading revenue growth of 39.4% 15.4% with healthy operating margin of 21.0% for fiscal gender diversity goals 2023"
+            ],
+            "ground_truth": "It is an annual report for the year 2022-23",
+            "answer": "annual report",
+            "additional_field_file_name": "AR_2023_24.pdf",
+            "additional_field_page_no": "3"
+        },
+        {
+            "question": "How many goals did Robert Lewandowski score?",
+            "contexts": [
+                "{\"Player\": \"Lionel Messi\", \"Club\": \"Paris Saint-Germain\", \"Nationality\": \"Argentine\", \"Goals\": \"21\", \"Assists\": \"12\"}, {\"Player\": \"Cristiano Ronaldo\", \"Club\": \"Manchester United\", \"Nationality\": \"Portuguese\", \"Goals\": \"18\", \"Assists\": \"8\"}, {\"Player\": \"Kylian Mbapp\u00e9\", \"Club\": \"Real Madrid\", \"Nationality\": \"French\", \"Goals\": \"15\", \"Assists\": \"10\"}, {\"Player\": \"Robert Lewandowski\", \"Club\": \"Bayern Munich\", \"Nationality\": \"Polish\", \"Goals\": \"23\", \"Assists\": \"5\"}, {\"Player\": \"Mohamed Salah\", \"Club\": \"Liverpool\", \"Nationality\": \"Egyptian\", \"Goals\": \"17\", \"Assists\": \"9\"}, {\"Player\": \"Erling Haaland\", \"Club\": \"Borussia Dortmund\", \"Nationality\": \"Norwegian\", \"Goals\": \"19\", \"Assists\": \"6\"}",
+                "Football players are the epitome of athleticism and skill on the field. Renowned for their  physical prowess and strategic acumen, these athletes exhibit exceptional teamwork and  individual brilliance. From dazzling dribbles to powerful strikes, football players showcase a  diverse range of talents that captivate fans worldwide. The sport's global appeal is fueled by  iconic players who transcend borders and cultures, becoming household names celebrated for  their contributions to the beautiful game.",
+                "Beyond the pitch, football players often play a crucial role as ambassadors for social causes. Many use  their platform to address issues such as discrimination, inequality, and community development.  Whether they're leading their teams to victory or championing social justice, football players wield  their influence both on and off the field, leaving a lasting impact on the world beyond the realm of  sports"
+            ],
+            "ground_truth": "23",
+            "answer": "23",
+            "additional_field_file_name": "sports_statistics.pdf",
+            "additional_field_page_no": "1"
+        },
+        {
+            "question": "What is the earnings per share?",
+            "contexts": [
+                "Performance overview Business highlights 28 Digital revenues prepared under IFRS.(as a % of total revenue)62.2 Revenues 15.4% CC growth Y-o-Y 1,46,767 Basic earnings per share (par value of ₹ 5 each)₹ cr 57.63 9.7% growth Y-o-Y (par value of ₹ 5 each)₹ cr Operating margin21 .0 Robust operating margin Consolidated cash and Free cash(1) investments(2)% ₹ 31,286cr Continue to main strong liquidity position investments(2)% Dividend per share (in ₹) 9.7% growth Y-o-Y 34.0 Infosys achieved industry- leading revenue growth of 39.4% 15.4% with healthy operating margin of 21.0% for fiscal gender diversity goals 2023"
+            ],
+            "ground_truth": "57.63",
+            "answer": "57.63",
+            "additional_field_file_name": "AR_2023_24.pdf",
+            "additional_field_page_no": "3"
+        },
+        {
+            "question": "What is the dividend amount per share?",
+            "contexts": [
+                "Performance overview Business highlights 28 Digital revenues prepared under IFRS.(as a % of total revenue)62.2 Revenues 15.4% CC growth Y-o-Y 1,46,767 Basic earnings per share (par value of ₹ 5 each)₹ cr 57.63 9.7% growth Y-o-Y (par value of ₹ 5 each)₹ cr Operating margin21 .0 Robust operating margin Consolidated cash and Free cash(1) investments(2)% ₹ 31,286cr Continue to main strong liquidity position investments(2)% Dividend per share (in ₹) 9.7% growth Y-o-Y 34.0 Infosys achieved industry- leading revenue growth of 39.4% 15.4% with healthy operating margin of 21.0% for fiscal gender diversity goals 2023"
+            ],
+            "ground_truth": "34.0 (in ₹)",
+            "answer": "34.0",
+            "additional_field_file_name": "AR_2023_24.pdf",
+            "additional_field_page_no": "3"
+        },
+        {
+            "question": "How much cash was invested?",
+            "contexts": [
+                "Performance overview Business highlights 28 Digital revenues prepared under IFRS.(as a % of total revenue)62.2 Revenues 15.4% CC growth Y-o-Y 1,46,767 Basic earnings per share (par value of ₹ 5 each)₹ cr 57.63 9.7% growth Y-o-Y (par value of ₹ 5 each)₹ cr Operating margin21 .0 Robust operating margin Consolidated cash and Free cash(1) investments(2)% ₹ 31,286cr Continue to main strong liquidity position investments(2)% Dividend per share (in ₹) 9.7% growth Y-o-Y 34.0 Infosys achieved industry- leading revenue growth of 39.4% 15.4% with healthy operating margin of 21.0% for fiscal gender diversity goals 2023"
+            ],
+            "ground_truth": "₹ 31,286cr",
+            "answer": "₹ 31,286cr",
+            "additional_field_file_name": "AR_2023_24.pdf",
+            "additional_field_page_no": "3"
+        }
+    ]

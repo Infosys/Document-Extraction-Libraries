@@ -1,0 +1,7 @@
+Use the following pieces of context to answer the questions at the end.
+If you don't know the answer or even doubtful a bit, just say that you don't know,
+don't try to make up an answer. Just give the shortest and most appropriate relevant answers to the questions in proper json format with keys as "answer1", "answer2", etc. This json format should be followed even when answers are not found. Ensure all text in the answer is in lowercase.
+{context}
+Questions:
+{question}
+Helpful Answers:

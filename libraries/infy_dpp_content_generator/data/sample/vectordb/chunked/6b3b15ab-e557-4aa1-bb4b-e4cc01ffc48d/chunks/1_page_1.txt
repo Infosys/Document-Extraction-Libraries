@@ -1,0 +1,90 @@
+Performance overview
+Business highlights
+[{"FY 2023": "1,46,767"}, {"FY 2023": "24,095"}, {"FY 2023": "57.63"}, {"FY 2023": "5,92,394"}]
+Revenues
+?1
+20.7% growth Y-o-Y 
+15.4% CC growth Y-o-Y
+Digital revenues 
+(as a % of total revenue)
+62.2
+25.6% CC growth Y-o-Y
+28
+[{"Revenues 1,46,767 \u20b9 cr 20.7% growth Y-o-Y 15.4% CC growth Y-o-Y": "Digital revenues (as a % of total revenue) 62.2 % 25.6% CC growth Y-o-Y"}, {"Revenues 1,46,767 \u20b9 cr 20.7% growth Y-o-Y 15.4% CC growth Y-o-Y": ""}]
+[{"FY 2023 18,212": "2,981 0.71"}, {"FY 2023 18,212": "72,351"}]
+Operating margin
+21.0
+Robust operating margin
+Basic earnings per share
+(par value of ? 5 each)
+57.63
+9.7% growth Y-o-Y
+Consolidated cash and 
+investments(2)
+? 31,286cr
+Continue to main strong 
+liquidity position
+Dividend per share (in ?)
+34.0
+9.7% growth Y-o-Y
+Infosys achieved industry-
+leading revenue growth of 
+15.4% with healthy operating 
+margin of 21.0% for fiscal 
+2023. Our ESG Vision 2030 and 
+ambitions continue to drive 
+value for all our stakeholders.
+Buyback completed
+? 9,300cr
+at an average price of ? 1,539.06
+Return on equity
+31.2%
+Improved by 2.1% over 
+the last fiscal
+Free cash(1)
+? 20,443cr
+ FCF conversion at 84.8% of net profit
+Large deal TCV
+(Total contract value in US$ billion)
+b
+$9.8
+Sustained momentum in large 
+deal wins continues
+Number of US$ 50 million + clients
+75
+Strong client metrics with increase  
+of 11 clients Y-o-Y
+Infosys Integrated Annual Report 2022-23
+Tech for Good
+114mn +
+Lives empowered via our Tech for 
+Good solutions in e-governance, 
+education and healthcare
+Carbon neutrality
+Carbon neutral for 
+4 years in a row
+Scope 1, 2 and 3 emissions
+Note:
+(1)
+ Free cash flow is defined as net cash provided by operating activities less capital expenditure as per the Consolidated Statement of Cash Flows 
+prepared under IFRS.
+(2)
+ Comprise cash and cash equivalents, current and non-current investments excluding investments in unquoted equity and preference shares, and others.
+Key trends
+[{"type": "columnHeader", "row_index": 0, "column_index": 0, "row_span": 1, "column_span": 1, "content": "In T crore, except per equity share data", "bbox_format": "X1,Y1,X2,Y2", "bbox": []}, {"type": "columnHeader", "row_index": 0, "column_index": 1, "row_span": 1, "column_span": 1, "content": "FY 2023 FY 2022 FY 2021 FY 2020 FY 2019", "bbox_format": "X1,Y1,X2,Y2", "bbox": []}, {"type": "data", "row_index": 1, "column_index": 0, "row_span": 1, "column_span": 1, "content": "Revenues\"", "bbox_format": "X1,Y1,X2,Y2", "bbox": []}, {"type": "data", "row_index": 1, "column_index": 1, "row_span": 1, "column_span": 1, "content": "1,46,767 1,21,641 1,00,472 90,791 82,675", "bbox_format": "X1,Y1,X2,Y2", "bbox": []}, {"type": "data", "row_index": 2, "column_index": 0, "row_span": 1, "column_span": 1, "content": "Net profit\"@", "bbox_format": "X1,Y1,X2,Y2", "bbox": []}, {"type": "data", "row_index": 2, "column_index": 1, "row_span": 1, "column_span": 1, "content": "24,095 22,10 19,351 16,594 15,404", "bbox_format": "X1,Y1,X2,Y2", "bbox": []}, {"type": "data", "row_index": 3, "column_index": 0, "row_span": 1, "column_span": 1, "content": "Basic earnings per share (in %)", "bbox_format": "X1,Y1,X2,Y2", "bbox": []}, {"type": "data", "row_index": 3, "column_index": 1, "row_span": 1, "column_span": 1, "content": "57.63 52.52 45.61 38.97 3544", "bbox_format": "X1,Y1,X2,Y2", "bbox": []}, {"type": "data", "row_index": 4, "column_index": 0, "row_span": 1, "column_span": 1, "content": "Market capitalization", "bbox_format": "X1,Y1,X2,Y2", "bbox": []}, {"type": "data", "row_index": 4, "column_index": 1, "row_span": 1, "column_span": 1, "content": "592,394 8,02,162 5,82,880 2,73,214 3,24,448", "bbox_format": "X1,Y1,X2,Y2", "bbox": []}, {"type": "data", "row_index": 5, "column_index": 0, "row_span": 1, "column_span": 1, "content": "AL", "bbox_format": "X1,Y1,X2,Y2", "bbox": []}, {"type": "data", "row_index": 5, "column_index": 1, "row_span": 1, "column_span": 1, "content": "e", "bbox_format": "X1,Y1,X2,Y2", "bbox": []}, {"type": "data", "row_index": 6, "column_index": 0, "row_span": 1, "column_span": 1, "content": "In US$ million, except per equity share data", "bbox_format": "X1,Y1,X2,Y2", "bbox": []}, {"type": "data", "row_index": 6, "column_index": 1, "row_span": 1, "column_span": 1, "content": "FY 2023 FY 2022 FY 2021 FY 2020 FY 2019", "bbox_format": "X1,Y1,X2,Y2", "bbox": []}, {"type": "data", "row_index": 7, "column_index": 0, "row_span": 1, "column_span": 1, "content": "Revenues", "bbox_format": "X1,Y1,X2,Y2", "bbox": []}, {"type": "data", "row_index": 7, "column_index": 1, "row_span": 1, "column_span": 1, "content": "18,212 16,311 13,561 12,780 11,799", "bbox_format": "X1,Y1,X2,Y2", "bbox": []}, {"type": "data", "row_index": 8, "column_index": 0, "row_span": 1, "column_span": 1, "content": "Net profit?", "bbox_format": "X1,Y1,X2,Y2", "bbox": []}, {"type": "data", "row_index": 8, "column_index": 1, "row_span": 1, "column_span": 1, "content": "2,981 2,963 2,613 2,331 2,199", "bbox_format": "X1,Y1,X2,Y2", "bbox": []}, {"type": "data", "row_index": 9, "column_index": 0, "row_span": 1, "column_span": 1, "content": "Basic earnings per share (in %)", "bbox_format": "X1,Y1,X2,Y2", "bbox": []}, {"type": "data", "row_index": 9, "column_index": 1, "row_span": 1, "column_span": 1, "content": "0.71 0.70 0.62 0.55 0.51", "bbox_format": "X1,Y1,X2,Y2", "bbox": []}, {"type": "data", "row_index": 10, "column_index": 0, "row_span": 1, "column_span": 1, "content": "Market capitalization", "bbox_format": "X1,Y1,X2,Y2", "bbox": []}, {"type": "data", "row_index": 10, "column_index": 1, "row_span": 1, "column_span": 1, "content": "72,351 104,706 79,760 34,966 47,614", "bbox_format": "X1,Y1,X2,Y2", "bbox": []}]
+Notes:
+(1) Based on IFRS consolidated financial statements
+(2) Attributable to owners of the Company
+Infosys Integrated Annual Report 2022-23
+Carbon offset programs
+2,40,000+
+Rural families continue to benefit
+Women employees
+39.4%
+Steady progress towards 
+gender diversity goals
+[{"": "Digital skilling 8.5 mn People are a part of our digital skilling initiatives"}]
+INfosys | Springhiard
+~50,000
+Fresh graduates hired globally
+29

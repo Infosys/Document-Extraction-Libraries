@@ -1,0 +1,6183 @@
+[
+    {
+        "page": 1,
+        "width": 1224.0,
+        "height": 792.0,
+        "bbox": "X1,Y1,X2,Y2",
+        "tokens": [
+            {
+                "id": "P1_L1",
+                "type": "line",
+                "text": "Performance overview",
+                "uri": "",
+                "bbox": [
+                    45.3543,
+                    38.3152,
+                    176.3649,
+                    46.9252
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L2",
+                "type": "line",
+                "text": "Business highlights",
+                "uri": "",
+                "bbox": [
+                    45.3543,
+                    53.8114,
+                    228.0423,
+                    68.0314
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L3",
+                "type": "line",
+                "text": "Infosys achieved industry-",
+                "uri": "",
+                "bbox": [
+                    392.8819,
+                    155.2019,
+                    537.9294,
+                    163.1449
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L4",
+                "type": "line",
+                "text": "Women employees",
+                "uri": "",
+                "bbox": [
+                    882.3297,
+                    150.0785,
+                    965.2677,
+                    156.1885
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L5",
+                "type": "line",
+                "text": "leading revenue growth of ",
+                "uri": "",
+                "bbox": [
+                    392.8819,
+                    170.8019,
+                    543.3698,
+                    178.7449
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L6",
+                "type": "line",
+                "text": "39.4%",
+                "uri": "",
+                "bbox": [
+                    891.8506,
+                    167.3022,
+                    955.7401,
+                    183.1882
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L7",
+                "type": "line",
+                "text": "15.4% with healthy operating ",
+                "uri": "",
+                "bbox": [
+                    392.8819,
+                    186.4019,
+                    558.6696,
+                    194.3448
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L8",
+                "type": "line",
+                "text": "Steady progress towards ",
+                "uri": "",
+                "bbox": [
+                    872.643,
+                    195.1782,
+                    977.075,
+                    201.1882
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L9",
+                "type": "line",
+                "text": "margin of 21.0% for fiscal ",
+                "uri": "",
+                "bbox": [
+                    392.8819,
+                    202.0018,
+                    535.8442,
+                    209.9448
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L10",
+                "type": "line",
+                "text": "gender\u00a0diversity goals",
+                "uri": "",
+                "bbox": [
+                    877.683,
+                    207.1782,
+                    969.9169,
+                    213.1882
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L11",
+                "type": "line",
+                "text": "2023. Our ESG Vision 2030 and ",
+                "uri": "",
+                "bbox": [
+                    392.8819,
+                    217.6018,
+                    565.2424,
+                    225.5448
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L12",
+                "type": "line",
+                "text": "ambitions continue to drive ",
+                "uri": "",
+                "bbox": [
+                    392.8819,
+                    233.2018,
+                    548.7167,
+                    241.1448
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L13",
+                "type": "line",
+                "text": "Digital skilling",
+                "uri": "",
+                "bbox": [
+                    1026.113,
+                    231.3482,
+                    1088.375,
+                    237.4582
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L14",
+                "type": "line",
+                "text": "Tech for Good",
+                "uri": "",
+                "bbox": [
+                    668.6902,
+                    239.8147,
+                    729.3731,
+                    245.9247
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L15",
+                "type": "line",
+                "text": "value for all our stakeholders.",
+                "uri": "",
+                "bbox": [
+                    392.8819,
+                    248.8018,
+                    556.9211,
+                    256.7448
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L16",
+                "type": "line",
+                "text": "114mn +",
+                "uri": "",
+                "bbox": [
+                    668.6929,
+                    257.0405,
+                    750.4415,
+                    272.9265
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L17",
+                "type": "line",
+                "text": "8.5mn",
+                "uri": "",
+                "bbox": [
+                    1026.1102,
+                    248.5687,
+                    1088.7341,
+                    264.4547
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L18",
+                "type": "line",
+                "text": "Carbon offset programs",
+                "uri": "",
+                "bbox": [
+                    852.4247,
+                    279.9133,
+                    956.0626,
+                    286.0233
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L19",
+                "type": "line",
+                "text": "People are a part of our digital ",
+                "uri": "",
+                "bbox": [
+                    1026.1102,
+                    276.4447,
+                    1154.183,
+                    282.4547
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L20",
+                "type": "line",
+                "text": "Lives empowered via our Tech for ",
+                "uri": "",
+                "bbox": [
+                    668.6929,
+                    284.9165,
+                    810.3989,
+                    290.9265
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L21",
+                "type": "line",
+                "text": "skilling\u00a0initiatives",
+                "uri": "",
+                "bbox": [
+                    1026.1102,
+                    288.4447,
+                    1097.2128,
+                    294.4547
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L22",
+                "type": "line",
+                "text": "Good solutions in e-governance, ",
+                "uri": "",
+                "bbox": [
+                    668.6929,
+                    296.9165,
+                    806.262,
+                    302.9265
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L23",
+                "type": "line",
+                "text": "education and healthcare",
+                "uri": "",
+                "bbox": [
+                    668.6929,
+                    308.9165,
+                    775.3019,
+                    314.9265
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L24",
+                "type": "line",
+                "text": "2,40,000+",
+                "uri": "",
+                "bbox": [
+                    852.4247,
+                    297.1373,
+                    963.4127,
+                    313.0233
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L25",
+                "type": "line",
+                "text": "Operating margin",
+                "uri": "",
+                "bbox": [
+                    226.9629,
+                    316.0131,
+                    304.6299,
+                    322.1231
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L26",
+                "type": "line",
+                "text": "Rural families continue to benefit",
+                "uri": "",
+                "bbox": [
+                    852.4247,
+                    319.0133,
+                    990.2637,
+                    325.0233
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L27",
+                "type": "line",
+                "text": "21.0",
+                "uri": "",
+                "bbox": [
+                    226.9606,
+                    333.2421,
+                    273.2614,
+                    349.1281
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L28",
+                "type": "line",
+                "text": "Buyback completed",
+                "uri": "",
+                "bbox": [
+                    408.441,
+                    329.28,
+                    494.5021,
+                    335.39
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L29",
+                "type": "line",
+                "text": "%",
+                "uri": "",
+                "bbox": [
+                    273.7222,
+                    337.5191,
+                    289.6822,
+                    349.1281
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L30",
+                "type": "line",
+                "text": "Robust operating margin",
+                "uri": "",
+                "bbox": [
+                    226.9606,
+                    361.1181,
+                    331.5695,
+                    367.1281
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L31",
+                "type": "line",
+                "text": "? 9,300cr",
+                "uri": "",
+                "bbox": [
+                    408.441,
+                    350.781,
+                    493.3706,
+                    362.39
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L32",
+                "type": "line",
+                "text": "Carbon neutrality",
+                "uri": "",
+                "bbox": [
+                    674.2328,
+                    356.2365,
+                    750.8198,
+                    362.3465
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L33",
+                "type": "line",
+                "text": "at an average price of ? 1,539.06",
+                "uri": "",
+                "bbox": [
+                    408.441,
+                    374.38,
+                    542.3749,
+                    380.39
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L34",
+                "type": "line",
+                "text": "Carbon neutral for ",
+                "uri": "",
+                "bbox": [
+                    674.2362,
+                    372.9525,
+                    825.4776,
+                    383.9505
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L35",
+                "type": "line",
+                "text": "Revenues",
+                "uri": "",
+                "bbox": [
+                    56.6929,
+                    386.1531,
+                    98.4539,
+                    392.2631
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L36",
+                "type": "line",
+                "text": "Basic earnings per share",
+                "uri": "",
+                "bbox": [
+                    224.3937,
+                    389.5904,
+                    328.7747,
+                    395.7004
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L37",
+                "type": "line",
+                "text": "4 years in a row",
+                "uri": "",
+                "bbox": [
+                    674.2362,
+                    390.5565,
+                    798.3823,
+                    401.5545
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L38",
+                "type": "line",
+                "text": "(par value of ? 5 each)",
+                "uri": "",
+                "bbox": [
+                    224.3937,
+                    401.6904,
+                    315.1168,
+                    407.7004
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L39",
+                "type": "line",
+                "text": "?1",
+                "uri": "",
+                "bbox": [
+                    56.6929,
+                    410.4321,
+                    83.2987,
+                    423.2631
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L40",
+                "type": "line",
+                "text": " ",
+                "uri": "",
+                "bbox": [
+                    67.9488,
+                    417.1531,
+                    70.0188,
+                    423.2631
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L41",
+                "type": "line",
+                "text": ",46,767cr",
+                "uri": "",
+                "bbox": [
+                    81.5887,
+                    404.9331,
+                    185.1824,
+                    423.2631
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L42",
+                "type": "line",
+                "text": "20.7% growth Y-o-Y ",
+                "uri": "",
+                "bbox": [
+                    56.6929,
+                    437.2531,
+                    140.8549,
+                    443.2631
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L43",
+                "type": "line",
+                "text": "57.63",
+                "uri": "",
+                "bbox": [
+                    224.3937,
+                    419.3704,
+                    292.8057,
+                    437.7004
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L44",
+                "type": "line",
+                "text": "Scope 1, 2 and 3 emissions",
+                "uri": "",
+                "bbox": [
+                    674.2362,
+                    413.5405,
+                    784.2092,
+                    419.5505
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L45",
+                "type": "line",
+                "text": "~50,000",
+                "uri": "",
+                "bbox": [
+                    1049.683,
+                    409.9264,
+                    1143.9628,
+                    421.5354
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L46",
+                "type": "line",
+                "text": "Return on equity",
+                "uri": "",
+                "bbox": [
+                    410.2404,
+                    421.8405,
+                    483.2505,
+                    427.9505
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L47",
+                "type": "line",
+                "text": "Fresh graduates hired globally",
+                "uri": "",
+                "bbox": [
+                    1033.9843,
+                    430.5254,
+                    1159.6754,
+                    436.5354
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L48",
+                "type": "line",
+                "text": "15.4% CC growth Y-o-Y",
+                "uri": "",
+                "bbox": [
+                    56.6929,
+                    449.2531,
+                    151.4999,
+                    455.2631
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L49",
+                "type": "line",
+                "text": "9.7% growth Y-o-Y",
+                "uri": "",
+                "bbox": [
+                    224.3937,
+                    443.6904,
+                    301.1787,
+                    449.7004
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L50",
+                "type": "line",
+                "text": "31.2%",
+                "uri": "",
+                "bbox": [
+                    410.2404,
+                    439.0645,
+                    472.8766,
+                    454.9505
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L51",
+                "type": "line",
+                "text": "Improved by 2.1% over ",
+                "uri": "",
+                "bbox": [
+                    410.2404,
+                    460.3415,
+                    497.877,
+                    465.7505
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L52",
+                "type": "line",
+                "text": "Note:",
+                "uri": "",
+                "bbox": [
+                    664.4409,
+                    456.8641,
+                    681.5155,
+                    461.3716
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L53",
+                "type": "line",
+                "text": "(1)",
+                "uri": "",
+                "bbox": [
+                    664.4409,
+                    467.9958,
+                    668.8186,
+                    470.6237
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L54",
+                "type": "line",
+                "text": "the\u00a0last fiscal",
+                "uri": "",
+                "bbox": [
+                    410.2404,
+                    471.1415,
+                    458.9663,
+                    476.5505
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L55",
+                "type": "line",
+                "text": " Free cash flow is defined as net cash provided by operating activities less capital expenditure as per the Consolidated Statement of Cash Flows ",
+                "uri": "",
+                "bbox": [
+                    668.819,
+                    468.6137,
+                    1126.4453,
+                    473.1212
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L56",
+                "type": "line",
+                "text": "Digital revenues ",
+                "uri": "",
+                "bbox": [
+                    56.4447,
+                    480.4633,
+                    129.2807,
+                    486.5733
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L57",
+                "type": "line",
+                "text": "prepared under IFRS.",
+                "uri": "",
+                "bbox": [
+                    674.3622,
+                    477.6137,
+                    741.0754,
+                    482.1212
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L58",
+                "type": "line",
+                "text": "(2)",
+                "uri": "",
+                "bbox": [
+                    664.4409,
+                    488.7455,
+                    669.1435,
+                    491.3734
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L59",
+                "type": "line",
+                "text": "(as a % of total revenue)",
+                "uri": "",
+                "bbox": [
+                    56.4447,
+                    492.5633,
+                    155.1907,
+                    498.5733
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L60",
+                "type": "line",
+                "text": " Comprise cash and cash equivalents, current and non-current investments excluding investments in unquoted equity and preference shares, and others.",
+                "uri": "",
+                "bbox": [
+                    669.1417,
+                    489.3633,
+                    1157.6235,
+                    493.8708
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L61",
+                "type": "line",
+                "text": "Consolidated cash and ",
+                "uri": "",
+                "bbox": [
+                    231.5916,
+                    498.9391,
+                    331.5566,
+                    505.0491
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L62",
+                "type": "line",
+                "text": "Free cash(1)",
+                "uri": "",
+                "bbox": [
+                    402.7716,
+                    503.5091,
+                    449.1567,
+                    506.2892
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L63",
+                "type": "line",
+                "text": "62.2",
+                "uri": "",
+                "bbox": [
+                    56.4429,
+                    511.2448,
+                    111.7239,
+                    529.5748
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L64",
+                "type": "line",
+                "text": "investments(2)",
+                "uri": "",
+                "bbox": [
+                    231.5916,
+                    510.9391,
+                    291.142,
+                    513.7225
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L65",
+                "type": "line",
+                "text": "%",
+                "uri": "",
+                "bbox": [
+                    110.7323,
+                    517.3549,
+                    127.5323,
+                    529.5748
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L66",
+                "type": "line",
+                "text": "Key trends",
+                "uri": "",
+                "bbox": [
+                    663.0236,
+                    529.596,
+                    713.3706,
+                    536.317
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L67",
+                "type": "line",
+                "text": "25.6% CC growth Y-o-Y",
+                "uri": "",
+                "bbox": [
+                    56.4429,
+                    543.5648,
+                    151.9839,
+                    549.5748
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L68",
+                "type": "line",
+                "text": "? 31,286cr",
+                "uri": "",
+                "bbox": [
+                    231.5945,
+                    532.4435,
+                    332.0659,
+                    544.0525
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L69",
+                "type": "line",
+                "text": "? 20,443cr",
+                "uri": "",
+                "bbox": [
+                    402.7716,
+                    525.0101,
+                    505.5239,
+                    536.6191
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L70",
+                "type": "line",
+                "text": " FCF conversion at 84.8% of net profit",
+                "uri": "",
+                "bbox": [
+                    402.7716,
+                    548.6091,
+                    558.0015,
+                    554.6191
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L71",
+                "type": "line",
+                "text": "In ? crore, except per equity share data",
+                "uri": "",
+                "bbox": [
+                    667.0237,
+                    550.2369,
+                    819.4042,
+                    555.736
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L72",
+                "type": "line",
+                "text": "FY 2023",
+                "uri": "",
+                "bbox": [
+                    880.0987,
+                    550.2369,
+                    911.0622,
+                    555.736
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L73",
+                "type": "line",
+                "text": "FY 2022",
+                "uri": "",
+                "bbox": [
+                    946.0057,
+                    550.2369,
+                    976.9539,
+                    555.736
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L74",
+                "type": "line",
+                "text": "FY 2021",
+                "uri": "",
+                "bbox": [
+                    1012.2457,
+                    550.2369,
+                    1042.8512,
+                    555.736
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L75",
+                "type": "line",
+                "text": "FY 2020",
+                "uri": "",
+                "bbox": [
+                    1077.7837,
+                    550.2369,
+                    1108.7538,
+                    555.736
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L76",
+                "type": "line",
+                "text": "FY 2019",
+                "uri": "",
+                "bbox": [
+                    1144.2756,
+                    550.2369,
+                    1174.6388,
+                    555.736
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L77",
+                "type": "line",
+                "text": "Continue to main strong ",
+                "uri": "",
+                "bbox": [
+                    231.5945,
+                    556.0425,
+                    335.3015,
+                    562.0525
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L78",
+                "type": "line",
+                "text": "liquidity\u00a0position",
+                "uri": "",
+                "bbox": [
+                    231.5945,
+                    568.0425,
+                    302.2585,
+                    574.0525
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L79",
+                "type": "line",
+                "text": "Revenues(1)",
+                "uri": "",
+                "bbox": [
+                    667.0146,
+                    565.078,
+                    708.595,
+                    567.489
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L80",
+                "type": "line",
+                "text": "1,46,767",
+                "uri": "",
+                "bbox": [
+                    880.386,
+                    565.077,
+                    911.0643,
+                    570.486
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L81",
+                "type": "line",
+                "text": "1,21,641",
+                "uri": "",
+                "bbox": [
+                    946.77,
+                    565.077,
+                    976.9604,
+                    570.486
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L82",
+                "type": "line",
+                "text": "1,00,472",
+                "uri": "",
+                "bbox": [
+                    1011.894,
+                    565.077,
+                    1042.8539,
+                    570.486
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L83",
+                "type": "line",
+                "text": "90,791",
+                "uri": "",
+                "bbox": [
+                    1084.1731,
+                    565.077,
+                    1108.7495,
+                    570.486
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L84",
+                "type": "line",
+                "text": "82,675 ",
+                "uri": "",
+                "bbox": [
+                    1150.2061,
+                    565.077,
+                    1176.557,
+                    570.486
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L85",
+                "type": "line",
+                "text": "Net profit(1)(2)",
+                "uri": "",
+                "bbox": [
+                    667.0231,
+                    579.828,
+                    714.5185,
+                    582.239
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L86",
+                "type": "line",
+                "text": "Large deal TCV",
+                "uri": "",
+                "bbox": [
+                    409.8897,
+                    583.5285,
+                    474.6347,
+                    589.6385
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L87",
+                "type": "line",
+                "text": "24,095",
+                "uri": "",
+                "bbox": [
+                    886.2969,
+                    579.827,
+                    911.0596,
+                    585.236
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L88",
+                "type": "line",
+                "text": "22,110",
+                "uri": "",
+                "bbox": [
+                    953.7519,
+                    579.827,
+                    976.9584,
+                    585.236
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L89",
+                "type": "line",
+                "text": "19,351",
+                "uri": "",
+                "bbox": [
+                    1018.9839,
+                    579.827,
+                    1042.8474,
+                    585.236
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L90",
+                "type": "line",
+                "text": "16,594",
+                "uri": "",
+                "bbox": [
+                    1084.0898,
+                    579.827,
+                    1108.7474,
+                    585.236
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L91",
+                "type": "line",
+                "text": "15,404",
+                "uri": "",
+                "bbox": [
+                    1149.9338,
+                    579.827,
+                    1174.6387,
+                    585.236
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L92",
+                "type": "line",
+                "text": "(Total contract value in US$ billion)",
+                "uri": "",
+                "bbox": [
+                    409.8897,
+                    595.6285,
+                    553.8696,
+                    601.6385
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L93",
+                "type": "line",
+                "text": "Basic earnings per share (in ?)(1)",
+                "uri": "",
+                "bbox": [
+                    667.0208,
+                    594.578,
+                    783.4106,
+                    596.989
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L94",
+                "type": "line",
+                "text": "57.63",
+                "uri": "",
+                "bbox": [
+                    891.7382,
+                    594.577,
+                    911.0612,
+                    599.986
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L95",
+                "type": "line",
+                "text": "52.52",
+                "uri": "",
+                "bbox": [
+                    956.6823,
+                    594.577,
+                    976.9556,
+                    599.986
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L96",
+                "type": "line",
+                "text": "45.61",
+                "uri": "",
+                "bbox": [
+                    1023.1022,
+                    594.577,
+                    1042.8501,
+                    599.986
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L97",
+                "type": "line",
+                "text": "38.97",
+                "uri": "",
+                "bbox": [
+                    1088.6222,
+                    594.577,
+                    1108.7473,
+                    599.986
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L98",
+                "type": "line",
+                "text": "35.44 ",
+                "uri": "",
+                "bbox": [
+                    1154.2861,
+                    594.577,
+                    1176.5555,
+                    599.986
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L99",
+                "type": "line",
+                "text": "$9.8",
+                "uri": "",
+                "bbox": [
+                    409.8897,
+                    617.6405,
+                    458.5833,
+                    628.6385
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L100",
+                "type": "line",
+                "text": "Market capitalization",
+                "uri": "",
+                "bbox": [
+                    667.0261,
+                    609.328,
+                    746.2774,
+                    614.737
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L101",
+                "type": "line",
+                "text": "5,92,394",
+                "uri": "",
+                "bbox": [
+                    879.8851,
+                    609.328,
+                    911.0647,
+                    614.737
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L102",
+                "type": "line",
+                "text": "8,02,162",
+                "uri": "",
+                "bbox": [
+                    946.6201,
+                    609.328,
+                    976.9617,
+                    614.737
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L103",
+                "type": "line",
+                "text": "5,82,880",
+                "uri": "",
+                "bbox": [
+                    1010.9971,
+                    609.328,
+                    1042.8542,
+                    614.737
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L104",
+                "type": "line",
+                "text": "2,73,214",
+                "uri": "",
+                "bbox": [
+                    1078.1731,
+                    609.328,
+                    1108.7487,
+                    614.737
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L105",
+                "type": "line",
+                "text": "3,24,448 ",
+                "uri": "",
+                "bbox": [
+                    1142.8381,
+                    609.328,
+                    1176.5554,
+                    614.737
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L106",
+                "type": "line",
+                "text": "b",
+                "uri": "",
+                "bbox": [
+                    458.8142,
+                    617.0295,
+                    469.9292,
+                    628.6385
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L107",
+                "type": "line",
+                "text": "In US$ million, except per equity share data",
+                "uri": "",
+                "bbox": [
+                    667.0237,
+                    634.1119,
+                    836.9292,
+                    639.611
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L108",
+                "type": "line",
+                "text": "FY 2023",
+                "uri": "",
+                "bbox": [
+                    879.9997,
+                    634.1119,
+                    910.9632,
+                    639.611
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L109",
+                "type": "line",
+                "text": "FY 2022",
+                "uri": "",
+                "bbox": [
+                    945.8077,
+                    634.1119,
+                    976.7559,
+                    639.611
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L110",
+                "type": "line",
+                "text": "FY 2021",
+                "uri": "",
+                "bbox": [
+                    1011.9487,
+                    634.1119,
+                    1042.5541,
+                    639.611
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L111",
+                "type": "line",
+                "text": "FY 2020",
+                "uri": "",
+                "bbox": [
+                    1077.3877,
+                    634.1119,
+                    1108.3578,
+                    639.611
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L112",
+                "type": "line",
+                "text": "FY 2019",
+                "uri": "",
+                "bbox": [
+                    1143.7806,
+                    634.1119,
+                    1174.1438,
+                    639.611
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L113",
+                "type": "line",
+                "text": "Sustained momentum in large ",
+                "uri": "",
+                "bbox": [
+                    409.8897,
+                    640.6285,
+                    538.3027,
+                    646.6385
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L114",
+                "type": "line",
+                "text": "deal\u00a0wins continues",
+                "uri": "",
+                "bbox": [
+                    409.8897,
+                    652.6285,
+                    492.0277,
+                    658.6385
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L115",
+                "type": "line",
+                "text": "Revenues(1)",
+                "uri": "",
+                "bbox": [
+                    667.0237,
+                    648.953,
+                    708.595,
+                    651.364
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L116",
+                "type": "line",
+                "text": "18,212",
+                "uri": "",
+                "bbox": [
+                    887.1411,
+                    648.952,
+                    910.9631,
+                    654.361
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L117",
+                "type": "line",
+                "text": "16,311",
+                "uri": "",
+                "bbox": [
+                    953.2461,
+                    648.952,
+                    976.7569,
+                    654.361
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L118",
+                "type": "line",
+                "text": "13,561",
+                "uri": "",
+                "bbox": [
+                    1018.5321,
+                    648.952,
+                    1042.5531,
+                    654.361
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L119",
+                "type": "line",
+                "text": "12,780",
+                "uri": "",
+                "bbox": [
+                    1084.0972,
+                    648.952,
+                    1108.3478,
+                    654.361
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L120",
+                "type": "line",
+                "text": "11,799 ",
+                "uri": "",
+                "bbox": [
+                    1150.5621,
+                    648.952,
+                    1176.0509,
+                    654.361
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L121",
+                "type": "line",
+                "text": "Net profit(1)(2)",
+                "uri": "",
+                "bbox": [
+                    667.0192,
+                    663.703,
+                    714.5185,
+                    666.114
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L122",
+                "type": "line",
+                "text": "2,981",
+                "uri": "",
+                "bbox": [
+                    891.0524,
+                    663.702,
+                    910.9604,
+                    669.111
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L123",
+                "type": "line",
+                "text": "2,963",
+                "uri": "",
+                "bbox": [
+                    956.5634,
+                    663.702,
+                    976.7586,
+                    669.111
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L124",
+                "type": "line",
+                "text": "2,613",
+                "uri": "",
+                "bbox": [
+                    1023.1634,
+                    663.702,
+                    1042.552,
+                    669.111
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L125",
+                "type": "line",
+                "text": "2,331",
+                "uri": "",
+                "bbox": [
+                    1088.4404,
+                    663.702,
+                    1108.3447,
+                    669.111
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L126",
+                "type": "line",
+                "text": "2,199",
+                "uri": "",
+                "bbox": [
+                    1154.7344,
+                    663.702,
+                    1174.1384,
+                    669.111
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L127",
+                "type": "line",
+                "text": "Basic earnings per share (in ?)(1)",
+                "uri": "",
+                "bbox": [
+                    667.0154,
+                    678.453,
+                    783.4106,
+                    680.864
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L128",
+                "type": "line",
+                "text": "0.71",
+                "uri": "",
+                "bbox": [
+                    895.5361,
+                    678.452,
+                    910.9594,
+                    683.861
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L129",
+                "type": "line",
+                "text": "0.70",
+                "uri": "",
+                "bbox": [
+                    961.2811,
+                    678.452,
+                    976.7584,
+                    683.861
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L130",
+                "type": "line",
+                "text": "0.62",
+                "uri": "",
+                "bbox": [
+                    1026.8911,
+                    678.452,
+                    1042.5527,
+                    683.861
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L131",
+                "type": "line",
+                "text": "0.55",
+                "uri": "",
+                "bbox": [
+                    1092.6541,
+                    678.452,
+                    1108.3536,
+                    683.861
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L132",
+                "type": "line",
+                "text": "0.51 ",
+                "uri": "",
+                "bbox": [
+                    1158.5791,
+                    678.452,
+                    1176.0598,
+                    683.861
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L133",
+                "type": "line",
+                "text": "Number of US$ 50 million + clients",
+                "uri": "",
+                "bbox": [
+                    402.7559,
+                    685.4357,
+                    551.763,
+                    691.5457
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L134",
+                "type": "line",
+                "text": "Dividend per share (in ?)",
+                "uri": "",
+                "bbox": [
+                    250.1931,
+                    697.0002,
+                    355.4821,
+                    703.1102
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L135",
+                "type": "line",
+                "text": "Market capitalization",
+                "uri": "",
+                "bbox": [
+                    667.0261,
+                    693.203,
+                    746.2774,
+                    698.612
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L136",
+                "type": "line",
+                "text": "72,351",
+                "uri": "",
+                "bbox": [
+                    886.4102,
+                    693.203,
+                    910.9684,
+                    698.612
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L137",
+                "type": "line",
+                "text": "104,706",
+                "uri": "",
+                "bbox": [
+                    947.5112,
+                    693.203,
+                    976.7656,
+                    698.612
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L138",
+                "type": "line",
+                "text": "79,760",
+                "uri": "",
+                "bbox": [
+                    1018.2602,
+                    693.203,
+                    1042.5594,
+                    698.612
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L139",
+                "type": "line",
+                "text": "34,966",
+                "uri": "",
+                "bbox": [
+                    1083.2672,
+                    693.203,
+                    1108.3593,
+                    698.612
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L140",
+                "type": "line",
+                "text": "47,614 ",
+                "uri": "",
+                "bbox": [
+                    1151.2262,
+                    693.203,
+                    1176.0624,
+                    698.612
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L141",
+                "type": "line",
+                "text": "34.0",
+                "uri": "",
+                "bbox": [
+                    278.4349,
+                    714.2242,
+                    327.2265,
+                    730.1102
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L142",
+                "type": "line",
+                "text": "75",
+                "uri": "",
+                "bbox": [
+                    402.7559,
+                    702.6597,
+                    429.9259,
+                    718.5457
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L143",
+                "type": "line",
+                "text": "Notes:",
+                "uri": "",
+                "bbox": [
+                    664.441,
+                    714.3535,
+                    684.5718,
+                    718.861
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L144",
+                "type": "line",
+                "text": "Strong client metrics with increase  ",
+                "uri": "",
+                "bbox": [
+                    402.7559,
+                    724.5357,
+                    550.1449,
+                    730.5457
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L145",
+                "type": "line",
+                "text": "(1) Based on IFRS consolidated financial statements",
+                "uri": "",
+                "bbox": [
+                    664.441,
+                    725.4852,
+                    827.2518,
+                    730.6106
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L146",
+                "type": "line",
+                "text": "9.7% growth Y-o-Y",
+                "uri": "",
+                "bbox": [
+                    264.4429,
+                    736.1002,
+                    341.2279,
+                    742.1102
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L147",
+                "type": "line",
+                "text": "of 11 clients Y-o-Y",
+                "uri": "",
+                "bbox": [
+                    402.7559,
+                    736.5357,
+                    475.7679,
+                    742.5457
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L148",
+                "type": "line",
+                "text": "(2) Attributable to owners of the Company",
+                "uri": "",
+                "bbox": [
+                    664.441,
+                    737.2348,
+                    798.9711,
+                    742.3602
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L149",
+                "type": "line",
+                "text": "28",
+                "uri": "",
+                "bbox": [
+                    45.3543,
+                    764.8455,
+                    53.5623,
+                    769.6535
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L150",
+                "type": "line",
+                "text": "Infosys Integrated Annual Report 2022-23",
+                "uri": "",
+                "bbox": [
+                    422.4026,
+                    764.8455,
+                    560.977,
+                    769.6535
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L151",
+                "type": "line",
+                "text": "Infosys Integrated Annual Report 2022-23",
+                "uri": "",
+                "bbox": [
+                    663.0266,
+                    764.8455,
+                    801.6014,
+                    769.6535
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P1_L152",
+                "type": "line",
+                "text": "29",
+                "uri": "",
+                "bbox": [
+                    1170.4342,
+                    764.8455,
+                    1178.6422,
+                    769.6535
+                ],
+                "tokens": []
+            }
+        ]
+    },
+    {
+        "page": 2,
+        "width": 1224.0,
+        "height": 792.0,
+        "bbox": "X1,Y1,X2,Y2",
+        "tokens": [
+            {
+                "id": "P2_L1",
+                "type": "line",
+                "text": "Performance overview",
+                "uri": "",
+                "bbox": [
+                    45.3543,
+                    38.3152,
+                    176.3649,
+                    46.9252
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L2",
+                "type": "line",
+                "text": "Chairman\u2019s message",
+                "uri": "",
+                "bbox": [
+                    45.3543,
+                    53.8114,
+                    239.3439,
+                    68.0314
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L3",
+                "type": "line",
+                "text": "Navigating uncertainty",
+                "uri": "",
+                "bbox": [
+                    45.3543,
+                    87.4694,
+                    218.8527,
+                    98.5394
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L4",
+                "type": "line",
+                "text": "If there is one overriding theme that defines our current ",
+                "uri": "",
+                "bbox": [
+                    45.3543,
+                    117.0372,
+                    278.7512,
+                    123.0472
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L5",
+                "type": "line",
+                "text": "problems, but continually innovate and architect for ",
+                "uri": "",
+                "bbox": [
+                    314.5039,
+                    117.0372,
+                    532.6707,
+                    123.0472
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L6",
+                "type": "line",
+                "text": "world, it is that it is suffused with uncertainty. The placid ",
+                "uri": "",
+                "bbox": [
+                    45.3543,
+                    130.0372,
+                    279.6913,
+                    136.0472
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L7",
+                "type": "line",
+                "text": "challenges that may emerge in the future. We build it ",
+                "uri": "",
+                "bbox": [
+                    314.5039,
+                    130.0372,
+                    536.391,
+                    136.0472
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L8",
+                "type": "line",
+                "text": "and the predictable are behind us as each new day brings ",
+                "uri": "",
+                "bbox": [
+                    45.3543,
+                    143.0372,
+                    286.5403,
+                    149.0472
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L9",
+                "type": "line",
+                "text": "for ourselves first, and then, deeply rooted in our own ",
+                "uri": "",
+                "bbox": [
+                    314.5039,
+                    143.0372,
+                    538.8307,
+                    149.0472
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L10",
+                "type": "line",
+                "text": "new inputs and new events that derail the carefully-crafted ",
+                "uri": "",
+                "bbox": [
+                    45.3543,
+                    156.0372,
+                    292.3603,
+                    162.0472
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L11",
+                "type": "line",
+                "text": "experience, take it widely to our clients. ",
+                "uri": "",
+                "bbox": [
+                    314.5039,
+                    156.0372,
+                    480.0819,
+                    162.0472
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L12",
+                "type": "line",
+                "text": "models we have constructed of the world around us. The ",
+                "uri": "",
+                "bbox": [
+                    45.3543,
+                    169.0372,
+                    282.6513,
+                    175.0472
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L13",
+                "type": "line",
+                "text": "The awesome possibilities of generative AI, we know from ",
+                "uri": "",
+                "bbox": [
+                    314.5039,
+                    174.7072,
+                    555.444,
+                    180.7172
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L14",
+                "type": "line",
+                "text": "cocktail of inflation, interest rates, geopolitics, war, demand ",
+                "uri": "",
+                "bbox": [
+                    45.3543,
+                    182.0372,
+                    293.0513,
+                    188.0472
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L15",
+                "type": "line",
+                "text": "our own journey to becoming an AI-first enterprise, is not ",
+                "uri": "",
+                "bbox": [
+                    314.5039,
+                    187.7072,
+                    553.0928,
+                    193.7172
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L16",
+                "type": "line",
+                "text": "volatility, supply chain dislocations, the shift from efficiency ",
+                "uri": "",
+                "bbox": [
+                    45.3543,
+                    195.0372,
+                    293.9613,
+                    201.0472
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L17",
+                "type": "line",
+                "text": "without its risks. The problems of AI hallucination, systemic ",
+                "uri": "",
+                "bbox": [
+                    314.5039,
+                    200.7072,
+                    559.264,
+                    206.7172
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L18",
+                "type": "line",
+                "text": "to resilience and security, all stirring quickly and without ",
+                "uri": "",
+                "bbox": [
+                    45.3543,
+                    208.0372,
+                    280.7713,
+                    214.0472
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L19",
+                "type": "line",
+                "text": "biases, lack of explainability along with plenty of practical, ",
+                "uri": "",
+                "bbox": [
+                    314.5039,
+                    213.7072,
+                    555.975,
+                    219.7172
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L20",
+                "type": "line",
+                "text": "warning, is what\u2019s before us. In any week, we may oscillate ",
+                "uri": "",
+                "bbox": [
+                    45.3543,
+                    221.0372,
+                    287.7403,
+                    227.0472
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L21",
+                "type": "line",
+                "text": "ethical and intellectual property-related issues remain open ",
+                "uri": "",
+                "bbox": [
+                    314.5039,
+                    226.7072,
+                    563.1188,
+                    232.7172
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L22",
+                "type": "line",
+                "text": "from caution to optimism and back to caution based on ",
+                "uri": "",
+                "bbox": [
+                    45.3543,
+                    234.0372,
+                    278.6122,
+                    240.0472
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L23",
+                "type": "line",
+                "text": "and up for debate. We also know, from our experience, ",
+                "uri": "",
+                "bbox": [
+                    314.5039,
+                    239.7072,
+                    541.1229,
+                    245.7172
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L24",
+                "type": "line",
+                "text": "the news of the\u00a0day. ",
+                "uri": "",
+                "bbox": [
+                    45.3543,
+                    247.0372,
+                    130.6933,
+                    253.0472
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L25",
+                "type": "line",
+                "text": "that the path to scaling AI enterprise-wide is non-linear. ",
+                "uri": "",
+                "bbox": [
+                    314.5039,
+                    252.7072,
+                    545.843,
+                    258.7172
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L26",
+                "type": "line",
+                "text": "Such times of intense uncertainty, great short-term ",
+                "uri": "",
+                "bbox": [
+                    45.3543,
+                    265.7072,
+                    258.9813,
+                    271.7172
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L27",
+                "type": "line",
+                "text": "Often, organizations, seeking to mine value from data and ",
+                "uri": "",
+                "bbox": [
+                    314.5039,
+                    265.7072,
+                    556.3229,
+                    271.7172
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L28",
+                "type": "line",
+                "text": "pressure, and crunched resources require that companies ",
+                "uri": "",
+                "bbox": [
+                    45.3543,
+                    278.7072,
+                    285.2323,
+                    284.7172
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L29",
+                "type": "line",
+                "text": "AI models, successfully undertake pilots but fail to factor in ",
+                "uri": "",
+                "bbox": [
+                    314.5039,
+                    278.7072,
+                    558.9938,
+                    284.7172
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L30",
+                "type": "line",
+                "text": "must become better, more efficient in their ability to be ",
+                "uri": "",
+                "bbox": [
+                    45.3543,
+                    291.7072,
+                    277.0303,
+                    297.7172
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L31",
+                "type": "line",
+                "text": "what it will take to scale value across the whole enterprise. ",
+                "uri": "",
+                "bbox": [
+                    314.5039,
+                    291.7072,
+                    557.2328,
+                    297.7172
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L32",
+                "type": "line",
+                "text": "resilient in the present while also securing their future ",
+                "uri": "",
+                "bbox": [
+                    45.3543,
+                    304.7072,
+                    270.7703,
+                    310.7172
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L33",
+                "type": "line",
+                "text": "As demands increase, data volumes grow, and complexity ",
+                "uri": "",
+                "bbox": [
+                    314.5039,
+                    304.7072,
+                    555.1338,
+                    310.7172
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L34",
+                "type": "line",
+                "text": "growth. This is easier said than done. The extreme volatility ",
+                "uri": "",
+                "bbox": [
+                    45.3543,
+                    317.7072,
+                    291.0712,
+                    323.7172
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L35",
+                "type": "line",
+                "text": "rises, companies find themselves unable to surmount the ",
+                "uri": "",
+                "bbox": [
+                    314.5039,
+                    317.7072,
+                    552.7018,
+                    323.7172
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L36",
+                "type": "line",
+                "text": "that surrounds us creates so many probable future states, ",
+                "uri": "",
+                "bbox": [
+                    45.3543,
+                    330.7072,
+                    284.9313,
+                    336.7172
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L37",
+                "type": "line",
+                "text": "associated challenges and start to question the path to ",
+                "uri": "",
+                "bbox": [
+                    314.5039,
+                    330.7072,
+                    543.3228,
+                    336.7172
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L38",
+                "type": "line",
+                "text": "that it simply isn\u2019t prudent for businesses to plan to ",
+                "uri": "",
+                "bbox": [
+                    45.3543,
+                    343.7072,
+                    259.6813,
+                    349.7172
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L39",
+                "type": "line",
+                "text": "value. Navigating to value-at-scale from AI and retaining ",
+                "uri": "",
+                "bbox": [
+                    314.5039,
+                    343.7072,
+                    548.8149,
+                    349.7172
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L40",
+                "type": "line",
+                "text": "succeed in any one anticipated future scenario. Instead, we ",
+                "uri": "",
+                "bbox": [
+                    45.3543,
+                    356.7072,
+                    291.5813,
+                    362.7172
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L41",
+                "type": "line",
+                "text": "the larger strategic vision while breaking down the tasks ",
+                "uri": "",
+                "bbox": [
+                    314.5039,
+                    356.7072,
+                    549.174,
+                    362.7172
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L42",
+                "type": "line",
+                "text": "need to develop the flexibility to be able to avoid limiting ",
+                "uri": "",
+                "bbox": [
+                    45.3543,
+                    369.7072,
+                    285.6202,
+                    375.7172
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L43",
+                "type": "line",
+                "text": "into sequential small wins, is not always intuitive or simple. ",
+                "uri": "",
+                "bbox": [
+                    314.5039,
+                    369.7072,
+                    558.8329,
+                    375.7172
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L44",
+                "type": "line",
+                "text": "choices, reduce concentration risk, quickly adapt, and learn ",
+                "uri": "",
+                "bbox": [
+                    45.3543,
+                    382.7072,
+                    292.4613,
+                    388.7172
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L45",
+                "type": "line",
+                "text": "With our AI-first strategy, Infosys is guided by that road ",
+                "uri": "",
+                "bbox": [
+                    314.5039,
+                    382.7072,
+                    542.5449,
+                    388.7172
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L46",
+                "type": "line",
+                "text": "to thrive in any new reality. ",
+                "uri": "",
+                "bbox": [
+                    45.3543,
+                    395.7072,
+                    159.2923,
+                    401.7172
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L47",
+                "type": "line",
+                "text": "map. We are also bringing to our global clients the ability ",
+                "uri": "",
+                "bbox": [
+                    314.5039,
+                    395.7072,
+                    551.473,
+                    401.7172
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L48",
+                "type": "line",
+                "text": "The era of optionality is upon us.",
+                "uri": "",
+                "bbox": [
+                    45.3543,
+                    414.3772,
+                    180.4623,
+                    420.3872
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L49",
+                "type": "line",
+                "text": "to accelerate business value and amplify human potential ",
+                "uri": "",
+                "bbox": [
+                    314.5039,
+                    408.7072,
+                    554.5939,
+                    414.7172
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L50",
+                "type": "line",
+                "text": "using AI technologies with Infosys TopazTM.",
+                "uri": "",
+                "bbox": [
+                    314.5039,
+                    421.7072,
+                    490.7931,
+                    427.7165
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L51",
+                "type": "line",
+                "text": "Optionality can take various forms. In our IT infrastructure, ",
+                "uri": "",
+                "bbox": [
+                    45.3543,
+                    433.0472,
+                    288.1903,
+                    439.0572
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L52",
+                "type": "line",
+                "text": "it is the ability to dynamically reconfigure the way we ",
+                "uri": "",
+                "bbox": [
+                    45.3543,
+                    446.0472,
+                    267.9902,
+                    452.0572
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L53",
+                "type": "line",
+                "text": "The digital transformation of every industry and every ",
+                "uri": "",
+                "bbox": [
+                    314.5031,
+                    440.3765,
+                    540.4,
+                    446.3865
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L54",
+                "type": "line",
+                "text": "work \u2013 remotely, in office or hybrid. In the area of talent, it ",
+                "uri": "",
+                "bbox": [
+                    45.3543,
+                    459.0472,
+                    286.6613,
+                    465.0572
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L55",
+                "type": "line",
+                "text": "business, over the last several years, has laid the foundation ",
+                "uri": "",
+                "bbox": [
+                    314.5031,
+                    453.3765,
+                    562.9,
+                    459.3865
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L56",
+                "type": "line",
+                "text": "is about building and deploying agile learning platforms ",
+                "uri": "",
+                "bbox": [
+                    45.3543,
+                    472.0472,
+                    281.3903,
+                    478.0572
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L57",
+                "type": "line",
+                "text": "to create optionality as we navigate the way forward. ",
+                "uri": "",
+                "bbox": [
+                    314.5031,
+                    466.3765,
+                    536.0001,
+                    472.3865
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L58",
+                "type": "line",
+                "text": "so that our people can hone their skill sets to match ",
+                "uri": "",
+                "bbox": [
+                    45.3543,
+                    485.0472,
+                    261.7813,
+                    491.0572
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L59",
+                "type": "line",
+                "text": "Our clients have always trusted us to assist them not only ",
+                "uri": "",
+                "bbox": [
+                    314.5031,
+                    479.3765,
+                    553.531,
+                    485.3865
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L60",
+                "type": "line",
+                "text": "new demand and new technologies. It is about having a ",
+                "uri": "",
+                "bbox": [
+                    45.3543,
+                    498.0472,
+                    279.7613,
+                    504.0572
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L61",
+                "type": "line",
+                "text": "to make the right digital investments but to safeguard ",
+                "uri": "",
+                "bbox": [
+                    314.5031,
+                    492.3765,
+                    540.8901,
+                    498.3865
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L62",
+                "type": "line",
+                "text": "digital-first and AI-first business architecture which can ",
+                "uri": "",
+                "bbox": [
+                    45.3543,
+                    511.0472,
+                    275.1312,
+                    517.0572
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L63",
+                "type": "line",
+                "text": "these investments for their future. Today, we are excited ",
+                "uri": "",
+                "bbox": [
+                    314.5031,
+                    505.3765,
+                    547.27,
+                    511.3865
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L64",
+                "type": "line",
+                "text": "be constantly configured. It is finding the right balance ",
+                "uri": "",
+                "bbox": [
+                    45.3543,
+                    524.0472,
+                    274.8702,
+                    530.0572
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L65",
+                "type": "line",
+                "text": "by the opportunity and humbled by the responsibility we ",
+                "uri": "",
+                "bbox": [
+                    314.5031,
+                    518.3765,
+                    555.0591,
+                    524.3865
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L66",
+                "type": "line",
+                "text": "between retaining the core of a company and working ",
+                "uri": "",
+                "bbox": [
+                    45.3543,
+                    537.0472,
+                    273.5313,
+                    543.0572
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L67",
+                "type": "line",
+                "text": "have to enable them to bring all their digital capabilities ",
+                "uri": "",
+                "bbox": [
+                    314.5031,
+                    531.3765,
+                    548.8401,
+                    537.3865
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L68",
+                "type": "line",
+                "text": "with partners on others. Optionality must be ingrained in ",
+                "uri": "",
+                "bbox": [
+                    45.3543,
+                    550.0472,
+                    284.3103,
+                    556.0572
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L69",
+                "type": "line",
+                "text": "together to execute quickly and effectively for now, while ",
+                "uri": "",
+                "bbox": [
+                    314.5031,
+                    544.3765,
+                    554.3801,
+                    550.3865
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L70",
+                "type": "line",
+                "text": "strategy and execution.",
+                "uri": "",
+                "bbox": [
+                    45.3543,
+                    563.0472,
+                    142.6533,
+                    569.0572
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L71",
+                "type": "line",
+                "text": "developing multiple options to amplify their competitive ",
+                "uri": "",
+                "bbox": [
+                    314.5031,
+                    557.3765,
+                    552.849,
+                    563.3865
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L72",
+                "type": "line",
+                "text": "advantage and market leadership in an uncertain future. ",
+                "uri": "",
+                "bbox": [
+                    314.5031,
+                    570.3765,
+                    550.5491,
+                    576.3865
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L73",
+                "type": "line",
+                "text": "Our CEO, Salil Parekh, and his global leadership team, ",
+                "uri": "",
+                "bbox": [
+                    45.3543,
+                    581.7172,
+                    268.1603,
+                    587.7272
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L74",
+                "type": "line",
+                "text": "Our client relevance has never been so compelling, our ",
+                "uri": "",
+                "bbox": [
+                    314.5031,
+                    583.3765,
+                    544.34,
+                    589.3865
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L75",
+                "type": "line",
+                "text": "realized early on the value that advanced digital ",
+                "uri": "",
+                "bbox": [
+                    45.3543,
+                    594.7172,
+                    246.4212,
+                    600.7272
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L76",
+                "type": "line",
+                "text": "investment in employees as continuous and consistent, ",
+                "uri": "",
+                "bbox": [
+                    314.5031,
+                    596.3765,
+                    546.28,
+                    602.3865
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L77",
+                "type": "line",
+                "text": "technologies like AI and cloud, and more recently, ",
+                "uri": "",
+                "bbox": [
+                    45.3543,
+                    607.7172,
+                    253.9013,
+                    613.7272
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L78",
+                "type": "line",
+                "text": "and our purpose so keen. We are ready to co-create with ",
+                "uri": "",
+                "bbox": [
+                    314.5031,
+                    609.3765,
+                    549.9801,
+                    615.3865
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L79",
+                "type": "line",
+                "text": "generative AI, can bring to imagine and execute for ",
+                "uri": "",
+                "bbox": [
+                    45.3543,
+                    620.7172,
+                    259.8212,
+                    626.7272
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L80",
+                "type": "line",
+                "text": "our clients and our entire ecosystem a flexible future that ",
+                "uri": "",
+                "bbox": [
+                    314.5031,
+                    622.3765,
+                    553.1501,
+                    628.3865
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L81",
+                "type": "line",
+                "text": "multiple options in the future. They came together as ",
+                "uri": "",
+                "bbox": [
+                    45.3543,
+                    633.7172,
+                    267.9912,
+                    639.7272
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L82",
+                "type": "line",
+                "text": "puts people first and benefits the broader society even as ",
+                "uri": "",
+                "bbox": [
+                    314.5031,
+                    635.3765,
+                    554.4291,
+                    641.3865
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L83",
+                "type": "line",
+                "text": "One Infosys to orchestrate teams that lead the charge to ",
+                "uri": "",
+                "bbox": [
+                    45.3543,
+                    646.7122,
+                    277.8323,
+                    652.7272
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L84",
+                "type": "line",
+                "text": "it propels business forward. After all, like many have said, ",
+                "uri": "",
+                "bbox": [
+                    314.5031,
+                    648.3765,
+                    551.969,
+                    654.3865
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L85",
+                "type": "line",
+                "text": "continually transform Infosys into an organization that truly ",
+                "uri": "",
+                "bbox": [
+                    45.3543,
+                    659.7172,
+                    293.9643,
+                    665.7272
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L86",
+                "type": "line",
+                "text": "imagination is our invisible power to create all things. Our ",
+                "uri": "",
+                "bbox": [
+                    314.5031,
+                    661.3715,
+                    544.7573,
+                    667.3865
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L87",
+                "type": "line",
+                "text": "realizes human-machine synergies, from fundamentally ",
+                "uri": "",
+                "bbox": [
+                    45.3543,
+                    672.7172,
+                    277.7613,
+                    678.7272
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L88",
+                "type": "line",
+                "text": "future can be as bright as we imagine it to be.",
+                "uri": "",
+                "bbox": [
+                    314.5031,
+                    674.3715,
+                    493.6482,
+                    680.3865
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L89",
+                "type": "line",
+                "text": "rethinking organizational design to segmenting cognitive ",
+                "uri": "",
+                "bbox": [
+                    45.3543,
+                    685.7172,
+                    286.8712,
+                    691.7272
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L90",
+                "type": "line",
+                "text": "tasks to get the right balance between people, technology, ",
+                "uri": "",
+                "bbox": [
+                    45.3543,
+                    698.7172,
+                    291.7102,
+                    704.7272
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L91",
+                "type": "line",
+                "text": "Bengaluru",
+                "uri": "",
+                "bbox": [
+                    318.5039,
+                    696.7471,
+                    352.9679,
+                    701.5551
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L92",
+                "type": "line",
+                "text": "Nandan M. Nilekani",
+                "uri": "",
+                "bbox": [
+                    472.3679,
+                    695.4451,
+                    556.9769,
+                    701.5551
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L93",
+                "type": "line",
+                "text": "May 29, 2023",
+                "uri": "",
+                "bbox": [
+                    318.5039,
+                    706.7471,
+                    362.216,
+                    711.5551
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L94",
+                "type": "line",
+                "text": "Chairman",
+                "uri": "",
+                "bbox": [
+                    524.5519,
+                    706.7471,
+                    556.976,
+                    711.5551
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L95",
+                "type": "line",
+                "text": "Nandan M. Nilekani",
+                "uri": "",
+                "bbox": [
+                    1078.0372,
+                    703.09,
+                    1162.646,
+                    709.2
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L96",
+                "type": "line",
+                "text": "and process. Today, Infosys is steadily progressing towards ",
+                "uri": "",
+                "bbox": [
+                    45.3543,
+                    711.7172,
+                    288.4113,
+                    717.7272
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L97",
+                "type": "line",
+                "text": "Chairman",
+                "uri": "",
+                "bbox": [
+                    1078.0372,
+                    714.591,
+                    1114.5142,
+                    720.0
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L98",
+                "type": "line",
+                "text": "a future where we don\u2019t just solve immediate business ",
+                "uri": "",
+                "bbox": [
+                    45.3543,
+                    724.7172,
+                    272.4423,
+                    730.7272
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L99",
+                "type": "line",
+                "text": "30",
+                "uri": "",
+                "bbox": [
+                    45.3543,
+                    764.8455,
+                    53.5623,
+                    769.6535
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L100",
+                "type": "line",
+                "text": "Infosys Integrated Annual Report 2022-23",
+                "uri": "",
+                "bbox": [
+                    422.4026,
+                    764.8455,
+                    560.977,
+                    769.6535
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L101",
+                "type": "line",
+                "text": "Infosys Integrated Annual Report 2022-23",
+                "uri": "",
+                "bbox": [
+                    663.0266,
+                    764.8455,
+                    801.6014,
+                    769.6535
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P2_L102",
+                "type": "line",
+                "text": "31",
+                "uri": "",
+                "bbox": [
+                    1170.4342,
+                    764.8455,
+                    1178.6422,
+                    769.6535
+                ],
+                "tokens": []
+            }
+        ]
+    },
+    {
+        "page": 3,
+        "width": 1224.0,
+        "height": 792.0,
+        "bbox": "X1,Y1,X2,Y2",
+        "tokens": [
+            {
+                "id": "P3_L1",
+                "type": "line",
+                "text": "Performance overview",
+                "uri": "",
+                "bbox": [
+                    45.3543,
+                    38.3152,
+                    176.3649,
+                    46.9252
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L2",
+                "type": "line",
+                "text": "Letter to the Shareholder",
+                "uri": "",
+                "bbox": [
+                    45.3543,
+                    53.8114,
+                    284.3199,
+                    68.0314
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L3",
+                "type": "line",
+                "text": "Dear shareholder,",
+                "uri": "",
+                "bbox": [
+                    45.3543,
+                    86.5294,
+                    118.6433,
+                    92.5394
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L4",
+                "type": "line",
+                "text": "Financial year 2023 was a strong year for our business.",
+                "uri": "",
+                "bbox": [
+                    45.3543,
+                    105.1994,
+                    268.9913,
+                    111.2094
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L5",
+                "type": "line",
+                "text": "Our learning ecosystem enabled over 5.5 million learning ",
+                "uri": "",
+                "bbox": [
+                    314.5065,
+                    103.5366,
+                    553.9125,
+                    109.5466
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L6",
+                "type": "line",
+                "text": "days for our employees during the year. ",
+                "uri": "",
+                "bbox": [
+                    314.5065,
+                    116.5366,
+                    480.6245,
+                    122.5466
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L7",
+                "type": "line",
+                "text": "In FY23, we saw growth of over 15%, operating margins ",
+                "uri": "",
+                "bbox": [
+                    45.3543,
+                    123.8694,
+                    277.6513,
+                    129.8794
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L8",
+                "type": "line",
+                "text": "of 21%, and free cash flow of US$2.5 billion. Our attrition ",
+                "uri": "",
+                "bbox": [
+                    45.3543,
+                    136.8694,
+                    281.2303,
+                    142.8794
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L9",
+                "type": "line",
+                "text": "Last year we returned US$3.1 billion to our shareholders \u2013 ",
+                "uri": "",
+                "bbox": [
+                    314.5065,
+                    135.2066,
+                    555.7934,
+                    141.2166
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L10",
+                "type": "line",
+                "text": "reduced for each quarter of the year.",
+                "uri": "",
+                "bbox": [
+                    45.3543,
+                    149.8694,
+                    196.4123,
+                    155.8794
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L11",
+                "type": "line",
+                "text": "US$1.7 billion as dividend and US$1.4 billion through our ",
+                "uri": "",
+                "bbox": [
+                    314.5065,
+                    148.2066,
+                    553.7625,
+                    154.2166
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L12",
+                "type": "line",
+                "text": "share buyback program.",
+                "uri": "",
+                "bbox": [
+                    314.5065,
+                    161.2066,
+                    415.1755,
+                    167.2166
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L13",
+                "type": "line",
+                "text": "With the changing economic environment, we positioned ",
+                "uri": "",
+                "bbox": [
+                    45.3543,
+                    168.5394,
+                    287.1823,
+                    174.5494
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L14",
+                "type": "line",
+                "text": "our Company to work with clients for their digital ",
+                "uri": "",
+                "bbox": [
+                    45.3543,
+                    181.5394,
+                    251.2512,
+                    187.5494
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L15",
+                "type": "line",
+                "text": "At the end of the financial year, we were the leading ",
+                "uri": "",
+                "bbox": [
+                    314.5065,
+                    179.8766,
+                    531.8335,
+                    185.8866
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L16",
+                "type": "line",
+                "text": "transformation as well as their cost efficiency and ",
+                "uri": "",
+                "bbox": [
+                    45.3543,
+                    194.5394,
+                    251.7313,
+                    200.5494
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L17",
+                "type": "line",
+                "text": "company among our peers in total shareholder return over ",
+                "uri": "",
+                "bbox": [
+                    314.5065,
+                    192.8766,
+                    560.6934,
+                    198.8866
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L18",
+                "type": "line",
+                "text": "automation programs, enabling us to support them in two ",
+                "uri": "",
+                "bbox": [
+                    45.3543,
+                    207.5394,
+                    290.0202,
+                    213.5494
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L19",
+                "type": "line",
+                "text": "the past five years.",
+                "uri": "",
+                "bbox": [
+                    314.5065,
+                    205.8766,
+                    391.1255,
+                    211.8866
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L20",
+                "type": "line",
+                "text": "critical areas of interest.",
+                "uri": "",
+                "bbox": [
+                    45.3543,
+                    220.5394,
+                    142.9433,
+                    226.5494
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L21",
+                "type": "line",
+                "text": "We remain committed to the communities we live and ",
+                "uri": "",
+                "bbox": [
+                    314.5065,
+                    224.5466,
+                    542.0145,
+                    230.5566
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L22",
+                "type": "line",
+                "text": "We have developed a strong set of capabilities in ",
+                "uri": "",
+                "bbox": [
+                    45.3543,
+                    239.2094,
+                    249.7733,
+                    245.2194
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L23",
+                "type": "line",
+                "text": "operate in. With the work of Infosys Foundation, we ",
+                "uri": "",
+                "bbox": [
+                    314.5065,
+                    237.5466,
+                    529.6133,
+                    243.5566
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L24",
+                "type": "line",
+                "text": "generative artificial intelligence to enhance how we enable ",
+                "uri": "",
+                "bbox": [
+                    45.3543,
+                    252.2094,
+                    292.5212,
+                    258.2194
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L25",
+                "type": "line",
+                "text": "support a variety of social causes, including creating ",
+                "uri": "",
+                "bbox": [
+                    314.5065,
+                    250.5466,
+                    532.9536,
+                    256.5566
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L26",
+                "type": "line",
+                "text": "our clients to derive value. These capabilities are available ",
+                "uri": "",
+                "bbox": [
+                    45.3543,
+                    265.2094,
+                    285.9413,
+                    271.2194
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L27",
+                "type": "line",
+                "text": "positive impact in healthcare, education, sustainability, and ",
+                "uri": "",
+                "bbox": [
+                    314.5065,
+                    263.5466,
+                    562.2026,
+                    269.5566
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L28",
+                "type": "line",
+                "text": "to all our clients in the form of Infosys TopazTM.",
+                "uri": "",
+                "bbox": [
+                    45.3543,
+                    278.2094,
+                    236.5265,
+                    284.2166
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L29",
+                "type": "line",
+                "text": "women empowerment. Our Infosys Springboard initiative ",
+                "uri": "",
+                "bbox": [
+                    314.5065,
+                    276.5466,
+                    555.9635,
+                    282.5566
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L30",
+                "type": "line",
+                "text": "continues to help build digital skills by providing free ",
+                "uri": "",
+                "bbox": [
+                    314.5065,
+                    289.5466,
+                    536.7424,
+                    295.5566
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L31",
+                "type": "line",
+                "text": "Our Cobalt capabilities for the cloud continue to resonate ",
+                "uri": "",
+                "bbox": [
+                    45.3565,
+                    296.8766,
+                    285.6524,
+                    302.8866
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L32",
+                "type": "line",
+                "text": "learning programs to millions of people around the world.",
+                "uri": "",
+                "bbox": [
+                    314.5065,
+                    302.5466,
+                    555.4324,
+                    308.5566
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L33",
+                "type": "line",
+                "text": "with our clients. Our platforms, including Finacle for banks, ",
+                "uri": "",
+                "bbox": [
+                    45.3565,
+                    309.8766,
+                    290.6334,
+                    315.8866
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L34",
+                "type": "line",
+                "text": "McCamish for insurance, Equinox for commerce, and Helix ",
+                "uri": "",
+                "bbox": [
+                    45.3565,
+                    322.8766,
+                    287.9745,
+                    328.8866
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L35",
+                "type": "line",
+                "text": "In the past few quarters, we have seen the global ",
+                "uri": "",
+                "bbox": [
+                    314.5065,
+                    321.2166,
+                    519.4645,
+                    327.2266
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L36",
+                "type": "line",
+                "text": "for healthcare, are creating strong impact with clients. ",
+                "uri": "",
+                "bbox": [
+                    45.3565,
+                    335.8766,
+                    270.7935,
+                    341.8866
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L37",
+                "type": "line",
+                "text": "economy dealing with inflation, interest rate increases, ",
+                "uri": "",
+                "bbox": [
+                    314.5065,
+                    334.2166,
+                    542.8835,
+                    340.2266
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L38",
+                "type": "line",
+                "text": "and changes in demand environment for companies in ",
+                "uri": "",
+                "bbox": [
+                    314.5065,
+                    347.2166,
+                    544.3445,
+                    353.2266
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L39",
+                "type": "line",
+                "text": "During the year, we were recognized by Brand Finance ",
+                "uri": "",
+                "bbox": [
+                    45.3565,
+                    354.5466,
+                    272.9135,
+                    360.5566
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L40",
+                "type": "line",
+                "text": "various industries. Our strength in digital, cloud, and in ",
+                "uri": "",
+                "bbox": [
+                    314.5065,
+                    360.2166,
+                    543.3734,
+                    366.2266
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L41",
+                "type": "line",
+                "text": "among the top three most valuable IT services brands ",
+                "uri": "",
+                "bbox": [
+                    45.3565,
+                    367.5466,
+                    270.2835,
+                    373.5566
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L42",
+                "type": "line",
+                "text": "automation, along with cost efficiency capabilities have ",
+                "uri": "",
+                "bbox": [
+                    314.5065,
+                    373.2166,
+                    546.9525,
+                    379.2266
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L43",
+                "type": "line",
+                "text": "globally.",
+                "uri": "",
+                "bbox": [
+                    45.3565,
+                    380.5466,
+                    80.4155,
+                    386.5566
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L44",
+                "type": "line",
+                "text": "held us in good stead. These will continue to be critical in ",
+                "uri": "",
+                "bbox": [
+                    314.5065,
+                    386.2166,
+                    553.0734,
+                    392.2266
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L45",
+                "type": "line",
+                "text": "We continue to deepen our engagement with our clients. ",
+                "uri": "",
+                "bbox": [
+                    45.3565,
+                    399.2166,
+                    285.1335,
+                    405.2267
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L46",
+                "type": "line",
+                "text": "the evolving economic environment.",
+                "uri": "",
+                "bbox": [
+                    314.5065,
+                    399.2166,
+                    467.7144,
+                    405.2266
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L47",
+                "type": "line",
+                "text": "The number of clients with over US$100 million in revenue ",
+                "uri": "",
+                "bbox": [
+                    45.3565,
+                    412.2166,
+                    290.2925,
+                    418.2267
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L48",
+                "type": "line",
+                "text": "As I look ahead, given the trust of our clients, the ",
+                "uri": "",
+                "bbox": [
+                    314.5065,
+                    417.8866,
+                    517.9234,
+                    423.8966
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L49",
+                "type": "line",
+                "text": "for the year was at 40. The number of clients with over ",
+                "uri": "",
+                "bbox": [
+                    45.3565,
+                    425.2166,
+                    271.2134,
+                    431.2267
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L50",
+                "type": "line",
+                "text": "dedication of our employees, the strength of our ",
+                "uri": "",
+                "bbox": [
+                    314.5065,
+                    430.8866,
+                    518.0944,
+                    436.8966
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L51",
+                "type": "line",
+                "text": "US$50 million in revenue for the year was at 75. Our large ",
+                "uri": "",
+                "bbox": [
+                    45.3565,
+                    438.2166,
+                    284.5424,
+                    444.2267
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L52",
+                "type": "line",
+                "text": "capabilities, our One Infosys approach, and the guidance ",
+                "uri": "",
+                "bbox": [
+                    314.5065,
+                    443.8866,
+                    551.7325,
+                    449.8966
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L53",
+                "type": "line",
+                "text": "deal intensity was strong during the year. We had 95 large ",
+                "uri": "",
+                "bbox": [
+                    45.3565,
+                    451.2166,
+                    286.8224,
+                    457.2267
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L54",
+                "type": "line",
+                "text": "of our Board, I remain confident of our ability to serve our ",
+                "uri": "",
+                "bbox": [
+                    314.5065,
+                    456.8866,
+                    554.5425,
+                    462.8966
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L55",
+                "type": "line",
+                "text": "deals with a value of US$9.8 billion in the year. We see ",
+                "uri": "",
+                "bbox": [
+                    45.3565,
+                    464.2166,
+                    269.6025,
+                    470.2267
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L56",
+                "type": "line",
+                "text": "clients and continue to create impact for them.",
+                "uri": "",
+                "bbox": [
+                    314.5065,
+                    469.8866,
+                    508.8445,
+                    475.8966
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L57",
+                "type": "line",
+                "text": "our One Infosys approach helping support our clients by ",
+                "uri": "",
+                "bbox": [
+                    45.3565,
+                    477.2166,
+                    281.5724,
+                    483.2267
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L58",
+                "type": "line",
+                "text": "bringing all our capabilities and the strength of our entire ",
+                "uri": "",
+                "bbox": [
+                    45.3565,
+                    490.2166,
+                    285.7825,
+                    496.2267
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L59",
+                "type": "line",
+                "text": "With my warmest regards,",
+                "uri": "",
+                "bbox": [
+                    314.5065,
+                    488.5566,
+                    422.6754,
+                    494.5666
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L60",
+                "type": "line",
+                "text": "employee-base to work for their benefit.",
+                "uri": "",
+                "bbox": [
+                    45.3565,
+                    503.2166,
+                    212.6245,
+                    509.2267
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L61",
+                "type": "line",
+                "text": "Sd/-",
+                "uri": "",
+                "bbox": [
+                    543.2726,
+                    509.4243,
+                    556.9766,
+                    514.2323
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L62",
+                "type": "line",
+                "text": "We recruited over 50,000 college graduates in the year and ",
+                "uri": "",
+                "bbox": [
+                    45.3565,
+                    521.8867,
+                    290.9435,
+                    527.8967
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L63",
+                "type": "line",
+                "text": "Bengaluru",
+                "uri": "",
+                "bbox": [
+                    318.5046,
+                    526.4243,
+                    352.9686,
+                    531.2323
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L64",
+                "type": "line",
+                "text": "Salil Parekh",
+                "uri": "",
+                "bbox": [
+                    506.8374,
+                    525.1223,
+                    556.9764,
+                    531.2323
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L65",
+                "type": "line",
+                "text": "ended the year with over 3,40,000 employees. At the end ",
+                "uri": "",
+                "bbox": [
+                    45.3565,
+                    534.8867,
+                    283.6435,
+                    540.8967
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L66",
+                "type": "line",
+                "text": "May 29, 2023",
+                "uri": "",
+                "bbox": [
+                    318.5039,
+                    536.4243,
+                    362.216,
+                    541.2323
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L67",
+                "type": "line",
+                "text": "Chief Executive Officer and Managing Director",
+                "uri": "",
+                "bbox": [
+                    403.3519,
+                    536.4243,
+                    556.9737,
+                    541.2323
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L68",
+                "type": "line",
+                "text": "of the year, 39% of our employees were women.",
+                "uri": "",
+                "bbox": [
+                    45.3565,
+                    547.8867,
+                    244.2835,
+                    553.8967
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L69",
+                "type": "line",
+                "text": "Salil Parekh",
+                "uri": "",
+                "bbox": [
+                    663.0236,
+                    690.2089,
+                    713.1627,
+                    696.3189
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L70",
+                "type": "line",
+                "text": "Chief Executive Officer and ",
+                "uri": "",
+                "bbox": [
+                    663.0236,
+                    701.7099,
+                    765.4515,
+                    707.1189
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L71",
+                "type": "line",
+                "text": "Managing Director",
+                "uri": "",
+                "bbox": [
+                    663.0236,
+                    712.5099,
+                    733.4208,
+                    717.9189
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L72",
+                "type": "line",
+                "text": "32",
+                "uri": "",
+                "bbox": [
+                    45.3543,
+                    764.8455,
+                    53.5623,
+                    769.6535
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L73",
+                "type": "line",
+                "text": "Infosys Integrated Annual Report 2022-23",
+                "uri": "",
+                "bbox": [
+                    422.4026,
+                    764.8455,
+                    560.977,
+                    769.6535
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L74",
+                "type": "line",
+                "text": "Infosys Integrated Annual Report 2022-23",
+                "uri": "",
+                "bbox": [
+                    663.0266,
+                    764.8455,
+                    801.6014,
+                    769.6535
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P3_L75",
+                "type": "line",
+                "text": "33",
+                "uri": "",
+                "bbox": [
+                    1170.4342,
+                    764.8455,
+                    1178.6422,
+                    769.6535
+                ],
+                "tokens": []
+            }
+        ]
+    },
+    {
+        "page": 4,
+        "width": 1224.0,
+        "height": 792.0,
+        "bbox": "X1,Y1,X2,Y2",
+        "tokens": [
+            {
+                "id": "P4_L1",
+                "type": "line",
+                "text": "Performance overview",
+                "uri": "",
+                "bbox": [
+                    45.3543,
+                    38.0436,
+                    176.3649,
+                    46.6536
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L2",
+                "type": "line",
+                "text": "Awards and recognitions",
+                "uri": "",
+                "bbox": [
+                    45.3543,
+                    53.5398,
+                    283.0959,
+                    67.7598
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L3",
+                "type": "line",
+                "text": "Won the FE CFO Awards 2023 in the ",
+                "uri": "",
+                "bbox": [
+                    663.9974,
+                    86.5198,
+                    820.0456,
+                    92.5298
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L4",
+                "type": "line",
+                "text": "Recognized as one of the \u201cMost ",
+                "uri": "",
+                "bbox": [
+                    842.4562,
+                    89.365,
+                    979.7723,
+                    95.375
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L5",
+                "type": "line",
+                "text": "Large Enterprises - Servicing Sector ",
+                "uri": "",
+                "bbox": [
+                    663.9974,
+                    98.5198,
+                    812.7522,
+                    104.5298
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L6",
+                "type": "line",
+                "text": "Honored\u201d companies, receiving ",
+                "uri": "",
+                "bbox": [
+                    842.4562,
+                    101.18,
+                    982.5495,
+                    107.375
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L7",
+                "type": "line",
+                "text": "category.",
+                "uri": "",
+                "bbox": [
+                    663.9974,
+                    110.5198,
+                    702.6815,
+                    116.5298
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L8",
+                "type": "line",
+                "text": "multiple awards at the 2022 All-",
+                "uri": "",
+                "bbox": [
+                    842.4562,
+                    113.365,
+                    973.5892,
+                    119.375
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L9",
+                "type": "line",
+                "text": "Asia Executive Team Rankings from ",
+                "uri": "",
+                "bbox": [
+                    842.4562,
+                    125.365,
+                    990.9113,
+                    131.375
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L10",
+                "type": "line",
+                "text": "Won Treasury Today Asia\u2019s Top ",
+                "uri": "",
+                "bbox": [
+                    663.9974,
+                    133.8598,
+                    796.1006,
+                    139.8698
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L11",
+                "type": "line",
+                "text": "Institutional Investor",
+                "uri": "",
+                "bbox": [
+                    842.4562,
+                    137.365,
+                    928.2371,
+                    143.375
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L12",
+                "type": "line",
+                "text": "Treasury Team 2022 award at the ",
+                "uri": "",
+                "bbox": [
+                    663.9974,
+                    145.6748,
+                    809.4705,
+                    151.8698
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L13",
+                "type": "line",
+                "text": "Adam Smith Awards Asia 2022",
+                "uri": "",
+                "bbox": [
+                    663.9974,
+                    157.8598,
+                    789.9096,
+                    163.8698
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L14",
+                "type": "line",
+                "text": "Positioned as a leader in HFS Top ",
+                "uri": "",
+                "bbox": [
+                    1027.1375,
+                    197.3699,
+                    1168.1313,
+                    203.3799
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L15",
+                "type": "line",
+                "text": "10: Capital Markets Services, 2022",
+                "uri": "",
+                "bbox": [
+                    1027.0574,
+                    209.3699,
+                    1166.1035,
+                    215.3799
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L16",
+                "type": "line",
+                "text": "Infosys InStep Ranked as the \u2018Best ",
+                "uri": "",
+                "bbox": [
+                    845.6555,
+                    253.1199,
+                    989.7256,
+                    259.1299
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L17",
+                "type": "line",
+                "text": "ESG",
+                "uri": "",
+                "bbox": [
+                    45.4803,
+                    263.8427,
+                    69.9215,
+                    272.5157
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L18",
+                "type": "line",
+                "text": "Business",
+                "uri": "",
+                "bbox": [
+                    404.2205,
+                    263.8144,
+                    458.2913,
+                    272.4874
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L19",
+                "type": "line",
+                "text": "Internship Program\u2019 in the 2023 ",
+                "uri": "",
+                "bbox": [
+                    845.6586,
+                    264.9349,
+                    986.4967,
+                    271.1299
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L20",
+                "type": "line",
+                "text": "Awarded HFS ",
+                "uri": "",
+                "bbox": [
+                    1087.7875,
+                    263.7498,
+                    1145.9304,
+                    269.7598
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L21",
+                "type": "line",
+                "text": "Recognized as a constituent of the ",
+                "uri": "",
+                "bbox": [
+                    45.4803,
+                    283.0697,
+                    196.3793,
+                    289.0797
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L22",
+                "type": "line",
+                "text": "Vault Firsthand Rankings",
+                "uri": "",
+                "bbox": [
+                    845.6586,
+                    277.1199,
+                    948.3757,
+                    283.1299
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L23",
+                "type": "line",
+                "text": "OneOffice\u2122 Award ",
+                "uri": "",
+                "bbox": [
+                    1087.7875,
+                    275.5648,
+                    1173.1575,
+                    281.7598
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L24",
+                "type": "line",
+                "text": "Awarded HFS OneOffice\u2122 Award in the ",
+                "uri": "",
+                "bbox": [
+                    221.3622,
+                    284.2685,
+                    385.4662,
+                    290.2785
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L25",
+                "type": "line",
+                "text": "Ranked in the Top 3 IT Services ",
+                "uri": "",
+                "bbox": [
+                    404.2322,
+                    284.2785,
+                    539.2773,
+                    290.2885
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L26",
+                "type": "line",
+                "text": "in the Innovation ",
+                "uri": "",
+                "bbox": [
+                    1087.7875,
+                    287.7498,
+                    1161.0188,
+                    293.7598
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L27",
+                "type": "line",
+                "text": "Dow Jones Sustainability World ",
+                "uri": "",
+                "bbox": [
+                    45.4773,
+                    294.8847,
+                    189.0543,
+                    301.0797
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L28",
+                "type": "line",
+                "text": "Sustainability category",
+                "uri": "",
+                "bbox": [
+                    221.3622,
+                    296.0835,
+                    322.9552,
+                    302.2785
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L29",
+                "type": "line",
+                "text": "Brands in the world and among ",
+                "uri": "",
+                "bbox": [
+                    404.2322,
+                    296.0935,
+                    546.4312,
+                    302.2885
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L30",
+                "type": "line",
+                "text": "Ecosystem category",
+                "uri": "",
+                "bbox": [
+                    1087.7875,
+                    299.7498,
+                    1170.9954,
+                    305.7598
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L31",
+                "type": "line",
+                "text": "Index for 2022",
+                "uri": "",
+                "bbox": [
+                    45.4773,
+                    306.8847,
+                    106.9483,
+                    313.0797
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L32",
+                "type": "line",
+                "text": "the Top 150 Most Valued Brands by ",
+                "uri": "",
+                "bbox": [
+                    404.2322,
+                    308.0935,
+                    562.1522,
+                    314.2885
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L33",
+                "type": "line",
+                "text": "Infosys rated as \u201cMost Noteworthy\u201d ",
+                "uri": "",
+                "bbox": [
+                    839.0262,
+                    307.025,
+                    995.0094,
+                    313.035
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L34",
+                "type": "line",
+                "text": "Brand Finance Global 500 2023 report",
+                "uri": "",
+                "bbox": [
+                    404.2322,
+                    320.2785,
+                    561.2762,
+                    326.2885
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L35",
+                "type": "line",
+                "text": "Named in AVTAR Top 10 Best ",
+                "uri": "",
+                "bbox": [
+                    663.1475,
+                    316.8298,
+                    788.3686,
+                    322.8398
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L36",
+                "type": "line",
+                "text": "Company by DiversityInc, USA",
+                "uri": "",
+                "bbox": [
+                    839.0262,
+                    318.84,
+                    966.9151,
+                    325.035
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L37",
+                "type": "line",
+                "text": "Secured a place in CDP\u2019s annual ",
+                "uri": "",
+                "bbox": [
+                    45.4773,
+                    330.4097,
+                    183.6433,
+                    336.4197
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L38",
+                "type": "line",
+                "text": "Recognized as a leader in Everest ",
+                "uri": "",
+                "bbox": [
+                    221.232,
+                    328.488,
+                    360.6,
+                    334.498
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L39",
+                "type": "line",
+                "text": "Companies for Women in India ",
+                "uri": "",
+                "bbox": [
+                    663.1475,
+                    328.6448,
+                    802.5674,
+                    334.8398
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L40",
+                "type": "line",
+                "text": "\u2018A List\u2019 for leadership in corporate ",
+                "uri": "",
+                "bbox": [
+                    45.4773,
+                    342.2247,
+                    189.7853,
+                    348.4197
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L41",
+                "type": "line",
+                "text": "\u2013 Sustainability Enablement ",
+                "uri": "",
+                "bbox": [
+                    221.232,
+                    340.55,
+                    349.4001,
+                    346.5605
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L42",
+                "type": "line",
+                "text": "list in 2022",
+                "uri": "",
+                "bbox": [
+                    663.1475,
+                    340.8298,
+                    707.2925,
+                    346.8398
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L43",
+                "type": "line",
+                "text": "transparency and performance on ",
+                "uri": "",
+                "bbox": [
+                    45.4773,
+                    354.4097,
+                    189.8633,
+                    360.4197
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L44",
+                "type": "line",
+                "text": "Technology Services PEAK Matrix\u00ae ",
+                "uri": "",
+                "bbox": [
+                    221.2322,
+                    352.3655,
+                    371.7572,
+                    358.5605
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L45",
+                "type": "line",
+                "text": "Assessment",
+                "uri": "",
+                "bbox": [
+                    221.2322,
+                    364.4885,
+                    270.3972,
+                    370.4985
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L46",
+                "type": "line",
+                "text": "Won the \u2018Most ",
+                "uri": "",
+                "bbox": [
+                    451.5591,
+                    359.4182,
+                    515.9741,
+                    365.4282
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L47",
+                "type": "line",
+                "text": "climate change",
+                "uri": "",
+                "bbox": [
+                    45.4773,
+                    366.4097,
+                    108.9283,
+                    372.4197
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L48",
+                "type": "line",
+                "text": "Outstanding Company ",
+                "uri": "",
+                "bbox": [
+                    451.5591,
+                    371.2332,
+                    555.2561,
+                    377.4282
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L49",
+                "type": "line",
+                "text": "Recognized among Kantar\u2019s global 100 ",
+                "uri": "",
+                "bbox": [
+                    663.1475,
+                    377.7698,
+                    828.2685,
+                    383.7798
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L50",
+                "type": "line",
+                "text": "Recognized as \u2018GSI Innovation ",
+                "uri": "",
+                "bbox": [
+                    1019.8819,
+                    374.9123,
+                    1152.752,
+                    380.9223
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L51",
+                "type": "line",
+                "text": "Ranked as a leader in HFS Top 10: ",
+                "uri": "",
+                "bbox": [
+                    221.2322,
+                    387.8285,
+                    360.4651,
+                    393.8385
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L52",
+                "type": "line",
+                "text": "in India \u2013 IT Services ",
+                "uri": "",
+                "bbox": [
+                    451.5591,
+                    383.2332,
+                    543.8612,
+                    389.4282
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L53",
+                "type": "line",
+                "text": "most valuable brands in 2022",
+                "uri": "",
+                "bbox": [
+                    663.1475,
+                    389.5848,
+                    792.2505,
+                    395.7798
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L54",
+                "type": "line",
+                "text": "Partner of the Year 2022\u2019 at ",
+                "uri": "",
+                "bbox": [
+                    1019.879,
+                    386.7273,
+                    1143.1206,
+                    392.9223
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L55",
+                "type": "line",
+                "text": "Recognized as one of ",
+                "uri": "",
+                "bbox": [
+                    109.5573,
+                    395.8397,
+                    200.1783,
+                    401.8497
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L56",
+                "type": "line",
+                "text": "Sustainability Services, 2022",
+                "uri": "",
+                "bbox": [
+                    221.2322,
+                    399.7055,
+                    347.2942,
+                    405.9005
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L57",
+                "type": "line",
+                "text": "Sector\u2019 in Asia\u2019s ",
+                "uri": "",
+                "bbox": [
+                    451.5591,
+                    395.2332,
+                    520.425,
+                    401.4282
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L58",
+                "type": "line",
+                "text": "Snowflake Summit",
+                "uri": "",
+                "bbox": [
+                    1019.879,
+                    398.9123,
+                    1098.0918,
+                    404.9223
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L59",
+                "type": "line",
+                "text": "the 2023 World\u2019s Most ",
+                "uri": "",
+                "bbox": [
+                    109.5573,
+                    407.8397,
+                    209.8774,
+                    413.8497
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L60",
+                "type": "line",
+                "text": "Outstanding Companies ",
+                "uri": "",
+                "bbox": [
+                    451.5591,
+                    407.4182,
+                    555.4471,
+                    413.4282
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L61",
+                "type": "line",
+                "text": "Recognized as UK\u2019s Best Workplaces\u2122 ",
+                "uri": "",
+                "bbox": [
+                    663.1475,
+                    413.1098,
+                    828.6587,
+                    419.1198
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L62",
+                "type": "line",
+                "text": "Ethical Companies\u00ae by ",
+                "uri": "",
+                "bbox": [
+                    109.5573,
+                    419.6547,
+                    211.2223,
+                    425.8497
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L63",
+                "type": "line",
+                "text": "Infosys BPM won the Best CSR ",
+                "uri": "",
+                "bbox": [
+                    221.2322,
+                    423.2305,
+                    350.5222,
+                    429.2405
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L64",
+                "type": "line",
+                "text": "Poll 2022 by Asiamoney",
+                "uri": "",
+                "bbox": [
+                    451.5591,
+                    419.4182,
+                    550.08,
+                    425.4282
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L65",
+                "type": "line",
+                "text": "in Tech 2022 by Great Place to Work\u00ae",
+                "uri": "",
+                "bbox": [
+                    663.1475,
+                    424.9248,
+                    817.0207,
+                    431.1198
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L66",
+                "type": "line",
+                "text": "Winner of the 2022 Microsoft ",
+                "uri": "",
+                "bbox": [
+                    1019.879,
+                    422.2523,
+                    1146.1754,
+                    428.2623
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L67",
+                "type": "line",
+                "text": "Ethisphere",
+                "uri": "",
+                "bbox": [
+                    109.5573,
+                    431.8397,
+                    154.0623,
+                    437.8497
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L68",
+                "type": "line",
+                "text": "Impact Award at the Corporate Social ",
+                "uri": "",
+                "bbox": [
+                    221.2322,
+                    435.0455,
+                    380.7181,
+                    441.2405
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L69",
+                "type": "line",
+                "text": "Security Modern Endpoint ",
+                "uri": "",
+                "bbox": [
+                    1019.879,
+                    434.0673,
+                    1140.0771,
+                    440.2623
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L70",
+                "type": "line",
+                "text": "Responsibility Summit & Awards 2023 ",
+                "uri": "",
+                "bbox": [
+                    221.2322,
+                    447.1685,
+                    379.8421,
+                    453.1785
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L71",
+                "type": "line",
+                "text": "Recognized among Mexico\u2019s Best ",
+                "uri": "",
+                "bbox": [
+                    663.1475,
+                    448.4498,
+                    808.5858,
+                    454.4598
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L72",
+                "type": "line",
+                "text": "Recognized amongst India\u2019s Best ",
+                "uri": "",
+                "bbox": [
+                    850.2175,
+                    449.9998,
+                    993.5896,
+                    456.0098
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L73",
+                "type": "line",
+                "text": "Management Partner of the Year ",
+                "uri": "",
+                "bbox": [
+                    1019.879,
+                    446.0673,
+                    1168.2711,
+                    452.2623
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L74",
+                "type": "line",
+                "text": "by UBS Forum",
+                "uri": "",
+                "bbox": [
+                    221.2322,
+                    459.1685,
+                    279.9492,
+                    465.1785
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L75",
+                "type": "line",
+                "text": "HR leaders of 2022 by Great Place ",
+                "uri": "",
+                "bbox": [
+                    663.1475,
+                    460.2648,
+                    807.3215,
+                    466.4598
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L76",
+                "type": "line",
+                "text": "Workplaces\u2122 for Women 2022 by ",
+                "uri": "",
+                "bbox": [
+                    848.4875,
+                    461.8148,
+                    995.4246,
+                    468.0098
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L77",
+                "type": "line",
+                "text": "Award ",
+                "uri": "",
+                "bbox": [
+                    1019.879,
+                    458.2523,
+                    1048.973,
+                    464.2623
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L78",
+                "type": "line",
+                "text": "to\u00a0Work\u00ae",
+                "uri": "",
+                "bbox": [
+                    663.1475,
+                    472.4498,
+                    700.0396,
+                    478.4598
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L79",
+                "type": "line",
+                "text": "Great Place to Work\u00ae",
+                "uri": "",
+                "bbox": [
+                    878.0475,
+                    473.9998,
+                    963.7436,
+                    480.0098
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L80",
+                "type": "line",
+                "text": "Recognized as a top ESG performer in ",
+                "uri": "",
+                "bbox": [
+                    221.2322,
+                    482.5085,
+                    386.4012,
+                    488.5185
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L81",
+                "type": "line",
+                "text": "Recognized as the Top Service ",
+                "uri": "",
+                "bbox": [
+                    1019.879,
+                    481.5923,
+                    1151.3079,
+                    487.6023
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L82",
+                "type": "line",
+                "text": "2023 by Sustainalytics",
+                "uri": "",
+                "bbox": [
+                    221.2322,
+                    494.3235,
+                    320.6053,
+                    500.5185
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L83",
+                "type": "line",
+                "text": "Provider Across Nordics in ",
+                "uri": "",
+                "bbox": [
+                    1019.879,
+                    493.4073,
+                    1138.6592,
+                    499.6023
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L84",
+                "type": "line",
+                "text": "Won the ICAI Sustainability ",
+                "uri": "",
+                "bbox": [
+                    838.8975,
+                    502.5998,
+                    961.1683,
+                    508.6098
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L85",
+                "type": "line",
+                "text": "the Whitelane Research and PA ",
+                "uri": "",
+                "bbox": [
+                    1019.8791,
+                    505.5923,
+                    1151.0033,
+                    511.6023
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L86",
+                "type": "line",
+                "text": "Infosys topped the charts in the ",
+                "uri": "",
+                "bbox": [
+                    221.2322,
+                    517.6635,
+                    365.1201,
+                    523.8585
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L87",
+                "type": "line",
+                "text": "Reporting Awards 2021-22 for Gender ",
+                "uri": "",
+                "bbox": [
+                    838.8975,
+                    514.4149,
+                    1003.5696,
+                    520.6099
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L88",
+                "type": "line",
+                "text": "Consulting IT Sourcing Study 2023",
+                "uri": "",
+                "bbox": [
+                    1019.8791,
+                    517.5923,
+                    1162.0934,
+                    523.6023
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L89",
+                "type": "line",
+                "text": "CRISIL ESG Leadership Rankings ",
+                "uri": "",
+                "bbox": [
+                    221.2322,
+                    529.6635,
+                    367.5233,
+                    535.8585
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L90",
+                "type": "line",
+                "text": "Equality",
+                "uri": "",
+                "bbox": [
+                    838.8975,
+                    526.5999,
+                    872.5615,
+                    532.6099
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L91",
+                "type": "line",
+                "text": "and was featured in the CRISIL ",
+                "uri": "",
+                "bbox": [
+                    221.2322,
+                    541.8185,
+                    348.7133,
+                    547.8285
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L92",
+                "type": "line",
+                "text": "Sustainability Yearbook, 2022 for the ",
+                "uri": "",
+                "bbox": [
+                    221.2322,
+                    553.8345,
+                    375.4412,
+                    559.8445
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L93",
+                "type": "line",
+                "text": "Infosys recognized as the Champion ",
+                "uri": "",
+                "bbox": [
+                    838.8975,
+                    549.9398,
+                    994.0896,
+                    555.9498
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L94",
+                "type": "line",
+                "text": "second consecutive year",
+                "uri": "",
+                "bbox": [
+                    221.2322,
+                    565.8505,
+                    323.7212,
+                    571.8605
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L95",
+                "type": "line",
+                "text": "of Inclusion in the Most Inclusive ",
+                "uri": "",
+                "bbox": [
+                    838.8975,
+                    561.7548,
+                    980.6214,
+                    567.9498
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L96",
+                "type": "line",
+                "text": "Companies Index (MICI) and featured ",
+                "uri": "",
+                "bbox": [
+                    838.8975,
+                    573.9398,
+                    995.1678,
+                    579.9498
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L97",
+                "type": "line",
+                "text": "in the \u201c100 Best \u2013 Hall of Fame\u201d by ",
+                "uri": "",
+                "bbox": [
+                    838.8975,
+                    585.9398,
+                    981.9844,
+                    591.9498
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L98",
+                "type": "line",
+                "text": "Recognized in the LEADERSHIP ",
+                "uri": "",
+                "bbox": [
+                    45.3573,
+                    592.7297,
+                    179.8024,
+                    598.7397
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L99",
+                "type": "line",
+                "text": "Secured an \u2018AA\u2019 rating on MSCI ESG ",
+                "uri": "",
+                "bbox": [
+                    221.2322,
+                    589.1905,
+                    375.8402,
+                    595.2005
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L100",
+                "type": "line",
+                "text": "Assessment",
+                "uri": "",
+                "bbox": [
+                    221.2322,
+                    601.1285,
+                    270.3972,
+                    607.1385
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L101",
+                "type": "line",
+                "text": "Won the Gold Award at the ",
+                "uri": "",
+                "bbox": [
+                    420.8691,
+                    598.5981,
+                    539.3351,
+                    604.6082
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L102",
+                "type": "line",
+                "text": "category in the Indian Corporate ",
+                "uri": "",
+                "bbox": [
+                    45.3573,
+                    604.7297,
+                    187.3303,
+                    610.7397
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L103",
+                "type": "line",
+                "text": "Recognized as a Global Top ",
+                "uri": "",
+                "bbox": [
+                    668.4331,
+                    600.9928,
+                    787.6882,
+                    607.0028
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L104",
+                "type": "line",
+                "text": "Avtar & Seramount, 2022",
+                "uri": "",
+                "bbox": [
+                    838.8975,
+                    597.9398,
+                    942.1693,
+                    603.9498
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L105",
+                "type": "line",
+                "text": "Governance Scorecard",
+                "uri": "",
+                "bbox": [
+                    45.3573,
+                    616.5447,
+                    145.2073,
+                    622.7397
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L106",
+                "type": "line",
+                "text": "Brandon Hall Group Excellence in ",
+                "uri": "",
+                "bbox": [
+                    409.8491,
+                    610.5981,
+                    550.3422,
+                    616.6082
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L107",
+                "type": "line",
+                "text": " Assessment by ",
+                "uri": "",
+                "bbox": [
+                    145.1573,
+                    616.7297,
+                    210.3593,
+                    622.7397
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L108",
+                "type": "line",
+                "text": "Employer 2023 by the Top ",
+                "uri": "",
+                "bbox": [
+                    668.4301,
+                    612.8078,
+                    781.8471,
+                    619.0028
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L109",
+                "type": "line",
+                "text": "Institutional Investor Advisory Services ",
+                "uri": "",
+                "bbox": [
+                    45.3573,
+                    628.7297,
+                    206.3264,
+                    634.7397
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L110",
+                "type": "line",
+                "text": "Recognized by EcoVadis with a Gold ",
+                "uri": "",
+                "bbox": [
+                    221.2322,
+                    624.4685,
+                    379.6771,
+                    630.4785
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L111",
+                "type": "line",
+                "text": "Technology Awards",
+                "uri": "",
+                "bbox": [
+                    438.1191,
+                    622.5981,
+                    519.9631,
+                    628.6082
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L112",
+                "type": "line",
+                "text": "Employers Institute for the 3rd ",
+                "uri": "",
+                "bbox": [
+                    668.4302,
+                    624.9928,
+                    796.7532,
+                    631.0028
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L113",
+                "type": "line",
+                "text": "(IiAS) for\u00a0the seventh year in a row",
+                "uri": "",
+                "bbox": [
+                    45.3573,
+                    640.7297,
+                    184.6644,
+                    646.7397
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L114",
+                "type": "line",
+                "text": "medal for the seventh year in a row",
+                "uri": "",
+                "bbox": [
+                    221.2322,
+                    636.2835,
+                    369.2151,
+                    642.4785
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L115",
+                "type": "line",
+                "text": "consecutive year",
+                "uri": "",
+                "bbox": [
+                    668.4302,
+                    636.9928,
+                    738.0203,
+                    643.0028
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L116",
+                "type": "line",
+                "text": "Honored at the Asset ESG Corporate ",
+                "uri": "",
+                "bbox": [
+                    45.3573,
+                    664.5297,
+                    198.1073,
+                    670.5397
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L117",
+                "type": "line",
+                "text": "Awards 2022 with a \u2018Platinum ",
+                "uri": "",
+                "bbox": [
+                    45.3573,
+                    676.5297,
+                    173.7673,
+                    682.5397
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L118",
+                "type": "line",
+                "text": "Won the Economic ",
+                "uri": "",
+                "bbox": [
+                    279.0073,
+                    678.8097,
+                    361.8603,
+                    684.8197
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L119",
+                "type": "line",
+                "text": "Recognized as a Top Employer in ",
+                "uri": "",
+                "bbox": [
+                    397.0975,
+                    673.5798,
+                    540.2746,
+                    679.5898
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L120",
+                "type": "line",
+                "text": "Infosys BPM won in the ",
+                "uri": "",
+                "bbox": [
+                    1026.2362,
+                    674.205,
+                    1124.5515,
+                    680.215
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L121",
+                "type": "line",
+                "text": "Award for excellence in ESG\u2019, ",
+                "uri": "",
+                "bbox": [
+                    45.3573,
+                    688.3447,
+                    175.0773,
+                    694.5397
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L122",
+                "type": "line",
+                "text": "Times Best ",
+                "uri": "",
+                "bbox": [
+                    279.0073,
+                    690.6247,
+                    329.3043,
+                    696.8197
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L123",
+                "type": "line",
+                "text": "22 countries across Europe, Middle ",
+                "uri": "",
+                "bbox": [
+                    397.0975,
+                    685.3948,
+                    547.6135,
+                    691.5898
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L124",
+                "type": "line",
+                "text": "Infosys received the Great Place to Work\u00ae Certification across five ",
+                "uri": "",
+                "bbox": [
+                    693.9675,
+                    687.0898,
+                    972.5469,
+                    693.0999
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L125",
+                "type": "line",
+                "text": "International Project of the Year ",
+                "uri": "",
+                "bbox": [
+                    1026.2362,
+                    686.02,
+                    1172.0062,
+                    692.215
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L126",
+                "type": "line",
+                "text": "\u2018Best Investor Relations Team\u2019, \u2018Best ",
+                "uri": "",
+                "bbox": [
+                    45.3573,
+                    700.5297,
+                    193.4123,
+                    706.5397
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L127",
+                "type": "line",
+                "text": "Organizations for ",
+                "uri": "",
+                "bbox": [
+                    279.0073,
+                    702.6247,
+                    360.0753,
+                    708.8197
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L128",
+                "type": "line",
+                "text": "East, Asia Pacific, and North America ",
+                "uri": "",
+                "bbox": [
+                    397.0975,
+                    697.5798,
+                    550.2856,
+                    703.5898
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L129",
+                "type": "line",
+                "text": "regions including India, Australia, United Kingdom, Germany, USA, ",
+                "uri": "",
+                "bbox": [
+                    693.9675,
+                    699.0898,
+                    970.8546,
+                    705.0999
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L130",
+                "type": "line",
+                "text": "category with Telefonica UK, at ",
+                "uri": "",
+                "bbox": [
+                    1026.2362,
+                    698.205,
+                    1157.2521,
+                    704.215
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L131",
+                "type": "line",
+                "text": "initiative in Diversity and Inclusion\u2019, ",
+                "uri": "",
+                "bbox": [
+                    45.3573,
+                    712.5297,
+                    193.1933,
+                    718.5397
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L132",
+                "type": "line",
+                "text": "Women Award 2023",
+                "uri": "",
+                "bbox": [
+                    279.0073,
+                    714.6247,
+                    364.6333,
+                    720.8197
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L133",
+                "type": "line",
+                "text": "for best-in-class HR practices and ",
+                "uri": "",
+                "bbox": [
+                    397.0975,
+                    709.5798,
+                    536.5865,
+                    715.5898
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L134",
+                "type": "line",
+                "text": "Canada and Mexico. Infosys BPM received the Great Place to Work\u00ae ",
+                "uri": "",
+                "bbox": [
+                    693.9675,
+                    711.0898,
+                    973.1345,
+                    717.0999
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L135",
+                "type": "line",
+                "text": "the Global Sourcing Association ",
+                "uri": "",
+                "bbox": [
+                    1026.2362,
+                    710.205,
+                    1160.9208,
+                    716.215
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L136",
+                "type": "line",
+                "text": "and \u2018Best initiative in Environmental ",
+                "uri": "",
+                "bbox": [
+                    45.3573,
+                    724.5297,
+                    196.7553,
+                    730.5397
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L137",
+                "type": "line",
+                "text": "processes",
+                "uri": "",
+                "bbox": [
+                    397.0975,
+                    721.5798,
+                    437.8585,
+                    727.5898
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L138",
+                "type": "line",
+                "text": "Certification in the Philippines",
+                "uri": "",
+                "bbox": [
+                    693.9675,
+                    723.0898,
+                    819.3907,
+                    729.0999
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L139",
+                "type": "line",
+                "text": "(GSA) UK Awards 2022",
+                "uri": "",
+                "bbox": [
+                    1026.2362,
+                    722.205,
+                    1118.1672,
+                    728.215
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L140",
+                "type": "line",
+                "text": "Responsibility\u2019",
+                "uri": "",
+                "bbox": [
+                    45.3573,
+                    736.5297,
+                    105.9643,
+                    742.5397
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L141",
+                "type": "line",
+                "text": "34",
+                "uri": "",
+                "bbox": [
+                    45.3543,
+                    764.8455,
+                    53.5623,
+                    769.6535
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L142",
+                "type": "line",
+                "text": "Infosys Integrated Annual Report 2022-23",
+                "uri": "",
+                "bbox": [
+                    422.4026,
+                    764.8455,
+                    560.977,
+                    769.6535
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L143",
+                "type": "line",
+                "text": "Infosys Integrated Annual Report 2022-23",
+                "uri": "",
+                "bbox": [
+                    663.0266,
+                    764.8455,
+                    801.6014,
+                    769.6535
+                ],
+                "tokens": []
+            },
+            {
+                "id": "P4_L144",
+                "type": "line",
+                "text": "35",
+                "uri": "",
+                "bbox": [
+                    1170.4342,
+                    764.8455,
+                    1178.6422,
+                    769.6535
+                ],
+                "tokens": []
+            }
+        ]
+    }
+]

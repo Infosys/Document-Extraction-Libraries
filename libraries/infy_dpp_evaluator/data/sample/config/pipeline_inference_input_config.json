@@ -1,0 +1,417 @@
+{
+  "variables": {
+    "MODEL_HOME": "C:/del/ai/models",
+    "AZURE_OPENAI_SECRET_KEY": "${ENV:AZURE_OPENAI_SECRET_KEY}",
+    "AZURE_OPENAI_SERVER_BASE_URL": "${ENV:AZURE_OPENAI_SERVER_BASE_URL}",
+    "LITELLM_PROXY_SERVER_BASE_URL": "${ENV:LITELLM_PROXY_SERVER_BASE_URL}",
+    "LITELLM_PROXY_SECRET_KEY": "${ENV:LITELLM_PROXY_SECRET_KEY}"
+  },
+  "processor_list": [
+    {
+      "enabled": true,
+      "processor_name": "request_creator",
+      "processor_namespace": "infy_dpp_core.request_creator.request_creator_v2",
+      "processor_class_name": "RequestCreatorV2",
+      "processor_input_config_name_list": [
+        "RequestCreator"
+      ]
+    },
+    {
+      "enabled": true,
+      "processor_name": "retriever",
+      "processor_namespace": "infy_dpp_ai.retriever.process.query_retriever_processor",
+      "processor_class_name": "QueryRetriever",
+      "processor_input_config_name_list": [
+        "QueryRetriever"
+      ]
+    },
+    {
+      "enabled": true,
+      "processor_name": "reader",
+      "processor_namespace": "infy_dpp_ai.reader.process.reader_processor",
+      "processor_class_name": "Reader",
+      "processor_input_config_name_list": [
+        "Reader"
+      ]
+    },
+    {
+      "enabled": true,
+      "processor_name": "request_closer",
+      "processor_namespace": "infy_dpp_core.request_closer.process.request_closer_v2",
+      "processor_class_name": "RequestCloserV2",
+      "processor_input_config_name_list": [
+        "RequestCloser"
+      ]
+    }
+  ],
+  "processor_input_config": {
+    "RequestCreator": {
+      "inference": {
+        "enabled": true,
+        "from_data_file": {
+          "read_path": "/data/input/",
+          "work_root_path": "/data/work/",
+          "top_k": 4,
+          "pre_filter_fetch_k": 100
+        }
+      },
+      "evaluation": {
+        "enabled": false,
+        "from_data_file": {
+          "read_path": "/data/input/",
+          "work_root_path": "/data/work/"
+        }
+      },
+      "report": {
+        "enabled": false,
+        "from_data_file": {
+          "read_path": "/data/input/",
+          "work_root_path": "/data/work/"
+        }
+      },
+      "qna_generator": {
+        "enabled": false,
+        "from_request_file": {
+          "read_path": "/data/work/request/indexer/complete",
+          "save_path": "/data/work/request/qna_generation/start",
+          "work_root_path": "/data/output/"
+        }
+      }
+    },
+    "QueryRetriever": {
+      "embedding": {
+        "openai": {
+          "enabled": false,
+          "configuration": {
+            "api_type": "azure",
+            "api_version": "2022-12-01",
+            "api_url": "${AZURE_OPENAI_SERVER_BASE_URL}",
+            "api_key": "${AZURE_OPENAI_SECRET_KEY}",
+            "model_name": "text-embedding-ada-002",
+            "deployment_name": "text-embedding-ada-002",
+            "chunk_size": 1000,
+            "tiktoken_cache_dir": "${MODEL_HOME}/tiktoken_encoding"
+          }
+        },
+        "sentence_transformer": {
+          "enabled": true,
+          "configuration": {
+            "model_name": "all-MiniLM-L6-v2",
+            "api_url": "${INFY_MODEL_SERVICE_BASE_URL}"
+          }
+        }
+      },
+      "storage": {
+        "faiss": {
+          "enabled": true,
+          "configuration": {
+            "chunked_files_root_path": "/vectordb/chunked",
+            "encoded_files_root_path": "/vectordb/encoded",
+            "db_name": "documents",
+            "distance_metric": {
+              "eucledian": true
+            }
+          }
+        }
+      },
+      "queries": []
+    },
+    "Reader": {
+      "storage": {
+        "faiss": {
+          "enabled": true,
+          "configuration": {
+            "chunked_files_root_path": "/vectordb/chunked",
+            "encoded_files_root_path": "/vectordb/encoded",
+            "db_name": "documents"
+          }
+        }
+      },
+      "moderation": {
+        "enabled": false,
+        "configuration": {
+          "api_url": ""
+        },
+        "json_payload": {
+          "AccountName": "",
+          "userid": "None",
+          "PortfolioName": "",
+          "lotNumber": "1",
+          "Prompt": "{prompt}",
+          "ModerationChecks": [
+            "PromptInjection",
+            "JailBreak",
+            "Toxicity",
+            "Piidetct",
+            "Refusal",
+            "Profanity",
+            "RestrictTopic",
+            "TextQuality",
+            "CustomizedTheme"
+          ],
+          "ModerationCheckThresholds": {
+            "PromptinjectionThreshold": 0.7,
+            "JailbreakThreshold": 0.7,
+            "PiientitiesConfiguredToDetect": [
+              "PERSON",
+              "LOCATION",
+              "DATE",
+              "AU_ABN",
+              "AU_ACN",
+              "AADHAR_NUMBER",
+              "AU_MEDICARE",
+              "AU_TFN",
+              "CREDIT_CARD",
+              "CRYPTO",
+              "DATE_TIME",
+              "EMAIL_ADDRESS",
+              "ES_NIF",
+              "IBAN_CODE",
+              "IP_ADDRESS",
+              "IT_DRIVER_LICENSE",
+              "IT_FISCAL_CODE",
+              "IT_IDENTITY_CARD",
+              "IT_PASSPORT",
+              "IT_VAT_CODE",
+              "MEDICAL_LICENSE",
+              "PAN_Number",
+              "PHONE_NUMBER",
+              "SG_NRIC_FIN",
+              "UK_NHS",
+              "URL",
+              "PASSPORT",
+              "US_ITIN",
+              "US_PASSPORT",
+              "US_SSN"
+            ],
+            "PiientitiesConfiguredToBlock": [
+              "AADHAR_NUMBER",
+              "PAN_Number"
+            ],
+            "RefusalThreshold": 0.7,
+            "ToxicityThresholds": {
+              "ToxicityThreshold": 0.6,
+              "SevereToxicityThreshold": 0.6,
+              "ObsceneThreshold": 0.6,
+              "ThreatThreshold": 0.6,
+              "InsultThreshold": 0.6,
+              "IdentityAttackThreshold": 0.6,
+              "SexualExplicitThreshold": 0.6
+            },
+            "ProfanityCountThreshold": 1,
+            "RestrictedtopicDetails": {
+              "RestrictedtopicThreshold": 0.7,
+              "Restrictedtopics": [
+                "terrorism",
+                "explosives",
+                "nudity",
+                "sexual Content",
+                "cruelty",
+                "cheating",
+                "fraud",
+                "crime",
+                "hacking",
+                "security Breach",
+                "immoral",
+                "cyberattack",
+                "exam Misconduct",
+                "conspiracy",
+                "unethical",
+                "illegal",
+                "robbery",
+                "forgery",
+                "misinformation"
+              ]
+            },
+            "CustomTheme": {
+              "Themename": "string",
+              "Themethresold": 0.6,
+              "ThemeTexts": [
+                "Text1",
+                "Text2",
+                "Text3"
+              ]
+            }
+          }
+        }
+      },
+      "llm": {
+        "openai": {
+          "enabled": false,
+          "configuration": {
+            "api_type": "azure",
+            "api_version": "2022-12-01",
+            "api_url": "${AZURE_OPENAI_SERVER_BASE_URL}",
+            "api_key": "${AZURE_OPENAI_SECRET_KEY}",
+            "max_tokens": 1000,
+            "model_name": "text-davinci-003",
+            "deployment_name": "text-davinci-003",
+            "temperature": 0.7,
+            "tiktoken_cache_dir": "${MODEL_HOME}/tiktoken_encoding"
+          },
+          "cache": {
+            "enabled": true,
+            "cache_root_path": "/data/cache/infy_model_service"
+          }
+        },
+        "custom": {
+          "models": [
+            {
+              "name": "Gpt-4-direct",
+              "enabled": false,
+              "batch": {
+                "size": 1
+              },
+              "configuration": {
+                "api_url": "${AZURE_OPENAI_SERVER_BASE_URL}",
+                "api_key": "${AZURE_OPENAI_SECRET_KEY}",
+                "model_name": "openai/gpt-4",
+                "deployment_name": "gpt4",
+                "max_tokens": 1000,
+                "temperature": 0.7
+              }
+            },
+            {
+              "name": "Gpt-35-turbo-direct",
+              "enabled": false,
+              "batch": {
+                "size": 1
+              },
+              "configuration": {
+                "api_url": "${AZURE_OPENAI_SERVER_BASE_URL}",
+                "api_key": "${AZURE_OPENAI_SECRET_KEY}",
+                "model_name": "openai/gpt-35-turbo",
+                "deployment_name": "gpt-35-turbo",
+                "max_tokens": 1000,
+                "temperature": 0.7
+              }
+            },
+            {
+              "name": "Gpt-4-proxy",
+              "enabled": false,
+              "batch": {
+                "size": 1
+              },
+              "configuration": {
+                "api_url": "${LITELLM_PROXY_SERVER_BASE_URL}",
+                "api_key": "${AZURE_OPENAI_SECRET_KEY}",
+                "model_name": "gpt-4-32k_2",
+                "deployment_name": "gpt-4-32k_2",
+                "max_tokens": 1000,
+                "temperature": 0.7
+              }
+            },
+            {
+              "name": "Llama-3.1-8B-Proxy",
+              "enabled": false,
+              "batch": {
+                "size": 1
+              },
+              "configuration": {
+                "api_url": "${LITELLM_PROXY_SERVER_BASE_URL}",
+                "api_key": "${LITELLM_PROXY_SECRET_KEY}",
+                "model_name": "Meta-Llama-3.1-8B-Instruct",
+                "deployment_name": "Meta-Llama-3.1-8B-Instruct",
+                "max_tokens": 1000,
+                "temperature": 0.7
+              }
+            },
+            {
+              "name": "Llama-3.1-70B-Proxy",
+              "enabled": false,
+              "batch": {
+                "size": 1
+              },
+              "configuration": {
+                "api_url": "${LITELLM_PROXY_SERVER_BASE_URL}",
+                "api_key": "${LITELLM_PROXY_SECRET_KEY}",
+                "model_name": "Meta-Llama-3.1-70B-Instruct-FP8",
+                "deployment_name": "Meta-Llama-3.1-70B-Instruct-FP8",
+                "max_tokens": 1000,
+                "temperature": 0.7
+              }
+            },
+            {
+              "name": "Mixtral-7B-Proxy",
+              "enabled": false,
+              "batch": {
+                "size": 1
+              },
+              "configuration": {
+                "api_url": "${LITELLM_PROXY_SERVER_BASE_URL}",
+                "api_key": "${LITELLM_PROXY_SECRET_KEY}",
+                "model_name": "mixtral-8x7b-instruct",
+                "deployment_name": "mixtral-8x7b-instruct",
+                "max_tokens": 1000,
+                "temperature": 0.7
+              }
+            }
+          ]
+        }
+      },
+      "named_context_templates": {
+        "context_default": "{chunk_text}",
+        "context_1": "[chunk_id={chunk_id},page_no={page_no},sequence_no={sequence_no},bbox={bbox},doc_name={doc_name}]\n{chunk_text}\n",
+        "context_2": "[chunk_id={chunk_id},page_no={page_no},sequence_no={sequence_no}]\n{chunk_text}\n"
+      },
+      "named_prompt_templates": {
+        "prompt_template_1": {
+          "content": [
+            "Use the following pieces of context to answer the question at the end.",
+            "If you don't know the answer or even doubtful a bit, just say that you don't know,",
+            " don't try to make up an answer.Just give the shortest and most appropriate relavant answer to the question.",
+            "{context}",
+            "Question: {question}",
+            "Helpful Answer:"
+          ],
+          "context_template": "context_default",
+          "response_validation": {
+            "enabled": true,
+            "type": "json",
+            "total_attempts": 3
+          }
+        },
+        "extractor_attribute_prompt": {
+          "content": [],
+          "file_path": "/data/config/prompt_templates/extractor_attribute_prompt.txt",
+          "context_template": "context_1",
+          "response_validation": {
+            "enabled": true,
+            "type": "json",
+            "total_attempts": 3
+          }
+        },
+        "extractor_attribute_prompt_2": {
+          "content": [],
+          "file_path": "/data/config/prompt_templates/extractor_attribute_prompt_2.txt",
+          "context_template": "context_2",
+          "response_validation": {
+            "enabled": true,
+            "type": "json",
+            "total_attempts": 3
+          }
+        }
+      },
+      "inputs": [
+        {
+          "attribute_key": "query1",
+          "prompt_template": "extractor_attribute_prompt_2",
+          "model_type": "QnA",
+          "top_k": 2
+        }
+      ]
+    },
+    "RequestCloser": {
+      "work_root_path": "/data/work/",
+      "data_file": {
+        "output_root_path": "/data/output/"
+      },
+      "output_root_path": "/data/output/",
+      "from_request_file": {
+        "enabled": false,
+        "read_path": "/data/work/request/qna_generation/start",
+        "save_path": "/data/work/request/qna_generation/complete"
+      }
+    }
+  }
+}

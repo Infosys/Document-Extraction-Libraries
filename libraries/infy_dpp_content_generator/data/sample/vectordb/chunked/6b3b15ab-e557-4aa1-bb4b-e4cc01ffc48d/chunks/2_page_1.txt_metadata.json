@@ -1,0 +1,21 @@
+{
+    "chunk_id": "C-db7c6",
+    "page_no": 2,
+    "sequence_no": 1,
+    "bbox_format": "X1,Y1,X2,Y2",
+    "bbox": null,
+    "doc_name": "AR_2022-23_page-14-17.pdf",
+    "document_id": "6b3b15ab-e557-4aa1-bb4b-e4cc01ffc48d",
+    "chunking_method": "page",
+    "char_count": "2",
+    "resources": [
+        {
+            "type": "doc_path",
+            "path": "/data/vectordb/resources/6b3b15ab-c72b-40d2-bbc4-9ecc70c17883.pdf"
+        }
+    ],
+    "custom_metadata": {
+        "year": "2023",
+        "company_name": "infosys"
+    }
+}

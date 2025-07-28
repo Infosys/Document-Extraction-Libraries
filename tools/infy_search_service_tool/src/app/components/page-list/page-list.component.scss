@@ -1,0 +1,166 @@
+p {
+    margin: 0rem !important;
+}
+
+.toggle-button-open {
+    position: absolute;
+    right: 0.5rem;
+    font-weight: bold;
+    font-size: 1.5rem;
+    background-color: #fff;
+    color: #000;
+    border: none;
+    padding: 5px 10px;
+    top: 0px;
+    cursor: pointer;
+}
+
+.toggle-button-close {
+    position: absolute;
+    font-weight: bold;
+    font-size: 1.5rem;
+    background-color: inherit;
+    color: #000;
+    border: none;
+    left: 6px;
+    top: 0px;
+    cursor: pointer;
+}
+
+.right-pane {
+    position: fixed;
+    top: 0.5rem;
+    right: 0;
+    width: 350px;
+    height: calc(100% - 30px);
+    background-color: #e9ecef;
+    border: 1.5px solid #000;
+    transition: transform 0.3s ease;
+    transform: translateX(100%);
+    z-index: 1000;
+    border-radius: 10px;
+}
+
+.right-pane.expanded {
+    transform: translateX(0);
+}
+
+.pane-content {
+    padding: 0px 8px 0px 14px;
+}
+
+.form-group {
+    padding: 3px 0px;
+}
+
+.form-check-input.custom-checkbox {
+    width: 20px;
+    height: 20px;
+}
+
+.form-control {
+    padding: .075rem 0.55rem !important;
+}
+
+.ribbon {
+    position: absolute;
+    left: 0px;
+    top: 8px;
+    background: #0d6efd;
+    color: white;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    display: inline-block;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+
+.ribbon-content {
+    position: relative;
+    z-index: 1;
+    top: 1px;
+}
+
+.document-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.metadata-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.chip {
+    background-color: #e9ecef;
+    border-radius: 16px;
+    padding: 5px 10px;
+    font-size: 14px;
+    font-weight: 500;
+    max-width: 100px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.metadata-row {
+    display: flex;
+    align-items: center;
+}
+
+.metadata-row .form-control {
+    width: 133px;
+    margin-right: 5px;
+    margin-bottom: 2px;
+    border: 1px solid #000;
+
+}
+
+.metadata-row .btn-danger {
+    width: 25px;
+    height: 25px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #dc3545;
+    color: #fff;
+    font-size: 1.5rem;
+}
+
+.metadata-row .btn-danger {
+    padding: 0 10px;
+}
+
+.dropdown-toggle{
+    padding: .075rem 0.55rem !important;
+}
+
+.dropdown-menu {
+    width: 20.2rem;
+    padding: 10px;
+}
+
+.dropdown-menu .add-metadata-btn {
+    width: 25px;
+    height: 25px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #0d6efd;
+    color: #fff;
+    font-size: 1.5rem;
+}
+
+
+
+

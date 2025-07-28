@@ -1,0 +1,8 @@
+image_path,image_subpath,x1,y1,x2,y2,object_type,class_border_type,class_complexity,rows,columns
+C:\docs\Invoice\invoice1.jpg,Invoice\invoice1.jpg,287,1154,2255,1470,table,FullBorderedTable,Simple,3,4
+C:\docs\Invoice\invoice1.jpg,Invoice\invoice1.jpg,290,1614,2262,2536,table,PartialBorderedTable,Complex,9,6
+C:\docs\Invoice\invoice1.jpg,Invoice\invoice1.jpg,287,2736,2255,2937,table,FullBorderedTable,Simple,2,2
+C:\docs\Invoice\invoice2.jpg,Invoice\invoice2.jpg,637,978,2408,2413,table,FullBorderedTable,Simple,14,4
+C:\docs\SalesInvoice\saleinvoice1.jpg,SalesInvoice\saleinvoice1.jpg,174,1358,2381,1479,table,FullBorderedTable,Simple,1,4
+C:\docs\SalesInvoice\saleinvoice1.jpg,SalesInvoice\saleinvoice1.jpg,162,1599,2386,2426,table,BorderlessTable,Complex,7,4
+C:\docs\SalesInvoice\saleinvoice2.jpg,SalesInvoice\saleinvoice2.jpg,213,1422,2339,2919,table,PartialBorderedTable,Complex,13,4

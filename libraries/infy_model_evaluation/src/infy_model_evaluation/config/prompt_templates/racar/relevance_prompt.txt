@@ -1,0 +1,20 @@
+Given a context and a question, evaluate how relevant the question is to the context. Return a score from 1-3, where:
+
+- Score 1: The question is irrelevant to the provided context
+- Score 2: The question is somewhat relevant but doesn't directly address specific details
+- Score 3: The question is highly relevant and directly relates to the context
+
+For example, if the context discusses a specific topic and the question asks about details directly mentioned in that topic, it should receive a score of 3. If the question asks about general aspects related to the topic without specific ties to the context, it should receive a score of 2. If the question asks about unrelated topics, it should receive a score of 1.
+
+context: {context}
+question: {question}
+
+Return a JSON object with:
+- 'score': numeric score (1-3)
+- 'reasons': specific explanation identifying which aspects of the question align or don't align with the context content
+
+Example output format:
+{
+    "score": 3,
+    "reasons": "The question about Q4 revenue growth directly addresses the financial data presented in paragraphs 2-3, which detail quarterly performance metrics."
+}

@@ -3,6 +3,7 @@
 # Use of this source code is governed by Apache License Version 2.0 that can be found in the LICENSE file or at  #
 # http://www.apache.org/licenses/                                                                                #
 # ===============================================================================================================#
+
 import os
 import infy_dpp_sdk
 import infy_fs_utils
@@ -30,11 +31,12 @@ class App():
                 "storage_access_key": os.environ.get('DPP_STORAGE_ACCESS_KEY'),
                 "storage_secret_key": os.environ.get('DPP_STORAGE_SECRET_KEY'),
             })
-
+        file_sys_handler = infy_fs_utils.provider.FileSystemHandler(
+            storage_config_data)
         if not infy_fs_utils.manager.FileSystemManager().has_fs_handler(infy_dpp_sdk.common.Constants.FSH_DPP):
-            infy_fs_utils.manager.FileSystemManager().add_fs_handler(
-                infy_fs_utils.provider.FileSystemHandler(storage_config_data),
+            infy_fs_utils.manager.FileSystemManager().set_root_handler_name(
                 infy_dpp_sdk.common.Constants.FSH_DPP)
+            infy_fs_utils.manager.FileSystemManager().add_fs_handler(file_sys_handler)
 
         controller_cli = infy_dpp_sdk.controller.ControllerCLI()
         controller_request_data: infy_dpp_sdk.data.ControllerRequestData = controller_cli.receive_request()

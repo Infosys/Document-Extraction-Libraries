@@ -1,0 +1,557 @@
+{
+  "name": "inference_batch_pipeline",
+  "description": "inference pipeline configuration",
+  "variables": {
+    "FORMAT_CONVERTER_HOME": "C:/del/programfiles/InfyFormatConverter/",
+    "INFY_OCR_ENGINE_HOME": "C:/del/programfiles/InfyOcrEngine",
+    "TESSERACT_HOME": "C:/del/programfiles/Tesseract-OCR",
+    "MODEL_HOME": "C:/del/ai/models",
+    "AI_HOME": "C:/del/ai",
+    "CA_CERTS_PATH": "",
+    "AZURE_OPENAI_SERVER_BASE_URL": "${ENV:AZURE_OPENAI_SERVER_BASE_URL}",
+    "AZURE_OPENAI_SECRET_KEY": "${ENV:AZURE_OPENAI_SECRET_KEY}",
+    "LITELLM_PROXY_SERVER_BASE_URL": "${ENV:LITELLM_PROXY_SERVER_BASE_URL}",
+    "LITELLM_PROXY_SECRET_KEY": "${ENV:LITELLM_PROXY_SECRET_KEY}",
+    "INFY_DB_SERVICE_BASE_URL": "${ENV:INFY_DB_SERVICE_BASE_URL}",
+    "INFY_MODEL_SERVICE_BASE_URL": "${ENV:INFY_MODEL_SERVICE_BASE_URL}",
+    "INFY_RESOURCE_SERVICE_BASE_URL": "${ENV:INFY_RESOURCE_SERVICE_BASE_URL}",
+    "CUSTOM_EMB_MISTRAL_INFERENCE_URL": "${ENV:CUSTOM_EMB_MISTRAL_INFERENCE_URL}",
+    "AZURE_READ_OCR_SUB_KEY": "",
+    "AZURE_READ_OCR_URL": ""
+  },
+  "processor_list": [
+    {
+      "enabled": true,
+      "processor_name": "retriever",
+      "processor_namespace": "infy_dpp_ai.retriever.process.query_retriever_processor",
+      "processor_class_name": "QueryRetriever",
+      "processor_input_config_name_list": [
+        "QueryRetriever"
+      ]
+    },
+    {
+      "enabled": true,
+      "processor_name": "document_data_saver",
+      "processor_namespace": "infy_dpp_core.document_data_saver",
+      "processor_class_name": "DocumentDataSaver",
+      "processor_input_config_name_list": [
+        "DocumentDataSaver"
+      ]
+    },
+    {
+      "enabled": true,
+      "processor_name": "reader",
+      "processor_namespace": "infy_dpp_ai.reader.process.reader_processor",
+      "processor_class_name": "Reader",
+      "processor_input_config_name_list": [
+        "Reader"
+      ]
+    },
+    {
+      "enabled": true,
+      "processor_name": "document_data_saver",
+      "processor_namespace": "infy_dpp_core.document_data_saver",
+      "processor_class_name": "DocumentDataSaver",
+      "processor_input_config_name_list": [
+        "DocumentDataSaver"
+      ]
+    }
+  ],
+  "processor_input_config": {
+    "QueryRetriever": {
+      "embedding": {
+        "openai": {
+          "enabled": false,
+          "configuration": {
+            "api_type": "azure",
+            "api_version": "2022-12-01",
+            "api_url": "${AZURE_OPENAI_SERVER_BASE_URL}",
+            "api_key": "${AZURE_OPENAI_SECRET_KEY}",
+            "model_name": "text-embedding-ada-002",
+            "deployment_name": "text-embedding-ada-002",
+            "chunk_size": 1000,
+            "tiktoken_cache_dir": "${MODEL_HOME}/tiktoken_encoding"
+          }
+        },
+        "sentence_transformer": {
+          "enabled": true,
+          "configuration": {
+            "model_name": "all-MiniLM-L6-v2",
+            "api_url": "${INFY_MODEL_SERVICE_BASE_URL}"
+          }
+        },
+        "custom": {
+          "enabled": false,
+          "configuration": {
+            "model_name": "mistral-embd",
+            "api_key": "",
+            "endpoint": "${CUSTOM_EMB_MISTRAL_INFERENCE_URL}"
+          }
+        }
+      },
+      "storage": {
+        "vectordb": {
+          "faiss": {
+            "enabled": true,
+            "configuration": {
+              "chunked_files_root_path": "/data/vectordb/chunked",
+              "encoded_files_root_path": "/data/vectordb/encoded",
+              "db_name": "documents",
+              "index_id": "",
+              "collections": [
+                {
+                  "collection_name": "documents",
+                  "collection_secret_key": ""
+                }
+              ],
+              "distance_metric": {
+                "eucledian": true
+              }
+            }
+          },
+          "infy_db_service": {
+            "enabled": false,
+            "configuration": {
+              "db_service_url": "${INFY_DB_SERVICE_BASE_URL}",
+              "model_name": "all-MiniLM-L6-v2",
+              "collections": [
+                {
+                  "collection_name": "documents",
+                  "collection_secret_key": ""
+                }
+              ]
+            }
+          },
+          "elasticsearch": {
+            "enabled": false,
+            "configuration": {
+              "db_server_url": "",
+              "authenticate": "",
+              "username": "",
+              "password": "",
+              "verify_certs": "",
+              "cert_fingerprint": "",
+              "ca_certs_path": "${CA_CERTS_PATH}",
+              "index_id": ""
+            }
+          }
+        },
+        "sparseindex": {
+          "bm25s": {
+            "enabled": true,
+            "configuration": {
+              "sparse_index_root_path": "/data/db/sparseindex",
+              "db_name": "documents",
+              "index_id": "",
+              "collections": [
+                {
+                  "collection_name": "documents",
+                  "collection_secret_key": ""
+                }
+              ],
+              "nltk_data_dir": "${AI_HOME}/nltk_data"
+            }
+          },
+          "infy_db_service": {
+            "enabled": false,
+            "configuration": {
+              "db_service_url": "${INFY_DB_SERVICE_BASE_URL}",
+              "method_name": "bm25s",
+              "collections": [
+                {
+                  "collection_name": "documents",
+                  "collection_secret_key": ""
+                }
+              ]
+            }
+          }
+        }
+      },
+      "hybrid_search": {
+        "rrf": {
+          "enabled": true
+        }
+      },
+      "queries": [
+        {
+          "attribute_key": "women_emp_pct",
+          "question": "What is the percentage of women employees?",
+          "top_k": 4,
+          "pre_filter_fetch_k": 10,
+          "filter_metadata": {},
+          "min_distance": 0,
+          "max_distance": 2
+        },
+        {
+          "attribute_key": "financial_year",
+          "question": "What is the financial year of this report?",
+          "top_k": 4,
+          "pre_filter_fetch_k": 10,
+          "filter_metadata": {},
+          "min_distance": 0,
+          "max_distance": 2
+        },
+        {
+          "attribute_key": "revenue_amt",
+          "question": "What is the Revenue amount of this year?",
+          "top_k": 4,
+          "pre_filter_fetch_k": 10,
+          "filter_metadata": {},
+          "min_distance": 0,
+          "max_distance": 2
+        },
+        {
+          "attribute_key": "business_rank",
+          "question": "What is the rank of infosys?",
+          "top_k": 4,
+          "pre_filter_fetch_k": 10,
+          "filter_metadata": {},
+          "min_distance": 0,
+          "max_distance": 2
+        }
+      ]
+    },
+    "Reader": {
+      "storage": {
+        "vectordb": {
+          "faiss": {
+            "enabled": true,
+            "configuration": {
+              "chunked_files_root_path": "/data/vectordb/chunked",
+              "encoded_files_root_path": "/data/vectordb/encoded",
+              "db_name": "documents",
+              "distance_metric": {
+                "eucledian": true
+              }
+            }
+          },
+          "infy_db_service": {
+            "enabled": false
+          },
+          "elasticsearch": {
+            "enabled": false
+          }
+        },
+        "sparseindex": {
+          "bm25s": {
+            "enabled": true
+          },
+          "infy_db_service": {
+            "enabled": false
+          }
+        }
+      },
+      "hybrid_search": {
+        "rrf": {
+          "enabled": true
+        }
+      },
+      "moderation": {
+        "enabled": false,
+        "configuration": {
+          "api_url": ""
+        },
+        "json_payload": {
+          "AccountName": "",
+          "userid": "None",
+          "PortfolioName": "",
+          "lotNumber": "1",
+          "Prompt": "{prompt}",
+          "ModerationChecks": [
+            "PromptInjection",
+            "JailBreak",
+            "Toxicity",
+            "Piidetct",
+            "Refusal",
+            "Profanity",
+            "RestrictTopic",
+            "TextQuality",
+            "CustomizedTheme"
+          ],
+          "ModerationCheckThresholds": {
+            "PromptinjectionThreshold": 0.7,
+            "JailbreakThreshold": 0.7,
+            "PiientitiesConfiguredToDetect": [
+              "PERSON",
+              "LOCATION",
+              "DATE",
+              "AU_ABN",
+              "AU_ACN",
+              "AADHAR_NUMBER",
+              "AU_MEDICARE",
+              "AU_TFN",
+              "CREDIT_CARD",
+              "CRYPTO",
+              "DATE_TIME",
+              "EMAIL_ADDRESS",
+              "ES_NIF",
+              "IBAN_CODE",
+              "IP_ADDRESS",
+              "IT_DRIVER_LICENSE",
+              "IT_FISCAL_CODE",
+              "IT_IDENTITY_CARD",
+              "IT_PASSPORT",
+              "IT_VAT_CODE",
+              "MEDICAL_LICENSE",
+              "PAN_Number",
+              "PHONE_NUMBER",
+              "SG_NRIC_FIN",
+              "UK_NHS",
+              "URL",
+              "PASSPORT",
+              "US_ITIN",
+              "US_PASSPORT",
+              "US_SSN"
+            ],
+            "PiientitiesConfiguredToBlock": [
+              "AADHAR_NUMBER",
+              "PAN_Number"
+            ],
+            "RefusalThreshold": 0.7,
+            "ToxicityThresholds": {
+              "ToxicityThreshold": 0.6,
+              "SevereToxicityThreshold": 0.6,
+              "ObsceneThreshold": 0.6,
+              "ThreatThreshold": 0.6,
+              "InsultThreshold": 0.6,
+              "IdentityAttackThreshold": 0.6,
+              "SexualExplicitThreshold": 0.6
+            },
+            "ProfanityCountThreshold": 1,
+            "RestrictedtopicDetails": {
+              "RestrictedtopicThreshold": 0.7,
+              "Restrictedtopics": [
+                "terrorism",
+                "explosives",
+                "nudity",
+                "sexual Content",
+                "cruelty",
+                "cheating",
+                "fraud",
+                "crime",
+                "hacking",
+                "security Breach",
+                "immoral",
+                "cyberattack",
+                "exam Misconduct",
+                "conspiracy",
+                "unethical",
+                "illegal",
+                "robbery",
+                "forgery",
+                "misinformation"
+              ]
+            },
+            "CustomTheme": {
+              "Themename": "string",
+              "Themethresold": 0.6,
+              "ThemeTexts": [
+                "Text1",
+                "Text2",
+                "Text3"
+              ]
+            }
+          }
+        }
+      },
+      "llm": {
+        "models": [
+          {
+            "name": "gpt-4-direct",
+            "enabled": true,
+            "batch": {
+              "size": 1
+            },
+            "configuration": {
+              "api_url": "${AZURE_OPENAI_SERVER_BASE_URL}",
+              "api_key": "${AZURE_OPENAI_SECRET_KEY}",
+              "model_name": "openai/gpt-4",
+              "deployment_name": "gpt4",
+              "max_tokens": 1000,
+              "temperature": 0.7
+            }
+          },
+          {
+            "name": "gpt-35-turbo-direct",
+            "enabled": false,
+            "batch": {
+              "size": 1
+            },
+            "configuration": {
+              "api_url": "${AZURE_OPENAI_SERVER_BASE_URL}",
+              "api_key": "${AZURE_OPENAI_SECRET_KEY}",
+              "model_name": "openai/gpt-35-turbo",
+              "deployment_name": "gpt-35-turbo",
+              "max_tokens": 1000,
+              "temperature": 0.7
+            }
+          },
+          {
+            "name": "gpt-4-proxy",
+            "enabled": false,
+            "batch": {
+              "size": 1
+            },
+            "configuration": {
+              "api_url": "${LITELLM_PROXY_SERVER_BASE_URL}",
+              "api_key": "${AZURE_OPENAI_SECRET_KEY}",
+              "model_name": "gpt-4-32k_2",
+              "deployment_name": "gpt-4-32k_2",
+              "max_tokens": 1000,
+              "temperature": 0.7
+            }
+          },
+          {
+            "name": "Llama-3.1-8B-Proxy",
+            "enabled": false,
+            "batch": {
+              "size": 1
+            },
+            "configuration": {
+              "api_url": "${LITELLM_PROXY_SERVER_BASE_URL}",
+              "api_key": "${LITELLM_PROXY_SECRET_KEY}",
+              "model_name": "Meta-Llama-3.1-8B-Instruct",
+              "deployment_name": "Meta-Llama-3.1-8B-Instruct",
+              "max_tokens": 1000,
+              "temperature": 0.7
+            }
+          },
+          {
+            "name": "Llama-3.1-70B-Proxy",
+            "enabled": false,
+            "batch": {
+              "size": 1
+            },
+            "configuration": {
+              "api_url": "${LITELLM_PROXY_SERVER_BASE_URL}",
+              "api_key": "${LITELLM_PROXY_SECRET_KEY}",
+              "model_name": "Meta-Llama-3.1-70B-Instruct-FP8",
+              "deployment_name": "Meta-Llama-3.1-70B-Instruct-FP8",
+              "max_tokens": 1000,
+              "temperature": 0.7
+            }
+          },
+          {
+            "name": "Mixtral-7B-Proxy",
+            "enabled": false,
+            "batch": {
+              "size": 1
+            },
+            "configuration": {
+              "api_url": "${LITELLM_PROXY_SERVER_BASE_URL}",
+              "api_key": "${LITELLM_PROXY_SECRET_KEY}",
+              "model_name": "mixtral-8x7b-instruct",
+              "deployment_name": "mixtral-8x7b-instruct",
+              "max_tokens": 1000,
+              "temperature": 0.7
+            }
+          }
+        ]
+      },
+      "named_context_templates": {
+        "context_default": "{chunk_text}",
+        "context_1": "[chunk_id={chunk_id},page_no={page_no},sequence_no={sequence_no},bbox={bbox},doc_name={doc_name}]\n{chunk_text}\n",
+        "context_2": "[chunk_id={chunk_id},page_no={page_no},sequence_no={sequence_no}]\n{chunk_text}\n",
+        "context_3": "[chunk_id={chunk_id},page_no={page_no},sequence_no={sequence_no},doc_name={doc_name},metadata={custom_metadata}]\n{chunk_text}\n"
+      },
+      "named_prompt_templates": {
+        "prompt_template_1": {
+          "content": [
+            "Use the following pieces of context to answer the question at the end.",
+            "If you don't know the answer or even doubtful a bit, just say that you don't know,",
+            " don't try to make up an answer.Just give the shortest and most appropriate relavant answer to the question.",
+            "{context}",
+            "Question: {question}",
+            "Helpful Answer:"
+          ],
+          "context_template": "context_default",
+          "response_validation": {
+            "enabled": true,
+            "type": "json",
+            "total_attempts": 3
+          }
+        },
+        "inference_prompt_template": {
+          "content": [],
+          "file_path": "/data/config/prompt_templates/inferencing_prompt.txt",
+          "context_template": "context_3",
+          "response_validation": {
+            "enabled": true,
+            "type": "json",
+            "total_attempts": 1
+          }
+        },
+        "inference_prompt_template_openai": {
+          "content": [],
+          "file_path": "/data/config/prompt_templates/inferencing_prompt_openai.txt",
+          "context_template": "context_3",
+          "response_validation": {
+            "enabled": true,
+            "type": "json",
+            "total_attempts": 1
+          }
+        },
+        "inference_prompt_template_llama": {
+          "content": [],
+          "file_path": "/data/config/prompt_templates/inferencing_prompt_llama.txt",
+          "context_template": "context_3",
+          "response_validation": {
+            "enabled": true,
+            "type": "json",
+            "total_attempts": 1
+          }
+        }
+      },
+      "inputs": [
+        {
+          "attribute_key": "women_emp_pct",
+          "use_model_based_prompts": true,
+          "prompt_template": "extractor_attribute_prompt_2",
+          "model_type": "QnA",
+          "top_k": 2
+        },
+        {
+          "attribute_key": "financial_year",
+          "use_model_based_prompts": true,
+          "prompt_template": "extractor_attribute_prompt_2",
+          "model_type": "QnA",
+          "top_k": 2
+        },
+        {
+          "attribute_key": "revenue_amt",
+          "use_model_based_prompts": true,
+          "prompt_template": "extractor_attribute_prompt_2",
+          "model_type": "QnA",
+          "top_k": 2
+        },
+        {
+          "attribute_key": "business_rank",
+          "use_model_based_prompts": true,
+          "prompt_template": "extractor_attribute_prompt_2",
+          "model_type": "QnA",
+          "top_k": 2
+        }
+      ],
+      "model_based_prompts": [
+        {
+          "model_name": [
+            "openai/gpt-4",
+            "openai/gpt-35-turbo",
+            "gpt-4-32k_2"
+          ],
+          "prompt_template": "inference_prompt_template_openai"
+        },
+        {
+          "model_name": [
+            "Meta-Llama-3.1-8B-Instruct",
+            "Meta-Llama-3.1-70B-Instruct-FP8"
+          ],
+          "prompt_template": "inference_prompt_template_llama2"
+        }
+      ]
+    },
+    "DocumentDataSaver": {
+      "work_root_path": "/data/work/"
+    }
+  }
+}

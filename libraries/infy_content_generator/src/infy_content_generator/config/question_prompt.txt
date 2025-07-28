@@ -1,0 +1,60 @@
+# Document Analysis and Question Generation
+
+Metadata: {metadata}
+
+Given Context: {context}
+
+## Phase 1: Context Analysis
+
+1. Content-First Analysis:
+   - Identify key initiatives, actions, and outcomes from the context
+   - Extract specific metrics, projects, and results
+   - Note concrete examples and evidence presented
+   - Identify underlying themes, implications, and connections
+   
+2. Stakeholder & Purpose Analysis:
+   - Identify primary audience and their information needs
+   - Map key themes and decision-relevant information
+   - Consider broader industry trends and implications suggested by content
+
+3. Integration Guidelines:
+   If metadata available:
+   - Use context as primary source, enhance with metadata only when relevant
+   - If metadata includes entity names (e.g., company, organization, industry), incorporate them meaningfully where they strengthen the question.
+   
+   If metadata unavailable:
+   - Focus on specific initiatives, outcomes, and evidence
+   - Frame questions around concrete actions and measurable results
+   - Reference particular projects, programs, or strategies mentioned
+
+## Phase 2: Question Generation
+
+Generate {question_count} questions of {question_type} type across these dimensions:
+
+   - Focus on specific actions and measurable outcomes
+   - Reference concrete examples from context
+   - Explore deeper implications of presented information
+   - Connect concepts to broader domain knowledge
+   - Encourage reasoned analysis while staying grounded in context
+
+Examples:
+   ✓ "What measurable impacts have resulted from [specific initiative mentioned]?"
+   ✓ "How do the [specific projects described] contribute to [stated goals]?"
+   ✓ "Given [specific approach mentioned], what potential challenges might arise in [related domain area]?"
+   ✓ "How might [described strategy] impact [broader industry aspect] based on the implementation details provided?"
+
+Question Quality Guidelines:
+   - Must be answerable using context as primary evidence
+   - Can require domain knowledge for deeper analysis
+   - Should encourage connecting multiple concepts
+
+Avoid:
+   ✗ Questions completely detached from context
+   ✗ Purely theoretical questions without contextual grounding
+   ✗ Generic queries that don't require careful analysis
+   ✗ Direct fact-extraction questions
+
+Output Format:
+Q1: [Question text]
+Type: [Question type]
+Context Support: [Relevant excerpt from context]

@@ -1,0 +1,1704 @@
+{
+    "page": 2,
+    "width": 2550,
+    "height": 3299,
+    "bbox": "X1,Y1,X2,Y2",
+    "tokens": [
+        {
+            "id": "P2_L1",
+            "type": "line",
+            "text": "MotoGP Riders: ",
+            "uri": "",
+            "bbox": [
+                321,
+                326,
+                716,
+                355
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L2",
+            "type": "line",
+            "text": " ",
+            "uri": "",
+            "bbox": [
+                300,
+                386,
+                307,
+                401
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L3",
+            "type": "line",
+            "text": "Rider ",
+            "uri": "",
+            "bbox": [
+                348,
+                432,
+                469,
+                457
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L4",
+            "type": "line",
+            "text": "Team ",
+            "uri": "",
+            "bbox": [
+                776,
+                432,
+                903,
+                457
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L5",
+            "type": "line",
+            "text": "Nationality ",
+            "uri": "",
+            "bbox": [
+                1308,
+                432,
+                1550,
+                457
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L6",
+            "type": "line",
+            "text": "Points ",
+            "uri": "",
+            "bbox": [
+                1655,
+                432,
+                1797,
+                457
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L7",
+            "type": "line",
+            "text": "Wins ",
+            "uri": "",
+            "bbox": [
+                1859,
+                432,
+                1975,
+                457
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L8",
+            "type": "line",
+            "text": "Podiums ",
+            "uri": "",
+            "bbox": [
+                2023,
+                432,
+                2214,
+                457
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L9",
+            "type": "line",
+            "text": "Marc Marquez ",
+            "uri": "",
+            "bbox": [
+                348,
+                512,
+                655,
+                537
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L10",
+            "type": "line",
+            "text": "Repsol Honda ",
+            "uri": "",
+            "bbox": [
+                776,
+                512,
+                1067,
+                537
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L11",
+            "type": "line",
+            "text": "Spanish ",
+            "uri": "",
+            "bbox": [
+                1308,
+                512,
+                1476,
+                537
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L12",
+            "type": "line",
+            "text": "236 ",
+            "uri": "",
+            "bbox": [
+                1655,
+                512,
+                1743,
+                537
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L13",
+            "type": "line",
+            "text": "6 ",
+            "uri": "",
+            "bbox": [
+                1859,
+                512,
+                1896,
+                537
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L14",
+            "type": "line",
+            "text": "8 ",
+            "uri": "",
+            "bbox": [
+                2023,
+                512,
+                2060,
+                537
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L15",
+            "type": "line",
+            "text": "Fabio Quartararo ",
+            "uri": "",
+            "bbox": [
+                348,
+                593,
+                707,
+                618
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L16",
+            "type": "line",
+            "text": "Yamaha Factory Racing ",
+            "uri": "",
+            "bbox": [
+                776,
+                593,
+                1254,
+                618
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L17",
+            "type": "line",
+            "text": "French ",
+            "uri": "",
+            "bbox": [
+                1308,
+                593,
+                1458,
+                618
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L18",
+            "type": "line",
+            "text": "210 ",
+            "uri": "",
+            "bbox": [
+                1655,
+                593,
+                1743,
+                618
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L19",
+            "type": "line",
+            "text": "5 ",
+            "uri": "",
+            "bbox": [
+                1859,
+                593,
+                1896,
+                618
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L20",
+            "type": "line",
+            "text": "7 ",
+            "uri": "",
+            "bbox": [
+                2023,
+                593,
+                2060,
+                618
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L21",
+            "type": "line",
+            "text": "Jack Miller ",
+            "uri": "",
+            "bbox": [
+                348,
+                673,
+                573,
+                698
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L22",
+            "type": "line",
+            "text": "Ducati Team ",
+            "uri": "",
+            "bbox": [
+                776,
+                673,
+                1040,
+                698
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L23",
+            "type": "line",
+            "text": "Australian ",
+            "uri": "",
+            "bbox": [
+                1308,
+                673,
+                1525,
+                698
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L24",
+            "type": "line",
+            "text": "185 ",
+            "uri": "",
+            "bbox": [
+                1655,
+                673,
+                1743,
+                698
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L25",
+            "type": "line",
+            "text": "3 ",
+            "uri": "",
+            "bbox": [
+                1859,
+                673,
+                1896,
+                698
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L26",
+            "type": "line",
+            "text": "6 ",
+            "uri": "",
+            "bbox": [
+                2023,
+                673,
+                2060,
+                698
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L27",
+            "type": "line",
+            "text": "Joan Mir ",
+            "uri": "",
+            "bbox": [
+                348,
+                751,
+                534,
+                776
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L28",
+            "type": "line",
+            "text": "Suzuki Ecstar ",
+            "uri": "",
+            "bbox": [
+                776,
+                751,
+                1050,
+                776
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L29",
+            "type": "line",
+            "text": "Spanish ",
+            "uri": "",
+            "bbox": [
+                1308,
+                751,
+                1476,
+                776
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L30",
+            "type": "line",
+            "text": "162 ",
+            "uri": "",
+            "bbox": [
+                1655,
+                751,
+                1743,
+                776
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L31",
+            "type": "line",
+            "text": "2 ",
+            "uri": "",
+            "bbox": [
+                1859,
+                751,
+                1896,
+                776
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L32",
+            "type": "line",
+            "text": "5 ",
+            "uri": "",
+            "bbox": [
+                2023,
+                751,
+                2060,
+                776
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L33",
+            "type": "line",
+            "text": "Aleix Espargaro ",
+            "uri": "",
+            "bbox": [
+                348,
+                834,
+                670,
+                859
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L34",
+            "type": "line",
+            "text": "Aprilia Racing Team ",
+            "uri": "",
+            "bbox": [
+                776,
+                834,
+                1185,
+                859
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L35",
+            "type": "line",
+            "text": "Spanish ",
+            "uri": "",
+            "bbox": [
+                1308,
+                834,
+                1476,
+                859
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L36",
+            "type": "line",
+            "text": "118 ",
+            "uri": "",
+            "bbox": [
+                1655,
+                834,
+                1743,
+                859
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L37",
+            "type": "line",
+            "text": "0 ",
+            "uri": "",
+            "bbox": [
+                1859,
+                834,
+                1896,
+                859
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L38",
+            "type": "line",
+            "text": "3 ",
+            "uri": "",
+            "bbox": [
+                2023,
+                834,
+                2060,
+                859
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L39",
+            "type": "line",
+            "text": "Johann Zarco ",
+            "uri": "",
+            "bbox": [
+                348,
+                912,
+                626,
+                937
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L40",
+            "type": "line",
+            "text": "Pramac Racing ",
+            "uri": "",
+            "bbox": [
+                776,
+                912,
+                1084,
+                937
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L41",
+            "type": "line",
+            "text": "French ",
+            "uri": "",
+            "bbox": [
+                1308,
+                912,
+                1458,
+                937
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L42",
+            "type": "line",
+            "text": "94 ",
+            "uri": "",
+            "bbox": [
+                1655,
+                912,
+                1717,
+                937
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L43",
+            "type": "line",
+            "text": "0 ",
+            "uri": "",
+            "bbox": [
+                1859,
+                912,
+                1896,
+                937
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L44",
+            "type": "line",
+            "text": "2 ",
+            "uri": "",
+            "bbox": [
+                2023,
+                912,
+                2060,
+                937
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L45",
+            "type": "line",
+            "text": "Brad Binder ",
+            "uri": "",
+            "bbox": [
+                348,
+                992,
+                598,
+                1017
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L46",
+            "type": "line",
+            "text": "Red Bull KTM Factory ",
+            "uri": "",
+            "bbox": [
+                776,
+                992,
+                1218,
+                1017
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L47",
+            "type": "line",
+            "text": "South African ",
+            "uri": "",
+            "bbox": [
+                1308,
+                992,
+                1593,
+                1017
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L48",
+            "type": "line",
+            "text": "73 ",
+            "uri": "",
+            "bbox": [
+                1655,
+                992,
+                1717,
+                1017
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L49",
+            "type": "line",
+            "text": "0 ",
+            "uri": "",
+            "bbox": [
+                1859,
+                992,
+                1896,
+                1017
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L50",
+            "type": "line",
+            "text": "1 ",
+            "uri": "",
+            "bbox": [
+                2023,
+                992,
+                2060,
+                1017
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L51",
+            "type": "line",
+            "text": " ",
+            "uri": "",
+            "bbox": [
+                300,
+                1073,
+                310,
+                1096
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L52",
+            "type": "line",
+            "text": " ",
+            "uri": "",
+            "bbox": [
+                300,
+                1129,
+                310,
+                1152
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L53",
+            "type": "line",
+            "text": "Formula 1 drivers are the elite of the motorsport world, piloting cutting-edge machines at ",
+            "uri": "",
+            "bbox": [
+                300,
+                1187,
+                2133,
+                1212
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L54",
+            "type": "line",
+            "text": "breathtaking speeds. Renowned for their precision, reflexes, and mental acuity, these athletes ",
+            "uri": "",
+            "bbox": [
+                300,
+                1248,
+                2224,
+                1273
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L55",
+            "type": "line",
+            "text": "navigate the most challenging circuits on the planet, pushing the limits of both their vehicles ",
+            "uri": "",
+            "bbox": [
+                300,
+                1309,
+                2186,
+                1334
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L56",
+            "type": "line",
+            "text": "and themselves. Each F1 driver is a maestro behind the wheel, orchestrating a symphony of ",
+            "uri": "",
+            "bbox": [
+                300,
+                1370,
+                2169,
+                1395
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L57",
+            "type": "line",
+            "text": "speed and strategy as they compete in a high-stakes global championship that demands ",
+            "uri": "",
+            "bbox": [
+                300,
+                1431,
+                2096,
+                1456
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L58",
+            "type": "line",
+            "text": "unparalleled skill and commitment. ",
+            "uri": "",
+            "bbox": [
+                300,
+                1492,
+                1029,
+                1517
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L59",
+            "type": "line",
+            "text": " ",
+            "uri": "",
+            "bbox": [
+                300,
+                1553,
+                311,
+                1578
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L60",
+            "type": "line",
+            "text": "F1 drivers are not just athletes but ambassadors for their sport. Their on-track battles, strategic ",
+            "uri": "",
+            "bbox": [
+                300,
+                1614,
+                2246,
+                1639
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L61",
+            "type": "line",
+            "text": "maneuvers, and dedication to excellence captivate millions of fans worldwide, turning each ",
+            "uri": "",
+            "bbox": [
+                300,
+                1676,
+                2165,
+                1701
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L62",
+            "type": "line",
+            "text": "Grand Prix into a spectacle that marries cutting-edge technology with the indomitable spirit of ",
+            "uri": "",
+            "bbox": [
+                300,
+                1737,
+                2224,
+                1762
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L63",
+            "type": "line",
+            "text": "human competition. ",
+            "uri": "",
+            "bbox": [
+                300,
+                1798,
+                728,
+                1823
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L64",
+            "type": "line",
+            "text": " ",
+            "uri": "",
+            "bbox": [
+                300,
+                1859,
+                311,
+                1884
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L65",
+            "type": "line",
+            "text": "Formula 1 Drivers: ",
+            "uri": "",
+            "bbox": [
+                300,
+                1923,
+                759,
+                1953
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L66",
+            "type": "line",
+            "text": " ",
+            "uri": "",
+            "bbox": [
+                300,
+                1994,
+                313,
+                2024
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L67",
+            "type": "line",
+            "text": "Driver ",
+            "uri": "",
+            "bbox": [
+                324,
+                2064,
+                463,
+                2089
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L68",
+            "type": "line",
+            "text": "Team ",
+            "uri": "",
+            "bbox": [
+                737,
+                2064,
+                864,
+                2089
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L69",
+            "type": "line",
+            "text": "Nationality ",
+            "uri": "",
+            "bbox": [
+                1296,
+                2064,
+                1538,
+                2089
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L70",
+            "type": "line",
+            "text": "Points ",
+            "uri": "",
+            "bbox": [
+                1648,
+                2064,
+                1789,
+                2089
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L71",
+            "type": "line",
+            "text": "Wins ",
+            "uri": "",
+            "bbox": [
+                1875,
+                2064,
+                1991,
+                2089
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L72",
+            "type": "line",
+            "text": "Podiums ",
+            "uri": "",
+            "bbox": [
+                2061,
+                2064,
+                2253,
+                2089
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L73",
+            "type": "line",
+            "text": "Lewis Hamilton ",
+            "uri": "",
+            "bbox": [
+                324,
+                2130,
+                646,
+                2155
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L74",
+            "type": "line",
+            "text": "Mercedes ",
+            "uri": "",
+            "bbox": [
+                737,
+                2130,
+                950,
+                2155
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L75",
+            "type": "line",
+            "text": "British ",
+            "uri": "",
+            "bbox": [
+                1296,
+                2130,
+                1437,
+                2155
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L76",
+            "type": "line",
+            "text": "263 ",
+            "uri": "",
+            "bbox": [
+                1648,
+                2130,
+                1735,
+                2155
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L77",
+            "type": "line",
+            "text": "5 ",
+            "uri": "",
+            "bbox": [
+                1875,
+                2130,
+                1912,
+                2155
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L78",
+            "type": "line",
+            "text": "8 ",
+            "uri": "",
+            "bbox": [
+                2061,
+                2130,
+                2098,
+                2155
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L79",
+            "type": "line",
+            "text": "Max Verstappen ",
+            "uri": "",
+            "bbox": [
+                324,
+                2196,
+                669,
+                2221
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L80",
+            "type": "line",
+            "text": "Red Bull Racing ",
+            "uri": "",
+            "bbox": [
+                737,
+                2196,
+                1059,
+                2221
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L81",
+            "type": "line",
+            "text": "Dutch ",
+            "uri": "",
+            "bbox": [
+                1296,
+                2196,
+                1428,
+                2221
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L82",
+            "type": "line",
+            "text": "248 ",
+            "uri": "",
+            "bbox": [
+                1648,
+                2196,
+                1735,
+                2221
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L83",
+            "type": "line",
+            "text": "4 ",
+            "uri": "",
+            "bbox": [
+                1875,
+                2196,
+                1912,
+                2221
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L84",
+            "type": "line",
+            "text": "7 ",
+            "uri": "",
+            "bbox": [
+                2061,
+                2196,
+                2098,
+                2221
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L85",
+            "type": "line",
+            "text": "Valtteri Bottas ",
+            "uri": "",
+            "bbox": [
+                324,
+                2262,
+                628,
+                2287
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L86",
+            "type": "line",
+            "text": "Alfa Romeo Racing ",
+            "uri": "",
+            "bbox": [
+                737,
+                2262,
+                1129,
+                2287
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L87",
+            "type": "line",
+            "text": "Finnish ",
+            "uri": "",
+            "bbox": [
+                1296,
+                2262,
+                1452,
+                2287
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L88",
+            "type": "line",
+            "text": "182 ",
+            "uri": "",
+            "bbox": [
+                1648,
+                2262,
+                1735,
+                2287
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L89",
+            "type": "line",
+            "text": "2 ",
+            "uri": "",
+            "bbox": [
+                1875,
+                2262,
+                1912,
+                2287
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L90",
+            "type": "line",
+            "text": "6 ",
+            "uri": "",
+            "bbox": [
+                2061,
+                2262,
+                2098,
+                2287
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L91",
+            "type": "line",
+            "text": "Charles Leclerc ",
+            "uri": "",
+            "bbox": [
+                324,
+                2325,
+                638,
+                2350
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L92",
+            "type": "line",
+            "text": "Scuderia Ferrari ",
+            "uri": "",
+            "bbox": [
+                737,
+                2325,
+                1070,
+                2350
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L93",
+            "type": "line",
+            "text": "Monegasque ",
+            "uri": "",
+            "bbox": [
+                1296,
+                2325,
+                1572,
+                2350
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L94",
+            "type": "line",
+            "text": "158 ",
+            "uri": "",
+            "bbox": [
+                1648,
+                2325,
+                1735,
+                2350
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L95",
+            "type": "line",
+            "text": "1 ",
+            "uri": "",
+            "bbox": [
+                1875,
+                2325,
+                1912,
+                2350
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L96",
+            "type": "line",
+            "text": "5 ",
+            "uri": "",
+            "bbox": [
+                2061,
+                2325,
+                2098,
+                2350
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L97",
+            "type": "line",
+            "text": "Lando Norris ",
+            "uri": "",
+            "bbox": [
+                324,
+                2391,
+                594,
+                2416
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L98",
+            "type": "line",
+            "text": "McLaren ",
+            "uri": "",
+            "bbox": [
+                737,
+                2391,
+                926,
+                2416
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L99",
+            "type": "line",
+            "text": "British ",
+            "uri": "",
+            "bbox": [
+                1296,
+                2391,
+                1437,
+                2416
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L100",
+            "type": "line",
+            "text": "137 ",
+            "uri": "",
+            "bbox": [
+                1648,
+                2391,
+                1735,
+                2416
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L101",
+            "type": "line",
+            "text": "0 ",
+            "uri": "",
+            "bbox": [
+                1875,
+                2391,
+                1912,
+                2416
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L102",
+            "type": "line",
+            "text": "4 ",
+            "uri": "",
+            "bbox": [
+                2061,
+                2391,
+                2098,
+                2416
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L103",
+            "type": "line",
+            "text": "Sebastian Vettel ",
+            "uri": "",
+            "bbox": [
+                324,
+                2457,
+                665,
+                2482
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L104",
+            "type": "line",
+            "text": "Aston Martin Cognizant ",
+            "uri": "",
+            "bbox": [
+                737,
+                2457,
+                1228,
+                2482
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L105",
+            "type": "line",
+            "text": "German ",
+            "uri": "",
+            "bbox": [
+                1296,
+                2457,
+                1471,
+                2482
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L106",
+            "type": "line",
+            "text": "112 ",
+            "uri": "",
+            "bbox": [
+                1648,
+                2457,
+                1735,
+                2482
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L107",
+            "type": "line",
+            "text": "0 ",
+            "uri": "",
+            "bbox": [
+                1875,
+                2457,
+                1912,
+                2482
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L108",
+            "type": "line",
+            "text": "3 ",
+            "uri": "",
+            "bbox": [
+                2061,
+                2457,
+                2098,
+                2482
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L109",
+            "type": "line",
+            "text": "Daniel Ricciardo ",
+            "uri": "",
+            "bbox": [
+                324,
+                2523,
+                661,
+                2548
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L110",
+            "type": "line",
+            "text": "McLaren ",
+            "uri": "",
+            "bbox": [
+                737,
+                2523,
+                926,
+                2548
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L111",
+            "type": "line",
+            "text": "Australian ",
+            "uri": "",
+            "bbox": [
+                1296,
+                2523,
+                1513,
+                2548
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L112",
+            "type": "line",
+            "text": "97 ",
+            "uri": "",
+            "bbox": [
+                1648,
+                2523,
+                1710,
+                2548
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L113",
+            "type": "line",
+            "text": "0 ",
+            "uri": "",
+            "bbox": [
+                1875,
+                2523,
+                1912,
+                2548
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L114",
+            "type": "line",
+            "text": "2 ",
+            "uri": "",
+            "bbox": [
+                2061,
+                2523,
+                2098,
+                2548
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L115",
+            "type": "line",
+            "text": "Pierre Gasly ",
+            "uri": "",
+            "bbox": [
+                324,
+                2589,
+                577,
+                2614
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L116",
+            "type": "line",
+            "text": "Scuderia AlphaTauri ",
+            "uri": "",
+            "bbox": [
+                737,
+                2589,
+                1154,
+                2614
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L117",
+            "type": "line",
+            "text": "French ",
+            "uri": "",
+            "bbox": [
+                1296,
+                2589,
+                1446,
+                2614
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L118",
+            "type": "line",
+            "text": "82 ",
+            "uri": "",
+            "bbox": [
+                1648,
+                2589,
+                1710,
+                2614
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L119",
+            "type": "line",
+            "text": "0 ",
+            "uri": "",
+            "bbox": [
+                1875,
+                2589,
+                1912,
+                2614
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L120",
+            "type": "line",
+            "text": "2 ",
+            "uri": "",
+            "bbox": [
+                2061,
+                2589,
+                2098,
+                2614
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L121",
+            "type": "line",
+            "text": "Fernando Alonso ",
+            "uri": "",
+            "bbox": [
+                324,
+                2654,
+                679,
+                2679
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L122",
+            "type": "line",
+            "text": "Alpine ",
+            "uri": "",
+            "bbox": [
+                737,
+                2654,
+                878,
+                2679
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L123",
+            "type": "line",
+            "text": "Spanish ",
+            "uri": "",
+            "bbox": [
+                1296,
+                2654,
+                1464,
+                2679
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L124",
+            "type": "line",
+            "text": "76 ",
+            "uri": "",
+            "bbox": [
+                1648,
+                2654,
+                1710,
+                2679
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L125",
+            "type": "line",
+            "text": "0 ",
+            "uri": "",
+            "bbox": [
+                1875,
+                2654,
+                1912,
+                2679
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L126",
+            "type": "line",
+            "text": "1 ",
+            "uri": "",
+            "bbox": [
+                2061,
+                2654,
+                2098,
+                2679
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L127",
+            "type": "line",
+            "text": " ",
+            "uri": "",
+            "bbox": [
+                300,
+                2718,
+                310,
+                2741
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L128",
+            "type": "line",
+            "text": " ",
+            "uri": "",
+            "bbox": [
+                300,
+                2774,
+                310,
+                2797
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L129",
+            "type": "line",
+            "text": " ",
+            "uri": "",
+            "bbox": [
+                300,
+                2832,
+                311,
+                2857
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P2_L130",
+            "type": "line",
+            "text": " ",
+            "uri": "",
+            "bbox": [
+                300,
+                2891,
+                310,
+                2914
+            ],
+            "tokens": []
+        }
+    ],
+    "infy_ocr_generator_metadata": {
+        "dpi": 300,
+        "width": 2550,
+        "height": 3299,
+        "doc_page_num": "2"
+    }
+}

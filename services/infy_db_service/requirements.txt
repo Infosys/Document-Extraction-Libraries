@@ -1,0 +1,14 @@
+#[dev-packages]
+pytest==7.4.4
+pytest-cov==2.12.1
+autopep8==1.5.1
+
+#[packages]
+requests==2.32.3
+python-multipart==0.0.9
+fastapi==0.109.0
+uvicorn[standard]==0.25.0
+python-dotenv==1.0.1
+./lib/infy_fs_utils-0.0.5-py3-none-any.whl
+./lib/infy_dpp_sdk-0.0.11-py3-none-any.whl
+./lib/infy_gen_ai_sdk-0.0.8-py3-none-any.whl

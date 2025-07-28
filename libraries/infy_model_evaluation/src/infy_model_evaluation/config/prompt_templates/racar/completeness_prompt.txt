@@ -1,0 +1,21 @@
+Given a context and question-answer pair, evaluate how completely the answer addresses the question using available information. If the answer indicates insufficient information, assign a score of 0.
+
+- Score 0: Answer indicates insufficient information
+- Score 1: Answer is largely incomplete, missing key aspects
+- Score 2: Answer addresses some aspects but isn't comprehensive
+- Score 3: Answer is complete, addressing all key points with supporting details
+
+For example, if a question asks about multiple aspects and the answer only addresses one, it should receive a score of 1. If it addresses most but not all aspects, it should receive a score of 2. If it comprehensively addresses all aspects with supporting details, it should receive a score of 3.
+
+context: {context}
+question: {qa_pairs}
+
+Return a JSON object with:
+- 'score': numeric score (0-3)
+- 'reasons': specific explanation identifying which aspects of the question were addressed and which were missed
+
+Example output format:
+{
+    "score": 2,
+    "reasons": "The answer explains the revenue decline (-15%) and market factors, but doesn't address the mentioned supply chain disruptions or their specific impact on regional sales performance."
+}

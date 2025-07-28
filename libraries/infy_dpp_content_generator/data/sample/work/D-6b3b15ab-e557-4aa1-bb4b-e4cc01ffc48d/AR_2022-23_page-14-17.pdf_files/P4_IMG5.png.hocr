@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title></title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name='ocr-system' content='tesseract'/>
+</head>
+<body>
+  <div class='ocr_page' id='page_1' title='image "D:\tmp\dpp_processor_container\temp\infy_dpp_processor\CONTAINER\data\temp\data\work\D-6b3b15ab-e557-4aa1-bb4b-e4cc01ffc48d\AR_2022-23_page-14-17.pdf_files\P4_IMG5.png"; bbox 0 0 260 374; ppageno 0; scan_res 70 70'>
+   <div class='ocr_carea' id='block_1_1' title="bbox 42 36 218 92">
+    <p class='ocr_par' id='par_1_1' lang='eng' title="bbox 42 36 218 92">
+     <span class='ocr_line' id='line_1_1' title="bbox 42 36 218 92; baseline -0.011 -16; x_size 79.25; x_descenders 18.5; x_ascenders 20.25">
+      <span class='ocrx_word' id='word_1_1' title='bbox 42 36 218 92; x_wconf 59'>©ONE</span>
+     </span>
+    </p>
+   </div>
+   <div class='ocr_carea' id='block_1_2' title="bbox 28 100 224 186">
+    <p class='ocr_par' id='par_1_2' lang='eng' title="bbox 28 100 224 186">
+     <span class='ocr_line' id='line_1_2' title="bbox 44 100 218 126; baseline 0.011 -2; x_size 36; x_descenders 10; x_ascenders 6">
+      <span class='ocrx_word' id='word_1_2' title='bbox 44 100 218 126; x_wconf 92'>AWARDS</span>
+     </span>
+     <span class='ocr_line' id='line_1_3' title="bbox 28 164 224 186; baseline -0.01 0; x_size 36; x_descenders 10; x_ascenders 6">
+      <span class='ocrx_word' id='word_1_3' title='bbox 28 164 146 186; x_wconf 91'>WINNER</span>
+      <span class='ocrx_word' id='word_1_4' title='bbox 158 164 224 186; x_wconf 96'>2022</span>
+     </span>
+    </p>
+   </div>
+   <div class='ocr_carea' id='block_1_3' title="bbox 66 308 196 370">
+    <p class='ocr_par' id='par_1_3' lang='eng' title="bbox 66 308 196 370">
+     <span class='ocr_line' id='line_1_4' title="bbox 66 308 194 328; baseline -0.016 0; x_size 26; x_descenders 6; x_ascenders 6">
+      <span class='ocrx_word' id='word_1_5' title='bbox 66 308 194 328; x_wconf 89'>Innovation</span>
+     </span>
+     <span class='ocr_line' id='line_1_5' title="bbox 66 344 196 370; baseline 0 -6; x_size 26; x_descenders 6; x_ascenders 6">
+      <span class='ocrx_word' id='word_1_6' title='bbox 66 344 196 370; x_wconf 91'>Ecosystem</span>
+     </span>
+    </p>
+   </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,239 @@
+{
+    "table_data": [
+        {
+            "no_of_rows": 8,
+            "no_of_columns": 4,
+            "title": "",
+            "td_confidence_pct": 90.0,
+            "bbox": [
+                84.0,
+                103.0,
+                524.0,
+                215.0
+            ],
+            "cell_data": [
+                {
+                    "type": "columnHeader",
+                    "row_index": 0,
+                    "column_index": 0,
+                    "row_span": 2,
+                    "column_span": 1,
+                    "content": "",
+                    "bbox": [
+                        84.0,
+                        105.0,
+                        306.0,
+                        141.0
+                    ]
+                },
+                {
+                    "type": "columnHeader",
+                    "row_index": 0,
+                    "column_index": 1,
+                    "row_span": 2,
+                    "column_span": 2,
+                    "content": "Year ended March 31",
+                    "bbox": [
+                        306.0,
+                        105.0,
+                        445.0,
+                        141.0
+                    ]
+                },
+                {
+                    "type": "columnHeader",
+                    "row_index": 0,
+                    "column_index": 3,
+                    "row_span": 1,
+                    "column_span": 1,
+                    "content": "",
+                    "bbox": [
+                        445.0,
+                        105.0,
+                        525.0,
+                        115.0
+                    ]
+                },
+                {
+                    "type": "columnHeader",
+                    "row_index": 1,
+                    "column_index": 3,
+                    "row_span": 2,
+                    "column_span": 1,
+                    "content": " Appreciation/ Depreciation of INR in percentage",
+                    "bbox": [
+                        445.0,
+                        115.0,
+                        525.0,
+                        152.0
+                    ]
+                },
+                {
+                    "type": "columnHeader",
+                    "row_index": 2,
+                    "column_index": 0,
+                    "row_span": 1,
+                    "column_span": 1,
+                    "content": "Average exchange rate during the year",
+                    "bbox": [
+                        84.0,
+                        140.0,
+                        306.0,
+                        152.0
+                    ]
+                },
+                {
+                    "type": "columnHeader",
+                    "row_index": 2,
+                    "column_index": 1,
+                    "row_span": 1,
+                    "column_span": 1,
+                    "content": "2022",
+                    "bbox": [
+                        306.0,
+                        141.0,
+                        377.0,
+                        152.0
+                    ]
+                },
+                {
+                    "type": "columnHeader",
+                    "row_index": 2,
+                    "column_index": 2,
+                    "row_span": 1,
+                    "column_span": 1,
+                    "content": "2023",
+                    "bbox": [
+                        377.0,
+                        141.0,
+                        445.0,
+                        152.0
+                    ]
+                },
+                {
+                    "type": "normal",
+                    "row_index": 3,
+                    "column_index": 0,
+                    "row_span": 1,
+                    "column_span": 1,
+                    "content": "US Dollar ",
+                    "bbox": [
+                        84.0,
+                        152.0,
+                        306.0,
+                        164.0
+                    ]
+                },
+                {
+                    "type": "normal",
+                    "row_index": 3,
+                    "column_index": 1,
+                    "row_span": 1,
+                    "column_span": 1,
+                    "content": "74.41",
+                    "bbox": [
+                        306.0,
+                        152.0,
+                        378.0,
+                        164.0
+                    ]
+                },
+                {
+                    "type": "normal",
+                    "row_index": 3,
+                    "column_index": 2,
+                    "row_span": 1,
+                    "column_span": 1,
+                    "content": "80.21",
+                    "bbox": [
+                        378.0,
+                        152.0,
+                        445.0,
+                        164.0
+                    ]
+                },
+                {
+                    "type": "normal",
+                    "row_index": 3,
+                    "column_index": 3,
+                    "row_span": 1,
+                    "column_span": 1,
+                    "content": "(7.79)%",
+                    "bbox": [
+                        445.0,
+                        152.0,
+                        525.0,
+                        164.0
+                    ]
+                },
+                {
+                    "type": "normal",
+                    "row_index": 4,
+                    "column_index": 0,
+                    "row_span": 1,
+                    "column_span": 1,
+                    "content": "Pound Sterling (GBP)",
+                    "bbox": [
+                        84.0,
+                        164.0,
+                        306.0,
+                        176.0
+                    ]
+                },
+                {
+                    "type": "normal",
+                    "row_index": 4,
+                    "column_index": 1,
+                    "row_span": 1,
+                    "column_span": 1,
+                    "content": "101.70",
+                    "bbox": [
+                        306.0,
+                        164.0,
+                        378.0,
+                        176.0
+                    ]
+                },
+                {
+                    "type": "normal",
+                    "row_index": 4,
+                    "column_index": 2,
+                    "row_span": 1,
+                    "column_span": 1,
+                    "content": "96.78",
+                    "bbox": [
+                        378.0,
+                        164.0,
+                        445.0,
+                        176.0
+                    ]
+                },
+                {
+                    "type": "normal",
+                    "row_index": 4,
+                    "column_index": 3,
+                    "row_span": 1,
+                    "column_span": 1,
+                    "content": "(4.84)%",
+                    "bbox": [
+                        445.0,
+                        164.0,
+                        525.0,
+                        176.0
+                    ]
+                }
+            ],
+            "message_data": [
+                {
+                    "message_type": "info",
+                    "message": "Successfully extracted table data"
+                },
+                {
+                    "message_type": "warn",
+                    "message": "Some warnings occurred"
+                }
+            ],
+            "tsr_confidence_pct": 90.0
+        }
+    ]
+}

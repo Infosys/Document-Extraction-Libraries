@@ -1,0 +1,4 @@
+Count the no. of word in the following text and return only the count as number.
+
+{text}
+

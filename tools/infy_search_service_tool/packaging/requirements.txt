@@ -1,0 +1,2 @@
+#[packages]
+../../../docs/notebook/lib/infy_search_service_tool-0.0.2-py3-none-any.whl

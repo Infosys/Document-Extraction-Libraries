@@ -1,0 +1,989 @@
+{
+    "page": 3,
+    "width": 5100,
+    "height": 3299,
+    "bbox": "X1,Y1,X2,Y2",
+    "tokens": [
+        {
+            "id": "P3_L1",
+            "type": "line",
+            "text": "Performance overview",
+            "uri": "",
+            "bbox": [
+                189,
+                160,
+                735,
+                195
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P3_L2",
+            "type": "line",
+            "text": "Letter to the Shareholder",
+            "uri": "",
+            "bbox": [
+                189,
+                224,
+                1185,
+                283
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P3_L3",
+            "type": "line",
+            "text": "Dear shareholder,",
+            "uri": "",
+            "bbox": [
+                189,
+                360,
+                494,
+                385
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P3_L4",
+            "type": "line",
+            "text": "Financial year 2023 was a strong year for our business.",
+            "uri": "",
+            "bbox": [
+                189,
+                438,
+                1121,
+                463
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P3_L5",
+            "type": "line",
+            "text": "Our learning ecosystem enabled over 5.5 million learning ",
+            "uri": "",
+            "bbox": [
+                1310,
+                431,
+                2308,
+                456
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P3_L6",
+            "type": "line",
+            "text": "days for our employees during the year. ",
+            "uri": "",
+            "bbox": [
+                1310,
+                485,
+                2003,
+                510
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P3_L7",
+            "type": "line",
+            "text": "In FY23, we saw growth of over 15%, operating margins ",
+            "uri": "",
+            "bbox": [
+                189,
+                516,
+                1157,
+                541
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P3_L8",
+            "type": "line",
+            "text": "of 21%, and free cash flow of US$2.5 billion. Our attrition ",
+            "uri": "",
+            "bbox": [
+                189,
+                570,
+                1172,
+                595
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P3_L9",
+            "type": "line",
+            "text": "Last year we returned US$3.1 billion to our shareholders \u2013 ",
+            "uri": "",
+            "bbox": [
+                1310,
+                563,
+                2316,
+                588
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P3_L10",
+            "type": "line",
+            "text": "reduced for each quarter of the year.",
+            "uri": "",
+            "bbox": [
+                189,
+                624,
+                818,
+                649
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P3_L11",
+            "type": "line",
+            "text": "US$1.7 billion as dividend and US$1.4 billion through our ",
+            "uri": "",
+            "bbox": [
+                1310,
+                617,
+                2307,
+                642
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P3_L12",
+            "type": "line",
+            "text": "share buyback program.",
+            "uri": "",
+            "bbox": [
+                1310,
+                671,
+                1730,
+                697
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P3_L13",
+            "type": "line",
+            "text": "With the changing economic environment, we positioned ",
+            "uri": "",
+            "bbox": [
+                189,
+                702,
+                1197,
+                727
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P3_L14",
+            "type": "line",
+            "text": "our Company to work with clients for their digital ",
+            "uri": "",
+            "bbox": [
+                189,
+                756,
+                1047,
+                781
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P3_L15",
+            "type": "line",
+            "text": "At the end of the financial year, we were the leading ",
+            "uri": "",
+            "bbox": [
+                1310,
+                749,
+                2216,
+                774
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P3_L16",
+            "type": "line",
+            "text": "transformation as well as their cost efficiency and ",
+            "uri": "",
+            "bbox": [
+                189,
+                810,
+                1049,
+                835
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P3_L17",
+            "type": "line",
+            "text": "company among our peers in total shareholder return over ",
+            "uri": "",
+            "bbox": [
+                1310,
+                803,
+                2336,
+                828
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P3_L18",
+            "type": "line",
+            "text": "automation programs, enabling us to support them in two ",
+            "uri": "",
+            "bbox": [
+                189,
+                864,
+                1208,
+                890
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P3_L19",
+            "type": "line",
+            "text": "the past five years.",
+            "uri": "",
+            "bbox": [
+                1310,
+                858,
+                1630,
+                883
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P3_L20",
+            "type": "line",
+            "text": "critical areas of interest.",
+            "uri": "",
+            "bbox": [
+                189,
+                919,
+                596,
+                944
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P3_L21",
+            "type": "line",
+            "text": "We remain committed to the communities we live and ",
+            "uri": "",
+            "bbox": [
+                1310,
+                935,
+                2258,
+                960
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P3_L22",
+            "type": "line",
+            "text": "We have developed a strong set of capabilities in ",
+            "uri": "",
+            "bbox": [
+                189,
+                996,
+                1041,
+                1021
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P3_L23",
+            "type": "line",
+            "text": "operate in. With the work of Infosys Foundation, we ",
+            "uri": "",
+            "bbox": [
+                1310,
+                989,
+                2207,
+                1015
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P3_L24",
+            "type": "line",
+            "text": "generative artificial intelligence to enhance how we enable ",
+            "uri": "",
+            "bbox": [
+                189,
+                1051,
+                1219,
+                1076
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P3_L25",
+            "type": "line",
+            "text": "support a variety of social causes, including creating ",
+            "uri": "",
+            "bbox": [
+                1310,
+                1044,
+                2221,
+                1069
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P3_L26",
+            "type": "line",
+            "text": "our clients to derive value. These capabilities are available ",
+            "uri": "",
+            "bbox": [
+                189,
+                1105,
+                1191,
+                1130
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P3_L27",
+            "type": "line",
+            "text": "positive impact in healthcare, education, sustainability, and ",
+            "uri": "",
+            "bbox": [
+                1310,
+                1098,
+                2343,
+                1123
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P3_L28",
+            "type": "line",
+            "text": "to all our clients in the form of Infosys TopazTM.",
+            "uri": "",
+            "bbox": [
+                189,
+                1159,
+                986,
+                1184
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P3_L29",
+            "type": "line",
+            "text": "women empowerment. Our Infosys Springboard initiative ",
+            "uri": "",
+            "bbox": [
+                1310,
+                1152,
+                2317,
+                1177
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P3_L30",
+            "type": "line",
+            "text": "continues to help build digital skills by providing free ",
+            "uri": "",
+            "bbox": [
+                1310,
+                1206,
+                2236,
+                1231
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P3_L31",
+            "type": "line",
+            "text": "Our Cobalt capabilities for the cloud continue to resonate ",
+            "uri": "",
+            "bbox": [
+                189,
+                1237,
+                1190,
+                1262
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P3_L32",
+            "type": "line",
+            "text": "learning programs to millions of people around the world.",
+            "uri": "",
+            "bbox": [
+                1310,
+                1260,
+                2314,
+                1285
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P3_L33",
+            "type": "line",
+            "text": "with our clients. Our platforms, including Finacle for banks, ",
+            "uri": "",
+            "bbox": [
+                189,
+                1291,
+                1211,
+                1316
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P3_L34",
+            "type": "line",
+            "text": "McCamish for insurance, Equinox for commerce, and Helix ",
+            "uri": "",
+            "bbox": [
+                189,
+                1345,
+                1200,
+                1370
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P3_L35",
+            "type": "line",
+            "text": "In the past few quarters, we have seen the global ",
+            "uri": "",
+            "bbox": [
+                1310,
+                1338,
+                2164,
+                1363
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P3_L36",
+            "type": "line",
+            "text": "for healthcare, are creating strong impact with clients. ",
+            "uri": "",
+            "bbox": [
+                189,
+                1399,
+                1128,
+                1424
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P3_L37",
+            "type": "line",
+            "text": "economy dealing with inflation, interest rate increases, ",
+            "uri": "",
+            "bbox": [
+                1310,
+                1392,
+                2262,
+                1417
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P3_L38",
+            "type": "line",
+            "text": "and changes in demand environment for companies in ",
+            "uri": "",
+            "bbox": [
+                1310,
+                1446,
+                2268,
+                1471
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P3_L39",
+            "type": "line",
+            "text": "During the year, we were recognized by Brand Finance ",
+            "uri": "",
+            "bbox": [
+                189,
+                1477,
+                1137,
+                1502
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P3_L40",
+            "type": "line",
+            "text": "various industries. Our strength in digital, cloud, and in ",
+            "uri": "",
+            "bbox": [
+                1310,
+                1500,
+                2264,
+                1525
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P3_L41",
+            "type": "line",
+            "text": "among the top three most valuable IT services brands ",
+            "uri": "",
+            "bbox": [
+                189,
+                1531,
+                1126,
+                1556
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P3_L42",
+            "type": "line",
+            "text": "automation, along with cost efficiency capabilities have ",
+            "uri": "",
+            "bbox": [
+                1310,
+                1555,
+                2279,
+                1580
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P3_L43",
+            "type": "line",
+            "text": "globally.",
+            "uri": "",
+            "bbox": [
+                189,
+                1585,
+                335,
+                1610
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P3_L44",
+            "type": "line",
+            "text": "held us in good stead. These will continue to be critical in ",
+            "uri": "",
+            "bbox": [
+                1310,
+                1609,
+                2304,
+                1634
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P3_L45",
+            "type": "line",
+            "text": "We continue to deepen our engagement with our clients. ",
+            "uri": "",
+            "bbox": [
+                189,
+                1663,
+                1188,
+                1688
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P3_L46",
+            "type": "line",
+            "text": "the evolving economic environment.",
+            "uri": "",
+            "bbox": [
+                1310,
+                1663,
+                1949,
+                1688
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P3_L47",
+            "type": "line",
+            "text": "The number of clients with over US$100 million in revenue ",
+            "uri": "",
+            "bbox": [
+                189,
+                1717,
+                1210,
+                1742
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P3_L48",
+            "type": "line",
+            "text": "As I look ahead, given the trust of our clients, the ",
+            "uri": "",
+            "bbox": [
+                1310,
+                1741,
+                2158,
+                1766
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P3_L49",
+            "type": "line",
+            "text": "for the year was at 40. The number of clients with over ",
+            "uri": "",
+            "bbox": [
+                189,
+                1771,
+                1130,
+                1796
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P3_L50",
+            "type": "line",
+            "text": "dedication of our employees, the strength of our ",
+            "uri": "",
+            "bbox": [
+                1310,
+                1795,
+                2159,
+                1820
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P3_L51",
+            "type": "line",
+            "text": "US$50 million in revenue for the year was at 75. Our large ",
+            "uri": "",
+            "bbox": [
+                189,
+                1825,
+                1186,
+                1850
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P3_L52",
+            "type": "line",
+            "text": "capabilities, our One Infosys approach, and the guidance ",
+            "uri": "",
+            "bbox": [
+                1310,
+                1849,
+                2299,
+                1874
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P3_L53",
+            "type": "line",
+            "text": "deal intensity was strong during the year. We had 95 large ",
+            "uri": "",
+            "bbox": [
+                189,
+                1879,
+                1195,
+                1905
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P3_L54",
+            "type": "line",
+            "text": "of our Board, I remain confident of our ability to serve our ",
+            "uri": "",
+            "bbox": [
+                1310,
+                1903,
+                2311,
+                1928
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P3_L55",
+            "type": "line",
+            "text": "deals with a value of US$9.8 billion in the year. We see ",
+            "uri": "",
+            "bbox": [
+                189,
+                1934,
+                1123,
+                1959
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P3_L56",
+            "type": "line",
+            "text": "clients and continue to create impact for them.",
+            "uri": "",
+            "bbox": [
+                1310,
+                1957,
+                2120,
+                1982
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P3_L57",
+            "type": "line",
+            "text": "our One Infosys approach helping support our clients by ",
+            "uri": "",
+            "bbox": [
+                189,
+                1988,
+                1173,
+                2013
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P3_L58",
+            "type": "line",
+            "text": "bringing all our capabilities and the strength of our entire ",
+            "uri": "",
+            "bbox": [
+                189,
+                2042,
+                1191,
+                2067
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P3_L59",
+            "type": "line",
+            "text": "With my warmest regards,",
+            "uri": "",
+            "bbox": [
+                1310,
+                2035,
+                1761,
+                2060
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P3_L60",
+            "type": "line",
+            "text": "employee-base to work for their benefit.",
+            "uri": "",
+            "bbox": [
+                189,
+                2096,
+                886,
+                2121
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P3_L61",
+            "type": "line",
+            "text": "Sd/-",
+            "uri": "",
+            "bbox": [
+                2264,
+                2122,
+                2321,
+                2142
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P3_L62",
+            "type": "line",
+            "text": "We recruited over 50,000 college graduates in the year and ",
+            "uri": "",
+            "bbox": [
+                189,
+                2174,
+                1212,
+                2199
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P3_L63",
+            "type": "line",
+            "text": "Bengaluru",
+            "uri": "",
+            "bbox": [
+                1327,
+                2193,
+                1471,
+                2213
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P3_L64",
+            "type": "line",
+            "text": "Salil Parekh",
+            "uri": "",
+            "bbox": [
+                2112,
+                2187,
+                2321,
+                2213
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P3_L65",
+            "type": "line",
+            "text": "ended the year with over 3,40,000 employees. At the end ",
+            "uri": "",
+            "bbox": [
+                189,
+                2228,
+                1182,
+                2253
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P3_L66",
+            "type": "line",
+            "text": "May 29, 2023",
+            "uri": "",
+            "bbox": [
+                1327,
+                2234,
+                1509,
+                2254
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P3_L67",
+            "type": "line",
+            "text": "Chief Executive Officer and Managing Director",
+            "uri": "",
+            "bbox": [
+                1681,
+                2234,
+                2321,
+                2254
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P3_L68",
+            "type": "line",
+            "text": "of the year, 39% of our employees were women.",
+            "uri": "",
+            "bbox": [
+                189,
+                2282,
+                1018,
+                2307
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P3_L69",
+            "type": "line",
+            "text": "Salil Parekh",
+            "uri": "",
+            "bbox": [
+                2763,
+                2875,
+                2972,
+                2900
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P3_L70",
+            "type": "line",
+            "text": "Chief Executive Officer and ",
+            "uri": "",
+            "bbox": [
+                2763,
+                2923,
+                3189,
+                2945
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P3_L71",
+            "type": "line",
+            "text": "Managing Director",
+            "uri": "",
+            "bbox": [
+                2763,
+                2968,
+                3056,
+                2990
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P3_L72",
+            "type": "line",
+            "text": "32",
+            "uri": "",
+            "bbox": [
+                189,
+                3186,
+                223,
+                3206
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P3_L73",
+            "type": "line",
+            "text": "Infosys Integrated Annual Report 2022-23",
+            "uri": "",
+            "bbox": [
+                1760,
+                3186,
+                2337,
+                3206
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P3_L74",
+            "type": "line",
+            "text": "Infosys Integrated Annual Report 2022-23",
+            "uri": "",
+            "bbox": [
+                2763,
+                3186,
+                3340,
+                3206
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P3_L75",
+            "type": "line",
+            "text": "33",
+            "uri": "",
+            "bbox": [
+                4877,
+                3186,
+                4911,
+                3206
+            ],
+            "tokens": []
+        }
+    ],
+    "infy_ocr_generator_metadata": {
+        "dpi": 300,
+        "width": 5100,
+        "height": 3299,
+        "doc_page_num": "3"
+    }
+}

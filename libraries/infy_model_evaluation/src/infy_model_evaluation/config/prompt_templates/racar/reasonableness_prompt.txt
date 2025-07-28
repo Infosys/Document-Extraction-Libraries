@@ -1,0 +1,21 @@
+Given a context and question-answer pair, evaluate the logical consistency of the answer and provide a detailed explanation for the assigned score. If the answer indicates insufficient information, assign a score of 0.
+
+- Score 0: Answer indicates insufficient information
+- Score 1: Has significant logical errors or contradictions
+- Score 2: Mostly logical but contains minor inconsistencies
+- Score 3: Fully logical and free of contradictions
+
+For example, if an answer contradicts itself or makes illogical connections, it should receive a score of 1. If it has generally sound logic with minor inconsistencies, it should receive a score of 2. If it maintains complete logical consistency throughout, it should receive a score of 3.
+
+context: {context}
+question: {qa_pairs}
+
+Return a JSON object with:
+- 'score': numeric score (0-3)
+- 'reasons': specific explanation of any logical flows or contradictions found, with examples from the answer.
+
+Example output format:
+{
+    "score": 1,
+    "reasons": "The answer claims both increasing market share (paragraph 1) and declining customer base (paragraph 2), while attributing both to the same product launch, creating a logical contradiction."
+}

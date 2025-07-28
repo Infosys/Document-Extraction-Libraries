@@ -1,0 +1,71 @@
+[
+    {
+        "table_data": [
+            {
+                "no_of_rows": null,
+                "no_of_columns": null,
+                "title": null,
+                "td_confidence_pct": 0.936,
+                "bbox_format": "X1,Y1,X2,Y2",
+                "bbox": [
+                    324,
+                    1727,
+                    2145,
+                    2245
+                ],
+                "cell_data": null,
+                "message_data": null,
+                "tsr_confidence_pct": -1.0,
+                "debug_path": null
+            }
+        ],
+        "table_html_data": null,
+        "image_width": 2550,
+        "image_height": 3299,
+        "image": "/data/work/D-c9b57e85-4f6e-4a34-8b5e-6dc60f82449f/sports_statistics.pdf_files/1.jpg",
+        "page": "1"
+    },
+    {
+        "table_data": [
+            {
+                "no_of_rows": null,
+                "no_of_columns": null,
+                "title": null,
+                "td_confidence_pct": 0.943,
+                "bbox_format": "X1,Y1,X2,Y2",
+                "bbox": [
+                    309,
+                    409,
+                    2244,
+                    1059
+                ],
+                "cell_data": null,
+                "message_data": null,
+                "tsr_confidence_pct": -1.0,
+                "debug_path": null
+            },
+            {
+                "no_of_rows": null,
+                "no_of_columns": null,
+                "title": null,
+                "td_confidence_pct": 0.937,
+                "bbox_format": "X1,Y1,X2,Y2",
+                "bbox": [
+                    295,
+                    2034,
+                    2269,
+                    2697
+                ],
+                "cell_data": null,
+                "message_data": null,
+                "tsr_confidence_pct": -1.0,
+                "debug_path": null
+            }
+        ],
+        "table_html_data": null,
+        "image_width": 2550,
+        "image_height": 3299,
+        "image": "/data/work/D-c9b57e85-4f6e-4a34-8b5e-6dc60f82449f/sports_statistics.pdf_files/2.jpg",
+        "page": "2"
+    }
+]

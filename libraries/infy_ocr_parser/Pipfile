@@ -1,0 +1,19 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+pytest = "==7.4.4"
+pytest-cov = "==2.12.1"
+autopep8 = "==1.5.1"
+
+[packages]
+bs4 = "==0.0.1"
+lxml =">=4.6.5,<5.0.0"
+urllib3 = "==1.26.7"
+imageio = "==2.9.0"
+opencv-python = ">=4.8.0.74,<5"
+
+[requires]
+python_version = "3"

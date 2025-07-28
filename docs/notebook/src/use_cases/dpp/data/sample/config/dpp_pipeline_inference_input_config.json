@@ -1,15 +1,16 @@
 {
-  "name": "pipeline2",
-  "description": "Sample 4-processor-pipeline configuration for integration testing",
+  "name": "Batch inference pipeline",
+  "description": "DPP batch inferencing pipeline",
   "variables": {
-    "OPENAI_KEY": "${ENV:OPENAI_KEY}",
-    "OPENAI_SERVER_URL": "${ENV:OPENAI_SERVER_URL}",
-    "MODEL_HOME": "C:/MyProgramFiles/AI/models",
-    "CUSTOM_LLM_BLOOM_INFERENCE_URL": "${ENV:CUSTOM_LLM_BLOOM_INFERENCE_URL}",
-    "CUSTOM_LLM_LLAMA_INFERENCE_URL": "${ENV:CUSTOM_LLM_LLAMA_INFERENCE_URL}",
-    "CUSTOM_LLM_MIXTRAL_INFERENCE_URL": "${ENV:CUSTOM_LLM_MIXTRAL_INFERENCE_URL}",
-    "CUSTOM_EMB_MISTRAL_INFERENCE_URL": "${ENV:CUSTOM_EMB_MISTRAL_INFERENCE_URL}",
-    "CUSTOM_LLM_LLAMA_3_1_INFERENCE_URL": "${ENV:CUSTOM_LLM_LLAMA_3_1_INFERENCE_URL}"
+    "MODEL_HOME": "C:/del/ai/models",
+    "AI_HOME": "C:/del/ai",
+    "CA_CERTS_PATH": "",
+    "AZURE_OPENAI_SERVER_BASE_URL": "${ENV:AZURE_OPENAI_SERVER_BASE_URL}",
+    "AZURE_OPENAI_SECRET_KEY": "${ENV:AZURE_OPENAI_SECRET_KEY}",
+    "LITELLM_PROXY_SERVER_BASE_URL": "${ENV:LITELLM_PROXY_SERVER_BASE_URL}",
+    "LITELLM_PROXY_SECRET_KEY": "${ENV:LITELLM_PROXY_SECRET_KEY}",
+    "INFY_DB_SERVICE_BASE_URL": "${ENV:INFY_DB_SERVICE_BASE_URL}",
+    "INFY_MODEL_SERVICE_BASE_URL": "${ENV:INFY_MODEL_SERVICE_BASE_URL}"
   },
   "processor_list": [
     {
@@ -17,28 +18,36 @@
       "processor_name": "request_creator",
       "processor_namespace": "infy_dpp_core.request_creator",
       "processor_class_name": "RequestCreator",
-      "processor_input_config_name_list": ["RequestCreator"]
+      "processor_input_config_name_list": [
+        "RequestCreator"
+      ]
     },
     {
       "enabled": true,
       "processor_name": "retriever",
       "processor_namespace": "infy_dpp_ai.retriever.process.query_retriever_processor",
       "processor_class_name": "QueryRetriever",
-      "processor_input_config_name_list": ["QueryRetriever"]
+      "processor_input_config_name_list": [
+        "QueryRetriever"
+      ]
     },
     {
       "enabled": true,
       "processor_name": "reader",
       "processor_namespace": "infy_dpp_ai.reader.process.reader_processor",
       "processor_class_name": "Reader",
-      "processor_input_config_name_list": ["Reader"]
+      "processor_input_config_name_list": [
+        "Reader"
+      ]
     },
     {
       "enabled": true,
       "processor_name": "request_closer",
       "processor_namespace": "infy_dpp_core.request_closer",
       "processor_class_name": "RequestCloser",
-      "processor_input_config_name_list": ["RequestCloser"]
+      "processor_input_config_name_list": [
+        "RequestCloser"
+      ]
     }
   ],
   "processor_input_config": {
@@ -48,8 +57,12 @@
         "read_path": "/data/input/",
         "batch_size": 20,
         "filter": {
-          "include": ["pdf"],
-          "exclude": ["_"]
+          "include": [
+            "pdf"
+          ],
+          "exclude": [
+            "_"
+          ]
         },
         "work_root_path": "/data/work/",
         "to_request_file": {
@@ -62,31 +75,6 @@
         "save_path": "/data/work/request/inference/start"
       }
     },
-    "RequestCloser": {
-      "work_root_path": "/data/work/",
-      "data_file": {
-        "output_root_path": ""
-      },
-      "output_root_path": "/data/output/",
-      "from_request_file": {
-        "read_path": "/data/work/request/inference/start",
-        "save_path": "/data/work/request/inference/complete"
-      }
-    },
-    "DocumentDataUpdater": {
-      "config_data": [
-        {
-          "enabled": true,
-          "json_path": "$.context_data.reader.output[*].model_output.sources[*]",
-          "json_key": "bbox",
-          "replace_key_enabled": false,
-          "replace_with_key": "",
-          "replace_with_value": "",
-          "replace_value_enabled": false,
-          "replace_value_with_rule_name": "rule_cus_001_transform_bbox_value"
-        }
-      ]
-    },
     "QueryRetriever": {
       "embedding": {
         "openai": {
@@ -94,8 +82,8 @@
           "configuration": {
             "api_type": "azure",
             "api_version": "2022-12-01",
-            "api_url": "${OPENAI_SERVER_URL}",
-            "api_key": "${OPENAI_KEY}",
+            "api_url": "${AZURE_OPENAI_SERVER_BASE_URL}",
+            "api_key": "${AZURE_OPENAI_SECRET_KEY}",
             "model_name": "text-embedding-ada-002",
             "deployment_name": "text-embedding-ada-002",
             "chunk_size": 1000,
@@ -106,8 +94,7 @@
           "enabled": true,
           "configuration": {
             "model_name": "all-MiniLM-L6-v2",
-            "model_home_path": "${MODEL_HOME}",
-            "tiktoken_cache_dir": "${MODEL_HOME}/tiktoken_encoding"
+            "api_url": "${INFY_MODEL_SERVICE_BASE_URL}"
           }
         },
         "custom": {
@@ -142,15 +129,28 @@
           "infy_db_service": {
             "enabled": false,
             "configuration": {
-              "db_service_url": "",
-              "model_name": "all-MiniLM-L6-v2",
+              "db_service_url": "${INFY_DB_SERVICE_BASE_URL}",
+              "model_name": "",
               "index_id": "",
               "collections": [
                 {
-                  "collection_name": "documents",
+                  "collection_name": "",
                   "collection_secret_key": ""
                 }
               ]
+            }
+          },
+          "elasticsearch": {
+            "enabled": false,
+            "configuration": {
+              "db_server_url": "",
+              "authenticate": "false",
+              "username": "",
+              "password": "",
+              "verify_certs": "false",
+              "cert_fingerprint": "",
+              "ca_certs_path": "${CA_CERTS_PATH}",
+              "index_id": ""
             }
           }
         },
@@ -163,22 +163,23 @@
               "index_id": "",
               "collections": [
                 {
-                  "collection_name": "documents",
-                  "collection_secret_key": ""
+                  "collection_name": "",
+                  "collection_secret_key": "",
+                  "chunk_type": ""
                 }
               ],
-              "nltk_data_dir": "C:/MyProgramFiles/AI/nltk_data"
+              "nltk_data_dir": "${AI_HOME}/nltk_data"
             }
           },
           "infy_db_service": {
             "enabled": false,
             "configuration": {
-              "db_service_url": "",
-              "method_name": "bm25s",
+              "db_service_url": "${INFY_DB_SERVICE_BASE_URL}",
+              "method_name": "",
               "index_id": "",
               "collections": [
                 {
-                  "collection_name": "documents",
+                  "collection_name": "",
                   "collection_secret_key": ""
                 }
               ]
@@ -197,28 +198,36 @@
           "question": "What is the percentage of women employees in Infosys?",
           "top_k": 1,
           "pre_filter_fetch_k": 10,
-          "filter_metadata": {}
+          "filter_metadata": {},
+          "min_distance": 0,
+          "max_distance": 4
         },
         {
           "attribute_key": "financial_year",
           "question": "What is the financial year of this report?",
           "top_k": 1,
           "pre_filter_fetch_k": 10,
-          "filter_metadata": {}
+          "filter_metadata": {},
+          "min_distance": 0,
+          "max_distance": 4
         },
         {
           "attribute_key": "revenue_amt",
           "question": "What is the Revenue amount of this year?",
           "top_k": 1,
           "pre_filter_fetch_k": 10,
-          "filter_metadata": {}
+          "filter_metadata": {},
+          "min_distance": 0,
+          "max_distance": 4
         },
         {
           "attribute_key": "business_rank",
           "question": "What is the rank of infosys?",
           "top_k": 1,
           "pre_filter_fetch_k": 10,
-          "filter_metadata": {}
+          "filter_metadata": {},
+          "min_distance": 0,
+          "max_distance": 4
         }
       ]
     },
@@ -226,25 +235,11 @@
       "storage": {
         "vectordb": {
           "faiss": {
-            "enabled": true,
-            "configuration": {
-              "chunked_files_root_path": "/data/vectordb/chunked",
-              "encoded_files_root_path": "/data/vectordb/encoded",
-              "db_name": "documents",
-              "distance_metric": {
-                "eucledian": true
-              }
-            }
-          },
-          "infy_db_service": {
-            "enabled": false
+            "enabled": true
           }
         },
         "sparseindex": {
           "bm25s": {
-            "enabled": false
-          },
-          "infy_db_service": {
             "enabled": false
           }
         }
@@ -255,93 +250,98 @@
         }
       },
       "llm": {
-        "openai": {
-          "enabled": false,
-          "configuration": {
-            "api_type": "azure",
-            "api_version": "2024-02-15-preview",
-            "api_url": "${OPENAI_SERVER_URL}",
-            "api_key": "${OPENAI_KEY}",
-            "max_tokens": 1000,
-            "model_name": "gpt-4",
-            "deployment_name": "gpt4",
-            "temperature": 0.7,
-            "is_chat_model": true,
-            "tiktoken_cache_dir": "${MODEL_HOME}/tiktoken_encoding"
-          },
-          "cache": {
+        "models": [
+          {
+            "name": "Gpt-4-direct",
             "enabled": true,
-            "cache_root_path": "/data/cache/infy_model_service"
-          }
-        },
-        "llama-3-1": {
-          "enabled": true,
-          "configuration": {
-            "inference_url": "${CUSTOM_LLM_LLAMA_3_1_INFERENCE_URL}",
-            "model": "/models/Meta-Llama-3.1-70B-fp8",
-            "temperature": 0.7,
-            "deployment_name": "llama3.1-70b-instuct",
-            "top_p": 0.95,
-            "max_tokens": 800,
-            "stop": null,
-            "presence_penalty": 0,
-            "frequency_penalty": 0
-          }
-        },
-        "custom": {
-          "bloom-7b1": {
-            "enabled": false,
-            "configuration": {
-              "inference_url": "${CUSTOM_LLM_BLOOM_INFERENCE_URL}",
-              "tiktoken_cache_dir": "${MODEL_HOME}/tiktoken_encoding",
-              "remove_query_from_response": true,
-              "verify_ssl": false
+            "batch": {
+              "size": 1
             },
-            "json_payload": {
-              "inputs": "{query}",
-              "parameters": {
-                "max_new_tokens": 4096,
-                "temperature": 1,
-                "num_return_sequences": 1,
-                "do_sample": true
-              }
+            "configuration": {
+              "api_url": "${AZURE_OPENAI_SERVER_BASE_URL}",
+              "api_key": "${AZURE_OPENAI_SECRET_KEY}",
+              "model_name": "openai/gpt-4",
+              "deployment_name": "gpt4",
+              "max_tokens": 1000,
+              "temperature": 0.7
             }
           },
-          "llama2-7b": {
+          {
+            "name": "Gpt-35-turbo-direct",
             "enabled": false,
-            "configuration": {
-              "inference_url": "${CUSTOM_LLM_LLAMA_INFERENCE_URL}",
-              "tiktoken_cache_dir": "${MODEL_HOME}/tiktoken_encoding",
-              "remove_query_from_response": true,
-              "verify_ssl": false
+            "batch": {
+              "size": 1
             },
-            "json_payload": {
-              "inputs": "{query}",
-              "parameters": {
-                "max_new_tokens": 4096,
-                "temperature": 1,
-                "num_return_sequences": 1,
-                "do_sample": true
-              }
+            "configuration": {
+              "api_url": "${AZURE_OPENAI_SERVER_BASE_URL}",
+              "api_key": "${AZURE_OPENAI_SECRET_KEY}",
+              "model_name": "openai/gpt-35-turbo",
+              "deployment_name": "gpt-35-turbo",
+              "max_tokens": 1000,
+              "temperature": 0.7
             }
           },
-          "mixtral8x7b-instruct": {
+          {
+            "name": "Gpt-4-proxy",
             "enabled": false,
-            "configuration": {
-              "inference_url": "${CUSTOM_LLM_MIXTRAL_INFERENCE_URL}",
-              "tiktoken_cache_dir": "${MODEL_HOME}/tiktoken_encoding",
-              "remove_query_from_response": false,
-              "verify_ssl": false
+            "batch": {
+              "size": 1
             },
-            "json_payload": {
-              "inputs": "{query}",
-              "parameters": {
-                "max_new_tokens": 1024,
-                "temperature": 0.1
-              }
+            "configuration": {
+              "api_url": "${LITELLM_PROXY_SERVER_BASE_URL}",
+              "api_key": "${AZURE_OPENAI_SECRET_KEY}",
+              "model_name": "gpt-4-32k_2",
+              "deployment_name": "gpt-4-32k_2",
+              "max_tokens": 1000,
+              "temperature": 0.7
+            }
+          },
+          {
+            "name": "Llama-3.1-8B-Proxy",
+            "enabled": false,
+            "batch": {
+              "size": 1
+            },
+            "configuration": {
+              "api_url": "${LITELLM_PROXY_SERVER_BASE_URL}",
+              "api_key": "${LITELLM_PROXY_SECRET_KEY}",
+              "model_name": "Meta-Llama-3.1-8B-Instruct",
+              "deployment_name": "Meta-Llama-3.1-8B-Instruct",
+              "max_tokens": 1000,
+              "temperature": 0.7
+            }
+          },
+          {
+            "name": "Llama-3.1-70B-Proxy",
+            "enabled": false,
+            "batch": {
+              "size": 1
+            },
+            "configuration": {
+              "api_url": "${LITELLM_PROXY_SERVER_BASE_URL}",
+              "api_key": "${LITELLM_PROXY_SECRET_KEY}",
+              "model_name": "Meta-Llama-3.1-70B-Instruct-FP8",
+              "deployment_name": "Meta-Llama-3.1-70B-Instruct-FP8",
+              "max_tokens": 1000,
+              "temperature": 0.7
+            }
+          },
+          {
+            "name": "Mixtral-7B-Proxy",
+            "enabled": false,
+            "batch": {
+              "size": 1
+            },
+            "configuration": {
+              "api_url": "${LITELLM_PROXY_SERVER_BASE_URL}",
+              "api_key": "${LITELLM_PROXY_SECRET_KEY}",
+              "model_name": "mixtral-8x7b-instruct",
+              "deployment_name": "mixtral-8x7b-instruct",
+              "max_tokens": 1000,
+              "temperature": 0.7
             }
           }
-        }
+        ]
       },
       "named_context_templates": {
         "context_default": "{chunk_text}",
@@ -412,6 +412,17 @@
           "top_k": 2
         }
       ]
+    },
+    "RequestCloser": {
+      "work_root_path": "/data/work/",
+      "data_file": {
+        "output_root_path": ""
+      },
+      "output_root_path": "/data/output/",
+      "from_request_file": {
+        "read_path": "/data/work/request/inference/start",
+        "save_path": "/data/work/request/inference/complete"
+      }
     }
   }
 }

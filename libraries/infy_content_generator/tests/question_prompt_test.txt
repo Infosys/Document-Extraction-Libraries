@@ -1,0 +1,17 @@
+Metadata: {metadata}
+
+Given Context: {context}
+
+Generate {question_count} questions of {question_type} type across these dimensions:
+
+   - Focus on specific actions and measurable outcomes
+   - Reference concrete examples from context
+   - Explore deeper implications of presented information
+   - Connect concepts to broader domain knowledge
+   - Encourage reasoned analysis while staying grounded in context
+
+
+Output Format:
+Q1: [Question text]
+Type: [Question type]
+Context Support: [Relevant excerpt from context]

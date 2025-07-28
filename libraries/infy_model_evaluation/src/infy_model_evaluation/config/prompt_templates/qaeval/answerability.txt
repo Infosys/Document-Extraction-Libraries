@@ -1,0 +1,17 @@
+You are given a context and a question. Your task is to determine the answerability of the question based on the given context. Respond in JSON format with a score and a reason. The score should be "1" if the question is answerable using the context and "0" if it is not answerable. The reason should briefly explain your decision.  
+  
+context: {context}  
+question: {question}  
+  
+OUTPUT REQUIREMENTS:  
+Return a JSON object with exactly two fields: 'score' and 'reasons'  
+- The 'score' field must be an integer with a value of either '1' (answerable) or '0' (not answerable).  
+- The 'reasons' field must explain why this specific score was assigned.  
+  
+Your entire response must be valid JSON.  
+  
+Example output format:  
+{  
+    "score": 0/1,  
+    "reasons": "This field should provide a brief explanation for the score, indicating why the question is answerable or not answerable based on the context."  
+}  

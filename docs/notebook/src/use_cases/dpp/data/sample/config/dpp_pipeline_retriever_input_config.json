@@ -1,11 +1,16 @@
 {
-  "name": "pipeline2",
-  "description": "Sample 4-processor-pipeline configuration for integration testing",
+  "name": "Batch Retriever Pipeline",
+  "description": "DPP batch retriever pipeline",
   "variables": {
-    "OPENAI_KEY": "${ENV:OPENAI_KEY}",
-    "OPENAI_SERVER_URL": "${ENV:OPENAI_SERVER_URL}",
-    "MODEL_HOME": "C:/MyProgramFiles/AI/models",
-    "CUSTOM_EMB_MISTRAL_INFERENCE_URL": "${ENV:CUSTOM_EMB_MISTRAL_INFERENCE_URL}"
+    "MODEL_HOME": "C:/del/ai/models",
+    "AI_HOME": "C:/del/ai",
+    "CA_CERTS_PATH": "",
+    "AZURE_OPENAI_SERVER_BASE_URL": "${ENV:AZURE_OPENAI_SERVER_BASE_URL}",
+    "AZURE_OPENAI_SECRET_KEY": "${ENV:AZURE_OPENAI_SECRET_KEY}",
+    "LITELLM_PROXY_SERVER_BASE_URL": "${ENV:LITELLM_PROXY_SERVER_BASE_URL}",
+    "LITELLM_PROXY_SECRET_KEY": "${ENV:LITELLM_PROXY_SECRET_KEY}",
+    "INFY_DB_SERVICE_BASE_URL": "${ENV:INFY_DB_SERVICE_BASE_URL}",
+    "INFY_MODEL_SERVICE_BASE_URL": "${ENV:INFY_MODEL_SERVICE_BASE_URL}"
   },
   "processor_list": [
     {
@@ -15,15 +20,6 @@
       "processor_class_name": "RequestCreator",
       "processor_input_config_name_list": [
         "RequestCreator"
-      ]
-    },
-    {
-      "enabled": false,
-      "processor_name": "document_data_updater",
-      "processor_namespace": "infy_dpp_core.document_data_updater",
-      "processor_class_name": "DocumentDataUpdateProcessor",
-      "processor_input_config_name_list": [
-        "DocumentDataUpdater"
       ]
     },
     {
@@ -82,20 +78,6 @@
         "save_path": "/data/work/request/inference/complete"
       }
     },
-    "DocumentDataUpdater": {
-      "config_data": [
-        {
-          "enabled": true,
-          "json_path": "$.context_data.reader.output[*].model_output.sources[*]",
-          "json_key": "bbox",
-          "replace_key_enabled": false,
-          "replace_with_key": "",
-          "replace_with_value": "",
-          "replace_value_enabled": false,
-          "replace_value_with_rule_name": "rule_cus_001_transform_bbox_value"
-        }
-      ]
-    },
     "QueryRetriever": {
       "embedding": {
         "openai": {
@@ -103,8 +85,8 @@
           "configuration": {
             "api_type": "azure",
             "api_version": "2022-12-01",
-            "api_url": "${OPENAI_SERVER_URL}",
-            "api_key": "${OPENAI_KEY}",
+            "api_url": "${AZURE_OPENAI_SERVER_BASE_URL}",
+            "api_key": "${AZURE_OPENAI_SECRET_KEY}",
             "model_name": "text-embedding-ada-002",
             "deployment_name": "text-embedding-ada-002",
             "chunk_size": 1000,
@@ -115,8 +97,7 @@
           "enabled": true,
           "configuration": {
             "model_name": "all-MiniLM-L6-v2",
-            "model_home_path": "${MODEL_HOME}",
-            "tiktoken_cache_dir": "${MODEL_HOME}/tiktoken_encoding"
+            "api_url": "${INFY_MODEL_SERVICE_BASE_URL}"
           }
         },
         "custom": {
@@ -151,15 +132,28 @@
           "infy_db_service": {
             "enabled": false,
             "configuration": {
-              "db_service_url": "",
-              "model_name": "all-MiniLM-L6-v2",
+              "db_service_url": "${INFY_DB_SERVICE_BASE_URL}",
+              "model_name": "",
               "index_id": "",
               "collections": [
                 {
-                  "collection_name": "documents",
+                  "collection_name": "",
                   "collection_secret_key": ""
                 }
               ]
+            }
+          },
+          "elasticsearch": {
+            "enabled": false,
+            "configuration": {
+              "db_server_url": "",
+              "authenticate": "false",
+              "username": "",
+              "password": "",
+              "verify_certs": "false",
+              "cert_fingerprint": "",
+              "ca_certs_path": "${CA_CERTS_PATH}",
+              "index_id": ""
             }
           }
         },
@@ -172,22 +166,23 @@
               "index_id": "",
               "collections": [
                 {
-                  "collection_name": "documents",
-                  "collection_secret_key": ""
+                  "collection_name": "",
+                  "collection_secret_key": "",
+                  "chunk_type": ""
                 }
               ],
-              "nltk_data_dir": "C:/MyProgramFiles/AI/nltk_data"
+              "nltk_data_dir": "${AI_HOME}/nltk_data"
             }
           },
           "infy_db_service": {
             "enabled": false,
             "configuration": {
-              "db_service_url": "",
-              "method_name": "bm25s",
+              "db_service_url": "${INFY_DB_SERVICE_BASE_URL}",
+              "method_name": "",
               "index_id": "",
               "collections": [
                 {
-                  "collection_name": "documents",
+                  "collection_name": "",
                   "collection_secret_key": ""
                 }
               ]
@@ -202,11 +197,13 @@
       },
       "queries": [
         {
-          "attribute_key": "query1",
+          "attribute_key": "generic_attribute_key",
           "question": "What is the percentage of women employees in Infosys?",
           "top_k": 5,
           "pre_filter_fetch_k": 10,
-          "filter_metadata": {}
+          "filter_metadata": {},
+          "min_distance": 0,
+          "max_distance": 4
         }
       ]
     }

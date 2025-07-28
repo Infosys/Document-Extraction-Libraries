@@ -1,0 +1,20 @@
+Given a context and question, evaluate how much the question relies on specific context details versus requiring analytical thinking and external knowledge. Return a score from 1-3, where:
+
+- Score 1: Highly context-dependent, requires specific details from the context
+- Score 2: Requires both context and basic analytical thinking/background knowledge
+- Score 3: Requires comprehensive understanding and significant analytical thinking
+
+For example, questions asking about specific details mentioned in the context should receive a score of 1. Questions requiring interpretation of context information should receive a score of 2. Questions requiring synthesis of context with broader knowledge should receive a score of 3.
+
+context: {context}
+question: {question}
+
+Return a JSON object with:
+- 'score': numeric score (1-3)
+- 'reasons': specific explanation referencing how the question(s) relate to context and what additional knowledge/analysis they require
+
+Example output format:
+{
+    "score": 2,
+    "reasons": "While the questions about market share draw from the provided data tables, analyzing the competitive implications requires understanding industry dynamics not explicitly stated in the context."
+}

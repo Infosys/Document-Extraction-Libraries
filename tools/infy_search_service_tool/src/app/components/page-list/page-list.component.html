@@ -1,0 +1,192 @@
+<div class="container">
+    <div class="row mt-3">
+        <div class="col-8 offset-2 d-flex flex-column justify-content-center align-items-center" style="height: 12vh;">
+            <div class="ribbon">
+                <h5 class="ribbon-content" title="Infy Search Service Tool">Infy Search Service Tool</h5>
+            </div>
+            <form [formGroup]="queryForm" autocomplete="on">
+                <div class="form-group d-flex justify-content-center">
+                    <input type="text" formControlName="query" class="form-control" id="queryBox"
+                        placeholder="Enter Query" style="border: 1.5px solid #000; width: 32rem;"
+                        [title]="queryForm.get('query')?.value || 'Enter Query'">
+
+                    <button class="toggle-button-open ml-2" (click)="togglePane()">
+                        <span *ngIf="!model.isPaneExpanded">
+                            < </span>
+                    </button>
+                    <div class="right-pane" [ngClass]="{'expanded': model.isPaneExpanded}">
+                        <button class="toggle-button-close ml-2" (click)="togglePane()">
+                            <span *ngIf="model.isPaneExpanded">></span>
+                        </button>
+                        <div style="display: flex; align-items: center;">
+                            <span
+                                style="font-weight: bold; position:relative; top:0.5rem; margin-left: 7rem;">Additional
+                                Settings</span>
+                        </div>
+                        <hr style="margin: 15px 0px 5px 0px;">
+                        <div *ngIf="model.isPaneExpanded" class="pane-content">
+                            <div class="form-group d-flex justify-content-between">
+                                <div class="col-6 pl-0">
+                                    <label for="llmBaseUrl">LLM Base Url*</label>
+                                    <input type="text" formControlName="llmBaseUrl" class="form-control" id="llmBaseUrl"
+                                        placeholder="Enter LLM Base URL" style="border: 1.5px solid #000; width: 10rem;"
+                                        min="0" [title]="queryForm.get('llmBaseUrl')?.value || 'Enter LLM Base URL'">
+                                </div>
+                                <div class="col-6 pr-0">
+                                    <label for="llmKey" style="font-size: 15px;">LLM Key*</label>
+                                    <input type="password" formControlName="llmKey" class="form-control" id="llmKey"
+                                        placeholder="Enter LLM KEY" style="border: 1.5px solid #000; width: 10rem;"
+                                        title="Enter LLM Key">
+                                </div>
+                            </div>
+                            <div class="form-group d-flex justify-content-between">
+                                <div class="col-6 pl-0">
+                                    <label for="generateModelName">LLM Model Name*</label>
+                                    <input type="text" formControlName="generateModelName" class="form-control"
+                                        id="generateModelName" placeholder="Enter LLM Model Name"
+                                        style="border: 1.5px solid #000; width: 10rem;"
+                                        [title]="queryForm.get('generateModelName')?.value || 'Enter LLM Model Name'">
+                                </div>
+                                <div class="col-6 pr-0">
+                                    <label for="generateDeployName" style="font-size: 14.5px;">LLM Deployment Name*</label>
+                                    <input type="text" formControlName="generateDeployName" class="form-control"
+                                        id="generateDeployName" placeholder="Enter LLM Deployment Name"
+                                        style="border: 1.5px solid #000; width: 10rem;"
+                                        [title]="queryForm.get('generateDeployName')?.value || 'LLM Deployment Name'">
+                                </div>
+                            </div>
+                            <hr style="margin: 4px 0px 0px 0px;">
+                            <div class="form-group">
+                                <label for="retrieveIndexId">Index Id*</label>
+                                <input type="text" formControlName="retrieveIndexId" class="form-control"
+                                    id="retrieveIndexId" placeholder="Enter Index Id"
+                                    style="border: 1.5px solid #000;width: 20.2rem;"
+                                    [title]="queryForm.get('retrieveIndexId')?.value || 'Enter Index Id'">
+                            </div>
+                            <div class="form-group">
+                                <label for="searchServiceUrl">Base Search Service Endpoint (DEL)*</label>
+                                <input type="text" formControlName="searchServiceUrl" class="form-control"
+                                    id="searchServiceUrl" placeholder="Enter Base Search Service Endpoint"
+                                    style="border: 1.5px solid #000;width: 20.2rem;"
+                                    [title]="queryForm.get('searchServiceUrl')?.value || 'Enter Base Search Service Endpoint'">
+                            </div>
+                            <div class="form-group">
+                                <label for="resourceServiceUrl">Base Resource Service Endpoint (DEL)</label>
+                                <input type="text" formControlName="resourceServiceUrl" class="form-control"
+                                    id="resourceServiceUrl" placeholder="Enter Base Resource Service Endpoint"
+                                    style="border: 1.5px solid #000; width: 20.2rem;"
+                                    [title]="queryForm.get('resourceServiceUrl')?.value || 'Enter Resource Service Endpoint'">
+                            </div>
+                            <hr style="margin: 4px 0px 0px 0px;">
+                            <div class="form-group d-flex justify-content-between">
+                                <div class="col-6 pl-0">
+                                    <label for="retrieveTopK">Retrieve Top_K</label>
+                                    <input type="number" formControlName="retrieveTopK" class="form-control"
+                                        id="retrieveTopK" placeholder="Enter Top_K"
+                                        style="border: 1.5px solid #000; width: 10rem;" min="1">
+                                </div>
+                                <div class="col-6 pr-0">
+                                    <label for="retrieverPreFilterK">Pre-filter Fetch k</label>
+                                    <input type="number" formControlName="retrieverPreFilterK" class="form-control"
+                                        id="retrieverPreFilterK" placeholder="Enter Pre-filter Fetch k"
+                                        style="border: 1.5px solid #000; width: 10rem;" min="10">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="retrieveFilterMetadata">Filter Metadata</label>
+                                <div class="dropdown">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button"
+                                        id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false"
+                                        style="width: 20.2rem; border: 1.5px solid #000; background-color: #fff; color: #5c636a;">
+                                        Add Metadata Filter
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton"
+                                        style="border: 1.5px solid #000">
+                                        <div formArrayName="retrieveFilterMetadata">
+                                            <div *ngFor="let metadata of retrieveFilterMetadata.controls; let i = index"
+                                                [formGroupName]="i" class="d-flex align-items-center metadata-row">
+                                                <input type="text" formControlName="key" class="form-control mr-2"
+                                                    placeholder="Key" [title]="metadata.get('key')?.value">
+                                                <input type="text" formControlName="value" class="form-control mr-2"
+                                                    placeholder="Value" [title]="metadata.get('value')?.value">
+                                                <button type="button" class="btn btn-danger"
+                                                    (click)="removeMetadataField(i, $event)">×</button>
+                                            </div>
+                                        </div>
+                                        <button type="button" class="btn btn-secondary btn-sm mt-2 add-metadata-btn"
+                                            (click)="addMetadataField($event)" title="Add Metadata">+</button>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="form-group d-flex justify-content-between">
+                                <div class="col-6 pl-0 d-flex align-items-center">
+                                    <label for="retrieveVectorEnabled" class="mr-2">Vector Index:</label>
+                                    <input type="checkbox" formControlName="retrieveVectorEnabled"
+                                        class="form-check-input custom-checkbox" id="retrieveVectorEnabled"
+                                        style="margin-left: 18px;">
+                                </div>
+                                <div class="col-6 pl-0 d-flex align-items-center">
+                                    <label for="retrieveSparseEnabled" class="mr-2">Sparse Index:</label>
+                                    <input type="checkbox" formControlName="retrieveSparseEnabled"
+                                        class="form-check-input custom-checkbox" id="retrieveSparseEnabled"
+                                        style="margin-left: 18px;">
+                                </div>
+                            </div>
+                            <div class="form-group d-flex align-items-center">
+                                <label for="retrieveRrfEnabled" class="mr-2">Hybrid-RRF:</label>
+                                <input type="checkbox" formControlName="retrieveRrfEnabled"
+                                    class="form-check-input custom-checkbox" id="retrieveRrfEnabled"
+                                    style="margin-left: 25px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center mt-2">
+                    <button type="button" class="btn btn-secondary" style="margin-right: 0.6rem;"
+                        [disabled]="model.isLoading" (click)="clearForm()">Clear</button>
+                    <button type="submit" class="btn btn-primary" [disabled]="model.isLoading"
+                        (click)="submitQuery()">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <hr style="margin: 15px 0px 0px 0px; border-width: 2px;">
+    <div class="row mt-3 custom-class" *ngIf="model.responseObj && (model.responseObj | json) != '{}'">
+        <div style="width: 100%;">
+            <div *ngFor="let item of getFilteredResults(); let i = index">
+                <p>
+                    <strong>{{ i + 1 }}. Document Name:</strong>
+                    <a class="hyperlink"
+                        (click)="redirectToDocView(item.meta_data.resources[0].path,queryForm.value, item.meta_data.doc_name)"
+                        style="cursor: pointer;">
+                        {{ item.meta_data.doc_name }}
+                    </a>
+                </p>
+                <p><strong>Score:</strong> {{ item.score }}</p>
+                <p><strong>Page No:</strong> {{ item.meta_data.page_no }}</p>
+                <details open>
+                    <summary style="list-style: none;">
+                        <div class="content"
+                            [ngStyle]="{'overflow': item.isContentExpanded ? 'visible' : 'hidden', 'display': item.isContentExpanded ? 'block' : '-webkit-box', '-webkit-line-clamp': item.isContentExpanded ? 'none' : '3', '-webkit-box-orient': 'vertical'}"
+                            (click)="toggleExpandContent(item)">
+                            <strong>Content:</strong> {{ item.content }}
+                        </div>
+                    </summary>
+                    <p style="display:none;">{{ item.content }}</p>
+                </details>
+                <div *ngIf="item.meta_data.custom_metadata" class="metadata-container">
+                    <strong>Metadata:</strong>
+                    <div class="chips">
+                        <span *ngFor="let key of getKeys(item.meta_data.custom_metadata)" class="chip"
+                            [title]="item.meta_data.custom_metadata[key]">
+                            {{ item.meta_data.custom_metadata[key] }}
+                        </span>
+                    </div>
+                </div>
+                <hr>
+            </div>
+        </div>
+    </div>
+</div>
+
+

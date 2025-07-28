@@ -1,0 +1,89 @@
+{
+  "variables": {
+    "MODEL_HOME": "C:/del/ai/models",
+    "AZURE_OPENAI_SECRET_KEY": "${ENV:AZURE_OPENAI_SECRET_KEY}",
+    "AZURE_OPENAI_SERVER_BASE_URL": "${ENV:AZURE_OPENAI_SERVER_BASE_URL}"
+  },
+  "processor_list": [
+    {
+      "enabled": true,
+      "processor_name": "request_creator",
+      "processor_namespace": "infy_dpp_core.request_creator.request_creator_v2",
+      "processor_class_name": "RequestCreatorV2",
+      "processor_input_config_name_list": [
+        "RequestCreator"
+      ]
+    },
+    {
+      "enabled": true,
+      "processor_name": "rag_report_generator",
+      "processor_namespace": "infy_dpp_evaluator.rag_report_generator",
+      "processor_class_name": "RagReportGenerator",
+      "processor_input_config_name_list": [
+        "RagReportGenerator"
+      ]
+    },
+    {
+      "enabled": true,
+      "processor_name": "request_closer",
+      "processor_namespace": "infy_dpp_core.request_closer.process.request_closer_v2",
+      "processor_class_name": "RequestCloserV2",
+      "processor_input_config_name_list": [
+        "RequestCloser"
+      ]
+    }
+  ],
+  "processor_input_config": {
+    "RequestCreator": {
+      "inference": {
+        "enabled": false,
+        "from_data_file": {
+          "read_path": "/data/input/",
+          "work_root_path": "/data/work/",
+          "top_k": 4,
+          "pre_filter_fetch_k": 100
+        }
+      },
+      "evaluation": {
+        "enabled": false,
+        "from_data_file": {
+          "read_path": "/data/input/",
+          "work_root_path": "/data/work/"
+        }
+      },
+      "report": {
+        "enabled": true,
+        "from_data_file": {
+          "read_path": "/data/input/",
+          "work_root_path": "/data/work/"
+        }
+      },
+      "qna_generator": {
+        "enabled": false,
+        "from_request_file": {
+          "read_path": "/data/work/request/indexer/complete",
+          "save_path": "/data/work/request/qna_generation/start",
+          "work_root_path": "/data/output/"
+        }
+      }
+    },
+    "RequestCloser": {
+      "work_root_path": "/data/work/",
+      "data_file": {
+        "output_root_path": "/data/output/"
+      },
+      "output_root_path": "/data/output/",
+      "from_request_file": {
+        "enabled": false,
+        "read_path": "/data/work/request/qna_generation/start",
+        "save_path": "/data/work/request/qna_generation/complete"
+      }
+    },
+    "RagReportGenerator": {
+      "output_report_file": "rag_report.xlsx",
+      "qna_data_pk_col_name": "Q_No",
+      "rag_metrics_pk_col_name": "additional_field_Q_No",
+      "output_root_path": "/data/output/"
+    }
+  }
+}

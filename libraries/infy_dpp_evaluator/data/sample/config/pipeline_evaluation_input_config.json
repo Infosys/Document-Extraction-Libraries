@@ -1,0 +1,203 @@
+{
+  "variables": {
+    "MODEL_HOME": "C:/del/ai/models",
+    "AZURE_OPENAI_SECRET_KEY": "${ENV:AZURE_OPENAI_SECRET_KEY}",
+    "AZURE_OPENAI_SERVER_BASE_URL": "${ENV:AZURE_OPENAI_SERVER_BASE_URL}"
+  },
+  "processor_list": [
+    {
+      "enabled": true,
+      "processor_name": "request_creator",
+      "processor_namespace": "infy_dpp_core.request_creator.request_creator_v2",
+      "processor_class_name": "RequestCreatorV2",
+      "processor_input_config_name_list": [
+        "RequestCreator"
+      ]
+    },
+    {
+      "enabled": true,
+      "processor_name": "rag_evaluator",
+      "processor_namespace": "infy_dpp_evaluator.rag_evaluation",
+      "processor_class_name": "RagEvaluation",
+      "processor_input_config_name_list": [
+        "RagEvaluation"
+      ]
+    },
+    {
+      "enabled": true,
+      "processor_name": "request_closer",
+      "processor_namespace": "infy_dpp_core.request_closer.process.request_closer_v2",
+      "processor_class_name": "RequestCloserV2",
+      "processor_input_config_name_list": [
+        "RequestCloser"
+      ]
+    }
+  ],
+  "processor_input_config": {
+    "RequestCreator": {
+      "inference": {
+        "enabled": false,
+        "from_data_file": {
+          "read_path": "/data/input/",
+          "work_root_path": "/data/work/",
+          "top_k": 4,
+          "pre_filter_fetch_k": 100
+        }
+      },
+      "evaluation": {
+        "enabled": true,
+        "from_data_file": {
+          "read_path": "/data/input/",
+          "work_root_path": "/data/work/"
+        }
+      },
+      "report": {
+        "enabled": false,
+        "from_data_file": {
+          "read_path": "/data/input/",
+          "work_root_path": "/data/work/"
+        }
+      },
+      "qna_generator": {
+        "enabled": false,
+        "from_request_file": {
+          "read_path": "/data/work/request/indexer/complete",
+          "save_path": "/data/work/request/qna_generation/start",
+          "work_root_path": "/data/output/"
+        }
+      }
+    },
+    "RequestCloser": {
+      "work_root_path": "/data/work/",
+      "data_file": {
+        "output_root_path": "/data/output/"
+      },
+      "output_root_path": "/data/output/",
+      "from_request_file": {
+        "enabled": false,
+        "read_path": "/data/work/request/qna_generation/start",
+        "save_path": "/data/work/request/qna_generation/complete"
+      }
+    },
+    "RagEvaluation": {
+      "model_evaluation_config": {
+        "evaluator": {
+          "embedding": {
+            "openai": {
+              "enabled": true,
+              "configuration": {
+                "api_type": "azure",
+                "api_version": "2022-12-01",
+                "api_url": "${AZURE_OPENAI_SERVER_BASE_URL}",
+                "api_key": "${AZURE_OPENAI_SECRET_KEY}",
+                "model_name": "text-embedding-ada-002",
+                "deployment_name": "text-embedding-ada-002",
+                "tiktoken_cache_dir": "${MODEL_HOME}/tiktoken_encoding"
+              }
+            }
+          },
+          "llm": {
+            "openai": {
+              "enabled": true,
+              "configuration": {
+                "api_type": "azure",
+                "api_version": "2024-02-15-preview",
+                "api_url": "${AZURE_OPENAI_SERVER_BASE_URL}",
+                "api_key": "${AZURE_OPENAI_SECRET_KEY}",
+                "model_name": "gpt-4",
+                "deployment_name": "gpt4",
+                "is_chat_model": true,
+                "top_p": 0.95,
+                "frequency_penalty": 0,
+                "presence_penalty": 0,
+                "stop": ""
+              }
+            }
+          },
+          "metrics_list": [
+            {
+              "name": "faithfulness",
+              "enabled": true
+            },
+            {
+              "name": "answer_relevancy",
+              "enabled": true
+            },
+            {
+              "name": "context_recall",
+              "enabled": true
+            },
+            {
+              "name": "context_precision",
+              "enabled": true
+            },
+            {
+              "name": "answer_correctness",
+              "enabled": true
+            },
+            {
+              "name": "answer_similarity",
+              "enabled": false
+            },
+            {
+              "name": "context_relevancy",
+              "enabled": true
+            },
+            {
+              "name": "context_utilization",
+              "enabled": true
+            },
+            {
+              "name": "context_entity_recall",
+              "enabled": false
+            }
+          ],
+          "evaluation_only": true,
+          "context_filter": -1
+        },
+        "target": {
+          "llm": {
+            "configuration": {
+              "api_type": "azure",
+              "api_version": "2022-12-01",
+              "api_url": "${AZURE_OPENAI_SERVER_BASE_URL}",
+              "api_key": "${AZURE_OPENAI_SECRET_KEY}",
+              "model_name": "gpt-4",
+              "deployment_name": "gpt4",
+              "max_tokens": 1024,
+              "temperature": 0.7,
+              "prompt_template": {
+                "file_path": "/data/config/prompt_templates/evaluator_with_inst.txt"
+              },
+              "tiktoken_cache_dir": "",
+              "remove_prompt_from_response": false,
+              "requires_num_return_sequences": false,
+              "num_return_sequences": 1,
+              "do_sample": true,
+              "is_chat_model": false,
+              "top_p": 0.95,
+              "frequency_penalty": 0,
+              "presence_penalty": 0,
+              "stop": ""
+            }
+          }
+        },
+        "datasource": {
+          "configuration": {
+            "file_path": ""
+          }
+        },
+        "result": {
+          "configuration": {
+            "file_path": "",
+            "meta_data": {
+              "executed_on_cloud": true,
+              "csp": "aws",
+              "id": "1"
+            }
+          }
+        }
+      }
+    }
+  }
+}

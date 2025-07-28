@@ -1,0 +1,221 @@
+{
+    "records": {
+        "question": {
+            "0": "How many goals did Robert Lewandowski score?",
+            "1": "How many goals did Robert Lewandowski score?",
+            "2": "What is the operating margin?",
+            "3": "What is the growth in constant currency?",
+            "4": "What is the percentage of digital revenue?",
+            "5": "What is the revenue?",
+            "6": "What is the document about?",
+            "7": "What is the earnings per share?",
+            "8": "What is the dividend amount per share?",
+            "9": "How much cash was invested?",
+            "10": "Is football a game which requires teamwork?"
+        },
+        "contexts": {
+            "0": [
+                "Football players are the epitome of athleticism and skill on the field. Renowned for their  physical prowess and strategic acumen, these athletes exhibit exceptional teamwork and  individual brilliance. From dazzling dribbles to powerful strikes, football players showcase a  diverse range of talents that captivate fans worldwide. The sport's global appeal is fueled by  iconic players who transcend borders and cultures, becoming household names celebrated for  their contributions to the beautiful game.",
+                "Beyond the pitch, football players often play a crucial role as ambassadors for social causes. Many use  their platform to address issues such as discrimination, inequality, and community development.  Whether they're leading their teams to victory or championing social justice, football players wield  their influence both on and off the field, leaving a lasting impact on the world beyond the realm of  sports",
+                "{\"Player\": \"Lionel Messi\", \"Club\": \"Paris Saint-Germain\", \"Nationality\": \"Argentine\", \"Goals\": \"21\", \"Assists\": \"12\"}, {\"Player\": \"Cristiano Ronaldo\", \"Club\": \"Manchester United\", \"Nationality\": \"Portuguese\", \"Goals\": \"18\", \"Assists\": \"8\"}, {\"Player\": \"Kylian Mbappé\", \"Club\": \"Real Madrid\", \"Nationality\": \"French\", \"Goals\": \"15\", \"Assists\": \"10\"}, {\"Player\": \"Robert Lewandowski\", \"Club\": \"Bayern Munich\", \"Nationality\": \"Polish\", \"Goals\": \"23\", \"Assists\": \"5\"}, {\"Player\": \"Mohamed Salah\", \"Club\": \"Liverpool\", \"Nationality\": \"Egyptian\", \"Goals\": \"17\", \"Assists\": \"9\"}, {\"Player\": \"Erling Haaland\", \"Club\": \"Borussia Dortmund\", \"Nationality\": \"Norwegian\", \"Goals\": \"19\", \"Assists\": \"6\"}"
+            ],
+            "1": [
+                "{\"Player\": \"Lionel Messi\", \"Club\": \"Paris Saint-Germain\", \"Nationality\": \"Argentine\", \"Goals\": \"21\", \"Assists\": \"12\"}, {\"Player\": \"Cristiano Ronaldo\", \"Club\": \"Manchester United\", \"Nationality\": \"Portuguese\", \"Goals\": \"18\", \"Assists\": \"8\"}, {\"Player\": \"Kylian Mbappé\", \"Club\": \"Real Madrid\", \"Nationality\": \"French\", \"Goals\": \"15\", \"Assists\": \"10\"}, {\"Player\": \"Robert Lewandowski\", \"Club\": \"Bayern Munich\", \"Nationality\": \"Polish\", \"Goals\": \"23\", \"Assists\": \"5\"}, {\"Player\": \"Mohamed Salah\", \"Club\": \"Liverpool\", \"Nationality\": \"Egyptian\", \"Goals\": \"17\", \"Assists\": \"9\"}, {\"Player\": \"Erling Haaland\", \"Club\": \"Borussia Dortmund\", \"Nationality\": \"Norwegian\", \"Goals\": \"19\", \"Assists\": \"6\"}",
+                "Football players are the epitome of athleticism and skill on the field. Renowned for their  physical prowess and strategic acumen, these athletes exhibit exceptional teamwork and  individual brilliance. From dazzling dribbles to powerful strikes, football players showcase a  diverse range of talents that captivate fans worldwide. The sport's global appeal is fueled by  iconic players who transcend borders and cultures, becoming household names celebrated for  their contributions to the beautiful game.",
+                "Beyond the pitch, football players often play a crucial role as ambassadors for social causes. Many use  their platform to address issues such as discrimination, inequality, and community development.  Whether they're leading their teams to victory or championing social justice, football players wield  their influence both on and off the field, leaving a lasting impact on the world beyond the realm of  sports"
+            ],
+            "2": [
+                "nRevenues (in ` crore) 1,21,641 21.1% growth Y-o-Y   19.7% CC growth Y-o-Y\nOperating margin 23.0% Robust operating margin\nDigital revenues   (as a % of total revenue) 57.0% 41.2% CC growth Y-o-Y (basis US$)"
+            ],
+            "3": [
+                "nRevenues (in ` crore) 1,21,641 21.1% growth Y-o-Y   19.7% CC growth Y-o-Y\nOperating margin 23.0% Robust operating margin\nDigital revenues   (as a % of total revenue) 57.0% 41.2% CC growth Y-o-Y (basis US$)"
+            ],
+            "4": [
+                "nRevenues (in ` crore) 1,21,641 21.1% growth Y-o-Y   19.7% CC growth Y-o-Y\nOperating margin 23.0% Robust operating margin\nDigital revenues   (as a % of total revenue) 57.0% 41.2% CC growth Y-o-Y (basis US$)"
+            ],
+            "5": [
+                "nRevenues (in ` crore) 1,21,641 21.1% growth Y-o-Y   19.7% CC growth Y-o-Y\nOperating margin 23.0% Robust operating margin\nDigital revenues   (as a % of total revenue) 57.0% 41.2% CC growth Y-o-Y (basis US$)"
+            ],
+            "6": [
+                "Performance overview Business highlights 28 Digital revenues prepared under IFRS.(as a % of total revenue)62.2 Revenues 15.4% CC growth Y-o-Y 1,46,767 Basic earnings per share (par value of ₹ 5 each)₹ cr 57.63 9.7% growth Y-o-Y (par value of ₹ 5 each)₹ cr Operating margin21 .0 Robust operating margin Consolidated cash and Free cash(1) investments(2)% ₹ 31,286cr Continue to main strong liquidity position investments(2)% Dividend per share (in ₹) 9.7% growth Y-o-Y 34.0 Infosys achieved industry- leading revenue growth of 39.4% 15.4% with healthy operating margin of 21.0% for fiscal gender diversity goals 2023"
+            ],
+            "7": [
+                "Performance overview Business highlights 28 Digital revenues prepared under IFRS.(as a % of total revenue)62.2 Revenues 15.4% CC growth Y-o-Y 1,46,767 Basic earnings per share (par value of ₹ 5 each)₹ cr 57.63 9.7% growth Y-o-Y (par value of ₹ 5 each)₹ cr Operating margin21 .0 Robust operating margin Consolidated cash and Free cash(1) investments(2)% ₹ 31,286cr Continue to main strong liquidity position investments(2)% Dividend per share (in ₹) 9.7% growth Y-o-Y 34.0 Infosys achieved industry- leading revenue growth of 39.4% 15.4% with healthy operating margin of 21.0% for fiscal gender diversity goals 2023"
+            ],
+            "8": [
+                "Performance overview Business highlights 28 Digital revenues prepared under IFRS.(as a % of total revenue)62.2 Revenues 15.4% CC growth Y-o-Y 1,46,767 Basic earnings per share (par value of ₹ 5 each)₹ cr 57.63 9.7% growth Y-o-Y (par value of ₹ 5 each)₹ cr Operating margin21 .0 Robust operating margin Consolidated cash and Free cash(1) investments(2)% ₹ 31,286cr Continue to main strong liquidity position investments(2)% Dividend per share (in ₹) 9.7% growth Y-o-Y 34.0 Infosys achieved industry- leading revenue growth of 39.4% 15.4% with healthy operating margin of 21.0% for fiscal gender diversity goals 2023"
+            ],
+            "9": [
+                "Performance overview Business highlights 28 Digital revenues prepared under IFRS.(as a % of total revenue)62.2 Revenues 15.4% CC growth Y-o-Y 1,46,767 Basic earnings per share (par value of ₹ 5 each)₹ cr 57.63 9.7% growth Y-o-Y (par value of ₹ 5 each)₹ cr Operating margin21 .0 Robust operating margin Consolidated cash and Free cash(1) investments(2)% ₹ 31,286cr Continue to main strong liquidity position investments(2)% Dividend per share (in ₹) 9.7% growth Y-o-Y 34.0 Infosys achieved industry- leading revenue growth of 39.4% 15.4% with healthy operating margin of 21.0% for fiscal gender diversity goals 2023"
+            ],
+            "10": [
+                "Football players are the epitome of athleticism and skill on the field. Renowned for their  physical prowess and strategic acumen, these athletes exhibit exceptional teamwork and  individual brilliance. From dazzling dribbles to powerful strikes, football players showcase a  diverse range of talents that captivate fans worldwide. The sport's global appeal is fueled by  iconic players who transcend borders and cultures, becoming household names celebrated for  their contributions to the beautiful game.",
+                "Beyond the pitch, football players often play a crucial role as ambassadors for social causes. Many use  their platform to address issues such as discrimination, inequality, and community development.  Whether they're leading their teams to victory or championing social justice, football players wield  their influence both on and off the field, leaving a lasting impact on the world beyond the realm of  sports",
+                "{\"Player\": \"Lionel Messi\", \"Club\": \"Paris Saint-Germain\", \"Nationality\": \"Argentine\", \"Goals\": \"21\", \"Assists\": \"12\"}, {\"Player\": \"Cristiano Ronaldo\", \"Club\": \"Manchester United\", \"Nationality\": \"Portuguese\", \"Goals\": \"18\", \"Assists\": \"8\"}, {\"Player\": \"Kylian Mbappé\", \"Club\": \"Real Madrid\", \"Nationality\": \"French\", \"Goals\": \"15\", \"Assists\": \"10\"}, {\"Player\": \"Robert Lewandowski\", \"Club\": \"Bayern Munich\", \"Nationality\": \"Polish\", \"Goals\": \"23\", \"Assists\": \"5\"}, {\"Player\": \"Mohamed Salah\", \"Club\": \"Liverpool\", \"Nationality\": \"Egyptian\", \"Goals\": \"17\", \"Assists\": \"9\"}, {\"Player\": \"Erling Haaland\", \"Club\": \"Borussia Dortmund\", \"Nationality\": \"Norwegian\", \"Goals\": \"19\", \"Assists\": \"6\"}"
+            ]
+        },
+        "ground_truth": {
+            "0": "23",
+            "1": "23",
+            "2": "23.0%",
+            "3": "21.1%",
+            "4": "57.0% of total revenue",
+            "5": "1,21,641 crore",
+            "6": "It is an annual report for the year 2022-23",
+            "7": "57.63",
+            "8": "34.0 (in ₹)",
+            "9": "₹ 31,286cr",
+            "10": "Yes,football requires exceptional teamwork as well as individual brilliance"
+        },
+        "answer": {
+            "0": " {\"answer\": \"The context does not provide the number of goals scored by Robert Lewandowski.\"}",
+            "1": " {\"answer\": \"23\"}",
+            "2": " {\n\"answer\": \"23.0%\"\n}",
+            "3": " {\n\"answer\": \"41.2% (digital revenues)\"\n}",
+            "4": " {\n\"answer\": \"57.0%\"\n}",
+            "5": " {\n\"answer\": \"1,21,641 crore\"\n}",
+            "6": " {\"answer\": \"The document is about a business performance overview, including financial highlights and achievements of a company, possibly Infosys, for a given fiscal year.\"}",
+            "7": " {\"answer\": \"₹ 57.63\"}",
+            "8": " {\n\"answer\": \"₹ 34.0\"\n}",
+            "9": " {\n  \"answer\": \"₹ 31,286cr\"\n}",
+            "10": " {\"answer\": \"Yes\"}"
+        },
+        "additional_field_file_name": {
+            "0": "sports_statistics.pdf",
+            "1": "sports_statistics.pdf",
+            "2": "AR_2022_23.pdf",
+            "3": "AR_2022_23.pdf",
+            "4": "AR_2022_23.pdf",
+            "5": "AR_2022_23.pdf",
+            "6": "AR_2023_24.pdf",
+            "7": "AR_2023_24.pdf",
+            "8": "AR_2023_24.pdf",
+            "9": "AR_2023_24.pdf",
+            "10": "sports_statistics.pdf"
+        },
+        "additional_field_page_no": {
+            "0": "1",
+            "1": "1",
+            "2": "5",
+            "3": "5",
+            "4": "5",
+            "5": "5",
+            "6": "3",
+            "7": "3",
+            "8": "3",
+            "9": "3",
+            "10": "1"
+        },
+        "faithfulness": {
+            "0": 0.0,
+            "1": 1.0,
+            "2": 1.0,
+            "3": 1.0,
+            "4": 1.0,
+            "5": 1.0,
+            "6": 1.0,
+            "7": 1.0,
+            "8": 1.0,
+            "9": 1.0,
+            "10": 1.0
+        },
+        "answer_relevancy": {
+            "0": 1.0,
+            "1": 1.0,
+            "2": 0.9465436894,
+            "3": 0.7974751702,
+            "4": 0.9584633032,
+            "5": 0.8611675175,
+            "6": 1.0,
+            "7": 0.8809471328,
+            "8": 0.894577982,
+            "9": 0.8513309319,
+            "10": 0.795636532
+        },
+        "context_recall": {
+            "0": 1.0,
+            "1": 1.0,
+            "2": 1.0,
+            "3": 1.0,
+            "4": 1.0,
+            "5": 1.0,
+            "6": 0.0,
+            "7": 1.0,
+            "8": 1.0,
+            "9": 1.0,
+            "10": 1.0
+        },
+        "context_precision": {
+            "0": 0.3333333333,
+            "1": 0.9999999999,
+            "2": 0.9999999999,
+            "3": 0.9999999999,
+            "4": 0.9999999999,
+            "5": 0.9999999999,
+            "6": 0.0,
+            "7": 0.9999999999,
+            "8": 0.9999999999,
+            "9": 0.9999999999,
+            "10": 0.9999999999
+        },
+        "answer_correctness": {
+            "0": 0.1796427021,
+            "1": 0.9413758977,
+            "2": 0.9617285642,
+            "3": 0.200596959,
+            "4": 0.9561330928,
+            "5": 0.9701386751,
+            "6": 0.1904109255,
+            "7": 0.6967927626,
+            "8": 0.9706742121,
+            "9": 0.9691215399,
+            "10": 0.6650212211
+        },
+        "context_relevancy": {
+            "0": 0.125,
+            "1": 0.25,
+            "2": 0.3333333333,
+            "3": 0.6666666667,
+            "4": 0.3333333333,
+            "5": 0.3333333333,
+            "6": 1.0,
+            "7": 1.0,
+            "8": 0.5,
+            "9": 1.0,
+            "10": 0.25
+        },
+        "context_utilization": {
+            "0": 0.3333333333,
+            "1": 0.9999999999,
+            "2": 0.9999999999,
+            "3": 0.9999999999,
+            "4": 0.9999999999,
+            "5": 0.9999999999,
+            "6": 0.0,
+            "7": 0.9999999999,
+            "8": 0.9999999999,
+            "9": 0.9999999999,
+            "10": 0.9999999999
+        }
+    },
+    "aggregation": {
+        "faithfulness": 0.9090909090909091,
+        "answer_relevancy": 0.9078311144545453,
+        "context_recall": 0.9090909090909091,
+        "context_precision": 0.8484848484,
+        "answer_correctness": 0.7001487774636364,
+        "context_relevancy": 0.5265151515090909,
+        "context_utilization": 0.8484848484
+    },
+    "metadata": {
+        "executed_on_cloud": true,
+        "csp": "aws",
+        "id": "1"
+    },
+    "datasource": {
+        "files": [
+            "/data/input/dataset_file.json",
+            "/data/input/dataset_file_1.json"
+        ]
+    }
+}

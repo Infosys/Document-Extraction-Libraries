@@ -1,0 +1,125 @@
+{
+  "variables": {
+    "MODEL_HOME": "C:/del/ai/models",
+    "AZURE_OPENAI_SERVER_BASE_URL": "${ENV:AZURE_OPENAI_SERVER_BASE_URL}",
+    "AZURE_OPENAI_SECRET_KEY": "${ENV:AZURE_OPENAI_SECRET_KEY}",
+    "LITELLM_PROXY_SERVER_BASE_URL": "${ENV:LITELLM_PROXY_SERVER_BASE_URL}",
+    "LITELLM_PROXY_SECRET_KEY": "${ENV:LITELLM_PROXY_SECRET_KEY}",
+    "INFY_MODEL_SERVICE_BASE_URL": "${ENV:INFY_MODEL_SERVICE_BASE_URL}",
+    "INFY_SEARCH_SERVICE_BASE_URL": "${ENV:INFY_SEARCH_SERVICE_BASE_URL}"
+  },
+  "processor_list": [
+    {
+      "enabled": true,
+      "processor_name": "request_creator",
+      "processor_namespace": "infy_dpp_core.request_creator.request_creator_v2",
+      "processor_class_name": "RequestCreatorV2",
+      "processor_input_config_name_list": [
+        "RequestCreator"
+      ]
+    },
+    {
+      "enabled": true,
+      "processor_name": "semantic_search",
+      "processor_namespace": "infy_dpp_ai.semantic_search.process.semantic_search",
+      "processor_class_name": "SemanticSearch",
+      "processor_input_config_name_list": [
+        "SemanticSearch"
+      ]
+    },
+    {
+      "enabled": true,
+      "processor_name": "request_closer",
+      "processor_namespace": "infy_dpp_core.request_closer.process.request_closer_v2",
+      "processor_class_name": "RequestCloserV2",
+      "processor_input_config_name_list": [
+        "RequestCloser"
+      ]
+    }
+  ],
+  "processor_input_config": {
+    "RequestCreator": {
+      "rag_evaluation": {
+        "enabled": true,
+        "from_data_file": {
+          "enabled": true,
+          "read_path": "/data/input/",
+          "work_root_path": "/data/work/"
+        }
+      },
+      "inference": {
+        "enabled": false,
+        "from_data_file": {
+          "read_path": "/data/input/",
+          "work_root_path": "/data/work/",
+          "top_k": 4,
+          "pre_filter_fetch_k": 100
+        }
+      }
+    },
+    "SemanticSearch": {
+      "services": [
+        {
+          "name": "infy_search_service",
+          "enabled": true,
+          "url": "${INFY_SEARCH_SERVICE_BASE_URL}/searchservice/api/v1/inference/search",
+          "max_requests_per_minute": 15,
+          "headers": {
+            "api-endpoint": "${LITELLM_PROXY_SERVER_BASE_URL}",
+            "api-key": "${AZURE_OPENAI_SECRET_KEY}"
+          },
+          "request_payload": {
+            "retrieval": {
+              "enabled": true,
+              "index_id": "",
+              "pre_filter_fetch_k": 10,
+              "filter_metadata": {},
+              "top_k": 1,
+              "datasource": {
+                "vectorindex": {
+                  "enabled": true
+                },
+                "sparseindex": {
+                  "enabled": true
+                }
+              },
+              "hybrid_search": {
+                "rrf": {
+                  "enabled": true
+                }
+              },
+              "custom_metadata_filter": {
+                "enabled": false,
+                "model_name": "gpt-4-32k_2",
+                "deployment_name": "gpt-4-32k_2"
+              }
+            },
+            "generation": {
+              "enabled": true,
+              "model_name": "gpt-4-32k_2",
+              "deployment_name": "gpt-4-32k_2",
+              "max_tokens": 1000,
+              "temperature": 0.5,
+              "top_k_used": 2,
+              "total_attempts": 3
+            }
+          }
+        }
+      ],
+      "work_root_path": "/data/work/",
+      "output_file_name": "semantic_search_result.json"
+    },
+    "RequestCloser": {
+      "work_root_path": "/data/work/",
+      "data_file": {
+        "output_root_path": "/data/output/"
+      },
+      "output_root_path": "/data/output/",
+      "from_request_file": {
+        "enabled": false,
+        "read_path": "",
+        "save_path": ""
+      }
+    }
+  }
+}

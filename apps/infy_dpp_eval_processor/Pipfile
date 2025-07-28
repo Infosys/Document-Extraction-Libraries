@@ -1,0 +1,28 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+pytest = "==6.2.5"
+pytest-cov = "==4.1.0"
+autopep8 = "==2.0.4"
+
+[packages]
+python-dotenv="==1.0.1"
+pipdeptree="==2.*"
+infy_fs_utils = {path = "./lib/infy_fs_utils-0.0.5-py3-none-any.whl",extras=["cloud"]}
+infy_dpp_sdk = {path = "./lib/infy_dpp_sdk-0.0.11-py3-none-any.whl"}
+infy_gen_ai_sdk = {path = "./lib/infy_gen_ai_sdk-0.0.8-py3-none-any.whl"}
+infy_common_utils = {path = "./lib/infy_common_utils-0.0.10-py3-none-any.whl"}
+infy_dpp_core = {path = "./lib/infy_dpp_core-0.0.6-py3-none-any.whl"}
+infy_dpp_ai = {path = "./lib/infy_dpp_ai-0.0.6-py3-none-any.whl"}
+infy_dpp_evaluator = {path = "./lib/infy_dpp_evaluator-0.0.3-py3-none-any.whl"}
+infy_model_evaluation = {path = "./lib/infy_model_evaluation-0.0.4-py3-none-any.whl"}
+infy_object_detector = {path = "./lib/infy_object_detector-0.0.2-py3-none-any.whl"}
+infy_table_extractor = {path = "./lib/infy_table_extractor-0.0.12-py3-none-any.whl"}
+infy_content_generator = {path = "./lib/infy_content_generator-0.0.1-py3-none-any.whl"}
+infy_dpp_content_generator = {path = "./lib/infy_dpp_content_generator-0.0.1-py3-none-any.whl"}
+
+[requires]
+python_version = "3"

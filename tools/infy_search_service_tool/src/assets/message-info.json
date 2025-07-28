@@ -1,0 +1,20 @@
+{
+    "message": [
+        {
+            "msgCode": 101,
+            "msgText": "Success."
+        },
+        {
+            "msgCode": 102,
+            "msgText": "Please try again."
+        },
+        {
+            "msgCode": 103,
+            "msgText": "Error:"
+        },
+        {
+            "msgCode": 104,
+            "msgText": "Error: Failed to load resource."
+        }
+    ]
+}

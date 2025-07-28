@@ -1,0 +1,3 @@
+image_path,image_subpath,html_file_subpath,x1,y1,x2,y2,object_type,class_border_type,class_complexity,rows,columns
+,Grade\invoice2.jpg,,637,978,2408,2413,table,FullBorderedTable,Simple,14,4
+,Grade\sample_1.png,truth_tables\sample_1.png_table.html,44,1960,4110,2970,table,FullBorderedTable,Simple,6,4

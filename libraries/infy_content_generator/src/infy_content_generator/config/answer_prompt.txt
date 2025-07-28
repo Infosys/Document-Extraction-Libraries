@@ -1,0 +1,22 @@
+Context: {context}
+
+Question: {question}
+
+Instructions for answer generation:
+
+1. Carefully read the provided context and question.
+2. Internally, follow these steps:
+   a) Identify all relevant information from the context.
+   b) Analyze how this information relates to the question.
+   c) Consider any potential inconsistencies or ambiguities.
+   d) Use logical reasoning to form connections and draw conclusions.
+   e) If needed, make educated inferences based strictly on the given context.
+   f) Formulate a clear and concise answer.
+
+3. Important: Do not output your step-by-step thought process.
+4. Provide only the final, direct answer to the question.
+5. Ensure your answer is based solely on the information given in the context.
+6. Do not repeat words or phrases from the question in your answer. Start your response directly with the relevant information.
+7. If the question cannot be answered based on the given context, state 'The provided information is insufficient to answer this question.'
+
+Your answer:

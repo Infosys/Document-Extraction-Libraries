@@ -1,0 +1,68 @@
+{
+    "common": {
+        "base_db_name": "documents",
+        "base_vector_encoded_rooth_path": "/data/dbservice/vectordb/encoded",
+        "base_sparse_encoded_root_path": "/data/dbservice/db/sparseindex"
+    },
+    "embedding": {
+        "openai": {
+            "configuration": {
+                "api_type": "azure",
+                "api_version": "2022-12-01",
+                "api_url": "",
+                "api_key": "",
+                "model_name": "text-embedding-ada-002",
+                "deployment_name": "text-embedding-ada-002",
+                "chunk_size": 1000,
+                "tiktoken_cache_dir": "/home/projadmin/myprogramfiles/AI/models/tiktoken_encoding"
+            }
+        },
+        "sentence_transformer": {
+            "configuration": {
+                "model_name": "all-MiniLM-L6-v2",
+                "api_url": "http://localhost:8003/modelservice"
+            }
+        },
+        "custom": {
+            "configuration": {
+                "model_name": "mistral-embd",
+                "api_key": "",
+                "endpoint": ""
+            }
+        }
+    },
+    "storage": {
+        "vectordb": {
+            "faiss": {
+                "configuration": {
+                    "chunked_files_root_path": "/data/dbservice/vectordb/chunked",
+                    "encoded_files_root_path": "/data/dbservice/vectordb/encoded",
+                    "db_name": "documents",
+                    "collections": [
+                        {
+                            "collection_name": "",
+                            "collection_secret_key": "",
+                            "chunk_type": ""
+                        }
+                    ]
+                }
+            }
+        },
+        "sparseindex": {
+            "bm25s": {
+                "configuration": {
+                    "sparse_index_root_path": "/data/dbservice/db/sparseindex",
+                    "db_name": "documents",
+                    "collections": [
+                        {
+                            "collection_name": "",
+                            "collection_secret_key": "",
+                            "chunk_type": ""
+                        }
+                    ],
+                    "nltk_data_dir": "/home/projadmin/myprogramfiles/AI/nltk_data"
+                }
+            }
+        }
+    }
+}

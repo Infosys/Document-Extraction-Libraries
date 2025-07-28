@@ -1,0 +1,45 @@
+# This file was generated using the `serve build` command on Ray v2.40.0.
+
+proxy_location: EveryNode
+
+http_options:
+  host: 0.0.0.0
+  port: 8003
+
+logging_config:
+  encoding: TEXT
+  log_level: INFO
+  logs_dir: null
+  enable_access_log: true
+
+applications:
+  - name: app_embedding_generator_l6v2
+    route_prefix: /modelservice/api/v1/model/embedding
+    import_path: models.app_embedding_generator_l6v2:app
+    runtime_env: {}
+    deployments:
+      - name: EmbeddingGenerator_l6v2
+        num_replicas: 1
+        ray_actor_options:
+          num_cpus: 0.1
+          num_gpus: 0.0
+  - name: app_docling
+    route_prefix: /modelservice/api/v1/model/docling
+    import_path: models.app_docling:app
+    runtime_env: {}
+    deployments:
+      - name: DoclingApp
+        num_replicas: 1
+        ray_actor_options:
+          num_cpus: 0.5
+          num_gpus: 0.0
+  - name: app_yolox_table_detector
+    route_prefix: /modelservice/api/v1/model/yolox
+    import_path: models.app_yolox_table_detector:app
+    runtime_env: {}
+    deployments:
+    - name: YoloxTableDetectorApp
+      num_replicas: 1
+      ray_actor_options:
+        num_cpus: 0.5
+        num_gpus: 0.0

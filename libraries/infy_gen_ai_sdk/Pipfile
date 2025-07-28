@@ -1,0 +1,24 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+pytest = "==7.4.4"
+pytest-cov = "==2.12.1"
+autopep8 = "==1.5.1"
+infy_fs_utils = {path = "./lib/infy_fs_utils-0.0.5-py3-none-any.whl"}
+
+[packages]
+tiktoken = "==0.7.0"
+faiss-cpu = "==1.7.4"
+pydantic=">=1.10.7,<3"
+bm25s = "==0.1.7"
+nltk = "==3.9.1"
+elasticsearch = "==8.15.1"
+litellm = "==1.46.6"
+numpy = "<2.0.0"
+Deprecated = "==1.2.14"
+
+[requires]
+python_version = "3"

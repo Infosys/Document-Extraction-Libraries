@@ -1,0 +1,13 @@
+    [
+        {
+            "question": "How many goals did Robert Lewandowski score?",
+            "contexts": [
+                "Football players are the epitome of athleticism and skill on the field. Renowned for their  physical prowess and strategic acumen, these athletes exhibit exceptional teamwork and  individual brilliance. From dazzling dribbles to powerful strikes, football players showcase a  diverse range of talents that captivate fans worldwide. The sport's global appeal is fueled by  iconic players who transcend borders and cultures, becoming household names celebrated for  their contributions to the beautiful game.",
+                "{\"Player\": \"Lionel Messi\", \"Club\": \"Paris Saint-Germain\", \"Nationality\": \"Argentine\", \"Goals\": \"21\", \"Assists\": \"12\"}, {\"Player\": \"Cristiano Ronaldo\", \"Club\": \"Manchester United\", \"Nationality\": \"Portuguese\", \"Goals\": \"18\", \"Assists\": \"8\"}, {\"Player\": \"Kylian Mbapp\u00e9\", \"Club\": \"Real Madrid\", \"Nationality\": \"French\", \"Goals\": \"15\", \"Assists\": \"10\"}, {\"Player\": \"Robert Lewandowski\", \"Club\": \"Bayern Munich\", \"Nationality\": \"Polish\", \"Goals\": \"23\", \"Assists\": \"5\"}, {\"Player\": \"Mohamed Salah\", \"Club\": \"Liverpool\", \"Nationality\": \"Egyptian\", \"Goals\": \"17\", \"Assists\": \"9\"}, {\"Player\": \"Erling Haaland\", \"Club\": \"Borussia Dortmund\", \"Nationality\": \"Norwegian\", \"Goals\": \"19\", \"Assists\": \"6\"}"
+            ],
+            "ground_truth": "23",
+            "answer": "",
+            "additional_field_file_name": "sports_statistics.pdf",
+            "additional_field_page_no": "1"
+        }
+    ]

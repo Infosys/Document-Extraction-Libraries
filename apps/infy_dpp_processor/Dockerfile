@@ -3,11 +3,10 @@ FROM base-opencv-java-tesseract-ocr-py38
 ENV DEBIAN_FRONTEND=noninteractive
 #RUN apt-get update -y
 
-
-ENV http_proxy=http://10.68.4.62:80
-ENV https_proxy=http://10.68.4.62:80
-ENV HTTPS_PROXY=http://10.68.4.62:80
-ENV HTTP_PROXY=http://10.68.4.62:80
+ENV http_proxy=''
+ENV https_proxy=''
+ENV HTTPS_PROXY=''
+ENV HTTP_PROXY=''
 
 WORKDIR /home
 COPY ./MyProgramFiles/ ./MyProgramFiles
@@ -26,7 +25,7 @@ RUN	chmod 777 /home/data
 
 RUN pip install -r requirements.txt 
 
-RUN pip install pydantic==1.10.18 
+#RUN pip install pydantic==1.10.18 
 
 ENV http_proxy=''
 ENV https_proxy=''

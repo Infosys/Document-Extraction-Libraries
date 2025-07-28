@@ -1,13 +1,21 @@
 {
-  "name": "pipeline2",
-  "description": "Sample 4-processor-pipeline configuration for integration testing",
+  "name": "Indexing pipeline",
+  "description": "Sample sequential indexing pipeline configuration for integration testing",
   "variables": {
-    "FORMAT_CONVERTER_HOME": "/home/MyProgramFiles/InfyFormatConverter/",
-    "OPENAI_KEY": "",
-    "OPENAI_SERVER_URL": "",
-    "TESSERACT_HOME": "",
+    "FORMAT_CONVERTER_HOME": "/home/MyProgramFiles/InfyFormatConverter",
     "INFY_OCR_ENGINE_HOME": "/home/MyProgramFiles/InfyOcrEngine",
+    "TESSERACT_HOME": "/home/MyProgramFiles/Tesseract-OCR",
     "MODEL_HOME": "/home/MyProgramFiles/AI/models",
+    "AI_HOME": "/home/MyProgramFiles/AI",
+    "CA_CERTS_PATH": "",
+    "AZURE_OPENAI_SERVER_BASE_URL": "${ENV:AZURE_OPENAI_SERVER_BASE_URL}",
+    "AZURE_OPENAI_SECRET_KEY": "${ENV:AZURE_OPENAI_SECRET_KEY}",
+    "LITELLM_PROXY_SERVER_BASE_URL": "${ENV:LITELLM_PROXY_SERVER_BASE_URL}",
+    "LITELLM_PROXY_SECRET_KEY": "${ENV:LITELLM_PROXY_SECRET_KEY}",
+    "INFY_DB_SERVICE_BASE_URL": "${ENV:INFY_DB_SERVICE_BASE_URL}",
+    "INFY_MODEL_SERVICE_BASE_URL": "${ENV:INFY_MODEL_SERVICE_BASE_URL}",
+    "INFY_RESOURCE_SERVICE_BASE_URL": "${ENV:INFY_RESOURCE_SERVICE_BASE_URL}",
+    "CUSTOM_EMB_MISTRAL_INFERENCE_URL": "${ENV:CUSTOM_EMB_MISTRAL_INFERENCE_URL}",
     "AZURE_READ_OCR_SUB_KEY": "",
     "AZURE_READ_OCR_URL": ""
   },
@@ -95,27 +103,27 @@
       "enabled": true,
       "processor_name": "chunk_generator",
       "processor_namespace": "infy_dpp_segmentation.chunk_generator",
-      "processor_class_name": "ChunkDataParser",
+      "processor_class_name": "ChunkGenerator",
       "processor_input_config_name_list": [
-        "ChunkDataParser"
+        "ChunkGenerator"
       ]
     },
     {
       "enabled": true,
-      "processor_name": "chunk_saver",
-      "processor_namespace": "infy_dpp_segmentation.chunk_saver",
-      "processor_class_name": "SaveChunkDataParser",
+      "processor_name": "metadata_extractor_custom_document",
+      "processor_namespace": "infy_dpp_ai.metadata_extractor_custom.process.metadata_extractor_custom",
+      "processor_class_name": "MetadataExtractorCustom",
       "processor_input_config_name_list": [
-        "SaveChunkDataParser"
+        "MetadataExtractorCustom"
       ]
     },
     {
       "enabled": true,
-      "processor_name": "data_encoder",
-      "processor_namespace": "infy_dpp_ai.data_encoder.process.data_encoder",
-      "processor_class_name": "DataEncoder",
+      "processor_name": "db_indexer",
+      "processor_namespace": "infy_dpp_ai.db_indexer.process.db_indexer",
+      "processor_class_name": "DbIndexer",
       "processor_input_config_name_list": [
-        "DataEncoder"
+        "DbIndexer"
       ]
     },
     {
@@ -133,6 +141,16 @@
       "textProviders": [
         {
           "provider_name": "ContentExtractor.table_contents_file_path",
+          "properties": {
+            "extract_hyperlink": true
+          }
+        },
+        {
+          "provider_name": "ContentExtractor.img_yolox_infy_table_extractor_file_path",
+          "properties": {}
+        },
+        {
+          "provider_name": "ContentExtractor.img_docling_td_tsr_file_path",
           "properties": {}
         },
         {
@@ -147,6 +165,15 @@
           }
         },
         {
+          "provider_name": "infy_ocr_engine_provider",
+          "properties": {
+            "ocr_engine_exe_dir_path": "${INFY_OCR_ENGINE_HOME}",
+            "ocr_engine_model_dir_path": "${MODEL_HOME}/tessdata",
+            "ocr_engine_language": "eng",
+            "format_converter_home": "${FORMAT_CONVERTER_HOME}"
+          }
+        },
+        {
           "provider_name": "azure_read_ocr_provider",
           "properties": {
             "subscription_key": "${AZURE_READ_OCR_SUB_KEY}",
@@ -157,7 +184,8 @@
         {
           "provider_name": "pdf_box_text_provider",
           "properties": {
-            "format_converter_home": "${FORMAT_CONVERTER_HOME}"
+            "format_converter_home": "${FORMAT_CONVERTER_HOME}",
+            "extract_hyperlink": true
           }
         },
         {
@@ -168,31 +196,13 @@
           }
         },
         {
-          "provider_name": "infy_ocr_engine_provider",
-          "properties": {
-            "ocr_engine_exe_dir_path": "${INFY_OCR_ENGINE_HOME}",
-            "ocr_engine_model_dir_path": "${MODEL_HOME}/tessdata",
-            "ocr_engine_language": "eng",
-            "format_converter_home": "${FORMAT_CONVERTER_HOME}"
-          }
-        },
-        {
           "provider_name": "txt_provider",
           "properties": {
             "format_converter_home": "${FORMAT_CONVERTER_HOME}"
           }
         }
       ],
-      "modelProviders": [
-        {
-          "provider_name": "detectron",
-          "properties": {
-            "model_path": "/model_files/model_final.pth",
-            "config_file_path": "/model_files/config.text",
-            "model_threshold": 0.8
-          }
-        }
-      ],
+      "modelProviders": [],
       "techniques": [
         {
           "enabled": false,
@@ -206,7 +216,7 @@
           "name": "technique2",
           "input_file_type": "image",
           "text_provider_name": "azure_read_ocr_provider",
-          "model_provider_name": "detectron"
+          "model_provider_name": null
         },
         {
           "enabled": true,
@@ -216,52 +226,80 @@
           "model_provider_name": null
         },
         {
-          "enabled": false,
+          "enabled": true,
           "name": "technique4",
-          "input_file_type": "pdf",
-          "text_provider_name": "pdf_box_text_provider",
-          "model_provider_name": "detectron"
-        },
-        {
-          "enabled": false,
-          "name": "technique5",
           "input_file_type": "json",
           "text_provider_name": "json_provider",
           "model_provider_name": null
         },
         {
-          "enabled": false,
-          "name": "technique6",
-          "input_file_type": "image",
-          "text_provider_name": "azure_read_ocr_provider",
-          "model_provider_name": null
-        },
-        {
           "enabled": true,
-          "name": "technique7",
-          "input_file_type": "image",
-          "text_provider_name": "infy_ocr_engine_provider",
-          "model_provider_name": null
-        },
-        {
-          "enabled": true,
-          "name": "technique8",
+          "name": "technique5",
           "input_file_type": "txt",
           "text_provider_name": "txt_provider",
           "model_provider_name": null
         },
         {
           "enabled": true,
-          "name": "technique9",
+          "name": "technique6",
+          "input_file_type": "image",
+          "text_provider_name": "infy_ocr_engine_provider",
+          "model_provider_name": null
+        },
+        {
+          "enabled": true,
+          "name": "technique7",
           "input_file_type": "pdf",
           "text_provider_name": "ContentExtractor.table_contents_file_path",
           "model_provider_name": null
         },
         {
           "enabled": true,
-          "name": "technique10",
+          "name": "technique8",
           "input_file_type": "pdf",
           "text_provider_name": "ContentExtractor.image_contents_file_path",
+          "model_provider_name": null
+        },
+        {
+          "enabled": true,
+          "name": "technique9",
+          "input_file_type": "pdf",
+          "text_provider_name": "ContentExtractor.img_yolox_infy_table_extractor_file_path",
+          "model_provider_name": null
+        },
+        {
+          "enabled": true,
+          "name": "technique10",
+          "input_file_type": "image",
+          "text_provider_name": "ContentExtractor.img_yolox_infy_table_extractor_file_path",
+          "model_provider_name": null
+        },
+        {
+          "enabled": false,
+          "name": "technique11",
+          "input_file_type": "pdf",
+          "text_provider_name": "tesseract_ocr_provider",
+          "model_provider_name": null
+        },
+        {
+          "enabled": false,
+          "name": "technique12",
+          "input_file_type": "pdf",
+          "text_provider_name": "infy_ocr_engine_provider",
+          "model_provider_name": null
+        },
+        {
+          "enabled": false,
+          "name": "technique14",
+          "input_file_type": "pdf",
+          "text_provider_name": "ContentExtractor.img_docling_td_tsr_file_path",
+          "model_provider_name": null
+        },
+        {
+          "enabled": false,
+          "name": "technique15",
+          "input_file_type": "image",
+          "text_provider_name": "ContentExtractor.img_docling_td_tsr_file_path",
           "model_provider_name": null
         }
       ],
@@ -282,13 +320,33 @@
     "SegmentClassifier": {
       "header": {
         "enabled": true,
-        "min_height": 0,
-        "max_height": 250
+        "techniques": [
+          {
+            "enabled": false,
+            "name": "auto_detect"
+          },
+          {
+            "enabled": true,
+            "name": "manually_detect",
+            "min_height_percent": 0,
+            "max_height_percent": 5
+          }
+        ]
       },
       "footer": {
         "enabled": true,
-        "min_height": 3100,
-        "max_height": 3300
+        "techniques": [
+          {
+            "enabled": false,
+            "name": "auto_detect"
+          },
+          {
+            "enabled": true,
+            "name": "manually_detect",
+            "min_height_percent": 95,
+            "max_height_percent": 100
+          }
+        ]
       },
       "debug": {
         "enabled": false,
@@ -303,6 +361,7 @@
           "name": "column_technique1"
         }
       ],
+      "detect_empty_lines": false,
       "exclude": [
         "header",
         "footer"
@@ -349,18 +408,79 @@
         "output_dir_path": "/debug/6.segment_sequencer"
       }
     },
-    "ChunkDataParser": {
-      "chunking_method": "page",
+    "ChunkGenerator": {
+      "chunking_method": {
+        "page": {
+          "enabled": true
+        },
+        "segment": {
+          "enabled": false
+        },
+        "page_character": {
+          "enabled": false,
+          "max_char_limit": 800
+        },
+        "page_and_segment_type": {
+          "enabled": false,
+          "keep_together": {
+            "text": {
+              "enabled": false
+            },
+            "table": {
+              "enabled": false
+            },
+            "image": {
+              "enabled": false
+            }
+          },
+          "keep_seperate": {
+            "text": {
+              "enabled": true
+            },
+            "table": {
+              "enabled": true
+            },
+            "image": {
+              "enabled": true
+            }
+          }
+        }
+      },
       "merge_title_paragraph": false,
+      "segment_delimeter": "\n\n",
+      "replace": [
+        {
+          "find": "\u2019",
+          "replace": "'"
+        },
+        {
+          "find": "\u2018",
+          "replace": "'"
+        },
+        {
+          "find": "\u2026",
+          "replace": ","
+        }
+      ],
       "page_num": [
         "1:10"
       ],
       "exclude": [
         "figure"
-      ]
-    },
-    "SaveChunkDataParser": {
-      "chunked_files_root_path": "/data/vectordb/chunked"
+      ],
+      "chunks": {
+        "chunks_path": "/data/vectordb/chunked"
+      },
+      "resources": {
+        "local": {
+          "enabled": false,
+          "resources_path": "/data/vectordb/resources"
+        },
+        "server": {
+          "enabled": true,
+          "resources_base_url": "${INFY_RESOURCE_SERVICE_BASE_URL}"
+        }
+      }
     },
     "RequestCreator": {
       "from_data_file": {
@@ -371,7 +491,9 @@
           "include": [
             "pdf",
             "json",
-            "txt"
+            "txt",
+            "jpg",
+            "tiff"
           ],
           "exclude": [
             "_"
@@ -397,6 +519,24 @@
       "from_request_file": {
         "read_path": "/data/work/request/indexer/start",
         "save_path": "/data/work/request/indexer/complete"
+      },
+      "event_handler": {
+        "success": [
+          {
+            "name": "IndexIdHandler",
+            "enabled": false,
+            "api_endpotint": "",
+            "payload": {
+              "indexName": "",
+              "indexId": ""
+            },
+            "headers": {
+              "userId": "",
+              "accept": ""
+            }
+          }
+        ],
+        "failure": []
       }
     },
     "DocumentDataUpdater": {
@@ -413,15 +553,161 @@
         }
       ]
     },
-    "DataEncoder": {
+    "MetadataExtractorCustom": {
+      "document": {
+        "enabled": true,
+        "page": "1:5",
+        "llm": {
+          "models": [
+            {
+              "name": "gpt-4-direct",
+              "enabled": true,
+              "batch": {
+                "size": 1
+              },
+              "configuration": {
+                "api_url": "${AZURE_OPENAI_SERVER_BASE_URL}",
+                "api_key": "${AZURE_OPENAI_SECRET_KEY}",
+                "model_name": "openai/gpt-4",
+                "deployment_name": "gpt4",
+                "max_tokens": 1000,
+                "temperature": 0.7
+              }
+            },
+            {
+              "name": "gpt-35-turbo-direct",
+              "enabled": false,
+              "batch": {
+                "size": 1
+              },
+              "configuration": {
+                "api_url": "${AZURE_OPENAI_SERVER_BASE_URL}",
+                "api_key": "${AZURE_OPENAI_SECRET_KEY}",
+                "model_name": "openai/gpt-35-turbo",
+                "deployment_name": "gpt-35-turbo",
+                "max_tokens": 1000,
+                "temperature": 0.7
+              }
+            },
+            {
+              "name": "gpt-4-proxy",
+              "enabled": false,
+              "batch": {
+                "size": 1
+              },
+              "configuration": {
+                "api_url": "${LITELLM_PROXY_SERVER_BASE_URL}",
+                "api_key": "${AZURE_OPENAI_SECRET_KEY}",
+                "model_name": "gpt-4-32k_2",
+                "deployment_name": "gpt-4-32k_2",
+                "max_tokens": 1000,
+                "temperature": 0.7
+              }
+            },
+            {
+              "name": "Llama-3.1-8B-Proxy",
+              "enabled": false,
+              "batch": {
+                "size": 1
+              },
+              "configuration": {
+                "api_url": "${LITELLM_PROXY_SERVER_BASE_URL}",
+                "api_key": "${LITELLM_PROXY_SECRET_KEY}",
+                "model_name": "Meta-Llama-3.1-8B-Instruct",
+                "deployment_name": "Meta-Llama-3.1-8B-Instruct",
+                "max_tokens": 1000,
+                "temperature": 0.7
+              }
+            },
+            {
+              "name": "Llama-3.3-70B-Proxy",
+              "enabled": false,
+              "batch": {
+                "size": 1
+              },
+              "configuration": {
+                "api_url": "${LITELLM_PROXY_SERVER_BASE_URL}",
+                "api_key": "${LITELLM_PROXY_SECRET_KEY}",
+                "model_name": "Meta-Llama-3.3-70B-Instruct",
+                "deployment_name": "Meta-Llama-3.3-70B-Instruct",
+                "max_tokens": 1000,
+                "temperature": 0.7
+              }
+            },
+            {
+              "name": "Mixtral-7B-Proxy",
+              "enabled": false,
+              "batch": {
+                "size": 1
+              },
+              "configuration": {
+                "api_url": "${LITELLM_PROXY_SERVER_BASE_URL}",
+                "api_key": "${LITELLM_PROXY_SECRET_KEY}",
+                "model_name": "mixtral-8x7b-instruct",
+                "deployment_name": "mixtral-8x7b-instruct",
+                "max_tokens": 1000,
+                "temperature": 0.7
+              }
+            }
+          ]
+        },
+        "decider_prompt_path": "data/config/prompt_templates/mde_prompts/mde_prompt_decider.txt",
+        "optimize_llm": {
+          "enabled": false,
+          "prompt_path": "data/config/prompt_templates/mde_prompts/mde_prompt_optimized.txt"
+        },
+        "header_footer": {
+          "enabled": false,
+          "header_prefix": "Header:",
+          "footer_prefix": "Footer:"
+        },
+        "query_list": [
+          {
+            "query": "What year is this document published in yyyy?",
+            "query_key": "year",
+            "technique": "metadata_extraction_technique_1",
+            "use_model_based_prompts": true,
+            "prompt_path": "data/config/prompt_templates/mde_prompts/mde_prompt.txt"
+          },
+          {
+            "query": "What is the name of the company, this document is talking about?",
+            "query_key": "company_name",
+            "technique": "metadata_extraction_technique_1",
+            "use_model_based_prompts": true,
+            "prompt_path": "data/config/prompt_templates/mde_prompts/mde_prompt.txt"
+          }
+        ],
+        "model_based_prompts": [
+          {
+            "model_name": [
+              "openai/gpt-4",
+              "openai/gpt-35-turbo",
+              "gpt-4-32k_2"
+            ],
+            "prompt_template": "data/config/prompt_templates/mde_prompts/mde_prompt_openai.txt"
+          },
+          {
+            "model_name": [
+              "Meta-Llama-3.1-8B-Instruct",
+              "Meta-Llama-3.1-70B-Instruct-FP8"
+            ],
+            "prompt_template": "data/config/prompt_templates/mde_prompts/mde_prompt_llama.txt"
+          }
+        ]
+      },
+      "query": {
+        "enabled": false
+      }
+    },
+    "DbIndexer": {
       "embedding": {
         "openai": {
           "enabled": false,
           "configuration": {
             "api_type": "azure",
             "api_version": "2022-12-01",
-            "api_url": "${OPENAI_SERVER_URL}",
-            "api_key": "${OPENAI_KEY}",
+            "api_url": "${AZURE_OPENAI_SERVER_BASE_URL}",
+            "api_key": "${AZURE_OPENAI_SECRET_KEY}",
             "model_name": "text-embedding-ada-002",
             "deployment_name": "text-embedding-ada-002",
             "chunk_size": 1000,
@@ -432,17 +718,99 @@
           "enabled": true,
           "configuration": {
             "model_name": "all-MiniLM-L6-v2",
-            "model_home_path": "${MODEL_HOME}"
+            "api_url": "${INFY_MODEL_SERVICE_BASE_URL}"
+          }
+        },
+        "custom": {
+          "enabled": false,
+          "configuration": {
+            "model_name": "mistral-embd",
+            "api_key": "",
+            "endpoint": "${CUSTOM_EMB_MISTRAL_INFERENCE_URL}"
           }
         }
       },
+      "index": {
+        "enabled": true,
+        "index_name": "test",
+        "index_id": ""
+      },
       "storage": {
-        "faiss": {
-          "enabled": true,
-          "configuration": {
-            "chunked_files_root_path": "/data/vectordb/chunked",
-            "encoded_files_root_path": "/data/vectordb/encoded",
-            "db_name": "documents"
+        "vectordb": {
+          "faiss": {
+            "enabled": false,
+            "configuration": {
+              "chunked_files_root_path": "/data/vectordb/chunked",
+              "encoded_files_root_path": "/data/vectordb/encoded",
+              "db_name": "documents",
+              "collections": [
+                {
+                  "collection_name": "documents",
+                  "collection_secret_key": "",
+                  "chunk_type": ""
+                }
+              ],
+              "distance_metric": {
+                "eucledian": true
+              }
+            }
+          },
+          "infy_db_service": {
+            "enabled": true,
+            "configuration": {
+              "db_service_url": "${INFY_DB_SERVICE_BASE_URL}",
+              "model_name": "all-MiniLM-L6-v2",
+              "collections": [
+                {
+                  "collection_name": "documents",
+                  "collection_secret_key": "",
+                  "chunk_type": ""
+                }
+              ]
+            }
+          },
+          "elasticsearch": {
+            "enabled": false,
+            "configuration": {
+              "db_server_url": "",
+              "authenticate": "",
+              "username": "",
+              "password": "",
+              "verify_certs": "true",
+              "cert_fingerprint": "",
+              "ca_certs_path": "${CA_CERTS_PATH}"
+            }
+          }
+        },
+        "sparseindex": {
+          "bm25s": {
+            "enabled": false,
+            "configuration": {
+              "sparse_index_root_path": "/data/db/sparseindex",
+              "db_name": "documents",
+              "collections": [
+                {
+                  "collection_name": "documents",
+                  "collection_secret_key": "",
+                  "chunk_type": ""
+                }
+              ],
+              "nltk_data_dir": "${AI_HOME}/nltk_data"
+            }
+          },
+          "infy_db_service": {
+            "enabled": true,
+            "configuration": {
+              "db_service_url": "${INFY_DB_SERVICE_BASE_URL}",
+              "method_name": "bm25s",
+              "collections": [
+                {
+                  "collection_name": "documents",
+                  "collection_secret_key": "",
+                  "chunk_type": ""
+                }
+              ]
+            }
           }
         }
       }
@@ -485,6 +853,13 @@
           "model_provider_name": null
         },
         {
+          "enabled": true,
+          "name": "pdf_scanned_ocr_extractor",
+          "input_file_type": "pdf",
+          "text_provider_name": "tesseract_ocr_provider",
+          "model_provider_name": null
+        },
+        {
           "enabled": false,
           "name": "img_tesseracct_ocr_extractor",
           "input_file_type": "image",
@@ -496,7 +871,7 @@
           "name": "img_azure_read_ocr_extractor",
           "input_file_type": "image",
           "text_provider_name": "azure_read_ocr_provider",
-          "model_provider_name": "detectron"
+          "model_provider_name": null
         },
         {
           "enabled": true,
@@ -504,37 +879,124 @@
           "input_file_type": "image",
           "text_provider_name": "infy_ocr_engine_provider",
           "model_provider_name": null
+        },
+        {
+          "enabled": true,
+          "name": "pdf_img_yolox_td",
+          "input_file_type": "pdf",
+          "line_detection_method": "OPENCV_LINE_DETECT",
+          "text_provider_name": "infy_ocr_engine_provider",
+          "model_provider_name": "yolox",
+          "debug": {
+            "enabled": false,
+            "generate_image": false,
+            "output_dir_path": "/debug/table_detector"
+          }
+        },
+        {
+          "enabled": true,
+          "name": "img_yolox_td",
+          "input_file_type": "image",
+          "line_detection_method": "OPENCV_LINE_DETECT",
+          "text_provider_name": "infy_ocr_engine_provider",
+          "model_provider_name": "yolox",
+          "debug": {
+            "enabled": false,
+            "generate_image": false,
+            "output_dir_path": "/debug/table_detector"
+          }
+        },
+        {
+          "enabled": false,
+          "name": "img_docling_td_tsr",
+          "input_file_type": "image",
+          "text_provider_name": "",
+          "model_provider_name": "docling",
+          "debug": {
+            "enabled": false,
+            "generate_image": false,
+            "output_dir_path": "/debug/table_detector"
+          }
+        },
+        {
+          "enabled": false,
+          "name": "pdf_img_docling_td_tsr",
+          "input_file_type": "pdf",
+          "text_provider_name": "",
+          "model_provider_name": "docling",
+          "debug": {
+            "enabled": false,
+            "generate_image": false,
+            "output_dir_path": "/debug/table_detector"
+          }
+        }
+      ],
+      "modelProviders": [
+        {
+          "provider_name": "yolox",
+          "provider_class": "infy_object_detector.detector.provider.YoloxTdProvider",
+          "properties": {
+            "model_service_url": "${INFY_MODEL_SERVICE_BASE_URL}/api/v1/model/yolox"
+          }
+        },
+        {
+          "provider_name": "docling",
+          "provider_class": "infy_object_detector.detector.provider.DoclingTableTdTsrProvider",
+          "properties": {
+            "model_service_url": "${INFY_MODEL_SERVICE_BASE_URL}/api/v1/model/docling",
+            "is_table_html_view": false
+          }
         }
       ],
       "textProviders": [
         {
           "provider_name": "tesseract_ocr_provider",
+          "provider_class": "infy_ocr_generator..TesseractOcrDataServiceProvider",
           "properties": {
-            "tesseract_path": "/home/MyProgramFiles/Tesseract-OCR/tesseract.exe",
-            "format_converter_home": "/home/MyProgramFiles/InfyFormatConverter"
+            "model_name": "Tesseract",
+            "tesseract_path": "${TESSERACT_HOME}/tesseract.exe",
+            "format_converter_home": "${FORMAT_CONVERTER_HOME}",
+            "scanned_pdf": true
           }
         },
         {
           "provider_name": "infy_ocr_engine_provider",
+          "provider_class": "infy_table_extractor.bordered_table_extractor.providers.InfyOcrEngineDataServiceProvider",
           "properties": {
-            "ocr_engine_exe_dir_path": "/home/MyProgramFiles/InfyOcrEngine",
-            "ocr_engine_model_dir_path": "/home/MyProgramFiles/AI/models/tessdata",
+            "ocr_engine_exe_dir_path": "${INFY_OCR_ENGINE_HOME}",
+            "ocr_engine_model_dir_path": "${MODEL_HOME}/tessdata",
             "ocr_engine_language": "eng",
-            "format_converter_home": "/home/MyProgramFiles/InfyFormatConverter"
+            "format_converter_home": "${FORMAT_CONVERTER_HOME}",
+            "scanned_pdf": true
           }
         },
         {
           "provider_name": "azure_read_ocr_provider",
+          "provider_class": "infy_ocr_generator..AzureReadOcrDataServiceProvider",
           "properties": {
             "subscription_key": "",
             "url": "",
-            "format_converter_home": "/home/MyProgramFiles/InfyFormatConverter"
+            "format_converter_home": "${FORMAT_CONVERTER_HOME}",
+            "scanned_pdf": true
           }
         },
         {
           "provider_name": "pdf_box_text_provider",
+          "provider_class": "infy_common_utils.format_converter.FormatConverter",
           "properties": {
-            "format_converter_home": "/home/MyProgramFiles/InfyFormatConverter"
+            "format_converter_home": "${FORMAT_CONVERTER_HOME}",
+            "extract_hyperlink": true,
+            "table_settings": {
+              "vertical_strategy": "lines",
+              "horizontal_strategy": "lines",
+              "snap_tolerance": 5,
+              "snap_x_tolerance": 5,
+              "snap_y_tolerance": 5
+            },
+            "debug": {
+              "enabled": false,
+              "output_dir_path": "/debug/pdf_plumber_table_extractor/"
+            }
           }
         }
       ]

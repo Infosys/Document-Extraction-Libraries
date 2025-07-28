@@ -1,0 +1,6 @@
+{
+  "config": {
+    "environment": "local",
+    "app_version": "0.0.2"
+  }
+}

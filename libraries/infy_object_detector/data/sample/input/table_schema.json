@@ -1,0 +1,150 @@
+{
+    "title": "BaseTableResponseData",
+    "description": "Base Table Response data class",
+    "type": "object",
+    "properties": {
+        "table_data": {
+            "title": "Table Data",
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/TableData"
+            }
+        }
+    },
+    "required": [
+        "table_data"
+    ],
+    "definitions": {
+        "CellData": {
+            "title": "CellData",
+            "description": "Class for cell data",
+            "type": "object",
+            "properties": {
+                "type": {
+                    "title": "Type",
+                    "type": "string"
+                },
+                "row_index": {
+                    "title": "Row Index",
+                    "type": "integer"
+                },
+                "column_index": {
+                    "title": "Column Index",
+                    "type": "integer"
+                },
+                "row_span": {
+                    "title": "Row Span",
+                    "type": "integer"
+                },
+                "column_span": {
+                    "title": "Column Span",
+                    "type": "integer"
+                },
+                "content": {
+                    "title": "Content",
+                    "type": "string"
+                },
+                "bbox_format": {
+                    "title": "Bbox Format",
+                    "default": "X1,Y1,X2,Y2",
+                    "type": "string"
+                },
+                "bbox": {
+                    "title": "Bbox",
+                    "type": "array",
+                    "items": {
+                        "type": "number"
+                    }
+                }
+            },
+            "required": [
+                "type",
+                "row_index",
+                "column_index",
+                "row_span",
+                "column_span",
+                "content",
+                "bbox"
+            ]
+        },
+        "MessageData": {
+            "title": "MessageData",
+            "description": "Class for messages",
+            "type": "object",
+            "properties": {
+                "message_type": {
+                    "title": "Message Type",
+                    "enum": [
+                        "error",
+                        "warn",
+                        "info"
+                    ],
+                    "type": "string"
+                },
+                "message": {
+                    "title": "Message",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "message_type",
+                "message"
+            ]
+        },
+        "TableData": {
+            "title": "TableData",
+            "description": "Class for table data ",
+            "type": "object",
+            "properties": {
+                "no_of_rows": {
+                    "title": "No Of Rows",
+                    "type": "integer"
+                },
+                "no_of_columns": {
+                    "title": "No Of Columns",
+                    "type": "integer"
+                },
+                "title": {
+                    "title": "Title",
+                    "type": "string"
+                },
+                "td_confidence_pct": {
+                    "title": "Td Confidence Pct",
+                    "default": -1.0,
+                    "type": "number"
+                },
+                "bbox_format": {
+                    "title": "Bbox Format",
+                    "default": "X1,Y1,X2,Y2",
+                    "type": "string"
+                },
+                "bbox": {
+                    "title": "Bbox",
+                    "type": "array",
+                    "items": {
+                        "type": "number"
+                    }
+                },
+                "cell_data": {
+                    "title": "Cell Data",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/CellData"
+                    }
+                },
+                "message_data": {
+                    "title": "Message Data",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/MessageData"
+                    }
+                },
+                "tsr_confidence_pct": {
+                    "title": "Tsr Confidence Pct",
+                    "default": -1.0,
+                    "type": "number"
+                }
+            }
+        }
+    }
+}

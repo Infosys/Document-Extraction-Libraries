@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <title></title>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+  <meta name='ocr-system' content='tesseract v5.0.0-alpha.20190623' />
+  <meta name='ocr-capabilities' content='ocr_page ocr_carea ocr_par ocr_line ocrx_word ocrp_wconf'/>
+ </head>
+ <body>
+  <div class='ocr_page' id='page_1' title='image "2_checkbox.jpg"; bbox 0 0 473 430; ppageno 0'>
+   <div class='ocr_carea' id='block_1_1' title="bbox 26 38 421 88">
+    <p class='ocr_par' id='par_1_1' lang='eng' title="bbox 26 38 421 88">
+     <span class='ocr_line' id='line_1_1' title="bbox 26 38 421 88; baseline 0 0; x_size 55.403507; x_descenders 5.4035087; x_ascenders 22">
+      <span class='ocrx_word' id='word_1_1' title='bbox 26 38 76 88; x_wconf 55'>_)</span>
+      <span class='ocrx_word' id='word_1_2' title='bbox 105 45 255 88; x_wconf 53'>Ihave</span>
+      <span class='ocrx_word' id='word_1_3' title='bbox 275 60 300 88; x_wconf 91'>a</span>
+      <span class='ocrx_word' id='word_1_4' title='bbox 315 45 421 88; x_wconf 91'>bike</span>
+     </span>
+    </p>
+   </div>
+   <div class='ocr_carea' id='block_1_2' title="bbox 105 123 392 166">
+    <p class='ocr_par' id='par_1_2' lang='eng' title="bbox 25 115 392 166">
+     <span class='ocr_line' id='line_1_2' title="bbox 105 123 392 166; baseline 0 0; x_size 48.403507; x_descenders 5.4035087; x_ascenders 15">
+      <span class='ocrx_word' id='word_1_5' title='bbox 105 125 123 166; x_wconf 95'>I</span>
+      <span class='ocrx_word' id='word_1_6' title='bbox 140 123 255 166; x_wconf 95'>have</span>
+      <span class='ocrx_word' id='word_1_7' title='bbox 275 138 300 166; x_wconf 96'>a</span>
+      <span class='ocrx_word' id='word_1_8' title='bbox 318 138 392 166; x_wconf 96'>car</span>
+     </span>
+    </p>
+   </div>
+   <div class='ocr_carea' id='block_1_3' title="bbox 26 193 422 244">
+    <p class='ocr_par' id='par_1_3' lang='eng' title="bbox 26 193 422 244">
+     <span class='ocr_line' id='line_1_3' title="bbox 26 193 422 244; baseline 0 0; x_size 48.403507; x_descenders 5.4035087; x_ascenders 15">
+      <span class='ocrx_word' id='word_1_9' title='bbox 26 193 76 244; x_wconf 69'>_)</span>
+      <span class='ocrx_word' id='word_1_10' title='bbox 105 201 255 244; x_wconf 68'>Ihave</span>
+      <span class='ocrx_word' id='word_1_11' title='bbox 275 216 300 244; x_wconf 94'>a</span>
+      <span class='ocrx_word' id='word_1_12' title='bbox 315 201 422 244; x_wconf 96'>boat</span>
+     </span>
+    </p>
+   </div>
+  </div>
+ </body>
+</html>

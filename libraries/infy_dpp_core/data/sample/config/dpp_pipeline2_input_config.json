@@ -1,0 +1,102 @@
+{
+    "name": "pipeline2",
+    "description": "Sample 4-processor-pipeline configuration for integration testing",
+    "variables": {
+        "DPP_SYS_PIPELINE_REQ_FILE_PATH": "<value will be auto updated>",
+        "DPP_SYS_PIPELINE_INPUT_CONFIG_PATH": "<value will be auto updated>",
+        "DPP_STORAGE_ROOT_URI": "file://C:/temp/unittest/infy_dpp_core/STORAGE",
+        "DPP_STORAGE_SERVER_URL": "",
+        "DPP_STORAGE_ACCESS_KEY": "",
+        "DPP_STORAGE_SECRET_KEY": ""
+    },
+    "processor_list": [
+        {
+            "enabled": true,
+            "processor_name": "request_creator",
+            "processor_namespace": "infy_dpp_core.request_creator",
+            "processor_class_name": "RequestCreator",
+            "processor_input_config_name_list": [
+                "RequestCreator"
+            ]
+        },
+        {
+            "enabled": true,
+            "processor_name": "document_data_updater",
+            "processor_namespace": "infy_dpp_core.document_data_updater",
+            "processor_class_name": "DocumentDataUpdateProcessor",
+            "processor_input_config_name_list": [
+                "DocumentDataUpdater"
+            ]
+        },
+        {
+            "enabled": true,
+            "processor_name": "metadata_extractor",
+            "processor_namespace": "infy_dpp_core.metadata_extractor",
+            "processor_class_name": "MetadataExtractor",
+            "processor_input_config_name_list": []
+        },
+        {
+            "enabled": true,
+            "processor_name": "document_data_saver",
+            "processor_namespace": "infy_dpp_core.document_data_saver",
+            "processor_class_name": "DocumentDataSaver",
+            "processor_input_config_name_list": [
+                "DocumentDataSaver"
+            ]
+        },
+        {
+            "enabled": true,
+            "processor_name": "request_closer",
+            "processor_namespace": "infy_dpp_core.request_closer",
+            "processor_class_name": "RequestCloser",
+            "processor_input_config_name_list": [
+                "RequestCloser"
+            ]
+        }
+    ],
+    "processor_input_config": {
+        "RequestCreator": {
+            "read_path": "/data/input/",
+            "batch_size": 20,
+            "filter": {
+                "include": [
+                    "pdf",
+                    "json"
+                ],
+                "exclude": [
+                    "_"
+                ]
+            },
+            "work_root_path": "/data/work/",
+            "queue": {
+                "enabled": true,
+                "queue_root_path": "/data/work/queue/"
+            }
+        },
+        "RequestCloser": {
+            "queue": {
+                "enabled": true,
+                "queue_root_path": "/data/work/queue/"
+            },
+            "work_root_path": "/data/work/",
+            "output_root_path": "/data/output/"
+        },
+        "DocumentDataSaver": {
+            "work_root_path": "/data/work/"
+        },
+        "DocumentDataUpdater": {
+            "config_data": [
+                {
+                    "enabled": true,
+                    "json_path": "$.context_data.reader.output[*].model_output.sources[*]",
+                    "json_key": "bbox",
+                    "replace_key_enabled": false,
+                    "replace_with_key": "",
+                    "replace_with_value": "",
+                    "replace_value_enabled": false,
+                    "replace_value_with_rule_name": "rule_cus_001_transform_bbox_value"
+                }
+            ]
+        }
+    }
+}

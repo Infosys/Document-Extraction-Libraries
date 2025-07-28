@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <title></title>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+  <meta name='ocr-system' content='tesseract v5.0.0-alpha.20190623' />
+  <meta name='ocr-capabilities' content='ocr_page ocr_carea ocr_par ocr_line ocrx_word ocrp_wconf'/>
+ </head>
+ <body>
+  <div class='ocr_page' id='page_1' title='image "bordered-table-01.jpg"; bbox 0 0 1542 360; ppageno 0'>
+   <div class='ocr_carea' id='block_1_1' title="bbox 38 24 1434 60">
+    <p class='ocr_par' id='par_1_1' lang='eng' title="bbox 38 24 1434 60">
+     <span class='ocr_line' id='line_1_1' title="bbox 38 24 1434 60; baseline 0 -8; x_size 37; x_descenders 9; x_ascenders 8">
+      <span class='ocrx_word' id='word_1_1' title='bbox 38 25 139 52; x_wconf 96'>Name</span>
+      <span class='ocrx_word' id='word_1_2' title='bbox 288 25 495 60; x_wconf 94'>Designation</span>
+      <span class='ocrx_word' id='word_1_3' title='bbox 542 24 681 52; x_wconf 92'>Address</span>
+      <span class='ocrx_word' id='word_1_4' title='bbox 794 24 991 60; x_wconf 87'>Nationality</span>
+      <span class='ocrx_word' id='word_1_5' title='bbox 1045 24 1169 52; x_wconf 85'>Dateof</span>
+      <span class='ocrx_word' id='word_1_6' title='bbox 1295 24 1434 52; x_wconf 92'>Placeof</span>
+     </span>
+    </p>
+   </div>
+   <div class='ocr_carea' id='block_1_2' title="bbox 38 64 1439 287">
+    <p class='ocr_par' id='par_1_2' lang='eng' title="bbox 38 64 1439 287">
+     <span class='ocr_line' id='line_1_2' title="bbox 1045 64 1382 106; baseline 0 -10; x_size 34.404762; x_descenders 5.9047618; x_ascenders 9">
+      <span class='ocrx_word' id='word_1_7' title='bbox 1045 64 1132 106; x_wconf 96'>Birth</span>
+      <span class='ocrx_word' id='word_1_8' title='bbox 1295 68 1382 96; x_wconf 96'>Birth</span>
+     </span>
+     <span class='ocr_line' id='line_1_3' title="bbox 38 115 1439 158; baseline 0 -12; x_size 35; x_descenders 8; x_ascenders 8">
+      <span class='ocrx_word' id='word_1_9' title='bbox 38 115 133 158; x_wconf 96'>Brian</span>
+      <span class='ocrx_word' id='word_1_10' title='bbox 287 115 430 158; x_wconf 95'>Amenity</span>
+      <span class='ocrx_word' id='word_1_11' title='bbox 545 119 606 146; x_wconf 1'>598</span>
+      <span class='ocrx_word' id='word_1_12' title='bbox 605 115 725 158; x_wconf 1'>Valdez</span>
+      <span class='ocrx_word' id='word_1_13' title='bbox 795 119 938 146; x_wconf 80'>Marshall</span>
+      <span class='ocrx_word' id='word_1_14' title='bbox 1046 119 1243 146; x_wconf 91'>2012-04-19</span>
+      <span class='ocrx_word' id='word_1_15' title='bbox 1296 119 1439 154; x_wconf 82'>Malaysia</span>
+     </span>
+     <span class='ocr_line' id='line_1_4' title="bbox 38 163 913 191; baseline 0.001 -1; x_size 33.753357; x_descenders 5.7533574; x_ascenders 9">
+      <span class='ocrx_word' id='word_1_16' title='bbox 38 163 226 191; x_wconf 65'>Hernandez</span>
+      <span class='ocrx_word' id='word_1_17' title='bbox 288 163 508 191; x_wconf 44'>horticulturist</span>
+      <span class='ocrx_word' id='word_1_18' title='bbox 545 163 662 191; x_wconf 96'>Branch</span>
+      <span class='ocrx_word' id='word_1_19' title='bbox 795 163 913 191; x_wconf 96'>Islands</span>
+     </span>
+     <span class='ocr_line' id='line_1_5' title="bbox 545 209 614 235; baseline 0 0; x_size 31.753357; x_descenders 5.7533574; x_ascenders 7">
+      <span class='ocrx_word' id='word_1_20' title='bbox 545 209 614 235; x_wconf 96'>East</span>
+     </span>
+     <span class='ocr_line' id='line_1_6' title="bbox 543 252 709 287; baseline -0.006 -7; x_size 33; x_descenders 5; x_ascenders 9">
+      <span class='ocrx_word' id='word_1_21' title='bbox 543 252 709 287; x_wconf 92'>Juliatown,</span>
+     </span>
+    </p>
+   </div>
+   <div class='ocr_carea' id='block_1_3' title="bbox 544 297 706 324">
+    <p class='ocr_par' id='par_1_3' lang='eng' title="bbox 544 297 706 324">
+     <span class='ocr_line' id='line_1_7' title="bbox 544 297 706 324; baseline 0 0; x_size 35.833332; x_descenders 8.958333; x_ascenders 8.958333">
+      <span class='ocrx_word' id='word_1_22' title='bbox 544 298 589 324; x_wconf 93'>UT</span>
+      <span class='ocrx_word' id='word_1_23' title='bbox 599 297 706 324; x_wconf 93'>42219</span>
+     </span>
+    </p>
+   </div>
+  </div>
+ </body>
+</html>

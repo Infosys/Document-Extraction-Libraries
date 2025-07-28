@@ -1,0 +1,39 @@
+{
+    "name": "pipeline5",
+    "description": "Sample pipeline for error handling unit testing",
+    "variables": {},
+    "processor_list": [
+        {
+            "enabled": true,
+            "processor_name": "document_downloader_error",
+            "processor_namespace": "tests.use_cases.uc_01.processors.document_downloader_error",
+            "processor_class_name": "DocumentDownloaderErrorV1",
+            "processor_input_config_name_list": [
+                "DocumentDownloaderError"
+            ]
+        }
+    ],
+    "processor_input_config": {
+        "DocumentDownloaderError": {}
+    },
+    "orchestrator": {
+        "processor_invocation": {
+            "default_mode": "native",
+            "dask": {
+                "enabled": false,
+                "scheduler_endpoint": ""
+            },
+            "custom_mode": {
+                "native": {
+                    "processor_names": []
+                },
+                "cli": {
+                    "processor_names": []
+                },
+                "http": {
+                    "processor_names": []
+                }
+            }
+        }
+    }
+}

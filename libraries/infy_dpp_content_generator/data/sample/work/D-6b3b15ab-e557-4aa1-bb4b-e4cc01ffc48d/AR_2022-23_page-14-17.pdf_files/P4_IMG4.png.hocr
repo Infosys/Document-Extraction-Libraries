@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title></title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name='ocr-system' content='tesseract'/>
+</head>
+<body>
+  <div class='ocr_page' id='page_1' title='image "D:\tmp\dpp_processor_container\temp\infy_dpp_processor\CONTAINER\data\temp\data\work\D-6b3b15ab-e557-4aa1-bb4b-e4cc01ffc48d\AR_2022-23_page-14-17.pdf_files\P4_IMG4.png"; bbox 0 0 686 314; ppageno 0; scan_res 70 70'>
+   <div class='ocr_separator' id='block_1_1' title="bbox 0 0 665 1"></div>
+   <div class='ocr_carea' id='block_1_2' title="bbox 34 30 288 184">
+    <p class='ocr_par' id='par_1_1' lang='eng' title="bbox 34 30 530 184">
+     <span class='ocr_line' id='line_1_1' title="bbox 34 30 288 184; baseline 0 -26; x_size 154; x_descenders 26; x_ascenders 26">
+      <span class='ocrx_word' id='word_1_1' title='bbox 34 30 288 184; x_wconf 0'>TP</span>
+      <span class='ocrx_word' id='word_1_2' title='bbox 368 124 530 158; x_wconf 44'>...</span>
+     </span>
+    </p>
+   </div>
+   <div class='ocr_carea' id='block_1_3' title="bbox 62 192 470 224">
+    <p class='ocr_par' id='par_1_2' lang='eng' title="bbox 62 192 470 224">
+     <span class='ocr_line' id='line_1_2' title="bbox 62 192 470 224; baseline 0 0; x_size 43.333332; x_descenders 10.833333; x_ascenders 10.833333">
+      <span class='ocrx_word' id='word_1_3' title='bbox 62 192 286 224; x_wconf 91'>EMPLOYER</span>
+      <span class='ocrx_word' id='word_1_4' title='bbox 325 188 343 239; x_wconf 61'>|</span>
+      <span class='ocrx_word' id='word_1_5' title='bbox 368 192 470 224; x_wconf 85'>2023</span>
+     </span>
+    </p>
+   </div>
+   <div class='ocr_photo' id='block_1_4' title="bbox 0 236 686 270"></div>
+   <div class='ocr_carea' id='block_1_5' title="bbox 34 276 656 296">
+    <p class='ocr_par' id='par_1_3' lang='eng' title="bbox 34 276 656 296">
+     <span class='ocr_caption' id='line_1_3' title="bbox 34 276 656 296; baseline 0.003 -2; x_size 25.571428; x_descenders 6.3928571; x_ascenders 6.3928571">
+      <span class='ocrx_word' id='word_1_6' title='bbox 34 276 154 296; x_wconf 89'>CERTIFIED</span>
+      <span class='ocrx_word' id='word_1_7' title='bbox 166 276 318 296; x_wconf 91'>EXCELLENCE</span>
+      <span class='ocrx_word' id='word_1_8' title='bbox 328 276 352 294; x_wconf 92'>IN</span>
+      <span class='ocrx_word' id='word_1_9' title='bbox 362 276 490 296; x_wconf 92'>EMPLOYEE</span>
+      <span class='ocrx_word' id='word_1_10' title='bbox 500 276 656 296; x_wconf 88'>CONDITIONS</span>
+     </span>
+    </p>
+   </div>
+   <div class='ocr_carea' id='block_1_6' title="bbox 662 290 686 314">
+    <p class='ocr_par' id='par_1_4' lang='eng' title="bbox 662 290 686 314">
+     <span class='ocr_line' id='line_1_4' title="bbox 662 290 686 314; baseline 0 0; x_size 33.333332; x_descenders 8.333333; x_ascenders 8.333333">
+      <span class='ocrx_word' id='word_1_11' title='bbox 662 290 686 314; x_wconf 38'>.4</span>
+     </span>
+    </p>
+   </div>
+  </div>
+</body>
+</html>

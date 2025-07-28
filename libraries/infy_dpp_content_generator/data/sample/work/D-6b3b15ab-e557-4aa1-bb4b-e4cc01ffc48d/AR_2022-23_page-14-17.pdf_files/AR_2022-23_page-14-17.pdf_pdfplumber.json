@@ -1,0 +1,271 @@
+[
+    {
+        "page_number": 1,
+        "page_width": 1224,
+        "page_height": 792,
+        "tables": [
+            {
+                "table_id": "p1_tb1",
+                "bbox": [
+                    1014.772,
+                    85.03899999999999,
+                    1178.646,
+                    308.902
+                ],
+                "data": [
+                    {
+                        "": "Digital skilling\n8.5\nmn\nPeople are a part of our digital\nskilling initiatives"
+                    }
+                ],
+                "header_bbox": [
+                    {
+                        "bbox": [
+                            1014.772,
+                            85.03899999999999,
+                            1178.646,
+                            216.69435555555557
+                        ],
+                        "col_idx": 0,
+                        "row_idx": 0
+                    }
+                ],
+                "data_bbox": [
+                    {
+                        "bbox": [
+                            1014.772,
+                            216.69435555555557,
+                            1178.646,
+                            308.902
+                        ],
+                        "col_idx": 0,
+                        "row_idx": 1
+                    }
+                ],
+                "data_html": [
+                    {
+                        "": "Digital skilling 8.5 mn People are a part of our digital skilling initiatives"
+                    }
+                ]
+            },
+            {
+                "table_id": "p1_tb2",
+                "bbox": [
+                    76.9925,
+                    196.0190888888889,
+                    103.87055000000001,
+                    208.47990000000001
+                ],
+                "data": [
+                    {
+                        "Revenues\n1,46,767\n₹ cr\n20.7% growth Y-o-Y\n15.4% CC growth Y-o-Y": "Digital revenues\n(as a % of total revenue)\n62.2\n%\n25.6% CC growth Y-o-Y"
+                    },
+                    {
+                        "Revenues\n1,46,767\n₹ cr\n20.7% growth Y-o-Y\n15.4% CC growth Y-o-Y": ""
+                    }
+                ],
+                "header_bbox": [
+                    {
+                        "bbox": [
+                            76.9925,
+                            196.0190888888889,
+                            90.55945416666667,
+                            208.47990000000001
+                        ],
+                        "col_idx": 0,
+                        "row_idx": 0
+                    },
+                    {
+                        "bbox": [
+                            90.55945416666667,
+                            196.0190888888889,
+                            103.87055000000001,
+                            208.47990000000001
+                        ],
+                        "col_idx": 1,
+                        "row_idx": 0
+                    }
+                ],
+                "data_bbox": [],
+                "data_html": [
+                    {
+                        "Revenues 1,46,767 ₹ cr 20.7% growth Y-o-Y 15.4% CC growth Y-o-Y": "Digital revenues (as a % of total revenue) 62.2 % 25.6% CC growth Y-o-Y"
+                    },
+                    {
+                        "Revenues 1,46,767 ₹ cr 20.7% growth Y-o-Y 15.4% CC growth Y-o-Y": ""
+                    }
+                ]
+            },
+            {
+                "table_id": "p1_tb3",
+                "bbox": [
+                    57.651,
+                    358.35976666666664,
+                    66.47404,
+                    378.5315
+                ],
+                "data": [
+                    {
+                        "FY 2023": "1,46,767"
+                    },
+                    {
+                        "FY 2023": "24,095"
+                    },
+                    {
+                        "FY 2023": "57.63"
+                    },
+                    {
+                        "FY 2023": "5,92,394"
+                    }
+                ],
+                "header_bbox": [
+                    {
+                        "bbox": [
+                            57.651,
+                            358.35976666666664,
+                            66.47404,
+                            373.8760375
+                        ],
+                        "col_idx": 0,
+                        "row_idx": 0
+                    }
+                ],
+                "data_bbox": [
+                    {
+                        "bbox": [
+                            57.651,
+                            373.8760375,
+                            66.47404,
+                            378.5315
+                        ],
+                        "col_idx": 0,
+                        "row_idx": 1
+                    }
+                ],
+                "data_html": [
+                    {
+                        "FY 2023": "1,46,767"
+                    },
+                    {
+                        "FY 2023": "24,095"
+                    },
+                    {
+                        "FY 2023": "57.63"
+                    },
+                    {
+                        "FY 2023": "5,92,394"
+                    }
+                ]
+            },
+            {
+                "table_id": "p1_tb4",
+                "bbox": [
+                    90.55945416666667,
+                    358.35976666666664,
+                    103.87055000000001,
+                    378.5315
+                ],
+                "data": [
+                    {
+                        "FY 2023\n18,212": "2,981\n0.71"
+                    },
+                    {
+                        "FY 2023\n18,212": "72,351"
+                    }
+                ],
+                "header_bbox": [
+                    {
+                        "bbox": [
+                            90.55945416666667,
+                            358.35976666666664,
+                            103.87055000000001,
+                            373.8760375
+                        ],
+                        "col_idx": 0,
+                        "row_idx": 0
+                    }
+                ],
+                "data_bbox": [
+                    {
+                        "bbox": [
+                            90.55945416666667,
+                            373.8760375,
+                            103.87055000000001,
+                            378.5315
+                        ],
+                        "col_idx": 0,
+                        "row_idx": 1
+                    }
+                ],
+                "data_html": [
+                    {
+                        "FY 2023 18,212": "2,981 0.71"
+                    },
+                    {
+                        "FY 2023 18,212": "72,351"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "page_number": 2,
+        "page_width": 1224,
+        "page_height": 792,
+        "tables": []
+    },
+    {
+        "page_number": 3,
+        "page_width": 1224,
+        "page_height": 792,
+        "tables": []
+    },
+    {
+        "page_number": 4,
+        "page_width": 1224,
+        "page_height": 792,
+        "tables": [
+            {
+                "table_id": "p4_tb1",
+                "bbox": [
+                    401.3856,
+                    417.26003333333324,
+                    427.4830953487112,
+                    428.02209999999997
+                ],
+                "data": [
+                    {
+                        "": "Won the Gold Award at the\nBrandon Hall Group Excellence in\nTechnology Awards"
+                    }
+                ],
+                "header_bbox": [
+                    {
+                        "bbox": [
+                            401.3856,
+                            417.26003333333324,
+                            414.5193428571429,
+                            428.02209999999997
+                        ],
+                        "col_idx": 0,
+                        "row_idx": 0
+                    },
+                    {
+                        "bbox": [
+                            414.5193428571429,
+                            417.26003333333324,
+                            427.4830953487112,
+                            428.02209999999997
+                        ],
+                        "col_idx": 1,
+                        "row_idx": 0
+                    }
+                ],
+                "data_bbox": [],
+                "data_html": [
+                    {
+                        "": "Won the Gold Award at the Brandon Hall Group Excellence in Technology Awards"
+                    }
+                ]
+            }
+        ]
+    }
+]

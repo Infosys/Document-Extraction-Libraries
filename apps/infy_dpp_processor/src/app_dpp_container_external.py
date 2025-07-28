@@ -50,9 +50,9 @@ class App():
         file_sys_handler = infy_fs_utils.provider.FileSystemHandler(
             storage_config_data)
         if not infy_fs_utils.manager.FileSystemManager().has_fs_handler(infy_dpp_sdk.common.Constants.FSH_DPP):
-            infy_fs_utils.manager.FileSystemManager().add_fs_handler(
-                file_sys_handler,
+            infy_fs_utils.manager.FileSystemManager().set_root_handler_name(
                 infy_dpp_sdk.common.Constants.FSH_DPP)
+            infy_fs_utils.manager.FileSystemManager().add_fs_handler(file_sys_handler)
 
         # Modify as required to control the overall logging level
         # logging.basicConfig(level=logging.ERROR)
@@ -100,10 +100,12 @@ class App():
                 }})
         if not infy_fs_utils.manager.FileSystemLoggingManager().has_fs_logging_handler(
                 infy_dpp_sdk.common.Constants.FSLH_DPP):
-            infy_fs_utils.manager.FileSystemLoggingManager().add_fs_logging_handler(
-                infy_fs_utils.provider.FileSystemLoggingHandler(
-                    logging_config_data, file_sys_handler),
-                infy_dpp_sdk.common.Constants.FSLH_DPP)
+            file_sys_logging_handler = infy_fs_utils.provider.FileSystemLoggingHandler(
+                logging_config_data, file_sys_handler)
+            infy_fs_utils.manager.FileSystemLoggingManager(
+            ).set_root_handler_name(infy_dpp_sdk.common.Constants.FSLH_DPP)
+            infy_fs_utils.manager.FileSystemLoggingManager(
+            ).add_fs_logging_handler(file_sys_logging_handler)
 
         controller_cli = infy_dpp_sdk.controller.ControllerCLI()
         controller_request_data: infy_dpp_sdk.data.ControllerRequestData = controller_cli.receive_request(

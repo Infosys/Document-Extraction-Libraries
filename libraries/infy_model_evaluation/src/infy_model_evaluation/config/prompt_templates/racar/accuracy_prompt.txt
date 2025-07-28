@@ -1,0 +1,21 @@
+Given a context and question-answer pair, evaluate how accurately the answer reflects the information in the context. If the answer indicates insufficient information, assign a score of 0.
+
+- Score 0: Answer indicates insufficient information
+- Score 1: Contains significant inaccuracies not supported by context
+- Score 2: Mostly accurate but contains minor inaccuracies
+- Score 3: Fully accurate, all claims supported by context
+
+For example, if an answer makes claims contradicting the context, it should receive a score of 1. If it has mostly correct information with minor discrepancies, it should receive a score of 2. If all information accurately reflects the context, it should receive a score of 3.
+
+context: {context}
+question: {qa_pairs}
+
+Return a JSON object with:
+- 'score': numeric score (0-3)
+- 'reasons':  specific explanation comparing answer claims to context information, identifying any discrepancies
+
+Example output format:
+{
+    "score": 2,
+    "reasons": "The stated revenue figures ($12.4M) and growth rate (8%) match the report, but the regional breakdown incorrectly attributes 35% to APAC when the context shows 30%."
+}

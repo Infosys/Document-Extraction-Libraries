@@ -1,0 +1,309 @@
+{
+  "variables": {
+    "FORMAT_CONVERTER_HOME": "C:/del/programfiles/InfyFormatConverter/",
+    "INFY_OCR_ENGINE_HOME": "C:/del/programfiles/InfyOcrEngine",
+    "TESSERACT_HOME": "C:/del/programfiles/Tesseract-OCR",
+    "INFY_MODEL_SERVICE_BASE_URL": "${ENV:INFY_MODEL_SERVICE_BASE_URL}"
+  },
+  "processor_list": [
+    {
+      "enabled": true,
+      "processor_name": "request_creator",
+      "processor_namespace": "infy_dpp_core.request_creator",
+      "processor_class_name": "RequestCreator",
+      "processor_input_config_name_list": [
+        "RequestCreator"
+      ]
+    },
+    {
+      "enabled": true,
+      "processor_name": "document_data_saver",
+      "processor_namespace": "infy_dpp_core.document_data_saver",
+      "processor_class_name": "DocumentDataSaver",
+      "processor_input_config_name_list": [
+        "DocumentDataSaver"
+      ]
+    },
+    {
+      "enabled": true,
+      "processor_name": "metadata_extractor",
+      "processor_namespace": "infy_dpp_core.metadata_extractor",
+      "processor_class_name": "MetadataExtractor",
+      "processor_input_config_name_list": []
+    },
+    {
+      "enabled": true,
+      "processor_name": "document_data_saver",
+      "processor_namespace": "infy_dpp_core.document_data_saver",
+      "processor_class_name": "DocumentDataSaver",
+      "processor_input_config_name_list": [
+        "DocumentDataSaver"
+      ]
+    },
+    {
+      "enabled": true,
+      "processor_name": "content_extractor",
+      "processor_namespace": "infy_dpp_content_extractor.content_extractor",
+      "processor_class_name": "ContentExtractor",
+      "processor_input_config_name_list": [
+        "ContentExtractor"
+      ]
+    },
+    {
+      "enabled": true,
+      "processor_name": "document_data_saver",
+      "processor_namespace": "infy_dpp_core.document_data_saver",
+      "processor_class_name": "DocumentDataSaver",
+      "processor_input_config_name_list": [
+        "DocumentDataSaver"
+      ]
+    },
+    {
+      "enabled": true,
+      "processor_name": "request_closer",
+      "processor_namespace": "infy_dpp_core.request_closer",
+      "processor_class_name": "RequestCloser",
+      "processor_input_config_name_list": [
+        "RequestCloser"
+      ]
+    },
+    {
+      "enabled": true,
+      "processor_name": "document_data_saver",
+      "processor_namespace": "infy_dpp_core.document_data_saver",
+      "processor_class_name": "DocumentDataSaver",
+      "processor_input_config_name_list": [
+        "DocumentDataSaver"
+      ]
+    }
+  ],
+  "processor_input_config": {
+    "RequestCreator": {
+      "from_data_file": {
+        "enabled": true,
+        "read_path": "/data/input/",
+        "batch_size": 20,
+        "filter": {
+          "include": [
+            "pdf",
+            "json",
+            "txt",
+            "jpg",
+            "tiff"
+          ],
+          "exclude": [
+            "_"
+          ]
+        },
+        "work_root_path": "/data/work/",
+        "to_request_file": {
+          "save_path": "/data/work/request/indexer/start"
+        }
+      },
+      "from_request_file": {
+        "enabled": false,
+        "read_path": "/data/work/request/indexer/complete",
+        "save_path": "/data/work/request/inference/start"
+      }
+    },
+    "RequestCloser": {
+      "work_root_path": "/data/work/",
+      "data_file": {
+        "output_root_path": "/data/output/"
+      },
+      "output_root_path": "/data/output/",
+      "from_request_file": {
+        "read_path": "/data/work/request/indexer/start",
+        "save_path": "/data/work/request/indexer/complete"
+      }
+    },
+    "DocumentDataSaver": {
+      "work_root_path": "/data/work/"
+    },
+    "ContentExtractor": {
+      "techniques": [
+        {
+          "enabled": true,
+          "name": "pdf_plumber_table_extractor",
+          "input_file_type": "pdf",
+          "text_provider_name": "pdf_box_text_provider",
+          "model_provider_name": null
+        },
+        {
+          "enabled": true,
+          "name": "pdf_box_image_extractor",
+          "input_file_type": "pdf",
+          "text_provider_name": "pdf_box_text_provider",
+          "model_provider_name": null
+        },
+        {
+          "enabled": true,
+          "name": "pdf_image_converter",
+          "input_file_type": "pdf",
+          "text_provider_name": "pdf_box_text_provider",
+          "model_provider_name": null
+        },
+        {
+          "enabled": true,
+          "name": "pdf_apache_pdfbox",
+          "input_file_type": "pdf",
+          "text_provider_name": "pdf_box_text_provider",
+          "model_provider_name": null
+        },
+        {
+          "enabled": true,
+          "name": "pdf_image_apache_pdfbox",
+          "input_file_type": "pdf",
+          "text_provider_name": "pdf_box_text_provider",
+          "model_provider_name": null
+        },
+        {
+          "enabled": true,
+          "name": "pdf_scanned_ocr_extractor",
+          "input_file_type": "pdf",
+          "text_provider_name": "tesseract_ocr_provider",
+          "model_provider_name": null
+        },
+        {
+          "enabled": false,
+          "name": "img_tesseracct_ocr_extractor",
+          "input_file_type": "image",
+          "text_provider_name": "tesseract_ocr_provider",
+          "model_provider_name": null
+        },
+        {
+          "enabled": false,
+          "name": "img_azure_read_ocr_extractor",
+          "input_file_type": "image",
+          "text_provider_name": "azure_read_ocr_provider",
+          "model_provider_name": "detectron"
+        },
+        {
+          "enabled": true,
+          "name": "img_infy_ocr_engine_extractor",
+          "input_file_type": "image",
+          "text_provider_name": "infy_ocr_engine_provider",
+          "model_provider_name": null
+        },
+        {
+          "enabled": false,
+          "name": "pdf_img_yolox_td",
+          "input_file_type": "pdf",
+          "line_detection_method": "OPENCV_LINE_DETECT",
+          "text_provider_name": "infy_ocr_engine_provider",
+          "model_provider_name": "yolox",
+          "debug": {
+            "enabled": false,
+            "generate_image": false,
+            "output_dir_path": "/debug/table_detector"
+          }
+        },
+        {
+          "enabled": true,
+          "name": "img_yolox_td",
+          "input_file_type": "image",
+          "line_detection_method": "OPENCV_LINE_DETECT",
+          "text_provider_name": "infy_ocr_engine_provider",
+          "model_provider_name": "yolox",
+          "debug": {
+            "enabled": false,
+            "generate_image": false,
+            "output_dir_path": "/debug/table_detector"
+          }
+        },
+        {
+          "enabled": false,
+          "name": "img_docling_td_tsr",
+          "input_file_type": "image",
+          "text_provider_name": "",
+          "model_provider_name": "docling",
+          "debug": {
+            "enabled": false,
+            "generate_image": false,
+            "output_dir_path": "/debug/table_detector"
+          }
+        },
+        {
+          "enabled": false,
+          "name": "pdf_img_docling_td_tsr",
+          "input_file_type": "pdf",
+          "text_provider_name": "",
+          "model_provider_name": "docling",
+          "debug": {
+            "enabled": false,
+            "generate_image": false,
+            "output_dir_path": "/debug/table_detector"
+          }
+        }
+      ],
+      "modelProviders": [
+        {
+          "provider_name": "yolox",
+          "provider_class": "infy_object_detector.detector.provider.YoloxTdProvider",
+          "properties": {
+            "model_service_url": "${INFY_MODEL_SERVICE_BASE_URL}/api/v1/model/yolox"
+          }
+        },
+        {
+          "provider_name": "docling",
+          "provider_class": "infy_object_detector.detector.provider.DoclingTableTdTsrProvider",
+          "properties": {
+            "model_service_url": "${INFY_MODEL_SERVICE_BASE_URL}/api/v1/model/docling",
+            "is_table_html_view": false
+          }
+        }
+      ],
+      "textProviders": [
+        {
+          "provider_name": "tesseract_ocr_provider",
+          "provider_class": "infy_ocr_generator..TesseractOcrDataServiceProvider",
+          "properties": {
+            "model_name": "Tesseract",
+            "tesseract_path": "${TESSERACT_HOME}/tesseract.exe",
+            "format_converter_home": "${FORMAT_CONVERTER_HOME}",
+            "scanned_pdf": true
+          }
+        },
+        {
+          "provider_name": "infy_ocr_engine_provider",
+          "provider_class": "infy_table_extractor.bordered_table_extractor.providers.InfyOcrEngineDataServiceProvider",
+          "properties": {
+            "ocr_engine_exe_dir_path": "${INFY_OCR_ENGINE_HOME}",
+            "ocr_engine_model_dir_path": "${MODEL_HOME}/tessdata",
+            "ocr_engine_language": "eng",
+            "format_converter_home": "${FORMAT_CONVERTER_HOME}",
+            "scanned_pdf": true
+          }
+        },
+        {
+          "provider_name": "azure_read_ocr_provider",
+          "provider_class": "infy_ocr_generator..AzureReadOcrDataServiceProvider",
+          "properties": {
+            "subscription_key": "",
+            "url": "",
+            "format_converter_home": "${FORMAT_CONVERTER_HOME}"
+          }
+        },
+        {
+          "provider_name": "pdf_box_text_provider",
+          "provider_class": "infy_common_utils.format_converter.FormatConverter",
+          "properties": {
+            "format_converter_home": "${FORMAT_CONVERTER_HOME}",
+            "extract_hyperlink": true,
+            "table_settings": {
+              "vertical_strategy": "lines",
+              "horizontal_strategy": "lines",
+              "snap_tolerance": 5,
+              "snap_x_tolerance": 5,
+              "snap_y_tolerance": 5
+            },
+            "debug": {
+              "enabled": false,
+              "output_dir_path": "/debug/pdf_plumber_table_extractor/"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

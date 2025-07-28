@@ -1,0 +1,221 @@
+{
+  "name": "Custom processor retriever pipeline",
+  "description": "DPP pipeline to use custom_processor",
+  "variables": {
+    "MODEL_HOME": "C:/del/ai/models",
+    "AI_HOME": "C:/del/ai",
+    "CA_CERTS_PATH": "",
+    "AZURE_OPENAI_SERVER_BASE_URL": "${ENV:AZURE_OPENAI_SERVER_BASE_URL}",
+    "AZURE_OPENAI_SECRET_KEY": "${ENV:AZURE_OPENAI_SECRET_KEY}",
+    "LITELLM_PROXY_SERVER_BASE_URL": "${ENV:LITELLM_PROXY_SERVER_BASE_URL}",
+    "LITELLM_PROXY_SECRET_KEY": "${ENV:LITELLM_PROXY_SECRET_KEY}",
+    "INFY_DB_SERVICE_BASE_URL": "${ENV:INFY_DB_SERVICE_BASE_URL}",
+    "INFY_MODEL_SERVICE_BASE_URL": "${ENV:INFY_MODEL_SERVICE_BASE_URL}"
+  },
+  "processor_list": [
+    {
+      "enabled": true,
+      "processor_name": "request_creator",
+      "processor_namespace": "infy_dpp_core.request_creator",
+      "processor_class_name": "RequestCreator",
+      "processor_input_config_name_list": [
+        "RequestCreator"
+      ]
+    },
+    {
+      "enabled": true,
+      "processor_name": "retriever",
+      "processor_namespace": "infy_dpp_ai.retriever.process.query_retriever_processor",
+      "processor_class_name": "QueryRetriever",
+      "processor_input_config_name_list": [
+        "QueryRetriever"
+      ]
+    },
+    {
+      "enabled": true,
+      "processor_name": "my_processor",
+      "processor_namespace": "custom.my_processor",
+      "processor_class_name": "MyProcessor",
+      "processor_input_config_name_list": [
+        "MyProcessor"
+      ]
+    },
+    {
+      "enabled": true,
+      "processor_name": "request_closer",
+      "processor_namespace": "infy_dpp_core.request_closer",
+      "processor_class_name": "RequestCloser",
+      "processor_input_config_name_list": [
+        "RequestCloser"
+      ]
+    }
+  ],
+  "processor_input_config": {
+    "MyProcessor": {},
+    "RequestCreator": {
+      "from_data_file": {
+        "enabled": false,
+        "read_path": "/data/input/",
+        "batch_size": 20,
+        "filter": {
+          "include": [
+            "pdf",
+            "json"
+          ],
+          "exclude": [
+            "_"
+          ]
+        },
+        "work_root_path": "/data/work/",
+        "to_request_file": {
+          "save_path": "/data/work/request/indexer/start"
+        }
+      },
+      "from_request_file": {
+        "enabled": true,
+        "read_path": "/data/work/request/indexer/complete",
+        "save_path": "/data/work/request/inference/start"
+      }
+    },
+    "RequestCloser": {
+      "work_root_path": "/data/work/",
+      "data_file": {
+        "output_root_path": ""
+      },
+      "output_root_path": "/data/output/",
+      "from_request_file": {
+        "read_path": "/data/work/request/inference/start",
+        "save_path": "/data/work/request/inference/complete"
+      }
+    },
+    "QueryRetriever": {
+      "embedding": {
+        "openai": {
+          "enabled": false,
+          "configuration": {
+            "api_type": "azure",
+            "api_version": "2022-12-01",
+            "api_url": "${AZURE_OPENAI_SERVER_BASE_URL}",
+            "api_key": "${AZURE_OPENAI_SECRET_KEY}",
+            "model_name": "text-embedding-ada-002",
+            "deployment_name": "text-embedding-ada-002",
+            "chunk_size": 1000,
+            "tiktoken_cache_dir": "${MODEL_HOME}/tiktoken_encoding"
+          }
+        },
+        "sentence_transformer": {
+          "enabled": true,
+          "configuration": {
+            "model_name": "all-MiniLM-L6-v2",
+            "api_url": "${INFY_MODEL_SERVICE_BASE_URL}"
+          }
+        },
+        "custom": {
+          "enabled": false,
+          "configuration": {
+            "model_name": "mistral-embd",
+            "api_key": "",
+            "endpoint": "${CUSTOM_EMB_MISTRAL_INFERENCE_URL}"
+          }
+        }
+      },
+      "storage": {
+        "vectordb": {
+          "faiss": {
+            "enabled": true,
+            "configuration": {
+              "chunked_files_root_path": "/data/vectordb/chunked",
+              "encoded_files_root_path": "/data/vectordb/encoded",
+              "db_name": "documents",
+              "index_id": "",
+              "collections": [
+                {
+                  "collection_name": "documents",
+                  "collection_secret_key": ""
+                }
+              ],
+              "distance_metric": {
+                "eucledian": true
+              }
+            }
+          },
+          "infy_db_service": {
+            "enabled": false,
+            "configuration": {
+              "db_service_url": "${INFY_DB_SERVICE_BASE_URL}",
+              "model_name": "",
+              "index_id": "",
+              "collections": [
+                {
+                  "collection_name": "",
+                  "collection_secret_key": ""
+                }
+              ]
+            }
+          },
+          "elasticsearch": {
+            "enabled": false,
+            "configuration": {
+              "db_server_url": "",
+              "authenticate": "false",
+              "username": "",
+              "password": "",
+              "verify_certs": "false",
+              "cert_fingerprint": "",
+              "ca_certs_path": "${CA_CERTS_PATH}",
+              "index_id": ""
+            }
+          }
+        },
+        "sparseindex": {
+          "bm25s": {
+            "enabled": false,
+            "configuration": {
+              "sparse_index_root_path": "/data/db/sparseindex",
+              "db_name": "documents",
+              "index_id": "",
+              "collections": [
+                {
+                  "collection_name": "",
+                  "collection_secret_key": "",
+                  "chunk_type": ""
+                }
+              ],
+              "nltk_data_dir": "${AI_HOME}/nltk_data"
+            }
+          },
+          "infy_db_service": {
+            "enabled": false,
+            "configuration": {
+              "db_service_url": "${INFY_DB_SERVICE_BASE_URL}",
+              "method_name": "",
+              "index_id": "",
+              "collections": [
+                {
+                  "collection_name": "",
+                  "collection_secret_key": ""
+                }
+              ]
+            }
+          }
+        }
+      },
+      "hybrid_search": {
+        "rrf": {
+          "enabled": false
+        }
+      },
+      "queries": [
+        {
+          "attribute_key": "generic_attribute_key",
+          "question": "What is the percentage of women employees in Infosys?",
+          "top_k": 5,
+          "pre_filter_fetch_k": 10,
+          "filter_metadata": {},
+          "min_distance": 0,
+          "max_distance": 4
+        }
+      ]
+    }
+  }
+}

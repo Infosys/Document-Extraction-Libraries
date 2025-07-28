@@ -1,0 +1,240 @@
+{
+  "processor_list": [
+    {
+      "enabled": true,
+      "processor_name": "request_creator",
+      "processor_namespace": "infy_dpp_core.request_creator.request_creator_v2",
+      "processor_class_name": "RequestCreatorV2",
+      "processor_input_config_name_list": [
+        "RequestCreator"
+      ]
+    },
+    {
+      "enabled": true,
+      "processor_name": "segment_detector",
+      "processor_namespace": "infy_dpp_evaluator.segment_detector",
+      "processor_class_name": "SegmentDetector",
+      "processor_input_config_name_list": [
+        "SegmentDetector"
+      ]
+    },
+    {
+      "enabled": true,
+      "processor_name": "segment_structure_recognizer",
+      "processor_namespace": "infy_dpp_evaluator.segment_structure_recognizer",
+      "processor_class_name": "SegmentStructureRecognizer",
+      "processor_input_config_name_list": [
+        "SegmentStructureRecognizer"
+      ]
+    },
+    {
+      "enabled": true,
+      "processor_name": "segment_evaluator",
+      "processor_namespace": "infy_dpp_evaluator.segment_evaluator",
+      "processor_class_name": "SegmentEvaluator",
+      "processor_input_config_name_list": [
+        "SegmentEvaluator"
+      ]
+    },
+    {
+      "enabled": true,
+      "processor_name": "segment_reporter",
+      "processor_namespace": "infy_dpp_evaluator.segment_reporter",
+      "processor_class_name": "SegmentReporter",
+      "processor_input_config_name_list": [
+        "SegmentReporter"
+      ]
+    },
+    {
+      "enabled": true,
+      "processor_name": "request_closer",
+      "processor_namespace": "infy_dpp_core.request_closer.process.request_closer_v2",
+      "processor_class_name": "RequestCloserV2",
+      "processor_input_config_name_list": [
+        "RequestCloser"
+      ]
+    }
+  ],
+  "processor_input_config": {
+    "RequestCreator": {
+      "segmentDetection": {
+        "enabled": true,
+        "from_data_file": {
+          "enabled": true,
+          "read_path": "/data/input/",
+          "work_root_path": "/data/work/"
+        }
+      }
+    },
+    "RequestCloser": {
+      "work_root_path": "/data/work/",
+      "data_file": {
+        "output_root_path": "/data/output/"
+      },
+      "output_root_path": "/data/output/"
+    },
+    "SegmentDetector": {
+      "techniques": [
+        {
+          "enabled": true,
+          "name": "img_yolox_table_detector",
+          "input_file_type": "image",
+          "filter": {
+            "include": [
+              "jpg",
+              "png",
+              "jpeg"
+            ]
+          },
+          "model_provider_name": "yolox"
+        }
+      ],
+      "modelProviders": [
+        {
+          "provider_name": "yolox",
+          "model_run_version": "1.0",
+          "dataset_name_with_version": "Invoice Dataset_v1",
+          "threshold": 0.9,
+          "properties": {
+            "yolox_model_home": "C:/del/ai/models/unstructuredio/yolo_x_layout",
+            "model_name": "yolox_local"
+          }
+        }
+      ]
+    },
+    "SegmentStructureRecognizer": {
+      "dataset_name_with_version": "Invoice Dataset_v1",
+      "techniques": [
+        {
+          "enabled": false,
+          "name": "img_tesseract_opencv_ld",
+          "input_file_type": "image",
+          "filter": {
+            "include": [
+              "jpg",
+              "png",
+              "jpeg"
+            ]
+          },
+          "text_provider_name": "tesseract_ocr_provider",
+          "model_provider_name": "",
+          "tsr_provider_name": "bordered_opencv_ld",
+          "segment_bbox_source": {
+            "truth_data": false,
+            "detector": true
+          }
+        },
+        {
+          "enabled": true,
+          "name": "img_infy_opencv_ld",
+          "input_file_type": "image",
+          "filter": {
+            "include": [
+              "jpg",
+              "png",
+              "jpeg"
+            ]
+          },
+          "text_provider_name": "infy_ocr_provider",
+          "model_provider_name": "",
+          "tsr_provider_name": "bordered_opencv_ld",
+          "segment_bbox_source": {
+            "truth_data": false,
+            "detector": true
+          }
+        },
+        {
+          "enabled": false,
+          "name": "img_tesseract_rgb_ld",
+          "input_file_type": "image",
+          "filter": {
+            "include": [
+              "jpg",
+              "png",
+              "jpeg"
+            ]
+          },
+          "text_provider_name": "tesseract_ocr_provider",
+          "model_provider_name": "",
+          "tsr_provider_name": "bordered_rgb_ld",
+          "segment_bbox_source": {
+            "truth_data": true,
+            "detector": false
+          }
+        },
+        {
+          "enabled": false,
+          "name": "img_infy_rgb_ld",
+          "input_file_type": "image",
+          "filter": {
+            "include": [
+              "jpg",
+              "png",
+              "jpeg"
+            ]
+          },
+          "text_provider_name": "infy_ocr_provider",
+          "model_provider_name": "",
+          "tsr_provider_name": "bordered_rgb_ld",
+          "segment_bbox_source": {
+            "truth_data": true,
+            "detector": false
+          }
+        }
+      ],
+      "textProviders": [
+        {
+          "provider_name": "infy_ocr_provider",
+          "properties": {
+            "ocr_engine_home": "C:/del/programfiles/InfyOcrEngine",
+            "model_dir_path": "C:/del/ai/models/tessdata"
+          }
+        },
+        {
+          "provider_name": "tesseract_ocr_provider",
+          "properties": {
+            "tesseract_path": "C:/MyProgramFiles/Tesseract-OCR/tesseract.exe",
+            "format_converter_home": "C:/del/programfiles/InfyFormatConverter"
+          }
+        },
+        {
+          "provider_name": "azure_read_ocr_provider",
+          "properties": {
+            "subscription_key": "",
+            "url": "",
+            "format_converter_home": "C:/del/programfiles/InfyFormatConverter"
+          }
+        }
+      ],
+      "input_root_path": "/data/input/",
+      "work_root_path": "/data/work/",
+      "output_file_prefix": "ssr_result"
+    },
+    "SegmentEvaluator": {
+      "work_root_path": "/data/work/",
+      "data_file": {
+        "output_root_path": "/data/output/"
+      },
+      "output_root_path": "/data/output/",
+      "evaluation": {
+        "detector": true,
+        "structure_recognizer": {
+          "enabled": true,
+          "grits_enabled": false
+        }
+      }
+    },
+    "SegmentReporter": {
+      "primary_key": "image_subpath",
+      "output_root_path": "/data/output/",
+      "file_type": {
+        "raw_report_file_name": "raw_segment_report",
+        "aggregated_report_file_name": "aggregated_segment_report"
+      },
+      "metrics_threshold": {
+        "min_true_positive_overlap_pct": 80,
+        "min_true_positive_row_column_accuracy_pct": 80
+      }
+    }
+  }
+}

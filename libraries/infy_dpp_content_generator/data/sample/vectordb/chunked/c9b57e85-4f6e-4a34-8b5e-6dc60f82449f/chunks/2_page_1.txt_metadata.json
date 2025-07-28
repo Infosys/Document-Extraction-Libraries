@@ -1,0 +1,21 @@
+{
+    "chunk_id": "C-8e32e",
+    "page_no": 2,
+    "sequence_no": 1,
+    "bbox_format": "X1,Y1,X2,Y2",
+    "bbox": null,
+    "doc_name": "sports_statistics.pdf",
+    "document_id": "c9b57e85-4f6e-4a34-8b5e-6dc60f82449f",
+    "chunking_method": "page",
+    "char_count": "2",
+    "resources": [
+        {
+            "type": "doc_path",
+            "path": "/data/vectordb/resources/c9b57e85-1677-450d-9e87-82f78328d2a4.pdf"
+        }
+    ],
+    "custom_metadata": {
+        "year": "the document does not provide information on the year of publication.",
+        "company_name": "the document is talking about multiple companies, specifically various motogp and formula 1 teams."
+    }
+}

@@ -1,0 +1,678 @@
+<div class="row" style="padding: 15px; width: 100%;">
+    <div class="col-8">
+        <div style="border: 1.5px solid black; height: 93vh; width: 100%;">
+            <img *ngIf="isImageFile()" [src]="model.docUrl | pipeSafe" style="max-width: 100%; max-height: 100%;">
+            <iframe *ngIf="!isImageFile()" [src]="model.docUrl | pipeSafe" style="width:100%; height:100%;">
+                <p>Unable to display document as document plugin is not installed. <a
+                        [href]="model.docUrl | pipeSafe">Download document.</a></p>
+            </iframe>
+        </div>
+    </div>
+    <div class="col-4" style="height: 80vh;">
+        <form [formGroup]="queryForm">
+            <div class="form-group">
+                <input type="text" formControlName="query" class="form-control" id="query" placeholder="Enter Query"
+                    style="border: 1.5px solid #000; width: 33.5vw;"
+                    [title]="queryForm.get('query')?.value || 'Enter Query'">
+            </div>
+            <div class="d-flex justify-content-end">
+                <button class="toggle-button-open ml-2" (click)="togglePane()">
+                    <span *ngIf="!model.isPaneExpanded">▼</span>
+                </button>
+            </div>
+            <div class="dropdown-pane" [ngClass]="{'expanded': model.isPaneExpanded}">
+                <div class="d-flex justify-content-end">
+                    <button class="toggle-button-close ml-2" (click)="togglePane()">
+                        <span *ngIf="model.isPaneExpanded">▲</span>
+                    </button>
+                </div>
+                <div style="display: flex; align-items: center;">
+                    <span style="font-weight: bold; position:relative; top:0.5rem; margin-left: 8.5rem;">Additional
+                        Settings</span>
+                </div>
+                <hr style="margin: 15px 0px 5px 0px;">
+                <div *ngIf="model.isPaneExpanded" class="pane-content">
+                    <div class="form-group d-flex justify-content-between">
+                        <div class="col-6 pl-0">
+                            <label for="llmBaseUrl" style="font-size: 15px;">LLM Base URL*</label>
+                            <input type="text" formControlName="llmBaseUrl" class="form-control " id="llmBaseUrl"
+                                placeholder="Enter LLM Base URL" style="border: 1.5px solid #000; width: 15.5vw;"
+                                [title]="queryForm.get('llmBaseUrl')?.value || 'Enter LLM Base URL'">
+                        </div>
+                        <div class="col-6 pr-0">
+                            <label for="llmKey" style="font-size: 15px;">LLM Key*</label>
+                            <input type="password" formControlName="llmKey" class="form-control " id="llmKey"
+                                placeholder="Enter LLM Key" style="border: 1.5px solid #000; width: 15.5vw;"
+                                [title]="queryForm.get('llmKey')?.value || 'Enter LLM Key'">
+                        </div>
+                    </div>
+                    <div class="form-group d-flex justify-content-between">
+                        <div class="col-6 pl-0">
+                            <label for="generateModelName" style="font-size: 15px;">LLM Model Name*</label>
+                            <input type="text" formControlName="generateModelName" class="form-control"
+                                id="generateModelName" placeholder="Enter LLM Model Name"
+                                style="border: 1.5px solid #000; width: 15.5vw;"
+                                [title]="queryForm.get('generateModelName')?.value || 'Enter LLM Model Name'">
+                        </div>
+                        <div class="col-6 pr-0">
+                            <label for="generateDeployName" style="font-size: 15px;">LLM Deployment Name*</label>
+                            <input type="text" formControlName="generateDeployName" class="form-control "
+                                id="generateDeployName" placeholder="Enter LLM Deployment Name"
+                                style="border: 1.5px solid #000; width: 15.5vw;"
+                                [title]="queryForm.get('generateDeployName')?.value || 'Enter LLM Deployment Name'">
+                        </div>
+                    </div>
+                    <hr style="margin: 4px 0px 0px 0px;">
+                    <div>
+                        <label for="retrieveIndexId" style="font-size: 15px;">Index Id*</label>
+                        <input type="text" formControlName="retrieveIndexId" class="form-control " id="retrieveIndexId"
+                            placeholder="Enter Index Id" style="border: 1.5px solid #000; width: 31.5vw;"
+                            [title]="queryForm.get('retrieveIndexId')?.value || 'Enter Index Id'">
+                    </div>
+                    <div>
+                        <label for="searchServiceUrl" style="font-size: 15px;">Base Search Service Endpoint (DEL)*</label>
+                        <input type="text" formControlName="searchServiceUrl" class="form-control "
+                            id="searchServiceUrl" placeholder="Enter Base Search Service Endpoint"
+                            style="border: 1.5px solid #000; width: 31.5vw;"
+                            [title]="queryForm.get('searchServiceUrl')?.value || 'Enter Base Search Service Endpoint'">
+                    </div>
+                    <div class="form-group d-flex justify-content-between" style="width: 20rem;">
+                        <div class="col-4 pl-0">
+                            <label for="retrieveTopK" style="font-size: 14.5px;">Retrieve Top_K</label>
+                            <input type="number" formControlName="retrieveTopK" class="form-control " id="retrieveTopK"
+                                placeholder="Enter Top_K" style="border: 1.5px solid #000; width: 7.5vw;" min="1"
+                                [title]="queryForm.get('retrieveTopK')?.value || 'Enter Top_K'">
+                        </div>
+                        <div class="col-7 pr-0">
+                            <label for="retrieveFilterMetadata" style="font-size: 14.5px;">Filter Metadata</label>
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                                    data-bs-toggle="dropdown" aria-expanded="false"
+                                    style="width: 14vw; border: 1.5px solid #000; background-color: #fff; color: #5c636a;">
+                                    Add Metadata Filter
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton"
+                                    style="border: 1.5px solid #000">
+                                    <div formArrayName="retrieveFilterMetadata">
+                                        <div *ngFor="let metadata of retrieveFilterMetadata.controls; let i = index"
+                                            [formGroupName]="i" class="d-flex align-items-center metadata-row">
+                                            <input type="text" formControlName="key" class="form-control mr-2"
+                                                placeholder="Key" [title]="metadata.get('key')?.value">
+                                            <input type="text" formControlName="value" class="form-control mr-2"
+                                                placeholder="Value" [title]="metadata.get('value')?.value">
+                                            <button type="button" class="btn btn-danger"
+                                                (click)="removeMetadataField(i, $event)">×</button>
+                                        </div>
+                                    </div>
+                                    <button type="button" class="btn btn-secondary btn-sm mt-2 add-metadata-btn"
+                                        (click)="addMetadataField($event)" title="Add Metadata">+</button>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-5 pr-0">
+                            <label for="retrieverPreFilterK" style="font-size: 13.5px;">Pre-filter Fetch k</label>
+                            <input type="number" formControlName="retrieverPreFilterK" class="form-control "
+                                id="retrieverPreFilterK" placeholder="Enter Pre-filter Fetch k"
+                                style="border: 1.5px solid #000; width: 8vw;" min="10"
+                                [title]="queryForm.get('retrieverPreFilterK')?.value || 'Enter Pre-filter Fetch k'">
+                        </div>
+                    </div>
+                    <div class="form-group d-flex justify-content-between" style="width: 20rem;">
+                        <div class="col-4 pl-0" style="width: 32% !important;">
+                            <label for="generateMaxTokens" style="font-size: 14.5px;">Max Tokens</label>
+                            <input type="number" formControlName="generateMaxTokens" class="form-control "
+                                id="generateMaxTokens" placeholder="Enter Max Tokens"
+                                style="border: 1.5px solid #000; width: 7vw;" min="1000"
+                                [title]="queryForm.get('generateMaxTokens')?.value || 'Enter Max Tokens'">
+                        </div>
+                        <div class="col-4 pr-0" style="width: 32% !important;">
+                            <label for="generateTemp" style="font-size: 14.5px;">Temperature</label>
+                            <input type="number" formControlName="generateTemp" class="form-control " id="generateTemp"
+                                placeholder="Enter Temperature" style="border: 1.5px solid #000; width: 7vw;" min="0"
+                                [title]="queryForm.get('generateTemp')?.value || 'Enter Temperature'">
+                        </div>
+                        <div class="col-4 pr-0" style="width: 32% !important;">
+                            <label for="generateTopK" style="font-size: 14.5px;">Top K Used</label>
+                            <input type="number" formControlName="generateTopK" class="form-control " id="generateTopK"
+                                placeholder="Enter Top K Used" style="border: 1.5px solid #000; width: 7vw;" min="1"
+                                [title]="queryForm.get('generateTopK')?.value || 'Enter Top K Used'">
+                        </div>
+                        <div class="col-4 pr-0" style="width: 33% !important;">
+                            <label for="generateAttempts" style="font-size: 13.5px;">Total Attempts</label>
+                            <input type="number" formControlName="generateAttempts" class="form-control "
+                                id="generateAttempts" placeholder="Enter LLm Attempts"
+                                style="border: 1.5px solid #000; width: 7vw;" min="1"
+                                [title]="queryForm.get('generateAttempts')?.value || 'Enter LLM Attempts'">
+                        </div>
+                    </div>
+                    <div class="form-group d-flex justify-content-between">
+                        <div class="d-flex align-items-center" style="padding: 0px 10px;">
+                            <label for="retrieveVectorEnabled" class="mr-2" style="font-size: 1rem !important;">Vector
+                                Index :</label>
+                            <input type="checkbox" formControlName="retrieveVectorEnabled"
+                                class="form-check-input custom-checkbox" id="retrieveVectorEnabled"
+                                style="margin-left: 17px;"
+                                [title]="queryForm.get('retrieveVectorEnabled')?.value || 'Enable Vector Index'">
+                        </div>
+                        <div class="d-flex align-items-center" style="padding: 0px 40px;">
+                            <label for="retrieveSparseEnabled" class="mr-2" style="font-size: 1rem !important;">Sparse
+                                Index :</label>
+                            <input type="checkbox" formControlName="retrieveSparseEnabled"
+                                class="form-check-input custom-checkbox" id="retrieveSparseEnabled"
+                                style="margin-left: 16px;"
+                                [title]="queryForm.get('retrieveSparseEnabled')?.value || 'Enable Sparse Index'">
+                        </div>
+                    </div>
+                    <div class="form-group d-flex align-items-center" style="padding: 5px 10px;">
+                        <label for="retrieveRrfEnabled" class="mr-2" style="font-size: 1rem !important;">Hybrid-RRF
+                            :</label>
+                        <input type="checkbox" formControlName="retrieveRrfEnabled"
+                            class="form-check-input custom-checkbox" id="retrieveRrfEnabled" style="margin-left: 25px;"
+                            [title]="queryForm.get('retrieveRrfEnabled')?.value || 'Enable Hybrid Search: RRF'">
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex justify-content">
+                <button type="button" class="btn btn-secondary" style="margin-right: 0.5rem;"
+                    [disabled]="model.isLoading" (click)="clearQuery()">Clear</button>
+                <button type="submit" class="btn btn-primary" [disabled]="model.isLoading"
+                    (click)="submitQuery()">Submit</button>
+            </div>
+            <div *ngIf="model.responseObj.answer !== undefined && model.responseObj.answer !== null && (model.responseObj | json) != '{}'"
+                style="border: 1px solid #ccc; padding: 10px; margin-top: 1rem; max-height: calc(100vh - 9rem); overflow-y: auto; width: 33.5vw;">
+                <span><strong>Output:</strong></span>
+                <p style="margin-bottom: 0rem;">Answer: {{ model.responseObj?.answer}}</p>
+                <button class="dropdown-button" (click)="model.showDetails = !model.showDetails"
+                    style="background: none; border: none; padding: 0;">
+                    <i [ngClass]="model.showDetails ? 'bi bi-caret-up-fill' : 'bi bi-caret-down-fill'"
+                        style="font-size: 1rem;"></i>
+                </button>
+                <div *ngIf="model.showDetails" class="table-responsive">
+                    <table
+                        class="table table-striped table-bordered table-hover custom-table fixed-width-table response-table"
+                        style="font-size: small; ">
+                        <tr>
+                            <td class="key_col">Document Name:</td>
+                            <td>{{ model.responseObj?.doc_name }}</td>
+                        </tr>
+                        <tr>
+                            <td class="key_col">Chunk Id:</td>
+                            <td>{{ model.responseObj?.chunk_id }}</td>
+                        </tr>
+                        <tr>
+                            <td class="key_col">Page No:</td>
+                            <td>{{ model.responseObj?.page_num }}</td>
+                        </tr>
+                        <tr>
+                            <td class="key_col">Segment Number:</td>
+                            <td>{{ model.responseObj?.segment_num }}</td>
+                        </tr>
+                        <tr>
+                            <td class="key_col">DB Name:</td>
+                            <td>{{ model.responseObj?.db_name }}</td>
+                        </tr>
+                        <tr>
+                            <td class="key_col">Metadata:</td>
+                            <td>
+                                <table *ngIf="model.responseObj?.source_metadata" class="metadata-table">
+                                    <tr *ngFor="let item of model.responseObj.source_metadata">
+                                        <td class="metadata-key">Doc Name</td>
+                                        <td class="metadata-value">
+                                            <details>
+                                                <summary class="collapsible-summary">Show Content</summary>
+                                                {{ item.doc_name }}
+                                            </details>
+                                        </td>
+                                    </tr>
+                                    <tr *ngFor="let item of model.responseObj.source_metadata">
+                                        <td class="metadata-key">Chunk Id</td>
+                                        <td class="metadata-value">
+                                            <details>
+                                                <summary class="collapsible-summary">Show Content</summary>
+                                                {{ item.chunk_id }}
+                                            </details>
+                                        </td>
+                                    </tr>
+                                    <tr *ngFor="let item of model.responseObj.source_metadata">
+                                        <td class="metadata-key">BBox Format</td>
+                                        <td class="metadata-value">
+                                            <details>
+                                                <summary class="collapsible-summary">Show Content</summary>
+                                                {{ item.bbox_format }}
+                                            </details>
+                                        </td>
+                                    </tr>
+                                    <tr *ngFor="let item of model.responseObj.source_metadata">
+                                        <td class="metadata-key">BBox</td>
+                                        <td class="metadata-value">
+                                            <details>
+                                                <summary class="collapsible-summary">Show Content</summary>
+                                                {{ formatBBox(item.bbox) }}
+                                            </details>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <!-- <tr>
+                            <td class="key_col">Embedding Model:</td>
+                            <td>{{ model.responseObj?.embedding_model_name }}</td>
+                        </tr>
+                        <tr>
+                            <td class="key_col">Distance Metric:</td>
+                            <td>{{ model.responseObj?.distance_metric }}</td>
+                        </tr> -->
+                        <tr>
+                            <td class="key_col">Top K:</td>
+                            <td>{{ model.responseObj?.top_k }}</td>
+                        </tr>
+                        <tr>
+                            <td class="key_col">Top K List:</td>
+                            <td>
+                                <table *ngIf="model.responseObj?.top_k_list" class="metadata-table">
+                                    <ng-container *ngFor="let topK of model.responseObj.top_k_list">
+                                        <ng-container *ngIf="topK.vectordb">
+                                            <tr>
+                                                <td class="metadata-key" colspan="2">
+                                                    <details>
+                                                        <summary class="collapsible-summary" style="color: #000;">Vector
+                                                            DB</summary>
+                                                        <table>
+                                                            <ng-container *ngFor="let item of topK.vectordb">
+                                                                <tr>
+                                                                    <td class="metadata-key">File Path</td>
+                                                                    <td class="metadata-value">
+                                                                        <details>
+                                                                            <summary class="collapsible-summary">Show
+                                                                                Content</summary>
+                                                                            {{ item.file_path }}
+                                                                        </details>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="metadata-key">Score</td>
+                                                                    <td class="metadata-value">
+                                                                        <details>
+                                                                            <summary class="collapsible-summary">Show
+                                                                                Content</summary>
+                                                                            {{ item.score }}
+                                                                        </details>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="metadata-key">Min Distance</td>
+                                                                    <td class="metadata-value">
+                                                                        <details>
+                                                                            <summary class="collapsible-summary">Show
+                                                                                Content</summary>
+                                                                            {{ item.min_distance }}
+                                                                        </details>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="metadata-key">Max Distance</td>
+                                                                    <td class="metadata-value">
+                                                                        <details>
+                                                                            <summary class="collapsible-summary">Show
+                                                                                Content</summary>
+                                                                            {{ item.max_distance }}
+                                                                        </details>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="metadata-key">Content</td>
+                                                                    <td class="metadata-value">
+                                                                        <details>
+                                                                            <summary class="collapsible-summary">Show
+                                                                                Content</summary>
+                                                                            {{ item.content }}
+                                                                        </details>
+                                                                    </td>
+                                                                </tr>
+                                                                <!-- metadata -->
+                                                                <tr *ngIf="item.meta_data">
+                                                                    <!-- <td class="metadata-key">Meta Data</td> -->
+                                                                    <!-- <td class="metadata-value">
+                                                                        <details>
+                                                                            <summary class="collapsible-summary">Show Content</summary>
+                                                                            <ul>
+                                                                                <li *ngFor="let key of objectKeys(item.meta_data)">
+                                                                                    <details>
+                                                                                        <summary>{{ key }}</summary>
+                                                                                        <ng-container *ngIf="isObject(item.meta_data[key]); else notObject">
+                                                                                            <ul>
+                                                                                                <ng-container *ngIf="isArrayType(item.meta_data[key]); else notArray">
+                                                                                                    <li *ngFor="let resource of item.meta_data[key]">
+                                                                                                        <ng-container *ngFor="let subKey of objectKeys(resource)">
+                                                                                                            {{ subKey }}: {{ resource[subKey] }}
+                                                                                                        </ng-container>
+                                                                                                    </li>
+                                                                                                </ng-container>
+                                                                                                <ng-template #notArray>
+                                                                                                    <li *ngFor="let subKey of objectKeys(item.meta_data[key])">
+                                                                                                        {{ subKey }}: {{ item.meta_data[key][subKey] }}
+                                                                                                    </li>
+                                                                                                </ng-template>
+                                                                                            </ul>
+                                                                                        </ng-container>
+                                                                                        <ng-template #notObject>
+                                                                                            {{ item.meta_data[key] }}
+                                                                                        </ng-template>
+                                                                                    </details>
+                                                                                </li>
+                                                                            </ul>
+                                                                        </details>
+                                                                    </td>
+                                                                </tr> -->
+                                                                    <!-- metadata -->
+                                                                <tr>
+                                                                    <td colspan="2">
+                                                                        <hr class="table-divider">
+                                                                    </td>
+                                                                </tr>
+                                                            </ng-container>
+                                                        </table>
+                                                    </details>
+                                                </td>
+                                            </tr>
+                                        </ng-container>
+                                        <ng-container *ngIf="topK.sparseindex">
+                                            <tr>
+                                                <td class="metadata-key" colspan="2">
+                                                    <details>
+                                                        <summary class="collapsible-summary" style="color: #000;">Sparse
+                                                            Index</summary>
+                                                        <table>
+                                                            <ng-container *ngFor="let item of topK.sparseindex">
+                                                                <tr>
+                                                                    <td class="metadata-key">File Path</td>
+                                                                    <td class="metadata-value">
+                                                                        <details>
+                                                                            <summary class="collapsible-summary">Show
+                                                                                Content</summary>
+                                                                            {{ item.file_path }}
+                                                                        </details>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="metadata-key">Score</td>
+                                                                    <td class="metadata-value">
+                                                                        <details>
+                                                                            <summary class="collapsible-summary">Show
+                                                                                Content</summary>
+                                                                            {{ item.score }}
+                                                                        </details>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="metadata-key">Min Distance</td>
+                                                                    <td class="metadata-value">
+                                                                        <details>
+                                                                            <summary class="collapsible-summary">Show
+                                                                                Content</summary>
+                                                                            {{ item.min_distance }}
+                                                                        </details>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="metadata-key">Max Distance</td>
+                                                                    <td class="metadata-value">
+                                                                        <details>
+                                                                            <summary class="collapsible-summary">Show
+                                                                                Content</summary>
+                                                                            {{ item.max_distance }}
+                                                                        </details>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="metadata-key">Content</td>
+                                                                    <td class="metadata-value">
+                                                                        <details>
+                                                                            <summary class="collapsible-summary">Show
+                                                                                Content</summary>
+                                                                            {{ item.content }}
+                                                                        </details>
+                                                                    </td>
+                                                                </tr>
+                                                                <!-- metadata -->
+                                                                <tr *ngIf="item.meta_data">
+                                                                    <!-- <td class="metadata-key">Meta Data</td> -->
+                                                                    <!-- <td class="metadata-value">
+                                                                        <details>
+                                                                            <summary class="collapsible-summary">Show Content</summary>
+                                                                            <ul>
+                                                                                <li *ngFor="let key of objectKeys(item.meta_data)">
+                                                                                    <details>
+                                                                                        <summary>{{ key }}</summary>
+                                                                                        <ng-container *ngIf="isObject(item.meta_data[key]); else notObject">
+                                                                                            <ul>
+                                                                                                <ng-container *ngIf="isArrayType(item.meta_data[key]); else notArray">
+                                                                                                    <li *ngFor="let resource of item.meta_data[key]">
+                                                                                                        <ng-container *ngFor="let subKey of objectKeys(resource)">
+                                                                                                            {{ subKey }}: {{ resource[subKey] }}
+                                                                                                        </ng-container>
+                                                                                                    </li>
+                                                                                                </ng-container>
+                                                                                                <ng-template #notArray>
+                                                                                                    <li *ngFor="let subKey of objectKeys(item.meta_data[key])">
+                                                                                                        {{ subKey }}: {{ item.meta_data[key][subKey] }}
+                                                                                                    </li>
+                                                                                                </ng-template>
+                                                                                            </ul>
+                                                                                        </ng-container>
+                                                                                        <ng-template #notObject>
+                                                                                            {{ item.meta_data[key] }}
+                                                                                        </ng-template>
+                                                                                    </details>
+                                                                                </li>
+                                                                            </ul>
+                                                                        </details>
+                                                                    </td> -->
+                                                                </tr>
+                                                                <!-- metadata -->
+                                                                <tr>
+                                                                    <td colspan="2">
+                                                                        <hr class="table-divider">
+                                                                    </td>
+                                                                </tr>
+                                                            </ng-container>
+                                                        </table>
+                                                    </details>
+                                                </td>
+                                            </tr>
+                                        </ng-container>
+                                        <ng-container *ngIf="topK.rrf">
+                                            <tr>
+                                                <td class="metadata-key" colspan="2">
+                                                    <details>
+                                                        <summary class="collapsible-summary" style="color: #000;">RRF
+                                                        </summary>
+                                                        <table>
+                                                            <ng-container *ngFor="let item of topK.rrf">
+                                                                <tr>
+                                                                    <td class="metadata-key">File Path</td>
+                                                                    <td class="metadata-value">
+                                                                        <details>
+                                                                            <summary class="collapsible-summary">Show
+                                                                                Content</summary>
+                                                                            {{ item.file_path }}
+                                                                        </details>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="metadata-key">Score</td>
+                                                                    <td class="metadata-value">
+                                                                        <details>
+                                                                            <summary class="collapsible-summary">Show
+                                                                                Content</summary>
+                                                                            {{ item.score }}
+                                                                        </details>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="metadata-key">Min Distance</td>
+                                                                    <td class="metadata-value">
+                                                                        <details>
+                                                                            <summary class="collapsible-summary">Show
+                                                                                Content</summary>
+                                                                            {{ item.min_distance }}
+                                                                        </details>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="metadata-key">Max Distance</td>
+                                                                    <td class="metadata-value">
+                                                                        <details>
+                                                                            <summary class="collapsible-summary">Show
+                                                                                Content</summary>
+                                                                            {{ item.max_distance }}
+                                                                        </details>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="metadata-key">Content</td>
+                                                                    <td class="metadata-value">
+                                                                        <details>
+                                                                            <summary class="collapsible-summary">Show
+                                                                                Content</summary>
+                                                                            {{ item.content }}
+                                                                        </details>
+                                                                    </td>
+                                                                </tr>
+                                                                <!-- metadata -->
+                                                                <tr *ngIf="item.meta_data">
+                                                                    <!-- <td class="metadata-key">Meta Data</td> -->
+                                                                    <!-- <td class="metadata-value">
+                                                                        <details>
+                                                                            <summary class="collapsible-summary">Show Content</summary>
+                                                                            <ul>
+                                                                                <li *ngFor="let key of objectKeys(item.meta_data)">
+                                                                                    <details>
+                                                                                        <summary>{{ key }}</summary>
+                                                                                        <ng-container *ngIf="isObject(item.meta_data[key]); else notObject">
+                                                                                            <ul>
+                                                                                                <ng-container *ngIf="isArrayType(item.meta_data[key]); else notArray">
+                                                                                                    <li *ngFor="let resource of item.meta_data[key]">
+                                                                                                        <ng-container *ngFor="let subKey of objectKeys(resource)">
+                                                                                                            {{ subKey }}: {{ resource[subKey] }}
+                                                                                                        </ng-container>
+                                                                                                    </li>
+                                                                                                </ng-container>
+                                                                                                <ng-template #notArray>
+                                                                                                    <li *ngFor="let subKey of objectKeys(item.meta_data[key])">
+                                                                                                        {{ subKey }}: {{ item.meta_data[key][subKey] }}
+                                                                                                    </li>
+                                                                                                </ng-template>
+                                                                                            </ul>
+                                                                                        </ng-container>
+                                                                                        <ng-template #notObject>
+                                                                                            {{ item.meta_data[key] }}
+                                                                                        </ng-template>
+                                                                                    </details>
+                                                                                </li>
+                                                                            </ul>
+                                                                        </details>
+                                                                    </td> -->
+                                                                </tr>
+                                                                <!-- metadata -->
+                                                                <tr>
+                                                                    <td colspan="2">
+                                                                        <hr class="table-divider">
+                                                                    </td>
+                                                                </tr>
+                                                            </ng-container>
+                                                        </table>
+                                                    </details>
+                                                </td>
+                                            </tr>
+                                        </ng-container>
+                                    </ng-container>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="key_col">Top K Used:</td>
+                            <td>{{ model.responseObj?.top_k_aggregated }}</td>
+                        </tr>
+                        <tr>
+                            <td class="key_col">LLM Model:</td>
+                            <td>{{ model.responseObj?.llm_model_name }}</td>
+                        </tr>
+                        <tr>
+                            <td class="key_col">LLM Total Attempts:</td>
+                            <td>{{ model.responseObj?.llm_total_attempts }}</td>
+                        </tr>
+                        <tr>
+                            <td class="key_col">LLM Prompt:</td>
+                            <td>
+                                <table *ngIf="model.responseObj?.llm_prompt" class="metadata-table">
+                                    <tr>
+                                        <td class="metadata-key">Prompt Template</td>
+                                        <td class="metadata-value">
+                                            <details>
+                                                <summary class="collapsible-summary">Show Content</summary>
+                                                {{ model.responseObj.llm_prompt.prompt_template }}
+                                            </details>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="metadata-key">Context</td>
+                                        <td class="metadata-value">
+                                            <details>
+                                                <summary class="collapsible-summary">Show Content</summary>
+                                                {{ model.responseObj.llm_prompt.context }}
+                                            </details>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="metadata-key">Question</td>
+                                        <td class="metadata-value">
+                                            <details>
+                                                <summary class="collapsible-summary">Show Content</summary>
+                                                {{ model.responseObj.llm_prompt.question || 'N/A' }}
+                                            </details>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="metadata-key">Parameters</td>
+                                        <td class="metadata-value">
+                                            <details>
+                                                <summary class="collapsible-summary">Show Content</summary>
+                                                {{ model.responseObj.llm_prompt.parameters || 'N/A' }}
+                                            </details>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="key_col">LLM Response:</td>
+                            <td>
+                                <table *ngIf="model.responseObj?.llm_response" class="metadata-table">
+                                    <tr>
+                                        <td class="metadata-key">Response</td>
+                                        <td class="metadata-value">
+                                            <details>
+                                                <summary class="collapsible-summary">Show Content</summary>
+                                                {{ model.responseObj.llm_response.response }}
+                                            </details>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="metadata-key">From Cache</td>
+                                        <td class="metadata-value">
+                                            <details>
+                                                <summary class="collapsible-summary">Show Content</summary>
+                                                {{ model.responseObj.llm_response.from_cache }}
+                                            </details>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,144 @@
+{
+  "evaluator": {
+    "embedding": {
+      "openai": {
+        "enabled": true,
+        "configuration": {
+          "api_type": "azure",
+          "api_version": "2022-12-01",
+          "api_url": "",
+          "api_key": "",
+          "model_name": "text-embedding-ada-002",
+          "deployment_name": "text-embedding-ada-002",
+          "tiktoken_cache_dir": "C:/del/ai/models/tiktoken_encoding"
+        }
+      },
+      "custom": {
+        "enabled": false,
+        "configuration": {
+          "api_type": "azure",
+          "api_version": "2022-12-01",
+          "api_url": "",
+          "api_key": "",
+          "model_name": "text-embedding-ada-002",
+          "deployment_name": "text-embedding-ada-002",
+          "tiktoken_cache_dir": "C:/del/ai/models/tiktoken_encoding"
+        }
+      }
+    },
+    "llm": {
+      "openai": {
+        "enabled": true,
+        "configuration": {
+          "api_type": "azure",
+          "api_version": "2024-02-15-preview",
+          "api_url": "",
+          "api_key": "",
+          "model_name": "azure/gpt-4",
+          "deployment_name": "gpt4",
+          "is_chat_model": true,
+          "top_p": 0.95,
+          "frequency_penalty": 0,
+          "presence_penalty": 0,
+          "stop": ""
+        }
+      },
+      "custom": {
+        "enabled": false,
+        "configuration": {
+          "api_type": "azure",
+          "api_version": "2024-02-15-preview",
+          "api_url": "",
+          "api_key": "",
+          "model_name": "gpt-4o-mini",
+          "deployment_name": "gpt-4o-mini",
+          "max_tokens": 1000,
+          "temperature": 0.5,
+          "is_chat_model": true,
+          "top_p": 0.95,
+          "frequency_penalty": 0,
+          "presence_penalty": 0,
+          "stop": ""
+        }
+      }
+    },
+    "metrics_list": [
+      {
+        "name": "faithfulness",
+        "enabled": true
+      },
+      {
+        "name": "answer_relevancy",
+        "enabled": true
+      },
+      {
+        "name": "context_recall",
+        "enabled": true
+      },
+      {
+        "name": "context_precision",
+        "enabled": true
+      },
+      {
+        "name": "answer_correctness",
+        "enabled": true
+      },
+      {
+        "name": "answer_similarity",
+        "enabled": true
+      },
+      {
+        "name": "context_utilization",
+        "enabled": true
+      },
+      {
+        "name": "context_entity_recall",
+        "enabled": true
+      }
+    ],
+    "evaluation_only": true,
+    "context_filter": -1
+  },
+  "target": {
+    "llm": {
+      "configuration": {
+        "api_type": "azure",
+        "api_version": "2022-12-01",
+        "api_url": "",
+        "api_key": "",
+        "model_name": "azure/gpt-4",
+        "deployment_name": "gpt4",
+        "max_tokens": 1024,
+        "temperature": 0.7,
+        "prompt_template": {
+          "file_path": "/data/config/prompt_templates/evaluator_with_inst.txt"
+        },
+        "tiktoken_cache_dir": "",
+        "remove_prompt_from_response": false,
+        "requires_num_return_sequences": false,
+        "num_return_sequences": 1,
+        "do_sample": true,
+        "is_chat_model": false,
+        "top_p": 0.95,
+        "frequency_penalty": 0,
+        "presence_penalty": 0,
+        "stop": ""
+      }
+    }
+  },
+  "datasource": {
+    "configuration": {
+      "file_path": "/data/input"
+    }
+  },
+  "result": {
+    "configuration": {
+      "file_path": "/evaluation_result.json",
+      "meta_data": {
+        "executed_on_cloud": true,
+        "csp": "aws",
+        "id": "1"
+      }
+    }
+  }
+}

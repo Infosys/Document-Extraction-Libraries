@@ -1,0 +1,1886 @@
+{
+    "page": 4,
+    "width": 5100,
+    "height": 3299,
+    "bbox": "X1,Y1,X2,Y2",
+    "tokens": [
+        {
+            "id": "P4_L1",
+            "type": "line",
+            "text": "Performance overview",
+            "uri": "",
+            "bbox": [
+                189,
+                158,
+                735,
+                194
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L2",
+            "type": "line",
+            "text": "Awards and recognitions",
+            "uri": "",
+            "bbox": [
+                189,
+                223,
+                1180,
+                282
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L3",
+            "type": "line",
+            "text": "Won the FE CFO Awards 2023 in the ",
+            "uri": "",
+            "bbox": [
+                2767,
+                360,
+                3417,
+                385
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L4",
+            "type": "line",
+            "text": "Recognized as one of the \u201cMost ",
+            "uri": "",
+            "bbox": [
+                3510,
+                372,
+                4082,
+                397
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L5",
+            "type": "line",
+            "text": "Large Enterprises - Servicing Sector ",
+            "uri": "",
+            "bbox": [
+                2767,
+                410,
+                3386,
+                435
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L6",
+            "type": "line",
+            "text": "Honored\u201d companies, receiving ",
+            "uri": "",
+            "bbox": [
+                3510,
+                421,
+                4094,
+                447
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L7",
+            "type": "line",
+            "text": "category.",
+            "uri": "",
+            "bbox": [
+                2767,
+                460,
+                2928,
+                485
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L8",
+            "type": "line",
+            "text": "multiple awards at the 2022 All-",
+            "uri": "",
+            "bbox": [
+                3510,
+                472,
+                4057,
+                497
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L9",
+            "type": "line",
+            "text": "Asia Executive Team Rankings from ",
+            "uri": "",
+            "bbox": [
+                3510,
+                522,
+                4129,
+                547
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L10",
+            "type": "line",
+            "text": "Won Treasury Today Asia\u2019s Top ",
+            "uri": "",
+            "bbox": [
+                2767,
+                558,
+                3317,
+                583
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L11",
+            "type": "line",
+            "text": "Institutional Investor",
+            "uri": "",
+            "bbox": [
+                3510,
+                572,
+                3868,
+                597
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L12",
+            "type": "line",
+            "text": "Treasury Team 2022 award at the ",
+            "uri": "",
+            "bbox": [
+                2767,
+                607,
+                3373,
+                633
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L13",
+            "type": "line",
+            "text": "Adam Smith Awards Asia 2022",
+            "uri": "",
+            "bbox": [
+                2767,
+                658,
+                3291,
+                683
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L14",
+            "type": "line",
+            "text": "Positioned as a leader in HFS Top ",
+            "uri": "",
+            "bbox": [
+                4280,
+                822,
+                4867,
+                847
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L15",
+            "type": "line",
+            "text": "10: Capital Markets Services, 2022",
+            "uri": "",
+            "bbox": [
+                4279,
+                872,
+                4859,
+                897
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L16",
+            "type": "line",
+            "text": "Infosys InStep Ranked as the \u2018Best ",
+            "uri": "",
+            "bbox": [
+                3524,
+                1054,
+                4124,
+                1079
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L17",
+            "type": "line",
+            "text": "ESG",
+            "uri": "",
+            "bbox": [
+                190,
+                1099,
+                291,
+                1135
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L18",
+            "type": "line",
+            "text": "Business",
+            "uri": "",
+            "bbox": [
+                1684,
+                1099,
+                1910,
+                1135
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L19",
+            "type": "line",
+            "text": "Internship Program\u2019 in the 2023 ",
+            "uri": "",
+            "bbox": [
+                3524,
+                1104,
+                4110,
+                1129
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L20",
+            "type": "line",
+            "text": "Awarded HFS ",
+            "uri": "",
+            "bbox": [
+                4532,
+                1099,
+                4775,
+                1124
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L21",
+            "type": "line",
+            "text": "Recognized as a constituent of the ",
+            "uri": "",
+            "bbox": [
+                190,
+                1179,
+                818,
+                1204
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L22",
+            "type": "line",
+            "text": "Vault Firsthand Rankings",
+            "uri": "",
+            "bbox": [
+                3524,
+                1154,
+                3952,
+                1179
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L23",
+            "type": "line",
+            "text": "OneOffice\u2122 Award ",
+            "uri": "",
+            "bbox": [
+                4532,
+                1148,
+                4888,
+                1174
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L24",
+            "type": "line",
+            "text": "Awarded HFS OneOffice\u2122 Award in the ",
+            "uri": "",
+            "bbox": [
+                922,
+                1184,
+                1606,
+                1209
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L25",
+            "type": "line",
+            "text": "Ranked in the Top 3 IT Services ",
+            "uri": "",
+            "bbox": [
+                1684,
+                1184,
+                2247,
+                1209
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L26",
+            "type": "line",
+            "text": "in the Innovation ",
+            "uri": "",
+            "bbox": [
+                4532,
+                1199,
+                4838,
+                1224
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L27",
+            "type": "line",
+            "text": "Dow Jones Sustainability World ",
+            "uri": "",
+            "bbox": [
+                189,
+                1228,
+                788,
+                1254
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L28",
+            "type": "line",
+            "text": "Sustainability category",
+            "uri": "",
+            "bbox": [
+                922,
+                1233,
+                1346,
+                1259
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L29",
+            "type": "line",
+            "text": "Brands in the world and among ",
+            "uri": "",
+            "bbox": [
+                1684,
+                1233,
+                2277,
+                1259
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L30",
+            "type": "line",
+            "text": "Ecosystem category",
+            "uri": "",
+            "bbox": [
+                4532,
+                1249,
+                4879,
+                1274
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L31",
+            "type": "line",
+            "text": "Index for 2022",
+            "uri": "",
+            "bbox": [
+                189,
+                1278,
+                446,
+                1304
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L32",
+            "type": "line",
+            "text": "the Top 150 Most Valued Brands by ",
+            "uri": "",
+            "bbox": [
+                1684,
+                1283,
+                2342,
+                1309
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L33",
+            "type": "line",
+            "text": "Infosys rated as \u201cMost Noteworthy\u201d ",
+            "uri": "",
+            "bbox": [
+                3496,
+                1279,
+                4146,
+                1304
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L34",
+            "type": "line",
+            "text": "Brand Finance Global 500 2023 report",
+            "uri": "",
+            "bbox": [
+                1684,
+                1334,
+                2339,
+                1359
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L35",
+            "type": "line",
+            "text": "Named in AVTAR Top 10 Best ",
+            "uri": "",
+            "bbox": [
+                2763,
+                1320,
+                3285,
+                1345
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L36",
+            "type": "line",
+            "text": "Company by DiversityInc, USA",
+            "uri": "",
+            "bbox": [
+                3496,
+                1328,
+                4029,
+                1354
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L37",
+            "type": "line",
+            "text": "Secured a place in CDP\u2019s annual ",
+            "uri": "",
+            "bbox": [
+                189,
+                1376,
+                765,
+                1401
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L38",
+            "type": "line",
+            "text": "Recognized as a leader in Everest ",
+            "uri": "",
+            "bbox": [
+                922,
+                1368,
+                1503,
+                1393
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L39",
+            "type": "line",
+            "text": "Companies for Women in India ",
+            "uri": "",
+            "bbox": [
+                2763,
+                1369,
+                3344,
+                1395
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L40",
+            "type": "line",
+            "text": "\u2018A List\u2019 for leadership in corporate ",
+            "uri": "",
+            "bbox": [
+                189,
+                1426,
+                791,
+                1451
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L41",
+            "type": "line",
+            "text": "\u2013 Sustainability Enablement ",
+            "uri": "",
+            "bbox": [
+                922,
+                1419,
+                1456,
+                1444
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L42",
+            "type": "line",
+            "text": "list in 2022",
+            "uri": "",
+            "bbox": [
+                2763,
+                1420,
+                2947,
+                1445
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L43",
+            "type": "line",
+            "text": "transparency and performance on ",
+            "uri": "",
+            "bbox": [
+                189,
+                1476,
+                791,
+                1501
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L44",
+            "type": "line",
+            "text": "Technology Services PEAK Matrix\u00ae ",
+            "uri": "",
+            "bbox": [
+                922,
+                1468,
+                1549,
+                1494
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L45",
+            "type": "line",
+            "text": "Assessment",
+            "uri": "",
+            "bbox": [
+                922,
+                1518,
+                1127,
+                1543
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L46",
+            "type": "line",
+            "text": "Won the \u2018Most ",
+            "uri": "",
+            "bbox": [
+                1881,
+                1497,
+                2150,
+                1522
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L47",
+            "type": "line",
+            "text": "climate change",
+            "uri": "",
+            "bbox": [
+                189,
+                1526,
+                454,
+                1551
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L48",
+            "type": "line",
+            "text": "Outstanding Company ",
+            "uri": "",
+            "bbox": [
+                1881,
+                1546,
+                2314,
+                1572
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L49",
+            "type": "line",
+            "text": "Recognized among Kantar\u2019s global 100 ",
+            "uri": "",
+            "bbox": [
+                2763,
+                1574,
+                3451,
+                1599
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L50",
+            "type": "line",
+            "text": "Recognized as \u2018GSI Innovation ",
+            "uri": "",
+            "bbox": [
+                4250,
+                1562,
+                4803,
+                1587
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L51",
+            "type": "line",
+            "text": "Ranked as a leader in HFS Top 10: ",
+            "uri": "",
+            "bbox": [
+                922,
+                1615,
+                1502,
+                1640
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L52",
+            "type": "line",
+            "text": "in India \u2013 IT Services ",
+            "uri": "",
+            "bbox": [
+                1881,
+                1596,
+                2266,
+                1622
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L53",
+            "type": "line",
+            "text": "most valuable brands in 2022",
+            "uri": "",
+            "bbox": [
+                2763,
+                1623,
+                3301,
+                1649
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L54",
+            "type": "line",
+            "text": "Partner of the Year 2022\u2019 at ",
+            "uri": "",
+            "bbox": [
+                4249,
+                1611,
+                4763,
+                1637
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L55",
+            "type": "line",
+            "text": "Recognized as one of ",
+            "uri": "",
+            "bbox": [
+                456,
+                1649,
+                834,
+                1674
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L56",
+            "type": "line",
+            "text": "Sustainability Services, 2022",
+            "uri": "",
+            "bbox": [
+                922,
+                1665,
+                1447,
+                1691
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L57",
+            "type": "line",
+            "text": "Sector\u2019 in Asia\u2019s ",
+            "uri": "",
+            "bbox": [
+                1881,
+                1646,
+                2168,
+                1672
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L58",
+            "type": "line",
+            "text": "Snowflake Summit",
+            "uri": "",
+            "bbox": [
+                4249,
+                1662,
+                4575,
+                1687
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L59",
+            "type": "line",
+            "text": "the 2023 World\u2019s Most ",
+            "uri": "",
+            "bbox": [
+                456,
+                1699,
+                874,
+                1724
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L60",
+            "type": "line",
+            "text": "Outstanding Companies ",
+            "uri": "",
+            "bbox": [
+                1881,
+                1697,
+                2314,
+                1722
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L61",
+            "type": "line",
+            "text": "Recognized as UK\u2019s Best Workplaces\u2122 ",
+            "uri": "",
+            "bbox": [
+                2763,
+                1721,
+                3453,
+                1746
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L62",
+            "type": "line",
+            "text": "Ethical Companies\u00ae by ",
+            "uri": "",
+            "bbox": [
+                456,
+                1748,
+                880,
+                1774
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L63",
+            "type": "line",
+            "text": "Infosys BPM won the Best CSR ",
+            "uri": "",
+            "bbox": [
+                922,
+                1763,
+                1461,
+                1788
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L64",
+            "type": "line",
+            "text": "Poll 2022 by Asiamoney",
+            "uri": "",
+            "bbox": [
+                1881,
+                1747,
+                2292,
+                1772
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L65",
+            "type": "line",
+            "text": "in Tech 2022 by Great Place to Work\u00ae",
+            "uri": "",
+            "bbox": [
+                2763,
+                1770,
+                3404,
+                1796
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L66",
+            "type": "line",
+            "text": "Winner of the 2022 Microsoft ",
+            "uri": "",
+            "bbox": [
+                4249,
+                1759,
+                4776,
+                1784
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L67",
+            "type": "line",
+            "text": "Ethisphere",
+            "uri": "",
+            "bbox": [
+                456,
+                1799,
+                642,
+                1824
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L68",
+            "type": "line",
+            "text": "Impact Award at the Corporate Social ",
+            "uri": "",
+            "bbox": [
+                922,
+                1812,
+                1586,
+                1838
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L69",
+            "type": "line",
+            "text": "Security Modern Endpoint ",
+            "uri": "",
+            "bbox": [
+                4249,
+                1808,
+                4750,
+                1834
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L70",
+            "type": "line",
+            "text": "Responsibility Summit & Awards 2023 ",
+            "uri": "",
+            "bbox": [
+                922,
+                1863,
+                1583,
+                1888
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L71",
+            "type": "line",
+            "text": "Recognized among Mexico\u2019s Best ",
+            "uri": "",
+            "bbox": [
+                2763,
+                1868,
+                3369,
+                1893
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L72",
+            "type": "line",
+            "text": "Recognized amongst India\u2019s Best ",
+            "uri": "",
+            "bbox": [
+                3543,
+                1874,
+                4140,
+                1899
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L73",
+            "type": "line",
+            "text": "Management Partner of the Year ",
+            "uri": "",
+            "bbox": [
+                4249,
+                1858,
+                4868,
+                1884
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L74",
+            "type": "line",
+            "text": "by UBS Forum",
+            "uri": "",
+            "bbox": [
+                922,
+                1913,
+                1166,
+                1938
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L75",
+            "type": "line",
+            "text": "HR leaders of 2022 by Great Place ",
+            "uri": "",
+            "bbox": [
+                2763,
+                1917,
+                3364,
+                1943
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L76",
+            "type": "line",
+            "text": "Workplaces\u2122 for Women 2022 by ",
+            "uri": "",
+            "bbox": [
+                3535,
+                1924,
+                4148,
+                1949
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L77",
+            "type": "line",
+            "text": "Award ",
+            "uri": "",
+            "bbox": [
+                4249,
+                1909,
+                4371,
+                1934
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L78",
+            "type": "line",
+            "text": "to\u00a0Work\u00ae",
+            "uri": "",
+            "bbox": [
+                2763,
+                1968,
+                2917,
+                1993
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L79",
+            "type": "line",
+            "text": "Great Place to Work\u00ae",
+            "uri": "",
+            "bbox": [
+                3659,
+                1974,
+                4016,
+                1999
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L80",
+            "type": "line",
+            "text": "Recognized as a top ESG performer in ",
+            "uri": "",
+            "bbox": [
+                922,
+                2010,
+                1610,
+                2035
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L81",
+            "type": "line",
+            "text": "Recognized as the Top Service ",
+            "uri": "",
+            "bbox": [
+                4249,
+                2006,
+                4797,
+                2031
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L82",
+            "type": "line",
+            "text": "2023 by Sustainalytics",
+            "uri": "",
+            "bbox": [
+                922,
+                2059,
+                1336,
+                2085
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L83",
+            "type": "line",
+            "text": "Provider Across Nordics in ",
+            "uri": "",
+            "bbox": [
+                4249,
+                2055,
+                4744,
+                2081
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L84",
+            "type": "line",
+            "text": "Won the ICAI Sustainability ",
+            "uri": "",
+            "bbox": [
+                3495,
+                2094,
+                4005,
+                2119
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L85",
+            "type": "line",
+            "text": "the Whitelane Research and PA ",
+            "uri": "",
+            "bbox": [
+                4249,
+                2106,
+                4796,
+                2131
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L86",
+            "type": "line",
+            "text": "Infosys topped the charts in the ",
+            "uri": "",
+            "bbox": [
+                922,
+                2156,
+                1521,
+                2182
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L87",
+            "type": "line",
+            "text": "Reporting Awards 2021-22 for Gender ",
+            "uri": "",
+            "bbox": [
+                3495,
+                2143,
+                4182,
+                2169
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L88",
+            "type": "line",
+            "text": "Consulting IT Sourcing Study 2023",
+            "uri": "",
+            "bbox": [
+                4249,
+                2156,
+                4842,
+                2181
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L89",
+            "type": "line",
+            "text": "CRISIL ESG Leadership Rankings ",
+            "uri": "",
+            "bbox": [
+                922,
+                2206,
+                1531,
+                2232
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L90",
+            "type": "line",
+            "text": "Equality",
+            "uri": "",
+            "bbox": [
+                3495,
+                2194,
+                3636,
+                2219
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L91",
+            "type": "line",
+            "text": "and was featured in the CRISIL ",
+            "uri": "",
+            "bbox": [
+                922,
+                2257,
+                1453,
+                2282
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L92",
+            "type": "line",
+            "text": "Sustainability Yearbook, 2022 for the ",
+            "uri": "",
+            "bbox": [
+                922,
+                2307,
+                1564,
+                2332
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L93",
+            "type": "line",
+            "text": "Infosys recognized as the Champion ",
+            "uri": "",
+            "bbox": [
+                3495,
+                2291,
+                4142,
+                2316
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L94",
+            "type": "line",
+            "text": "second consecutive year",
+            "uri": "",
+            "bbox": [
+                922,
+                2357,
+                1349,
+                2382
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L95",
+            "type": "line",
+            "text": "of Inclusion in the Most Inclusive ",
+            "uri": "",
+            "bbox": [
+                3495,
+                2340,
+                4086,
+                2366
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L96",
+            "type": "line",
+            "text": "Companies Index (MICI) and featured ",
+            "uri": "",
+            "bbox": [
+                3495,
+                2391,
+                4147,
+                2416
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L97",
+            "type": "line",
+            "text": "in the \u201c100 Best \u2013 Hall of Fame\u201d by ",
+            "uri": "",
+            "bbox": [
+                3495,
+                2441,
+                4092,
+                2466
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L98",
+            "type": "line",
+            "text": "Recognized in the LEADERSHIP ",
+            "uri": "",
+            "bbox": [
+                189,
+                2469,
+                749,
+                2494
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L99",
+            "type": "line",
+            "text": "Secured an \u2018AA\u2019 rating on MSCI ESG ",
+            "uri": "",
+            "bbox": [
+                922,
+                2454,
+                1566,
+                2479
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L100",
+            "type": "line",
+            "text": "Assessment",
+            "uri": "",
+            "bbox": [
+                922,
+                2504,
+                1127,
+                2529
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L101",
+            "type": "line",
+            "text": "Won the Gold Award at the ",
+            "uri": "",
+            "bbox": [
+                1754,
+                2493,
+                2247,
+                2518
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L102",
+            "type": "line",
+            "text": "category in the Indian Corporate ",
+            "uri": "",
+            "bbox": [
+                189,
+                2519,
+                781,
+                2544
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L103",
+            "type": "line",
+            "text": "Recognized as a Global Top ",
+            "uri": "",
+            "bbox": [
+                2785,
+                2503,
+                3282,
+                2528
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L104",
+            "type": "line",
+            "text": "Avtar & Seramount, 2022",
+            "uri": "",
+            "bbox": [
+                3495,
+                2491,
+                3926,
+                2516
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L105",
+            "type": "line",
+            "text": "Governance Scorecard",
+            "uri": "",
+            "bbox": [
+                189,
+                2568,
+                605,
+                2594
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L106",
+            "type": "line",
+            "text": "Brandon Hall Group Excellence in ",
+            "uri": "",
+            "bbox": [
+                1708,
+                2543,
+                2293,
+                2568
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L107",
+            "type": "line",
+            "text": " Assessment by ",
+            "uri": "",
+            "bbox": [
+                605,
+                2569,
+                876,
+                2594
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L108",
+            "type": "line",
+            "text": "Employer 2023 by the Top ",
+            "uri": "",
+            "bbox": [
+                2785,
+                2553,
+                3258,
+                2578
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L109",
+            "type": "line",
+            "text": "Institutional Investor Advisory Services ",
+            "uri": "",
+            "bbox": [
+                189,
+                2619,
+                860,
+                2644
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L110",
+            "type": "line",
+            "text": "Recognized by EcoVadis with a Gold ",
+            "uri": "",
+            "bbox": [
+                922,
+                2601,
+                1582,
+                2626
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L111",
+            "type": "line",
+            "text": "Technology Awards",
+            "uri": "",
+            "bbox": [
+                1825,
+                2593,
+                2167,
+                2618
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L112",
+            "type": "line",
+            "text": "Employers Institute for the 3rd ",
+            "uri": "",
+            "bbox": [
+                2785,
+                2603,
+                3320,
+                2628
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L113",
+            "type": "line",
+            "text": "(IiAS) for\u00a0the seventh year in a row",
+            "uri": "",
+            "bbox": [
+                189,
+                2669,
+                769,
+                2694
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L114",
+            "type": "line",
+            "text": "medal for the seventh year in a row",
+            "uri": "",
+            "bbox": [
+                922,
+                2650,
+                1538,
+                2676
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L115",
+            "type": "line",
+            "text": "consecutive year",
+            "uri": "",
+            "bbox": [
+                2785,
+                2653,
+                3075,
+                2678
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L116",
+            "type": "line",
+            "text": "Honored at the Asset ESG Corporate ",
+            "uri": "",
+            "bbox": [
+                189,
+                2768,
+                825,
+                2793
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L117",
+            "type": "line",
+            "text": "Awards 2022 with a \u2018Platinum ",
+            "uri": "",
+            "bbox": [
+                189,
+                2818,
+                724,
+                2843
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L118",
+            "type": "line",
+            "text": "Won the Economic ",
+            "uri": "",
+            "bbox": [
+                1163,
+                2828,
+                1508,
+                2853
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L119",
+            "type": "line",
+            "text": "Recognized as a Top Employer in ",
+            "uri": "",
+            "bbox": [
+                1655,
+                2806,
+                2251,
+                2831
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L120",
+            "type": "line",
+            "text": "Infosys BPM won in the ",
+            "uri": "",
+            "bbox": [
+                4276,
+                2808,
+                4686,
+                2833
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L121",
+            "type": "line",
+            "text": "Award for excellence in ESG\u2019, ",
+            "uri": "",
+            "bbox": [
+                189,
+                2867,
+                729,
+                2893
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L122",
+            "type": "line",
+            "text": "Times Best ",
+            "uri": "",
+            "bbox": [
+                1163,
+                2877,
+                1372,
+                2903
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L123",
+            "type": "line",
+            "text": "22 countries across Europe, Middle ",
+            "uri": "",
+            "bbox": [
+                1655,
+                2855,
+                2282,
+                2881
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L124",
+            "type": "line",
+            "text": "Infosys received the Great Place to Work\u00ae Certification across five ",
+            "uri": "",
+            "bbox": [
+                2892,
+                2862,
+                4052,
+                2887
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L125",
+            "type": "line",
+            "text": "International Project of the Year ",
+            "uri": "",
+            "bbox": [
+                4276,
+                2858,
+                4883,
+                2883
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L126",
+            "type": "line",
+            "text": "\u2018Best Investor Relations Team\u2019, \u2018Best ",
+            "uri": "",
+            "bbox": [
+                189,
+                2918,
+                806,
+                2943
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L127",
+            "type": "line",
+            "text": "Organizations for ",
+            "uri": "",
+            "bbox": [
+                1163,
+                2927,
+                1500,
+                2953
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L128",
+            "type": "line",
+            "text": "East, Asia Pacific, and North America ",
+            "uri": "",
+            "bbox": [
+                1655,
+                2906,
+                2293,
+                2931
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L129",
+            "type": "line",
+            "text": "regions including India, Australia, United Kingdom, Germany, USA, ",
+            "uri": "",
+            "bbox": [
+                2892,
+                2912,
+                4045,
+                2937
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L130",
+            "type": "line",
+            "text": "category with Telefonica UK, at ",
+            "uri": "",
+            "bbox": [
+                4276,
+                2908,
+                4822,
+                2933
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L131",
+            "type": "line",
+            "text": "initiative in Diversity and Inclusion\u2019, ",
+            "uri": "",
+            "bbox": [
+                189,
+                2968,
+                805,
+                2993
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L132",
+            "type": "line",
+            "text": "Women Award 2023",
+            "uri": "",
+            "bbox": [
+                1163,
+                2977,
+                1519,
+                3003
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L133",
+            "type": "line",
+            "text": "for best-in-class HR practices and ",
+            "uri": "",
+            "bbox": [
+                1655,
+                2956,
+                2236,
+                2981
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L134",
+            "type": "line",
+            "text": "Canada and Mexico. Infosys BPM received the Great Place to Work\u00ae ",
+            "uri": "",
+            "bbox": [
+                2892,
+                2962,
+                4055,
+                2987
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L135",
+            "type": "line",
+            "text": "the Global Sourcing Association ",
+            "uri": "",
+            "bbox": [
+                4276,
+                2958,
+                4837,
+                2983
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L136",
+            "type": "line",
+            "text": "and \u2018Best initiative in Environmental ",
+            "uri": "",
+            "bbox": [
+                189,
+                3018,
+                820,
+                3043
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L137",
+            "type": "line",
+            "text": "processes",
+            "uri": "",
+            "bbox": [
+                1655,
+                3006,
+                1824,
+                3031
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L138",
+            "type": "line",
+            "text": "Certification in the Philippines",
+            "uri": "",
+            "bbox": [
+                2892,
+                3012,
+                3414,
+                3037
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L139",
+            "type": "line",
+            "text": "(GSA) UK Awards 2022",
+            "uri": "",
+            "bbox": [
+                4276,
+                3008,
+                4659,
+                3033
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L140",
+            "type": "line",
+            "text": "Responsibility\u2019",
+            "uri": "",
+            "bbox": [
+                189,
+                3068,
+                442,
+                3093
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L141",
+            "type": "line",
+            "text": "34",
+            "uri": "",
+            "bbox": [
+                189,
+                3186,
+                223,
+                3206
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L142",
+            "type": "line",
+            "text": "Infosys Integrated Annual Report 2022-23",
+            "uri": "",
+            "bbox": [
+                1760,
+                3186,
+                2337,
+                3206
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L143",
+            "type": "line",
+            "text": "Infosys Integrated Annual Report 2022-23",
+            "uri": "",
+            "bbox": [
+                2763,
+                3186,
+                3340,
+                3206
+            ],
+            "tokens": []
+        },
+        {
+            "id": "P4_L144",
+            "type": "line",
+            "text": "35",
+            "uri": "",
+            "bbox": [
+                4877,
+                3186,
+                4911,
+                3206
+            ],
+            "tokens": []
+        }
+    ],
+    "infy_ocr_generator_metadata": {
+        "dpi": 300,
+        "width": 5100,
+        "height": 3299,
+        "doc_page_num": "4"
+    }
+}

@@ -1,0 +1,1485 @@
+[
+    {
+        "page_number": 1,
+        "page_width": 2550,
+        "page_height": 3299,
+        "tables": [
+            {
+                "table_id": "p1_tb1",
+                "bbox": [
+                    324,
+                    1727,
+                    2145,
+                    2245
+                ],
+                "data": [
+                    {
+                        "type": "columnHeader",
+                        "row_index": 0,
+                        "column_index": 0,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Player",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "columnHeader",
+                        "row_index": 0,
+                        "column_index": 1,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Club",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "columnHeader",
+                        "row_index": 0,
+                        "column_index": 2,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Nationality",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "columnHeader",
+                        "row_index": 0,
+                        "column_index": 3,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Goals",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "columnHeader",
+                        "row_index": 0,
+                        "column_index": 4,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Assists",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 1,
+                        "column_index": 0,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Lionel Messi",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 1,
+                        "column_index": 1,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Paris Saint-Germain",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 1,
+                        "column_index": 2,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Argentine",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 1,
+                        "column_index": 3,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "21",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 1,
+                        "column_index": 4,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "12",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 2,
+                        "column_index": 0,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Cristiano Ronaldo",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 2,
+                        "column_index": 1,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Manchester United",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 2,
+                        "column_index": 2,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Portuguese",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 2,
+                        "column_index": 3,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "18",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 2,
+                        "column_index": 4,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "8",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 3,
+                        "column_index": 0,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Mohamed Salah",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 3,
+                        "column_index": 1,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Liverpool",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 3,
+                        "column_index": 2,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Egyptian",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 3,
+                        "column_index": 3,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "17",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 3,
+                        "column_index": 4,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "9",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 4,
+                        "column_index": 0,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Robert Lewandowski",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 4,
+                        "column_index": 1,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Bayern Munich",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 4,
+                        "column_index": 2,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Polish",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 4,
+                        "column_index": 3,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "23",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 4,
+                        "column_index": 4,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "5",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 5,
+                        "column_index": 0,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Mohamed Salah",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 5,
+                        "column_index": 1,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Liverpool",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 5,
+                        "column_index": 2,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Egyptian",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 5,
+                        "column_index": 3,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "17",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 5,
+                        "column_index": 4,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "9",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 6,
+                        "column_index": 0,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Erling Haaland",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 6,
+                        "column_index": 1,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Borussia Dortmund",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 6,
+                        "column_index": 2,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Norwegian",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 6,
+                        "column_index": 3,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "19",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 6,
+                        "column_index": 4,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "6",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    }
+                ],
+                "html_data": "<table border=\"1\">  <tr>    <th>Player</th>    <th>Club</th>    <th>Nationality</th>    <th>Goals</th>    <th>Assists</th>  </tr>  <tr>    <td>Lionel Messi</td>    <td>Paris Saint-Germain</td>    <td>Argentine</td>    <td>21</td>    <td>12</td>  </tr>  <tr>    <td>Cristiano Ronaldo</td>    <td>Manchester United</td>    <td>Portuguese</td>    <td>18</td>    <td>8</td>  </tr>  <tr>    <td>Mohamed Salah</td>    <td>Liverpool</td>    <td>Egyptian</td>    <td>17</td>    <td>9</td>  </tr>  <tr>    <td>Robert Lewandowski</td>    <td>Bayern Munich</td>    <td>Polish</td>    <td>23</td>    <td>5</td>  </tr>  <tr>    <td>Mohamed Salah</td>    <td>Liverpool</td>    <td>Egyptian</td>    <td>17</td>    <td>9</td>  </tr>  <tr>    <td>Erling Haaland</td>    <td>Borussia Dortmund</td>    <td>Norwegian</td>    <td>19</td>    <td>6</td>  </tr></table>",
+                "debug_path": "D:\\tmp\\dpp_processor_container\\temp\\infy_dpp_processor\\CONTAINER\\data\\temp\\data\\work\\D-c9b57e85-4f6e-4a34-8b5e-6dc60f82449f\\sports_statistics.pdf_files\\1_20250130-221854"
+            }
+        ]
+    },
+    {
+        "page_number": 2,
+        "page_width": 2550,
+        "page_height": 3299,
+        "tables": [
+            {
+                "table_id": "p2_tb1",
+                "bbox": [
+                    309,
+                    409,
+                    2244,
+                    1059
+                ],
+                "data": [
+                    {
+                        "type": "columnHeader",
+                        "row_index": 0,
+                        "column_index": 0,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Rider",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "columnHeader",
+                        "row_index": 0,
+                        "column_index": 1,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Team",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "columnHeader",
+                        "row_index": 0,
+                        "column_index": 2,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Nationality",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "columnHeader",
+                        "row_index": 0,
+                        "column_index": 3,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Points",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "columnHeader",
+                        "row_index": 0,
+                        "column_index": 4,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Wins",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "columnHeader",
+                        "row_index": 0,
+                        "column_index": 5,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Podiums",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 1,
+                        "column_index": 0,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Marc Marquez",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 1,
+                        "column_index": 1,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Repsol Honda",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 1,
+                        "column_index": 2,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Spanish",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 1,
+                        "column_index": 3,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "236",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 1,
+                        "column_index": 4,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "6",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 1,
+                        "column_index": 5,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "8",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 2,
+                        "column_index": 0,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Fabio Quartararo",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 2,
+                        "column_index": 1,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Yamaha Factory Racing",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 2,
+                        "column_index": 2,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "French",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 2,
+                        "column_index": 3,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "210",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 2,
+                        "column_index": 4,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "5",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 2,
+                        "column_index": 5,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "7",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 3,
+                        "column_index": 0,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Jack Miller",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 3,
+                        "column_index": 1,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Ducati Team",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 3,
+                        "column_index": 2,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Australian",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 3,
+                        "column_index": 3,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "185",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 3,
+                        "column_index": 4,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "3",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 3,
+                        "column_index": 5,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "6",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 4,
+                        "column_index": 0,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Joan Mir",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 4,
+                        "column_index": 1,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Suzuki Ecstar",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 4,
+                        "column_index": 2,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Spanish",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 4,
+                        "column_index": 3,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "162",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 4,
+                        "column_index": 4,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "2",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 4,
+                        "column_index": 5,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "5",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 5,
+                        "column_index": 0,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Aleix Espargaro",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 5,
+                        "column_index": 1,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Aprilia Racing Team",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 5,
+                        "column_index": 2,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Spanish",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 5,
+                        "column_index": 3,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "118",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 5,
+                        "column_index": 4,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "o",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 5,
+                        "column_index": 5,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "3",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 6,
+                        "column_index": 0,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Johann Zarco",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 6,
+                        "column_index": 1,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Pramac Racing",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 6,
+                        "column_index": 2,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "French",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 6,
+                        "column_index": 3,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "9%",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 6,
+                        "column_index": 4,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "o",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 6,
+                        "column_index": 5,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "2",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 7,
+                        "column_index": 0,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Brad Binder",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 7,
+                        "column_index": 1,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Red Bull KTM Factory",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 7,
+                        "column_index": 2,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "South African",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 7,
+                        "column_index": 3,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "R",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 7,
+                        "column_index": 4,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "o",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 7,
+                        "column_index": 5,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "1",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    }
+                ],
+                "html_data": "<table border=\"1\">  <tr>    <th>Rider</th>    <th>Team</th>    <th>Nationality</th>    <th>Points</th>    <th>Wins</th>    <th>Podiums</th>  </tr>  <tr>    <td>Marc Marquez</td>    <td>Repsol Honda</td>    <td>Spanish</td>    <td>236</td>    <td>6</td>    <td>8</td>  </tr>  <tr>    <td>Fabio Quartararo</td>    <td>Yamaha Factory Racing</td>    <td>French</td>    <td>210</td>    <td>5</td>    <td>7</td>  </tr>  <tr>    <td>Jack Miller</td>    <td>Ducati Team</td>    <td>Australian</td>    <td>185</td>    <td>3</td>    <td>6</td>  </tr>  <tr>    <td>Joan Mir</td>    <td>Suzuki Ecstar</td>    <td>Spanish</td>    <td>162</td>    <td>2</td>    <td>5</td>  </tr>  <tr>    <td>Aleix Espargaro</td>    <td>Aprilia Racing Team</td>    <td>Spanish</td>    <td>118</td>    <td>o</td>    <td>3</td>  </tr>  <tr>    <td>Johann Zarco</td>    <td>Pramac Racing</td>    <td>French</td>    <td>9%</td>    <td>o</td>    <td>2</td>  </tr>  <tr>    <td>Brad Binder</td>    <td>Red Bull KTM Factory</td>    <td>South African</td>    <td>R</td>    <td>o</td>    <td>1</td>  </tr></table>",
+                "debug_path": "D:\\tmp\\dpp_processor_container\\temp\\infy_dpp_processor\\CONTAINER\\data\\temp\\data\\work\\D-c9b57e85-4f6e-4a34-8b5e-6dc60f82449f\\sports_statistics.pdf_files\\2_20250130-221910"
+            },
+            {
+                "table_id": "p2_tb2",
+                "bbox": [
+                    295,
+                    2034,
+                    2269,
+                    2697
+                ],
+                "data": [
+                    {
+                        "type": "columnHeader",
+                        "row_index": 0,
+                        "column_index": 0,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Charles Leclerc",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "columnHeader",
+                        "row_index": 0,
+                        "column_index": 1,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Scuderia Ferrari",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "columnHeader",
+                        "row_index": 0,
+                        "column_index": 2,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Monegasque",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "columnHeader",
+                        "row_index": 0,
+                        "column_index": 3,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "158",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "columnHeader",
+                        "row_index": 0,
+                        "column_index": 4,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "1",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "columnHeader",
+                        "row_index": 0,
+                        "column_index": 5,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "5",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 1,
+                        "column_index": 0,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Lewis Hamilton",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 1,
+                        "column_index": 1,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Mercedes",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 1,
+                        "column_index": 2,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "British",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 1,
+                        "column_index": 3,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "263",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 1,
+                        "column_index": 4,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "5",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 1,
+                        "column_index": 5,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "8",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 2,
+                        "column_index": 0,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Valtteri Bottas",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 2,
+                        "column_index": 1,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Alfa Romeo Racing",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 2,
+                        "column_index": 2,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Finnish",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 2,
+                        "column_index": 3,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "182",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 2,
+                        "column_index": 4,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "2",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 2,
+                        "column_index": 5,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "6",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 3,
+                        "column_index": 0,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Valtteri Bottas",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 3,
+                        "column_index": 1,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Alfa Romeo Racing",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 3,
+                        "column_index": 2,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Finnish",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 3,
+                        "column_index": 3,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "182",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 3,
+                        "column_index": 4,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "2",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 3,
+                        "column_index": 5,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "6",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 4,
+                        "column_index": 0,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Charles Leclerc",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 4,
+                        "column_index": 1,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Scuderia Ferrari",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 4,
+                        "column_index": 2,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Monegasque",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 4,
+                        "column_index": 3,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "158",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 4,
+                        "column_index": 4,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "1",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 4,
+                        "column_index": 5,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "5",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 5,
+                        "column_index": 0,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Lewis Hamilton",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 5,
+                        "column_index": 1,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Mercedes",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 5,
+                        "column_index": 2,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "British",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 5,
+                        "column_index": 3,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "263",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 5,
+                        "column_index": 4,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "5",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 5,
+                        "column_index": 5,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "8",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 6,
+                        "column_index": 0,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Lewis Hamilton",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 6,
+                        "column_index": 1,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Mercedes",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 6,
+                        "column_index": 2,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "British",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 6,
+                        "column_index": 3,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "263",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 6,
+                        "column_index": 4,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "5",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 6,
+                        "column_index": 5,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "8",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 7,
+                        "column_index": 0,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Daniel Ricciardo \\",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 7,
+                        "column_index": 1,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "MclLaren",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 7,
+                        "column_index": 2,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Australian",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 7,
+                        "column_index": 3,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "97",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 7,
+                        "column_index": 4,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "L",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 7,
+                        "column_index": 5,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "2",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 8,
+                        "column_index": 0,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Fernando Alonso",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 8,
+                        "column_index": 1,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Alpine",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 8,
+                        "column_index": 2,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Spanish",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 8,
+                        "column_index": 3,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "76",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 8,
+                        "column_index": 4,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "L",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 8,
+                        "column_index": 5,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "1",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 9,
+                        "column_index": 0,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Fernando Alonso",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 9,
+                        "column_index": 1,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Alpine",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 9,
+                        "column_index": 2,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "Spanish",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 9,
+                        "column_index": 3,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "76",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 9,
+                        "column_index": 4,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "L",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    },
+                    {
+                        "type": "data",
+                        "row_index": 9,
+                        "column_index": 5,
+                        "row_span": 1,
+                        "column_span": 1,
+                        "content": "1",
+                        "bbox_format": "X1,Y1,X2,Y2",
+                        "bbox": []
+                    }
+                ],
+                "html_data": "<table border=\"1\">  <tr>    <th>Charles Leclerc</th>    <th>Scuderia Ferrari</th>    <th>Monegasque</th>    <th>158</th>    <th>1</th>    <th>5</th>  </tr>  <tr>    <td>Lewis Hamilton</td>    <td>Mercedes</td>    <td>British</td>    <td>263</td>    <td>5</td>    <td>8</td>  </tr>  <tr>    <td>Valtteri Bottas</td>    <td>Alfa Romeo Racing</td>    <td>Finnish</td>    <td>182</td>    <td>2</td>    <td>6</td>  </tr>  <tr>    <td>Valtteri Bottas</td>    <td>Alfa Romeo Racing</td>    <td>Finnish</td>    <td>182</td>    <td>2</td>    <td>6</td>  </tr>  <tr>    <td>Charles Leclerc</td>    <td>Scuderia Ferrari</td>    <td>Monegasque</td>    <td>158</td>    <td>1</td>    <td>5</td>  </tr>  <tr>    <td>Lewis Hamilton</td>    <td>Mercedes</td>    <td>British</td>    <td>263</td>    <td>5</td>    <td>8</td>  </tr>  <tr>    <td>Lewis Hamilton</td>    <td>Mercedes</td>    <td>British</td>    <td>263</td>    <td>5</td>    <td>8</td>  </tr>  <tr>    <td>Daniel Ricciardo \\</td>    <td>MclLaren</td>    <td>Australian</td>    <td>97</td>    <td>L</td>    <td>2</td>  </tr>  <tr>    <td>Fernando Alonso</td>    <td>Alpine</td>    <td>Spanish</td>    <td>76</td>    <td>L</td>    <td>1</td>  </tr>  <tr>    <td>Fernando Alonso</td>    <td>Alpine</td>    <td>Spanish</td>    <td>76</td>    <td>L</td>    <td>1</td>  </tr></table>",
+                "debug_path": "D:\\tmp\\dpp_processor_container\\temp\\infy_dpp_processor\\CONTAINER\\data\\temp\\data\\work\\D-c9b57e85-4f6e-4a34-8b5e-6dc60f82449f\\sports_statistics.pdf_files\\2_20250130-221929"
+            }
+        ]
+    }
+]

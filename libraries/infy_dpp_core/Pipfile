@@ -1,0 +1,20 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+pytest = "==7.4.4"
+pytest-cov = "==2.12.1"
+autopep8 = "==1.5.1"
+infy_dpp_sdk = {path = "./lib/infy_dpp_sdk-0.0.11-py3-none-any.whl"}
+infy_fs_utils = {path = "./lib/infy_fs_utils-0.0.5-py3-none-any.whl"}
+
+[packages]
+jsonpath-ng = "==1.6.0"
+numpy = "<2.0.0"
+pandas = ">=1.1.5,<2.0.0"
+
+
+[requires]
+python_version = "3"

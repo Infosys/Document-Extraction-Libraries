@@ -1,6 +1,6 @@
 {
-    "name": "Attribute storage to graphDB",
-    "description": "Pipeline to store the attributes of the documents in graphDB",
+    "name": "Storage pipeline for attribute storage to graphDB",
+    "description": "Dpp storage pipeline to store extracted attributes to graphDB",
     "variables": {
         "NEO4J_URL": "${ENV:NEO4J_URL}",
         "NEO4J_USR_NAME": "${ENV:NEO4J_USR_NAME}",

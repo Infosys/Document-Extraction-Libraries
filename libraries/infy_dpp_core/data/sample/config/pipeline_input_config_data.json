@@ -1,0 +1,122 @@
+{
+  "processor_list": [
+    {
+      "enabled": true,
+      "processor_name": "request_creator",
+      "processor_namespace": "infy_dpp_core.request_creator",
+      "processor_class_name": "RequestCreator",
+      "processor_input_config_name_list": [
+        "RequestCreator"
+      ]
+    },
+    {
+      "enabled": true,
+      "processor_name": "document_data_updater",
+      "processor_namespace": "infy_dpp_core.document_data_updater",
+      "processor_class_name": "DocumentDataUpdateProcessor",
+      "processor_input_config_name_list": [
+        "DocumentDataUpdater"
+      ]
+    },
+    {
+      "enabled": true,
+      "processor_name": "metadata_extractor",
+      "processor_namespace": "infy_dpp_core.metadata_extractor",
+      "processor_class_name": "MetadataExtractor",
+      "processor_input_config_name_list": []
+    },
+    {
+      "enabled": true,
+      "processor_name": "request_closer",
+      "processor_namespace": "infy_dpp_core.request_closer",
+      "processor_class_name": "RequestCloser",
+      "processor_input_config_name_list": [
+        "RequestCloser"
+      ]
+    },
+    {
+      "enabled": true,
+      "processor_name": "document_data_saver",
+      "processor_namespace": "infy_dpp_core.document_data_saver",
+      "processor_class_name": "DocumentDataSaver",
+      "processor_input_config_name_list": [
+        "DocumentDataSaver"
+      ]
+    }
+  ],
+  "processor_input_config": {
+    "RequestCreator": {
+      "from_data_file": {
+        "enabled": true,
+        "read_path": "/data/input/",
+        "batch_size": 20,
+        "filter": {
+          "include": [
+            "pdf",
+            "json",
+            "txt",
+            "tiff"
+          ],
+          "exclude": [
+            "_"
+          ]
+        },
+        "work_root_path": "/data/work/",
+        "to_request_file": {
+          "save_path": "/data/work/request/indexer/start"
+        }
+      },
+      "from_request_file": {
+        "enabled": false,
+        "read_path": "/data/work/request/indexer/complete",
+        "save_path": "/data/work/request/inference/start"
+      }
+    },
+    "RequestCloser": {
+      "work_root_path": "/data/work/",
+      "data_file": {
+        "output_root_path": "/data/output/"
+      },
+      "output_root_path": "/data/output/",
+      "from_request_file": {
+        "read_path": "/data/work/request/indexer/start",
+        "save_path": "/data/work/request/indexer/complete"
+      },
+      "event_handler": {
+        "success": [
+          {
+            "name": "IndexIdHandler",
+            "enabled": false,
+            "api_endpoint": "",
+            "payload": {
+              "indexName": "",
+              "indexId": ""
+            },
+            "headers": {
+              "userId": "",
+              "accept": ""
+            }
+          }
+        ],
+        "failure": []
+      }
+    },
+    "DocumentDataSaver": {
+      "work_root_path": "/data/work/"
+    },
+    "DocumentDataUpdater": {
+      "config_data": [
+        {
+          "enabled": true,
+          "json_path": "$.context_data.reader.output[*].model_output.sources[*]",
+          "json_key": "bbox",
+          "replace_key_enabled": false,
+          "replace_with_key": "",
+          "replace_with_value": "",
+          "replace_value_enabled": false,
+          "replace_value_with_rule_name": "rule_cus_001_transform_bbox_value"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,87 @@
+[
+    {
+        "table_data": [
+            {
+                "no_of_rows": null,
+                "no_of_columns": null,
+                "title": null,
+                "td_confidence_pct": 0.298,
+                "bbox_format": "X1,Y1,X2,Y2",
+                "bbox": [
+                    2748,
+                    1886,
+                    4742,
+                    2070
+                ],
+                "cell_data": null,
+                "message_data": null,
+                "tsr_confidence_pct": -1.0,
+                "debug_path": null
+            },
+            {
+                "no_of_rows": null,
+                "no_of_columns": null,
+                "title": null,
+                "td_confidence_pct": 0.903,
+                "bbox_format": "X1,Y1,X2,Y2",
+                "bbox": [
+                    2747,
+                    2256,
+                    4911,
+                    2933
+                ],
+                "cell_data": null,
+                "message_data": null,
+                "tsr_confidence_pct": -1.0,
+                "debug_path": null
+            }
+        ],
+        "table_html_data": null,
+        "image_width": 5100,
+        "image_height": 3299,
+        "image": "/data/work/D-6b3b15ab-e557-4aa1-bb4b-e4cc01ffc48d/AR_2022-23_page-14-17.pdf_files/1.jpg",
+        "page": "1"
+    },
+    {
+        "table_data": [],
+        "table_html_data": null,
+        "image_width": null,
+        "image_height": null,
+        "image": "/data/work/D-6b3b15ab-e557-4aa1-bb4b-e4cc01ffc48d/AR_2022-23_page-14-17.pdf_files/2.jpg",
+        "page": "2"
+    },
+    {
+        "table_data": [
+            {
+                "no_of_rows": null,
+                "no_of_columns": null,
+                "title": null,
+                "td_confidence_pct": 0.342,
+                "bbox_format": "X1,Y1,X2,Y2",
+                "bbox": [
+                    1319,
+                    2159,
+                    2326,
+                    2265
+                ],
+                "cell_data": null,
+                "message_data": null,
+                "tsr_confidence_pct": -1.0,
+                "debug_path": null
+            }
+        ],
+        "table_html_data": null,
+        "image_width": 5100,
+        "image_height": 3299,
+        "image": "/data/work/D-6b3b15ab-e557-4aa1-bb4b-e4cc01ffc48d/AR_2022-23_page-14-17.pdf_files/3.jpg",
+        "page": "3"
+    },
+    {
+        "table_data": [],
+        "table_html_data": null,
+        "image_width": null,
+        "image_height": null,
+        "image": "/data/work/D-6b3b15ab-e557-4aa1-bb4b-e4cc01ffc48d/AR_2022-23_page-14-17.pdf_files/4.jpg",
+        "page": "4"
+    }
+]

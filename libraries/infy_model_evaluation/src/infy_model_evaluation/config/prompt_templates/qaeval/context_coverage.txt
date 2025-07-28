@@ -1,0 +1,22 @@
+Does the answer cover all relevant aspects from the context to answer the question?
+
+context: {context}
+question: {qa_pairs}
+
+Rate on a scale of 0-3 where:
+0: Answer indicates insufficient information
+1: Major or important aspects not covered
+2: Some aspects covered but 1-2 key points missing
+3: All relevant aspects comprehensively covered
+
+OUTPUT REQUIREMENTS:
+Return a JSON object with exactly two fields: 'score' and 'reasons'
+The 'score' field must be an integer between 1-3
+The 'reasons' field must explain why this specific score was assigned
+Your entire response must be valid JSON
+
+Example output format:
+{
+    "score": 1,
+    "reasons": "The answer omits several crucial aspects from the context including X and Y, which are essential for...
+}

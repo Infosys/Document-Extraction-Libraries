@@ -1,0 +1,24 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+pytest = "==7.4.4"
+pytest-cov = "==2.12.1"
+autopep8 = "==1.5.1"
+
+[packages]
+requests = "==2.32.3"
+python-multipart = "==0.0.9"
+fastapi = "==0.109.0"
+uvicorn = {version= "==0.25.0", extras=["standard"]}
+python-dotenv="==1.0.1"
+
+# Internal libraries in alphabetical order
+infy-fs-utils = {path = "./lib/infy_fs_utils-0.0.5-py3-none-any.whl"}
+infy_dpp_sdk = {path = "./lib/infy_dpp_sdk-0.0.11-py3-none-any.whl"}
+infy_gen_ai_sdk = {path = "./lib/infy_gen_ai_sdk-0.0.8-py3-none-any.whl"}
+
+[requires]
+python_version = "3"

@@ -1,0 +1,19 @@
+[Unit]
+Description=Infosys Model Service (Dev)
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/projadmin/workarea/docwbsln/services/infy_model_service
+ExecStart=/usr/bin/bash -c 'export $(grep -v '^#' ../.env | xargs -d '\n'); ./infy_model_service_script.sh start'
+ExecStop=/usr/bin/bash -c 'export $(grep -v '^#' ../.env | xargs -d '\n'); ./infy_model_service_script.sh stop'
+User=projadmin
+Group=projadmin
+Restart=always
+RestartSec=9
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=InfyModelService
+
+[Install]
+WantedBy=multi-user.target

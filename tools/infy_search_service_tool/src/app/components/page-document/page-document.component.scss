@@ -1,0 +1,147 @@
+.toggle-button-open {
+    position: absolute;
+    font-weight: bold;
+    font-size: 1.5rem;
+    background-color: #fff;
+    color: #000;
+    border: none;
+    padding: 5px 10px;
+    right: 0px;
+    cursor: pointer;
+}
+
+.toggle-button-close {
+    position: absolute;
+    font-weight: bold;
+    font-size: 1.5rem;
+    background-color: inherit;
+    color: #000;
+    border: none;
+    right: 4px;
+    cursor: pointer;
+}
+
+.dropdown-pane {
+    position: fixed;
+    top: 3.2rem;
+    right: 0;
+    width: 34%;
+    background-color: #e9ecef;
+    transition:  max-height 0.3s ease, border 0.3s ease;
+    max-height: 0;
+    overflow: hidden;
+    z-index: 1000;
+    border-radius: 10px;
+}
+
+.dropdown-pane.expanded {
+    max-height: calc(100vh - 12vh);
+    height:calc(100vh - 13vh);
+    border: 1.5px solid #000;
+}
+
+.pane-content {
+    padding: 2px 10px;
+}
+
+.form-group{
+    padding: 5px 0px;
+}
+
+.form-control {
+    padding: .075rem 0.55rem !important;
+}
+
+.form-check-input.custom-checkbox {
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+}
+
+label {
+    margin-right: 10px;
+    font-size: 0.85rem; 
+}
+
+.metadata-table, .response-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    table-layout: fixed;
+}
+
+.metadata-key, .metadata-value, .key_col {
+    padding: 10px;
+    border: 1px solid #ddd;
+    word-wrap: break-word;
+}
+
+.metadata-key, .key_col {
+    font-weight: bold;
+    background-color: #f9f9f9;
+}
+.response-table {
+    border-right: 1px solid #ddd;
+}
+
+.collapsible-summary {
+    color: #5c636a;
+    cursor: pointer;
+}
+
+.table-divider {
+    border: 0;
+    border-top: 1px solid #ddd;
+    margin: 10px 0;
+}
+
+
+.metadata-row {
+    display: flex;
+    align-items: center;
+}
+
+.metadata-row .form-control {
+    width: 66px;
+    margin-right: 5px;
+    margin-bottom: 2px;
+    border: 1px solid #000;
+
+}
+
+.metadata-row .btn-danger {
+    width: 25px;
+    height: 25px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #dc3545;
+    color: #fff;
+    font-size: 1.5rem;
+}
+
+.metadata-row .btn-danger {
+    padding: 0 10px;
+}
+
+.dropdown-toggle{
+    padding: .075rem 0.55rem !important;
+}
+
+.dropdown-menu {
+    width: 11rem;
+    padding: 5px;
+}
+
+.dropdown-menu .add-metadata-btn {
+    width: 25px;
+    height: 25px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #0d6efd;
+    color: #fff;
+    font-size: 1.5rem;
+}

@@ -1,0 +1,2 @@
+image_path,image_subpath,x1,y1,x2,y2,object_type,class_border_type,class_complexity,rows,columns
+,Grade\sample_1.png,44,1960,4110,2970,table,FullBorderedTable,Simple,6,4

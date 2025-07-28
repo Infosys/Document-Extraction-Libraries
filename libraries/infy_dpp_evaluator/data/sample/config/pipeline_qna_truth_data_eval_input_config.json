@@ -1,0 +1,236 @@
+{
+    "name": "qna evaluation pipeline",
+    "description": "Pipeline for evaluating question answer pairs ",
+    "variables": {
+        "MODEL_HOME": "C:/del/ai/models",
+        "AZURE_OPENAI_SERVER_BASE_URL": "${ENV:AZURE_OPENAI_SERVER_BASE_URL}",
+        "AZURE_OPENAI_SECRET_KEY": "${ENV:AZURE_OPENAI_SECRET_KEY}",
+        "LITELLM_PROXY_SERVER_BASE_URL": "${ENV:LITELLM_PROXY_SERVER_BASE_URL}",
+        "LITELLM_PROXY_SECRET_KEY": "${ENV:LITELLM_PROXY_SECRET_KEY}",
+        "CUSTOM_LLM_MIXTRAL_INFERENCE_URL": "${ENV:CUSTOM_LLM_MIXTRAL_INFERENCE_URL}"
+    },
+    "processor_list": [
+        {
+            "enabled": true,
+            "processor_name": "request_creator",
+            "processor_namespace": "infy_dpp_core.request_creator.request_creator_v2",
+            "processor_class_name": "RequestCreatorV2",
+            "processor_input_config_name_list": [
+                "RequestCreator"
+            ]
+        },
+        {
+            "enabled": true,
+            "processor_name": "content_evaluator",
+            "processor_namespace": "infy_dpp_evaluator.content_evaluator",
+            "processor_class_name": "ContentEvaluator",
+            "processor_input_config_name_list": [
+                "ContentEvaluator"
+            ]
+        },
+        {
+            "enabled": true,
+            "processor_name": "content_reporter",
+            "processor_namespace": "infy_dpp_evaluator.content_reporter",
+            "processor_class_name": "ContentReporter",
+            "processor_input_config_name_list": [
+                "ContentReporter"
+            ]
+        },
+        {
+            "enabled": true,
+            "processor_name": "request_closer",
+            "processor_namespace": "infy_dpp_core.request_closer.process.request_closer_v2",
+            "processor_class_name": "RequestCloserV2",
+            "processor_input_config_name_list": [
+                "RequestCloser"
+            ]
+        }
+    ],
+    "processor_input_config": {
+        "RequestCreator": {
+            "content_evaluation": {
+                "enabled": true,
+                "from_data_file": {
+                    "read_path": "/data/input/",
+                    "work_root_path": "/data/work/"
+                }
+            },
+            "inference": {
+                "enabled": false,
+                "from_data_file": {
+                    "read_path": "/data/input/",
+                    "work_root_path": "/data/work/",
+                    "top_k": 4,
+                    "pre_filter_fetch_k": 100
+                }
+            },
+            "evaluation": {
+                "enabled": false,
+                "from_data_file": {
+                    "read_path": "/data/input/",
+                    "work_root_path": "/data/work/"
+                }
+            },
+            "report": {
+                "enabled": false,
+                "from_data_file": {
+                    "read_path": "/data/input/",
+                    "work_root_path": "/data/work/"
+                }
+            },
+            "qna_generator": {
+                "enabled": false,
+                "from_request_file": {
+                    "read_path": "/data/work/request/indexer/complete",
+                    "save_path": "/data/work/request/qna_generation/start",
+                    "work_root_path": "/data/work/"
+                }
+            }
+        },
+        "RequestCloser": {
+            "work_root_path": "/data/work/",
+            "data_file": {
+                "output_root_path": "/data/output/"
+            },
+            "output_root_path": "/data/output/",
+            "from_request_file": {
+                "enabled": false,
+                "read_path": "/data/work/request/qna_generation/start",
+                "save_path": "/data/work/request/qna_generation/complete"
+            }
+        },
+        "ContentEvaluator": {
+            "work_root_path": "/data/work/",
+            "techniques": [
+                {
+                    "enabled": true,
+                    "metrics_name": "racar",
+                    "llm_name": "llm.openai_lite"
+                },
+                {
+                    "enabled": true,
+                    "metrics_name": "qa_eval",
+                    "llm_name": "llm.openai_lite"
+                },
+                {
+                    "enabled": false,
+                    "metrics_name": "racar",
+                    "llm_name": "llm.openai"
+                },
+                {
+                    "enabled": false,
+                    "metrics_name": "qa_eval",
+                    "llm_name": "llm.openai"
+                },
+                {
+                    "enabled": false,
+                    "metrics_name": "racar",
+                    "llm_name": "llm.custom.meta-llama-3-3-70B-intruct"
+                },
+                {
+                    "enabled": false,
+                    "metrics_name": "qa_eval",
+                    "llm_name": "llm.custom.meta-llama-3-3-70B-intruct"
+                }
+            ],
+            "llm": {
+                "openai": {
+                    "enabled": false,
+                    "configuration": {
+                        "api_type": "azure",
+                        "api_version": "2024-02-15-preview",
+                        "api_url": "${AZURE_OPENAI_SERVER_BASE_URL}",
+                        "api_key": "${AZURE_OPENAI_SECRET_KEY}",
+                        "max_tokens": 1000,
+                        "model_name": "gpt-4",
+                        "deployment_name": "gpt4",
+                        "temperature": 0.7,
+                        "is_chat_model": true,
+                        "top_p": 0.95,
+                        "frequency_penalty": 0,
+                        "presence_penalty": 0,
+                        "stop": null
+                    }
+                },
+                "openai_lite": {
+                    "enabled": true,
+                    "configuration": {
+                        "api_url": "${LITELLM_PROXY_SERVER_BASE_URL}",
+                        "api_key": "${AZURE_OPENAI_SECRET_KEY}",
+                        "model_name": "gpt-4-32k_2",
+                        "deployment_name": "gpt-4-32k_2",
+                        "max_tokens": 1000,
+                        "temperature": 0.5,
+                        "top_p": 0.95,
+                        "frequency_penalty": 0,
+                        "presence_penalty": 0,
+                        "stop": null
+                    }
+                },
+                "custom": {
+                    "mixtral8x7b-instruct": {
+                        "enabled": false,
+                        "configuration": {
+                            "inference_url": "${CUSTOM_LLM_MIXTRAL_INFERENCE_URL}"
+                        },
+                        "json_payload": {
+                            "inputs": "{query}",
+                            "parameters": {
+                                "max_new_tokens": 1000,
+                                "temperature": 0.1,
+                                "do_sample": true
+                            }
+                        }
+                    },
+                    "meta-llama-3-3-70B-intruct": {
+                        "enabled": false,
+                        "configuration": {
+                            "inference_url": "${CUSTOM_LLM_LLAMA_3_1_INFERENCE_URL}"
+                        },
+                        "headers": {
+                            "X-Cluster": "H100"
+                        },
+                        "json_payload": {
+                            "model": "/models/Meta-Llama-3.3-70B-Instruct",
+                            "max_tokens": 1000,
+                            "temperature": 0.1,
+                            "top_p": 0.9,
+                            "presence_penalty": 0,
+                            "frequency_penalty": 0
+                        }
+                    }
+                }
+            },
+            "metrics": {
+                "racar": {
+                    "enabled": true,
+                    "properties": {
+                        "prompt_template_file_dict": {
+                            "reasonableness": "",
+                            "accuracy": "",
+                            "agnosticism": "",
+                            "completeness": "",
+                            "relevance": ""
+                        },
+                        "llm_res_parser": "infy_model_evaluation.llm.provider.JSONResponseParser"
+                    }
+                },
+                "qa_eval": {
+                    "enabled": true,
+                    "properties": {
+                        "prompt_template_file_dict": {
+                            "reasoning_depth": "",
+                            "context_coverage": "",
+                            "groundedness": ""
+                        },
+                        "llm_res_parser": "infy_model_evaluation.llm.provider.JSONResponseParser"
+                    }
+                }
+            }
+        },
+        "ContentReporter": {
+            "work_root_path": "/data/work/"
+        }
+    }
+}

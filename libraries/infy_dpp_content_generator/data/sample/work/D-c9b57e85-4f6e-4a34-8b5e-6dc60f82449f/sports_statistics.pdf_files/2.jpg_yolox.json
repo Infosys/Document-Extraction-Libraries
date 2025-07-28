@@ -1,0 +1,43 @@
+{
+    "table_data": [
+        {
+            "no_of_rows": null,
+            "no_of_columns": null,
+            "title": null,
+            "td_confidence_pct": 0.943,
+            "bbox_format": "X1,Y1,X2,Y2",
+            "bbox": [
+                308.85,
+                408.51,
+                2243.57,
+                1058.03
+            ],
+            "cell_data": null,
+            "message_data": null,
+            "tsr_confidence_pct": -1.0,
+            "debug_path": null
+        },
+        {
+            "no_of_rows": null,
+            "no_of_columns": null,
+            "title": null,
+            "td_confidence_pct": 0.937,
+            "bbox_format": "X1,Y1,X2,Y2",
+            "bbox": [
+                294.94,
+                2033.69,
+                2268.35,
+                2696.23
+            ],
+            "cell_data": null,
+            "message_data": null,
+            "tsr_confidence_pct": -1.0,
+            "debug_path": null
+        }
+    ],
+    "table_html_data": null,
+    "image_width": 2550,
+    "image_height": 3299,
+    "image": "/data/work/D-c9b57e85-4f6e-4a34-8b5e-6dc60f82449f/sports_statistics.pdf_files/2.jpg",
+    "page": "2"
+}
